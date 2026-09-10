@@ -1,154 +1,3761 @@
-<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>สั่งซื้อสินค้า | Chatpetch Group</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
-:root{--black:#050505;--dark:#0d0d0d;--dark2:#111;--gold:#c8a45b;--gold-light:#f0d991;--white:#fff;--gray:#9b9b9b;--line:rgba(255,255,255,.09);--container:1240px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#fff;background:var(--black);font-family:"Prompt",sans-serif}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:45px 45px}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}.container{width:min(var(--container),calc(100% - 40px));margin:auto}
-.header{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px}.logo{display:flex;align-items:center;gap:12px}.logo-mark{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold-light);font-family:"Kanit";font-size:20px;font-weight:700}.logo-text strong{display:block;font-family:"Kanit";letter-spacing:.08em}.logo-text span{font-size:10px;color:var(--gray);letter-spacing:.12em}.nav-menu{display:flex;align-items:center;gap:24px}.nav-menu a{font-size:14px;color:#ccc;transition:.3s}.nav-menu a:hover,.nav-menu .active{color:var(--gold-light)}.cart-link{padding:10px 15px;border:1px solid rgba(200,164,91,.4)}.badge{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:20px;background:var(--gold);color:#050505;font-size:11px;margin-left:5px}
-.hero{position:relative;padding:100px 0 70px;overflow:hidden}.hero:after{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-180px;background:radial-gradient(circle,rgba(200,164,91,.16),transparent 68%);pointer-events:none}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.3em;margin-bottom:18px}.hero h1{margin:0;font-family:"Kanit";font-size:clamp(48px,8vw,105px);line-height:.92;letter-spacing:-.04em}.hero p{max-width:700px;color:var(--gray);line-height:1.9;margin-top:25px}.hero-number{position:absolute;right:0;bottom:15px;font-family:"Kanit";font-size:150px;color:rgba(255,255,255,.025)}
-.section{padding:70px 0}.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:50px}.glass{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid rgba(200,164,91,.2);box-shadow:0 20px 70px rgba(0,0,0,.2)}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border:1px solid var(--gold);color:var(--gold-light);background:transparent;cursor:pointer;transition:.3s}.btn:hover{background:var(--gold);color:#050505}.btn-dark{border-color:var(--line);color:#ddd}.btn-danger{border-color:#7b3434;color:#e7a0a0}.btn-row{display:flex;flex-wrap:wrap;gap:12px}
-.product-photo{overflow:hidden;background:#111}.product-photo img{display:block;width:100%;height:600px;object-fit:cover;transition:.7s}.product-photo:hover img{transform:scale(1.025)}.product-info{padding:35px}.product-info small{color:var(--gold);letter-spacing:.2em}.product-info h2{font-family:"Kanit";font-size:44px;line-height:1.05;margin:12px 0}.product-info .desc{color:#aaa;line-height:1.9}.list{padding:0;margin:25px 0;list-style:none}.list li{padding:12px 0;border-bottom:1px solid var(--line);color:#ccc}.list li:before{content:"◆";color:var(--gold);font-size:8px;margin-right:12px}.quantity{display:flex;align-items:center;gap:0;margin:20px 0}.quantity button{width:42px;height:42px;border:1px solid var(--line);background:#151515;color:#fff;cursor:pointer}.quantity span{width:55px;text-align:center}.price-note{color:var(--gold-light);margin:15px 0 25px}.toast{position:fixed;right:20px;bottom:20px;z-index:100;padding:15px 20px;background:#151515;border:1px solid var(--gold);box-shadow:0 15px 40px #000;display:none}.empty{text-align:center;padding:80px 20px}.empty h2{font-family:"Kanit";font-size:40px}.cart-list{display:grid;gap:15px}.cart-item{display:grid;grid-template-columns:110px 1fr auto;gap:20px;align-items:center;padding:18px}.cart-item img{width:110px;height:90px;object-fit:cover}.cart-item h3{margin:0 0 8px;font-family:"Kanit"}.cart-item p{margin:0;color:#888;font-size:13px}.cart-actions{display:flex;align-items:center;gap:8px;margin-top:12px}.cart-actions button{border:1px solid var(--line);background:#111;color:#ddd;padding:7px 12px;cursor:pointer}.remove{color:#e99!important}.summary{padding:28px;position:sticky;top:105px}.summary h3{font-family:"Kanit";font-size:28px;margin-top:0}.summary-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:#aaa}.summary-row strong{color:#f0d991}.summary .btn{width:100%;margin-top:18px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}.field label{font-size:13px;color:#aaa}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:#0d0d0d;color:#fff;padding:13px 14px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}.field textarea{min-height:120px;resize:vertical}.payment{display:grid;gap:10px;margin-top:10px}.payment label{display:flex;gap:10px;align-items:center;padding:14px;border:1px solid var(--line);cursor:pointer;color:#ccc}.payment input{accent-color:#c8a45b}.slip-box{margin-top:15px;padding:18px;border:1px dashed rgba(200,164,91,.35);color:#999}.order-success{display:none;text-align:center;padding:70px 20px}.order-success h2{font-family:"Kanit";font-size:48px;color:var(--gold-light);margin:0 0 10px}.order-id{font-size:22px;color:#fff;margin:15px 0}.footer{padding:55px 0 30px;border-top:1px solid var(--line);background:#070707;margin-top:50px}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}.footer h3{font-family:"Kanit";margin-top:0}.footer p,.footer a{color:#888;line-height:1.9;font-size:13px}.copyright{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:#666;font-size:12px}
-@media(max-width:900px){.nav-menu{display:none}.grid2{grid-template-columns:1fr}.product-photo img{height:430px}.summary{position:static}.footer-grid{grid-template-columns:1fr}}
-@media(max-width:650px){.container{width:min(100% - 28px,var(--container))}.hero{padding:75px 0 55px}.hero-number{font-size:90px}.product-info{padding:24px}.product-info h2{font-size:34px}.cart-item{grid-template-columns:80px 1fr}.cart-item>strong{grid-column:2}.cart-item img{width:80px;height:75px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
-</style></head><body>
-<header class="header"><div class="container nav">
-<a href="index.html" class="logo"><div class="logo-mark">CG</div><div class="logo-text"><strong>CHATPETCH GROUP</strong><span>FLOORING MATERIALS</span></div></a>
-<nav class="nav-menu">
-<a href="index.html">หน้าแรก</a><a href="about.html">เกี่ยวกับเรา</a><a href="products.html" class="">สินค้า</a><a href="services.html">บริการ</a><a href="projects.html">ผลงาน</a><a href="contact.html">ติดต่อเรา</a>
-<a href="cart.html" class="cart-link">🛒 ตะกร้า <span class="badge" id="cartCount">0</span></a>
-</nav></div></header><section class="hero"><div class="container"><div class="eyebrow">CHECKOUT / 07</div><h1>ยืนยันการสั่งซื้อ</h1><p>CHATPETCH GROUP • วัสดุงานพื้นและงาน Stamped Concrete</p><div class="hero-number">07</div></div></section>
-<section class="section"><div class="container">
-<div id="checkoutArea"></div>
-<div class="order-success glass" id="success">
-  <div class="eyebrow">ORDER RECEIVED</div>
-  <h2>สั่งซื้อสำเร็จ</h2>
-  <p>ระบบบันทึกคำสั่งซื้อไว้ในเครื่องนี้แล้ว</p>
-  <div class="order-id" id="orderId"></div>
-  <p style="color:#888">บริษัทจะใช้ข้อมูลติดต่อที่กรอกไว้เพื่อยืนยันรายละเอียดและราคา</p>
-  <div class="btn-row" style="justify-content:center"><a class="btn" href="products.html">กลับไปเลือกสินค้า</a><a class="btn btn-dark" href="index.html">กลับหน้าแรก</a></div>
-</div>
-</div></section>
-<footer class="footer"><div class="container"><div class="footer-grid">
-<div><h3>CHATPETCH GROUP</h3><p>โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท</p><p>บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร</p></div>
-<div><h3>ติดต่อ</h3><p>082-8223678 คุณหญิง</p><p>063-0630046 คุณเอ้</p><p>085-6299778 ฝ่ายเทคนิค</p><p>098-6710888 แอดมิน</p></div>
-<div><h3>ที่อยู่</h3><p>10/1 ม.9 ต.นาหม่อม อ.นาหม่อม<br>Songkhla, Thailand 90310</p><p><a href="https://www.facebook.com/ChatphetchGroup" target="_blank">Facebook: Chatpetch Group</a></p></div>
-</div><div class="copyright">© Chatpetch Group Co., Ltd. All Rights Reserved.</div></div></footer>
-<div class="toast" id="toast"></div><script>
-const PRODUCTS = [
-  {
-    id:"releaser-power",
-    name:"CHATPETCH RELEASER POWER",
-    category:"วัสดุงาน Stamped Concrete",
-    image:"assets/products/releaser-power.jpg",
-    description:"ผงฝุ่นลอกแบบสำหรับงาน Stamped Concrete ช่วยให้แม่พิมพ์ไม่ติดกับผิวคอนกรีต พร้อมคุณสมบัติทนต่อรังสี UV และทนต่อการซีดจาง",
-    details:["ทนต่อรังสี UV","ป้องกันแม่พิมพ์ติดกับผิวคอนกรีต","ทนต่อการซีดจาง","เหมาะสำหรับงาน Stamped Concrete"],
-    packages:["5 กก. ได้พื้นที่ประมาณ 40–50 ตร.ม.","10 กก. ได้พื้นที่ประมาณ 80–100 ตร.ม."]
-  },
-  {
-    id:"polymer-concrete",
-    name:"POLYMER CONCRETE (PMC-A)",
-    category:"วัสดุงาน Stamped Concrete",
-    image:"assets/products/polymer-concrete.jpg",
-    description:"โพลิเมอร์คอนกรีตพิมพ์ลาย สำหรับงานพื้น Stamped Concrete บรรจุ 40 กก. เหมาะสำหรับงานตกแต่งพื้นคอนกรีต",
-    details:["บรรจุ 40 กก.","สำหรับงานพื้นพิมพ์ลาย","เหมาะสำหรับงานตกแต่งพื้นคอนกรีต","ใช้ร่วมกับระบบงาน Stamped Concrete"],
-    packages:["1 กระสอบ = 40 กก.","ได้พื้นที่ประมาณ 2–3 ตร.ม./กระสอบ","ขึ้นอยู่กับความหนาของงาน"]
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>ชำระเงินและสั่งซื้อ | Chatpetch Group</title>
+
+<meta
+  name="description"
+  content="สั่งซื้อสินค้าจาก Chatpetch Group"
+/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+:root{
+  --black:#050505;
+  --black2:#080808;
+  --dark:#0d0d0d;
+  --dark2:#111111;
+  --dark3:#181818;
+
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --gold-dark:#806127;
+
+  --white:#fff;
+  --soft:#e8e8e8;
+  --gray:#9b9b9b;
+
+  --line:rgba(255,255,255,.09);
+  --gold-line:rgba(200,164,91,.28);
+
+  --container:1240px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  min-height:100vh;
+
+  color:#fff;
+
+  font-family:"Prompt",sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 75% 10%,
+      rgba(200,164,91,.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 60%,
+      rgba(200,164,91,.06),
+      transparent 25%
+    ),
+    var(--black);
+
+  overflow-x:hidden;
+}
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:-3;
+
+  pointer-events:none;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+
+  background-size:70px 70px;
+}
+
+body::after{
+
+  content:"";
+
+  position:fixed;
+
+  width:650px;
+  height:650px;
+
+  right:-280px;
+  top:100px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.14),
+      rgba(200,164,91,.04) 35%,
+      transparent 70%
+    );
+
+  filter:blur(20px);
+
+  pointer-events:none;
+
+  z-index:-2;
+}
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-track{
+  background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+
+  background:
+    linear-gradient(
+      var(--gold-dark),
+      var(--gold)
+    );
+
+  border-radius:20px;
+}
+
+.container{
+
+  width:min(
+    calc(100% - 40px),
+    var(--container)
+  );
+
+  margin:auto;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+  font-family:inherit;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.site-header{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:1000;
+
+  border-bottom:
+    1px solid var(--line);
+
+  background:
+    rgba(5,5,5,.78);
+
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+}
+
+.header-inner{
+
+  min-height:82px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:25px;
+}
+
+.brand{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  min-width:max-content;
+}
+
+.logo-mark{
+
+  position:relative;
+
+  width:47px;
+  height:47px;
+
+  display:grid;
+
+  place-items:center;
+
+  border:
+    1px solid var(--gold);
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:19px;
+
+  font-weight:600;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.16),
+      rgba(255,255,255,.025)
+    );
+
+  box-shadow:
+    inset 0 0 20px
+    rgba(200,164,91,.08),
+
+    0 0 25px
+    rgba(200,164,91,.08);
+}
+
+.logo-mark::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:4px;
+
+  border:
+    1px solid
+    rgba(200,164,91,.25);
+}
+
+.brand-text strong{
+
+  display:block;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:18px;
+
+  font-weight:600;
+
+  letter-spacing:.5px;
+}
+
+.brand-text span{
+
+  display:block;
+
+  margin-top:1px;
+
+  color:#777;
+
+  font-size:10px;
+
+  letter-spacing:2px;
+}
+
+.nav-menu{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:5px;
+}
+
+.nav-menu a{
+
+  position:relative;
+
+  padding:12px 14px;
+
+  color:#aaa;
+
+  font-size:14px;
+
+  transition:.25s;
+}
+
+.nav-menu a:hover{
+  color:#fff;
+}
+
+.nav-menu a::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:14px;
+  right:14px;
+
+  bottom:5px;
+
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--gold),
+      transparent
+    );
+
+  transform:scaleX(0);
+
+  transition:.25s;
+}
+
+.nav-menu a:hover::after{
+  transform:scaleX(1);
+}
+
+.nav-shop{
+
+  border:
+    1px solid var(--gold-line);
+
+  background:
+    rgba(200,164,91,.07);
+
+  color:
+    var(--gold-light)!important;
+}
+
+.cart-count{
+
+  display:inline-grid;
+
+  place-items:center;
+
+  min-width:20px;
+
+  height:20px;
+
+  margin-left:5px;
+
+  padding:0 5px;
+
+  border-radius:50px;
+
+  background:var(--gold);
+
+  color:#080808;
+
+  font-size:11px;
+
+  font-weight:700;
+}
+
+.mobile-menu-btn{
+
+  display:none;
+
+  width:44px;
+  height:44px;
+
+  border:
+    1px solid var(--gold-line);
+
+  background:
+    rgba(255,255,255,.03);
+
+  color:#fff;
+
+  font-size:20px;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.page-hero{
+
+  position:relative;
+
+  padding:
+    85px 0
+    65px;
+
+  border-bottom:
+    1px solid var(--line);
+
+  overflow:hidden;
+}
+
+.hero-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 260px;
+
+  align-items:end;
+
+  gap:40px;
+}
+
+.eyebrow{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  margin-bottom:18px;
+
+  color:var(--gold-light);
+
+  font-size:12px;
+
+  letter-spacing:3px;
+}
+
+.eyebrow::before{
+
+  content:"";
+
+  width:42px;
+
+  height:1px;
+
+  background:var(--gold);
+}
+
+.page-title{
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:
+    clamp(48px,7vw,88px);
+
+  line-height:.95;
+
+  font-weight:600;
+
+  letter-spacing:-2px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #fff 20%,
+      #fff 45%,
+      var(--gold-light) 75%
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  color:transparent;
+}
+
+.hero-description{
+
+  max-width:650px;
+
+  margin-top:24px;
+
+  color:#8d8d8d;
+
+  font-size:14px;
+
+  line-height:1.9;
+}
+
+.hero-number{
+
+  color:
+    rgba(200,164,91,.20);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:150px;
+
+  font-weight:700;
+
+  line-height:.8;
+
+  text-align:right;
+}
+
+.hero-number small{
+
+  display:block;
+
+  margin-top:14px;
+
+  color:#555;
+
+  font-family:"Prompt",sans-serif;
+
+  font-size:11px;
+
+  letter-spacing:4px;
+}
+
+
+/* ================================
+   BREADCRUMB
+================================ */
+
+.breadcrumb{
+
+  padding:20px 0;
+
+  border-bottom:
+    1px solid var(--line);
+
+  color:#666;
+
+  font-size:13px;
+}
+
+.breadcrumb a:hover{
+  color:var(--gold-light);
+}
+
+.breadcrumb span{
+  margin:0 8px;
+}
+
+.breadcrumb strong{
+  color:#aaa;
+}
+
+
+/* ================================
+   CHECKOUT
+================================ */
+
+.checkout-section{
+
+  padding:
+    65px 0
+    100px;
+}
+
+.checkout-layout{
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    380px;
+
+  gap:35px;
+
+  align-items:start;
+}
+
+
+/* ================================
+   FORM
+================================ */
+
+.form-card{
+
+  padding:32px;
+
+  border:
+    1px solid var(--line);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+}
+
+.section-heading{
+
+  margin-bottom:25px;
+
+  padding-bottom:18px;
+
+  border-bottom:
+    1px solid var(--line);
+}
+
+.section-heading small{
+
+  display:block;
+
+  margin-bottom:6px;
+
+  color:var(--gold);
+
+  font-size:10px;
+
+  letter-spacing:2px;
+}
+
+.section-heading h2{
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:28px;
+
+  font-weight:500;
+}
+
+.form-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:18px;
+}
+
+.form-group{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:7px;
+}
+
+.form-group.full{
+  grid-column:1 / -1;
+}
+
+.form-group label{
+
+  color:#aaa;
+
+  font-size:12px;
+}
+
+.required{
+  color:#d6b665;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+
+  width:100%;
+
+  border:
+    1px solid
+    rgba(255,255,255,.11);
+
+  outline:none;
+
+  background:
+    rgba(0,0,0,.35);
+
+  color:#fff;
+
+  padding:
+    13px 14px;
+
+  font-size:13px;
+
+  transition:.25s;
+}
+
+.form-group input,
+.form-group select{
+
+  min-height:48px;
+}
+
+.form-group textarea{
+
+  min-height:115px;
+
+  resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+
+  border-color:
+    var(--gold);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(200,164,91,.06);
+}
+
+.form-group select option{
+  background:#111;
+  color:#fff;
+}
+
+
+/* ================================
+   PAYMENT
+================================ */
+
+.payment-section{
+
+  margin-top:35px;
+
+  padding-top:30px;
+
+  border-top:
+    1px solid var(--line);
+}
+
+.payment-methods{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:12px;
+}
+
+.payment-option{
+
+  position:relative;
+
+  cursor:pointer;
+}
+
+.payment-option input{
+
+  position:absolute;
+
+  opacity:0;
+}
+
+.payment-box{
+
+  min-height:105px;
+
+  padding:18px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  background:
+    rgba(255,255,255,.02);
+
+  transition:.25s;
+}
+
+.payment-option:hover
+.payment-box{
+
+  border-color:
+    var(--gold-line);
+}
+
+.payment-option input:checked
++ .payment-box{
+
+  border-color:
+    var(--gold);
+
+  background:
+    rgba(200,164,91,.08);
+
+  box-shadow:
+    inset 0 0 30px
+    rgba(200,164,91,.04);
+}
+
+.payment-icon{
+
+  font-size:23px;
+}
+
+.payment-name{
+
+  margin-top:7px;
+
+  color:#eee;
+
+  font-size:13px;
+}
+
+.payment-desc{
+
+  margin-top:4px;
+
+  color:#666;
+
+  font-size:10px;
+
+  line-height:1.5;
+}
+
+
+/* ================================
+   SLIP
+================================ */
+
+.slip-box{
+
+  display:none;
+
+  margin-top:20px;
+
+  padding:20px;
+
+  border:
+    1px dashed
+    var(--gold-line);
+
+  background:
+    rgba(200,164,91,.035);
+}
+
+.slip-box.show{
+  display:block;
+}
+
+.slip-box-title{
+
+  color:var(--gold-light);
+
+  font-size:13px;
+
+  margin-bottom:8px;
+}
+
+.slip-box-text{
+
+  color:#777;
+
+  font-size:11px;
+
+  line-height:1.7;
+
+  margin-bottom:15px;
+}
+
+.file-input{
+
+  width:100%;
+
+  padding:12px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.1);
+
+  background:#080808;
+
+  color:#999;
+
+  font-size:11px;
+}
+
+
+/* ================================
+   PAYMENT INFO
+================================ */
+
+.payment-info{
+
+  margin-top:15px;
+
+  padding:16px;
+
+  border:
+    1px solid
+    rgba(200,164,91,.16);
+
+  background:
+    rgba(200,164,91,.035);
+
+  color:#777;
+
+  font-size:11px;
+
+  line-height:1.8;
+}
+
+.payment-info strong{
+  color:var(--gold-light);
+}
+
+
+/* ================================
+   ORDER SUMMARY
+================================ */
+
+.summary-card{
+
+  position:sticky;
+
+  top:110px;
+
+  padding:28px;
+
+  border:
+    1px solid var(--gold-line);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.08),
+      rgba(255,255,255,.025)
+    );
+
+  box-shadow:
+    0 25px 60px
+    rgba(0,0,0,.35);
+}
+
+.summary-title{
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:29px;
+
+  font-weight:500;
+}
+
+.summary-items{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:12px;
+
+  max-height:380px;
+
+  overflow-y:auto;
+
+  margin-top:20px;
+
+  padding-right:5px;
+}
+
+.order-item{
+
+  display:grid;
+
+  grid-template-columns:
+    65px
+    minmax(0,1fr)
+    auto;
+
+  gap:12px;
+
+  align-items:center;
+
+  padding-bottom:12px;
+
+  border-bottom:
+    1px solid var(--line);
+}
+
+.order-image{
+
+  width:65px;
+  height:65px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid
+    rgba(200,164,91,.16);
+
+  background:#090909;
+
+  overflow:hidden;
+}
+
+.order-image img{
+
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
+
+  padding:5px;
+}
+
+.order-image.no-image{
+
+  color:#444;
+
+  font-size:9px;
+}
+
+.order-name{
+
+  color:#ddd;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:14px;
+
+  line-height:1.2;
+}
+
+.order-option{
+
+  margin-top:4px;
+
+  color:var(--gold);
+
+  font-size:9px;
+}
+
+.order-qty{
+
+  margin-top:3px;
+
+  color:#666;
+
+  font-size:10px;
+}
+
+.order-price{
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:15px;
+
+  white-space:nowrap;
+}
+
+.summary-row{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding:15px 0;
+
+  border-bottom:
+    1px solid var(--line);
+
+  color:#777;
+
+  font-size:12px;
+}
+
+.summary-row strong{
+  color:#ddd;
+}
+
+.summary-total{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:end;
+
+  gap:20px;
+
+  padding:
+    22px 0
+    8px;
+}
+
+.summary-total span{
+  color:#aaa;
+}
+
+.summary-total strong{
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:31px;
+}
+
+.submit-btn{
+
+  width:100%;
+
+  min-height:57px;
+
+  margin-top:20px;
+
+  border:
+    1px solid var(--gold);
+
+  background:
+    linear-gradient(
+      135deg,
+      #e0bf70,
+      #a98542
+    );
+
+  color:#080808;
+
+  font-size:15px;
+
+  font-weight:600;
+
+  transition:.3s;
+}
+
+.submit-btn:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 15px 35px
+    rgba(200,164,91,.18);
+}
+
+.submit-btn:disabled{
+
+  opacity:.5;
+
+  cursor:not-allowed;
+
+  transform:none;
+}
+
+.back-cart{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-height:46px;
+
+  margin-top:10px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  color:#888;
+
+  font-size:12px;
+
+  transition:.25s;
+}
+
+.back-cart:hover{
+
+  border-color:
+    var(--gold-line);
+
+  color:var(--gold-light);
+}
+
+
+/* ================================
+   SUCCESS
+================================ */
+
+.success-screen{
+
+  display:none;
+
+  min-height:
+    calc(100vh - 82px);
+
+  padding:
+    80px 20px;
+
+  align-items:center;
+
+  justify-content:center;
+
+  text-align:center;
+}
+
+.success-screen.show{
+  display:flex;
+}
+
+.success-card{
+
+  width:min(
+    100%,
+    700px
+  );
+
+  padding:
+    65px 35px;
+
+  border:
+    1px solid var(--gold-line);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.08),
+      rgba(255,255,255,.025)
+    );
+
+  box-shadow:
+    0 30px 90px
+    rgba(0,0,0,.5);
+}
+
+.success-icon{
+
+  width:90px;
+  height:90px;
+
+  display:grid;
+
+  place-items:center;
+
+  margin:auto;
+
+  border:
+    1px solid var(--gold);
+
+  color:var(--gold-light);
+
+  font-size:38px;
+
+  background:
+    rgba(200,164,91,.06);
+}
+
+.success-card small{
+
+  display:block;
+
+  margin-top:25px;
+
+  color:var(--gold);
+
+  font-size:10px;
+
+  letter-spacing:3px;
+}
+
+.success-card h1{
+
+  margin-top:8px;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:42px;
+
+  font-weight:500;
+}
+
+.success-card p{
+
+  margin-top:10px;
+
+  color:#777;
+
+  font-size:13px;
+
+  line-height:1.8;
+}
+
+.order-number{
+
+  margin:25px auto;
+
+  padding:15px;
+
+  border:
+    1px solid
+    rgba(200,164,91,.18);
+
+  background:
+    rgba(200,164,91,.035);
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:25px;
+
+  letter-spacing:1px;
+}
+
+.success-buttons{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:10px;
+
+  margin-top:25px;
+}
+
+.success-btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-height:48px;
+
+  padding:0 22px;
+
+  border:
+    1px solid var(--gold);
+
+  background:
+    linear-gradient(
+      135deg,
+      #e0bf70,
+      #a98542
+    );
+
+  color:#080808;
+
+  font-size:13px;
+
+  font-weight:600;
+}
+
+.success-btn.secondary{
+
+  border-color:
+    rgba(255,255,255,.12);
+
+  background:transparent;
+
+  color:#aaa;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer{
+
+  border-top:
+    1px solid var(--line);
+
+  padding:
+    50px 0
+    35px;
+
+  background:#070707;
+}
+
+.footer-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1.5fr 1fr 1fr;
+
+  gap:40px;
+}
+
+.footer-brand h3{
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:25px;
+}
+
+.footer-brand p{
+
+  margin-top:10px;
+
+  color:#777;
+
+  font-size:13px;
+
+  line-height:1.8;
+}
+
+.footer-title{
+
+  margin-bottom:15px;
+
+  color:var(--gold-light);
+
+  font-size:13px;
+
+  letter-spacing:1px;
+}
+
+.footer-links{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:9px;
+}
+
+.footer-links a{
+
+  color:#777;
+
+  font-size:13px;
+
+  transition:.2s;
+}
+
+.footer-links a:hover{
+  color:var(--gold-light);
+}
+
+.footer-bottom{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-top:45px;
+
+  padding-top:20px;
+
+  border-top:
+    1px solid var(--line);
+
+  color:#555;
+
+  font-size:11px;
+}
+
+
+/* ================================
+   FLOAT
+================================ */
+
+.floating-contact{
+
+  position:fixed;
+
+  right:20px;
+  bottom:20px;
+
+  z-index:900;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+}
+
+.float-btn{
+
+  width:46px;
+  height:46px;
+
+  display:grid;
+
+  place-items:center;
+
+  border:
+    1px solid var(--gold-line);
+
+  background:
+    rgba(8,8,8,.88);
+
+  color:var(--gold-light);
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.4);
+
+  backdrop-filter:blur(10px);
+
+  transition:.25s;
+}
+
+.float-btn:hover{
+
+  transform:translateX(-4px);
+
+  border-color:var(--gold);
+
+  background:
+    rgba(200,164,91,.12);
+}
+
+
+/* ================================
+   TOAST
+================================ */
+
+.toast{
+
+  position:fixed;
+
+  left:50%;
+  bottom:25px;
+
+  z-index:3000;
+
+  min-width:300px;
+
+  padding:15px 20px;
+
+  border:
+    1px solid var(--gold-line);
+
+  background:
+    rgba(12,12,12,.96);
+
+  color:#fff;
+
+  text-align:center;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.5);
+
+  transform:
+    translate(-50%,20px);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:.3s;
+}
+
+.toast.show{
+
+  opacity:1;
+
+  visibility:visible;
+
+  transform:
+    translate(-50%,0);
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media(max-width:1000px){
+
+  .checkout-layout{
+    grid-template-columns:1fr;
   }
-];
+
+  .summary-card{
+    position:relative;
+    top:auto;
+  }
+
+}
+
+@media(max-width:850px){
+
+  .mobile-menu-btn{
+    display:block;
+  }
+
+  .nav-menu{
+
+    position:absolute;
+
+    left:20px;
+    right:20px;
+
+    top:82px;
+
+    display:none;
+
+    flex-direction:column;
+
+    padding:12px;
+
+    border:
+      1px solid var(--gold-line);
+
+    background:
+      rgba(8,8,8,.97);
+
+    box-shadow:
+      0 20px 50px
+      rgba(0,0,0,.6);
+  }
+
+  .nav-menu.open{
+    display:flex;
+  }
+
+  .nav-menu a{
+    width:100%;
+  }
+
+  .hero-number{
+    display:none;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:650px){
+
+  .container{
+    width:
+      calc(100% - 28px);
+  }
+
+  .brand-text span{
+    display:none;
+  }
+
+  .page-hero{
+    padding:
+      60px 0
+      45px;
+  }
+
+  .page-title{
+    font-size:51px;
+  }
+
+  .form-card{
+    padding:20px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-group.full{
+    grid-column:auto;
+  }
+
+  .payment-methods{
+    grid-template-columns:1fr;
+  }
+
+  .success-buttons{
+    flex-direction:column;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+  }
+
+  .floating-contact{
+    right:12px;
+    bottom:12px;
+  }
+
+  .float-btn{
+    width:42px;
+    height:42px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header class="site-header">
+
+  <div class="container header-inner">
+
+    <a
+      href="index.html"
+      class="brand"
+    >
+
+      <div class="logo-mark">
+        CG
+      </div>
+
+      <div class="brand-text">
+
+        <strong>
+          CHATPETCH GROUP
+        </strong>
+
+        <span>
+          FLOORING MATERIALS
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <button
+      type="button"
+      class="mobile-menu-btn"
+      id="mobileMenuBtn"
+    >
+      ☰
+    </button>
+
+
+    <nav
+      class="nav-menu"
+      id="navMenu"
+    >
+
+      <a href="index.html">
+        หน้าแรก
+      </a>
+
+      <a href="about.html">
+        เกี่ยวกับเรา
+      </a>
+
+      <a href="products.html">
+        สินค้า
+      </a>
+
+      <a href="services.html">
+        บริการ
+      </a>
+
+      <a href="projects.html">
+        ผลงาน
+      </a>
+
+      <a href="contact.html">
+        ติดต่อเรา
+      </a>
+
+      <a
+        href="cart.html"
+        class="nav-shop"
+      >
+
+        🛒 ตะกร้า
+
+        <span
+          class="cart-count"
+          id="cartCount"
+        >
+          0
+        </span>
+
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- =================================
+     HERO
+================================= -->
+
+<section class="page-hero">
+
+  <div class="container">
+
+    <div class="hero-grid">
+
+      <div>
+
+        <div class="eyebrow">
+          CHECKOUT
+        </div>
+
+        <h1 class="page-title">
+          สั่งซื้อสินค้า
+        </h1>
+
+        <p class="hero-description">
+
+          กรอกข้อมูลสำหรับจัดส่ง
+          เลือกช่องทางการชำระเงิน
+          และตรวจสอบรายการก่อนยืนยันคำสั่งซื้อ
+
+        </p>
+
+      </div>
+
+
+      <div class="hero-number">
+
+        04
+
+        <small>
+          CHECKOUT
+        </small>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================
+     BREADCRUMB
+================================= -->
+
+<div class="breadcrumb">
+
+  <div class="container">
+
+    <a href="index.html">
+      หน้าแรก
+    </a>
+
+    <span>/</span>
+
+    <a href="products.html">
+      สินค้า
+    </a>
+
+    <span>/</span>
+
+    <a href="cart.html">
+      ตะกร้า
+    </a>
+
+    <span>/</span>
+
+    <strong>
+      สั่งซื้อ
+    </strong>
+
+  </div>
+
+</div>
+
+
+<!-- =================================
+     CHECKOUT AREA
+================================= -->
+
+<main id="checkoutMain">
+
+<section class="checkout-section">
+
+<div class="container">
+
+<div class="checkout-layout">
+
+
+<!-- =================================
+     CUSTOMER FORM
+================================= -->
+
+<div class="form-card">
+
+  <div class="section-heading">
+
+    <small>
+      CUSTOMER INFORMATION
+    </small>
+
+    <h2>
+      ข้อมูลผู้สั่งซื้อ
+    </h2>
+
+  </div>
+
+
+  <form id="checkoutForm">
+
+
+    <div class="form-grid">
+
+
+      <div class="form-group">
+
+        <label>
+          ชื่อ - นามสกุล
+          <span class="required">*</span>
+        </label>
+
+        <input
+          type="text"
+          id="customerName"
+          required
+          placeholder="กรอกชื่อ - นามสกุล"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          เบอร์โทรศัพท์
+          <span class="required">*</span>
+        </label>
+
+        <input
+          type="tel"
+          id="customerPhone"
+          required
+          placeholder="08X-XXX-XXXX"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          อีเมล
+        </label>
+
+        <input
+          type="email"
+          id="customerEmail"
+          placeholder="example@email.com"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          จังหวัด
+          <span class="required">*</span>
+        </label>
+
+        <input
+          type="text"
+          id="customerProvince"
+          required
+          placeholder="จังหวัด"
+        >
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          ที่อยู่สำหรับจัดส่ง
+          <span class="required">*</span>
+        </label>
+
+        <textarea
+          id="customerAddress"
+          required
+          placeholder="บ้านเลขที่ / หมู่ / ถนน / ตำบล / อำเภอ / จังหวัด / รหัสไปรษณีย์"
+        ></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          หมายเหตุเพิ่มเติม
+        </label>
+
+        <textarea
+          id="customerNote"
+          placeholder="เช่น จุดสังเกตในการจัดส่ง หรือรายละเอียดเพิ่มเติม"
+        ></textarea>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- ============================
+         PAYMENT
+    ============================= -->
+
+    <div class="payment-section">
+
+      <div class="section-heading">
+
+        <small>
+          PAYMENT METHOD
+        </small>
+
+        <h2>
+          วิธีการชำระเงิน
+        </h2>
+
+      </div>
+
+
+      <div class="payment-methods">
+
+
+        <label class="payment-option">
+
+          <input
+            type="radio"
+            name="payment"
+            value="bank_transfer"
+            checked
+          >
+
+          <div class="payment-box">
+
+            <div class="payment-icon">
+              🏦
+            </div>
+
+            <div class="payment-name">
+              โอนผ่านธนาคาร
+            </div>
+
+            <div class="payment-desc">
+              แจ้งยอดและบัญชีหลังยืนยันคำสั่งซื้อ
+            </div>
+
+          </div>
+
+        </label>
+
+
+        <label class="payment-option">
+
+          <input
+            type="radio"
+            name="payment"
+            value="promptpay"
+          >
+
+          <div class="payment-box">
+
+            <div class="payment-icon">
+              📱
+            </div>
+
+            <div class="payment-name">
+              PromptPay
+            </div>
+
+            <div class="payment-desc">
+              ชำระผ่าน QR / PromptPay
+            </div>
+
+          </div>
+
+        </label>
+
+
+        <label class="payment-option">
+
+          <input
+            type="radio"
+            name="payment"
+            value="cod"
+          >
+
+          <div class="payment-box">
+
+            <div class="payment-icon">
+              📦
+            </div>
+
+            <div class="payment-name">
+              เก็บเงินปลายทาง
+            </div>
+
+            <div class="payment-desc">
+              เจ้าหน้าที่ติดต่อยืนยันก่อนจัดส่ง
+            </div>
+
+          </div>
+
+        </label>
+
+
+      </div>
+
+
+      <div
+        class="payment-info"
+        id="paymentInfo"
+      >
+
+        <strong>
+          ข้อมูลการชำระเงิน
+        </strong>
+
+        <br>
+
+        ข้อมูลบัญชีธนาคาร / PromptPay
+        จะแจ้งให้ลูกค้าทราบหลังเจ้าหน้าที่
+        ตรวจสอบและยืนยันคำสั่งซื้อ
+
+      </div>
+
+
+      <!-- SLIP -->
+
+      <div
+        class="slip-box"
+        id="slipBox"
+      >
+
+        <div class="slip-box-title">
+          แนบสลิปการชำระเงิน
+        </div>
+
+        <div class="slip-box-text">
+
+          หากมีสลิปแล้ว สามารถแนบได้ที่นี่
+          รองรับ JPG, PNG และ WEBP
+
+        </div>
+
+        <input
+          type="file"
+          id="slipFile"
+          class="file-input"
+          accept="image/jpeg,image/png,image/webp"
+        >
+
+      </div>
+
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="submit-btn"
+      id="submitBtn"
+    >
+
+      ยืนยันคำสั่งซื้อ →
+
+    </button>
+
+
+  </form>
+
+</div>
+
+
+<!-- =================================
+     ORDER SUMMARY
+================================= -->
+
+<aside class="summary-card">
+
+  <div class="section-heading">
+
+    <small>
+      YOUR ORDER
+    </small>
+
+    <h2>
+      รายการสั่งซื้อ
+    </h2>
+
+  </div>
+
+
+  <div
+    class="summary-items"
+    id="summaryItems"
+  ></div>
+
+
+  <div class="summary-row">
+
+    <span>
+      จำนวนสินค้า
+    </span>
+
+    <strong id="summaryQuantity">
+      0 ชิ้น
+    </strong>
+
+  </div>
+
+
+  <div class="summary-row">
+
+    <span>
+      ค่าสินค้า
+    </span>
+
+    <strong id="summarySubtotal">
+      0.-
+    </strong>
+
+  </div>
+
+
+  <div class="summary-row">
+
+    <span>
+      ค่าจัดส่ง
+    </span>
+
+    <strong>
+      ยืนยันภายหลัง
+    </strong>
+
+  </div>
+
+
+  <div class="summary-total">
+
+    <span>
+      ยอดรวมสินค้า
+    </span>
+
+    <strong id="summaryTotal">
+      0.-
+    </strong>
+
+  </div>
+
+
+  <button
+    type="submit"
+    form="checkoutForm"
+    class="submit-btn"
+    id="submitBtnSide"
+  >
+
+    ยืนยันคำสั่งซื้อ →
+
+  </button>
+
+
+  <a
+    href="cart.html"
+    class="back-cart"
+  >
+
+    ← กลับไปแก้ไขตะกร้า
+
+  </a>
+
+</aside>
+
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =================================
+     SUCCESS
+================================= -->
+
+<section
+  class="success-screen"
+  id="successScreen"
+>
+
+  <div class="success-card">
+
+    <div class="success-icon">
+      ✓
+    </div>
+
+    <small>
+      ORDER COMPLETED
+    </small>
+
+    <h1>
+      สั่งซื้อสำเร็จ
+    </h1>
+
+    <p>
+
+      ขอบคุณสำหรับคำสั่งซื้อ
+      เจ้าหน้าที่ Chatpetch Group
+      จะติดต่อกลับเพื่อยืนยันรายละเอียด
+      และการชำระเงิน
+
+    </p>
+
+
+    <div class="order-number">
+
+      <span>
+        ORDER #
+      </span>
+
+      <span id="successOrderNumber">
+        -
+      </span>
+
+    </div>
+
+
+    <p>
+      กรุณาเก็บหมายเลขคำสั่งซื้อนี้ไว้
+      สำหรับใช้ติดต่อสอบถามสถานะ
+    </p>
+
+
+    <div class="success-buttons">
+
+      <a
+        href="products.html"
+        class="success-btn"
+      >
+        ซื้อสินค้าต่อ
+      </a>
+
+      <a
+        href="index.html"
+        class="success-btn secondary"
+      >
+        กลับหน้าแรก
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+
+      <div class="footer-brand">
+
+        <h3>
+          CHATPETCH GROUP
+        </h3>
+
+        <p>
+
+          🌹 โรงงานผลิต-จำหน่าย
+          วัสดุงานพื้นทุกประเภท 🌹
+
+          <br><br>
+
+          ♠️ สร้างสรรค์ผลงาน
+          ♠️ มาตรฐานเข้าถึง
+          ♠️ ยืน 1 คุณภาพ
+
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <div class="footer-title">
+          QUICK MENU
+        </div>
+
+        <div class="footer-links">
+
+          <a href="about.html">
+            เกี่ยวกับเรา
+          </a>
+
+          <a href="products.html">
+            สินค้า
+          </a>
+
+          <a href="services.html">
+            บริการ
+          </a>
+
+          <a href="projects.html">
+            ผลงาน
+          </a>
+
+          <a href="contact.html">
+            ติดต่อเรา
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div class="footer-title">
+          CONTACT
+        </div>
+
+        <div class="footer-links">
+
+          <a href="tel:0828223678">
+            082-8223678 คุณหญิง
+          </a>
+
+          <a href="tel:0630630046">
+            063-0630046 คุณเอ้
+          </a>
+
+          <a href="tel:0856299778">
+            085-6299778 ฝ่ายเทคนิค
+          </a>
+
+          <a href="tel:0986710888">
+            098-6710888 แอดมิน
+          </a>
+
+          <a
+            href="https://www.facebook.com/ChatphetchGroup"
+            target="_blank"
+            rel="noopener"
+          >
+            Facebook
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Chatpetch Group Co., Ltd.
+      </span>
+
+      <span>
+        บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =================================
+     FLOATING CONTACT
+================================= -->
+
+<div class="floating-contact">
+
+  <a
+    class="float-btn"
+    href="tel:0828223678"
+    title="โทร"
+  >
+    ☎
+  </a>
+
+  <a
+    class="float-btn"
+    href="https://www.facebook.com/ChatphetchGroup"
+    target="_blank"
+    rel="noopener"
+    title="Facebook"
+  >
+    f
+  </a>
+
+</div>
+
+
+<!-- =================================
+     TOAST
+================================= -->
+
+<div
+  class="toast"
+  id="toast"
+>
+  <span id="toastText">
+    กรุณาตรวจสอบข้อมูล
+  </span>
+</div>
+
+
+<script>
+
+/* =====================================
+   SUPABASE
+===================================== */
+
+const SUPABASE_URL =
+  "https://mfhllgklcfnnbyyzzljz.supabase.co";
+
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1maGxsZ2tsY2ZubmJ5eXp6bGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwMjY2NzEsImV4cCI6MjEwNDYwMjY3MX0.bjpjXkB0tpgrJu8BwmpSO3_MSQSLMWC1xI0v-9hNlIc";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+
+
+/* =====================================
+   CART
+===================================== */
+
+const CART_KEY =
+  "chatpetch_cart";
+
 
 function getCart(){
-  return JSON.parse(localStorage.getItem("chatpetch_cart") || "[]");
+
+  try{
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          CART_KEY
+        ) || "[]"
+      );
+
+    return Array.isArray(data)
+      ? data
+      : [];
+
+  }catch(error){
+
+    return [];
+
+  }
+
 }
-function saveCart(cart){
-  localStorage.setItem("chatpetch_cart",JSON.stringify(cart));
-  updateCartBadge();
+
+
+function clearCart(){
+
+  localStorage.removeItem(
+    CART_KEY
+  );
+
 }
+
+
+/* =====================================
+   PRICE
+===================================== */
+
+function formatPrice(value){
+
+  return Number(
+    value || 0
+  ).toLocaleString(
+    "th-TH"
+  ) + ".-";
+
+}
+
+
+/* =====================================
+   ESCAPE
+===================================== */
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* =====================================
+   CART BADGE
+===================================== */
+
 function updateCartBadge(){
-  const el=document.getElementById("cartCount");
-  if(!el) return;
-  el.textContent=getCart().reduce((s,i)=>s+(Number(i.quantity)||1),0);
+
+  const cart =
+    getCart();
+
+  const count =
+    cart.reduce(
+      (sum,item) =>
+        sum +
+        Number(
+          item.quantity || 0
+        ),
+      0
+    );
+
+  document.getElementById(
+    "cartCount"
+  ).textContent =
+    count > 99
+    ? "99+"
+    : count;
+
 }
-function addToCart(id,qty=1){
-  const p=PRODUCTS.find(x=>x.id===id);
-  if(!p) return;
-  const cart=getCart();
-  const found=cart.find(x=>x.id===id);
-  if(found) found.quantity += qty;
-  else cart.push({id:p.id,name:p.name,image:p.image,category:p.category,quantity:qty});
-  saveCart(cart);
-  showToast("เพิ่มสินค้าในตะกร้าแล้ว");
+
+
+/* =====================================
+   SUMMARY
+===================================== */
+
+function renderSummary(){
+
+  const cart =
+    getCart();
+
+
+  const container =
+    document.getElementById(
+      "summaryItems"
+    );
+
+
+  container.innerHTML = "";
+
+
+  let quantity = 0;
+
+  let subtotal = 0;
+
+
+  cart.forEach(
+    item => {
+
+      const qty =
+        Math.max(
+          1,
+          Number(
+            item.quantity || 1
+          )
+        );
+
+
+      const price =
+        Number(
+          item.numericPrice || 0
+        );
+
+
+      quantity += qty;
+
+      subtotal +=
+        price * qty;
+
+
+      const option =
+        item.selectedOption &&
+        item.selectedOption.name
+        ? item.selectedOption.name
+        : "";
+
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.className =
+        "order-item";
+
+
+      div.innerHTML = `
+
+        <div class="order-image">
+
+          ${
+            item.image
+            ?
+            `
+              <img
+                src="${escapeHtml(item.image)}"
+                alt="${escapeHtml(item.name)}"
+              >
+            `
+            :
+            `
+              <span class="no-image">
+                NO IMAGE
+              </span>
+            `
+          }
+
+        </div>
+
+
+        <div>
+
+          <div class="order-name">
+
+            ${escapeHtml(
+              item.name ||
+              "สินค้า"
+            )}
+
+          </div>
+
+
+          ${
+            option
+            ?
+            `
+              <div class="order-option">
+                ${escapeHtml(option)}
+              </div>
+            `
+            :
+            ""
+          }
+
+
+          <div class="order-qty">
+
+            จำนวน ${qty} ชิ้น
+
+          </div>
+
+        </div>
+
+
+        <div class="order-price">
+
+          ${
+            price
+            ? formatPrice(price * qty)
+            : "-"
+          }
+
+        </div>
+
+      `;
+
+
+      container.appendChild(
+        div
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "summaryQuantity"
+  ).textContent =
+    quantity +
+    " ชิ้น";
+
+
+  document.getElementById(
+    "summarySubtotal"
+  ).textContent =
+    subtotal
+    ? formatPrice(subtotal)
+    : "0.-";
+
+
+  document.getElementById(
+    "summaryTotal"
+  ).textContent =
+    subtotal
+    ? formatPrice(subtotal)
+    : "0.-";
+
+
+  updateCartBadge();
+
+
+  return {
+    quantity,
+    subtotal
+  };
+
 }
-function showToast(msg){
-  const t=document.getElementById("toast");
-  if(!t) return;
-  t.textContent=msg;t.style.display="block";
-  setTimeout(()=>t.style.display="none",2200);
+
+
+/* =====================================
+   PAYMENT
+===================================== */
+
+const paymentRadios =
+  document.querySelectorAll(
+    'input[name="payment"]'
+  );
+
+
+const paymentInfo =
+  document.getElementById(
+    "paymentInfo"
+  );
+
+
+const slipBox =
+  document.getElementById(
+    "slipBox"
+  );
+
+
+function updatePayment(){
+
+  const selected =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    );
+
+
+  if(!selected){
+    return;
+  }
+
+
+  if(
+    selected.value ===
+    "bank_transfer"
+  ){
+
+    paymentInfo.innerHTML = `
+
+      <strong>
+        โอนผ่านธนาคาร
+      </strong>
+
+      <br>
+
+      ข้อมูลบัญชีธนาคาร
+      และยอดที่ต้องชำระ
+      จะแจ้งให้ลูกค้าทราบ
+      หลังเจ้าหน้าที่ตรวจสอบคำสั่งซื้อ
+
+    `;
+
+    slipBox.classList.add(
+      "show"
+    );
+
+  }
+
+
+  if(
+    selected.value ===
+    "promptpay"
+  ){
+
+    paymentInfo.innerHTML = `
+
+      <strong>
+        PromptPay
+      </strong>
+
+      <br>
+
+      ระบบจะส่งข้อมูล PromptPay
+      หรือ QR สำหรับชำระเงิน
+      หลังเจ้าหน้าที่ตรวจสอบคำสั่งซื้อ
+
+    `;
+
+    slipBox.classList.add(
+      "show"
+    );
+
+  }
+
+
+  if(
+    selected.value ===
+    "cod"
+  ){
+
+    paymentInfo.innerHTML = `
+
+      <strong>
+        เก็บเงินปลายทาง
+      </strong>
+
+      <br>
+
+      เจ้าหน้าที่จะติดต่อกลับ
+      เพื่อยืนยันพื้นที่จัดส่ง
+      ค่าจัดส่ง และเงื่อนไข
+      ก่อนดำเนินการ
+
+    `;
+
+    slipBox.classList.remove(
+      "show"
+    );
+
+  }
+
 }
+
+
+paymentRadios.forEach(
+  radio => {
+
+    radio.addEventListener(
+      "change",
+      updatePayment
+    );
+
+  }
+);
+
+
+updatePayment();
+
+
+/* =====================================
+   FILE
+===================================== */
+
+const slipFile =
+  document.getElementById(
+    "slipFile"
+  );
+
+
+/* =====================================
+   CREATE ORDER ID
+===================================== */
+
+function createOrderNumber(){
+
+  const now =
+    new Date();
+
+
+  const year =
+    now.getFullYear();
+
+
+  const month =
+    String(
+      now.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  const day =
+    String(
+      now.getDate()
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  const random =
+    Math.floor(
+      1000 +
+      Math.random() * 9000
+    );
+
+
+  return `
+    CG-${year}${month}${day}-${random}
+  `;
+
+}
+
+
+/* =====================================
+   SUBMIT
+===================================== */
+
+const checkoutForm =
+  document.getElementById(
+    "checkoutForm"
+  );
+
+
+checkoutForm.addEventListener(
+  "submit",
+  async function(event){
+
+    event.preventDefault();
+
+
+    const cart =
+      getCart();
+
+
+    if(!cart.length){
+
+      showToast(
+        "ไม่มีสินค้าในตะกร้า"
+      );
+
+      setTimeout(
+        () => {
+          window.location.href =
+            "products.html";
+        },
+        1200
+      );
+
+      return;
+
+    }
+
+
+    const name =
+      document.getElementById(
+        "customerName"
+      ).value.trim();
+
+
+    const phone =
+      document.getElementById(
+        "customerPhone"
+      ).value.trim();
+
+
+    const email =
+      document.getElementById(
+        "customerEmail"
+      ).value.trim();
+
+
+    const province =
+      document.getElementById(
+        "customerProvince"
+      ).value.trim();
+
+
+    const address =
+      document.getElementById(
+        "customerAddress"
+      ).value.trim();
+
+
+    const note =
+      document.getElementById(
+        "customerNote"
+      ).value.trim();
+
+
+    const payment =
+      document.querySelector(
+        'input[name="payment"]:checked'
+      )?.value;
+
+
+    if(!name){
+
+      showToast(
+        "กรุณากรอกชื่อ - นามสกุล"
+      );
+
+      return;
+
+    }
+
+
+    if(!phone){
+
+      showToast(
+        "กรุณากรอกเบอร์โทรศัพท์"
+      );
+
+      return;
+
+    }
+
+
+    if(!province){
+
+      showToast(
+        "กรุณากรอกจังหวัด"
+      );
+
+      return;
+
+    }
+
+
+    if(!address){
+
+      showToast(
+        "กรุณากรอกที่อยู่"
+      );
+
+      return;
+
+    }
+
+
+    if(!payment){
+
+      showToast(
+        "กรุณาเลือกวิธีการชำระเงิน"
+      );
+
+      return;
+
+    }
+
+
+    const slip =
+      slipFile.files[0] || null;
+
+
+    if(
+      payment !== "cod" &&
+      slip &&
+      slip.size >
+      5 * 1024 * 1024
+    ){
+
+      showToast(
+        "ไฟล์สลิปต้องมีขนาดไม่เกิน 5 MB"
+      );
+
+      return;
+
+    }
+
+
+    const submitBtn =
+      document.getElementById(
+        "submitBtn"
+      );
+
+
+    const sideBtn =
+      document.getElementById(
+        "submitBtnSide"
+      );
+
+
+    submitBtn.disabled =
+      true;
+
+
+    sideBtn.disabled =
+      true;
+
+
+    submitBtn.textContent =
+      "กำลังบันทึกคำสั่งซื้อ...";
+
+
+    sideBtn.textContent =
+      "กำลังบันทึก...";
+
+
+    try{
+
+
+      /* ===========================
+         CALCULATE
+      ============================ */
+
+      let subtotal = 0;
+
+
+      cart.forEach(
+        item => {
+
+          const price =
+            Number(
+              item.numericPrice || 0
+            );
+
+
+          const qty =
+            Number(
+              item.quantity || 1
+            );
+
+
+          subtotal +=
+            price * qty;
+
+        }
+      );
+
+
+      const orderNumber =
+        createOrderNumber();
+
+
+      /* ===========================
+         INSERT ORDER
+      ============================ */
+
+      const orderPayload = {
+
+        order_number:
+          orderNumber,
+
+        customer_name:
+          name,
+
+        customer_phone:
+          phone,
+
+        customer_email:
+          email || null,
+
+        customer_province:
+          province,
+
+        customer_address:
+          address,
+
+        customer_note:
+          note || null,
+
+        payment_method:
+          payment,
+
+        subtotal:
+          subtotal,
+
+        shipping_fee:
+          0,
+
+        total:
+          subtotal,
+
+        status:
+          "pending"
+
+      };
+
+
+      const {
+        data: order,
+        error: orderError
+      } =
+        await supabaseClient
+          .from("orders")
+          .insert(
+            orderPayload
+          )
+          .select()
+          .single();
+
+
+      if(orderError){
+
+        throw orderError;
+
+      }
+
+
+      /* ===========================
+         INSERT ORDER ITEMS
+      ============================ */
+
+      const orderItems =
+        cart.map(
+          item => ({
+
+            order_id:
+              order.id,
+
+            product_id:
+              String(
+                item.productId ||
+                item.id ||
+                ""
+              ),
+
+            product_name:
+              item.name ||
+              "สินค้า",
+
+            image:
+              item.image ||
+              null,
+
+            category:
+              item.category ||
+              null,
+
+            quantity:
+              Number(
+                item.quantity || 1
+              ),
+
+            selected_option:
+              item.selectedOption?.name ||
+              null,
+
+            price:
+              Number(
+                item.numericPrice || 0
+              ),
+
+            price_label:
+              item.priceLabel ||
+              null
+
+          })
+        );
+
+
+      const {
+        error: itemError
+      } =
+        await supabaseClient
+          .from("order_items")
+          .insert(
+            orderItems
+          );
+
+
+      if(itemError){
+
+        throw itemError;
+
+      }
+
+
+      /* ===========================
+         OPTIONAL SLIP UPLOAD
+      ============================ */
+
+      if(
+        slip &&
+        payment !== "cod"
+      ){
+
+        try{
+
+          const extension =
+            slip.name
+              .split(".")
+              .pop()
+              .toLowerCase();
+
+
+          const fileName =
+            `${order.id}-${Date.now()}.${extension}`;
+
+
+          const filePath =
+            `orders/${fileName}`;
+
+
+          const {
+            error: uploadError
+          } =
+            await supabaseClient
+              .storage
+              .from("slips")
+              .upload(
+                filePath,
+                slip,
+                {
+                  cacheControl:"3600",
+                  upsert:false
+                }
+              );
+
+
+          if(!uploadError){
+
+            await supabaseClient
+              .from("orders")
+              .update({
+                slip_path:
+                  filePath
+              })
+              .eq(
+                "id",
+                order.id
+              );
+
+          }
+
+        }catch(uploadError){
+
+          console.warn(
+            "Slip upload skipped:",
+            uploadError
+          );
+
+        }
+
+      }
+
+
+      /* ===========================
+         SUCCESS
+      ============================ */
+
+      clearCart();
+
+
+      document.getElementById(
+        "checkoutMain"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "successOrderNumber"
+      ).textContent =
+        orderNumber;
+
+
+      document.getElementById(
+        "successScreen"
+      ).classList.add(
+        "show"
+      );
+
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+
+    }catch(error){
+
+      console.error(
+        "ORDER ERROR:",
+        error
+      );
+
+
+      let message =
+        "ไม่สามารถบันทึกคำสั่งซื้อได้";
+
+
+      if(
+        error?.message
+      ){
+
+        message =
+          error.message;
+
+      }
+
+
+      showToast(
+        message
+      );
+
+
+      submitBtn.disabled =
+        false;
+
+
+      sideBtn.disabled =
+        false;
+
+
+      submitBtn.textContent =
+        "ยืนยันคำสั่งซื้อ →";
+
+
+      sideBtn.textContent =
+        "ยืนยันคำสั่งซื้อ →";
+
+    }
+
+  }
+);
+
+
+/* =====================================
+   TOAST
+===================================== */
+
+let toastTimer;
+
+
+function showToast(
+  message
+){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  const text =
+    document.getElementById(
+      "toastText"
+    );
+
+
+  text.textContent =
+    message;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      3500
+    );
+
+}
+
+
+/* =====================================
+   MOBILE MENU
+===================================== */
+
+const mobileMenuBtn =
+  document.getElementById(
+    "mobileMenuBtn"
+  );
+
+
+const navMenu =
+  document.getElementById(
+    "navMenu"
+  );
+
+
+mobileMenuBtn.addEventListener(
+  "click",
+  () => {
+
+    navMenu.classList.toggle(
+      "open"
+    );
+
+  }
+);
+
+
+document
+  .querySelectorAll(
+    "#navMenu a"
+  )
+  .forEach(
+    link => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          navMenu.classList.remove(
+            "open"
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* =====================================
+   INIT
+===================================== */
+
+const initialCart =
+  getCart();
+
+
+if(!initialCart.length){
+
+  document.getElementById(
+    "checkoutMain"
+  ).innerHTML = `
+
+    <div
+      style="
+        max-width:700px;
+        margin:80px auto;
+        padding:60px 25px;
+        text-align:center;
+        border:1px solid rgba(200,164,91,.28);
+        background:rgba(255,255,255,.025);
+      "
+    >
+
+      <div
+        style="
+          font-size:45px;
+        "
+      >
+        🛒
+      </div>
+
+      <h2
+        style="
+          margin-top:20px;
+          font-family:Kanit,sans-serif;
+          font-size:32px;
+          font-weight:500;
+        "
+      >
+        ไม่มีสินค้าในตะกร้า
+      </h2>
+
+      <p
+        style="
+          margin-top:10px;
+          color:#777;
+          font-size:13px;
+        "
+      >
+        กรุณาเลือกสินค้าก่อนดำเนินการสั่งซื้อ
+      </p>
+
+      <a
+        href="products.html"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          min-height:50px;
+          margin-top:25px;
+          padding:0 25px;
+          background:linear-gradient(135deg,#e0bf70,#a98542);
+          color:#080808;
+          font-weight:600;
+        "
+      >
+        ไปเลือกสินค้า →
+      </a>
+
+    </div>
+
+  `;
+
+}else{
+
+  renderSummary();
+
+}
+
+
 updateCartBadge();
 
-const checkoutArea=document.getElementById("checkoutArea");
-const cart=getCart();
-if(!cart.length){
-  checkoutArea.innerHTML=`<div class="glass empty"><h2>ไม่มีสินค้าในตะกร้า</h2><a class="btn" href="products.html">กลับไปเลือกสินค้า</a></div>`;
-}else{
-  checkoutArea.innerHTML=`
-  <div class="grid2">
-    <div class="glass" style="padding:30px">
-      <div class="eyebrow">CUSTOMER INFORMATION</div>
-      <h2 style="font-family:Kanit;font-size:38px;margin-top:0">ข้อมูลผู้สั่งซื้อ</h2>
-      <form id="orderForm">
-        <div class="form-grid">
-          <div class="field"><label>ชื่อ - นามสกุล *</label><input name="name" required></div>
-          <div class="field"><label>เบอร์โทรศัพท์ *</label><input name="phone" required type="tel"></div>
-          <div class="field"><label>อีเมล</label><input name="email" type="email"></div>
-          <div class="field"><label>จังหวัด *</label><input name="province" required></div>
-          <div class="field full"><label>ที่อยู่จัดส่ง *</label><textarea name="address" required></textarea></div>
-          <div class="field full"><label>หมายเหตุ</label><textarea name="note"></textarea></div>
-        </div>
-        <div style="margin-top:28px">
-          <div class="eyebrow">PAYMENT</div>
-          <div class="payment">
-            <label><input type="radio" name="payment" value="โอนธนาคาร" checked> โอนธนาคาร</label>
-            <label><input type="radio" name="payment" value="PromptPay"> PromptPay</label>
-            <label><input type="radio" name="payment" value="เก็บเงินปลายทาง"> เก็บเงินปลายทาง (COD)</label>
-          </div>
-          <div class="slip-box">
-            <label>แนบสลิป (ถ้ามี): <input type="file" id="slip" accept="image/*,.pdf"></label>
-            <div id="slipName" style="margin-top:8px"></div>
-            <small>หมายเหตุ: เว็บชุดนี้เก็บชื่อไฟล์สลิปไว้ในออเดอร์เท่านั้น ยังไม่ได้อัปโหลดไฟล์ขึ้นเซิร์ฟเวอร์</small>
-          </div>
-        </div>
-        <button class="btn" style="margin-top:25px;width:100%" type="submit">ยืนยันคำสั่งซื้อ →</button>
-      </form>
-    </div>
-    <aside class="glass summary">
-      <h3>รายการสินค้า</h3>
-      ${cart.map(i=>`<div class="summary-row"><span>${i.name} × ${i.quantity}</span><strong>สอบถามราคา</strong></div>`).join("")}
-      <div class="summary-row"><span>ยอดรวม</span><strong>รอประเมินราคา</strong></div>
-      <p style="color:#777;font-size:13px;line-height:1.8">ยังไม่มีการเรียกเก็บเงินผ่านเว็บไซต์ ราคาจะยืนยันโดยบริษัทก่อนชำระเงิน</p>
-    </aside>
-  </div>`;
-  document.getElementById("slip").onchange=e=>{
-    document.getElementById("slipName").textContent=e.target.files[0] ? "ไฟล์: "+e.target.files[0].name : "";
-  };
-  document.getElementById("orderForm").onsubmit=e=>{
-    e.preventDefault();
-    const f=new FormData(e.target);
-    const orders=JSON.parse(localStorage.getItem("chatpetch_orders")||"[]");
-    const orderId="CG"+Date.now().toString().slice(-8);
-    const slip=document.getElementById("slip").files[0];
-    const order={
-      id:orderId,createdAt:new Date().toISOString(),status:"pending",
-      payment:f.get("payment"),slipFile:slip?slip.name:"",
-      customer:{name:f.get("name"),phone:f.get("phone"),email:f.get("email"),province:f.get("province"),address:f.get("address"),note:f.get("note")},
-      items:cart.map(i=>({...i}))
-    };
-    orders.unshift(order);
-    localStorage.setItem("chatpetch_orders",JSON.stringify(orders));
-    localStorage.removeItem("chatpetch_cart");
-    updateCartBadge();
-    checkoutArea.style.display="none";
-    document.getElementById("success").style.display="block";
-    document.getElementById("orderId").textContent="เลขที่คำสั่งซื้อ: "+orderId;
-    window.scrollTo({top:0,behavior:"smooth"});
-  };
-}
-</script></body></html>
+</script>
+
+</body>
+</html>
