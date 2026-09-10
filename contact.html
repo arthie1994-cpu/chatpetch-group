@@ -1,0 +1,2983 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ติดต่อเรา | Chatpetch Group</title>
+
+<meta name="description" content="ติดต่อ บริษัท ฉัตรเพชร กรุ๊ป จำกัด โรงงานผลิต-จำหน่ายวัสดุงานพื้นทุกประเภท ให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   CHATPETCH GROUP
+   CONTACT PAGE
+   PREMIUM INDUSTRIAL / CORPORATE
+========================================================= */
+
+:root{
+  --black:#050505;
+  --black2:#080808;
+  --dark:#0d0d0d;
+  --dark2:#111111;
+  --dark3:#181818;
+
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --gold-dark:#806127;
+
+  --white:#ffffff;
+  --soft:#e8e8e8;
+  --gray:#9b9b9b;
+  --gray2:#686868;
+
+  --line:rgba(255,255,255,.09);
+  --gold-line:rgba(200,164,91,.28);
+
+  --container:1240px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:"Prompt",sans-serif;
+  overflow-x:hidden;
+}
+
+/* GRID BACKGROUND */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  pointer-events:none;
+  opacity:.32;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+
+  background-size:55px 55px;
+}
+
+/* GOLD AMBIENT LIGHT */
+
+body::after{
+  content:"";
+  position:fixed;
+
+  width:700px;
+  height:700px;
+
+  top:-280px;
+  right:-280px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.15),
+      transparent 68%
+    );
+
+  pointer-events:none;
+  z-index:-4;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.container{
+  width:min(
+    var(--container),
+    calc(100% - 40px)
+  );
+
+  margin:auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+  position:sticky;
+  top:0;
+
+  z-index:1000;
+
+  background:
+    rgba(5,5,5,.86);
+
+  backdrop-filter:blur(18px);
+
+  border-bottom:1px solid var(--line);
+}
+
+.navbar{
+  min-height:82px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:25px;
+}
+
+/* LOGO */
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.logo-mark{
+  width:46px;
+  height:46px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid var(--gold);
+
+  background:
+    linear-gradient(
+      145deg,
+      #181818,
+      #070707
+    );
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+  font-size:19px;
+
+  position:relative;
+}
+
+.logo-mark::after{
+  content:"";
+
+  position:absolute;
+  inset:4px;
+
+  border:1px solid
+    rgba(200,164,91,.18);
+}
+
+.logo-text strong{
+  display:block;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:18px;
+
+  letter-spacing:1px;
+}
+
+.logo-text span{
+  display:block;
+
+  color:var(--gold);
+
+  font-size:10px;
+
+  letter-spacing:2px;
+}
+
+/* NAV */
+
+.nav-menu{
+  display:flex;
+  align-items:center;
+  gap:27px;
+}
+
+.nav-menu a{
+  position:relative;
+
+  color:#aaa;
+
+  font-size:14px;
+
+  transition:.3s;
+}
+
+.nav-menu a:hover{
+  color:var(--gold-light);
+}
+
+.nav-menu a.active{
+  color:var(--gold-light);
+}
+
+.nav-menu a.active::after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  right:0;
+
+  bottom:-9px;
+
+  height:1px;
+
+  background:var(--gold);
+}
+
+.nav-shop{
+  padding:10px 15px;
+
+  border:1px solid
+    var(--gold-line);
+
+  color:var(--gold-light)!important;
+
+  background:
+    rgba(200,164,91,.05);
+}
+
+.cart-count{
+  display:inline-grid;
+  place-items:center;
+
+  min-width:18px;
+  height:18px;
+
+  padding:0 4px;
+
+  border-radius:50%;
+
+  background:var(--gold);
+
+  color:#050505;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  margin-left:3px;
+}
+
+.mobile-btn{
+  display:none;
+
+  width:44px;
+  height:40px;
+
+  background:transparent;
+
+  border:1px solid
+    var(--gold-line);
+
+  color:var(--gold-light);
+
+  font-size:19px;
+}
+
+
+/* =========================================================
+   PAGE HERO
+========================================================= */
+
+.page-hero{
+  min-height:510px;
+
+  display:flex;
+  align-items:center;
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-bottom:1px solid var(--line);
+}
+
+.page-hero::before{
+  content:"";
+
+  position:absolute;
+
+  width:800px;
+  height:800px;
+
+  left:-420px;
+  top:-240px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.11),
+      transparent 68%
+    );
+}
+
+.page-hero::after{
+  content:"";
+
+  position:absolute;
+
+  width:1px;
+  height:240px;
+
+  right:11%;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  background:
+    linear-gradient(
+      transparent,
+      var(--gold),
+      transparent
+    );
+
+  opacity:.35;
+}
+
+.hero-number{
+  position:absolute;
+
+  right:4%;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:
+    clamp(170px,27vw,390px);
+
+  font-weight:700;
+
+  line-height:.8;
+
+  color:
+    rgba(255,255,255,.025);
+
+  user-select:none;
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  color:var(--gold);
+
+  font-size:12px;
+
+  letter-spacing:4px;
+
+  margin-bottom:20px;
+}
+
+.eyebrow::before{
+  content:"";
+
+  width:48px;
+  height:1px;
+
+  background:var(--gold);
+}
+
+.page-hero h1{
+  font-family:"Kanit",sans-serif;
+
+  font-size:
+    clamp(60px,9vw,125px);
+
+  line-height:.88;
+
+  letter-spacing:-4px;
+
+  position:relative;
+
+  z-index:2;
+}
+
+.page-hero h1 span{
+  color:var(--gold-light);
+}
+
+.hero-desc{
+  max-width:680px;
+
+  margin-top:30px;
+
+  color:#999;
+
+  line-height:1.9;
+
+  font-size:15px;
+
+  position:relative;
+  z-index:2;
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+  overflow:hidden;
+
+  border-bottom:1px solid var(--line);
+
+  background:#090909;
+}
+
+.marquee-track{
+  width:max-content;
+
+  display:flex;
+
+  padding:16px 0;
+
+  animation:
+    marquee 28s linear infinite;
+}
+
+.marquee-track span{
+  font-family:"Kanit",sans-serif;
+
+  color:#777;
+
+  font-size:13px;
+
+  letter-spacing:2px;
+
+  margin-right:65px;
+
+  white-space:nowrap;
+}
+
+.marquee-track b{
+  color:var(--gold);
+
+  margin-right:12px;
+}
+
+@keyframes marquee{
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:translateX(-50%);
+  }
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+  padding:105px 0;
+}
+
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+
+  gap:30px;
+
+  margin-bottom:45px;
+}
+
+.section-kicker{
+  color:var(--gold);
+
+  font-size:12px;
+
+  letter-spacing:3px;
+
+  margin-bottom:11px;
+}
+
+.section-title{
+  font-family:"Kanit",sans-serif;
+
+  font-size:
+    clamp(38px,5vw,66px);
+
+  line-height:1;
+
+  letter-spacing:-1px;
+}
+
+.section-title span{
+  color:var(--gold-light);
+}
+
+.section-desc{
+  max-width:510px;
+
+  color:#8d8d8d;
+
+  line-height:1.85;
+
+  font-size:14px;
+}
+
+
+/* =========================================================
+   CONTACT GRID
+========================================================= */
+
+.contact-grid{
+  display:grid;
+
+  grid-template-columns:
+    .85fr 1.15fr;
+
+  gap:22px;
+}
+
+
+/* =========================================================
+   CONTACT INFO
+========================================================= */
+
+.contact-info{
+  border:1px solid var(--line);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+
+  padding:35px;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.contact-info::before{
+  content:"CONTACT";
+
+  position:absolute;
+
+  right:-15px;
+  bottom:-40px;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:95px;
+
+  color:
+    rgba(255,255,255,.025);
+
+  letter-spacing:-3px;
+}
+
+.contact-info::after{
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+  height:220px;
+
+  right:-100px;
+  top:-100px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.12),
+      transparent 68%
+    );
+}
+
+.company-label{
+  color:var(--gold);
+
+  font-size:11px;
+
+  letter-spacing:3px;
+
+  margin-bottom:10px;
+}
+
+.company-name{
+  font-family:"Kanit",sans-serif;
+
+  font-size:30px;
+
+  line-height:1.2;
+
+  margin-bottom:12px;
+}
+
+.company-name span{
+  color:var(--gold-light);
+}
+
+.company-description{
+  color:#858585;
+
+  font-size:13px;
+
+  line-height:1.9;
+
+  margin-bottom:30px;
+}
+
+.contact-item{
+  display:flex;
+
+  gap:17px;
+
+  padding:19px 0;
+
+  border-top:1px solid var(--line);
+}
+
+.contact-icon{
+  width:42px;
+  height:42px;
+
+  flex:none;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid var(--gold-line);
+
+  color:var(--gold-light);
+
+  background:
+    rgba(200,164,91,.04);
+
+  font-size:17px;
+}
+
+.contact-item small{
+  display:block;
+
+  color:#666;
+
+  font-size:10px;
+
+  letter-spacing:2px;
+
+  margin-bottom:4px;
+}
+
+.contact-item strong{
+  display:block;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:17px;
+
+  color:#ddd;
+}
+
+.contact-item p{
+  color:#8b8b8b;
+
+  font-size:12px;
+
+  line-height:1.7;
+
+  margin-top:3px;
+}
+
+.contact-item a{
+  transition:.3s;
+}
+
+.contact-item a:hover{
+  color:var(--gold-light);
+}
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+.contact-form{
+  border:1px solid var(--line);
+
+  padding:35px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.035),
+      rgba(255,255,255,.012)
+    );
+}
+
+.form-top{
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-bottom:28px;
+}
+
+.form-top h2{
+  font-family:"Kanit",sans-serif;
+
+  font-size:31px;
+}
+
+.form-top p{
+  color:#666;
+
+  font-size:11px;
+
+  letter-spacing:1px;
+}
+
+.form-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:16px;
+}
+
+.field{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  color:#888;
+
+  font-size:12px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+
+  background:#090909;
+
+  color:#fff;
+
+  border:1px solid var(--line);
+
+  outline:none;
+
+  padding:13px 14px;
+
+  min-height:49px;
+
+  transition:.3s;
+}
+
+.field textarea{
+  min-height:145px;
+
+  resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:var(--gold-line);
+
+  background:#0b0b0b;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(200,164,91,.035);
+}
+
+.field select option{
+  background:#111;
+}
+
+.form-bottom{
+  margin-top:22px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+.form-note{
+  color:#666;
+
+  font-size:11px;
+
+  line-height:1.7;
+}
+
+.btn{
+  min-height:52px;
+
+  padding:0 27px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border:1px solid var(--gold);
+
+  transition:.3s;
+
+  font-size:13px;
+}
+
+.btn-gold{
+  background:var(--gold);
+
+  color:#050505;
+}
+
+.btn-gold:hover{
+  background:var(--gold-light);
+
+  border-color:var(--gold-light);
+}
+
+.btn-line{
+  color:var(--gold-light);
+
+  background:transparent;
+}
+
+.btn-line:hover{
+  background:
+    rgba(200,164,91,.08);
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.map-section{
+  padding-top:0;
+}
+
+.map-card{
+  min-height:440px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  border:1px solid var(--line);
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(200,164,91,.09),
+      transparent 30%
+    ),
+    #0b0b0b;
+}
+
+.map-grid{
+  position:absolute;
+  inset:0;
+
+  opacity:.65;
+
+  background-image:
+    linear-gradient(
+      30deg,
+      rgba(255,255,255,.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,.045) 1px,
+      transparent 1px
+    );
+
+  background-size:75px 75px;
+}
+
+.map-road{
+  position:absolute;
+
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.12),
+      transparent
+    );
+
+  transform:rotate(-20deg);
+}
+
+.road-1{
+  width:130%;
+  top:35%;
+  left:-15%;
+}
+
+.road-2{
+  width:120%;
+  top:62%;
+  left:-10%;
+
+  transform:rotate(16deg);
+}
+
+.road-3{
+  width:90%;
+  top:20%;
+  left:10%;
+
+  transform:rotate(62deg);
+}
+
+.map-pin{
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  width:78px;
+  height:78px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:
+    rgba(200,164,91,.1);
+
+  border:1px solid var(--gold);
+
+  box-shadow:
+    0 0 0 12px
+      rgba(200,164,91,.025),
+    0 0 80px
+      rgba(200,164,91,.16);
+
+  color:var(--gold-light);
+
+  font-size:27px;
+
+  z-index:3;
+}
+
+.map-info{
+  position:absolute;
+
+  left:30px;
+  bottom:30px;
+
+  max-width:420px;
+
+  padding:24px;
+
+  background:
+    rgba(8,8,8,.88);
+
+  backdrop-filter:blur(15px);
+
+  border:1px solid var(--gold-line);
+
+  z-index:4;
+}
+
+.map-info small{
+  color:var(--gold);
+
+  letter-spacing:2px;
+
+  font-size:10px;
+}
+
+.map-info h3{
+  font-family:"Kanit",sans-serif;
+
+  font-size:23px;
+
+  margin:6px 0;
+}
+
+.map-info p{
+  color:#858585;
+
+  font-size:12px;
+
+  line-height:1.8;
+
+  margin-bottom:15px;
+}
+
+.map-link{
+  color:var(--gold-light);
+
+  font-size:12px;
+
+  border-bottom:1px solid var(--gold-line);
+
+  padding-bottom:3px;
+}
+
+
+/* =========================================================
+   QUICK CONTACT
+========================================================= */
+
+.quick-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
+}
+
+.quick-card{
+  min-height:170px;
+
+  padding:25px;
+
+  border:1px solid var(--line);
+
+  background:#0c0c0c;
+
+  transition:.4s;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.quick-card:hover{
+  transform:translateY(-6px);
+
+  border-color:var(--gold-line);
+
+  background:#101010;
+}
+
+.quick-number{
+  color:var(--gold);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:11px;
+
+  letter-spacing:2px;
+}
+
+.quick-icon{
+  margin:20px 0 13px;
+
+  font-size:22px;
+
+  color:var(--gold-light);
+}
+
+.quick-card h3{
+  font-family:"Kanit",sans-serif;
+
+  font-size:20px;
+
+  margin-bottom:5px;
+}
+
+.quick-card p{
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+.quick-card a{
+  display:inline-block;
+
+  color:var(--gold-light);
+
+  font-size:12px;
+
+  margin-top:10px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+  margin-top:30px;
+
+  padding:65px;
+
+  border:1px solid var(--gold-line);
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 90% 50%,
+      rgba(200,164,91,.13),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #151515,
+      #090909
+    );
+}
+
+.cta::before{
+  content:"CHATPETCH";
+
+  position:absolute;
+
+  right:-25px;
+  bottom:-55px;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:125px;
+
+  line-height:1;
+
+  color:
+    rgba(255,255,255,.025);
+
+  white-space:nowrap;
+}
+
+.cta h2{
+  position:relative;
+
+  z-index:2;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:
+    clamp(35px,5vw,60px);
+
+  line-height:1.03;
+}
+
+.cta h2 span{
+  color:var(--gold-light);
+}
+
+.cta p{
+  position:relative;
+
+  z-index:2;
+
+  max-width:670px;
+
+  color:#888;
+
+  line-height:1.8;
+
+  font-size:13px;
+
+  margin:18px 0 27px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:65px 0 30px;
+
+  background:#070707;
+
+  border-top:1px solid var(--line);
+}
+
+.footer-grid{
+  display:grid;
+
+  grid-template-columns:
+    1.5fr 1fr 1fr 1fr;
+
+  gap:40px;
+}
+
+.footer-brand p{
+  max-width:400px;
+
+  color:#777;
+
+  font-size:13px;
+
+  line-height:1.85;
+
+  margin-top:18px;
+}
+
+.footer-col h4{
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  margin-bottom:17px;
+
+  font-size:16px;
+}
+
+.footer-col a,
+.footer-col p{
+  display:block;
+
+  color:#777;
+
+  font-size:13px;
+
+  line-height:1.8;
+
+  margin:7px 0;
+
+  transition:.3s;
+}
+
+.footer-col a:hover{
+  color:var(--gold-light);
+}
+
+.footer-bottom{
+  margin-top:45px;
+
+  padding-top:21px;
+
+  border-top:1px solid var(--line);
+
+  color:#555;
+
+  font-size:11px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+
+/* =========================================================
+   FLOATING CONTACT
+========================================================= */
+
+.float-contact{
+  position:fixed;
+
+  right:20px;
+  bottom:20px;
+
+  z-index:900;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+}
+
+.float-contact a{
+  width:50px;
+  height:50px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  border:1px solid var(--gold-line);
+
+  background:#111;
+
+  color:var(--gold-light);
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.4);
+
+  transition:.3s;
+}
+
+.float-contact a:hover{
+  background:var(--gold);
+
+  color:#050505;
+
+  transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top{
+  position:fixed;
+
+  right:20px;
+  bottom:145px;
+
+  width:42px;
+  height:42px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid var(--line);
+
+  background:#111;
+
+  color:#888;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:.3s;
+
+  z-index:899;
+}
+
+.back-top.show{
+  opacity:1;
+
+  visibility:visible;
+}
+
+.back-top:hover{
+  color:var(--gold-light);
+
+  border-color:var(--gold-line);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:30px;
+
+  transform:
+    translate(-50%,120px);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  z-index:3000;
+
+  min-width:280px;
+
+  padding:16px 22px;
+
+  text-align:center;
+
+  border:1px solid var(--gold-line);
+
+  background:#121212;
+
+  color:var(--gold-light);
+
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.5);
+
+  transition:.35s;
+}
+
+.toast.show{
+  opacity:1;
+
+  visibility:visible;
+
+  transform:
+    translate(-50%,0);
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+
+  transform:translateY(30px);
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+
+  transform:translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+  .nav-menu{
+    gap:17px;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quick-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:850px){
+
+  .mobile-btn{
+    display:block;
+  }
+
+  .nav-menu{
+    display:none;
+
+    position:absolute;
+
+    top:75px;
+    left:20px;
+    right:20px;
+
+    padding:18px;
+
+    background:#0b0b0b;
+
+    border:1px solid var(--line);
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:0;
+
+    box-shadow:
+      0 25px 60px
+      rgba(0,0,0,.5);
+  }
+
+  .nav-menu.open{
+    display:flex;
+  }
+
+  .nav-menu a{
+    padding:13px 5px;
+  }
+
+  .nav-menu a.active::after{
+    display:none;
+  }
+
+  .nav-shop{
+    margin-top:8px;
+  }
+
+  .page-hero{
+    min-height:440px;
+  }
+
+  .page-hero::after{
+    display:none;
+  }
+
+  .hero-number{
+    right:-40px;
+    opacity:.8;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-desc{
+    margin-top:18px;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .form-bottom{
+    align-items:stretch;
+    flex-direction:column;
+  }
+
+  .form-bottom .btn{
+    width:100%;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .container{
+    width:calc(100% - 28px);
+  }
+
+  .navbar{
+    min-height:72px;
+  }
+
+  .logo-text{
+    display:none;
+  }
+
+  .page-hero{
+    min-height:420px;
+  }
+
+  .page-hero h1{
+    font-size:62px;
+  }
+
+  .hero-desc{
+    font-size:13px;
+  }
+
+  .hero-number{
+    font-size:170px;
+  }
+
+  .section{
+    padding:75px 0;
+  }
+
+  .contact-info,
+  .contact-form{
+    padding:25px 20px;
+  }
+
+  .company-name{
+    font-size:26px;
+  }
+
+  .form-top{
+    display:block;
+  }
+
+  .form-top p{
+    margin-top:6px;
+  }
+
+  .map-card{
+    min-height:410px;
+  }
+
+  .map-info{
+    left:15px;
+    right:15px;
+    bottom:15px;
+  }
+
+  .quick-grid{
+    grid-template-columns:1fr;
+  }
+
+  .cta{
+    padding:38px 24px;
+  }
+
+  .cta::before{
+    font-size:70px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+  }
+
+  .float-contact{
+    right:14px;
+    bottom:14px;
+  }
+
+  .back-top{
+    right:14px;
+    bottom:140px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="container navbar">
+
+<a href="index.html" class="logo">
+
+  <div class="logo-mark">
+    CG
+  </div>
+
+  <div class="logo-text">
+    <strong>CHATPETCH GROUP</strong>
+    <span>FLOORING SOLUTION</span>
+  </div>
+
+</a>
+
+
+<button
+  class="mobile-btn"
+  onclick="toggleMenu()"
+  aria-label="เปิดเมนู">
+  ☰
+</button>
+
+
+<nav class="nav-menu" id="navMenu">
+
+  <a href="index.html">
+    หน้าแรก
+  </a>
+
+  <a href="about.html">
+    เกี่ยวกับเรา
+  </a>
+
+  <a href="products.html">
+    สินค้า
+  </a>
+
+  <a href="services.html">
+    บริการ
+  </a>
+
+  <a href="projects.html">
+    ผลงาน
+  </a>
+
+  <a href="contact.html" class="active">
+    ติดต่อเรา
+  </a>
+
+  <a href="cart.html" class="nav-shop">
+    🛒 ตะกร้า
+    <span class="cart-count" id="cartCount">
+      0
+    </span>
+  </a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="page-hero">
+
+<div class="hero-number">
+  05
+</div>
+
+<div class="container">
+
+  <div class="eyebrow">
+    CONTACT / LET'S TALK
+  </div>
+
+  <h1>
+    คุยกับเรา<br>
+    <span>เรื่องงานพื้น</span>
+  </h1>
+
+  <p class="hero-desc">
+    ไม่ว่าจะเป็นงานพื้นบ้าน อาคาร โรงงาน
+    งานอุตสาหกรรม หรืองานตกแต่ง
+    สามารถติดต่อทีมงานเพื่อสอบถามข้อมูล
+    ขอคำแนะนำ และพูดคุยรายละเอียดงานได้
+  </p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<div class="marquee">
+
+<div class="marquee-track">
+
+  <span>
+    <b>✦</b>
+    CHATPETCH GROUP
+  </span>
+
+  <span>
+    <b>✦</b>
+    FLOORING SOLUTION
+  </span>
+
+  <span>
+    <b>✦</b>
+    CONSULTATION
+  </span>
+
+  <span>
+    <b>✦</b>
+    EPOXY FLOORING
+  </span>
+
+  <span>
+    <b>✦</b>
+    PU FLOORING
+  </span>
+
+  <span>
+    <b>✦</b>
+    INDUSTRIAL FLOOR
+  </span>
+
+  <span>
+    <b>✦</b>
+    CHATPETCH GROUP
+  </span>
+
+  <span>
+    <b>✦</b>
+    FLOORING SOLUTION
+  </span>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     CONTACT INFORMATION + FORM
+===================================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+  <div>
+
+    <div class="section-kicker">
+      GET IN TOUCH
+    </div>
+
+    <h2 class="section-title">
+      ติดต่อ <span>เรา</span>
+    </h2>
+
+  </div>
+
+  <p class="section-desc">
+    ติดต่อบริษัท ฉัตรเพชร กรุ๊ป จำกัด
+    เพื่อสอบถามสินค้า วัสดุงานพื้น
+    ระบบพื้น หรือปรึกษารายละเอียดของโครงการ
+  </p>
+
+</div>
+
+
+<div class="contact-grid">
+
+
+<!-- COMPANY INFO -->
+
+<div class="contact-info reveal">
+
+  <div class="company-label">
+    COMPANY INFORMATION
+  </div>
+
+  <div class="company-name">
+    บริษัท ฉัตรเพชร กรุ๊ป <span>จำกัด</span>
+  </div>
+
+  <p class="company-description">
+    โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท
+    พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+  </p>
+
+
+  <!-- PHONE 1 -->
+
+  <div class="contact-item">
+
+    <div class="contact-icon">
+      ☎
+    </div>
+
+    <div>
+
+      <small>
+        SALES / CONTACT
+      </small>
+
+      <strong>
+        <a href="tel:0828223678">
+          082-8223678
+        </a>
+      </strong>
+
+      <p>
+        คุณหญิง
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- PHONE 2 -->
+
+  <div class="contact-item">
+
+    <div class="contact-icon">
+      ☎
+    </div>
+
+    <div>
+
+      <small>
+        SALES / CONTACT
+      </small>
+
+      <strong>
+        <a href="tel:0630630046">
+          063-0630046
+        </a>
+      </strong>
+
+      <p>
+        คุณเอ้
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- TECHNICAL -->
+
+  <div class="contact-item">
+
+    <div class="contact-icon">
+      ⚙
+    </div>
+
+    <div>
+
+      <small>
+        TECHNICAL
+      </small>
+
+      <strong>
+        <a href="tel:0856299778">
+          085-6299778
+        </a>
+      </strong>
+
+      <p>
+        ฝ่ายเทคนิค
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ADMIN -->
+
+  <div class="contact-item">
+
+    <div class="contact-icon">
+      ✦
+    </div>
+
+    <div>
+
+      <small>
+        ADMIN
+      </small>
+
+      <strong>
+        <a href="tel:0986710888">
+          098-6710888
+        </a>
+      </strong>
+
+      <p>
+        แอดมิน
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ADDRESS -->
+
+  <div class="contact-item">
+
+    <div class="contact-icon">
+      ⌖
+    </div>
+
+    <div>
+
+      <small>
+        ADDRESS
+      </small>
+
+      <strong>
+        สำนักงาน / โรงงาน
+      </strong>
+
+      <p>
+        10/1 ม.9 ต.นาหม่อม
+        อ.นาหม่อม จ.สงขลา
+        90310 ประเทศไทย
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- FACEBOOK -->
+
+  <div class="contact-item">
+
+    <div class="contact-icon">
+      f
+    </div>
+
+    <div>
+
+      <small>
+        SOCIAL MEDIA
+      </small>
+
+      <strong>
+        <a
+          href="https://www.facebook.com/ChatphetchGroup"
+          target="_blank"
+          rel="noopener">
+          Chatphetch Group
+        </a>
+      </strong>
+
+      <p>
+        Facebook Official Page
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- CONTACT FORM -->
+
+<div class="contact-form reveal">
+
+<div class="form-top">
+
+  <div>
+
+    <div class="section-kicker">
+      CONTACT FORM
+    </div>
+
+    <h2>
+      ส่งรายละเอียดให้เรา
+    </h2>
+
+  </div>
+
+  <p>
+    RESPONSE / CONSULTATION
+  </p>
+
+</div>
+
+
+<form id="contactForm">
+
+<div class="form-grid">
+
+
+<div class="field">
+
+<label>
+ชื่อ - นามสกุล *
+</label>
+
+<input
+  type="text"
+  id="name"
+  name="name"
+  required
+  placeholder="กรอกชื่อของคุณ">
+
+</div>
+
+
+<div class="field">
+
+<label>
+เบอร์โทรศัพท์ *
+</label>
+
+<input
+  type="tel"
+  id="phone"
+  name="phone"
+  required
+  placeholder="08x-xxx-xxxx">
+
+</div>
+
+
+<div class="field">
+
+<label>
+อีเมล
+</label>
+
+<input
+  type="email"
+  id="email"
+  name="email"
+  placeholder="example@email.com">
+
+</div>
+
+
+<div class="field">
+
+<label>
+หัวข้อที่ต้องการติดต่อ
+</label>
+
+<select id="topic" name="topic">
+
+  <option value="">
+    เลือกหัวข้อ
+  </option>
+
+  <option value="สอบถามสินค้า">
+    สอบถามสินค้า
+  </option>
+
+  <option value="สอบถามราคางานพื้น">
+    สอบถามราคางานพื้น
+  </option>
+
+  <option value="ปรึกษาระบบพื้น">
+    ปรึกษาระบบพื้น
+  </option>
+
+  <option value="งานอุตสาหกรรม">
+    งานอุตสาหกรรม
+  </option>
+
+  <option value="งานก่อสร้าง">
+    งานก่อสร้าง
+  </option>
+
+  <option value="อื่นๆ">
+    อื่น ๆ
+  </option>
+
+</select>
+
+</div>
+
+
+<div class="field full">
+
+<label>
+รายละเอียด
+</label>
+
+<textarea
+  id="message"
+  name="message"
+  placeholder="เล่ารายละเอียดงาน ขนาดพื้นที่ ประเภทพื้น หรือสิ่งที่ต้องการสอบถาม"></textarea>
+
+</div>
+
+
+</div>
+
+
+<div class="form-bottom">
+
+<div class="form-note">
+
+  กรุณากรอกข้อมูลที่สามารถติดต่อกลับได้
+  เพื่อให้ทีมงานสามารถสอบถามรายละเอียดเพิ่มเติม
+
+</div>
+
+<button
+  type="submit"
+  class="btn btn-gold">
+
+  ส่งข้อความ →
+  
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MAP
+===================================================== -->
+
+<section class="section map-section">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+  <div>
+
+    <div class="section-kicker">
+      LOCATION
+    </div>
+
+    <h2 class="section-title">
+      ที่ตั้ง <span>บริษัท</span>
+    </h2>
+
+  </div>
+
+  <p class="section-desc">
+    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+    ตั้งอยู่ที่อำเภอนาหม่อม จังหวัดสงขลา
+  </p>
+
+</div>
+
+
+<div class="map-card reveal">
+
+  <div class="map-grid"></div>
+
+  <div class="map-road road-1"></div>
+  <div class="map-road road-2"></div>
+  <div class="map-road road-3"></div>
+
+
+  <div class="map-pin">
+    ⌖
+  </div>
+
+
+  <div class="map-info">
+
+    <small>
+      CHATPETCH GROUP
+    </small>
+
+    <h3>
+      บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+    </h3>
+
+    <p>
+      10/1 ม.9 ต.นาหม่อม
+      อ.นาหม่อม จ.สงขลา
+      90310 ประเทศไทย
+    </p>
+
+    <a
+      class="map-link"
+      href="https://www.google.com/maps/search/?api=1&query=10%2F1%20%E0%B8%A1.9%20%E0%B8%95.%E0%B8%99%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B9%88%E0%B8%AD%E0%B8%A1%20%E0%B8%AD.%E0%B8%99%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B9%88%E0%B8%AD%E0%B8%A1%20%E0%B8%AA%E0%B8%87%E0%B8%82%E0%B8%A5%E0%B8%B2%2090310"
+      target="_blank"
+      rel="noopener">
+
+      เปิดเส้นทางบน Google Maps ↗
+
+    </a>
+
+  </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     QUICK CONTACT
+===================================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+  <div>
+
+    <div class="section-kicker">
+      QUICK CONTACT
+    </div>
+
+    <h2 class="section-title">
+      ติดต่อ <span>โดยตรง</span>
+    </h2>
+
+  </div>
+
+  <p class="section-desc">
+    เลือกช่องทางที่สะดวกสำหรับคุณ
+    สามารถโทรติดต่อทีมงานโดยตรง
+    หรือเข้าช่องทาง Facebook ของบริษัท
+  </p>
+
+</div>
+
+
+<div class="quick-grid">
+
+
+<div class="quick-card reveal">
+
+  <div class="quick-number">
+    01 / SALES
+  </div>
+
+  <div class="quick-icon">
+    ☎
+  </div>
+
+  <h3>
+    คุณหญิง
+  </h3>
+
+  <p>
+    สอบถามสินค้าและรายละเอียดงาน
+  </p>
+
+  <a href="tel:0828223678">
+    082-822-3678 →
+  </a>
+
+</div>
+
+
+<div class="quick-card reveal">
+
+  <div class="quick-number">
+    02 / SALES
+  </div>
+
+  <div class="quick-icon">
+    ☎
+  </div>
+
+  <h3>
+    คุณเอ้
+  </h3>
+
+  <p>
+    ติดต่อสอบถามข้อมูลและสินค้า
+  </p>
+
+  <a href="tel:0630630046">
+    063-063-0046 →
+  </a>
+
+</div>
+
+
+<div class="quick-card reveal">
+
+  <div class="quick-number">
+    03 / TECHNICAL
+  </div>
+
+  <div class="quick-icon">
+    ⚙
+  </div>
+
+  <h3>
+    ฝ่ายเทคนิค
+  </h3>
+
+  <p>
+    ปรึกษาเรื่องระบบพื้นและงานเทคนิค
+  </p>
+
+  <a href="tel:0856299778">
+    085-629-9778 →
+  </a>
+
+</div>
+
+
+<div class="quick-card reveal">
+
+  <div class="quick-number">
+    04 / ADMIN
+  </div>
+
+  <div class="quick-icon">
+    f
+  </div>
+
+  <h3>
+    แอดมิน
+  </h3>
+
+  <p>
+    ติดต่อทั่วไปและช่องทางออนไลน์
+  </p>
+
+  <a
+    href="https://www.facebook.com/ChatphetchGroup"
+    target="_blank"
+    rel="noopener">
+    Facebook →
+  </a>
+
+</div>
+
+
+</div>
+
+
+<div class="cta reveal">
+
+  <h2>
+    มีงานพื้นอยู่ในมือ?<br>
+    <span>คุยกับเราได้เลย</span>
+  </h2>
+
+  <p>
+    สร้างสรรค์ผลงาน • มาตรฐานเข้าถึง • ยืน 1 คุณภาพ
+    พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+  </p>
+
+  <a
+    href="tel:0828223678"
+    class="btn btn-gold">
+
+    ☎ โทร 082-822-3678
+
+  </a>
+
+  <a
+    href="products.html"
+    class="btn btn-line">
+
+    ดูสินค้า →
+
+  </a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+
+<div class="footer-brand">
+
+  <div class="logo">
+
+    <div class="logo-mark">
+      CG
+    </div>
+
+    <div class="logo-text">
+
+      <strong>
+        CHATPETCH GROUP
+      </strong>
+
+      <span>
+        FLOORING SOLUTION
+      </span>
+
+    </div>
+
+  </div>
+
+  <p>
+    🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
+    พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+  </p>
+
+</div>
+
+
+<div class="footer-col">
+
+  <h4>
+    MENU
+  </h4>
+
+  <a href="index.html">
+    หน้าแรก
+  </a>
+
+  <a href="about.html">
+    เกี่ยวกับเรา
+  </a>
+
+  <a href="products.html">
+    สินค้า
+  </a>
+
+  <a href="services.html">
+    บริการ
+  </a>
+
+</div>
+
+
+<div class="footer-col">
+
+  <h4>
+    EXPLORE
+  </h4>
+
+  <a href="projects.html">
+    ผลงาน
+  </a>
+
+  <a href="contact.html">
+    ติดต่อเรา
+  </a>
+
+  <a href="cart.html">
+    🛒 ตะกร้า
+  </a>
+
+  <a href="checkout.html">
+    ชำระเงิน
+  </a>
+
+</div>
+
+
+<div class="footer-col">
+
+  <h4>
+    CONTACT
+  </h4>
+
+  <p>
+    082-8223678 คุณหญิง
+  </p>
+
+  <p>
+    063-0630046 คุณเอ้
+  </p>
+
+  <p>
+    085-6299778 ฝ่ายเทคนิค
+  </p>
+
+  <p>
+    098-6710888 แอดมิน
+  </p>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+  <span>
+    © 2026 Chatpetch Group Co., Ltd.
+  </span>
+
+  <span>
+    สร้างสรรค์ผลงาน • มาตรฐานเข้าถึง • ยืน 1 คุณภาพ
+  </span>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     FLOATING BUTTONS
+===================================================== -->
+
+<div class="float-contact">
+
+<a
+  href="tel:0828223678"
+  title="โทรหาเรา">
+
+  ☎
+
+</a>
+
+<a
+  href="https://www.facebook.com/ChatphetchGroup"
+  target="_blank"
+  rel="noopener"
+  title="Facebook">
+
+  f
+
+</a>
+
+</div>
+
+
+<!-- BACK TO TOP -->
+
+<button
+  class="back-top"
+  id="backTop"
+  onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+  ↑
+
+</button>
+
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast">
+
+  รับข้อมูลเรียบร้อยแล้ว ✓
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMenu(){
+
+  const menu =
+    document.getElementById("navMenu");
+
+  menu.classList.toggle("open");
+
+}
+
+
+/* =========================================================
+   CART COUNT
+========================================================= */
+
+function updateCartCount(){
+
+  const cart =
+    JSON.parse(
+      localStorage.getItem("chatpetch_cart") || "[]"
+    );
+
+  const count =
+    cart.reduce(
+      (sum,item)=>
+        sum + Number(item.quantity || 0),
+      0
+    );
+
+  const badge =
+    document.getElementById("cartCount");
+
+  if(badge){
+    badge.textContent = count;
+  }
+
+}
+
+updateCartCount();
+
+
+/* =========================================================
+   CLOSE MOBILE MENU WHEN CLICK LINK
+========================================================= */
+
+document
+  .querySelectorAll(".nav-menu a")
+  .forEach(link=>{
+
+    link.addEventListener("click",()=>{
+
+      document
+        .getElementById("navMenu")
+        .classList.remove("open");
+
+    });
+
+  });
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+const revealObserver =
+  new IntersectionObserver(
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("show");
+
+          revealObserver.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(el=>{
+
+    revealObserver.observe(el);
+
+  });
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+document
+  .getElementById("contactForm")
+  .addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    const name =
+      document
+        .getElementById("name")
+        .value
+        .trim();
+
+    const phone =
+      document
+        .getElementById("phone")
+        .value
+        .trim();
+
+    const topic =
+      document
+        .getElementById("topic")
+        .value
+        .trim();
+
+    const message =
+      document
+        .getElementById("message")
+        .value
+        .trim();
+
+
+    /*
+      Front-end demo:
+      เก็บข้อมูลไว้ใน Local Storage
+      เพื่อให้สามารถนำไปต่อ Backend
+      ได้ภายหลัง
+    */
+
+    const inquiry = {
+
+      id:
+        "INQ" +
+        Date.now()
+          .toString()
+          .slice(-8),
+
+      createdAt:
+        new Date().toISOString(),
+
+      name:name,
+
+      phone:phone,
+
+      email:
+        document
+          .getElementById("email")
+          .value
+          .trim(),
+
+      topic:topic,
+
+      message:message
+
+    };
+
+
+    let inquiries =
+      JSON.parse(
+        localStorage.getItem(
+          "chatpetch_inquiries"
+        ) || "[]"
+      );
+
+
+    inquiries.unshift(inquiry);
+
+
+    localStorage.setItem(
+      "chatpetch_inquiries",
+      JSON.stringify(inquiries)
+    );
+
+
+    showToast();
+
+
+    this.reset();
+
+
+    /*
+      เปิดโทรศัพท์ให้ติดต่อกลับได้ทันที
+      หลังจากแสดงข้อความสำเร็จ
+    */
+
+    setTimeout(()=>{
+
+      const call =
+        confirm(
+          "ส่งข้อมูลเรียบร้อยแล้ว\n\nต้องการโทรหา Chatpetch Group ตอนนี้หรือไม่?"
+        );
+
+      if(call){
+
+        window.location.href =
+          "tel:0828223678";
+
+      }
+
+    },600);
+
+  });
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.classList.add("show");
+
+  setTimeout(()=>{
+
+    toast.classList.remove("show");
+
+  },2600);
+
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const backTop =
+  document.getElementById("backTop");
+
+
+window.addEventListener(
+  "scroll",
+  ()=>{
+
+    if(window.scrollY > 500){
+
+      backTop.classList.add("show");
+
+    }else{
+
+      backTop.classList.remove("show");
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>

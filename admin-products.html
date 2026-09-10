@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>จัดการสินค้า | Chatpetch Group</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --black:#050505;--dark:#0b0b0b;--dark2:#111;--dark3:#181818;
+ --gold:#c8a45b;--gold2:#e6cb87;--white:#fff;
+ --gray:#999;--line:rgba(255,255,255,.09);
+ --gold-line:rgba(200,164,91,.3);--danger:#c95b5b;
+ --container:1400px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ background:var(--black);color:white;font-family:Prompt,sans-serif;
+ min-height:100vh;
+}
+body:before{
+ content:"";position:fixed;inset:0;z-index:-2;opacity:.15;
+ background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+ background-size:60px 60px;
+}
+.container{width:min(var(--container),calc(100% - 40px));margin:auto}
+.header{
+ height:80px;border-bottom:1px solid var(--line);
+ display:flex;align-items:center;
+ background:rgba(5,5,5,.9);
+ position:sticky;top:0;z-index:20;
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font-family:Kanit;font-weight:600}
+.mark{
+ width:44px;height:44px;display:grid;place-items:center;
+ border:1px solid var(--gold);color:var(--gold2)
+}
+.logo small{display:block;font:9px Prompt;color:#777;letter-spacing:2px}
+.nav{display:flex;gap:12px;flex-wrap:wrap}
+.nav a{
+ padding:9px 14px;color:#aaa;border:1px solid transparent;font-size:13px;
+}
+.nav a:hover{color:var(--gold2);border-color:var(--gold-line)}
+.hero{padding:65px 0 40px}
+.eyebrow{color:var(--gold);letter-spacing:4px;font-size:11px;margin-bottom:12px}
+h1{font:600 clamp(45px,7vw,80px)/.95 Kanit}
+h1 span{color:var(--gold2)}
+.hero p{color:#777;margin-top:18px}
+
+.layout{
+ display:grid;grid-template-columns:430px 1fr;gap:20px;
+ padding-bottom:80px;
+}
+.panel{
+ background:linear-gradient(145deg,#151515,#0b0b0b);
+ border:1px solid var(--line);
+ padding:25px;
+}
+.panel h2{
+ font:500 25px Kanit;color:var(--gold2);margin-bottom:20px;
+}
+.form-group{margin-bottom:14px}
+label{display:block;color:#aaa;font-size:12px;margin-bottom:7px}
+input,select,textarea{
+ width:100%;padding:12px 13px;
+ background:#080808;color:#fff;border:1px solid var(--line);
+ outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--gold-line)}
+textarea{min-height:100px;resize:vertical}
+.help{font-size:10px;color:#666;margin-top:5px;line-height:1.7}
+
+.btn{
+ min-height:44px;padding:0 16px;border:1px solid var(--gold);
+ display:inline-flex;align-items:center;justify-content:center;
+ cursor:pointer;transition:.25s;font-size:12px;
+}
+.gold{background:var(--gold);color:#050505}
+.gold:hover{background:var(--gold2)}
+.line{background:transparent;color:var(--gold2)}
+.line:hover{background:rgba(200,164,91,.08)}
+.danger{border-color:rgba(201,91,91,.5);color:#e69a9a;background:transparent}
+.btn-row{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+
+.price-lines{
+ min-height:100px;
+ font-family:monospace;
+}
+.image-preview{
+ width:100%;height:190px;
+ background:#080808;border:1px dashed var(--gold-line);
+ display:grid;place-items:center;overflow:hidden;margin-top:8px;
+}
+.image-preview img{width:100%;height:100%;object-fit:cover}
+
+.list-header{
+ display:flex;justify-content:space-between;gap:15px;align-items:center;
+ margin-bottom:15px;flex-wrap:wrap;
+}
+.search{max-width:280px}
+.products{
+ display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
+}
+.card{
+ border:1px solid var(--line);background:#0d0d0d;overflow:hidden;
+}
+.card-img{height:220px;background:#080808;position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-body{padding:18px}
+.tag{
+ display:inline-block;padding:5px 9px;
+ color:var(--gold2);border:1px solid var(--gold-line);
+ font-size:10px;margin-bottom:10px;
+}
+.card h3{font:500 22px Kanit;line-height:1.2}
+.card p{color:#777;font-size:12px;line-height:1.7;margin-top:8px}
+.card-price{font:500 20px Kanit;color:var(--gold2);margin-top:12px}
+.card-actions{display:flex;gap:7px;margin-top:15px}
+.card-actions .btn{flex:1}
+
+.note{
+ padding:15px;margin-bottom:20px;
+ border-left:2px solid var(--gold);
+ background:rgba(200,164,91,.04);
+ color:#888;font-size:11px;line-height:1.8;
+}
+
+.modal{
+ position:fixed;inset:0;background:rgba(0,0,0,.78);
+ display:none;align-items:center;justify-content:center;
+ z-index:100;padding:20px;
+}
+.modal.open{display:flex}
+.modal-box{
+ width:min(900px,100%);max-height:90vh;overflow:auto;
+ background:#101010;border:1px solid var(--gold-line);padding:25px;
+}
+.modal-head{
+ display:flex;justify-content:space-between;align-items:center;
+ margin-bottom:20px;
+}
+.close{
+ background:none;border:0;color:#aaa;font-size:25px;cursor:pointer
+}
+
+.toast{
+ position:fixed;right:20px;bottom:20px;
+ background:#161616;border:1px solid var(--gold-line);
+ color:#eee;padding:14px 18px;
+ transform:translateY(100px);opacity:0;transition:.3s;z-index:200;
+}
+.toast.show{transform:none;opacity:1}
+
+@media(max-width:1000px){
+ .layout{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+ .container{width:calc(100% - 28px)}
+ .products{grid-template-columns:1fr}
+ .nav{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="container header-inner">
+
+<a href="index.html" class="logo">
+ <div class="mark">CG</div>
+ <div>CHATPETCH GROUP<small>PRODUCT MANAGEMENT</small></div>
+</a>
+
+<nav class="nav">
+ <a href="index.html">เว็บไซต์</a>
+ <a href="products.html">ดูสินค้า</a>
+ <a href="cart.html">ตะกร้า</a>
+ <a href="admin.html">คำสั่งซื้อ</a>
+</nav>
+
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+ <div class="eyebrow">MANAGEMENT SYSTEM / PRODUCTS</div>
+ <h1>จัดการ<span>สินค้า</span></h1>
+ <p>Local Product Management — ข้อมูลจะถูกเก็บไว้ใน Browser เครื่องนี้</p>
+</div>
+</section>
+
+<main class="container layout">
+
+<section class="panel">
+
+<h2 id="formTitle">เพิ่มสินค้า</h2>
+
+<div class="note">
+สินค้าเริ่มต้นของระบบมี 4 รายการ:
+<br>4128 / 91428 / 91430 / 91429
+<br><strong>polymer-concrete ถูกนำออกจากระบบแล้ว</strong>
+</div>
+
+<input type="hidden" id="editId">
+
+<div class="form-group">
+<label>ชื่อสินค้า</label>
+<input id="name" placeholder="เช่น RELEASER POWER">
+</div>
+
+<div class="form-group">
+<label>หมวดสินค้า</label>
+<select id="category">
+ <option value="floor">สี/งานพื้น</option>
+ <option value="coating">น้ำยาเคลือบ</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>รหัสสินค้า</label>
+<input id="productId" placeholder="เช่น releaser-power">
+</div>
+
+<div class="form-group">
+<label>รูปสินค้า</label>
+<input id="imageFile" type="file" accept="image/*">
+<div class="help">สำหรับสินค้าเริ่มต้น ระบบใช้ path ใน assets/products โดยตรง</div>
+<div class="image-preview" id="preview">
+ <span style="color:#555">ยังไม่มีรูป</span>
+</div>
+</div>
+
+<div class="form-group">
+<label>คำอธิบายสั้น</label>
+<input id="shortDescription">
+</div>
+
+<div class="form-group">
+<label>คำอธิบายสินค้า</label>
+<textarea id="description"></textarea>
+</div>
+
+<div class="form-group">
+<label>ราคาแสดงหลัก</label>
+<input id="price" placeholder="เช่น 799.- หรือ เริ่ม 388.-">
+</div>
+
+<div class="form-group">
+<label>ราคาหลายขนาด</label>
+<textarea id="priceOptions" class="price-lines"
+placeholder="RCT 18 KG|2850
+RCT 9 KG|1803
+RCT 4 KG|905
+RCT 1 KG|388"></textarea>
+<div class="help">รูปแบบ: ชื่อขนาด|ราคา เช่น RCT 18 KG|2850</div>
+</div>
+
+<div class="form-group">
+<label>รายละเอียด — 1 บรรทัดต่อ 1 รายการ</label>
+<textarea id="details"></textarea>
+</div>
+
+<div class="form-group">
+<label>จุดเด่น — 1 บรรทัดต่อ 1 รายการ</label>
+<textarea id="features"></textarea>
+</div>
+
+<div class="form-group">
+<label>ขนาด / บรรจุภัณฑ์</label>
+<textarea id="packages"></textarea>
+</div>
+
+<div class="btn-row">
+ <button class="btn gold" onclick="saveProduct()">บันทึกสินค้า</button>
+ <button class="btn line" onclick="resetForm()">ล้างฟอร์ม</button>
+</div>
+
+</section>
+
+<section class="panel">
+
+<div class="list-header">
+ <h2 style="margin:0">รายการสินค้า</h2>
+ <input class="search" id="search" placeholder="ค้นหาสินค้า...">
+</div>
+
+<div class="products" id="productList"></div>
+
+</section>
+
+</main>
+
+<div class="modal" id="modal">
+<div class="modal-box">
+ <div class="modal-head">
+  <h2 style="font:500 27px Kanit;color:var(--gold2)">ตั้งค่าสินค้า</h2>
+  <button class="close" onclick="closeModal()">×</button>
+ </div>
+ <div id="modalContent"></div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const DEFAULT_PRODUCTS=[
+ {
+  id:"4128",
+  name:"PREMIUM STAMPED CONCRETE (PSC)",
+  category:"floor",
+  categoryLabel:"สี/งานพื้น",
+  image:"assets/products/4128.jpg",
+  price:"799.-",
+  priceLabel:"799.-",
+  shortDescription:"สีเคลือบแกร่งสำหรับงานพิมพ์ลาย",
+  description:"สีเคลือบแกร่งสำหรับงานพิมพ์ลาย PREMIUM STAMPED CONCRETE (PSC) เฉดสี M 1 - 26 สำหรับงานพื้น Stamped Concrete",
+  details:["ราคา 799.-","ส่งแล้ววันนี้ทั่วไทย","เฉดสี M 1 - 26","ปริมาณ 1 กระสอบ = 25 กก.","ได้พื้นที่ประมาณ 8-10 ตร.ม./กระสอบ"],
+  features:["สีคงทน ไม่ซีดจาง","มีหลากหลายสีสัน","ทนต่อทุกสภาพอากาศ"],
+  packages:["1 กระสอบ = 25 กก.","ได้พื้นที่ประมาณ 8-10 ตร.ม./กระสอบ"]
+ },
+ {
+  id:"91430",
+  name:"READY COAT (RCT)",
+  category:"coating",
+  categoryLabel:"น้ำยาเคลือบ",
+  image:"assets/products/91430.jpg",
+  price:"เริ่ม 388.-",
+  priceLabel:"เริ่ม 388.-",
+  priceOptions:[
+   {label:"RCT 18 KG",price:"2,850.-",numericPrice:2850},
+   {label:"RCT 9 KG",price:"1,803.-",numericPrice:1803},
+   {label:"RCT 4 KG",price:"905.-",numericPrice:905},
+   {label:"RCT 1 KG",price:"388.-",numericPrice:388}
+  ],
+  shortDescription:"น้ำยาเคลือบเงาคอนกรีต (ชนิดใส)",
+  description:"READY COAT (RCT) น้ำยาเคลือบเงาคอนกรีตชนิดใส สำหรับเคลือบผิวคอนกรีตให้ดูเงางาม",
+  details:["750 มล. ได้พื้นที่ 2-3 ตร.ม./ 2 เที่ยว","4 กก. ได้พื้นที่ 12-15 ตร.ม./ 2 เที่ยว","9 กก. ได้พื้นที่ 25-30 ตร.ม./ 2 เที่ยว","18 กก. ได้พื้นที่ 40-50 ตร.ม./ 2 เที่ยว"],
+  features:["ทนต่อรังสี UV","เคลือบผิวคอนกรีตให้ดูเงางาม","ป้องกันการฝังตัวของคราบสกปรก"],
+  packages:["RCT 18 KG : 2,850.- บาท","RCT 9 KG : 1,803.- บาท","RCT 4 KG : 905.- บาท","RCT 1 KG : 388.- บาท"]
+ },
+ {
+  id:"91429",
+  name:"READY COAT COLOR (RCR)",
+  category:"coating",
+  categoryLabel:"น้ำยาเคลือบ",
+  image:"assets/products/91429.jpg",
+  price:"เริ่ม 369.-",
+  priceLabel:"เริ่ม 369.-",
+  priceOptions:[
+   {label:"1 KG",price:"369.-",numericPrice:369},
+   {label:"4 KG",price:"1,059.-",numericPrice:1059},
+   {label:"9 KG",price:"2,175.-",numericPrice:2175},
+   {label:"18 KG",price:"3,850.-",numericPrice:3850}
+  ],
+  shortDescription:"น้ำยาเคลือบเงาคอนกรีต (ชนิดสี)",
+  description:"READY COAT COLOR (RCR) น้ำยาเคลือบเงาคอนกรีตชนิดสี โดยสามารถเลือกเฉดสีตามความต้องการของลูกค้า",
+  details:["750 มล. ได้พื้นที่ 2-3 ตร.ม./ 2 เที่ยว","4 กก. ได้พื้นที่ 12-15 ตร.ม./ 2 เที่ยว","9 กก. ได้พื้นที่ 25-30 ตร.ม./ 2 เที่ยว","18 กก. ได้พื้นที่ 40-50 ตร.ม./ 2 เที่ยว"],
+  features:["ทนต่อรังสี UV","เคลือบผิวคอนกรีตให้ดูเงางาม","ป้องกันการฝังตัวของคราบสกปรก"],
+  packages:["1 KG : 369.- บาท","4 KG : 1,059.- บาท","9 KG : 2,175.- บาท","18 KG : 3,850.- บาท"]
+ },
+ {
+  id:"releaser-power",
+  name:"RELEASER POWER",
+  category:"floor",
+  categoryLabel:"สี/งานพื้น",
+  image:"assets/products/91428.jpg",
+  price:"สอบถามราคา",
+  priceLabel:"สอบถามราคา",
+  shortDescription:"ผลิตภัณฑ์สำหรับงานพื้น",
+  description:"RELEASER POWER ผลิตภัณฑ์สำหรับงานพื้น สามารถสอบถามรายละเอียดและราคาเพิ่มเติมกับทีมงาน Chatpetch Group",
+  details:[],
+  features:[],
+  packages:[]
+ }
+];
+
+const REMOVED_IDS=new Set(["polymer-concrete"]);
+
+function getCustom(){
+ try{return JSON.parse(localStorage.getItem("chatpetch_products")||"[]")}
+ catch(e){return[]}
+}
+
+function getProducts(){
+ const custom=getCustom().filter(p=>p&&!REMOVED_IDS.has(p.id));
+
+ const hidden=new Set(custom.filter(p=>p._hidden).map(p=>p.id));
+ const overrides=new Map(custom.filter(p=>!p._hidden).map(p=>[p.id,p]));
+
+ const defaults=DEFAULT_PRODUCTS
+  .filter(p=>!hidden.has(p.id))
+  .map(p=>overrides.get(p.id)||p);
+
+ const extras=custom.filter(p=>
+  !p._hidden&&!DEFAULT_PRODUCTS.some(d=>d.id===p.id)
+ );
+
+ return [...defaults,...extras];
+}
+
+function saveCustom(arr){
+ localStorage.setItem("chatpetch_products",JSON.stringify(arr));
+}
+
+function esc(x){
+ return String(x??"").replace(/[&<>"']/g,m=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+ }[m]);
+}
+
+function categoryLabel(cat){
+ return cat==="coating"?"น้ำยาเคลือบ":"สี/งานพื้น";
+}
+
+function render(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+
+ const list=getProducts().filter(p=>
+  !q || `${p.name} ${p.id} ${p.categoryLabel||""}`.toLowerCase().includes(q)
+ );
+
+ document.getElementById("productList").innerHTML=list.map(p=>`
+  <article class="card">
+   <div class="card-img">
+    <img src="${esc(p.image)}"
+     alt="${esc(p.name)}"
+     onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+   </div>
+   <div class="card-body">
+    <span class="tag">${esc(p.categoryLabel||categoryLabel(p.category))}</span>
+    <h3>${esc(p.name)}</h3>
+    <p>รหัส: ${esc(p.id)}</p>
+    <p>${esc(p.shortDescription||"")}</p>
+    <div class="card-price">${esc(p.priceLabel||p.price||"สอบถามราคา")}</div>
+    <div class="card-actions">
+     <button class="btn line" onclick="editProduct('${String(p.id).replace(/'/g,"\\'")}')">แก้ไข</button>
+     <button class="btn danger" onclick="deleteProduct('${String(p.id).replace(/'/g,"\\'")}')">ลบ</button>
+    </div>
+   </div>
+  </article>
+ `).join("");
+}
+
+function parseLines(text){
+ return String(text||"")
+  .split("\n")
+  .map(x=>x.trim())
+  .filter(Boolean);
+}
+
+function parsePriceOptions(text){
+ return parseLines(text).map(line=>{
+  const [label,...rest]=line.split("|");
+  const num=Number(String(rest.join("|")).replace(/,/g,"").replace(/[^\d.]/g,""));
+  return {
+   label:label.trim(),
+   price:num?num.toLocaleString("en-US")+"-":rest.join("|").trim(),
+   numericPrice:num||0
+  };
+ }).filter(x=>x.label);
+}
+
+function saveProduct(){
+ const editId=document.getElementById("editId").value.trim();
+
+ const id=document.getElementById("productId").value.trim() ||
+  ("product-"+Date.now());
+
+ const name=document.getElementById("name").value.trim();
+
+ if(!name){
+  showToast("กรุณาใส่ชื่อสินค้า");
+  return;
+ }
+
+ const product={
+  id,
+  name,
+  category:document.getElementById("category").value,
+  categoryLabel:categoryLabel(document.getElementById("category").value),
+  image:currentImage||"assets/products/placeholder.jpg",
+  price:document.getElementById("price").value.trim()||"สอบถามราคา",
+  priceLabel:document.getElementById("price").value.trim()||"สอบถามราคา",
+  shortDescription:document.getElementById("shortDescription").value.trim(),
+  description:document.getElementById("description").value.trim(),
+  priceOptions:parsePriceOptions(document.getElementById("priceOptions").value),
+  details:parseLines(document.getElementById("details").value),
+  features:parseLines(document.getElementById("features").value),
+  packages:parseLines(document.getElementById("packages").value)
+ };
+
+ let custom=getCustom();
+
+ if(editId){
+  custom=custom.filter(p=>p.id!==editId);
+ }
+
+ custom=custom.filter(p=>p.id!==id);
+ custom.push(product);
+
+ saveCustom(custom);
+
+ showToast("บันทึกสินค้าเรียบร้อย");
+ resetForm();
+ render();
+}
+
+let currentImage="";
+
+document.getElementById("imageFile").addEventListener("change",function(){
+ const file=this.files[0];
+ if(!file)return;
+
+ const reader=new FileReader();
+ reader.onload=e=>{
+  currentImage=e.target.result;
+  document.getElementById("preview").innerHTML=
+   `<img src="${currentImage}" alt="">`;
+ };
+ reader.readAsDataURL(file);
+});
+
+function editProduct(id){
+ const p=getProducts().find(x=>x.id===id);
+ if(!p)return;
+
+ document.getElementById("formTitle").textContent="แก้ไขสินค้า";
+ document.getElementById("editId").value=p.id;
+ document.getElementById("productId").value=p.id;
+ document.getElementById("name").value=p.name||"";
+ document.getElementById("category").value=p.category||"floor";
+ document.getElementById("shortDescription").value=p.shortDescription||"";
+ document.getElementById("description").value=p.description||"";
+ document.getElementById("price").value=p.priceLabel||p.price||"";
+
+ document.getElementById("priceOptions").value=
+  (p.priceOptions||[]).map(o=>`${o.label}|${o.numericPrice||""}`).join("\n");
+
+ document.getElementById("details").value=(p.details||[]).join("\n");
+ document.getElementById("features").value=(p.features||[]).join("\n");
+ document.getElementById("packages").value=(p.packages||[]).join("\n");
+
+ currentImage=p.image||"";
+
+ document.getElementById("preview").innerHTML=currentImage
+  ?`<img src="${esc(currentImage)}" alt="">`
+  :`<span style="color:#555">ไม่มีรูป</span>`;
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function deleteProduct(id){
+ if(!confirm("ยืนยันลบ/ซ่อนสินค้านี้หรือไม่?"))return;
+
+ let custom=getCustom().filter(p=>p.id!==id);
+
+ if(DEFAULT_PRODUCTS.some(p=>p.id===id)){
+  custom.push({id,_hidden:true});
+ }
+
+ saveCustom(custom);
+ render();
+ showToast("ดำเนินการเรียบร้อย");
+}
+
+function resetForm(){
+ document.getElementById("formTitle").textContent="เพิ่มสินค้า";
+ document.getElementById("editId").value="";
+ document.getElementById("productId").value="";
+ document.getElementById("name").value="";
+ document.getElementById("category").value="floor";
+ document.getElementById("shortDescription").value="";
+ document.getElementById("description").value="";
+ document.getElementById("price").value="";
+ document.getElementById("priceOptions").value="";
+ document.getElementById("details").value="";
+ document.getElementById("features").value="";
+ document.getElementById("packages").value="";
+ document.getElementById("imageFile").value="";
+ document.getElementById("preview").innerHTML=
+  `<span style="color:#555">ยังไม่มีรูป</span>`;
+ currentImage="";
+}
+
+function showToast(text){
+ const t=document.getElementById("toast");
+ t.textContent=text;
+ t.classList.add("show");
+ setTimeout(()=>t.classList.remove("show"),2500);
+}
+
+document.getElementById("search").addEventListener("input",render);
+
+render();
+</script>
+
+</body>
+</html>

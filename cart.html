@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ตะกร้าสินค้า | Chatpetch Group</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --black:#050505;--dark:#0d0d0d;--gold:#c8a45b;--gold2:#e5ca83;
+ --white:#fff;--gray:#999;--line:rgba(255,255,255,.09);
+ --gold-line:rgba(200,164,91,.3);--container:1100px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ background:var(--black);color:white;font-family:Prompt,sans-serif;
+}
+body:before{
+ content:"";position:fixed;inset:0;z-index:-2;opacity:.15;
+ background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+ background-size:60px 60px;
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.container{width:min(var(--container),calc(100% - 40px));margin:auto}
+
+.header{
+ position:sticky;top:0;z-index:50;
+ background:rgba(5,5,5,.88);backdrop-filter:blur(18px);
+ border-bottom:1px solid var(--line);
+}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font:600 16px Kanit}
+.mark{
+ width:45px;height:45px;display:grid;place-items:center;
+ border:1px solid var(--gold);color:var(--gold2)
+}
+.logo small{display:block;font:9px Prompt;color:#777;letter-spacing:2px}
+.nav-menu{display:flex;gap:25px;font-size:14px}
+.nav-menu a{color:#aaa}
+.nav-menu a:hover{color:var(--gold2)}
+.nav-shop{
+ padding:10px 15px;border:1px solid var(--gold-line)
+}
+.cart-count{
+ display:inline-grid;place-items:center;min-width:20px;height:20px;
+ background:var(--gold);color:#000;border-radius:20px;font-size:11px
+}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:25px}
+
+.hero{padding:90px 0 55px}
+.eyebrow{color:var(--gold);letter-spacing:4px;font-size:11px;margin-bottom:15px}
+h1{font:600 clamp(52px,8vw,90px)/.95 Kanit}
+h1 span{color:var(--gold2)}
+
+.cart{padding-bottom:100px}
+.cart-list{display:grid;gap:12px}
+.cart-item{
+ display:grid;grid-template-columns:110px 1fr auto;
+ gap:20px;align-items:center;
+ padding:18px;background:#101010;border:1px solid var(--line);
+}
+.item-img{width:110px;height:100px;background:#080808}
+.item-img img{width:100%;height:100%;object-fit:cover}
+.item-code{color:#666;font-size:10px;letter-spacing:2px}
+.item-name{font:500 22px Kanit;margin:4px 0}
+.item-option{color:var(--gold2);font-size:12px}
+.item-price{color:#aaa;font-size:12px}
+.controls{display:flex;align-items:center;gap:8px;margin-top:10px}
+.qty-btn{
+ width:30px;height:30px;background:#181818;color:white;
+ border:1px solid var(--line);cursor:pointer
+}
+.qty-num{min-width:25px;text-align:center}
+.remove{
+ color:#d98484;background:none;border:0;cursor:pointer;font-size:12px
+}
+.item-total{
+ color:var(--gold2);font:500 21px Kanit;text-align:right;white-space:nowrap
+}
+
+.bottom{
+ margin-top:25px;padding:25px;
+ border:1px solid var(--gold-line);background:rgba(200,164,91,.035);
+ display:flex;justify-content:space-between;align-items:center;gap:20px;
+}
+.total-label{color:#888;font-size:12px}
+.total{
+ font:600 35px Kanit;color:var(--gold2);
+}
+.btn{
+ min-height:48px;padding:0 23px;
+ display:inline-flex;align-items:center;justify-content:center;
+ border:1px solid var(--gold);cursor:pointer;
+}
+.gold{background:var(--gold);color:#050505}
+.line{background:transparent;color:var(--gold2)}
+.btn:hover{filter:brightness(1.1)}
+
+.empty{
+ display:none;text-align:center;padding:100px 20px;
+ border:1px dashed var(--gold-line);
+}
+.empty.show{display:block}
+.empty h2{font:500 35px Kanit;margin-bottom:10px}
+.empty p{color:#777;margin-bottom:25px}
+
+@media(max-width:800px){
+ .nav-menu{
+  display:none;position:absolute;top:82px;left:0;right:0;
+  padding:25px;background:#090909;flex-direction:column;
+  border-bottom:1px solid var(--line);
+ }
+ .nav-menu.open{display:flex}
+ .menu-btn{display:block}
+ .cart-item{grid-template-columns:80px 1fr}
+ .item-img{width:80px;height:80px}
+ .item-total{grid-column:2;text-align:left}
+ .bottom{flex-direction:column;align-items:stretch}
+}
+@media(max-width:600px){
+ .container{width:calc(100% - 28px)}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="container nav">
+
+<a href="index.html" class="logo">
+ <div class="mark">CG</div>
+ <div>CHATPETCH GROUP<small>SHOPPING CART</small></div>
+</a>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<nav class="nav-menu" id="navMenu">
+ <a href="index.html">หน้าแรก</a>
+ <a href="about.html">เกี่ยวกับเรา</a>
+ <a href="products.html">สินค้า</a>
+ <a href="services.html">บริการ</a>
+ <a href="projects.html">ผลงาน</a>
+ <a href="contact.html">ติดต่อเรา</a>
+ <a href="cart.html" class="nav-shop">🛒 ตะกร้า <b id="cartCount" class="cart-count">0</b></a>
+</nav>
+
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+ <div class="eyebrow">SHOPPING CART / 06</div>
+ <h1>ตะกร้า<br><span>สินค้า</span></h1>
+</div>
+</section>
+
+<main class="cart">
+<div class="container">
+
+<div id="cartList" class="cart-list"></div>
+
+<div id="empty" class="empty">
+ <h2>ตะกร้ายังว่าง</h2>
+ <p>เลือกสินค้าที่ต้องการจากหน้าสินค้า</p>
+ <a href="products.html" class="btn gold">เลือกสินค้า</a>
+</div>
+
+<div id="bottom" class="bottom">
+ <div>
+  <div class="total-label">ยอดรวมสินค้า</div>
+  <div class="total" id="total">สอบถามราคา</div>
+ </div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap">
+  <button class="btn line" onclick="clearCart()">ล้างตะกร้า</button>
+  <a href="products.html" class="btn line">เลือกสินค้าเพิ่ม</a>
+  <a href="checkout.html" class="btn gold">ดำเนินการสั่งซื้อ →</a>
+ </div>
+</div>
+
+</div>
+</main>
+
+<script>
+function getCart(){
+ try{return JSON.parse(localStorage.getItem("chatpetch_cart")||"[]")}
+ catch(e){return[]}
+}
+
+function saveCart(cart){
+ localStorage.setItem("chatpetch_cart",JSON.stringify(cart));
+}
+
+function money(value){
+ const n=Number(value)||0;
+ return n.toLocaleString("th-TH")+" บาท";
+}
+
+function numericPrice(item){
+ if(item.selectedOption?.numericPrice)
+  return Number(item.selectedOption.numericPrice);
+
+ const str=String(item.priceLabel||"")
+   .replace(/,/g,"")
+   .replace(/[^\d.]/g,"");
+
+ return Number(str)||0;
+}
+
+function render(){
+ const cart=getCart();
+ const list=document.getElementById("cartList");
+ const empty=document.getElementById("empty");
+ const bottom=document.getElementById("bottom");
+
+ document.getElementById("cartCount").textContent=
+  cart.reduce((s,x)=>s+(Number(x.quantity)||0),0);
+
+ if(!cart.length){
+  list.innerHTML="";
+  empty.classList.add("show");
+  bottom.style.display="none";
+  return;
+ }
+
+ empty.classList.remove("show");
+ bottom.style.display="flex";
+
+ list.innerHTML=cart.map((item,index)=>`
+  <article class="cart-item">
+
+   <div class="item-img">
+    <img src="${esc(item.image||"assets/products/placeholder.jpg")}"
+     alt="${esc(item.name)}"
+     onerror="this.onerror=null;this.src='assets/products/placeholder.jpg'">
+   </div>
+
+   <div>
+    <div class="item-code">PRODUCT / ${esc(item.id)}</div>
+    <div class="item-name">${esc(item.name)}</div>
+
+    ${item.selectedOption?.label
+      ?`<div class="item-option">${esc(item.selectedOption.label)}</div>`
+      :""}
+
+    <div class="item-price">
+     ราคา: ${esc(item.selectedOption?.price||item.priceLabel||"สอบถามราคา")}
+    </div>
+
+    <div class="controls">
+     <button class="qty-btn" onclick="changeQty(${index},-1)">−</button>
+     <span class="qty-num">${item.quantity}</span>
+     <button class="qty-btn" onclick="changeQty(${index},1)">+</button>
+     <button class="remove" onclick="removeItem(${index})">ลบสินค้า</button>
+    </div>
+   </div>
+
+   <div class="item-total">
+    ${numericPrice(item)
+      ?money(numericPrice(item)*Number(item.quantity))
+      :"สอบถามราคา"}
+   </div>
+
+  </article>
+ `).join("");
+
+ const hasUnknown=cart.some(x=>!numericPrice(x));
+ const total=cart.reduce((sum,x)=>
+  sum+numericPrice(x)*Number(x.quantity||0),0);
+
+ document.getElementById("total").textContent=
+  hasUnknown ? "สอบถามราคา" : money(total);
+}
+
+function changeQty(index,delta){
+ const cart=getCart();
+ if(!cart[index])return;
+
+ cart[index].quantity=Math.max(
+  1,
+  Number(cart[index].quantity||1)+delta
+ );
+
+ saveCart(cart);
+ render();
+}
+
+function removeItem(index){
+ const cart=getCart();
+ cart.splice(index,1);
+ saveCart(cart);
+ render();
+}
+
+function clearCart(){
+ if(!confirm("ต้องการล้างตะกร้าทั้งหมดหรือไม่?"))return;
+ localStorage.removeItem("chatpetch_cart");
+ render();
+}
+
+function esc(x){
+ return String(x??"").replace(/[&<>"']/g,m=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+ }[m]));
+}
+
+function toggleMenu(){
+ document.getElementById("navMenu").classList.toggle("open");
+}
+
+render();
+</script>
+
+</body>
+</html>

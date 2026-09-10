@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>สั่งซื้อสินค้า | Chatpetch Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{--black:#050505;--dark:#0d0d0d;--dark2:#111;--gold:#c8a45b;--gold-light:#f0d991;--white:#fff;--gray:#9b9b9b;--line:rgba(255,255,255,.09);--container:1240px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#fff;background:var(--black);font-family:"Prompt",sans-serif}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:45px 45px}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}.container{width:min(var(--container),calc(100% - 40px));margin:auto}
+.header{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px}.logo{display:flex;align-items:center;gap:12px}.logo-mark{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold-light);font-family:"Kanit";font-size:20px;font-weight:700}.logo-text strong{display:block;font-family:"Kanit";letter-spacing:.08em}.logo-text span{font-size:10px;color:var(--gray);letter-spacing:.12em}.nav-menu{display:flex;align-items:center;gap:24px}.nav-menu a{font-size:14px;color:#ccc;transition:.3s}.nav-menu a:hover,.nav-menu .active{color:var(--gold-light)}.cart-link{padding:10px 15px;border:1px solid rgba(200,164,91,.4)}.badge{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:20px;background:var(--gold);color:#050505;font-size:11px;margin-left:5px}
+.hero{position:relative;padding:100px 0 70px;overflow:hidden}.hero:after{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-180px;background:radial-gradient(circle,rgba(200,164,91,.16),transparent 68%);pointer-events:none}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.3em;margin-bottom:18px}.hero h1{margin:0;font-family:"Kanit";font-size:clamp(48px,8vw,105px);line-height:.92;letter-spacing:-.04em}.hero p{max-width:700px;color:var(--gray);line-height:1.9;margin-top:25px}.hero-number{position:absolute;right:0;bottom:15px;font-family:"Kanit";font-size:150px;color:rgba(255,255,255,.025)}
+.section{padding:70px 0}.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:50px}.glass{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border:1px solid rgba(200,164,91,.2);box-shadow:0 20px 70px rgba(0,0,0,.2)}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border:1px solid var(--gold);color:var(--gold-light);background:transparent;cursor:pointer;transition:.3s}.btn:hover{background:var(--gold);color:#050505}.btn-dark{border-color:var(--line);color:#ddd}.btn-danger{border-color:#7b3434;color:#e7a0a0}.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.product-photo{overflow:hidden;background:#111}.product-photo img{display:block;width:100%;height:600px;object-fit:cover;transition:.7s}.product-photo:hover img{transform:scale(1.025)}.product-info{padding:35px}.product-info small{color:var(--gold);letter-spacing:.2em}.product-info h2{font-family:"Kanit";font-size:44px;line-height:1.05;margin:12px 0}.product-info .desc{color:#aaa;line-height:1.9}.list{padding:0;margin:25px 0;list-style:none}.list li{padding:12px 0;border-bottom:1px solid var(--line);color:#ccc}.list li:before{content:"◆";color:var(--gold);font-size:8px;margin-right:12px}.quantity{display:flex;align-items:center;gap:0;margin:20px 0}.quantity button{width:42px;height:42px;border:1px solid var(--line);background:#151515;color:#fff;cursor:pointer}.quantity span{width:55px;text-align:center}.price-note{color:var(--gold-light);margin:15px 0 25px}.toast{position:fixed;right:20px;bottom:20px;z-index:100;padding:15px 20px;background:#151515;border:1px solid var(--gold);box-shadow:0 15px 40px #000;display:none}.empty{text-align:center;padding:80px 20px}.empty h2{font-family:"Kanit";font-size:40px}.cart-list{display:grid;gap:15px}.cart-item{display:grid;grid-template-columns:110px 1fr auto;gap:20px;align-items:center;padding:18px}.cart-item img{width:110px;height:90px;object-fit:cover}.cart-item h3{margin:0 0 8px;font-family:"Kanit"}.cart-item p{margin:0;color:#888;font-size:13px}.cart-actions{display:flex;align-items:center;gap:8px;margin-top:12px}.cart-actions button{border:1px solid var(--line);background:#111;color:#ddd;padding:7px 12px;cursor:pointer}.remove{color:#e99!important}.summary{padding:28px;position:sticky;top:105px}.summary h3{font-family:"Kanit";font-size:28px;margin-top:0}.summary-row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);color:#aaa}.summary-row strong{color:#f0d991}.summary .btn{width:100%;margin-top:18px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:8px}.field.full{grid-column:1/-1}.field label{font-size:13px;color:#aaa}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:#0d0d0d;color:#fff;padding:13px 14px;outline:none}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}.field textarea{min-height:120px;resize:vertical}.payment{display:grid;gap:10px;margin-top:10px}.payment label{display:flex;gap:10px;align-items:center;padding:14px;border:1px solid var(--line);cursor:pointer;color:#ccc}.payment input{accent-color:#c8a45b}.slip-box{margin-top:15px;padding:18px;border:1px dashed rgba(200,164,91,.35);color:#999}.order-success{display:none;text-align:center;padding:70px 20px}.order-success h2{font-family:"Kanit";font-size:48px;color:var(--gold-light);margin:0 0 10px}.order-id{font-size:22px;color:#fff;margin:15px 0}.footer{padding:55px 0 30px;border-top:1px solid var(--line);background:#070707;margin-top:50px}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}.footer h3{font-family:"Kanit";margin-top:0}.footer p,.footer a{color:#888;line-height:1.9;font-size:13px}.copyright{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:#666;font-size:12px}
+@media(max-width:900px){.nav-menu{display:none}.grid2{grid-template-columns:1fr}.product-photo img{height:430px}.summary{position:static}.footer-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.container{width:min(100% - 28px,var(--container))}.hero{padding:75px 0 55px}.hero-number{font-size:90px}.product-info{padding:24px}.product-info h2{font-size:34px}.cart-item{grid-template-columns:80px 1fr}.cart-item>strong{grid-column:2}.cart-item img{width:80px;height:75px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+</style></head><body>
+<header class="header"><div class="container nav">
+<a href="index.html" class="logo"><div class="logo-mark">CG</div><div class="logo-text"><strong>CHATPETCH GROUP</strong><span>FLOORING MATERIALS</span></div></a>
+<nav class="nav-menu">
+<a href="index.html">หน้าแรก</a><a href="about.html">เกี่ยวกับเรา</a><a href="products.html" class="">สินค้า</a><a href="services.html">บริการ</a><a href="projects.html">ผลงาน</a><a href="contact.html">ติดต่อเรา</a>
+<a href="cart.html" class="cart-link">🛒 ตะกร้า <span class="badge" id="cartCount">0</span></a>
+</nav></div></header><section class="hero"><div class="container"><div class="eyebrow">CHECKOUT / 07</div><h1>ยืนยันการสั่งซื้อ</h1><p>CHATPETCH GROUP • วัสดุงานพื้นและงาน Stamped Concrete</p><div class="hero-number">07</div></div></section>
+<section class="section"><div class="container">
+<div id="checkoutArea"></div>
+<div class="order-success glass" id="success">
+  <div class="eyebrow">ORDER RECEIVED</div>
+  <h2>สั่งซื้อสำเร็จ</h2>
+  <p>ระบบบันทึกคำสั่งซื้อไว้ในเครื่องนี้แล้ว</p>
+  <div class="order-id" id="orderId"></div>
+  <p style="color:#888">บริษัทจะใช้ข้อมูลติดต่อที่กรอกไว้เพื่อยืนยันรายละเอียดและราคา</p>
+  <div class="btn-row" style="justify-content:center"><a class="btn" href="products.html">กลับไปเลือกสินค้า</a><a class="btn btn-dark" href="index.html">กลับหน้าแรก</a></div>
+</div>
+</div></section>
+<footer class="footer"><div class="container"><div class="footer-grid">
+<div><h3>CHATPETCH GROUP</h3><p>โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท</p><p>บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร</p></div>
+<div><h3>ติดต่อ</h3><p>082-8223678 คุณหญิง</p><p>063-0630046 คุณเอ้</p><p>085-6299778 ฝ่ายเทคนิค</p><p>098-6710888 แอดมิน</p></div>
+<div><h3>ที่อยู่</h3><p>10/1 ม.9 ต.นาหม่อม อ.นาหม่อม<br>Songkhla, Thailand 90310</p><p><a href="https://www.facebook.com/ChatphetchGroup" target="_blank">Facebook: Chatpetch Group</a></p></div>
+</div><div class="copyright">© Chatpetch Group Co., Ltd. All Rights Reserved.</div></div></footer>
+<div class="toast" id="toast"></div><script>
+const PRODUCTS = [
+  {
+    id:"releaser-power",
+    name:"CHATPETCH RELEASER POWER",
+    category:"วัสดุงาน Stamped Concrete",
+    image:"assets/products/releaser-power.jpg",
+    description:"ผงฝุ่นลอกแบบสำหรับงาน Stamped Concrete ช่วยให้แม่พิมพ์ไม่ติดกับผิวคอนกรีต พร้อมคุณสมบัติทนต่อรังสี UV และทนต่อการซีดจาง",
+    details:["ทนต่อรังสี UV","ป้องกันแม่พิมพ์ติดกับผิวคอนกรีต","ทนต่อการซีดจาง","เหมาะสำหรับงาน Stamped Concrete"],
+    packages:["5 กก. ได้พื้นที่ประมาณ 40–50 ตร.ม.","10 กก. ได้พื้นที่ประมาณ 80–100 ตร.ม."]
+  },
+  {
+    id:"polymer-concrete",
+    name:"POLYMER CONCRETE (PMC-A)",
+    category:"วัสดุงาน Stamped Concrete",
+    image:"assets/products/polymer-concrete.jpg",
+    description:"โพลิเมอร์คอนกรีตพิมพ์ลาย สำหรับงานพื้น Stamped Concrete บรรจุ 40 กก. เหมาะสำหรับงานตกแต่งพื้นคอนกรีต",
+    details:["บรรจุ 40 กก.","สำหรับงานพื้นพิมพ์ลาย","เหมาะสำหรับงานตกแต่งพื้นคอนกรีต","ใช้ร่วมกับระบบงาน Stamped Concrete"],
+    packages:["1 กระสอบ = 40 กก.","ได้พื้นที่ประมาณ 2–3 ตร.ม./กระสอบ","ขึ้นอยู่กับความหนาของงาน"]
+  }
+];
+
+function getCart(){
+  return JSON.parse(localStorage.getItem("chatpetch_cart") || "[]");
+}
+function saveCart(cart){
+  localStorage.setItem("chatpetch_cart",JSON.stringify(cart));
+  updateCartBadge();
+}
+function updateCartBadge(){
+  const el=document.getElementById("cartCount");
+  if(!el) return;
+  el.textContent=getCart().reduce((s,i)=>s+(Number(i.quantity)||1),0);
+}
+function addToCart(id,qty=1){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p) return;
+  const cart=getCart();
+  const found=cart.find(x=>x.id===id);
+  if(found) found.quantity += qty;
+  else cart.push({id:p.id,name:p.name,image:p.image,category:p.category,quantity:qty});
+  saveCart(cart);
+  showToast("เพิ่มสินค้าในตะกร้าแล้ว");
+}
+function showToast(msg){
+  const t=document.getElementById("toast");
+  if(!t) return;
+  t.textContent=msg;t.style.display="block";
+  setTimeout(()=>t.style.display="none",2200);
+}
+updateCartBadge();
+
+const checkoutArea=document.getElementById("checkoutArea");
+const cart=getCart();
+if(!cart.length){
+  checkoutArea.innerHTML=`<div class="glass empty"><h2>ไม่มีสินค้าในตะกร้า</h2><a class="btn" href="products.html">กลับไปเลือกสินค้า</a></div>`;
+}else{
+  checkoutArea.innerHTML=`
+  <div class="grid2">
+    <div class="glass" style="padding:30px">
+      <div class="eyebrow">CUSTOMER INFORMATION</div>
+      <h2 style="font-family:Kanit;font-size:38px;margin-top:0">ข้อมูลผู้สั่งซื้อ</h2>
+      <form id="orderForm">
+        <div class="form-grid">
+          <div class="field"><label>ชื่อ - นามสกุล *</label><input name="name" required></div>
+          <div class="field"><label>เบอร์โทรศัพท์ *</label><input name="phone" required type="tel"></div>
+          <div class="field"><label>อีเมล</label><input name="email" type="email"></div>
+          <div class="field"><label>จังหวัด *</label><input name="province" required></div>
+          <div class="field full"><label>ที่อยู่จัดส่ง *</label><textarea name="address" required></textarea></div>
+          <div class="field full"><label>หมายเหตุ</label><textarea name="note"></textarea></div>
+        </div>
+        <div style="margin-top:28px">
+          <div class="eyebrow">PAYMENT</div>
+          <div class="payment">
+            <label><input type="radio" name="payment" value="โอนธนาคาร" checked> โอนธนาคาร</label>
+            <label><input type="radio" name="payment" value="PromptPay"> PromptPay</label>
+            <label><input type="radio" name="payment" value="เก็บเงินปลายทาง"> เก็บเงินปลายทาง (COD)</label>
+          </div>
+          <div class="slip-box">
+            <label>แนบสลิป (ถ้ามี): <input type="file" id="slip" accept="image/*,.pdf"></label>
+            <div id="slipName" style="margin-top:8px"></div>
+            <small>หมายเหตุ: เว็บชุดนี้เก็บชื่อไฟล์สลิปไว้ในออเดอร์เท่านั้น ยังไม่ได้อัปโหลดไฟล์ขึ้นเซิร์ฟเวอร์</small>
+          </div>
+        </div>
+        <button class="btn" style="margin-top:25px;width:100%" type="submit">ยืนยันคำสั่งซื้อ →</button>
+      </form>
+    </div>
+    <aside class="glass summary">
+      <h3>รายการสินค้า</h3>
+      ${cart.map(i=>`<div class="summary-row"><span>${i.name} × ${i.quantity}</span><strong>สอบถามราคา</strong></div>`).join("")}
+      <div class="summary-row"><span>ยอดรวม</span><strong>รอประเมินราคา</strong></div>
+      <p style="color:#777;font-size:13px;line-height:1.8">ยังไม่มีการเรียกเก็บเงินผ่านเว็บไซต์ ราคาจะยืนยันโดยบริษัทก่อนชำระเงิน</p>
+    </aside>
+  </div>`;
+  document.getElementById("slip").onchange=e=>{
+    document.getElementById("slipName").textContent=e.target.files[0] ? "ไฟล์: "+e.target.files[0].name : "";
+  };
+  document.getElementById("orderForm").onsubmit=e=>{
+    e.preventDefault();
+    const f=new FormData(e.target);
+    const orders=JSON.parse(localStorage.getItem("chatpetch_orders")||"[]");
+    const orderId="CG"+Date.now().toString().slice(-8);
+    const slip=document.getElementById("slip").files[0];
+    const order={
+      id:orderId,createdAt:new Date().toISOString(),status:"pending",
+      payment:f.get("payment"),slipFile:slip?slip.name:"",
+      customer:{name:f.get("name"),phone:f.get("phone"),email:f.get("email"),province:f.get("province"),address:f.get("address"),note:f.get("note")},
+      items:cart.map(i=>({...i}))
+    };
+    orders.unshift(order);
+    localStorage.setItem("chatpetch_orders",JSON.stringify(orders));
+    localStorage.removeItem("chatpetch_cart");
+    updateCartBadge();
+    checkoutArea.style.display="none";
+    document.getElementById("success").style.display="block";
+    document.getElementById("orderId").textContent="เลขที่คำสั่งซื้อ: "+orderId;
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+}
+</script></body></html>

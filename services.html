@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บริการ | Chatpetch Group</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#050505;
+  --black2:#080808;
+  --dark:#0d0d0d;
+  --dark2:#111;
+  --dark3:#181818;
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --gold-dark:#806127;
+  --white:#fff;
+  --soft:#e8e8e8;
+  --gray:#9b9b9b;
+  --line:rgba(255,255,255,.09);
+  --gold-line:rgba(200,164,91,.28);
+  --container:1240px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:"Prompt",sans-serif;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.32;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:55px 55px;
+  z-index:-3;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:650px;
+  height:650px;
+  top:-280px;
+  right:-220px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(200,164,91,.14),transparent 68%);
+  pointer-events:none;
+  z-index:-2;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+.container{
+  width:min(var(--container),calc(100% - 40px));
+  margin:auto;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,5,5,.86);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.navbar{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.logo-mark{
+  width:46px;
+  height:46px;
+  border:1px solid var(--gold);
+  display:grid;
+  place-items:center;
+  font-family:"Kanit",sans-serif;
+  font-size:19px;
+  color:var(--gold-light);
+  position:relative;
+  background:linear-gradient(145deg,#181818,#070707);
+}
+
+.logo-mark::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border:1px solid rgba(200,164,91,.18);
+}
+
+.logo-text strong{
+  display:block;
+  font-family:"Kanit",sans-serif;
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+.logo-text span{
+  display:block;
+  font-size:10px;
+  color:var(--gold);
+  letter-spacing:2px;
+}
+
+.nav-menu{
+  display:flex;
+  align-items:center;
+  gap:27px;
+}
+
+.nav-menu a{
+  font-size:14px;
+  color:#bbb;
+  transition:.3s;
+  position:relative;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active{
+  color:var(--gold-light);
+}
+
+.nav-menu a.active::after{
+  content:"";
+  position:absolute;
+  height:1px;
+  background:var(--gold);
+  left:0;
+  right:0;
+  bottom:-8px;
+}
+
+.nav-shop{
+  border:1px solid var(--gold-line);
+  padding:10px 15px;
+  color:var(--gold-light)!important;
+  background:rgba(200,164,91,.06);
+}
+
+.cart-count{
+  display:inline-grid;
+  place-items:center;
+  min-width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--gold);
+  color:#050505;
+  font-size:10px;
+  font-weight:700;
+  margin-left:4px;
+}
+
+.mobile-btn{
+  display:none;
+  background:none;
+  border:1px solid var(--gold-line);
+  color:var(--gold-light);
+  width:44px;
+  height:40px;
+}
+
+/* HERO */
+.page-hero{
+  min-height:480px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+
+.page-hero::before{
+  content:"";
+  position:absolute;
+  width:700px;
+  height:700px;
+  left:-350px;
+  top:-200px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(200,164,91,.11),transparent 68%);
+}
+
+.hero-number{
+  position:absolute;
+  right:5%;
+  top:50%;
+  transform:translateY(-50%);
+  font-family:"Kanit",sans-serif;
+  font-size:clamp(150px,25vw,360px);
+  font-weight:700;
+  line-height:1;
+  color:rgba(255,255,255,.025);
+}
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+.eyebrow::before{
+  content:"";
+  width:45px;
+  height:1px;
+  background:var(--gold);
+}
+
+.page-hero h1{
+  font-family:"Kanit",sans-serif;
+  font-size:clamp(58px,9vw,125px);
+  line-height:.9;
+  letter-spacing:-3px;
+  max-width:850px;
+}
+
+.page-hero h1 span{
+  color:var(--gold-light);
+}
+
+.hero-desc{
+  max-width:650px;
+  margin-top:28px;
+  color:#aaa;
+  line-height:1.9;
+}
+
+/* MARQUEE */
+.marquee{
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:#090909;
+}
+
+.marquee-track{
+  display:flex;
+  width:max-content;
+  animation:marquee 25s linear infinite;
+  padding:15px 0;
+}
+
+.marquee-track span{
+  font-family:"Kanit",sans-serif;
+  font-size:13px;
+  letter-spacing:2px;
+  color:#888;
+  margin-right:55px;
+}
+
+.marquee-track b{
+  color:var(--gold);
+  margin-right:12px;
+}
+
+@keyframes marquee{
+  to{transform:translateX(-50%);}
+}
+
+/* SECTION */
+.section{
+  padding:105px 0;
+}
+
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:45px;
+}
+
+.section-kicker{
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:3px;
+  margin-bottom:10px;
+}
+
+.section-title{
+  font-family:"Kanit",sans-serif;
+  font-size:clamp(36px,5vw,65px);
+  line-height:1;
+}
+
+.section-title span{
+  color:var(--gold-light);
+}
+
+.section-desc{
+  max-width:500px;
+  color:#999;
+  line-height:1.8;
+}
+
+/* SERVICE GRID */
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.service-card{
+  min-height:350px;
+  padding:35px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+  position:relative;
+  overflow:hidden;
+  transition:.45s;
+}
+
+.service-card::before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  right:-100px;
+  bottom:-100px;
+  background:radial-gradient(circle,rgba(200,164,91,.12),transparent 68%);
+  transition:.5s;
+}
+
+.service-card:hover{
+  transform:translateY(-8px);
+  border-color:var(--gold-line);
+  box-shadow:0 25px 60px rgba(0,0,0,.4);
+}
+
+.service-card:hover::before{
+  transform:scale(1.5);
+}
+
+.service-no{
+  color:var(--gold);
+  font-family:"Kanit",sans-serif;
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.service-icon{
+  width:65px;
+  height:65px;
+  margin:30px 0 24px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--gold-line);
+  color:var(--gold-light);
+  font-size:28px;
+  background:rgba(200,164,91,.04);
+}
+
+.service-card h3{
+  font-family:"Kanit",sans-serif;
+  font-size:27px;
+  margin-bottom:13px;
+}
+
+.service-card p{
+  color:#999;
+  font-size:14px;
+  line-height:1.85;
+}
+
+.service-card ul{
+  margin-top:20px;
+  list-style:none;
+}
+
+.service-card li{
+  color:#aaa;
+  font-size:13px;
+  margin:8px 0;
+}
+
+.service-card li::before{
+  content:"✦";
+  color:var(--gold);
+  margin-right:8px;
+}
+
+/* PROCESS */
+.process{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line);
+}
+
+.process-item{
+  padding:35px 28px;
+  min-height:230px;
+  border-right:1px solid var(--line);
+  position:relative;
+}
+
+.process-item:last-child{
+  border-right:0;
+}
+
+.process-number{
+  font-family:"Kanit",sans-serif;
+  color:var(--gold);
+  font-size:42px;
+  line-height:1;
+  margin-bottom:25px;
+}
+
+.process-item h3{
+  font-family:"Kanit",sans-serif;
+  font-size:21px;
+  margin-bottom:10px;
+}
+
+.process-item p{
+  color:#888;
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* CTA */
+.cta{
+  margin-top:30px;
+  padding:65px;
+  border:1px solid var(--gold-line);
+  background:
+    radial-gradient(circle at 90% 50%,rgba(200,164,91,.12),transparent 35%),
+    linear-gradient(135deg,#151515,#090909);
+  position:relative;
+  overflow:hidden;
+}
+
+.cta::before{
+  content:"CHATPETCH GROUP";
+  position:absolute;
+  right:-20px;
+  bottom:-55px;
+  font-family:"Kanit",sans-serif;
+  font-size:100px;
+  color:rgba(255,255,255,.025);
+  white-space:nowrap;
+}
+
+.cta h2{
+  font-family:"Kanit",sans-serif;
+  font-size:clamp(32px,5vw,58px);
+  max-width:750px;
+  line-height:1.05;
+}
+
+.cta p{
+  color:#999;
+  max-width:650px;
+  line-height:1.8;
+  margin:18px 0 28px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:0 24px;
+  border:1px solid var(--gold);
+  transition:.3s;
+  font-size:14px;
+  margin-right:8px;
+}
+
+.btn-gold{
+  background:var(--gold);
+  color:#050505;
+}
+
+.btn-gold:hover{
+  background:var(--gold-light);
+}
+
+.btn-line{
+  color:var(--gold-light);
+  background:transparent;
+}
+
+.btn-line:hover{
+  background:rgba(200,164,91,.08);
+}
+
+/* FOOTER */
+footer{
+  padding:65px 0 30px;
+  border-top:1px solid var(--line);
+  background:#070707;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:45px;
+}
+
+.footer-brand p{
+  color:#777;
+  line-height:1.8;
+  font-size:13px;
+  max-width:400px;
+  margin-top:18px;
+}
+
+.footer-col h4{
+  color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
+  margin-bottom:18px;
+}
+
+.footer-col a,
+.footer-col p{
+  display:block;
+  color:#777;
+  font-size:13px;
+  margin:9px 0;
+  line-height:1.7;
+}
+
+.footer-col a:hover{
+  color:var(--gold);
+}
+
+.footer-bottom{
+  border-top:1px solid var(--line);
+  margin-top:45px;
+  padding-top:22px;
+  color:#555;
+  font-size:11px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+/* FLOAT */
+.float-contact{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:900;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.float-contact a{
+  width:50px;
+  height:50px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:1px solid var(--gold-line);
+  background:#111;
+  color:var(--gold-light);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:.8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+@media(max-width:900px){
+  .nav-menu{
+    position:absolute;
+    left:20px;
+    right:20px;
+    top:75px;
+    padding:20px;
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+    background:#0b0b0b;
+    border:1px solid var(--line);
+  }
+
+  .nav-menu.open{
+    display:flex;
+  }
+
+  .nav-menu a{
+    padding:12px 5px;
+  }
+
+  .mobile-btn{
+    display:block;
+  }
+
+  .service-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .process{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .process-item:nth-child(2){
+    border-right:0;
+  }
+
+  .process-item:nth-child(-n+2){
+    border-bottom:1px solid var(--line);
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:600px){
+  .container{
+    width:min(100% - 28px,var(--container));
+  }
+
+  .navbar{
+    min-height:72px;
+  }
+
+  .logo-text{
+    display:none;
+  }
+
+  .page-hero{
+    min-height:430px;
+  }
+
+  .page-hero h1{
+    font-size:62px;
+  }
+
+  .hero-number{
+    font-size:160px;
+  }
+
+  .section{
+    padding:75px 0;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-desc{
+    margin-top:18px;
+  }
+
+  .service-grid{
+    grid-template-columns:1fr;
+  }
+
+  .process{
+    grid-template-columns:1fr;
+  }
+
+  .process-item{
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .process-item:last-child{
+    border-bottom:0;
+  }
+
+  .cta{
+    padding:35px 25px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+
+    <a href="index.html" class="logo">
+      <div class="logo-mark">CG</div>
+      <div class="logo-text">
+        <strong>CHATPETCH GROUP</strong>
+        <span>FLOORING SOLUTION</span>
+      </div>
+    </a>
+
+    <button class="mobile-btn" onclick="toggleMenu()">☰</button>
+
+    <nav class="nav-menu" id="navMenu">
+      <a href="index.html">หน้าแรก</a>
+      <a href="about.html">เกี่ยวกับเรา</a>
+      <a href="products.html">สินค้า</a>
+      <a href="services.html" class="active">บริการ</a>
+      <a href="projects.html">ผลงาน</a>
+      <a href="contact.html">ติดต่อเรา</a>
+      <a href="cart.html" class="nav-shop">
+        🛒 ตะกร้า <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="hero-number">03</div>
+
+  <div class="container">
+    <div class="eyebrow">OUR SERVICES / FLOORING SOLUTION</div>
+
+    <h1>
+      บริการ<br>
+      <span>ครบวงจร</span>
+    </h1>
+
+    <p class="hero-desc">
+      ให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+      ตั้งแต่การเลือกวัสดุ การเตรียมพื้น ระบบเคลือบพื้น
+      ไปจนถึงแนวทางการติดตั้งที่เหมาะสมกับลักษณะงาน
+    </p>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span><b>✦</b> FLOORING SYSTEM</span>
+    <span><b>✦</b> INDUSTRIAL FLOOR</span>
+    <span><b>✦</b> EPOXY</span>
+    <span><b>✦</b> PU FLOOR</span>
+    <span><b>✦</b> STAMPED CONCRETE</span>
+    <span><b>✦</b> CONSULTATION</span>
+    <span><b>✦</b> FLOORING SYSTEM</span>
+    <span><b>✦</b> INDUSTRIAL FLOOR</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div>
+        <div class="section-kicker">WHAT WE DO</div>
+        <h2 class="section-title">บริการของ <span>เรา</span></h2>
+      </div>
+
+      <p class="section-desc">
+        เราพร้อมช่วยวิเคราะห์ลักษณะหน้างานและเลือกแนวทาง
+        วัสดุ และระบบพื้นให้เหมาะสมกับการใช้งาน
+      </p>
+    </div>
+
+    <div class="service-grid">
+
+      <article class="service-card reveal">
+        <div class="service-no">01 / CONSULT</div>
+        <div class="service-icon">⌁</div>
+        <h3>ให้คำปรึกษาระบบพื้น</h3>
+        <p>
+          ให้คำแนะนำเกี่ยวกับระบบพื้นตามลักษณะการใช้งาน
+          สภาพพื้นที่ และความต้องการของโครงการ
+        </p>
+        <ul>
+          <li>วิเคราะห์ลักษณะพื้นที่</li>
+          <li>แนะนำระบบพื้นที่เหมาะสม</li>
+          <li>ให้ข้อมูลวัสดุและขั้นตอน</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-no">02 / MATERIAL</div>
+        <div class="service-icon">◇</div>
+        <h3>วัสดุงานพื้น</h3>
+        <p>
+          จำหน่ายวัสดุและอุปกรณ์สำหรับงานพื้นหลากหลายระบบ
+          สำหรับงานบ้าน อาคาร และงานอุตสาหกรรม
+        </p>
+        <ul>
+          <li>Epoxy Flooring</li>
+          <li>PU Flooring</li>
+          <li>สีและเคมีภัณฑ์</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-no">03 / INDUSTRIAL</div>
+        <div class="service-icon">▦</div>
+        <h3>งานพื้นอุตสาหกรรม</h3>
+        <p>
+          แนวทางระบบพื้นสำหรับพื้นที่ที่ต้องการความแข็งแรง
+          ความเรียบร้อย และการดูแลรักษาที่เหมาะสม
+        </p>
+        <ul>
+          <li>พื้นที่โรงงาน</li>
+          <li>พื้นที่คลังสินค้า</li>
+          <li>พื้นที่ใช้งานหนัก</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-no">04 / DECORATIVE</div>
+        <div class="service-icon">✦</div>
+        <h3>งานพื้นตกแต่ง</h3>
+        <p>
+          ระบบพื้นที่เน้นความสวยงามและการออกแบบ
+          สำหรับบ้าน ร้านค้า สำนักงาน และพื้นที่เชิงพาณิชย์
+        </p>
+        <ul>
+          <li>งานตกแต่งพื้น</li>
+          <li>งาน Stamped Concrete</li>
+          <li>เลือกโทนและลักษณะผิว</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-no">05 / EQUIPMENT</div>
+        <div class="service-icon">⚙</div>
+        <h3>อุปกรณ์งานพื้น</h3>
+        <p>
+          อุปกรณ์สำหรับเตรียมพื้นและติดตั้งระบบพื้น
+          พร้อมให้คำแนะนำในการเลือกใช้งาน
+        </p>
+        <ul>
+          <li>เครื่องมือช่าง</li>
+          <li>อุปกรณ์เตรียมพื้น</li>
+          <li>อุปกรณ์สำหรับงานเคลือบ</li>
+        </ul>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-no">06 / SOLUTION</div>
+        <div class="service-icon">+</div>
+        <h3>โซลูชันตามหน้างาน</h3>
+        <p>
+          หากไม่แน่ใจว่าควรเลือกพื้นระบบใด
+          สามารถส่งรายละเอียดหรือสอบถามทีมงานเพื่อช่วยพิจารณาได้
+        </p>
+        <ul>
+          <li>ปรึกษาก่อนตัดสินใจ</li>
+          <li>แนะนำตามลักษณะงาน</li>
+          <li>ประเมินแนวทางเบื้องต้น</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div>
+        <div class="section-kicker">WORKFLOW</div>
+        <h2 class="section-title">ขั้นตอน <span>การทำงาน</span></h2>
+      </div>
+    </div>
+
+    <div class="process">
+
+      <div class="process-item reveal">
+        <div class="process-number">01</div>
+        <h3>พูดคุย</h3>
+        <p>
+          รับข้อมูลความต้องการ ลักษณะพื้นที่
+          และวัตถุประสงค์ของงาน
+        </p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-number">02</div>
+        <h3>วิเคราะห์</h3>
+        <p>
+          พิจารณาระบบพื้นและวัสดุที่เหมาะกับ
+          ลักษณะการใช้งาน
+        </p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-number">03</div>
+        <h3>เสนอแนวทาง</h3>
+        <p>
+          แนะนำวัสดุ อุปกรณ์ และขั้นตอน
+          ให้เหมาะกับความต้องการ
+        </p>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-number">04</div>
+        <h3>ดำเนินงาน</h3>
+        <p>
+          ส่งต่อข้อมูลเพื่อดำเนินการจัดซื้อ
+          หรือวางแผนงานตามรายละเอียดที่ตกลง
+        </p>
+      </div>
+
+    </div>
+
+    <div class="cta reveal">
+      <h2>มีปัญหาเรื่องพื้น?<br><span style="color:var(--gold-light)">คุยกับเราได้เลย</span></h2>
+
+      <p>
+        บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+        ติดต่อทีมงานเพื่อพูดคุยรายละเอียดงานของคุณ
+      </p>
+
+      <a href="contact.html" class="btn btn-gold">ติดต่อเรา →</a>
+      <a href="tel:0828223678" class="btn btn-line">โทร 082-822-3678</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">CG</div>
+          <div class="logo-text">
+            <strong>CHATPETCH GROUP</strong>
+            <span>FLOORING SOLUTION</span>
+          </div>
+        </div>
+
+        <p>
+          โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท
+          พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>MENU</h4>
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">เกี่ยวกับเรา</a>
+        <a href="products.html">สินค้า</a>
+        <a href="services.html">บริการ</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>EXPLORE</h4>
+        <a href="projects.html">ผลงาน</a>
+        <a href="contact.html">ติดต่อเรา</a>
+        <a href="cart.html">ตะกร้าสินค้า</a>
+        <a href="checkout.html">ชำระเงิน</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>CONTACT</h4>
+        <p>082-8223678 คุณหญิง</p>
+        <p>063-0630046 คุณเอ้</p>
+        <p>085-6299778 ฝ่ายเทคนิค</p>
+        <p>098-6710888 แอดมิน</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Chatpetch Group Co., Ltd.</span>
+      <span>สร้างสรรค์ผลงาน • มาตรฐานเข้าถึง • ยืน 1 คุณภาพ</span>
+    </div>
+
+  </div>
+</footer>
+
+<div class="float-contact">
+  <a href="tel:0828223678" title="โทรหาเรา">☎</a>
+  <a href="https://www.facebook.com/ChatphetchGroup" target="_blank" title="Facebook">f</a>
+</div>
+
+<script>
+function toggleMenu(){
+  document.getElementById("navMenu").classList.toggle("open");
+}
+
+function updateCartCount(){
+  const cart = JSON.parse(localStorage.getItem("chatpetch_cart") || "[]");
+  const count = cart.reduce((sum,item)=>sum + Number(item.quantity || 0),0);
+  document.getElementById("cartCount").textContent = count;
+}
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+updateCartCount();
+</script>
+
+</body>
+</html>

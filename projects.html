@@ -1,0 +1,2880 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ผลงาน | Chatpetch Group</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root{
+      --black:#050505;
+      --black2:#080808;
+      --dark:#0d0d0d;
+      --dark2:#111111;
+      --dark3:#181818;
+
+      --gold:#c8a45b;
+      --gold-light:#f0d991;
+      --gold-dark:#806127;
+
+      --white:#fff;
+      --soft:#e8e8e8;
+      --gray:#9b9b9b;
+
+      --line:rgba(255,255,255,.09);
+      --gold-line:rgba(200,164,91,.28);
+
+      --container:1240px;
+    }
+
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+
+    body{
+      font-family:'Prompt',sans-serif;
+
+      color:var(--white);
+
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(200,164,91,.13),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 10% 60%,
+          rgba(200,164,91,.06),
+          transparent 30%
+        ),
+        var(--black);
+
+      overflow-x:hidden;
+    }
+
+
+    body::before{
+      content:"";
+
+      position:fixed;
+      inset:0;
+
+      pointer-events:none;
+
+      z-index:-2;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        );
+
+      background-size:60px 60px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 90%
+        );
+    }
+
+
+    body::after{
+      content:"";
+
+      position:fixed;
+
+      width:500px;
+      height:500px;
+
+      right:-220px;
+      top:180px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(200,164,91,.11),
+          transparent 68%
+        );
+
+      filter:blur(25px);
+
+      pointer-events:none;
+
+      z-index:-1;
+    }
+
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+
+    button,
+    input,
+    select{
+      font-family:inherit;
+    }
+
+
+    .container{
+      width:min(
+        var(--container),
+        calc(100% - 40px)
+      );
+
+      margin:auto;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    header{
+      position:sticky;
+
+      top:0;
+
+      z-index:1000;
+
+      background:
+        rgba(5,5,5,.82);
+
+      backdrop-filter:
+        blur(18px);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .nav-wrap{
+      min-height:82px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:30px;
+    }
+
+
+    .brand{
+      display:flex;
+
+      align-items:center;
+
+      gap:14px;
+
+      min-width:max-content;
+    }
+
+
+    .brand-mark{
+      width:46px;
+      height:46px;
+
+      display:grid;
+
+      place-items:center;
+
+      border:1px solid var(--gold);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(200,164,91,.22),
+          transparent
+        ),
+        #0c0c0c;
+
+      color:var(--gold-light);
+
+      font-size:17px;
+
+      font-weight:700;
+
+      letter-spacing:2px;
+
+      box-shadow:
+        0 0 25px
+        rgba(200,164,91,.12);
+    }
+
+
+    .brand-text strong{
+      display:block;
+
+      font-family:'Kanit',sans-serif;
+
+      font-size:18px;
+
+      letter-spacing:1px;
+    }
+
+
+    .brand-text span{
+      display:block;
+
+      color:var(--gray);
+
+      font-size:10px;
+
+      letter-spacing:2px;
+    }
+
+
+    .nav-menu{
+      display:flex;
+
+      align-items:center;
+
+      gap:25px;
+    }
+
+
+    .nav-menu a{
+      position:relative;
+
+      color:#cfcfcf;
+
+      font-size:14px;
+
+      transition:.3s;
+
+      white-space:nowrap;
+    }
+
+
+    .nav-menu a:not(.nav-shop)::after{
+      content:"";
+
+      position:absolute;
+
+      left:0;
+
+      bottom:-8px;
+
+      width:0;
+
+      height:1px;
+
+      background:var(--gold);
+
+      transition:.3s;
+    }
+
+
+    .nav-menu a:hover,
+    .nav-menu a.active{
+      color:var(--gold-light);
+    }
+
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after{
+      width:100%;
+    }
+
+
+    .nav-shop{
+      padding:10px 15px;
+
+      border:1px solid var(--gold-line);
+
+      background:
+        rgba(200,164,91,.06);
+    }
+
+
+    .nav-shop:hover{
+      border-color:var(--gold);
+
+      background:
+        rgba(200,164,91,.13);
+    }
+
+
+    .cart-count{
+      display:inline-grid;
+
+      place-items:center;
+
+      min-width:20px;
+      height:20px;
+
+      padding:0 5px;
+
+      margin-left:4px;
+
+      border-radius:20px;
+
+      background:var(--gold);
+
+      color:#050505;
+
+      font-size:11px;
+
+      font-weight:700;
+    }
+
+
+    .menu-toggle{
+      display:none;
+
+      width:44px;
+      height:44px;
+
+      border:1px solid var(--line);
+
+      background:#0c0c0c;
+
+      color:white;
+
+      font-size:21px;
+
+      cursor:pointer;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .page-hero{
+      position:relative;
+
+      padding:115px 0 80px;
+
+      overflow:hidden;
+    }
+
+
+    .hero-line{
+      position:absolute;
+
+      left:0;
+      right:0;
+
+      top:50%;
+
+      height:1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(200,164,91,.2),
+          transparent
+        );
+    }
+
+
+    .eyebrow{
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+
+      color:var(--gold);
+
+      font-size:12px;
+
+      font-weight:600;
+
+      letter-spacing:4px;
+
+      margin-bottom:20px;
+    }
+
+
+    .eyebrow::before{
+      content:"";
+
+      width:42px;
+      height:1px;
+
+      background:var(--gold);
+    }
+
+
+    .page-hero h1{
+      font-family:'Kanit',sans-serif;
+
+      font-size:
+        clamp(
+          52px,
+          8vw,
+          110px
+        );
+
+      line-height:.94;
+
+      letter-spacing:-2px;
+    }
+
+
+    .page-hero h1 span{
+      color:transparent;
+
+      -webkit-text-stroke:
+        1px rgba(240,217,145,.55);
+    }
+
+
+    .hero-desc{
+      max-width:700px;
+
+      margin-top:28px;
+
+      color:#aaa;
+
+      font-size:15px;
+
+      line-height:1.9;
+    }
+
+
+    .hero-number{
+      position:absolute;
+
+      right:2%;
+
+      bottom:-40px;
+
+      font-family:'Kanit',sans-serif;
+
+      font-size:280px;
+
+      line-height:1;
+
+      color:rgba(255,255,255,.025);
+
+      font-weight:700;
+
+      pointer-events:none;
+    }
+
+
+    /* =====================================================
+       MARQUEE
+    ===================================================== */
+
+    .marquee{
+      overflow:hidden;
+
+      padding:15px 0;
+
+      background:#080808;
+
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .marquee-track{
+      width:max-content;
+
+      display:flex;
+
+      animation:
+        marquee 28s linear infinite;
+    }
+
+
+    .marquee span{
+      margin-right:55px;
+
+      color:#777;
+
+      font-size:11px;
+
+      letter-spacing:4px;
+
+      white-space:nowrap;
+    }
+
+
+    .marquee strong{
+      color:var(--gold);
+    }
+
+
+    @keyframes marquee{
+
+      from{
+        transform:translateX(0);
+      }
+
+      to{
+        transform:translateX(-50%);
+      }
+
+    }
+
+
+    /* =====================================================
+       PROJECT SECTION
+    ===================================================== */
+
+    .projects-section{
+      padding:110px 0;
+    }
+
+
+    .section-head{
+      display:flex;
+
+      align-items:end;
+
+      justify-content:space-between;
+
+      gap:30px;
+
+      margin-bottom:35px;
+    }
+
+
+    .section-mini{
+      color:var(--gold);
+
+      font-size:11px;
+
+      letter-spacing:3px;
+
+      margin-bottom:9px;
+    }
+
+
+    .section-head h2{
+      font-family:'Kanit',sans-serif;
+
+      font-size:
+        clamp(
+          35px,
+          5vw,
+          55px
+        );
+
+      line-height:1;
+    }
+
+
+    .section-head p{
+      max-width:530px;
+
+      color:#888;
+
+      font-size:13px;
+
+      line-height:1.9;
+    }
+
+
+    /* =====================================================
+       FILTER
+    ===================================================== */
+
+    .filter-wrap{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:9px;
+
+      margin-bottom:35px;
+    }
+
+
+    .filter-btn{
+      padding:11px 18px;
+
+      border:1px solid var(--line);
+
+      background:
+        rgba(255,255,255,.025);
+
+      color:#999;
+
+      font-size:12px;
+
+      cursor:pointer;
+
+      transition:.3s;
+    }
+
+
+    .filter-btn:hover,
+    .filter-btn.active{
+      border-color:var(--gold);
+
+      background:
+        rgba(200,164,91,.08);
+
+      color:var(--gold-light);
+    }
+
+
+    /* =====================================================
+       PROJECT GRID
+    ===================================================== */
+
+    .project-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(12,1fr);
+
+      gap:18px;
+    }
+
+
+    .project-card{
+      position:relative;
+
+      overflow:hidden;
+
+      min-height:330px;
+
+      border:1px solid var(--line);
+
+      background:#0b0b0b;
+
+      cursor:pointer;
+
+      transition:
+        transform .4s,
+        border-color .4s;
+
+      animation:
+        cardIn .5s ease both;
+    }
+
+
+    .project-card:hover{
+      transform:translateY(-6px);
+
+      border-color:
+        var(--gold-line);
+    }
+
+
+    .project-card:nth-child(1),
+    .project-card:nth-child(4){
+      grid-column:span 7;
+    }
+
+
+    .project-card:nth-child(2),
+    .project-card:nth-child(3),
+    .project-card:nth-child(5),
+    .project-card:nth-child(6){
+      grid-column:span 5;
+    }
+
+
+    .project-card:nth-child(7),
+    .project-card:nth-child(8){
+      grid-column:span 6;
+    }
+
+
+    .project-image{
+      position:absolute;
+
+      inset:0;
+
+      overflow:hidden;
+    }
+
+
+    .project-image img{
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      display:block;
+
+      filter:
+        grayscale(.2)
+        saturate(.75)
+        brightness(.68);
+
+      transition:
+        transform .8s ease,
+        filter .6s ease;
+    }
+
+
+    .project-card:hover
+    .project-image img{
+      transform:scale(1.08);
+
+      filter:
+        grayscale(0)
+        saturate(.95)
+        brightness(.78);
+    }
+
+
+    .project-overlay{
+      position:absolute;
+
+      inset:0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.94) 0%,
+          rgba(0,0,0,.35) 50%,
+          rgba(0,0,0,.08) 100%
+        );
+    }
+
+
+    .project-corner{
+      position:absolute;
+
+      width:45px;
+      height:45px;
+
+      z-index:3;
+
+      pointer-events:none;
+    }
+
+
+    .project-corner.tl{
+      left:16px;
+      top:16px;
+
+      border-left:
+        1px solid rgba(240,217,145,.7);
+
+      border-top:
+        1px solid rgba(240,217,145,.7);
+    }
+
+
+    .project-corner.br{
+      right:16px;
+      bottom:16px;
+
+      border-right:
+        1px solid rgba(240,217,145,.7);
+
+      border-bottom:
+        1px solid rgba(240,217,145,.7);
+    }
+
+
+    .project-content{
+      position:absolute;
+
+      left:30px;
+      right:30px;
+      bottom:28px;
+
+      z-index:4;
+    }
+
+
+    .project-number{
+      color:var(--gold-light);
+
+      font-size:10px;
+
+      letter-spacing:3px;
+
+      margin-bottom:8px;
+    }
+
+
+    .project-content h3{
+      font-family:'Kanit',sans-serif;
+
+      font-size:27px;
+
+      margin-bottom:7px;
+    }
+
+
+    .project-content p{
+      color:#bbb;
+
+      font-size:12px;
+
+      line-height:1.7;
+    }
+
+
+    .project-tag{
+      display:inline-block;
+
+      margin-top:13px;
+
+      padding:6px 10px;
+
+      border:1px solid
+        rgba(240,217,145,.25);
+
+      background:
+        rgba(0,0,0,.35);
+
+      color:var(--gold-light);
+
+      font-size:10px;
+
+      letter-spacing:1px;
+    }
+
+
+    @keyframes cardIn{
+
+      from{
+        opacity:0;
+
+        transform:
+          translateY(15px);
+      }
+
+      to{
+        opacity:1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+    .project-card.hidden{
+      display:none;
+    }
+
+
+    /* =====================================================
+       PROJECT NOTE
+    ===================================================== */
+
+    .project-note{
+      margin-top:25px;
+
+      padding:20px 23px;
+
+      border-left:
+        2px solid var(--gold);
+
+      background:
+        rgba(200,164,91,.045);
+
+      color:#888;
+
+      font-size:12px;
+
+      line-height:1.9;
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .cta{
+      position:relative;
+
+      padding:90px 0;
+
+      overflow:hidden;
+
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at 80% 50%,
+          rgba(200,164,91,.12),
+          transparent 35%
+        ),
+        #0a0a0a;
+    }
+
+
+    .cta::before{
+      content:"CG";
+
+      position:absolute;
+
+      right:4%;
+      top:-70px;
+
+      font-family:'Kanit',sans-serif;
+
+      font-size:250px;
+
+      font-weight:700;
+
+      color:
+        rgba(255,255,255,.025);
+    }
+
+
+    .cta-inner{
+      position:relative;
+
+      z-index:2;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:40px;
+    }
+
+
+    .cta h2{
+      font-family:'Kanit',sans-serif;
+
+      font-size:
+        clamp(
+          32px,
+          4vw,
+          55px
+        );
+
+      line-height:1.05;
+    }
+
+
+    .cta p{
+      margin-top:12px;
+
+      max-width:650px;
+
+      color:#999;
+
+      line-height:1.8;
+    }
+
+
+    .btn{
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      gap:9px;
+
+      min-height:52px;
+
+      padding:0 25px;
+
+      border:1px solid transparent;
+
+      cursor:pointer;
+
+      transition:.3s;
+
+      font-size:14px;
+
+      font-weight:500;
+    }
+
+
+    .btn-gold{
+      color:#080808;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--gold-light),
+          var(--gold)
+        );
+
+      box-shadow:
+        0 12px 35px
+        rgba(200,164,91,.15);
+    }
+
+
+    .btn-gold:hover{
+      transform:translateY(-3px);
+
+      box-shadow:
+        0 16px 40px
+        rgba(200,164,91,.25);
+    }
+
+
+    .btn-line{
+      border-color:
+        var(--gold-line);
+
+      color:var(--gold-light);
+
+      background:
+        rgba(200,164,91,.04);
+    }
+
+
+    .btn-line:hover{
+      border-color:var(--gold);
+
+      background:
+        rgba(200,164,91,.1);
+
+      transform:translateY(-3px);
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer{
+      padding:60px 0 30px;
+
+      background:#030303;
+    }
+
+
+    .footer-grid{
+      display:grid;
+
+      grid-template-columns:
+        1.3fr 1fr 1fr;
+
+      gap:50px;
+
+      padding-bottom:45px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .footer-title{
+      color:var(--gold-light);
+
+      font-family:'Kanit',sans-serif;
+
+      font-size:19px;
+
+      margin-bottom:18px;
+    }
+
+
+    footer p,
+    footer li,
+    footer a{
+      color:#858585;
+
+      font-size:13px;
+
+      line-height:2;
+    }
+
+
+    footer a:hover{
+      color:var(--gold-light);
+    }
+
+
+    .footer-links{
+      list-style:none;
+    }
+
+
+    .footer-bottom{
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      padding-top:25px;
+
+      color:#555;
+
+      font-size:11px;
+    }
+
+
+    /* =====================================================
+       LIGHTBOX
+    ===================================================== */
+
+    .lightbox{
+      position:fixed;
+
+      inset:0;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:30px;
+
+      background:
+        rgba(0,0,0,.92);
+
+      backdrop-filter:
+        blur(12px);
+
+      opacity:0;
+
+      visibility:hidden;
+
+      transition:.35s;
+
+      z-index:3000;
+    }
+
+
+    .lightbox.show{
+      opacity:1;
+
+      visibility:visible;
+    }
+
+
+    .lightbox-inner{
+      position:relative;
+
+      width:min(
+        1100px,
+        100%
+      );
+
+      max-height:
+        calc(100vh - 60px);
+    }
+
+
+    .lightbox img{
+      display:block;
+
+      width:100%;
+
+      max-height:
+        calc(100vh - 120px);
+
+      object-fit:contain;
+
+      border:
+        1px solid var(--gold-line);
+
+      background:#0a0a0a;
+    }
+
+
+    .lightbox-info{
+      padding-top:15px;
+
+      display:flex;
+
+      justify-content:space-between;
+
+      gap:20px;
+    }
+
+
+    .lightbox-info h3{
+      font-family:'Kanit',sans-serif;
+
+      font-size:23px;
+    }
+
+
+    .lightbox-info span{
+      color:var(--gold-light);
+
+      font-size:11px;
+
+      letter-spacing:2px;
+    }
+
+
+    .close-lightbox{
+      position:absolute;
+
+      right:-5px;
+      top:-48px;
+
+      width:38px;
+      height:38px;
+
+      border:
+        1px solid var(--gold-line);
+
+      background:#0c0c0c;
+
+      color:white;
+
+      cursor:pointer;
+
+      font-size:20px;
+    }
+
+
+    /* =====================================================
+       FLOATING
+    ===================================================== */
+
+    .floating{
+      position:fixed;
+
+      right:22px;
+      bottom:22px;
+
+      z-index:900;
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:10px;
+    }
+
+
+    .float-btn{
+      width:48px;
+      height:48px;
+
+      display:grid;
+
+      place-items:center;
+
+      border:
+        1px solid var(--gold-line);
+
+      background:
+        rgba(10,10,10,.88);
+
+      backdrop-filter:
+        blur(12px);
+
+      color:var(--gold-light);
+
+      font-size:18px;
+
+      transition:.3s;
+    }
+
+
+    .float-btn:hover{
+      transform:translateY(-3px);
+
+      border-color:var(--gold);
+
+      box-shadow:
+        0 8px 25px
+        rgba(200,164,91,.16);
+    }
+
+
+    .back-top{
+      position:fixed;
+
+      right:22px;
+      bottom:190px;
+
+      width:40px;
+      height:40px;
+
+      border:
+        1px solid var(--line);
+
+      background:#0c0c0c;
+
+      color:#aaa;
+
+      cursor:pointer;
+
+      opacity:0;
+
+      visibility:hidden;
+
+      transition:.3s;
+
+      z-index:800;
+    }
+
+
+    .back-top.show{
+      opacity:1;
+
+      visibility:visible;
+    }
+
+
+    /* =====================================================
+       REVEAL
+    ===================================================== */
+
+    .reveal{
+      opacity:0;
+
+      transform:
+        translateY(25px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
+    }
+
+
+    .reveal.show{
+      opacity:1;
+
+      transform:none;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media(max-width:950px){
+
+      .nav-menu{
+        position:absolute;
+
+        top:82px;
+
+        left:20px;
+        right:20px;
+
+        display:none;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        padding:18px;
+
+        background:
+          rgba(10,10,10,.97);
+
+        border:
+          1px solid var(--line);
+
+        box-shadow:
+          0 25px 50px
+          rgba(0,0,0,.5);
+      }
+
+
+      .nav-menu.open{
+        display:flex;
+      }
+
+
+      .nav-menu a{
+        padding:13px 8px;
+      }
+
+
+      .menu-toggle{
+        display:block;
+      }
+
+
+      .project-card:nth-child(n){
+        grid-column:span 6;
+      }
+
+
+      .footer-grid{
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+
+      .cta-inner{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+    }
+
+
+    @media(max-width:600px){
+
+      .container{
+        width:
+          min(
+            100% - 28px,
+            var(--container)
+          );
+      }
+
+
+      .page-hero{
+        padding:80px 0 55px;
+      }
+
+
+      .page-hero h1{
+        font-size:53px;
+      }
+
+
+      .hero-number{
+        font-size:150px;
+
+        bottom:-10px;
+      }
+
+
+      .projects-section{
+        padding:75px 0;
+      }
+
+
+      .section-head{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+
+      .filter-wrap{
+        overflow-x:auto;
+
+        flex-wrap:nowrap;
+
+        padding-bottom:7px;
+      }
+
+
+      .filter-btn{
+        flex:0 0 auto;
+      }
+
+
+      .project-grid{
+        grid-template-columns:1fr;
+      }
+
+
+      .project-card:nth-child(n){
+        grid-column:span 1;
+
+        min-height:300px;
+      }
+
+
+      .project-content{
+        left:24px;
+        right:24px;
+        bottom:24px;
+      }
+
+
+      .project-content h3{
+        font-size:23px;
+      }
+
+
+      .lightbox{
+        padding:18px;
+      }
+
+
+      .close-lightbox{
+        right:0;
+      }
+
+
+      .footer-grid{
+        grid-template-columns:1fr;
+
+        gap:30px;
+      }
+
+
+      .footer-bottom{
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+
+      .floating{
+        right:14px;
+        bottom:14px;
+      }
+
+
+      .back-top{
+        right:14px;
+        bottom:145px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
+
+  <header>
+
+    <div class="container nav-wrap">
+
+      <a href="index.html" class="brand">
+
+        <div class="brand-mark">
+          CG
+        </div>
+
+        <div class="brand-text">
+
+          <strong>
+            CHATPETCH GROUP
+          </strong>
+
+          <span>
+            FLOORING • MATERIAL • SOLUTION
+          </span>
+
+        </div>
+
+      </a>
+
+
+      <nav class="nav-menu" id="navMenu">
+
+        <a href="index.html">
+          หน้าแรก
+        </a>
+
+        <a href="about.html">
+          เกี่ยวกับเรา
+        </a>
+
+        <a href="products.html">
+          สินค้า
+        </a>
+
+        <a href="services.html">
+          บริการ
+        </a>
+
+        <a href="projects.html" class="active">
+          ผลงาน
+        </a>
+
+        <a href="contact.html">
+          ติดต่อเรา
+        </a>
+
+        <a href="cart.html" class="nav-shop">
+
+          🛒 ตะกร้า
+
+          <span
+            class="cart-count"
+            id="cartCount">
+            0
+          </span>
+
+        </a>
+
+      </nav>
+
+
+      <button
+        class="menu-toggle"
+        id="menuToggle">
+        ☰
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       HERO
+  ===================================================== -->
+
+  <section class="page-hero">
+
+    <div class="hero-line"></div>
+
+    <div class="container">
+
+      <div class="eyebrow reveal">
+        PROJECT SHOWCASE / 04
+      </div>
+
+      <h1 class="reveal">
+
+        ผลงาน<br>
+
+        <span>
+          ของเรา
+        </span>
+
+      </h1>
+
+      <p class="hero-desc reveal">
+
+        พื้นที่แต่ละประเภทมีความต้องการแตกต่างกัน
+        เราจึงให้ความสำคัญกับการเลือกวัสดุ
+        ระบบพื้น และแนวทางการทำงานให้เหมาะกับลักษณะของงาน
+
+      </p>
+
+    </div>
+
+    <div class="hero-number">
+      04
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       MARQUEE
+  ===================================================== -->
+
+  <div class="marquee">
+
+    <div class="marquee-track">
+
+      <span>
+        <strong>CHATPETCH GROUP</strong>
+        • PROJECT SHOWCASE
+      </span>
+
+      <span>
+        FLOORING • INDUSTRIAL • DECORATIVE
+      </span>
+
+      <span>
+        <strong>CHATPETCH GROUP</strong>
+        • PROJECT SHOWCASE
+      </span>
+
+      <span>
+        FLOORING • INDUSTRIAL • DECORATIVE
+      </span>
+
+      <span>
+        <strong>CHATPETCH GROUP</strong>
+        • PROJECT SHOWCASE
+      </span>
+
+      <span>
+        FLOORING • INDUSTRIAL • DECORATIVE
+      </span>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       PROJECTS
+  ===================================================== -->
+
+  <section class="projects-section">
+
+    <div class="container">
+
+      <div class="section-head reveal">
+
+        <div>
+
+          <div class="section-mini">
+            PROJECT GALLERY
+          </div>
+
+          <h2>
+            ตัวอย่างงาน
+          </h2>
+
+        </div>
+
+        <p>
+
+          ชมตัวอย่างประเภทงานที่เกี่ยวข้องกับระบบพื้น
+          งานเคลือบผิว งานพื้นตกแต่ง
+          และงานก่อสร้าง
+
+        </p>
+
+      </div>
+
+
+
+      <!-- FILTER -->
+
+      <div class="filter-wrap reveal">
+
+        <button
+          class="filter-btn active"
+          data-filter="all">
+
+          ทั้งหมด
+
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="floor">
+
+          งานพื้น
+
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="industrial">
+
+          งานอุตสาหกรรม
+
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="decorative">
+
+          งานตกแต่ง
+
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="construction">
+
+          งานก่อสร้าง
+
+        </button>
+
+      </div>
+
+
+
+      <!-- PROJECT GRID -->
+
+      <div class="project-grid" id="projectGrid">
+
+
+        <!-- PROJECT 01 -->
+
+        <article
+          class="project-card reveal"
+          data-category="industrial"
+          data-title="Industrial Flooring"
+          data-type="งานพื้นอุตสาหกรรม"
+          data-image="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1600&q=85">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1600&q=85"
+              alt="Industrial Flooring">
+
+          </div>
+
+          <div class="project-overlay"></div>
+
+          <div class="project-corner tl"></div>
+          <div class="project-corner br"></div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT / 01
+            </div>
+
+            <h3>
+              Industrial Flooring
+            </h3>
+
+            <p>
+              แนวทางงานพื้นสำหรับพื้นที่อุตสาหกรรม
+            </p>
+
+            <span class="project-tag">
+              INDUSTRIAL
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 02 -->
+
+        <article
+          class="project-card reveal"
+          data-category="floor"
+          data-title="Epoxy Floor"
+          data-type="ระบบพื้น Epoxy"
+          data-image="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=85">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=85"
+              alt="Epoxy Floor">
+
+          </div>
+
+          <div class="project-overlay"></div>
+
+          <div class="project-corner tl"></div>
+          <div class="project-corner br"></div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT / 02
+            </div>
+
+            <h3>
+              Epoxy Floor
+            </h3>
+
+            <p>
+              ระบบพื้นเคลือบผิวสำหรับพื้นที่ใช้งาน
+            </p>
+
+            <span class="project-tag">
+              FLOORING
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 03 -->
+
+        <article
+          class="project-card reveal"
+          data-category="decorative"
+          data-title="Decorative Floor"
+          data-type="งานพื้นตกแต่ง"
+          data-image="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1600&q=85">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1600&q=85"
+              alt="Decorative Floor">
+
+          </div>
+
+          <div class="project-overlay"></div>
+
+          <div class="project-corner tl"></div>
+          <div class="project-corner br"></div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT / 03
+            </div>
+
+            <h3>
+              Decorative Floor
+            </h3>
+
+            <p>
+              งานพื้นเพื่อสร้างบรรยากาศและเอกลักษณ์
+            </p>
+
+            <span class="project-tag">
+              DECORATIVE
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 04 -->
+
+        <article
+          class="project-card reveal"
+          data-category="construction"
+          data-title="Construction Work"
+          data-type="งานก่อสร้าง"
+          data-image="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1600&q=85">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1600&q=85"
+              alt="Construction Work">
+
+          </div>
+
+          <div class="project-overlay"></div>
+
+          <div class="project-corner tl"></div>
+          <div class="project-corner br"></div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT / 04
+            </div>
+
+            <h3>
+              Construction Work
+            </h3>
+
+            <p>
+              ตัวอย่างพื้นที่และงานก่อสร้าง
+            </p>
+
+            <span class="project-tag">
+              CONSTRUCTION
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 05 -->
+
+        <article
+          class="project-card reveal"
+          data-category="industrial"
+          data-title="Factory Surface"
+          data-type="งานพื้นโรงงาน"
+          data-image="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=85">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=85"
+              alt="Factory Surface">
+
+          </div>
+
+          <div class="project-overlay"></div>
+
+          <div class="project-corner tl"></div>
+          <div class="project-corner br"></div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT / 05
+            </div>
+
+            <h3>
+              Factory Surface
+            </h3>
+
+            <p>
+              พื้นที่ใช้งานสำหรับโรงงานและงานอุตสาหกรรม
+            </p>
+
+            <span class="project-tag">
+              INDUSTRIAL
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 06 -->
+
+        <article
+          class="project-card reveal"
+          data-category="floor"
+          data-title="PU Flooring"
+          data-type="ระบบพื้น PU"
+          data-image="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=85">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=85"
+              alt="PU Flooring">
+
+          </div>
+
+          <div class="project-overlay"></div>
+
+          <div class="project-corner tl"></div>
+          <div class="project-corner br"></div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT / 06
+            </div>
+
+            <h3>
+              PU Flooring
+            </h3>
+
+            <p>
+              แนวทางระบบพื้นสำหรับพื้นที่เฉพาะทาง
+            </p>
+
+            <span class="project-tag">
+              FLOORING
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 07 -->
+
+        <article
+          class="project-card reveal"
+          data-category="decorative"
+          data-title="Stamped Concrete"
+          data-type="คอนกรีตพิมพ์ลาย"
+          data-image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85"
+              alt="Stamped Concrete">
+
+          </div>
+
+          <div class="project-overlay"></div>
+
+          <div class="project-corner tl"></div>
+          <div class="project-corner br"></div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT / 07
+            </div>
+
+            <h3>
+              Stamped Concrete
+            </h3>
+
+            <p>
+              งานคอนกรีตพิมพ์ลายสำหรับพื้นที่ตกแต่ง
+            </p>
+
+            <span class="project-tag">
+              DECORATIVE
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- PROJECT 08 -->
+
+        <article
+          class="project-card reveal"
+          data-category="construction"
+          data-title="Building Solution"
+          data-type="งานอาคารและก่อสร้าง"
+          data-image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+              alt="Building Solution">
+
+          </div>
+
+          <div class="project-overlay"></div>
+
+          <div class="project-corner tl"></div>
+          <div class="project-corner br"></div>
+
+          <div class="project-content">
+
+            <div class="project-number">
+              PROJECT / 08
+            </div>
+
+            <h3>
+              Building Solution
+            </h3>
+
+            <p>
+              แนวทางวัสดุและงานที่เกี่ยวข้องกับอาคาร
+            </p>
+
+            <span class="project-tag">
+              CONSTRUCTION
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <div class="project-note reveal">
+
+        ✦ ภาพในหน้านี้ใช้เป็นภาพตัวอย่างสำหรับการออกแบบเว็บไซต์
+        สามารถเปลี่ยนเป็นภาพผลงานจริงของบริษัทได้ทันที
+        โดยแก้เฉพาะ URL ในส่วน <strong>data-image</strong> และ <strong>img src</strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       CTA
+  ===================================================== -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <div class="cta-inner">
+
+        <div class="reveal">
+
+          <div class="eyebrow">
+            YOUR PROJECT
+          </div>
+
+          <h2>
+
+            ให้พื้นที่ของคุณ<br>
+
+            <span style="color:var(--gold-light);">
+              มีคำตอบที่เหมาะสม
+            </span>
+
+          </h2>
+
+          <p>
+
+            ส่งรายละเอียดงานหรือสอบถามทีมงาน
+            เพื่อพูดคุยเกี่ยวกับวัสดุและระบบพื้น
+            ที่เหมาะกับพื้นที่ของคุณ
+
+          </p>
+
+        </div>
+
+
+        <div class="reveal">
+
+          <a
+            href="contact.html"
+            class="btn btn-gold">
+
+            ปรึกษาทีมงาน →
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+
+        <div>
+
+          <div class="footer-title">
+            CHATPETCH GROUP
+          </div>
+
+          <p>
+
+            บริษัท ฉัตรเพชร กรุ๊ป จำกัด<br>
+
+            โรงงานผลิต-จำหน่าย
+            วัสดุงานพื้นทุกประเภท
+
+          </p>
+
+          <p style="margin-top:12px;">
+
+            สร้างสรรค์ผลงาน •
+            มาตรฐานเข้าถึง •
+            ยืน 1 คุณภาพ
+
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-title">
+            ติดต่อเรา
+          </div>
+
+          <p>
+
+            082-8223678 คุณหญิง<br>
+            063-0630046 คุณเอ้<br>
+            085-6299778 ฝ่ายเทคนิค<br>
+            098-6710888 แอดมิน
+
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-title">
+            เมนู
+          </div>
+
+          <ul class="footer-links">
+
+            <li>
+              <a href="about.html">
+                เกี่ยวกับเรา
+              </a>
+            </li>
+
+            <li>
+              <a href="products.html">
+                สินค้าทั้งหมด
+              </a>
+            </li>
+
+            <li>
+              <a href="services.html">
+                บริการ
+              </a>
+            </li>
+
+            <li>
+              <a href="projects.html">
+                ผลงาน
+              </a>
+            </li>
+
+            <li>
+              <a href="contact.html">
+                ติดต่อเรา
+              </a>
+            </li>
+
+            <li>
+              <a href="cart.html">
+                ตะกร้าสินค้า
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <div>
+          © 2026 Chatpetch Group Co., Ltd.
+        </div>
+
+        <div>
+          10/1 ม.9 ต.นาหม่อม
+          อ.นาหม่อม จ.สงขลา 90310
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =====================================================
+       LIGHTBOX
+  ===================================================== -->
+
+  <div
+    class="lightbox"
+    id="lightbox">
+
+    <div class="lightbox-inner">
+
+      <button
+        class="close-lightbox"
+        id="closeLightbox">
+        ✕
+      </button>
+
+      <img
+        id="lightboxImage"
+        src=""
+        alt="Project">
+
+      <div class="lightbox-info">
+
+        <div>
+
+          <span id="lightboxType">
+            PROJECT
+          </span>
+
+          <h3 id="lightboxTitle">
+            Project
+          </h3>
+
+        </div>
+
+        <div style="color:#777;font-size:11px;">
+          CHATPETCH GROUP
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       FLOATING BUTTONS
+  ===================================================== -->
+
+  <button
+    class="back-top"
+    id="backTop">
+    ↑
+  </button>
+
+
+  <div class="floating">
+
+    <a
+      href="tel:0828223678"
+      class="float-btn"
+      title="โทรหาเรา">
+      ☎
+    </a>
+
+    <a
+      href="https://www.facebook.com/ChatphetchGroup"
+      target="_blank"
+      rel="noopener"
+      class="float-btn"
+      title="Facebook">
+      f
+    </a>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
+  <script>
+
+
+    /* =====================================================
+       CART COUNT
+    ===================================================== */
+
+    function getCart(){
+
+      try{
+
+        return JSON.parse(
+          localStorage.getItem(
+            "chatpetch_cart"
+          )
+        ) || [];
+
+      }catch(error){
+
+        return [];
+
+      }
+
+    }
+
+
+    function updateCartCount(){
+
+      const cart = getCart();
+
+      const total =
+        cart.reduce(
+          (sum,item) =>
+            sum +
+            Number(
+              item.quantity || 0
+            ),
+          0
+        );
+
+      const count =
+        document.getElementById(
+          "cartCount"
+        );
+
+      if(count){
+
+        count.textContent =
+          total;
+
+      }
+
+    }
+
+
+    updateCartCount();
+
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const menuToggle =
+      document.getElementById(
+        "menuToggle"
+      );
+
+    const navMenu =
+      document.getElementById(
+        "navMenu"
+      );
+
+
+    menuToggle.addEventListener(
+      "click",
+      function(){
+
+        navMenu.classList.toggle(
+          "open"
+        );
+
+        this.textContent =
+          navMenu.classList.contains(
+            "open"
+          )
+          ? "✕"
+          : "☰";
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        ".nav-menu a"
+      )
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          function(){
+
+            navMenu.classList.remove(
+              "open"
+            );
+
+            menuToggle.textContent =
+              "☰";
+
+          }
+        );
+
+      });
+
+
+
+    /* =====================================================
+       FILTER
+    ===================================================== */
+
+    const filterButtons =
+      document.querySelectorAll(
+        ".filter-btn"
+      );
+
+    const projectCards =
+      document.querySelectorAll(
+        ".project-card"
+      );
+
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener(
+        "click",
+        function(){
+
+          filterButtons.forEach(btn =>
+            btn.classList.remove(
+              "active"
+            )
+          );
+
+          this.classList.add(
+            "active"
+          );
+
+          const filter =
+            this.dataset.filter;
+
+
+          projectCards.forEach(card => {
+
+            const category =
+              card.dataset.category;
+
+
+            if(
+              filter === "all" ||
+              category === filter
+            ){
+
+              card.classList.remove(
+                "hidden"
+              );
+
+              card.style.animation =
+                "none";
+
+              void card.offsetWidth;
+
+              card.style.animation =
+                "cardIn .5s ease both";
+
+            }else{
+
+              card.classList.add(
+                "hidden"
+              );
+
+            }
+
+          });
+
+        }
+      );
+
+    });
+
+
+
+    /* =====================================================
+       LIGHTBOX
+    ===================================================== */
+
+    const lightbox =
+      document.getElementById(
+        "lightbox"
+      );
+
+    const lightboxImage =
+      document.getElementById(
+        "lightboxImage"
+      );
+
+    const lightboxTitle =
+      document.getElementById(
+        "lightboxTitle"
+      );
+
+    const lightboxType =
+      document.getElementById(
+        "lightboxType"
+      );
+
+    const closeLightbox =
+      document.getElementById(
+        "closeLightbox"
+      );
+
+
+    projectCards.forEach(card => {
+
+      card.addEventListener(
+        "click",
+        function(){
+
+          const image =
+            this.dataset.image;
+
+          const title =
+            this.dataset.title;
+
+          const type =
+            this.dataset.type;
+
+
+          lightboxImage.src =
+            image;
+
+          lightboxImage.alt =
+            title;
+
+          lightboxTitle.textContent =
+            title;
+
+          lightboxType.textContent =
+            type;
+
+
+          lightbox.classList.add(
+            "show"
+          );
+
+          document.body.style.overflow =
+            "hidden";
+
+        }
+      );
+
+    });
+
+
+    function closeBox(){
+
+      lightbox.classList.remove(
+        "show"
+      );
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    closeLightbox.addEventListener(
+      "click",
+      closeBox
+    );
+
+
+    lightbox.addEventListener(
+      "click",
+      function(event){
+
+        if(
+          event.target === lightbox
+        ){
+
+          closeBox();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      function(event){
+
+        if(
+          event.key === "Escape"
+        ){
+
+          closeBox();
+
+        }
+
+      }
+    );
+
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if(
+              entry.isIntersecting
+            ){
+
+              entry.target.classList.add(
+                "show"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold:.1
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        ".reveal"
+      )
+      .forEach(element => {
+
+        observer.observe(
+          element
+        );
+
+      });
+
+
+
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
+
+    const backTop =
+      document.getElementById(
+        "backTop"
+      );
+
+
+    window.addEventListener(
+      "scroll",
+      function(){
+
+        if(
+          window.scrollY > 500
+        ){
+
+          backTop.classList.add(
+            "show"
+          );
+
+        }else{
+
+          backTop.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
+
+    backTop.addEventListener(
+      "click",
+      function(){
+
+        window.scrollTo({
+
+          top:0,
+
+          behavior:"smooth"
+
+        });
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>

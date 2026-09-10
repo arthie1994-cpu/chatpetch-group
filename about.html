@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เกี่ยวกับเรา | ฉัตรเพชร กรุ๊ป</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   CHATPETCH GROUP — PREMIUM DESIGN SYSTEM
+===================================================== */
+
+:root{
+    --black:#050505;
+    --black2:#080808;
+    --dark:#0d0d0d;
+    --dark2:#111111;
+    --dark3:#181818;
+
+    --gold:#c8a45b;
+    --gold-light:#f0d991;
+    --gold-dark:#806127;
+
+    --white:#ffffff;
+    --soft:#e8e8e8;
+    --gray:#9b9b9b;
+
+    --line:rgba(255,255,255,.09);
+    --gold-line:rgba(200,164,91,.28);
+
+    --container:1240px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Prompt','Kanit',sans-serif;
+    background:
+        radial-gradient(circle at 10% 15%,rgba(200,164,91,.09),transparent 28%),
+        radial-gradient(circle at 90% 80%,rgba(200,164,91,.07),transparent 30%),
+        #050505;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* GRID BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-3;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+    background-size:55px 55px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+}
+
+/* GOLD AMBIENT LIGHT */
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(200,164,91,.06);
+    filter:blur(100px);
+    top:15%;
+    right:-180px;
+    pointer-events:none;
+    z-index:-2;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        #806127,
+        #c8a45b,
+        #806127
+    );
+    border-radius:20px;
+}
+
+/* CONTAINER */
+
+.container{
+    width:min(var(--container),92%);
+    margin:auto;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(5,5,5,.82);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(200,164,91,.18);
+}
+
+.header-inner{
+    height:84px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    color:#fff;
+    text-decoration:none;
+}
+
+.logo-mark{
+    width:48px;
+    height:48px;
+
+    border:1px solid var(--gold);
+
+    display:grid;
+    place-items:center;
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(200,164,91,.18),
+            rgba(255,255,255,.02)
+        );
+
+    box-shadow:
+        0 0 25px rgba(200,164,91,.08);
+}
+
+.logo-mark::before{
+    content:"";
+    position:absolute;
+    inset:5px;
+    border:1px solid rgba(200,164,91,.25);
+}
+
+.logo-mark span{
+    color:var(--gold-light);
+    font-size:17px;
+    font-weight:700;
+    position:relative;
+}
+
+.logo-text strong{
+    display:block;
+    font-size:18px;
+    letter-spacing:1px;
+}
+
+.logo-text small{
+    display:block;
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:-2px;
+}
+
+/* NAV */
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.nav-menu a{
+    position:relative;
+
+    color:#ccc;
+    text-decoration:none;
+
+    padding:12px 15px;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+.nav-menu a::after{
+    content:"";
+    position:absolute;
+    bottom:4px;
+    left:15px;
+    right:15px;
+
+    height:1px;
+
+    background:var(--gold);
+
+    transform:scaleX(0);
+    transition:.3s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active{
+    color:#fff;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after{
+    transform:scaleX(1);
+}
+
+.nav-shop{
+    border:1px solid var(--gold-line);
+    background:rgba(200,164,91,.08);
+}
+
+/* MOBILE */
+
+.mobile-btn{
+    display:none;
+
+    width:45px;
+    height:45px;
+
+    background:transparent;
+    border:1px solid var(--gold-line);
+
+    color:var(--gold-light);
+
+    font-size:22px;
+}
+
+/* =====================================================
+   PAGE HERO
+===================================================== */
+
+.page-hero{
+    min-height:520px;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+    overflow:hidden;
+
+    border-bottom:1px solid var(--line);
+}
+
+.page-hero::before{
+    content:"ABOUT / 01";
+
+    position:absolute;
+    top:70px;
+    left:4%;
+
+    color:rgba(200,164,91,.22);
+
+    font-size:11px;
+    letter-spacing:5px;
+}
+
+.page-hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:520px;
+    height:520px;
+
+    border:1px solid rgba(200,164,91,.16);
+    border-radius:50%;
+
+    right:-180px;
+    top:20px;
+
+    box-shadow:
+        0 0 0 70px rgba(200,164,91,.025),
+        0 0 0 140px rgba(200,164,91,.015);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    padding:100px 0;
+}
+
+.eyebrow{
+    color:var(--gold-light);
+
+    font-size:12px;
+    letter-spacing:4px;
+
+    margin-bottom:22px;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:45px;
+    height:1px;
+    background:var(--gold);
+}
+
+.hero-title{
+    font-size:clamp(45px,7vw,90px);
+
+    line-height:1.02;
+
+    font-weight:600;
+
+    letter-spacing:-2px;
+
+    max-width:850px;
+}
+
+.hero-title span{
+    display:block;
+
+    color:transparent;
+
+    background:
+        linear-gradient(
+            110deg,
+            #806127,
+            #f0d991,
+            #c8a45b,
+            #806127
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+}
+
+.hero-description{
+    margin-top:30px;
+
+    color:#aaa;
+
+    max-width:680px;
+
+    line-height:1.9;
+
+    font-size:16px;
+}
+
+/* DECORATIVE NUMBER */
+
+.hero-number{
+    position:absolute;
+
+    right:8%;
+    bottom:55px;
+
+    font-size:160px;
+    line-height:1;
+
+    font-weight:700;
+
+    color:rgba(255,255,255,.025);
+
+    user-select:none;
+}
+
+/* =====================================================
+   GOLD LINE
+===================================================== */
+
+.gold-line{
+    width:100%;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    opacity:.55;
+}
+
+/* =====================================================
+   ABOUT INTRO
+===================================================== */
+
+.about-section{
+    padding:120px 0;
+
+    position:relative;
+}
+
+.section-label{
+    color:var(--gold);
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-size:clamp(32px,4vw,55px);
+
+    line-height:1.15;
+
+    font-weight:500;
+
+    max-width:800px;
+}
+
+.section-title span{
+    color:var(--gold-light);
+}
+
+.about-grid{
+    margin-top:65px;
+
+    display:grid;
+    grid-template-columns:
+        1.05fr
+        .95fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+/* IMAGE */
+
+.about-image{
+    min-height:520px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid var(--gold-line);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(200,164,91,.18),
+            rgba(0,0,0,.9)
+        );
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+
+    min-height:520px;
+
+    object-fit:cover;
+
+    opacity:.72;
+
+    transition:.7s;
+}
+
+.about-image:hover img{
+    transform:scale(1.05);
+}
+
+.about-image::before{
+    content:"CHATPETCH";
+
+    position:absolute;
+
+    z-index:2;
+
+    top:28px;
+    left:28px;
+
+    color:var(--gold-light);
+
+    font-size:10px;
+
+    letter-spacing:5px;
+}
+
+.about-image::after{
+    content:"";
+
+    position:absolute;
+
+    inset:18px;
+
+    border:1px solid rgba(200,164,91,.18);
+
+    pointer-events:none;
+}
+
+/* CONTENT */
+
+.about-copy{
+    color:#aaa;
+
+    line-height:2;
+
+    font-size:16px;
+}
+
+.about-copy p{
+    margin-bottom:22px;
+}
+
+.highlight{
+    color:#fff;
+}
+
+.gold{
+    color:var(--gold-light);
+}
+
+/* =====================================================
+   COMPANY CARDS
+===================================================== */
+
+.company-cards{
+    margin-top:65px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.company-card{
+    position:relative;
+
+    padding:38px 30px;
+
+    min-height:220px;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.015)
+        );
+
+    backdrop-filter:blur(10px);
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.company-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:55px;
+    height:1px;
+
+    background:var(--gold);
+}
+
+.company-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    border-radius:50%;
+
+    background:rgba(200,164,91,.08);
+
+    filter:blur(35px);
+
+    right:-50px;
+    bottom:-50px;
+}
+
+.company-card:hover{
+    transform:translateY(-8px);
+
+    border-color:var(--gold-line);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        0 0 30px rgba(200,164,91,.05);
+}
+
+.card-number{
+    color:var(--gold);
+
+    font-size:12px;
+
+    letter-spacing:3px;
+}
+
+.company-card h3{
+    margin-top:25px;
+
+    font-size:24px;
+
+    font-weight:500;
+}
+
+.company-card p{
+    margin-top:14px;
+
+    color:#888;
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+
+.history-section{
+    padding:120px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(200,164,91,.025),
+            transparent
+        );
+}
+
+.timeline{
+    position:relative;
+
+    margin-top:70px;
+
+    padding-left:40px;
+}
+
+.timeline::before{
+    content:"";
+
+    position:absolute;
+
+    left:7px;
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            var(--gold),
+            rgba(200,164,91,.05)
+        );
+}
+
+.timeline-item{
+    position:relative;
+
+    padding:0 0 60px 35px;
+}
+
+.timeline-item::before{
+    content:"";
+
+    position:absolute;
+
+    left:-40px;
+    top:5px;
+
+    width:14px;
+    height:14px;
+
+    border:1px solid var(--gold);
+
+    background:#050505;
+
+    box-shadow:
+        0 0 0 5px rgba(200,164,91,.07),
+        0 0 25px rgba(200,164,91,.2);
+}
+
+.timeline-year{
+    color:var(--gold-light);
+
+    font-size:14px;
+
+    letter-spacing:3px;
+}
+
+.timeline-item h3{
+    font-size:27px;
+
+    margin:12px 0;
+}
+
+.timeline-item p{
+    color:#888;
+
+    line-height:1.9;
+
+    max-width:800px;
+}
+
+/* =====================================================
+   VALUES
+===================================================== */
+
+.values-section{
+    padding:120px 0;
+}
+
+.values-grid{
+    margin-top:60px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:1px;
+
+    background:rgba(200,164,91,.18);
+
+    border:1px solid rgba(200,164,91,.18);
+}
+
+.value{
+    padding:55px 40px;
+
+    min-height:280px;
+
+    background:#090909;
+
+    transition:.35s;
+}
+
+.value:hover{
+    background:#111;
+
+    box-shadow:
+        inset 0 0 60px rgba(200,164,91,.04);
+}
+
+.value-icon{
+    font-size:32px;
+
+    color:var(--gold-light);
+
+    margin-bottom:25px;
+}
+
+.value h3{
+    font-size:24px;
+
+    font-weight:500;
+
+    margin-bottom:15px;
+}
+
+.value p{
+    color:#888;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+    padding:100px 0;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(200,164,91,.1),
+            transparent 55%
+        );
+}
+
+.cta h2{
+    font-size:clamp(32px,5vw,60px);
+
+    font-weight:500;
+}
+
+.cta h2 span{
+    color:var(--gold-light);
+}
+
+.cta p{
+    color:#888;
+
+    margin:20px auto 35px;
+
+    max-width:600px;
+}
+
+.btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:180px;
+
+    padding:15px 25px;
+
+    text-decoration:none;
+
+    font-family:inherit;
+
+    transition:.35s;
+}
+
+.btn-gold{
+    color:#050505;
+
+    background:
+        linear-gradient(
+            110deg,
+            #806127,
+            #f0d991,
+            #c8a45b
+        );
+
+    font-weight:600;
+}
+
+.btn-gold:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(200,164,91,.22);
+}
+
+.btn-line{
+    color:#fff;
+
+    border:1px solid var(--gold-line);
+
+    margin-left:10px;
+}
+
+.btn-line:hover{
+    border-color:var(--gold);
+
+    background:rgba(200,164,91,.08);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:70px 0 30px;
+
+    background:#030303;
+
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.4fr
+        1fr
+        1fr;
+
+    gap:50px;
+}
+
+.footer-brand p{
+    margin-top:20px;
+
+    color:#777;
+
+    max-width:420px;
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+.footer-title{
+    color:var(--gold-light);
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    margin-bottom:20px;
+}
+
+.footer-links{
+    list-style:none;
+}
+
+.footer-links li{
+    margin-bottom:10px;
+}
+
+.footer-links a{
+    color:#777;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:var(--gold-light);
+}
+
+.footer-bottom{
+    margin-top:60px;
+
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#555;
+
+    font-size:12px;
+}
+
+/* =====================================================
+   FLOATING CONTACT
+===================================================== */
+
+.float-contact{
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    z-index:900;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+}
+
+.float-contact a{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:rgba(15,15,15,.88);
+
+    backdrop-filter:blur(10px);
+
+    transition:.3s;
+}
+
+.float-contact a:hover{
+    transform:translateX(-5px);
+
+    border-color:var(--gold);
+
+    box-shadow:
+        0 0 25px rgba(200,164,91,.18);
+}
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:none;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:900px){
+
+    .nav-menu{
+        position:absolute;
+
+        top:84px;
+        left:0;
+        right:0;
+
+        display:none;
+
+        flex-direction:column;
+
+        padding:20px;
+
+        background:rgba(5,5,5,.97);
+
+        border-bottom:1px solid var(--gold-line);
+    }
+
+    .nav-menu.open{
+        display:flex;
+    }
+
+    .nav-menu a{
+        width:100%;
+    }
+
+    .mobile-btn{
+        display:block;
+    }
+
+    .hero-number{
+        right:-20px;
+        font-size:100px;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+    .company-cards,
+    .values-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+
+        gap:10px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .header-inner{
+        height:72px;
+    }
+
+    .nav-menu{
+        top:72px;
+    }
+
+    .logo-mark{
+        width:42px;
+        height:42px;
+    }
+
+    .logo-text strong{
+        font-size:15px;
+    }
+
+    .page-hero{
+        min-height:430px;
+    }
+
+    .hero-content{
+        padding:80px 0;
+    }
+
+    .hero-title{
+        font-size:45px;
+    }
+
+    .about-section,
+    .history-section,
+    .values-section{
+        padding:80px 0;
+    }
+
+    .about-image,
+    .about-image img{
+        min-height:350px;
+    }
+
+    .company-card{
+        min-height:190px;
+    }
+
+    .timeline{
+        padding-left:25px;
+    }
+
+    .timeline-item{
+        padding-left:25px;
+    }
+
+    .btn{
+        width:100%;
+        margin:5px 0;
+    }
+
+    .float-contact{
+        right:12px;
+        bottom:12px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="container header-inner">
+
+<a href="index.html" class="logo">
+
+    <div class="logo-mark">
+        <span>CG</span>
+    </div>
+
+    <div class="logo-text">
+        <strong>ฉัตรเพชร กรุ๊ป</strong>
+        <small>CHATPETCH GROUP</small>
+    </div>
+
+</a>
+
+<button class="mobile-btn" id="mobileBtn">
+    ☰
+</button>
+
+<nav class="nav-menu" id="navMenu">
+
+    <a href="index.html">
+        หน้าแรก
+    </a>
+
+    <a href="about.html" class="active">
+        เกี่ยวกับเรา
+    </a>
+
+    <a href="products.html">
+        สินค้า
+    </a>
+
+    <a href="services.html">
+        บริการ
+    </a>
+
+    <a href="projects.html">
+        ผลงาน
+    </a>
+
+    <a href="contact.html">
+        ติดต่อเรา
+    </a>
+
+    <a href="cart.html" class="nav-shop">
+        🛒 ตะกร้า
+        <span id="cartCount">0</span>
+    </a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="page-hero">
+
+<div class="container">
+
+<div class="hero-content reveal">
+
+<div class="eyebrow">
+    ABOUT CHATPETCH GROUP
+</div>
+
+<h1 class="hero-title">
+    มากกว่าวัสดุ
+    <span>คือมาตรฐานของงาน</span>
+</h1>
+
+<p class="hero-description">
+    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+    ผู้ผลิตและจำหน่ายวัสดุสำหรับงานพื้น
+    พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+</p>
+
+</div>
+
+</div>
+
+<div class="hero-number">
+    01
+</div>
+
+</section>
+
+
+<div class="gold-line"></div>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="about-section">
+
+<div class="container">
+
+<div class="section-label reveal">
+    OUR COMPANY
+</div>
+
+<h2 class="section-title reveal">
+    ฉัตรเพชร กรุ๊ป
+    <span>สร้างมาตรฐานให้งานพื้น</span>
+</h2>
+
+
+<div class="about-grid">
+
+<div class="about-image reveal">
+
+<img
+src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=85"
+alt="งานก่อสร้างและวัสดุ"
+>
+
+</div>
+
+
+<div class="about-copy reveal">
+
+<p>
+    <strong class="highlight">
+        บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+    </strong>
+    ดำเนินธุรกิจเกี่ยวกับวัสดุและอุปกรณ์
+    สำหรับงานพื้น โดยมุ่งเน้นการคัดสรรสินค้า
+    และโซลูชันที่เหมาะสมกับลักษณะของงาน
+</p>
+
+<p>
+    เราให้ความสำคัญตั้งแต่การเลือกวัสดุ
+    การเตรียมพื้นผิว ไปจนถึงขั้นตอนการติดตั้ง
+    เพื่อให้งานแต่ละประเภทสามารถเลือกใช้ระบบพื้น
+    ได้อย่างเหมาะสม
+</p>
+
+<p>
+    พร้อมบริการ
+    <span class="gold">
+        ให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+    </span>
+    สำหรับลูกค้าทั้งงานโครงการ งานก่อสร้าง
+    และผู้ที่ต้องการเลือกซื้อวัสดุด้วยตนเอง
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     COMPANY INFORMATION
+===================================================== -->
+
+<section class="values-section">
+
+<div class="container">
+
+<div class="section-label reveal">
+    COMPANY INFORMATION
+</div>
+
+<h2 class="section-title reveal">
+    ข้อมูลบริษัท
+</h2>
+
+
+<div class="company-cards">
+
+<div class="company-card reveal">
+
+<div class="card-number">
+    01 / COMPANY
+</div>
+
+<h3>
+    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+</h3>
+
+<p>
+    CHATPETCH GROUP CO., LTD.
+</p>
+
+</div>
+
+
+<div class="company-card reveal">
+
+<div class="card-number">
+    02 / REGISTER
+</div>
+
+<h3>
+    เลขทะเบียนนิติบุคคล
+</h3>
+
+<p>
+    0905566006436
+</p>
+
+</div>
+
+
+<div class="company-card reveal">
+
+<div class="card-number">
+    03 / CAPITAL
+</div>
+
+<h3>
+    ทุนจดทะเบียน
+</h3>
+
+<p>
+    5,000,000 บาท
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     HISTORY
+===================================================== -->
+
+<section class="history-section">
+
+<div class="container">
+
+<div class="section-label reveal">
+    OUR JOURNEY
+</div>
+
+<h2 class="section-title reveal">
+    เส้นทางของ
+    <span>ฉัตรเพชร กรุ๊ป</span>
+</h2>
+
+
+<div class="timeline">
+
+<div class="timeline-item reveal">
+
+<div class="timeline-year">
+    2556
+</div>
+
+<h3>
+    จุดเริ่มต้นของธุรกิจ
+</h3>
+
+<p>
+    เริ่มต้นจากการดำเนินธุรกิจในรูปแบบ
+    ห้างหุ้นส่วนจำกัด ฉัตรเพชร กรุ๊ป
+    โดยมีธุรกิจเกี่ยวข้องกับงานรับเหมาก่อสร้าง
+</p>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<div class="timeline-year">
+    2566
+</div>
+
+<h3>
+    ก้าวสู่ บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+</h3>
+
+<p>
+    จดทะเบียนจัดตั้งบริษัท ฉัตรเพชร กรุ๊ป จำกัด
+    เมื่อวันที่ 27 กันยายน 2566
+    พร้อมทุนจดทะเบียน 5,000,000 บาท
+</p>
+
+</div>
+
+
+<div class="timeline-item reveal">
+
+<div class="timeline-year">
+    TODAY
+</div>
+
+<h3>
+    วัสดุงานพื้นและโซลูชันครบวงจร
+</h3>
+
+<p>
+    ดำเนินธุรกิจด้านการจำหน่ายวัสดุและอุปกรณ์
+    สำหรับงานพื้น รวมถึงผลิตภัณฑ์ที่เกี่ยวข้อง
+    และบริการให้คำปรึกษาด้านระบบพื้น
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     VALUES
+===================================================== -->
+
+<section class="values-section">
+
+<div class="container">
+
+<div class="section-label reveal">
+    OUR VALUES
+</div>
+
+<h2 class="section-title reveal">
+    หลักคิดในการทำงาน
+</h2>
+
+
+<div class="values-grid">
+
+<div class="value reveal">
+
+<div class="value-icon">
+    ♠
+</div>
+
+<h3>
+    สร้างสรรค์ผลงาน
+</h3>
+
+<p>
+    มองหาแนวทางและวัสดุที่เหมาะสม
+    เพื่อให้งานพื้นตอบโจทย์ทั้งด้านการใช้งาน
+    และความสวยงาม
+</p>
+
+</div>
+
+
+<div class="value reveal">
+
+<div class="value-icon">
+    ◆
+</div>
+
+<h3>
+    มาตรฐานเข้าถึง
+</h3>
+
+<p>
+    ให้ความสำคัญกับข้อมูลสินค้า
+    การเลือกใช้วัสดุ และคำแนะนำ
+    ที่เข้าใจง่ายและนำไปใช้งานได้จริง
+</p>
+
+</div>
+
+
+<div class="value reveal">
+
+<div class="value-icon">
+    ★
+</div>
+
+<h3>
+    ยืน 1 คุณภาพ
+</h3>
+
+<p>
+    มุ่งเน้นคุณภาพของสินค้า
+    และความเหมาะสมกับลักษณะงาน
+    เพื่อให้ลูกค้าเลือกใช้งานได้อย่างมั่นใจ
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+<div class="container reveal">
+
+<h2>
+    พร้อมเริ่มต้น
+    <span>งานพื้นของคุณ?</span>
+</h2>
+
+<p>
+    เลือกชมสินค้า หรือพูดคุยกับทีมงาน
+    เพื่อขอคำแนะนำเกี่ยวกับระบบพื้น
+    ที่เหมาะกับงานของคุณ
+</p>
+
+<a href="products.html" class="btn btn-gold">
+    ดูสินค้าทั้งหมด →
+</a>
+
+<a href="contact.html" class="btn btn-line">
+    ติดต่อเรา
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div class="footer-brand">
+
+<div class="logo">
+
+<div class="logo-mark">
+    <span>CG</span>
+</div>
+
+<div class="logo-text">
+    <strong>ฉัตรเพชร กรุ๊ป</strong>
+    <small>CHATPETCH GROUP</small>
+</div>
+
+</div>
+
+<p>
+    โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท
+    พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+</p>
+
+</div>
+
+
+<div>
+
+<div class="footer-title">
+    NAVIGATION
+</div>
+
+<ul class="footer-links">
+
+<li>
+<a href="index.html">หน้าแรก</a>
+</li>
+
+<li>
+<a href="about.html">เกี่ยวกับเรา</a>
+</li>
+
+<li>
+<a href="products.html">สินค้า</a>
+</li>
+
+<li>
+<a href="services.html">บริการ</a>
+</li>
+
+<li>
+<a href="projects.html">ผลงาน</a>
+</li>
+
+<li>
+<a href="contact.html">ติดต่อเรา</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<div class="footer-title">
+    CONTACT
+</div>
+
+<ul class="footer-links">
+
+<li>
+<a href="tel:0828223678">
+    082-8223678 คุณหญิง
+</a>
+</li>
+
+<li>
+<a href="tel:0630630046">
+    063-0630046 คุณเอ้
+</a>
+</li>
+
+<li>
+<a href="tel:0856299778">
+    085-6299778 ฝ่ายเทคนิค
+</a>
+</li>
+
+<li>
+<a href="tel:0986710888">
+    098-6710888 แอดมิน
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+<div>
+    © 2026 CHATPETCH GROUP CO., LTD.
+</div>
+
+<div>
+    10/1 ม.9 ต.นาหม่อม อ.นาหม่อม จ.สงขลา 90310
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     FLOATING CONTACT
+===================================================== -->
+
+<div class="float-contact">
+
+<a href="tel:0828223678" title="โทรหาเรา">
+    ☎
+</a>
+
+<a
+href="https://www.facebook.com/ChatphetchGroup"
+target="_blank"
+title="Facebook"
+>
+    f
+</a>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const mobileBtn =
+    document.getElementById("mobileBtn");
+
+const navMenu =
+    document.getElementById("navMenu");
+
+mobileBtn.addEventListener("click",()=>{
+
+    navMenu.classList.toggle("open");
+
+});
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+revealElements.forEach(el=>{
+    observer.observe(el);
+});
+
+
+/* =====================================================
+   CART COUNT
+===================================================== */
+
+function updateCartCount(){
+
+    try{
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem("chatpetch_cart")
+            ) || [];
+
+        let count = 0;
+
+        cart.forEach(item=>{
+
+            count += Number(item.qty || 1);
+
+        });
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        if(cartCount){
+            cartCount.textContent = count;
+        }
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+}
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>
