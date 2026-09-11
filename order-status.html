@@ -3,23 +3,12 @@
 <head>
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ติดตามคำสั่งซื้อ | CHATPETCH GROUP</title>
 
-<link
-  rel="preconnect"
-  href="https://fonts.googleapis.com"
->
-
-<link
-  rel="preconnect"
-  href="https://fonts.gstatic.com"
-  crossorigin
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
   href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
@@ -85,17 +74,24 @@ body{
 
   background:
     radial-gradient(
-      circle at 50% 15%,
-      rgba(200,164,91,.09),
+      circle at 50% 12%,
+      rgba(200,164,91,.10),
       transparent 35%
     ),
-    var(--black);
+    linear-gradient(
+      180deg,
+      #050505 0%,
+      #080808 45%,
+      #050505 100%
+    );
 
   overflow-x:hidden;
 }
 
 
-/* GRID BACKGROUND */
+/* =========================================================
+   PREMIUM GRID BACKGROUND
+========================================================= */
 
 body::before{
   content:"";
@@ -104,6 +100,8 @@ body::before{
   inset:0;
 
   pointer-events:none;
+
+  z-index:-2;
 
   opacity:.28;
 
@@ -119,15 +117,32 @@ body::before{
     );
 
   background-size:48px 48px;
+}
 
-  mask-image:
-    linear-gradient(
-      to bottom,
-      black,
-      transparent 90%
-    );
+body::after{
+  content:"";
+
+  position:fixed;
+
+  width:650px;
+  height:650px;
+
+  top:-250px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  pointer-events:none;
 
   z-index:-1;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.12),
+      rgba(200,164,91,.035) 30%,
+      transparent 70%
+    );
 }
 
 
@@ -138,44 +153,49 @@ body::before{
 .site-header{
   position:sticky;
   top:0;
+
   z-index:9999;
 
   background:
-    rgba(5,5,5,.95);
+    rgba(5,5,5,.94);
 
   border-bottom:
-    1px solid rgba(255,255,255,.08);
+    1px solid
+    rgba(255,255,255,.08);
 
   backdrop-filter:blur(18px);
   -webkit-backdrop-filter:blur(18px);
 }
 
 .header-inner{
-  width:min(
-    calc(100% - 40px),
-    var(--container)
-  );
+  width:
+    min(
+      calc(100% - 40px),
+      var(--container)
+    );
 
   min-height:94px;
 
   margin:auto;
 
   display:flex;
+
   align-items:center;
 
   gap:28px;
 }
 
 
-/* LOGO */
+/* =========================================================
+   LOGO
+========================================================= */
 
 .brand{
   display:flex;
+
   align-items:center;
 
-  gap:12px;
-
-  min-width:max-content;
+  flex-shrink:0;
 
   text-decoration:none;
 }
@@ -184,17 +204,19 @@ body::before{
   width:62px;
   height:62px;
 
-  object-fit:contain;
-
   display:block;
+
+  object-fit:contain;
 
   filter:
     drop-shadow(
-      0 0 10px
-      rgba(200,164,91,.35)
+      0 0 12px
+      rgba(200,164,91,.30)
     );
 
-  transition:.3s ease;
+  transition:
+    transform .3s ease,
+    filter .3s ease;
 }
 
 .brand:hover .brand-logo{
@@ -207,70 +229,51 @@ body::before{
     );
 }
 
-.brand-text{
-  display:flex;
-  flex-direction:column;
 
-  line-height:1.05;
-}
-
-.brand-text strong{
-  color:var(--gold-light);
-
-  font-family:Arial,sans-serif;
-
-  font-size:17px;
-
-  letter-spacing:1.5px;
-}
-
-.brand-text span{
-  margin-top:5px;
-
-  color:#888;
-
-  font-family:Arial,sans-serif;
-
-  font-size:8px;
-
-  letter-spacing:2px;
-}
-
-
-/* NAV */
+/* =========================================================
+   NAV
+========================================================= */
 
 .nav-menu{
   flex:1;
 
   display:flex;
+
   align-items:center;
+
   justify-content:flex-end;
 
-  gap:27px;
+  gap:26px;
 }
 
 .nav-menu a{
   position:relative;
 
-  display:inline-flex;
-  align-items:center;
-
   min-height:44px;
 
-  color:#aaa;
+  display:inline-flex;
+
+  align-items:center;
+
+  color:#a8a8a8;
 
   text-decoration:none;
 
   font-size:15px;
+
   font-weight:500;
 
   white-space:nowrap;
 
-  transition:.25s ease;
+  transition:
+    color .25s ease,
+    transform .25s ease;
 }
 
 .nav-menu a:hover{
   color:var(--gold-light);
+
+  transform:translateY(-1px);
 }
 
 .nav-menu a::after{
@@ -278,8 +281,8 @@ body::before{
 
   position:absolute;
 
-  bottom:3px;
   left:50%;
+  bottom:3px;
 
   width:0;
   height:2px;
@@ -294,39 +297,46 @@ body::before{
       transparent
     );
 
-  transition:.3s ease;
+  transition:
+    width .3s ease;
 }
 
 .nav-menu a:hover::after{
   width:100%;
 }
 
-.track-link{
-  color:var(--gold-light) !important;
+.nav-menu .track-link{
+  color:var(--gold-light);
 }
 
 
-/* CART */
+/* =========================================================
+   CART
+========================================================= */
 
 .nav-cart{
   display:inline-flex !important;
+
   align-items:center;
+
   justify-content:center;
 
   gap:10px;
 
+  min-height:50px !important;
+
   padding:
     0 12px
-    0 15px;
+    0 16px;
 
   border:
     1px solid
-    rgba(200,164,91,.32);
+    rgba(200,164,91,.34);
 
   border-radius:12px;
 
   background:
-    rgba(200,164,91,.04);
+    rgba(200,164,91,.035);
 }
 
 .nav-cart::after{
@@ -338,6 +348,7 @@ body::before{
   height:25px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -350,10 +361,14 @@ body::before{
   font-family:Arial,sans-serif;
 
   font-size:12px;
+
+  font-weight:700;
 }
 
 
-/* MOBILE */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
 .mobile-toggle{
   display:none;
@@ -385,9 +400,9 @@ body::before{
   position:relative;
 
   padding:
-    100px
+    105px
     20px
-    65px;
+    70px;
 
   text-align:center;
 
@@ -399,22 +414,44 @@ body::before{
 
   position:absolute;
 
-  width:500px;
-  height:500px;
+  width:520px;
+  height:520px;
 
+  top:-280px;
   left:50%;
-  top:-250px;
 
   transform:translateX(-50%);
 
   background:
     radial-gradient(
       circle,
-      rgba(200,164,91,.15),
+      rgba(200,164,91,.16),
       transparent 68%
     );
 
   pointer-events:none;
+}
+
+.hero::after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  bottom:20px;
+
+  width:100px;
+  height:1px;
+
+  transform:translateX(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--gold),
+      transparent
+    );
 }
 
 .eyebrow{
@@ -426,20 +463,22 @@ body::before{
 
   gap:10px;
 
-  margin-bottom:18px;
+  margin-bottom:20px;
 
   color:var(--gold);
 
   font-size:14px;
 
-  letter-spacing:2px;
+  font-weight:500;
+
+  letter-spacing:3px;
 }
 
 .eyebrow::before,
 .eyebrow::after{
   content:"";
 
-  width:35px;
+  width:38px;
   height:1px;
 
   background:
@@ -464,21 +503,23 @@ body::before{
 
   font-size:
     clamp(
-      42px,
+      46px,
       7vw,
-      82px
+      84px
     );
 
   line-height:1;
 
   font-weight:700;
 
+  letter-spacing:-1px;
+
   background:
     linear-gradient(
       135deg,
-      #fff 20%,
+      #ffffff 15%,
       var(--gold-light) 50%,
-      #fff 80%
+      #ffffff 85%
     );
 
   -webkit-background-clip:text;
@@ -488,39 +529,48 @@ body::before{
 }
 
 .hero p{
-  max-width:650px;
+  max-width:680px;
 
-  margin:24px auto 0;
+  margin:
+    25px
+    auto
+    0;
 
   color:#999;
 
   font-size:17px;
 
-  line-height:1.8;
+  line-height:1.9;
 }
 
 
 /* =========================================================
-   CONTENT
+   MAIN
 ========================================================= */
 
 .container{
-  width:min(
-    calc(100% - 40px),
-    900px
-  );
+  width:
+    min(
+      calc(100% - 40px),
+      920px
+    );
 
   margin:auto;
 }
 
+
+/* =========================================================
+   TRACK CARD
+========================================================= */
+
 .track-card{
   position:relative;
 
-  padding:40px;
+  padding:42px;
 
   border:
     1px solid
-    rgba(200,164,91,.22);
+    rgba(200,164,91,.23);
 
   border-radius:24px;
 
@@ -532,10 +582,13 @@ body::before{
     );
 
   box-shadow:
-    0 30px 80px
-    rgba(0,0,0,.35);
+    0 35px 100px
+    rgba(0,0,0,.38);
 
-  backdrop-filter:blur(16px);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  overflow:hidden;
 }
 
 .track-card::before{
@@ -545,33 +598,63 @@ body::before{
 
   inset:0;
 
-  border-radius:24px;
-
   pointer-events:none;
+
+  border-radius:24px;
 
   background:
     linear-gradient(
       135deg,
       rgba(240,217,145,.08),
-      transparent 35%
+      transparent 32%
     );
 }
+
+.track-card::after{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:10%;
+
+  width:80%;
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(240,217,145,.45),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   FORM TITLE
+========================================================= */
 
 .form-title{
   position:relative;
 
   margin-bottom:28px;
 
-  font-size:26px;
+  color:#fff;
+
+  font-size:28px;
+
   font-weight:600;
 }
 
 .form-title span{
-  color:var(--gold);
+  color:var(--gold-light);
 }
 
 
-/* FORM */
+/* =========================================================
+   FORM
+========================================================= */
 
 .form-grid{
   position:relative;
@@ -586,27 +669,26 @@ body::before{
 
 .form-group{
   display:flex;
+
   flex-direction:column;
 
   gap:9px;
 }
 
-.form-group.full{
-  grid-column:1/-1;
-}
-
 .form-group label{
-  color:#bbb;
+  color:#b8b8b8;
 
   font-size:14px;
+
+  font-weight:400;
 }
 
 .form-group input{
   width:100%;
+  height:58px;
 
-  height:56px;
-
-  padding:0 17px;
+  padding:
+    0 18px;
 
   outline:none;
 
@@ -617,7 +699,7 @@ body::before{
   border-radius:12px;
 
   background:
-    rgba(0,0,0,.35);
+    rgba(0,0,0,.42);
 
   color:#fff;
 
@@ -625,12 +707,18 @@ body::before{
 
   font-size:16px;
 
-  transition:.25s ease;
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
 }
 
 .form-group input:focus{
   border-color:
-    rgba(200,164,91,.7);
+    rgba(200,164,91,.75);
+
+  background:
+    rgba(0,0,0,.58);
 
   box-shadow:
     0 0 0 3px
@@ -642,56 +730,67 @@ body::before{
 }
 
 
-/* BUTTON */
+/* =========================================================
+   SEARCH BUTTON
+========================================================= */
 
 .search-btn{
   position:relative;
 
   width:100%;
+  height:60px;
 
-  height:58px;
-
-  margin-top:24px;
+  margin-top:25px;
 
   border:0;
 
-  border-radius:12px;
+  border-radius:13px;
 
   cursor:pointer;
+
+  color:#070707;
 
   font-family:inherit;
 
   font-size:17px;
-  font-weight:600;
 
-  color:#080808;
+  font-weight:600;
 
   background:
     linear-gradient(
       135deg,
-      #f0d991,
-      #c8a45b,
-      #806127
+      #f0d991 0%,
+      #c8a45b 50%,
+      #806127 100%
     );
 
   box-shadow:
-    0 12px 30px
+    0 14px 35px
     rgba(200,164,91,.16);
 
-  transition:.3s ease;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    opacity .25s ease;
 }
 
 .search-btn:hover{
   transform:translateY(-2px);
 
   box-shadow:
-    0 18px 40px
+    0 20px 45px
     rgba(200,164,91,.25);
+}
+
+.search-btn:active{
+  transform:translateY(0);
 }
 
 .search-btn:disabled{
   opacity:.55;
+
   cursor:not-allowed;
+
   transform:none;
 }
 
@@ -711,7 +810,7 @@ body::before{
 
   font-size:15px;
 
-  line-height:1.6;
+  line-height:1.7;
 }
 
 .message.show{
@@ -719,16 +818,20 @@ body::before{
 }
 
 .message.error{
-  border:1px solid rgba(255,100,100,.25);
+  border:
+    1px solid
+    rgba(255,100,100,.28);
 
   background:
-    rgba(255,100,100,.06);
+    rgba(255,70,70,.06);
 
-  color:#ff9b9b;
+  color:#ffaaaa;
 }
 
 .message.success{
-  border:1px solid rgba(57,217,138,.25);
+  border:
+    1px solid
+    rgba(57,217,138,.28);
 
   background:
     rgba(57,217,138,.06);
@@ -744,17 +847,25 @@ body::before{
 .order-result{
   display:none;
 
-  margin-top:35px;
+  margin-top:38px;
+
+  padding-top:5px;
 }
 
 .order-result.show{
   display:block;
 }
 
+
+/* =========================================================
+   ORDER HEADER
+========================================================= */
+
 .order-header{
   display:flex;
 
-  align-items:center;
+  align-items:flex-end;
+
   justify-content:space-between;
 
   gap:20px;
@@ -765,7 +876,7 @@ body::before{
 
   border-bottom:
     1px solid
-    var(--line);
+    rgba(255,255,255,.08);
 }
 
 .order-number{
@@ -773,61 +884,102 @@ body::before{
 
   font-family:Arial,sans-serif;
 
-  font-size:26px;
+  font-size:27px;
+
   font-weight:700;
 
-  letter-spacing:1px;
+  letter-spacing:.8px;
 }
 
 .order-date{
+  margin-top:7px;
+
   color:#777;
 
   font-size:14px;
 }
 
 
-/* STATUS */
+/* =========================================================
+   STATUS BOX
+========================================================= */
 
 .status-box{
-  padding:25px;
+  position:relative;
 
-  margin-bottom:30px;
+  padding:25px 27px;
+
+  margin-bottom:32px;
 
   border:
     1px solid
-    rgba(200,164,91,.2);
+    rgba(200,164,91,.22);
 
   border-radius:18px;
 
   background:
-    rgba(200,164,91,.04);
+    linear-gradient(
+      135deg,
+      rgba(200,164,91,.08),
+      rgba(200,164,91,.025)
+    );
+
+  overflow:hidden;
+}
+
+.status-box::before{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:0;
+  bottom:0;
+
+  width:3px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--gold-light),
+      var(--gold-dark)
+    );
 }
 
 .status-label{
-  color:#888;
+  color:#777;
 
   font-size:13px;
 
-  margin-bottom:6px;
+  margin-bottom:5px;
 }
 
 .status-value{
   color:var(--gold-light);
 
-  font-size:25px;
+  font-size:27px;
+
   font-weight:600;
 }
 
 
-/* STEPS */
+/* =========================================================
+   STEPS
+========================================================= */
 
 .steps{
   position:relative;
 
   display:flex;
+
   flex-direction:column;
 
   gap:0;
+
+  padding:
+    3px
+    3px
+    0;
 }
 
 .step{
@@ -837,7 +989,7 @@ body::before{
 
   gap:18px;
 
-  min-height:88px;
+  min-height:91px;
 }
 
 .step:last-child{
@@ -847,22 +999,25 @@ body::before{
 .step-icon-wrap{
   position:relative;
 
-  width:38px;
+  width:40px;
 
-  flex:0 0 38px;
+  flex:0 0 40px;
 
   display:flex;
+
   justify-content:center;
 }
 
 .step-icon{
   position:relative;
+
   z-index:2;
 
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -874,17 +1029,20 @@ body::before{
 
   background:#111;
 
-  color:#666;
+  color:#5e5e5e;
+
+  font-family:Arial,sans-serif;
 
   font-size:15px;
 
-  transition:.3s ease;
+  transition:
+    .3s ease;
 }
 
 .step-line{
   position:absolute;
 
-  top:38px;
+  top:40px;
   bottom:-1px;
 
   left:50%;
@@ -902,22 +1060,50 @@ body::before{
 }
 
 .step-content{
-  padding-bottom:28px;
+  padding-bottom:29px;
 }
 
 .step-title{
-  color:#777;
+  color:#666;
 
   font-size:17px;
+
   font-weight:500;
 }
 
 .step-desc{
   margin-top:3px;
 
-  color:#555;
+  color:#4f4f4f;
 
   font-size:13px;
+
+  line-height:1.6;
+}
+
+
+/* DONE */
+
+.step.done .step-icon{
+  border-color:
+    rgba(57,217,138,.65);
+
+  background:
+    rgba(57,217,138,.08);
+
+  color:var(--green);
+
+  box-shadow:
+    0 0 20px
+    rgba(57,217,138,.10);
+}
+
+.step.done .step-title{
+  color:#dddddd;
+}
+
+.step.done .step-desc{
+  color:#777;
 }
 
 
@@ -925,16 +1111,16 @@ body::before{
 
 .step.active .step-icon{
   border-color:
-    var(--gold);
+    rgba(200,164,91,.75);
 
   background:
-    rgba(200,164,91,.14);
+    rgba(200,164,91,.13);
 
   color:var(--gold-light);
 
   box-shadow:
-    0 0 20px
-    rgba(200,164,91,.12);
+    0 0 22px
+    rgba(200,164,91,.15);
 }
 
 .step.active .step-title{
@@ -945,27 +1131,9 @@ body::before{
   color:#999;
 }
 
-.step.done .step-icon{
-  border-color:
-    rgba(57,217,138,.6);
-
-  background:
-    rgba(57,217,138,.08);
-
-  color:var(--green);
-}
-
-.step.done .step-title{
-  color:#ddd;
-}
-
-.step.done .step-desc{
-  color:#777;
-}
-
 
 /* =========================================================
-   ORDER INFO
+   INFO GRID
 ========================================================= */
 
 .info-grid{
@@ -976,11 +1144,11 @@ body::before{
 
   gap:14px;
 
-  margin-top:30px;
+  margin-top:31px;
 }
 
 .info-item{
-  padding:18px;
+  padding:18px 19px;
 
   border:
     1px solid
@@ -997,7 +1165,7 @@ body::before{
 
   font-size:12px;
 
-  margin-bottom:4px;
+  margin-bottom:5px;
 }
 
 .info-value{
@@ -1009,15 +1177,20 @@ body::before{
 }
 
 
-/* ITEMS */
+/* =========================================================
+   ITEMS
+========================================================= */
 
 .items-title{
-  margin-top:32px;
+  margin-top:35px;
+
   margin-bottom:15px;
 
   color:var(--gold-light);
 
-  font-size:19px;
+  font-size:20px;
+
+  font-weight:600;
 }
 
 .item{
@@ -1027,7 +1200,9 @@ body::before{
 
   gap:15px;
 
-  padding:14px 0;
+  padding:
+    14px
+    0;
 
   border-bottom:
     1px solid
@@ -1039,65 +1214,79 @@ body::before{
 }
 
 .item-image{
-  width:58px;
-  height:58px;
+  width:62px;
+  height:62px;
 
-  flex:0 0 58px;
+  flex:0 0 62px;
 
   object-fit:cover;
 
-  border-radius:9px;
-
   border:
     1px solid
-    rgba(255,255,255,.1);
+    rgba(255,255,255,.10);
+
+  border-radius:10px;
 
   background:#111;
 }
 
 .item-name{
+  flex:1;
+
   color:#ddd;
 
   font-size:15px;
 
-  flex:1;
+  line-height:1.5;
 }
 
 .item-qty{
   color:#777;
 
   font-size:14px;
+
+  white-space:nowrap;
 }
 
 .item-price{
   color:var(--gold-light);
 
+  font-family:Arial,sans-serif;
+
   font-size:15px;
 
-  font-weight:500;
+  font-weight:600;
+
+  white-space:nowrap;
 }
 
 
-/* TOTAL */
+/* =========================================================
+   TOTAL
+========================================================= */
 
 .total-row{
   display:flex;
 
   align-items:center;
+
   justify-content:space-between;
 
+  gap:20px;
+
   margin-top:18px;
-  padding-top:18px;
+
+  padding-top:20px;
 
   border-top:
     1px solid
-    rgba(200,164,91,.2);
+    rgba(200,164,91,.22);
 }
 
 .total-label{
   color:#aaa;
 
-  font-size:16px;
+  font-size:17px;
 }
 
 .total-value{
@@ -1105,7 +1294,8 @@ body::before{
 
   font-family:Arial,sans-serif;
 
-  font-size:25px;
+  font-size:27px;
+
   font-weight:700;
 }
 
@@ -1115,10 +1305,12 @@ body::before{
 ========================================================= */
 
 .footer{
-  margin-top:100px;
+  margin-top:105px;
 
   padding:
-    40px 20px;
+    42px
+    20px
+    45px;
 
   border-top:
     1px solid
@@ -1128,12 +1320,23 @@ body::before{
 }
 
 .footer-logo{
-  width:55px;
-  height:55px;
+  width:62px;
+  height:62px;
+
+  display:block;
 
   object-fit:contain;
 
-  margin-bottom:12px;
+  margin:
+    0
+    auto
+    13px;
+
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(200,164,91,.25)
+    );
 }
 
 .footer p{
@@ -1141,7 +1344,7 @@ body::before{
 
   font-size:13px;
 
-  line-height:1.7;
+  line-height:1.8;
 }
 
 
@@ -1152,46 +1355,51 @@ body::before{
 @media(max-width:1150px){
 
   .nav-menu{
-    gap:16px;
+    gap:17px;
   }
 
   .nav-menu a{
     font-size:14px;
   }
 
-  .brand-text{
-    display:none;
-  }
-
 }
 
 
-@media(max-width:900px){
+@media(max-width:950px){
 
   .header-inner{
     min-height:78px;
+  }
+
+  .brand-logo{
+    width:58px;
+    height:58px;
   }
 
   .mobile-toggle{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
   }
 
   .nav-menu{
     position:absolute;
 
-    top:calc(100% + 1px);
+    top:
+      calc(100% + 1px);
 
-    left:14px;
-    right:14px;
+    left:12px;
+    right:12px;
 
     display:none;
 
     flex-direction:column;
 
     align-items:stretch;
+
+    justify-content:flex-start;
 
     gap:4px;
 
@@ -1216,9 +1424,11 @@ body::before{
   }
 
   .nav-menu a{
-    min-height:48px;
+    min-height:50px;
 
-    padding:0 15px;
+    padding:
+      0
+      15px;
 
     border-radius:10px;
   }
@@ -1237,27 +1447,31 @@ body::before{
     grid-template-columns:1fr;
   }
 
-  .form-group.full{
-    grid-column:auto;
-  }
-
 }
 
 
 @media(max-width:600px){
 
+  .header-inner{
+    width:
+      calc(100% - 24px);
+  }
+
   .hero{
     padding:
-      75px 15px
-      45px;
+      75px
+      14px
+      55px;
   }
 
   .hero h1{
-    font-size:46px;
+    font-size:47px;
   }
 
   .hero p{
     font-size:15px;
+
+    line-height:1.8;
   }
 
   .container{
@@ -1266,18 +1480,33 @@ body::before{
   }
 
   .track-card{
-    padding:24px 18px;
+    padding:
+      26px
+      18px;
 
     border-radius:18px;
   }
 
+  .track-card::before{
+    border-radius:18px;
+  }
+
+  .form-title{
+    font-size:24px;
+  }
+
   .order-header{
-    flex-direction:column;
     align-items:flex-start;
+
+    flex-direction:column;
   }
 
   .order-number{
     font-size:22px;
+  }
+
+  .status-value{
+    font-size:23px;
   }
 
   .info-grid{
@@ -1288,8 +1517,27 @@ body::before{
     align-items:flex-start;
   }
 
+  .item-image{
+    width:55px;
+    height:55px;
+
+    flex-basis:55px;
+  }
+
+  .item{
+    gap:10px;
+  }
+
+  .item-name{
+    font-size:14px;
+  }
+
   .item-price{
-    white-space:nowrap;
+    font-size:13px;
+  }
+
+  .total-value{
+    font-size:23px;
   }
 
 }
@@ -1297,35 +1545,37 @@ body::before{
 </style>
 </head>
 
+
 <body>
 
 
-<!-- =======================================================
+<!-- =========================================================
      HEADER
-======================================================= -->
+========================================================= -->
 
 <header class="site-header">
 
   <div class="header-inner">
 
-    <a href="index.html" class="brand">
+    <a
+      href="index.html"
+      class="brand"
+      aria-label="CHATPETCH GROUP"
+    >
 
       <img
         src="./assets/logo.png"
         alt="CHATPETCH GROUP"
         class="brand-logo"
-        onerror="this.style.display='none'"
       >
-
-      <div class="brand-text">
-        <strong>CHATPETCH</strong>
-        <span>GROUP CO., LTD.</span>
-      </div>
 
     </a>
 
 
-    <nav class="nav-menu" id="navMenu">
+    <nav
+      class="nav-menu"
+      id="navMenu"
+    >
 
       <a href="index.html">
         หน้าแรก
@@ -1363,16 +1613,21 @@ body::before{
         class="nav-cart"
       >
         🛒 ตะกร้า
-        <b id="cartCount">0</b>
+
+        <b id="cartCount">
+          0
+        </b>
+
       </a>
 
     </nav>
 
 
     <button
+      type="button"
       class="mobile-toggle"
       id="mobileToggle"
-      type="button"
+      aria-label="เปิดเมนู"
     >
       ☰
     </button>
@@ -1382,9 +1637,9 @@ body::before{
 </header>
 
 
-<!-- =======================================================
+<!-- =========================================================
      HERO
-======================================================= -->
+========================================================= -->
 
 <section class="hero">
 
@@ -1404,9 +1659,9 @@ body::before{
 </section>
 
 
-<!-- =======================================================
-     CONTENT
-======================================================= -->
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
 <main class="container">
 
@@ -1417,13 +1672,18 @@ body::before{
     </h2>
 
 
+    <!-- =====================================================
+         SEARCH FORM
+    ====================================================== -->
+
     <form id="trackForm">
 
       <div class="form-grid">
 
+
         <div class="form-group">
 
-          <label>
+          <label for="orderNumber">
             เลขคำสั่งซื้อ
           </label>
 
@@ -1440,7 +1700,7 @@ body::before{
 
         <div class="form-group">
 
-          <label>
+          <label for="phone">
             เบอร์โทรศัพท์
           </label>
 
@@ -1458,9 +1718,9 @@ body::before{
 
 
       <button
+        type="submit"
         class="search-btn"
         id="searchBtn"
-        type="submit"
       >
         🔎 ตรวจสอบคำสั่งซื้อ
       </button>
@@ -1468,35 +1728,40 @@ body::before{
     </form>
 
 
+    <!-- =====================================================
+         MESSAGE
+    ====================================================== -->
+
     <div
-      class="message"
       id="message"
+      class="message"
     ></div>
 
 
-    <!-- =================================================
-         RESULT
-    ================================================= -->
+    <!-- =====================================================
+         ORDER RESULT
+    ====================================================== -->
 
     <div
-      class="order-result"
       id="orderResult"
+      class="order-result"
     >
+
 
       <div class="order-header">
 
         <div>
 
           <div
-            class="order-number"
             id="resultOrderNumber"
+            class="order-number"
           >
             -
           </div>
 
           <div
-            class="order-date"
             id="resultDate"
+            class="order-date"
           >
             -
           </div>
@@ -1505,6 +1770,8 @@ body::before{
 
       </div>
 
+
+      <!-- STATUS -->
 
       <div class="status-box">
 
@@ -1513,8 +1780,8 @@ body::before{
         </div>
 
         <div
-          class="status-value"
           id="currentStatus"
+          class="status-value"
         >
           -
         </div>
@@ -1522,9 +1789,12 @@ body::before{
       </div>
 
 
-      <!-- STATUS STEPS -->
+      <!-- ===================================================
+           STATUS STEPS
+      ==================================================== -->
 
       <div class="steps">
+
 
         <div
           class="step"
@@ -1673,12 +1943,16 @@ body::before{
 
         </div>
 
+
       </div>
 
 
-      <!-- CUSTOMER INFO -->
+      <!-- ===================================================
+           CUSTOMER INFO
+      ==================================================== -->
 
       <div class="info-grid">
+
 
         <div class="info-item">
 
@@ -1743,10 +2017,13 @@ body::before{
 
         </div>
 
+
       </div>
 
 
-      <!-- ITEMS -->
+      <!-- ===================================================
+           ITEMS
+      ==================================================== -->
 
       <div class="items-title">
         รายการสินค้า
@@ -1754,6 +2031,8 @@ body::before{
 
       <div id="itemsList"></div>
 
+
+      <!-- TOTAL -->
 
       <div class="total-row">
 
@@ -1770,6 +2049,7 @@ body::before{
 
       </div>
 
+
     </div>
 
   </section>
@@ -1777,9 +2057,9 @@ body::before{
 </main>
 
 
-<!-- =======================================================
+<!-- =========================================================
      FOOTER
-======================================================= -->
+========================================================= -->
 
 <footer class="footer">
 
@@ -1790,7 +2070,10 @@ body::before{
   >
 
   <p>
-    บริษัท ฉัตรเพชร กรุ๊ป จำกัด<br>
+    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+  </p>
+
+  <p>
     CHATPETCH GROUP CO., LTD.
   </p>
 
@@ -1814,6 +2097,7 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
   "sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
 
+
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
@@ -1833,16 +2117,24 @@ const supabaseClient =
 ========================================================= */
 
 const mobileToggle =
-  document.getElementById("mobileToggle");
+  document.getElementById(
+    "mobileToggle"
+  );
 
 const navMenu =
-  document.getElementById("navMenu");
+  document.getElementById(
+    "navMenu"
+  );
+
 
 mobileToggle.addEventListener(
   "click",
   function(){
 
-    navMenu.classList.toggle("active");
+    navMenu.classList.toggle(
+      "active"
+    );
+
 
     mobileToggle.textContent =
       navMenu.classList.contains("active")
@@ -1853,22 +2145,27 @@ mobileToggle.addEventListener(
 );
 
 
-navMenu.querySelectorAll("a").forEach(
-  function(link){
+navMenu
+  .querySelectorAll("a")
+  .forEach(
+    function(link){
 
-    link.addEventListener(
-      "click",
-      function(){
+      link.addEventListener(
+        "click",
+        function(){
 
-        navMenu.classList.remove("active");
+          navMenu.classList.remove(
+            "active"
+          );
 
-        mobileToggle.textContent = "☰";
+          mobileToggle.textContent =
+            "☰";
 
-      }
-    );
+        }
+      );
 
-  }
-);
+    }
+  );
 
 
 /* =========================================================
@@ -1877,43 +2174,60 @@ navMenu.querySelectorAll("a").forEach(
 
 function updateCartCount(){
 
-  const el =
-    document.getElementById("cartCount");
+  const cartCount =
+    document.getElementById(
+      "cartCount"
+    );
+
 
   try{
 
     const cart =
       JSON.parse(
-        localStorage.getItem("chatpetch_cart")
+        localStorage.getItem(
+          "chatpetch_cart"
+        )
       ) || [];
+
 
     const count =
       cart.reduce(
-        function(sum,item){
+        function(total,item){
 
-          return sum +
-            (Number(item.quantity) || 0);
+          return total +
+            (
+              Number(
+                item.quantity
+              ) || 0
+            );
 
         },
         0
       );
 
-    el.textContent = count;
+
+    cartCount.textContent =
+      count;
+
 
   }catch(error){
 
-    el.textContent = "0";
+    cartCount.textContent =
+      "0";
 
   }
 
 }
 
+
 updateCartCount();
+
 
 window.addEventListener(
   "pageshow",
   updateCartCount
 );
+
 
 window.addEventListener(
   "storage",
@@ -1926,44 +2240,65 @@ window.addEventListener(
 ========================================================= */
 
 const form =
-  document.getElementById("trackForm");
+  document.getElementById(
+    "trackForm"
+  );
 
 const searchBtn =
-  document.getElementById("searchBtn");
+  document.getElementById(
+    "searchBtn"
+  );
 
 const message =
-  document.getElementById("message");
+  document.getElementById(
+    "message"
+  );
 
-const result =
-  document.getElementById("orderResult");
+const orderResult =
+  document.getElementById(
+    "orderResult"
+  );
 
 
 /* =========================================================
-   HELPERS
+   MESSAGE
 ========================================================= */
 
-function showMessage(text,type){
+function showMessage(
+  text,
+  type
+){
 
-  message.textContent = text;
+  message.textContent =
+    text;
 
   message.className =
-    "message show " + type;
+    "message show " +
+    type;
 
 }
 
 
 function clearMessage(){
 
-  message.textContent = "";
+  message.textContent =
+    "";
 
-  message.className = "message";
+  message.className =
+    "message";
 
 }
 
 
-function normalizeOrderNumber(value){
+/* =========================================================
+   NORMALIZE ORDER NUMBER
+========================================================= */
 
-  return value
+function normalizeOrderNumber(
+  value
+){
+
+  return String(value || "")
     .trim()
     .replace(/^#+/,"")
     .toUpperCase();
@@ -1971,25 +2306,73 @@ function normalizeOrderNumber(value){
 }
 
 
-function formatMoney(value){
+/* =========================================================
+   NORMALIZE PHONE
+========================================================= */
 
-  return Number(value || 0)
-    .toLocaleString(
-      "th-TH",
-      {
-        minimumFractionDigits:2,
-        maximumFractionDigits:2
-      }
+function normalizePhone(
+  value
+){
+
+  return String(value || "")
+    .replace(
+      /[^0-9]/g,
+      ""
     );
 
 }
 
 
-function formatDate(value){
+/* =========================================================
+   MONEY
+========================================================= */
 
-  if(!value) return "-";
+function formatMoney(
+  value
+){
 
-  const date = new Date(value);
+  return Number(
+    value || 0
+  ).toLocaleString(
+    "th-TH",
+    {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }
+  );
+
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function formatDate(
+  value
+){
+
+  if(!value){
+
+    return "-";
+
+  }
+
+
+  const date =
+    new Date(value);
+
+
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
+
+    return "-";
+
+  }
+
 
   return date.toLocaleString(
     "th-TH",
@@ -2003,72 +2386,122 @@ function formatDate(value){
 
 
 /* =========================================================
-   STATUS
+   ESCAPE HTML
 ========================================================= */
 
-const STATUS_MAP = {
+function escapeHtml(
+  value
+){
 
-  pending:{
-    label:"รอดำเนินการ",
-    step:0
-  },
+  return String(
+    value ?? ""
+  )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
-  preparing:{
-    label:"กำลังเตรียมสินค้า",
-    step:2
-  },
+}
 
-  shipping:{
-    label:"กำลังจัดส่ง",
-    step:3
-  },
 
-  completed:{
-    label:"จัดส่งสำเร็จ",
-    step:4
-  },
+/* =========================================================
+   STATUS LABEL
+========================================================= */
 
-  cancelled:{
-    label:"ยกเลิกคำสั่งซื้อ",
-    step:-1
+function getStatusLabel(
+  status,
+  paymentVerified
+){
+
+  const current =
+    String(
+      status || "pending"
+    ).toLowerCase();
+
+
+  const labels = {
+
+    pending:
+      "รอดำเนินการ",
+
+    preparing:
+      "กำลังเตรียมสินค้า",
+
+    shipping:
+      "กำลังจัดส่ง",
+
+    completed:
+      "จัดส่งสำเร็จ",
+
+    cancelled:
+      "ยกเลิกคำสั่งซื้อ"
+
+  };
+
+
+  if(
+    paymentVerified === true &&
+    current === "pending"
+  ){
+
+    return "ตรวจสอบการชำระเงินแล้ว";
+
   }
 
-};
+
+  return labels[current]
+    || "รอดำเนินการ";
+
+}
 
 
-function renderStatus(order){
+/* =========================================================
+   RENDER STATUS STEPS
+========================================================= */
+
+function renderStatus(
+  order
+){
 
   const status =
-    String(order.status || "pending")
-      .toLowerCase();
+    String(
+      order.status || "pending"
+    ).toLowerCase();
+
 
   const paymentVerified =
     order.payment_verified === true;
 
 
-  let label =
-    STATUS_MAP[status]?.label
-    || "รอดำเนินการ";
-
-
-  if(
-    paymentVerified &&
-    status === "pending"
-  ){
-
-    label =
-      "ตรวจสอบการชำระเงินแล้ว";
-
-  }
-
-
   document.getElementById(
     "currentStatus"
-  ).textContent = label;
+  ).textContent =
+    getStatusLabel(
+      status,
+      paymentVerified
+    );
 
 
   const steps =
-    document.querySelectorAll(".step");
+    document.querySelectorAll(
+      ".step"
+    );
 
 
   steps.forEach(
@@ -2083,29 +2516,62 @@ function renderStatus(order){
   );
 
 
-  /* รับ Order แล้ว */
+  /*
+    Step 1:
+    รับคำสั่งซื้อ
+  */
 
-  if(order){
+  steps[0].classList.add(
+    "done"
+  );
 
-    steps[0].classList.add("done");
+
+  /*
+    ถ้ายกเลิก
+  */
+
+  if(
+    status === "cancelled"
+  ){
+
+    steps[0].classList.add(
+      "done"
+    );
+
+    return;
 
   }
 
 
-  /* Payment */
+  /*
+    Step 2:
+    ตรวจสอบการชำระเงิน
+  */
 
-  if(paymentVerified){
+  if(
+    paymentVerified ||
+    status === "preparing" ||
+    status === "shipping" ||
+    status === "completed"
+  ){
 
-    steps[1].classList.add("done");
+    steps[1].classList.add(
+      "done"
+    );
 
   }else{
 
-    steps[1].classList.add("active");
+    steps[1].classList.add(
+      "active"
+    );
 
   }
 
 
-  /* preparing */
+  /*
+    Step 3:
+    เตรียมสินค้า
+  */
 
   if(
     status === "preparing" ||
@@ -2113,52 +2579,51 @@ function renderStatus(order){
     status === "completed"
   ){
 
-    steps[1].classList.remove("active");
-
-    steps[1].classList.add("done");
-
-    steps[2].classList.add("done");
-
-  }
-
-
-  /* shipping */
-
-  if(
-    status === "shipping" ||
-    status === "completed"
-  ){
-
-    steps[3].classList.add(
-      status === "completed"
-        ? "done"
-        : "active"
+    steps[2].classList.add(
+      "done"
     );
 
   }
 
 
-  /* completed */
+  /*
+    Step 4:
+    จัดส่ง
+  */
 
-  if(status === "completed"){
+  if(
+    status === "shipping"
+  ){
 
-    steps[3].classList.remove("active");
+    steps[3].classList.add(
+      "active"
+    );
 
-    steps[3].classList.add("done");
+  }
 
-    steps[4].classList.add("done");
+  if(
+    status === "completed"
+  ){
+
+    steps[3].classList.add(
+      "done"
+    );
 
   }
 
 
-  /* cancelled */
+  /*
+    Step 5:
+    สำเร็จ
+  */
 
-  if(status === "cancelled"){
+  if(
+    status === "completed"
+  ){
 
-    document.getElementById(
-      "currentStatus"
-    ).textContent =
-      "ยกเลิกคำสั่งซื้อ";
+    steps[4].classList.add(
+      "done"
+    );
 
   }
 
@@ -2169,68 +2634,121 @@ function renderStatus(order){
    DISPLAY ORDER
 ========================================================= */
 
-function displayOrder(order,items){
+function displayOrder(
+  order,
+  items
+){
 
-  result.classList.add("show");
+  orderResult.classList.add(
+    "show"
+  );
 
+
+  /* Order number */
 
   document.getElementById(
     "resultOrderNumber"
   ).textContent =
-    "#" + order.order_number;
+    "#" +
+    (
+      order.order_number
+      || "-"
+    );
 
+
+  /* Date */
 
   document.getElementById(
     "resultDate"
   ).textContent =
     "สั่งซื้อเมื่อ " +
-    formatDate(order.created_at);
+    formatDate(
+      order.created_at
+    );
 
+
+  /* Customer */
 
   document.getElementById(
     "customerName"
   ).textContent =
-    order.customer_name || "-";
+    order.customer_name
+    || "-";
 
+
+  /* Phone */
 
   document.getElementById(
     "customerPhone"
   ).textContent =
-    order.customer_phone || "-";
+    order.customer_phone
+    || "-";
 
+
+  /* Payment */
 
   document.getElementById(
     "paymentMethod"
   ).textContent =
-    order.payment_method || "-";
+    order.payment_method
+    || "-";
 
+
+  /* Province */
 
   document.getElementById(
     "province"
   ).textContent =
-    order.customer_province || "-";
+    order.customer_province
+    || "-";
 
+
+  /* Total */
 
   document.getElementById(
     "totalValue"
   ).textContent =
     "฿" +
-    formatMoney(order.total);
+    formatMoney(
+      order.total
+    );
 
 
-  renderStatus(order);
+  /* Status */
 
+  renderStatus(
+    order
+  );
+
+
+  /* =======================================================
+     ITEMS
+  ====================================================== */
 
   const itemsList =
-    document.getElementById("itemsList");
+    document.getElementById(
+      "itemsList"
+    );
 
-  itemsList.innerHTML = "";
+
+  itemsList.innerHTML =
+    "";
 
 
-  if(!items || !items.length){
+  if(
+    !Array.isArray(items) ||
+    items.length === 0
+  ){
 
-    itemsList.innerHTML =
-      '<div style="color:#666;">ไม่พบรายการสินค้า</div>';
+    itemsList.innerHTML = `
+      <div style="
+        padding:18px 0;
+        color:#666;
+        font-size:14px;
+      ">
+        ไม่พบรายการสินค้า
+      </div>
+    `;
 
     return;
 
@@ -2241,9 +2759,13 @@ function displayOrder(order,items){
     function(item){
 
       const row =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
-      row.className = "item";
+
+      row.className =
+        "item";
 
 
       const image =
@@ -2251,57 +2773,86 @@ function displayOrder(order,items){
         || "./assets/logo.png";
 
 
-      const optionText =
+      let optionText =
+        "";
+
+
+      if(
         item.selected_option &&
-        typeof item.selected_option === "object"
-          ? (
-              item.selected_option.label
-              || item.selected_option.name
-              || ""
-            )
-          : "";
+        typeof item.selected_option ===
+          "object"
+      ){
+
+        optionText =
+          item.selected_option.label
+          ||
+          item.selected_option.name
+          ||
+          item.selected_option.title
+          ||
+          "";
+
+      }
 
 
       row.innerHTML = `
 
         <img
           class="item-image"
-          src="${image}"
+          src="${escapeHtml(image)}"
           alt=""
-          onerror="this.src='./assets/logo.png'"
+          onerror="
+            this.onerror=null;
+            this.src='./assets/logo.png';
+          "
         >
 
         <div class="item-name">
 
           ${escapeHtml(
-            item.product_name || "-"
+            item.product_name
+            || "-"
           )}
 
           ${
             optionText
-              ? `<div style="
-                    color:#777;
-                    font-size:12px;
-                    margin-top:3px;
-                 ">
-                   ${escapeHtml(optionText)}
-                 </div>`
+              ? `
+                <div style="
+                  color:#777;
+                  font-size:12px;
+                  margin-top:3px;
+                ">
+                  ${escapeHtml(
+                    optionText
+                  )}
+                </div>
+              `
               : ""
           }
 
         </div>
 
+
         <div class="item-qty">
-          × ${Number(item.quantity || 0)}
+          ×
+          ${Number(
+            item.quantity || 0
+          )}
         </div>
 
+
         <div class="item-price">
-          ฿${formatMoney(item.line_total)}
+          ฿${formatMoney(
+            item.line_total
+          )}
         </div>
 
       `;
 
-      itemsList.appendChild(row);
+
+      itemsList.appendChild(
+        row
+      );
 
     }
   );
@@ -2310,23 +2861,7 @@ function displayOrder(order,items){
 
 
 /* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================================================
-   SEARCH ORDER
+   SEARCH
 ========================================================= */
 
 form.addEventListener(
@@ -2335,10 +2870,17 @@ form.addEventListener(
 
     event.preventDefault();
 
+
     clearMessage();
 
-    result.classList.remove("show");
+    orderResult.classList.remove(
+      "show"
+    );
 
+
+    /* =====================================================
+       INPUT
+    ===================================================== */
 
     const orderNumber =
       normalizeOrderNumber(
@@ -2349,13 +2891,20 @@ form.addEventListener(
 
 
     const phone =
-      document.getElementById(
-        "phone"
-      ).value
-      .trim();
+      normalizePhone(
+        document.getElementById(
+          "phone"
+        ).value
+      );
 
 
-    if(!orderNumber){
+    /* =====================================================
+       VALIDATION
+    ===================================================== */
+
+    if(
+      !orderNumber
+    ){
 
       showMessage(
         "กรุณากรอกเลขคำสั่งซื้อ",
@@ -2367,7 +2916,9 @@ form.addEventListener(
     }
 
 
-    if(!phone){
+    if(
+      !phone
+    ){
 
       showMessage(
         "กรุณากรอกเบอร์โทรศัพท์",
@@ -2379,7 +2930,12 @@ form.addEventListener(
     }
 
 
-    searchBtn.disabled = true;
+    /* =====================================================
+       BUTTON
+    ===================================================== */
+
+    searchBtn.disabled =
+      true;
 
     searchBtn.textContent =
       "กำลังค้นหา...";
@@ -2387,10 +2943,24 @@ form.addEventListener(
 
     try{
 
-      /*
-        เรียก RPC ที่เราสร้างไว้ใน Supabase
-        get_customer_order(order_number, phone)
-      */
+
+      /* ===================================================
+         CALL SUPABASE RPC
+
+         ใช้ Function ที่มีอยู่จริง:
+
+         get_customer_order(
+           p_order_number text,
+           p_phone text
+         )
+
+         Function นี้คืน:
+
+         {
+           order: {...},
+           items: [...]
+         }
+      =================================================== */
 
       const {
         data,
@@ -2399,15 +2969,31 @@ form.addEventListener(
         await supabaseClient.rpc(
           "get_customer_order",
           {
-            p_order_number:orderNumber,
-            p_phone:phone
+            p_order_number:
+              orderNumber,
+
+            p_phone:
+              phone
           }
         );
 
 
+      console.log(
+        "get_customer_order result:",
+        data
+      );
+
+
+      /* ===================================================
+         ERROR
+      =================================================== */
+
       if(error){
 
-        console.error(error);
+        console.error(
+          "Supabase RPC Error:",
+          error
+        );
 
         throw new Error(
           error.message
@@ -2416,7 +3002,13 @@ form.addEventListener(
       }
 
 
-      if(!data || !data.length){
+      /* ===================================================
+         NOT FOUND
+      =================================================== */
+
+      if(
+        !data
+      ){
 
         showMessage(
           "ไม่พบคำสั่งซื้อ กรุณาตรวจสอบเลขคำสั่งซื้อและเบอร์โทรศัพท์อีกครั้ง",
@@ -2428,72 +3020,40 @@ form.addEventListener(
       }
 
 
-      /*
-        RPC อาจคืนข้อมูลเป็น array
-        โดยข้อมูล order + items จะถูกแยกตามโครงสร้างที่สร้างไว้
-      */
+      /* ===================================================
+         GET ORDER
+      =================================================== */
 
-      const first =
-        data[0];
-
-
-      let order =
-        first.order
-        || first;
+      const order =
+        data.order
+        || null;
 
 
-      let items =
-        first.items
-        || [];
+      const items =
+        Array.isArray(
+          data.items
+        )
+          ? data.items
+          : [];
 
-
-      /*
-        รองรับกรณี RPC คืน order_items
-        เป็น JSON
-      */
 
       if(
-        !Array.isArray(items) &&
-        first.order_items
+        !order
       ){
 
-        items =
-          first.order_items;
+        showMessage(
+          "ไม่พบข้อมูลคำสั่งซื้อ",
+          "error"
+        );
+
+        return;
 
       }
 
 
-      /*
-        ถ้า RPC คืนเฉพาะ order
-        ให้ดึงรายการสินค้าต่อด้วย ID
-      */
-
-      if(
-        (!items || !items.length) &&
-        order.id
-      ){
-
-        const itemResult =
-          await supabaseClient.rpc(
-            "get_customer_order_items",
-            {
-              p_order_id:order.id
-            }
-          );
-
-
-        if(
-          !itemResult.error &&
-          Array.isArray(itemResult.data)
-        ){
-
-          items =
-            itemResult.data;
-
-        }
-
-      }
-
+      /* ===================================================
+         DISPLAY
+      =================================================== */
 
       displayOrder(
         order,
@@ -2502,8 +3062,25 @@ form.addEventListener(
 
 
       showMessage(
-        "พบคำสั่งซื้อของคุณแล้ว",
+        "✓ พบคำสั่งซื้อของคุณแล้ว",
         "success"
+      );
+
+
+      /* ===================================================
+         SCROLL TO RESULT
+      =================================================== */
+
+      setTimeout(
+        function(){
+
+          orderResult.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+          });
+
+        },
+        150
       );
 
 
@@ -2514,15 +3091,18 @@ form.addEventListener(
         error
       );
 
+
       showMessage(
-        "ไม่สามารถค้นหาคำสั่งซื้อได้: " +
+        "ไม่สามารถตรวจสอบคำสั่งซื้อได้: " +
         error.message,
         "error"
       );
 
+
     }finally{
 
-      searchBtn.disabled = false;
+      searchBtn.disabled =
+        false;
 
       searchBtn.textContent =
         "🔎 ตรวจสอบคำสั่งซื้อ";
