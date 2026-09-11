@@ -1,924 +1,3715 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Products | Admin | Chatpetch Group</title>
+<title>Admin Store | Chatpetch Group</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap"
-rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
-    --black:#050505;
-    --dark:#0b0b0b;
-    --dark2:#111;
-    --gold:#c8a45b;
-    --gold-light:#f0d991;
-    --line:rgba(255,255,255,.08);
-    --gold-line:rgba(200,164,91,.28);
+  --black:#050505;
+  --black2:#080808;
+  --dark:#0d0d0d;
+  --dark2:#111;
+  --dark3:#181818;
+
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --gold-dark:#806127;
+
+  --white:#fff;
+  --soft:#eee;
+  --gray:#9b9b9b;
+  --muted:#696969;
+
+  --line:rgba(255,255,255,.09);
+  --gold-line:rgba(200,164,91,.30);
+
+  --green:#65d99a;
+  --red:#ff6d6d;
+  --blue:#7fc5ff;
+
+  --container:1450px;
 }
 
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-    min-height:100vh;
+  min-height:100vh;
+  overflow-x:hidden;
 
-    color:#fff;
+  color:var(--white);
 
-    background:
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(200,164,91,.10),
-            transparent 28%
-        ),
-        #050505;
+  font-family:"Prompt",sans-serif;
+  font-size:16px;
+  line-height:1.7;
 
-    font-family:"Kanit","Prompt",sans-serif;
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(200,164,91,.11),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(255,255,255,.03),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #050505,
+      #090909 50%,
+      #050505
+    );
 }
 
 body::before{
-    content:"";
+  content:"";
 
-    position:fixed;
-    inset:0;
+  position:fixed;
+  inset:0;
 
-    pointer-events:none;
+  z-index:-2;
 
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
+  pointer-events:none;
 
-    background-size:60px 60px;
+  opacity:.18;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.04) 1px,
+      transparent 1px
+    );
+
+  background-size:74px 74px;
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
+body::after{
+  content:"";
+
+  position:fixed;
+
+  width:700px;
+  height:700px;
+
+  top:-250px;
+  right:-200px;
+
+  z-index:-1;
+
+  border-radius:50%;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.14),
+      transparent 68%
+    );
+
+  filter:blur(30px);
 }
 
 button,
 input,
 select{
-    font:inherit;
+  font:inherit;
 }
 
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(
+    var(--container),
+    calc(100% - 50px)
+  );
+
+  margin:auto;
+}
+
+/* =====================================================
+HEADER
+===================================================== */
+
 .header{
-    position:sticky;
-    top:0;
-    z-index:100;
+  position:sticky;
+  top:0;
 
-    height:82px;
+  z-index:1000;
 
-    background:rgba(5,5,5,.90);
+  border-bottom:1px solid var(--line);
 
-    backdrop-filter:blur(18px);
+  background:
+    rgba(5,5,5,.90);
 
-    border-bottom:1px solid var(--line);
+  backdrop-filter:blur(22px);
 }
 
 .header-inner{
-    max-width:1400px;
-    height:100%;
+  min-height:92px;
 
-    margin:auto;
-    padding:0 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-    display:flex;
-    align-items:center;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:13px;
+  gap:30px;
 }
 
 .logo{
-    width:45px;
-    height:45px;
+  display:flex;
+  align-items:center;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:1px solid var(--gold);
-
-    color:var(--gold-light);
-
-    font-weight:700;
+  gap:16px;
 }
 
-.brand-title{
-    font-size:17px;
-    font-weight:600;
+.logo-mark{
+  width:56px;
+  height:56px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid var(--gold);
+
+  border-radius:15px;
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+  font-size:20px;
+  font-weight:600;
+
+  letter-spacing:1px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.15),
+      rgba(200,164,91,.02)
+    );
+
+  box-shadow:
+    0 0 35px
+    rgba(200,164,91,.06);
 }
 
-.brand-sub{
-    color:var(--gold);
+.logo-title{
+  font-family:"Kanit",sans-serif;
 
-    font-family:"Prompt",sans-serif;
+  font-size:22px;
+  font-weight:500;
 
-    font-size:10px;
+  line-height:1.1;
+}
 
-    letter-spacing:2px;
+.logo-sub{
+  margin-top:5px;
+
+  color:#666;
+
+  font-size:10px;
+
+  letter-spacing:2px;
 }
 
 .nav{
-    margin-left:auto;
+  display:flex;
+  align-items:center;
 
-    display:flex;
-    align-items:center;
-
-    gap:5px;
+  gap:7px;
 }
 
 .nav a{
-    padding:10px 15px;
+  padding:12px 15px;
 
-    color:#999;
+  border:1px solid transparent;
 
-    font-size:14px;
+  border-radius:10px;
 
-    position:relative;
+  color:#999;
+
+  font-size:14px;
+
+  transition:.25s;
 }
 
 .nav a:hover,
 .nav a.active{
-    color:var(--gold-light);
+  color:var(--gold-light);
+
+  border-color:var(--gold-line);
+
+  background:
+    rgba(200,164,91,.06);
 }
 
-.nav a.active::after{
-    content:"";
-
-    position:absolute;
-
-    left:15px;
-    right:15px;
-    bottom:3px;
-
-    height:2px;
-
-    background:var(--gold);
+.nav .site-link{
+  color:var(--gold-light);
 }
 
-.logout{
-    margin-left:12px;
+.mobile-btn{
+  display:none;
 
-    padding:8px 12px;
+  width:48px;
+  height:48px;
 
-    border:1px solid rgba(255,255,255,.12);
+  border:1px solid var(--line);
 
-    background:none;
+  border-radius:11px;
 
-    color:#999;
+  background:#090909;
+
+  color:#fff;
+
+  font-size:22px;
 }
 
-.logout:hover{
-    border-color:var(--gold);
-    color:var(--gold-light);
+/* =====================================================
+HERO
+===================================================== */
+
+.hero{
+  position:relative;
+
+  overflow:hidden;
+
+  padding:105px 0 80px;
+
+  border-bottom:1px solid var(--line);
 }
 
-.mobile{
-    display:none;
+.hero::before{
+  content:"";
 
-    margin-left:auto;
+  position:absolute;
 
-    width:42px;
-    height:42px;
+  width:700px;
+  height:700px;
 
-    border:1px solid var(--gold-line);
+  left:-280px;
+  bottom:-390px;
 
-    background:#111;
+  border-radius:50%;
 
-    color:var(--gold-light);
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.09),
+      transparent 65%
+    );
+
+  filter:blur(30px);
 }
 
-.main{
-    max-width:1400px;
+.hero-inner{
+  position:relative;
 
-    margin:auto;
+  display:grid;
 
-    padding:60px 28px 100px;
+  grid-template-columns:
+    1fr
+    auto;
+
+  align-items:end;
+
+  gap:50px;
 }
 
 .eyebrow{
-    color:var(--gold);
+  margin-bottom:17px;
 
-    font-size:12px;
+  color:var(--gold);
 
-    letter-spacing:3px;
+  font-size:14px;
 
-    margin-bottom:12px;
+  letter-spacing:4px;
 }
 
-h1{
-    font-size:clamp(44px,6vw,72px);
+.hero h1{
+  font-family:"Kanit",sans-serif;
 
-    line-height:1;
+  font-size:
+    clamp(
+      65px,
+      8.5vw,
+      125px
+    );
 
-    margin-bottom:15px;
+  font-weight:300;
+
+  letter-spacing:-4px;
+
+  line-height:.9;
 }
 
-.description{
-    max-width:650px;
+.hero h1 span{
+  color:transparent;
 
-    color:#888;
+  -webkit-text-stroke:
+    1px
+    rgba(200,164,91,.80);
+}
 
-    font-family:"Prompt",sans-serif;
+.hero-desc{
+  max-width:950px;
 
-    font-size:13px;
+  margin-top:28px;
 
-    line-height:1.9;
+  color:#949494;
 
-    margin-bottom:40px;
+  font-size:17px;
+
+  line-height:2;
+}
+
+.hero-status{
+  display:inline-flex;
+  align-items:center;
+
+  gap:10px;
+
+  margin-top:23px;
+
+  padding:11px 16px;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:999px;
+
+  color:var(--gold-light);
+
+  font-size:12px;
+
+  background:
+    rgba(200,164,91,.05);
+}
+
+.hero-status::before{
+  content:"";
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  box-shadow:
+    0 0 14px
+    var(--green);
+}
+
+.hero-side{
+  min-width:260px;
+
+  padding:26px;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.09),
+      rgba(255,255,255,.015)
+    );
+}
+
+.hero-side small{
+  display:block;
+
+  color:#666;
+
+  font-size:10px;
+
+  letter-spacing:2px;
+}
+
+.hero-side strong{
+  display:block;
+
+  margin-top:6px;
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:39px;
+
+  font-weight:400;
+}
+
+/* =====================================================
+MAIN
+===================================================== */
+
+main{
+  padding:65px 0 110px;
 }
 
 .toolbar{
-    display:flex;
+  display:flex;
 
-    gap:10px;
+  align-items:center;
 
-    margin-bottom:25px;
+  justify-content:space-between;
+
+  gap:15px;
+
+  margin-bottom:25px;
+
+  padding:18px;
+
+  border:1px solid var(--line);
+
+  border-radius:20px;
+
+  background:
+    rgba(255,255,255,.025);
+}
+
+.toolbar-left{
+  flex:1;
+
+  display:flex;
+
+  gap:10px;
 }
 
 .search{
-    flex:1;
+  width:100%;
 
-    padding:14px 16px;
+  height:55px;
 
-    background:#0a0a0a;
+  padding:0 17px;
 
-    border:1px solid var(--line);
+  border:1px solid var(--line);
 
-    color:#fff;
+  border-radius:11px;
 
-    outline:none;
+  outline:none;
+
+  background:#080808;
+
+  color:#fff;
+
+  font-size:15px;
+}
+
+.search::placeholder{
+  color:#606060;
 }
 
 .search:focus{
-    border-color:var(--gold);
+  border-color:var(--gold-line);
 }
 
-.filter{
-    width:180px;
+.select{
+  min-width:190px;
 
-    padding:14px;
+  height:55px;
 
-    background:#0a0a0a;
+  padding:0 15px;
 
-    border:1px solid var(--line);
+  border:1px solid var(--line);
 
-    color:#fff;
+  border-radius:11px;
 
-    outline:none;
+  outline:none;
+
+  background:#080808;
+
+  color:#fff;
+
+  font-size:14px;
 }
 
-.grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,minmax(0,1fr));
-
-    gap:16px;
+.select:focus{
+  border-color:var(--gold-line);
 }
 
-.card{
-    position:relative;
+.toolbar-right{
+  display:flex;
 
-    overflow:hidden;
+  align-items:center;
 
-    border:1px solid var(--line);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
-        );
-
-    transition:.3s;
+  gap:10px;
 }
 
-.card:hover{
-    transform:translateY(-4px);
+.count{
+  color:#777;
 
-    border-color:var(--gold-line);
+  font-size:12px;
+
+  white-space:nowrap;
 }
 
-.image{
-    aspect-ratio:1/1;
+.btn{
+  min-height:50px;
 
-    background:#111;
+  padding:0 18px;
 
-    overflow:hidden;
+  border:1px solid var(--line);
+
+  border-radius:11px;
+
+  background:#0b0b0b;
+
+  color:#aaa;
+
+  font-size:13px;
+
+  transition:.25s;
 }
 
-.image img{
-    width:100%;
-    height:100%;
+.btn:hover{
+  color:#fff;
 
-    object-fit:cover;
+  border-color:var(--gold-line);
 
-    transition:.5s;
+  transform:translateY(-1px);
 }
 
-.card:hover img{
-    transform:scale(1.06);
+.btn-gold{
+  border-color:transparent;
+
+  color:#050505;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold)
+    );
 }
 
-.no-image{
-    height:100%;
+/* =====================================================
+CATEGORY INFO
+===================================================== */
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.category-strip{
+  display:flex;
 
-    color:#555;
+  gap:10px;
 
-    font-size:13px;
+  overflow:auto;
+
+  margin-bottom:25px;
+
+  padding-bottom:4px;
 }
 
-.info{
-    padding:20px;
+.category-chip{
+  flex:0 0 auto;
+
+  padding:11px 17px;
+
+  border:1px solid var(--line);
+
+  border-radius:999px;
+
+  color:#888;
+
+  font-size:12px;
+
+  background:#090909;
+
+  transition:.25s;
 }
 
-.category{
-    color:var(--gold);
+.category-chip:hover,
+.category-chip.active{
+  color:var(--gold-light);
 
-    font-size:10px;
+  border-color:var(--gold-line);
 
-    letter-spacing:2px;
-
-    margin-bottom:8px;
+  background:
+    rgba(200,164,91,.06);
 }
 
-.name{
-    font-size:19px;
+/* =====================================================
+PRODUCT GRID
+===================================================== */
 
-    font-weight:500;
+.product-grid{
+  display:grid;
 
-    min-height:52px;
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
 }
 
-.desc{
-    color:#888;
+.product-card{
+  position:relative;
 
-    font-family:"Prompt",sans-serif;
+  overflow:hidden;
 
-    font-size:11px;
+  min-width:0;
 
-    line-height:1.7;
+  border:1px solid var(--line);
 
-    margin:8px 0 15px;
+  border-radius:23px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
 }
 
-.status{
-    display:inline-flex;
+.product-card:hover{
+  transform:translateY(-5px);
 
-    padding:5px 9px;
+  border-color:var(--gold-line);
 
-    border:1px solid rgba(100,200,120,.2);
-
-    background:rgba(100,200,120,.06);
-
-    color:#83d08d;
-
-    font-size:10px;
+  box-shadow:
+    0 22px 60px
+    rgba(0,0,0,.35);
 }
 
-.status.hidden{
-    border-color:rgba(220,80,80,.2);
+.product-image{
+  position:relative;
 
-    background:rgba(220,80,80,.06);
+  height:300px;
 
-    color:#e98d8d;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #171717,
+      #080808
+    );
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  transition:
+    transform .6s ease;
+}
+
+.product-card:hover
+.product-image img{
+  transform:scale(1.06);
+}
+
+.image-empty{
+  width:100%;
+  height:100%;
+
+  display:grid;
+  place-items:center;
+
+  color:#555;
+
+  font-size:44px;
+}
+
+.product-badge{
+  position:absolute;
+
+  left:14px;
+  top:14px;
+
+  padding:7px 11px;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:999px;
+
+  color:var(--gold-light);
+
+  background:
+    rgba(5,5,5,.78);
+
+  backdrop-filter:blur(8px);
+
+  font-size:10px;
+}
+
+.product-status{
+  position:absolute;
+
+  right:14px;
+  top:14px;
+
+  padding:7px 11px;
+
+  border-radius:999px;
+
+  font-size:10px;
+
+  background:
+    rgba(5,5,5,.78);
+
+  backdrop-filter:blur(8px);
+}
+
+.product-status.visible{
+  color:var(--green);
+
+  border:1px solid
+    rgba(101,217,154,.22);
+}
+
+.product-status.hidden{
+  color:var(--red);
+
+  border:1px solid
+    rgba(255,109,109,.22);
+}
+
+.product-content{
+  padding:22px;
+}
+
+.product-code{
+  color:#606060;
+
+  font-size:10px;
+
+  letter-spacing:2px;
+}
+
+.product-name{
+  min-height:58px;
+
+  margin-top:8px;
+
+  color:#f1f1f1;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:22px;
+
+  font-weight:400;
+
+  line-height:1.2;
+}
+
+.product-desc{
+  min-height:49px;
+
+  margin-top:9px;
+
+  color:#777;
+
+  font-size:12px;
+
+  line-height:1.8;
+}
+
+.product-bottom{
+  display:flex;
+
+  align-items:end;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-top:20px;
+
+  padding-top:16px;
+
+  border-top:1px solid var(--line);
+}
+
+.price{
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:25px;
+
+  line-height:1.1;
+}
+
+.price small{
+  color:#666;
+
+  font-family:"Prompt",sans-serif;
+
+  font-size:10px;
+}
+
+.option-count{
+  color:#666;
+
+  font-size:10px;
+
+  text-align:right;
+}
+
+.product-actions{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:8px;
+
+  margin-top:13px;
+}
+
+.product-actions .btn{
+  min-height:45px;
+
+  padding:0 10px;
+
+  font-size:11px;
 }
 
 .empty{
-    padding:70px 20px;
+  grid-column:1/-1;
 
-    text-align:center;
+  padding:100px 25px;
 
-    border:1px dashed var(--line);
+  text-align:center;
 
-    color:#666;
+  border:1px solid var(--line);
+
+  border-radius:23px;
+
+  background:
+    rgba(255,255,255,.018);
 }
 
-.loading{
-    color:#888;
+.empty-mark{
+  width:75px;
+  height:75px;
+
+  display:grid;
+  place-items:center;
+
+  margin:0 auto 20px;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:20px;
+
+  color:var(--gold);
+
+  font-size:25px;
+}
+
+.empty h3{
+  margin-bottom:6px;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:27px;
+
+  font-weight:400;
+}
+
+.empty p{
+  color:#666;
+
+  font-size:12px;
+}
+
+/* =====================================================
+STATS
+===================================================== */
+
+.stats{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:13px;
+
+  margin-bottom:25px;
+}
+
+.stat{
+  min-height:135px;
+
+  padding:22px;
+
+  border:1px solid var(--line);
+
+  border-radius:19px;
+
+  background:
+    rgba(255,255,255,.025);
+}
+
+.stat small{
+  display:block;
+
+  color:#666;
+
+  font-size:10px;
+
+  letter-spacing:2px;
+}
+
+.stat strong{
+  display:block;
+
+  margin-top:8px;
+
+  color:#eee;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:39px;
+
+  font-weight:400;
+}
+
+.stat.gold{
+  border-color:var(--gold-line);
+
+  background:
+    rgba(200,164,91,.055);
+}
+
+.stat.gold strong{
+  color:var(--gold-light);
+}
+
+/* =====================================================
+AUTH
+===================================================== */
+
+.auth{
+  position:fixed;
+  inset:0;
+
+  z-index:9999;
+
+  display:none;
+
+  place-items:center;
+
+  padding:20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(200,164,91,.13),
+      transparent 40%
+    ),
+    #050505;
+}
+
+.auth.show{
+  display:grid;
+}
+
+.auth-card{
+  width:min(480px,100%);
+
+  padding:38px;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:26px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #171717,
+      #080808
+    );
+
+  box-shadow:
+    0 45px 115px
+    rgba(0,0,0,.82);
+}
+
+.auth-logo{
+  width:66px;
+  height:66px;
+
+  display:grid;
+  place-items:center;
+
+  margin-bottom:22px;
+
+  border:1px solid var(--gold);
+
+  border-radius:17px;
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:21px;
+}
+
+.auth-card h2{
+  font-family:"Kanit",sans-serif;
+
+  font-size:39px;
+
+  font-weight:400;
+}
+
+.auth-card p{
+  margin-top:7px;
+  margin-bottom:25px;
+
+  color:#707070;
+
+  font-size:13px;
+
+  line-height:1.9;
+}
+
+.auth-input{
+  width:100%;
+  height:55px;
+
+  margin-bottom:11px;
+
+  padding:0 16px;
+
+  border:1px solid var(--line);
+
+  border-radius:11px;
+
+  outline:none;
+
+  background:#080808;
+
+  color:#fff;
+
+  font-size:15px;
+}
+
+.auth-input:focus{
+  border-color:var(--gold);
+}
+
+.auth-input::placeholder{
+  color:#666;
+}
+
+.auth-error{
+  min-height:22px;
+
+  margin:3px 0 11px;
+
+  color:var(--red);
+
+  font-size:11px;
+}
+
+.auth-btn{
+  width:100%;
+  height:55px;
+
+  border:0;
+
+  border-radius:11px;
+
+  color:#050505;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold)
+    );
+}
+
+/* =====================================================
+DETAIL MODAL
+===================================================== */
+
+.modal{
+  position:fixed;
+  inset:0;
+
+  z-index:6000;
+
+  display:none;
+
+  place-items:center;
+
+  padding:20px;
+
+  background:
+    rgba(0,0,0,.82);
+
+  backdrop-filter:blur(15px);
+}
+
+.modal.show{
+  display:grid;
+}
+
+.modal-card{
+  width:min(950px,100%);
+
+  max-height:92vh;
+
+  overflow:auto;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #171717,
+      #080808
+    );
+
+  box-shadow:
+    0 45px 130px
+    rgba(0,0,0,.85);
+}
+
+.modal-head{
+  min-height:82px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:20px 25px;
+
+  border-bottom:1px solid var(--line);
+}
+
+.modal-head h2{
+  font-family:"Kanit",sans-serif;
+
+  font-size:29px;
+
+  font-weight:400;
+}
+
+.modal-close{
+  width:44px;
+  height:44px;
+
+  border:1px solid var(--line);
+
+  border-radius:11px;
+
+  background:#090909;
+
+  color:#aaa;
+
+  font-size:22px;
+}
+
+.modal-body{
+  padding:28px;
+}
+
+.detail-grid{
+  display:grid;
+
+  grid-template-columns:
+    330px
+    1fr;
+
+  gap:28px;
+}
+
+.detail-image{
+  height:360px;
+
+  overflow:hidden;
+
+  border:1px solid var(--line);
+
+  border-radius:18px;
+
+  background:#090909;
+}
+
+.detail-image img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.detail-image.empty-image{
+  display:grid;
+  place-items:center;
+
+  color:#555;
+
+  font-size:50px;
+}
+
+.detail-code{
+  color:#666;
+
+  font-size:11px;
+
+  letter-spacing:2px;
+}
+
+.detail-title{
+  margin-top:7px;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:35px;
+
+  font-weight:400;
+
+  line-height:1.2;
+}
+
+.detail-desc{
+  margin-top:12px;
+
+  color:#888;
+
+  font-size:14px;
+
+  line-height:1.9;
+}
+
+.detail-block{
+  margin-top:22px;
+
+  padding-top:18px;
+
+  border-top:1px solid var(--line);
+}
+
+.detail-block h3{
+  margin-bottom:10px;
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:18px;
+
+  font-weight:400;
+}
+
+.detail-text{
+  color:#999;
+
+  font-size:13px;
+
+  white-space:pre-line;
+}
+
+.option-list{
+  display:grid;
+
+  gap:8px;
+}
+
+.option-item{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:12px 14px;
+
+  border:1px solid var(--line);
+
+  border-radius:10px;
+
+  background:#090909;
+}
+
+.option-item span:first-child{
+  color:#aaa;
+
+  font-size:12px;
+}
+
+.option-item strong{
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:17px;
+
+  font-weight:400;
+}
+
+.feature-list{
+  display:grid;
+
+  gap:7px;
+}
+
+.feature{
+  color:#999;
+
+  font-size:12px;
+}
+
+.feature::before{
+  content:"✓";
+
+  margin-right:8px;
+
+  color:var(--gold);
+}
+
+.modal-actions{
+  display:flex;
+
+  gap:9px;
+
+  margin-top:25px;
+}
+
+/* =====================================================
+TOAST
+===================================================== */
+
+.toast{
+  position:fixed;
+
+  right:22px;
+  bottom:22px;
+
+  z-index:10000;
+
+  max-width:390px;
+
+  padding:15px 18px;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:13px;
+
+  color:#eee;
+
+  background:
+    rgba(15,15,15,.96);
+
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,.5);
+
+  font-size:12px;
+
+  opacity:0;
+
+  transform:
+    translateY(15px);
+
+  pointer-events:none;
+
+  transition:.25s;
+}
+
+.toast.show{
+  opacity:1;
+
+  transform:
+    translateY(0);
+}
+
+/* =====================================================
+FOOTER
+===================================================== */
+
+.footer{
+  border-top:1px solid var(--line);
+
+  padding:34px 0;
+
+  color:#5d5d5d;
+
+  font-size:10px;
+}
+
+.footer-inner{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+/* =====================================================
+RESPONSIVE
+===================================================== */
+
+@media(max-width:1250px){
+
+  .product-grid{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
 }
 
 @media(max-width:1050px){
 
-    .grid{
-        grid-template-columns:repeat(3,1fr);
-    }
+  .mobile-btn{
+    display:block;
+  }
+
+  .nav{
+    display:none;
+
+    position:absolute;
+
+    top:82px;
+
+    left:14px;
+    right:14px;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    padding:11px;
+
+    border:1px solid var(--line);
+
+    border-radius:15px;
+
+    background:#090909;
+  }
+
+  .nav.open{
+    display:flex;
+  }
+
+  .nav a{
+    padding:14px;
+
+    font-size:15px;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .detail-grid{
+    grid-template-columns:1fr;
+  }
+
+  .detail-image{
+    height:330px;
+  }
 
 }
 
 @media(max-width:800px){
 
-    .brand-title,
-    .brand-sub{
-        display:none;
-    }
+  .container{
+    width:calc(100% - 26px);
+  }
 
-    .nav{
-        display:none;
+  .hero{
+    padding:78px 0 60px;
+  }
 
-        position:absolute;
+  .hero h1{
+    font-size:60px;
+  }
 
-        top:78px;
-        left:15px;
-        right:15px;
+  .hero-desc{
+    font-size:15px;
+  }
 
-        padding:10px;
+  .hero-side{
+    width:100%;
+  }
 
-        background:#0d0d0d;
+  .toolbar{
+    flex-direction:column;
 
-        border:1px solid var(--gold-line);
+    align-items:stretch;
+  }
 
-        flex-direction:column;
-        align-items:stretch;
-    }
+  .toolbar-left{
+    flex-direction:column;
+  }
 
-    .nav.open{
-        display:flex;
-    }
+  .select{
+    width:100%;
+  }
 
-    .nav a{
-        padding:13px 15px;
-    }
+  .toolbar-right{
+    justify-content:space-between;
+  }
 
-    .logout{
-        margin:5px 0 0;
-    }
-
-    .mobile{
-        display:block;
-    }
-
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .toolbar{
-        flex-direction:column;
-    }
-
-    .filter{
-        width:100%;
-    }
+  .product-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
 
 }
 
-@media(max-width:500px){
+@media(max-width:550px){
 
-    .main{
-        padding:45px 18px;
-    }
+  .logo-title{
+    font-size:18px;
+  }
 
-    .grid{
-        grid-template-columns:1fr;
-    }
+  .logo-sub{
+    display:none;
+  }
 
-    h1{
-        font-size:46px;
-    }
+  .logo-mark{
+    width:50px;
+    height:50px;
+  }
+
+  .hero h1{
+    font-size:49px;
+
+    letter-spacing:-2px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .product-grid{
+    grid-template-columns:1fr;
+  }
+
+  .product-image{
+    height:310px;
+  }
+
+  .product-name{
+    font-size:24px;
+  }
+
+  .product-desc{
+    font-size:13px;
+  }
+
+  .modal-body{
+    padding:20px;
+  }
+
+  .detail-title{
+    font-size:30px;
+  }
+
+  .modal-actions{
+    display:grid;
+
+    grid-template-columns:1fr;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
 
 }
-
 </style>
-
 </head>
 
 <body>
 
 <header class="header">
 
-<div class="header-inner">
+  <div class="container header-inner">
 
-<a href="admin.html" class="brand">
+    <a href="admin.html" class="logo">
 
-<div class="logo">
-CG
-</div>
+      <div class="logo-mark">
+        CG
+      </div>
 
-<div>
-<div class="brand-title">
-CHATPETCH GROUP
-</div>
+      <div>
 
-<div class="brand-sub">
-ADMIN BACK OFFICE
-</div>
-</div>
+        <div class="logo-title">
+          CHATPETCH GROUP
+        </div>
 
-</a>
+        <div class="logo-sub">
+          ADMINISTRATION SYSTEM
+        </div>
 
+      </div>
 
-<nav class="nav" id="nav">
-
-<a href="admin.html">
-หน้าแรก
-</a>
-
-<a href="admin-store.html" class="active">
-สินค้า
-</a>
-
-<a href="admin-products.html">
-การจัดการสินค้า
-</a>
-
-<button class="logout" id="logout">
-ออกจากระบบ
-</button>
-
-</nav>
+    </a>
 
 
-<button class="mobile" id="mobile">
-☰
-</button>
+    <button
+      id="mobileBtn"
+      class="mobile-btn"
+      type="button"
+    >
+      ☰
+    </button>
 
-</div>
+
+    <nav
+      id="nav"
+      class="nav"
+    >
+
+      <a href="admin.html">
+        Dashboard
+      </a>
+
+      <a
+        href="admin-store.html"
+        class="active"
+      >
+        สินค้า
+      </a>
+
+      <a href="admin-products.html">
+        จัดการสินค้า
+      </a>
+
+      <a
+        id="usersNav"
+        href="admin-users.html"
+      >
+        ผู้ใช้งาน
+      </a>
+
+      <a
+        href="index.html"
+        target="_blank"
+        class="site-link"
+      >
+        เว็บไซต์
+      </a>
+
+      <a
+        href="#"
+        id="logoutBtn"
+      >
+        ออกจากระบบ
+      </a>
+
+    </nav>
+
+  </div>
 
 </header>
 
 
-<main class="main">
+<section class="hero">
 
-<div class="eyebrow">
-BACK OFFICE / PRODUCTS
-</div>
+  <div class="container hero-inner">
 
-<h1>
-สินค้า
-</h1>
+    <div>
 
-<p class="description">
-รายการสินค้าภายในระบบหลังบ้าน
-หน้านี้ใช้สำหรับตรวจสอบข้อมูลสินค้า
-ที่เชื่อมต่อกับฐานข้อมูล Supabase
-โดยแยกออกจากหน้าร้านสำหรับลูกค้า
-</p>
+      <div class="eyebrow">
+        CHATPETCH GROUP · ADMIN STORE
+      </div>
 
+      <h1>
+        STORE
+        <span>CONTROL</span>
+      </h1>
 
-<div class="toolbar">
+      <p class="hero-desc">
+        หน้ารวมสินค้าสำหรับผู้ดูแลระบบ
+        เชื่อมต่อข้อมูลจาก Supabase โดยตรง
+        ใช้สำหรับตรวจสอบสินค้า ราคา ตัวเลือกสินค้า
+        และสถานะการแสดงผลบนเว็บไซต์
+      </p>
 
-<input
-id="search"
-class="search"
-placeholder="ค้นหาชื่อสินค้า / รหัสสินค้า..."
->
+      <div
+        id="heroStatus"
+        class="hero-status"
+      >
+        กำลังตรวจสอบสิทธิ์
+      </div>
 
-<select id="category" class="filter">
-
-<option value="">
-ทุกหมวดหมู่
-</option>
-
-<option value="floor">
-วัสดุงานพื้น
-</option>
-
-<option value="coating">
-น้ำยา / เคมี
-</option>
-
-<option value="construction">
-วัสดุก่อสร้าง
-</option>
-
-</select>
-
-</div>
+    </div>
 
 
-<div id="productGrid" class="grid">
+    <div class="hero-side">
 
-<div class="empty loading">
-กำลังโหลดสินค้า...
-</div>
+      <small>
+        CURRENT ROLE
+      </small>
 
-</div>
+      <strong id="roleText">
+        -
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <div class="container">
+
+
+    <section class="stats">
+
+      <div class="stat gold">
+
+        <small>
+          ALL PRODUCTS
+        </small>
+
+        <strong id="statAll">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <small>
+          VISIBLE
+        </small>
+
+        <strong id="statVisible">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <small>
+          HIDDEN
+        </small>
+
+        <strong id="statHidden">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <small>
+          CATEGORIES
+        </small>
+
+        <strong id="statCategories">
+          0
+        </strong>
+
+      </div>
+
+    </section>
+
+
+    <section class="toolbar">
+
+      <div class="toolbar-left">
+
+        <input
+          id="searchInput"
+          class="search"
+          type="search"
+          placeholder="ค้นหาชื่อสินค้า / รหัสสินค้า / รายละเอียด"
+        >
+
+
+        <select
+          id="categoryFilter"
+          class="select"
+        >
+
+          <option value="all">
+            ทุกหมวดหมู่
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="toolbar-right">
+
+        <span
+          id="countLabel"
+          class="count"
+        >
+          0 รายการ
+        </span>
+
+        <button
+          id="refreshBtn"
+          class="btn"
+          type="button"
+        >
+          ↻ รีเฟรช
+        </button>
+
+        <a
+          href="admin-products.html"
+          class="btn btn-gold"
+        >
+          + จัดการสินค้า
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <div
+      id="categoryStrip"
+      class="category-strip"
+    ></div>
+
+
+    <section
+      id="productGrid"
+      class="product-grid"
+    >
+
+      <div class="empty">
+
+        <div class="empty-mark">
+          ◇
+        </div>
+
+        <h3>
+          กำลังโหลดสินค้า
+        </h3>
+
+        <p>
+          กำลังเชื่อมต่อฐานข้อมูล Supabase
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
 
 </main>
 
 
+<div
+  id="modal"
+  class="modal"
+>
+
+  <div class="modal-card">
+
+    <div class="modal-head">
+
+      <h2>
+        รายละเอียดสินค้า
+      </h2>
+
+      <button
+        id="modalClose"
+        class="modal-close"
+        type="button"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      id="modalBody"
+      class="modal-body"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="auth"
+  class="auth"
+>
+
+  <div class="auth-card">
+
+    <div class="auth-logo">
+      CG
+    </div>
+
+    <h2>
+      Admin Login
+    </h2>
+
+    <p>
+      เข้าสู่ระบบจัดการ Chatpetch Group
+    </p>
+
+
+    <input
+      id="loginEmail"
+      class="auth-input"
+      type="email"
+      autocomplete="username"
+      placeholder="อีเมล"
+    >
+
+
+    <input
+      id="loginPassword"
+      class="auth-input"
+      type="password"
+      autocomplete="current-password"
+      placeholder="รหัสผ่าน"
+    >
+
+
+    <div
+      id="authError"
+      class="auth-error"
+    ></div>
+
+
+    <button
+      id="loginBtn"
+      class="auth-btn"
+      type="button"
+    >
+      เข้าสู่ระบบ
+    </button>
+
+  </div>
+
+</div>
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <div>
+      © 2026 Chatpetch Group Co., Ltd.
+    </div>
+
+    <div>
+      CHATPETCH ADMINISTRATION SYSTEM
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+(function(){
 
-const SUPABASE_URL =
-"https://mfhllgklcfnnbyyzzljz.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
+  "use strict";
 
 
-const client =
-window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY,
-    {
+  const SUPABASE_URL =
+    "https://mfhllgklcfnnbyyzzljz.supabase.co";
+
+
+  const SUPABASE_KEY =
+    "sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
+
+
+  const db =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY,
+      {
         auth:{
-            persistSession:true,
-            autoRefreshToken:true,
-            detectSessionInUrl:false
+          persistSession:true,
+          autoRefreshToken:true,
+          detectSessionInUrl:true
         }
+      }
+    );
+
+
+  let products = [];
+
+  let currentUser = null;
+
+  let currentAdmin = null;
+
+  let currentRole = null;
+
+
+  const $ = id =>
+    document.getElementById(id);
+
+
+  function esc(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  function showToast(message){
+
+    const toast =
+      $("toast");
+
+
+    toast.textContent =
+      message;
+
+
+    toast.classList.add(
+      "show"
+    );
+
+
+    clearTimeout(
+      window.__toastTimer
+    );
+
+
+    window.__toastTimer =
+      setTimeout(
+        () => {
+
+          toast.classList.remove(
+            "show"
+          );
+
+        },
+        2800
+      );
+
+  }
+
+
+  function getPrice(product){
+
+    const options =
+      Array.isArray(
+        product.options
+      )
+        ? product.options
+        : [];
+
+
+    if(options.length){
+
+      const values =
+        options
+          .map(
+            option =>
+              Number(
+                option.price ||
+                option.numericPrice ||
+                0
+              )
+          )
+          .filter(
+            value =>
+              Number.isFinite(value) &&
+              value > 0
+          );
+
+
+      if(values.length){
+
+        return Math.min(
+          ...values
+        );
+
+      }
+
     }
-);
 
 
-let products = [];
+    const text =
+      String(
+        product.price ||
+        product.price_label ||
+        ""
+      );
 
 
-async function checkAuth(){
-
-    const {
-        data
-    } =
-    await client.auth.getSession();
+    const numbers =
+      text.match(
+        /[\d,]+(?:\.\d+)?/g
+      );
 
 
     if(
-        !data.session
+      numbers &&
+      numbers.length
     ){
 
-        window.location.href =
-            "admin.html";
-
-        return false;
+      return Number(
+        numbers[0]
+          .replace(/,/g,"")
+      );
 
     }
 
-    return true;
 
-}
+    return 0;
+
+  }
 
 
-async function loadProducts(){
+  function priceText(product){
 
-    const {
-        data,
-        error
-    } =
-    await client
+    const price =
+      getPrice(product);
+
+
+    if(
+      !price
+    ){
+
+      return "สอบถามราคา";
+
+    }
+
+
+    return (
+      new Intl.NumberFormat(
+        "th-TH"
+      ).format(price)
+      +
+      " ฿"
+    );
+
+  }
+
+
+  function parseOptions(product){
+
+    if(
+      Array.isArray(
+        product.options
+      )
+    ){
+
+      return product.options;
+
+    }
+
+
+    return [];
+
+  }
+
+
+  function parseFeatures(product){
+
+    if(
+      Array.isArray(
+        product.features
+      )
+    ){
+
+      return product.features;
+
+    }
+
+
+    return [];
+
+  }
+
+
+  function productCategory(product){
+
+    return (
+      product.category_label ||
+      product.category ||
+      "ไม่ระบุหมวดหมู่"
+    );
+
+  }
+
+
+  async function getAdminProfile(user){
+
+    const result =
+      await db
+        .from("admin_users")
+        .select(
+          "user_id,email,name,role,active"
+        )
+        .eq(
+          "user_id",
+          user.id
+        )
+        .maybeSingle();
+
+
+    if(result.error){
+
+      throw new Error(
+        "ตรวจสอบสิทธิ์ไม่สำเร็จ: " +
+        result.error.message
+      );
+
+    }
+
+
+    if(!result.data){
+
+      throw new Error(
+        "ไม่พบบัญชีนี้ใน admin_users"
+      );
+
+    }
+
+
+    if(
+      !result.data.active
+    ){
+
+      throw new Error(
+        "บัญชีนี้ถูกปิดการใช้งาน"
+      );
+
+    }
+
+
+    if(
+      ![
+        "owner",
+        "manager",
+        "staff",
+        "viewer"
+      ].includes(
+        result.data.role
+      )
+    ){
+
+      throw new Error(
+        "Role ของบัญชีไม่ถูกต้อง"
+      );
+
+    }
+
+
+    return result.data;
+
+  }
+
+
+  function showLogin(message=""){
+
+    $("auth")
+      .classList
+      .add("show");
+
+
+    $("heroStatus")
+      .textContent =
+      "กรุณาเข้าสู่ระบบ";
+
+
+    $("authError")
+      .textContent =
+      message;
+
+  }
+
+
+  function hideLogin(){
+
+    $("auth")
+      .classList
+      .remove("show");
+
+  }
+
+
+  async function login(){
+
+    const email =
+      $("loginEmail")
+        .value
+        .trim();
+
+
+    const password =
+      $("loginPassword")
+        .value;
+
+
+    $("authError")
+      .textContent =
+      "";
+
+
+    if(
+      !email ||
+      !password
+    ){
+
+      $("authError")
+        .textContent =
+        "กรุณากรอกอีเมลและรหัสผ่าน";
+
+      return;
+
+    }
+
+
+    $("loginBtn")
+      .disabled =
+      true;
+
+
+    $("loginBtn")
+      .textContent =
+      "กำลังเข้าสู่ระบบ...";
+
+
+    try{
+
+      const result =
+        await db.auth
+          .signInWithPassword({
+            email,
+            password
+          });
+
+
+      if(result.error){
+
+        throw result.error;
+
+      }
+
+    }
+    catch(error){
+
+      $("authError")
+        .textContent =
+        error.message ||
+        "เข้าสู่ระบบไม่สำเร็จ";
+
+    }
+    finally{
+
+      $("loginBtn")
+        .disabled =
+        false;
+
+
+      $("loginBtn")
+        .textContent =
+        "เข้าสู่ระบบ";
+
+    }
+
+  }
+
+
+  async function loadProducts(){
+
+    $("productGrid")
+      .innerHTML = `
+
+        <div class="empty">
+
+          <div class="empty-mark">
+            ◇
+          </div>
+
+          <h3>
+            กำลังโหลดสินค้า
+          </h3>
+
+          <p>
+            กำลังดึงข้อมูลจาก Supabase
+          </p>
+
+        </div>
+
+      `;
+
+
+    const result =
+      await db
         .from("products")
         .select("*")
-        .order("created_at",{ascending:false});
-
-
-    if(error){
-
-        document
-            .getElementById("productGrid")
-            .innerHTML = `
-                <div class="empty">
-                    ไม่สามารถโหลดข้อมูลสินค้าได้<br>
-                    <small>${escapeHtml(error.message)}</small>
-                </div>
-            `;
-
-        return;
-
-    }
-
-
-    products = data || [];
-
-    render();
-
-}
-
-
-function render(){
-
-    const search =
-        document
-            .getElementById("search")
-            .value
-            .trim()
-            .toLowerCase();
-
-    const category =
-        document
-            .getElementById("category")
-            .value;
-
-
-    const filtered =
-        products.filter(product => {
-
-            const matchSearch =
-                !search ||
-                String(product.id || "")
-                    .toLowerCase()
-                    .includes(search) ||
-                String(product.name || "")
-                    .toLowerCase()
-                    .includes(search);
-
-            const matchCategory =
-                !category ||
-                product.category === category;
-
-            return matchSearch &&
-                   matchCategory;
-
-        });
-
-
-    const grid =
-        document.getElementById(
-            "productGrid"
+        .order(
+          "created_at",
+          {
+            ascending:true
+          }
         );
 
 
-    if(!filtered.length){
+    if(result.error){
 
-        grid.innerHTML = `
-            <div class="empty">
-                ไม่พบสินค้า
+      throw result.error;
+
+    }
+
+
+    products =
+      result.data || [];
+
+
+    updateStats();
+
+    buildCategories();
+
+    renderProducts();
+
+  }
+
+
+  function updateStats(){
+
+    const total =
+      products.length;
+
+
+    const visible =
+      products.filter(
+        product =>
+          !product.hidden
+      ).length;
+
+
+    const hidden =
+      products.filter(
+        product =>
+          !!product.hidden
+      ).length;
+
+
+    const categories =
+      new Set(
+        products
+          .map(
+            product =>
+              product.category ||
+              product.category_label
+          )
+          .filter(Boolean)
+      ).size;
+
+
+    $("statAll")
+      .textContent =
+      total;
+
+
+    $("statVisible")
+      .textContent =
+      visible;
+
+
+    $("statHidden")
+      .textContent =
+      hidden;
+
+
+    $("statCategories")
+      .textContent =
+      categories;
+
+  }
+
+
+  function buildCategories(){
+
+    const current =
+      $("categoryFilter")
+        .value;
+
+
+    const map =
+      new Map();
+
+
+    products.forEach(
+      product => {
+
+        const key =
+          product.category ||
+          "other";
+
+
+        const label =
+          product.category_label ||
+          product.category ||
+          "อื่นๆ";
+
+
+        if(
+          !map.has(key)
+        ){
+
+          map.set(
+            key,
+            label
+          );
+
+        }
+
+      }
+    );
+
+
+    $("categoryFilter")
+      .innerHTML = `
+
+        <option value="all">
+          ทุกหมวดหมู่
+        </option>
+
+        ${
+          Array.from(
+            map.entries()
+          )
+          .map(
+            ([key,label]) => `
+              <option
+                value="${esc(key)}"
+              >
+                ${esc(label)}
+              </option>
+            `
+          )
+          .join("")
+        }
+
+      `;
+
+
+    if(
+      Array.from(
+        map.keys()
+      ).includes(current)
+    ){
+
+      $("categoryFilter")
+        .value =
+        current;
+
+    }
+
+
+    const chips = [
+
+      `
+        <button
+          type="button"
+          class="category-chip active"
+          data-category="all"
+        >
+          ทั้งหมด
+        </button>
+      `
+
+    ];
+
+
+    map.forEach(
+      (label,key) => {
+
+        chips.push(`
+
+          <button
+            type="button"
+            class="category-chip"
+            data-category="${esc(key)}"
+          >
+            ${esc(label)}
+          </button>
+
+        `);
+
+      }
+    );
+
+
+    $("categoryStrip")
+      .innerHTML =
+      chips.join("");
+
+  }
+
+
+  function getFilteredProducts(){
+
+    const query =
+      $("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const category =
+      $("categoryFilter")
+        .value;
+
+
+    return products.filter(
+      product => {
+
+        const text = [
+
+          product.id,
+          product.name,
+          product.category,
+          product.category_label,
+          product.short_desc,
+          product.details,
+          product.package_info
+
+        ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+
+        const matchSearch =
+          !query ||
+          text.includes(query);
+
+
+        const matchCategory =
+          category === "all" ||
+          product.category === category;
+
+
+        return (
+          matchSearch &&
+          matchCategory
+        );
+
+      }
+    );
+
+  }
+
+
+  function renderProducts(){
+
+    const list =
+      getFilteredProducts();
+
+
+    $("countLabel")
+      .textContent =
+      `${list.length} รายการ`;
+
+
+    if(
+      !list.length
+    ){
+
+      $("productGrid")
+        .innerHTML = `
+
+          <div class="empty">
+
+            <div class="empty-mark">
+              ◇
             </div>
+
+            <h3>
+              ไม่พบสินค้า
+            </h3>
+
+            <p>
+              ลองเปลี่ยนคำค้นหาหรือหมวดหมู่
+            </p>
+
+          </div>
+
         `;
 
-        return;
+      return;
 
     }
 
 
-    grid.innerHTML =
-        filtered
-        .map(product => {
-
-            const hidden =
-                product.hidden === true;
-
-
-            const image =
-                product.image
-                ? `
-                    <img
-                        src="${escapeAttr(product.image)}"
-                        alt="${escapeAttr(product.name || "")}"
-                        onerror="this.style.display='none';this.parentElement.innerHTML='<div class=no-image>ไม่มีรูปภาพ</div>'"
-                    >
-                  `
-                : `
-                    <div class="no-image">
-                        ไม่มีรูปภาพ
-                    </div>
-                  `;
-
-
-            return `
-                <article class="card">
-
-                    <div class="image">
-                        ${image}
-                    </div>
-
-                    <div class="info">
-
-                        <div class="category">
-                            ${escapeHtml(
-                                product.category_label ||
-                                product.category ||
-                                "PRODUCT"
-                            )}
-                        </div>
-
-                        <div class="name">
-                            ${escapeHtml(
-                                product.name ||
-                                "ไม่มีชื่อสินค้า"
-                            )}
-                        </div>
-
-                        <div class="desc">
-                            ${escapeHtml(
-                                product.short_desc ||
-                                "ไม่มีรายละเอียด"
-                            )}
-                        </div>
-
-                        <span class="status ${hidden ? "hidden" : ""}">
-                            ${hidden ? "ซ่อนอยู่" : "เปิดใช้งาน"}
-                        </span>
-
-                    </div>
-
-                </article>
-            `;
-
-        })
+    $("productGrid")
+      .innerHTML =
+      list
+        .map(
+          product =>
+            productCard(
+              product
+            )
+        )
         .join("");
 
-}
+  }
 
 
-function escapeHtml(value){
+  function productCard(product){
 
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
+    const options =
+      parseOptions(product);
 
 
-function escapeAttr(value){
-
-    return escapeHtml(value);
-
-}
+    const features =
+      parseFeatures(product);
 
 
-document
-.getElementById("search")
-.addEventListener(
-    "input",
-    render
-);
+    const image =
+      product.image;
 
 
-document
-.getElementById("category")
-.addEventListener(
-    "change",
-    render
-);
+    const statusClass =
+      product.hidden
+        ? "hidden"
+        : "visible";
 
 
-document
-.getElementById("mobile")
-.addEventListener(
-    "click",
-    function(){
+    const statusText =
+      product.hidden
+        ? "ซ่อน"
+        : "แสดงบนเว็บไซต์";
+
+
+    return `
+
+      <article
+        class="product-card"
+      >
+
+        <div class="product-image">
+
+          ${
+            image
+              ? `
+                <img
+                  src="${esc(image)}"
+                  alt="${esc(product.name)}"
+                  loading="lazy"
+                  onerror="
+                    this.style.display='none';
+                    this.parentElement.innerHTML +=
+                    '<div class=\\'image-empty\\'>◇</div>';
+                  "
+                >
+              `
+              : `
+                <div class="image-empty">
+                  ◇
+                </div>
+              `
+          }
+
+
+          <div class="product-badge">
+            ${esc(
+              product.category_label ||
+              product.category ||
+              "PRODUCT"
+            )}
+          </div>
+
+
+          <div
+            class="
+              product-status
+              ${statusClass}
+            "
+          >
+            ${statusText}
+          </div>
+
+        </div>
+
+
+        <div class="product-content">
+
+          <div class="product-code">
+            PRODUCT ID · ${esc(
+              product.id
+            )}
+          </div>
+
+
+          <div class="product-name">
+            ${esc(
+              product.name ||
+              "ไม่ระบุชื่อสินค้า"
+            )}
+          </div>
+
+
+          <div class="product-desc">
+            ${esc(
+              product.short_desc ||
+              "ไม่มีคำอธิบายสินค้า"
+            )}
+          </div>
+
+
+          <div class="product-bottom">
+
+            <div class="price">
+
+              ${esc(
+                priceText(product)
+              )}
+
+              <small>
+                เริ่มต้น
+              </small>
+
+            </div>
+
+
+            <div class="option-count">
+
+              ${
+                options.length
+                  ? `${options.length} ตัวเลือก`
+                  : "ไม่มีตัวเลือก"
+              }
+
+            </div>
+
+          </div>
+
+
+          <div class="product-actions">
+
+            <button
+              type="button"
+              class="btn"
+              data-action="view"
+              data-id="${esc(product.id)}"
+            >
+              ดูรายละเอียด
+            </button>
+
+
+            <a
+              href="admin-products.html?id=${encodeURIComponent(product.id)}"
+              class="btn btn-gold"
+            >
+              จัดการ
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `;
+
+  }
+
+
+  function openProduct(productId){
+
+    const product =
+      products.find(
+        item =>
+          String(item.id) ===
+          String(productId)
+      );
+
+
+    if(!product){
+      return;
+    }
+
+
+    const options =
+      parseOptions(product);
+
+
+    const features =
+      parseFeatures(product);
+
+
+    $("modalBody")
+      .innerHTML = `
+
+        <div class="detail-grid">
+
+          <div>
+
+            ${
+              product.image
+                ? `
+                  <div class="detail-image">
+
+                    <img
+                      src="${esc(product.image)}"
+                      alt="${esc(product.name)}"
+                    >
+
+                  </div>
+                `
+                : `
+                  <div
+                    class="
+                      detail-image
+                      empty-image
+                    "
+                  >
+                    ◇
+                  </div>
+                `
+            }
+
+          </div>
+
+
+          <div>
+
+            <div class="detail-code">
+              PRODUCT ID · ${esc(
+                product.id
+              )}
+            </div>
+
+
+            <div class="detail-title">
+              ${esc(
+                product.name ||
+                "ไม่ระบุชื่อสินค้า"
+              )}
+            </div>
+
+
+            <div class="detail-desc">
+              ${esc(
+                product.short_desc ||
+                "-"
+              )}
+            </div>
+
+
+            <div class="detail-block">
+
+              <h3>
+                สถานะ
+              </h3>
+
+              ${
+                product.hidden
+                  ? `
+                    <span
+                      class="
+                        product-status
+                        hidden
+                        "
+                      style="
+                        position:static;
+                        display:inline-flex;
+                      "
+                    >
+                      ซ่อนจากเว็บไซต์
+                    </span>
+                  `
+                  : `
+                    <span
+                      class="
+                        product-status
+                        visible
+                      "
+                      style="
+                        position:static;
+                        display:inline-flex;
+                      "
+                    >
+                      แสดงบนเว็บไซต์
+                    </span>
+                  `
+              }
+
+            </div>
+
+
+            <div class="detail-block">
+
+              <h3>
+                หมวดหมู่
+              </h3>
+
+              <div class="detail-text">
+                ${esc(
+                  product.category_label ||
+                  product.category ||
+                  "-"
+                )}
+              </div>
+
+            </div>
+
+
+            ${
+              product.details
+                ? `
+                  <div class="detail-block">
+
+                    <h3>
+                      รายละเอียด
+                    </h3>
+
+                    <div class="detail-text">
+                      ${esc(
+                        product.details
+                      )}
+                    </div>
+
+                  </div>
+                `
+                : ""
+            }
+
+
+            ${
+              product.package_info
+                ? `
+                  <div class="detail-block">
+
+                    <h3>
+                      ข้อมูลบรรจุภัณฑ์
+                    </h3>
+
+                    <div class="detail-text">
+                      ${esc(
+                        product.package_info
+                      )}
+                    </div>
+
+                  </div>
+                `
+                : ""
+            }
+
+
+            ${
+              options.length
+                ? `
+                  <div class="detail-block">
+
+                    <h3>
+                      ตัวเลือก / ราคา
+                    </h3>
+
+                    <div class="option-list">
+
+                      ${
+                        options
+                          .map(
+                            option => `
+
+                              <div class="option-item">
+
+                                <span>
+                                  ${esc(
+                                    option.label ||
+                                    option.name ||
+                                    option.title ||
+                                    "-"
+                                  )}
+                                </span>
+
+                                <strong>
+                                  ${
+                                    option.price
+                                      ? esc(
+                                          option.price
+                                        )
+                                      : option.numericPrice
+                                        ? new Intl.NumberFormat(
+                                            "th-TH"
+                                          ).format(
+                                            Number(
+                                              option.numericPrice
+                                            )
+                                          ) + " ฿"
+                                        : "-"
+                                  }
+                                </strong>
+
+                              </div>
+
+                            `
+                          )
+                          .join("")
+                      }
+
+                    </div>
+
+                  </div>
+                `
+                : ""
+            }
+
+
+            ${
+              features.length
+                ? `
+                  <div class="detail-block">
+
+                    <h3>
+                      จุดเด่นสินค้า
+                    </h3>
+
+                    <div class="feature-list">
+
+                      ${
+                        features
+                          .map(
+                            feature => `
+
+                              <div class="feature">
+                                ${esc(feature)}
+                              </div>
+
+                            `
+                          )
+                          .join("")
+                      }
+
+                    </div>
+
+                  </div>
+                `
+                : ""
+            }
+
+
+            <div class="modal-actions">
+
+              <a
+                href="product-detail.html?id=${encodeURIComponent(product.id)}"
+                target="_blank"
+                class="btn"
+              >
+                เปิดหน้าสินค้า
+              </a>
+
+
+              <a
+                href="admin-products.html?id=${encodeURIComponent(product.id)}"
+                class="btn btn-gold"
+              >
+                แก้ไขสินค้านี้
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+    $("modal")
+      .classList
+      .add("show");
+
+  }
+
+
+  function closeModal(){
+
+    $("modal")
+      .classList
+      .remove("show");
+
+  }
+
+
+  $("loginBtn")
+    .addEventListener(
+      "click",
+      login
+    );
+
+
+  $("loginPassword")
+    .addEventListener(
+      "keydown",
+      event => {
+
+        if(
+          event.key === "Enter"
+        ){
+
+          login();
+
+        }
+
+      }
+    );
+
+
+  $("logoutBtn")
+    .addEventListener(
+      "click",
+      async event => {
+
+        event.preventDefault();
+
+        await db.auth.signOut();
+
+      }
+    );
+
+
+  $("mobileBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        $("nav")
+          .classList
+          .toggle("open");
+
+      }
+    );
+
+
+  $("searchInput")
+    .addEventListener(
+      "input",
+      renderProducts
+    );
+
+
+  $("categoryFilter")
+    .addEventListener(
+      "change",
+      () => {
 
         document
-            .getElementById("nav")
-            .classList
-            .toggle("open");
+          .querySelectorAll(
+            ".category-chip"
+          )
+          .forEach(
+            chip => {
+
+              chip.classList.toggle(
+                "active",
+                chip.dataset.category ===
+                  $("categoryFilter").value
+              );
+
+            }
+          );
+
+
+        renderProducts();
+
+      }
+    );
+
+
+  $("categoryStrip")
+    .addEventListener(
+      "click",
+      event => {
+
+        const chip =
+          event.target.closest(
+            ".category-chip"
+          );
+
+
+        if(!chip){
+          return;
+        }
+
+
+        const category =
+          chip.dataset.category;
+
+
+        $("categoryFilter")
+          .value =
+          category;
+
+
+        document
+          .querySelectorAll(
+            ".category-chip"
+          )
+          .forEach(
+            item => {
+
+              item.classList.toggle(
+                "active",
+                item === chip
+              );
+
+            }
+          );
+
+
+        renderProducts();
+
+      }
+    );
+
+
+  $("refreshBtn")
+    .addEventListener(
+      "click",
+      async () => {
+
+        try{
+
+          await loadProducts();
+
+          showToast(
+            "รีเฟรชข้อมูลสินค้าแล้ว"
+          );
+
+        }
+        catch(error){
+
+          showToast(
+            "โหลดสินค้าไม่สำเร็จ: " +
+            error.message
+          );
+
+        }
+
+      }
+    );
+
+
+  $("productGrid")
+    .addEventListener(
+      "click",
+      event => {
+
+        const button =
+          event.target.closest(
+            "[data-action='view']"
+          );
+
+
+        if(!button){
+          return;
+        }
+
+
+        openProduct(
+          button.dataset.id
+        );
+
+      }
+    );
+
+
+  $("modalClose")
+    .addEventListener(
+      "click",
+      closeModal
+    );
+
+
+  $("modal")
+    .addEventListener(
+      "click",
+      event => {
+
+        if(
+          event.target ===
+          $("modal")
+        ){
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if(
+        event.key === "Escape"
+      ){
+
+        closeModal();
+
+      }
 
     }
-);
+  );
 
 
-document
-.getElementById("logout")
-.addEventListener(
-    "click",
-    async function(){
+  db.auth.onAuthStateChange(
+    async (
+      event,
+      session
+    ) => {
 
-        await client.auth.signOut();
+      if(!session){
 
-        window.location.href =
-            "admin.html";
+        currentUser = null;
+        currentAdmin = null;
+        currentRole = null;
 
-    }
-);
+        showLogin();
 
-
-async function start(){
-
-    const authenticated =
-        await checkAuth();
-
-    if(!authenticated)
         return;
 
-    await loadProducts();
-
-}
+      }
 
 
-start();
+      if(
+        currentUser &&
+        currentAdmin
+      ){
 
+        return;
+
+      }
+
+
+      try{
+
+        currentUser =
+          session.user;
+
+
+        currentAdmin =
+          await getAdminProfile(
+            currentUser
+          );
+
+
+        currentRole =
+          currentAdmin.role;
+
+
+        $("roleText")
+          .textContent =
+          currentRole.toUpperCase();
+
+
+        $("heroStatus")
+          .textContent =
+          `เข้าสู่ระบบแล้ว · ${
+            currentAdmin.name ||
+            currentAdmin.email
+          }`;
+
+
+        if(
+          currentRole !== "owner"
+        ){
+
+          $("usersNav")
+            .style.display =
+            "none";
+
+        }
+
+
+        hideLogin();
+
+
+        await loadProducts();
+
+      }
+      catch(error){
+
+        console.error(
+          error
+        );
+
+
+        showLogin(
+          error.message ||
+          "ไม่สามารถตรวจสอบสิทธิ์ได้"
+        );
+
+      }
+
+    }
+  );
+
+
+  async function boot(){
+
+    try{
+
+      const result =
+        await db.auth
+          .getSession();
+
+
+      if(result.error){
+
+        throw result.error;
+
+      }
+
+
+      if(
+        !result.data.session
+      ){
+
+        showLogin();
+
+        return;
+
+      }
+
+
+      currentUser =
+        result.data.session.user;
+
+
+      currentAdmin =
+        await getAdminProfile(
+          currentUser
+        );
+
+
+      currentRole =
+        currentAdmin.role;
+
+
+      $("roleText")
+        .textContent =
+        currentRole.toUpperCase();
+
+
+      $("heroStatus")
+        .textContent =
+        `เข้าสู่ระบบแล้ว · ${
+          currentAdmin.name ||
+          currentAdmin.email
+        }`;
+
+
+      if(
+        currentRole !== "owner"
+      ){
+
+        $("usersNav")
+          .style.display =
+          "none";
+
+      }
+
+
+      hideLogin();
+
+
+      await loadProducts();
+
+    }
+    catch(error){
+
+      console.error(
+        error
+      );
+
+
+      showLogin(
+        error.message ||
+        "ไม่สามารถเริ่มระบบได้"
+      );
+
+    }
+
+  }
+
+
+  boot();
+
+})();
 </script>
 
 </body>
