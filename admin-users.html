@@ -1,0 +1,3499 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Users | Chatpetch Group</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#050505;
+  --black2:#080808;
+  --dark:#0d0d0d;
+  --dark2:#111;
+  --dark3:#181818;
+
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --gold-dark:#806127;
+
+  --white:#fff;
+  --soft:#eeeeee;
+  --gray:#a0a0a0;
+  --muted:#707070;
+  --line:rgba(255,255,255,.10);
+  --gold-line:rgba(200,164,91,.30);
+
+  --green:#63dc9b;
+  --red:#ff6d6d;
+  --blue:#7fc5ff;
+  --purple:#b99aff;
+
+  --container:1450px;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--white);
+  font-family:"Prompt",sans-serif;
+  font-size:16px;
+  line-height:1.7;
+
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(200,164,91,.11),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 15%,
+      rgba(255,255,255,.03),
+      transparent 27%
+    ),
+    linear-gradient(
+      180deg,
+      #050505,
+      #090909 50%,
+      #050505
+    );
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.18;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.04) 1px,
+      transparent 1px
+    );
+
+  background-size:74px 74px;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:680px;
+  height:680px;
+  top:-230px;
+  right:-180px;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.14),
+      transparent 68%
+    );
+
+  filter:blur(28px);
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.container{
+  width:min(
+    var(--container),
+    calc(100% - 50px)
+  );
+  margin:auto;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  border-bottom:1px solid var(--line);
+
+  background:
+    rgba(5,5,5,.90);
+
+  backdrop-filter:blur(22px);
+}
+
+.header-inner{
+  min-height:92px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:30px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.logo-mark{
+  width:56px;
+  height:56px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid var(--gold);
+  border-radius:15px;
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+  font-size:20px;
+  font-weight:600;
+
+  letter-spacing:1px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.15),
+      rgba(200,164,91,.02)
+    );
+
+  box-shadow:
+    0 0 35px
+    rgba(200,164,91,.06);
+}
+
+.logo-title{
+  font-family:"Kanit",sans-serif;
+  font-size:22px;
+  font-weight:500;
+  line-height:1.1;
+}
+
+.logo-sub{
+  margin-top:5px;
+  color:#666;
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.nav a{
+  padding:12px 15px;
+
+  border:1px solid transparent;
+  border-radius:10px;
+
+  color:#999;
+  font-size:14px;
+
+  transition:.25s;
+}
+
+.nav a:hover,
+.nav a.active{
+  color:var(--gold-light);
+
+  border-color:var(--gold-line);
+
+  background:
+    rgba(200,164,91,.06);
+}
+
+.nav .site-link{
+  color:var(--gold-light);
+}
+
+.mobile-btn{
+  display:none;
+
+  width:48px;
+  height:48px;
+
+  border:1px solid var(--line);
+  border-radius:11px;
+
+  background:#090909;
+  color:#fff;
+
+  font-size:22px;
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+
+  padding:110px 0 85px;
+
+  border-bottom:1px solid var(--line);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+
+  left:-260px;
+  bottom:-370px;
+
+  width:720px;
+  height:720px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.08),
+      transparent 65%
+    );
+
+  filter:blur(30px);
+}
+
+.hero-inner{
+  position:relative;
+
+  display:grid;
+  grid-template-columns:1fr auto;
+
+  gap:55px;
+
+  align-items:end;
+}
+
+.eyebrow{
+  margin-bottom:17px;
+
+  color:var(--gold);
+
+  font-size:14px;
+  letter-spacing:4px;
+}
+
+.hero h1{
+  font-family:"Kanit",sans-serif;
+
+  font-size:
+    clamp(
+      68px,
+      8.5vw,
+      125px
+    );
+
+  font-weight:300;
+
+  letter-spacing:-4px;
+
+  line-height:.9;
+}
+
+.hero h1 span{
+  color:transparent;
+
+  -webkit-text-stroke:
+    1px
+    rgba(200,164,91,.80);
+}
+
+.hero-desc{
+  max-width:900px;
+
+  margin-top:30px;
+
+  color:#969696;
+
+  font-size:17px;
+
+  line-height:2;
+}
+
+.hero-status{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:23px;
+
+  padding:11px 16px;
+
+  border:1px solid var(--gold-line);
+  border-radius:999px;
+
+  color:var(--gold-light);
+
+  font-size:12px;
+
+  background:
+    rgba(200,164,91,.05);
+}
+
+.hero-status::before{
+  content:"";
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  box-shadow:
+    0 0 14px
+    var(--green);
+}
+
+.hero-side{
+  min-width:270px;
+
+  padding:27px;
+
+  border:1px solid var(--gold-line);
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.09),
+      rgba(255,255,255,.015)
+    );
+}
+
+.hero-side small{
+  display:block;
+
+  margin-bottom:8px;
+
+  color:#666;
+
+  font-size:10px;
+
+  letter-spacing:2px;
+}
+
+.hero-side strong{
+  display:block;
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+  font-size:36px;
+  font-weight:400;
+}
+
+/* =========================================================
+MAIN
+========================================================= */
+
+main{
+  padding:65px 0 110px;
+}
+
+.top-grid{
+  display:grid;
+
+  grid-template-columns:
+    1.2fr
+    .8fr;
+
+  gap:18px;
+
+  margin-bottom:18px;
+}
+
+.panel{
+  padding:27px;
+
+  border:1px solid var(--line);
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+}
+
+.panel.gold{
+  border-color:var(--gold-line);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.10),
+      rgba(255,255,255,.012)
+    );
+}
+
+.panel-title{
+  margin-bottom:7px;
+
+  color:#ededed;
+
+  font-family:"Kanit",sans-serif;
+  font-size:25px;
+  font-weight:400;
+}
+
+.panel-sub{
+  color:#777;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.role-guide{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:10px;
+
+  margin-top:20px;
+}
+
+.role-box{
+  min-height:100px;
+
+  padding:15px;
+
+  border:1px solid var(--line);
+  border-radius:14px;
+
+  background:#0a0a0a;
+}
+
+.role-box strong{
+  display:block;
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:17px;
+
+  font-weight:400;
+}
+
+.role-box span{
+  display:block;
+
+  margin-top:5px;
+
+  color:#777;
+
+  font-size:10px;
+
+  line-height:1.6;
+}
+
+/* =========================================================
+FORM
+========================================================= */
+
+.form-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:13px;
+
+  margin-top:22px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:#8a8a8a;
+
+  font-size:12px;
+}
+
+.input,
+.select{
+  width:100%;
+
+  height:53px;
+
+  padding:0 15px;
+
+  border:1px solid var(--line);
+  border-radius:11px;
+
+  outline:none;
+
+  background:#080808;
+
+  color:#fff;
+
+  font-size:14px;
+}
+
+.input:focus,
+.select:focus{
+  border-color:var(--gold-line);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(200,164,91,.035);
+}
+
+.input::placeholder{
+  color:#666;
+}
+
+.form-actions{
+  display:flex;
+
+  gap:9px;
+
+  margin-top:16px;
+}
+
+.btn{
+  min-height:51px;
+
+  padding:0 18px;
+
+  border:1px solid var(--line);
+  border-radius:11px;
+
+  background:#0b0b0b;
+
+  color:#bbb;
+
+  font-size:13px;
+
+  transition:.25s;
+}
+
+.btn:hover{
+  color:#fff;
+
+  border-color:var(--gold-line);
+
+  transform:translateY(-1px);
+}
+
+.btn-gold{
+  border-color:transparent;
+
+  color:#050505;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold)
+    );
+}
+
+.btn-danger{
+  color:#ff9191;
+  border-color:rgba(255,109,109,.22);
+}
+
+/* =========================================================
+SEARCH
+========================================================= */
+
+.searchbar{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  margin-top:28px;
+  margin-bottom:20px;
+
+  padding:17px;
+
+  border:1px solid var(--line);
+  border-radius:19px;
+
+  background:rgba(255,255,255,.025);
+}
+
+.searchbar-left{
+  display:flex;
+  gap:10px;
+  flex:1;
+}
+
+.search{
+  flex:1;
+
+  min-width:300px;
+
+  height:54px;
+
+  padding:0 16px;
+
+  border:1px solid var(--line);
+  border-radius:11px;
+
+  outline:none;
+
+  background:#080808;
+
+  color:#fff;
+
+  font-size:14px;
+}
+
+.search::placeholder{
+  color:#666;
+}
+
+.search:focus{
+  border-color:var(--gold-line);
+}
+
+.count{
+  display:flex;
+
+  align-items:center;
+
+  color:#707070;
+
+  font-size:12px;
+}
+
+/* =========================================================
+USERS TABLE
+========================================================= */
+
+.table-wrap{
+  overflow:hidden;
+
+  border:1px solid var(--line);
+  border-radius:23px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.035),
+      rgba(255,255,255,.008)
+    );
+}
+
+.table-head{
+  min-height:90px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:22px 26px;
+
+  border-bottom:1px solid var(--line);
+}
+
+.table-head h2{
+  font-family:"Kanit",sans-serif;
+  font-size:29px;
+  font-weight:400;
+}
+
+.table-scroll{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+
+  min-width:1120px;
+
+  border-collapse:collapse;
+}
+
+th{
+  padding:16px 20px;
+
+  color:#6f6f6f;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:11px;
+  font-weight:400;
+
+  text-align:left;
+
+  white-space:nowrap;
+}
+
+td{
+  padding:20px;
+
+  color:#c9c9c9;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.05);
+
+  font-size:14px;
+
+  vertical-align:middle;
+}
+
+tbody tr{
+  transition:.2s;
+}
+
+tbody tr:hover{
+  background:
+    rgba(255,255,255,.018);
+}
+
+.user-name{
+  color:#eee;
+  font-size:16px;
+}
+
+.user-email{
+  margin-top:4px;
+  color:#777;
+  font-size:11px;
+}
+
+.user-id{
+  margin-top:4px;
+
+  max-width:210px;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+
+  color:#4d4d4d;
+
+  font-size:10px;
+}
+
+.role-badge{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  min-width:90px;
+
+  padding:8px 12px;
+
+  border:1px solid transparent;
+  border-radius:999px;
+
+  font-size:11px;
+}
+
+.role-owner{
+  color:var(--gold-light);
+
+  border-color:
+    rgba(240,217,145,.25);
+
+  background:
+    rgba(200,164,91,.07);
+}
+
+.role-manager{
+  color:var(--blue);
+
+  border-color:
+    rgba(127,197,255,.23);
+
+  background:
+    rgba(127,197,255,.06);
+}
+
+.role-staff{
+  color:var(--purple);
+
+  border-color:
+    rgba(185,154,255,.23);
+
+  background:
+    rgba(185,154,255,.06);
+}
+
+.role-viewer{
+  color:#aaa;
+
+  border-color:
+    rgba(170,170,170,.18);
+
+  background:
+    rgba(170,170,170,.045);
+}
+
+.active-badge{
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  color:var(--green);
+
+  font-size:11px;
+}
+
+.active-badge::before{
+  content:"";
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  box-shadow:
+    0 0 10px
+    var(--green);
+}
+
+.inactive-badge{
+  color:var(--red);
+  font-size:11px;
+}
+
+.row-actions{
+  display:flex;
+  gap:8px;
+}
+
+.icon-btn{
+  width:42px;
+  height:42px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid var(--line);
+  border-radius:10px;
+
+  background:#090909;
+  color:#aaa;
+
+  font-size:16px;
+}
+
+.icon-btn:hover{
+  color:var(--gold-light);
+
+  border-color:var(--gold-line);
+}
+
+.icon-btn.delete:hover{
+  color:var(--red);
+
+  border-color:
+    rgba(255,109,109,.25);
+}
+
+.empty{
+  padding:100px 25px;
+
+  text-align:center;
+}
+
+.empty-mark{
+  width:72px;
+  height:72px;
+
+  display:grid;
+  place-items:center;
+
+  margin:0 auto 20px;
+
+  border:1px solid var(--gold-line);
+  border-radius:20px;
+
+  color:var(--gold);
+
+  font-size:24px;
+}
+
+.empty h3{
+  margin-bottom:7px;
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:25px;
+  font-weight:400;
+}
+
+.empty p{
+  color:#666;
+
+  font-size:12px;
+}
+
+/* =========================================================
+MODAL
+========================================================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+
+  z-index:5000;
+
+  display:none;
+
+  place-items:center;
+
+  padding:20px;
+
+  background:
+    rgba(0,0,0,.80);
+
+  backdrop-filter:blur(16px);
+}
+
+.modal.show{
+  display:grid;
+}
+
+.modal-card{
+  width:min(850px,100%);
+
+  max-height:90vh;
+
+  overflow:auto;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #171717,
+      #080808
+    );
+
+  box-shadow:
+    0 40px 130px
+    rgba(0,0,0,.82);
+}
+
+.modal-head{
+  min-height:82px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:20px 25px;
+
+  border-bottom:1px solid var(--line);
+}
+
+.modal-head h2{
+  font-family:"Kanit",sans-serif;
+
+  font-size:28px;
+  font-weight:400;
+}
+
+.modal-close{
+  width:42px;
+  height:42px;
+
+  border:1px solid var(--line);
+  border-radius:10px;
+
+  background:#090909;
+
+  color:#aaa;
+
+  font-size:21px;
+}
+
+.modal-body{
+  padding:27px;
+}
+
+.modal-note{
+  margin-bottom:20px;
+
+  padding:13px 15px;
+
+  border-left:
+    2px solid
+    var(--gold);
+
+  background:
+    rgba(200,164,91,.045);
+
+  color:#999;
+
+  font-size:11px;
+
+  line-height:1.9;
+}
+
+/* =========================================================
+AUTH
+========================================================= */
+
+.auth{
+  position:fixed;
+  inset:0;
+
+  z-index:9999;
+
+  display:none;
+
+  place-items:center;
+
+  padding:20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(200,164,91,.13),
+      transparent 40%
+    ),
+    #050505;
+}
+
+.auth.show{
+  display:grid;
+}
+
+.auth-card{
+  width:min(480px,100%);
+
+  padding:38px;
+
+  border:1px solid var(--gold-line);
+
+  border-radius:26px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #171717,
+      #080808
+    );
+
+  box-shadow:
+    0 45px 115px
+    rgba(0,0,0,.82);
+}
+
+.auth-logo{
+  width:66px;
+  height:66px;
+
+  display:grid;
+  place-items:center;
+
+  margin-bottom:22px;
+
+  border:1px solid var(--gold);
+
+  border-radius:17px;
+
+  color:var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:21px;
+}
+
+.auth-card h2{
+  font-family:"Kanit",sans-serif;
+
+  font-size:39px;
+
+  font-weight:400;
+}
+
+.auth-card p{
+  margin-top:7px;
+
+  margin-bottom:25px;
+
+  color:#707070;
+
+  font-size:13px;
+
+  line-height:1.9;
+}
+
+.auth-input{
+  width:100%;
+  height:55px;
+
+  margin-bottom:11px;
+
+  padding:0 16px;
+
+  border:1px solid var(--line);
+  border-radius:11px;
+
+  outline:none;
+
+  background:#080808;
+  color:#fff;
+
+  font-size:15px;
+}
+
+.auth-input:focus{
+  border-color:var(--gold);
+}
+
+.auth-input::placeholder{
+  color:#666;
+}
+
+.auth-error{
+  min-height:21px;
+
+  margin:3px 0 11px;
+
+  color:var(--red);
+
+  font-size:11px;
+
+  line-height:1.8;
+}
+
+.auth-btn{
+  width:100%;
+  height:55px;
+
+  border:0;
+  border-radius:11px;
+
+  color:#050505;
+
+  font-size:14px;
+  font-weight:600;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold)
+    );
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+.footer{
+  border-top:1px solid var(--line);
+
+  padding:34px 0;
+
+  color:#5d5d5d;
+
+  font-size:10px;
+}
+
+.footer-inner{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:20px;
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media(max-width:1150px){
+
+  .mobile-btn{
+    display:block;
+  }
+
+  .nav{
+    display:none;
+
+    position:absolute;
+
+    left:14px;
+    right:14px;
+    top:82px;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    padding:11px;
+
+    border:1px solid var(--line);
+    border-radius:15px;
+
+    background:#090909;
+  }
+
+  .nav.open{
+    display:flex;
+  }
+
+  .nav a{
+    padding:14px;
+
+    font-size:15px;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .top-grid{
+    grid-template-columns:1fr;
+  }
+
+  .role-guide{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:760px){
+
+  .container{
+    width:calc(100% - 26px);
+  }
+
+  .logo-title{
+    font-size:18px;
+  }
+
+  .logo-sub{
+    display:none;
+  }
+
+  .hero{
+    padding:78px 0 60px;
+  }
+
+  .hero h1{
+    font-size:60px;
+    letter-spacing:-3px;
+  }
+
+  .hero-desc{
+    font-size:15px;
+  }
+
+  .hero-side{
+    width:100%;
+    min-width:0;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .role-guide{
+    grid-template-columns:1fr;
+  }
+
+  .searchbar{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .searchbar-left{
+    flex-direction:column;
+  }
+
+  .search{
+    min-width:0;
+  }
+
+  .form-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .hero h1{
+    font-size:50px;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .auth-card{
+    padding:28px;
+  }
+
+  .auth-card h2{
+    font-size:34px;
+  }
+
+  .form-actions{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="container header-inner">
+
+    <a href="admin.html" class="logo">
+
+      <div class="logo-mark">
+        CG
+      </div>
+
+      <div>
+
+        <div class="logo-title">
+          CHATPETCH GROUP
+        </div>
+
+        <div class="logo-sub">
+          ADMINISTRATION SYSTEM
+        </div>
+
+      </div>
+
+    </a>
+
+
+    <button
+      id="mobileBtn"
+      class="mobile-btn"
+      type="button"
+    >
+      ☰
+    </button>
+
+
+    <nav
+      id="nav"
+      class="nav"
+    >
+
+      <a href="admin.html">
+        Dashboard
+      </a>
+
+      <a href="admin-store.html">
+        สินค้า
+      </a>
+
+      <a href="admin-products.html">
+        จัดการสินค้า
+      </a>
+
+      <a
+        href="admin-users.html"
+        class="active"
+      >
+        ผู้ใช้งาน
+      </a>
+
+      <a
+        href="index.html"
+        target="_blank"
+        class="site-link"
+      >
+        เว็บไซต์
+      </a>
+
+      <a
+        href="#"
+        id="logoutBtn"
+      >
+        ออกจากระบบ
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="container hero-inner">
+
+    <div>
+
+      <div class="eyebrow">
+        CHATPETCH GROUP · USER MANAGEMENT
+      </div>
+
+      <h1>
+        ADMIN
+        <span>USERS</span>
+      </h1>
+
+      <p class="hero-desc">
+        จัดการสิทธิ์ผู้ดูแลระบบ Chatpetch Group
+        กำหนดบทบาท Owner, Manager, Staff และ Viewer
+        รวมถึงเปิดหรือปิดการใช้งานบัญชีผู้ดูแล
+      </p>
+
+      <div
+        id="heroStatus"
+        class="hero-status"
+      >
+        กำลังตรวจสอบสิทธิ์
+      </div>
+
+    </div>
+
+
+    <div class="hero-side">
+
+      <small>
+        CURRENT ROLE
+      </small>
+
+      <strong id="roleText">
+        -
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <div class="container">
+
+
+    <div class="top-grid">
+
+      <section class="panel gold">
+
+        <div class="panel-title">
+          เพิ่มผู้ดูแลระบบ
+        </div>
+
+        <div class="panel-sub">
+          ใช้สำหรับกำหนดสิทธิ์ให้ผู้ใช้งานที่มีบัญชี Supabase Auth อยู่แล้ว
+        </div>
+
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              User ID
+            </label>
+
+            <input
+              id="userIdInput"
+              class="input"
+              type="text"
+              placeholder="UUID ของผู้ใช้ใน Supabase Auth"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              อีเมล
+            </label>
+
+            <input
+              id="userEmailInput"
+              class="input"
+              type="email"
+              placeholder="example@email.com"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              ชื่อ
+            </label>
+
+            <input
+              id="userNameInput"
+              class="input"
+              type="text"
+              placeholder="ชื่อผู้ดูแล"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              Role
+            </label>
+
+            <select
+              id="userRoleInput"
+              class="select"
+            >
+
+              <option value="viewer">
+                Viewer
+              </option>
+
+              <option value="staff">
+                Staff
+              </option>
+
+              <option value="manager">
+                Manager
+              </option>
+
+              <option value="owner">
+                Owner
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+          <button
+            id="saveUserBtn"
+            class="btn btn-gold"
+            type="button"
+          >
+            + เพิ่มผู้ดูแล
+          </button>
+
+          <button
+            id="cancelEditBtn"
+            class="btn"
+            type="button"
+            style="display:none;"
+          >
+            ยกเลิกแก้ไข
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <section class="panel">
+
+        <div class="panel-title">
+          ระดับสิทธิ์
+        </div>
+
+        <div class="panel-sub">
+          สิทธิ์ของแต่ละบทบาท
+        </div>
+
+
+        <div class="role-guide">
+
+          <div class="role-box">
+
+            <strong>
+              Owner
+            </strong>
+
+            <span>
+              จัดการผู้ใช้งาน
+              สินค้า และคำสั่งซื้อ
+              รวมถึงลบข้อมูล
+            </span>
+
+          </div>
+
+
+          <div class="role-box">
+
+            <strong>
+              Manager
+            </strong>
+
+            <span>
+              จัดการสินค้า
+              และคำสั่งซื้อ
+            </span>
+
+          </div>
+
+
+          <div class="role-box">
+
+            <strong>
+              Staff
+            </strong>
+
+            <span>
+              ดูและจัดการคำสั่งซื้อ
+              ไม่จัดการผู้ใช้งาน
+            </span>
+
+          </div>
+
+
+          <div class="role-box">
+
+            <strong>
+              Viewer
+            </strong>
+
+            <span>
+              ดูข้อมูลอย่างเดียว
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <div class="searchbar">
+
+      <div class="searchbar-left">
+
+        <input
+          id="searchInput"
+          class="search"
+          type="search"
+          placeholder="ค้นหาชื่อ / อีเมล / User ID / Role"
+        >
+
+        <select
+          id="roleFilter"
+          class="select"
+        >
+
+          <option value="all">
+            ทุก Role
+          </option>
+
+          <option value="owner">
+            Owner
+          </option>
+
+          <option value="manager">
+            Manager
+          </option>
+
+          <option value="staff">
+            Staff
+          </option>
+
+          <option value="viewer">
+            Viewer
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div
+        id="countLabel"
+        class="count"
+      >
+        0 รายการ
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <div class="table-head">
+
+        <h2>
+          ผู้ใช้งานระบบ
+        </h2>
+
+        <button
+          id="refreshBtn"
+          class="btn"
+          type="button"
+        >
+          ↻ รีเฟรช
+        </button>
+
+      </div>
+
+
+      <div class="table-scroll">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                USER
+              </th>
+
+              <th>
+                EMAIL
+              </th>
+
+              <th>
+                ROLE
+              </th>
+
+              <th>
+                STATUS
+              </th>
+
+              <th>
+                CREATED
+              </th>
+
+              <th>
+                UPDATED
+              </th>
+
+              <th>
+                ACTION
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody
+            id="usersTable"
+          >
+
+            <tr>
+
+              <td colspan="7">
+
+                <div class="empty">
+
+                  <div class="empty-mark">
+                    ◇
+                  </div>
+
+                  <h3>
+                    กำลังโหลดข้อมูล
+                  </h3>
+
+                  <p>
+                    กำลังเชื่อมต่อฐานข้อมูล
+                  </p>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<div
+  id="modal"
+  class="modal"
+>
+
+  <div class="modal-card">
+
+    <div class="modal-head">
+
+      <h2>
+        แก้ไขผู้ใช้งาน
+      </h2>
+
+      <button
+        id="modalClose"
+        class="modal-close"
+        type="button"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+      <div class="modal-note">
+        การแก้ไข Role และสถานะการใช้งาน
+        จะมีผลต่อสิทธิ์ของบัญชีผู้ดูแลทันที
+      </div>
+
+
+      <div class="form-grid">
+
+        <div class="field full">
+
+          <label>
+            User ID
+          </label>
+
+          <input
+            id="editUserId"
+            class="input"
+            type="text"
+            readonly
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            ชื่อ
+          </label>
+
+          <input
+            id="editName"
+            class="input"
+            type="text"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            อีเมล
+          </label>
+
+          <input
+            id="editEmail"
+            class="input"
+            type="email"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            Role
+          </label>
+
+          <select
+            id="editRole"
+            class="select"
+          >
+
+            <option value="viewer">
+              Viewer
+            </option>
+
+            <option value="staff">
+              Staff
+            </option>
+
+            <option value="manager">
+              Manager
+            </option>
+
+            <option value="owner">
+              Owner
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            สถานะ
+          </label>
+
+          <select
+            id="editActive"
+            class="select"
+          >
+
+            <option value="true">
+              เปิดใช้งาน
+            </option>
+
+            <option value="false">
+              ปิดใช้งาน
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-actions">
+
+        <button
+          id="saveEditBtn"
+          class="btn btn-gold"
+          type="button"
+        >
+          บันทึก
+        </button>
+
+        <button
+          id="deleteUserBtn"
+          class="btn btn-danger"
+          type="button"
+        >
+          ลบผู้ดูแล
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="auth"
+  class="auth"
+>
+
+  <div class="auth-card">
+
+    <div class="auth-logo">
+      CG
+    </div>
+
+    <h2>
+      Admin Login
+    </h2>
+
+    <p>
+      เข้าสู่ระบบจัดการ Chatpetch Group
+    </p>
+
+
+    <input
+      id="loginEmail"
+      class="auth-input"
+      type="email"
+      autocomplete="username"
+      placeholder="อีเมล"
+    >
+
+
+    <input
+      id="loginPassword"
+      class="auth-input"
+      type="password"
+      autocomplete="current-password"
+      placeholder="รหัสผ่าน"
+    >
+
+
+    <div
+      id="authError"
+      class="auth-error"
+    ></div>
+
+
+    <button
+      id="loginBtn"
+      class="auth-btn"
+      type="button"
+    >
+      เข้าสู่ระบบ
+    </button>
+
+  </div>
+
+</div>
+
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <div>
+      © 2026 Chatpetch Group Co., Ltd.
+    </div>
+
+    <div>
+      CHATPETCH ADMINISTRATION SYSTEM
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+(function(){
+
+  "use strict";
+
+
+  const SUPABASE_URL =
+    "https://mfhllgklcfnnbyyzzljz.supabase.co";
+
+
+  const SUPABASE_KEY =
+    "sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
+
+
+  const db =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY,
+      {
+        auth:{
+          persistSession:true,
+          autoRefreshToken:true,
+          detectSessionInUrl:true
+        }
+      }
+    );
+
+
+  let users = [];
+
+  let currentUser = null;
+
+  let currentAdmin = null;
+
+  let currentRole = null;
+
+  let editingUserId = null;
+
+
+  function $(id){
+    return document.getElementById(id);
+  }
+
+
+  function esc(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  function dateTH(value){
+
+    if(!value){
+      return "-";
+    }
+
+
+    const d =
+      new Date(value);
+
+
+    if(
+      Number.isNaN(
+        d.getTime()
+      )
+    ){
+      return "-";
+    }
+
+
+    return d.toLocaleString(
+      "th-TH",
+      {
+        dateStyle:"medium",
+        timeStyle:"short"
+      }
+    );
+
+  }
+
+
+  function roleClass(role){
+
+    return {
+      owner:"role-owner",
+      manager:"role-manager",
+      staff:"role-staff",
+      viewer:"role-viewer"
+    }[role] ||
+      "role-viewer";
+
+  }
+
+
+  function roleLabel(role){
+
+    return {
+      owner:"Owner",
+      manager:"Manager",
+      staff:"Staff",
+      viewer:"Viewer"
+    }[role] ||
+      role ||
+      "-";
+
+  }
+
+
+  function canManageUsers(){
+
+    return currentRole === "owner";
+
+  }
+
+
+  async function getProfile(user){
+
+    const result =
+      await db
+        .from("admin_users")
+        .select(
+          "user_id,email,name,role,active,created_at,updated_at"
+        )
+        .eq(
+          "user_id",
+          user.id
+        )
+        .maybeSingle();
+
+
+    if(result.error){
+
+      throw new Error(
+        "ตรวจสอบสิทธิ์ไม่สำเร็จ: " +
+        result.error.message
+      );
+
+    }
+
+
+    if(!result.data){
+
+      throw new Error(
+        "ไม่พบบัญชีนี้ใน admin_users"
+      );
+
+    }
+
+
+    if(!result.data.active){
+
+      throw new Error(
+        "บัญชีนี้ถูกปิดการใช้งาน"
+      );
+
+    }
+
+
+    if(
+      ![
+        "owner",
+        "manager",
+        "staff",
+        "viewer"
+      ].includes(
+        result.data.role
+      )
+    ){
+
+      throw new Error(
+        "Role ไม่ถูกต้อง"
+      );
+
+    }
+
+
+    return result.data;
+
+  }
+
+
+  function showLogin(message=""){
+
+    $("auth")
+      .classList
+      .add("show");
+
+
+    $("heroStatus")
+      .textContent =
+      "กรุณาเข้าสู่ระบบ";
+
+
+    $("authError")
+      .textContent =
+      message;
+
+  }
+
+
+  function hideLogin(){
+
+    $("auth")
+      .classList
+      .remove("show");
+
+  }
+
+
+  async function login(){
+
+    const email =
+      $("loginEmail")
+        .value
+        .trim();
+
+    const password =
+      $("loginPassword")
+        .value;
+
+
+    $("authError")
+      .textContent =
+      "";
+
+
+    if(
+      !email ||
+      !password
+    ){
+
+      $("authError")
+        .textContent =
+        "กรุณากรอกอีเมลและรหัสผ่าน";
+
+      return;
+
+    }
+
+
+    $("loginBtn")
+      .disabled =
+      true;
+
+
+    $("loginBtn")
+      .textContent =
+      "กำลังเข้าสู่ระบบ...";
+
+
+    try{
+
+      const result =
+        await db.auth
+          .signInWithPassword({
+            email,
+            password
+          });
+
+
+      if(result.error){
+
+        throw result.error;
+
+      }
+
+    }
+    catch(error){
+
+      $("authError")
+        .textContent =
+        error.message ||
+        "เข้าสู่ระบบไม่สำเร็จ";
+
+    }
+    finally{
+
+      $("loginBtn")
+        .disabled =
+        false;
+
+
+      $("loginBtn")
+        .textContent =
+        "เข้าสู่ระบบ";
+
+    }
+
+  }
+
+
+  async function boot(){
+
+    try{
+
+      const result =
+        await db.auth
+          .getSession();
+
+
+      if(result.error){
+
+        throw result.error;
+
+      }
+
+
+      if(
+        !result.data.session
+      ){
+
+        showLogin();
+
+        return;
+
+      }
+
+
+      currentUser =
+        result.data.session.user;
+
+
+      currentAdmin =
+        await getProfile(
+          currentUser
+        );
+
+
+      currentRole =
+        currentAdmin.role;
+
+
+      $("roleText")
+        .textContent =
+        currentRole.toUpperCase();
+
+
+      $("heroStatus")
+        .textContent =
+        `เข้าสู่ระบบแล้ว · ${
+          currentAdmin.name ||
+          currentAdmin.email
+        }`;
+
+
+      if(
+        !canManageUsers()
+      ){
+
+        $("saveUserBtn").disabled =
+          true;
+
+        $("saveUserBtn").textContent =
+          "เฉพาะ Owner";
+
+
+        $("deleteUserBtn").style.display =
+          "none";
+
+        $("saveEditBtn").disabled =
+          true;
+
+        $("editRole").disabled =
+          true;
+
+        $("editActive").disabled =
+          true;
+
+      }
+
+
+      if(
+        currentRole !== "owner"
+      ){
+
+        $("usersNav").style.display =
+          "none";
+
+      }
+
+
+      hideLogin();
+
+
+      await loadUsers();
+
+    }
+    catch(error){
+
+      console.error(
+        error
+      );
+
+
+      showLogin(
+        error.message ||
+        "ไม่สามารถเข้าสู่ระบบได้"
+      );
+
+    }
+
+  }
+
+
+  async function loadUsers(){
+
+    const result =
+      await db
+        .from("admin_users")
+        .select(
+          "user_id,email,name,role,active,created_at,updated_at"
+        )
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        );
+
+
+    if(result.error){
+
+      throw result.error;
+
+    }
+
+
+    users =
+      result.data || [];
+
+
+    renderUsers();
+
+  }
+
+
+  function renderUsers(){
+
+    const query =
+      $("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const role =
+      $("roleFilter")
+        .value;
+
+
+    const filtered =
+      users.filter(
+        user => {
+
+          const text = [
+
+            user.user_id,
+            user.email,
+            user.name,
+            user.role
+
+          ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+
+
+          return (
+
+            (!query ||
+              text.includes(query))
+
+            &&
+
+            (
+              role === "all" ||
+              user.role === role
+            )
+
+          );
+
+        }
+      );
+
+
+    $("countLabel")
+      .textContent =
+      `${filtered.length} รายการ`;
+
+
+    if(
+      !filtered.length
+    ){
+
+      $("usersTable")
+        .innerHTML = `
+
+          <tr>
+
+            <td colspan="7">
+
+              <div class="empty">
+
+                <div class="empty-mark">
+                  ◇
+                </div>
+
+                <h3>
+                  ไม่พบผู้ใช้งาน
+                </h3>
+
+                <p>
+                  ยังไม่มีข้อมูลตามเงื่อนไขที่เลือก
+                </p>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        `;
+
+      return;
+
+    }
+
+
+    $("usersTable")
+      .innerHTML =
+      filtered.map(
+        user => `
+
+          <tr>
+
+            <td>
+
+              <div class="user-name">
+                ${esc(
+                  user.name ||
+                  "ไม่ระบุชื่อ"
+                )}
+              </div>
+
+              <div class="user-id">
+                ${esc(
+                  user.user_id
+                )}
+              </div>
+
+            </td>
+
+
+            <td>
+
+              <div class="user-email">
+                ${esc(
+                  user.email ||
+                  "-"
+                )}
+              </div>
+
+            </td>
+
+
+            <td>
+
+              <span
+                class="
+                  role-badge
+                  ${roleClass(user.role)}
+                "
+              >
+                ${roleLabel(
+                  user.role
+                )}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              ${
+                user.active
+                  ? `
+                    <span class="active-badge">
+                      เปิดใช้งาน
+                    </span>
+                  `
+                  : `
+                    <span class="inactive-badge">
+                      ปิดใช้งาน
+                    </span>
+                  `
+              }
+
+            </td>
+
+
+            <td>
+
+              <div
+                style="
+                  color:#777;
+                  font-size:11px;
+                "
+              >
+                ${dateTH(
+                  user.created_at
+                )}
+              </div>
+
+            </td>
+
+
+            <td>
+
+              <div
+                style="
+                  color:#777;
+                  font-size:11px;
+                "
+              >
+                ${dateTH(
+                  user.updated_at
+                )}
+              </div>
+
+            </td>
+
+
+            <td>
+
+              <div class="row-actions">
+
+                ${
+                  canManageUsers()
+                    ? `
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        data-action="edit"
+                        data-id="${esc(
+                          user.user_id
+                        )}"
+                        title="แก้ไข"
+                      >
+                        ✎
+                      </button>
+
+                      ${
+                        user.user_id !== currentUser?.id
+                          ? `
+                            <button
+                              class="icon-btn delete"
+                              type="button"
+                              data-action="delete"
+                              data-id="${esc(
+                                user.user_id
+                              )}"
+                              title="ลบ"
+                            >
+                              ×
+                            </button>
+                          `
+                          : ""
+                      }
+                    `
+                    : `
+                      <button
+                        class="icon-btn"
+                        type="button"
+                        data-action="edit"
+                        data-id="${esc(
+                          user.user_id
+                        )}"
+                        title="ดูข้อมูล"
+                      >
+                        ⌕
+                      </button>
+                    `
+                }
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        `
+      ).join("");
+
+  }
+
+
+  function openEdit(userId){
+
+    const user =
+      users.find(
+        item =>
+          item.user_id === userId
+      );
+
+
+    if(!user){
+      return;
+    }
+
+
+    editingUserId =
+      userId;
+
+
+    $("editUserId")
+      .value =
+      user.user_id || "";
+
+
+    $("editName")
+      .value =
+      user.name || "";
+
+
+    $("editEmail")
+      .value =
+      user.email || "";
+
+
+    $("editRole")
+      .value =
+      user.role || "viewer";
+
+
+    $("editActive")
+      .value =
+      user.active
+        ? "true"
+        : "false";
+
+
+    const editable =
+      canManageUsers();
+
+
+    $("editName")
+      .readOnly =
+      !editable;
+
+
+    $("editEmail")
+      .readOnly =
+      !editable;
+
+
+    $("editRole")
+      .disabled =
+      !editable;
+
+
+    $("editActive")
+      .disabled =
+      !editable;
+
+
+    $("saveEditBtn")
+      .style.display =
+      editable
+        ? ""
+        : "none";
+
+
+    $("deleteUserBtn")
+      .style.display =
+      editable &&
+      user.user_id !== currentUser?.id
+        ? ""
+        : "none";
+
+
+    $("modal")
+      .classList
+      .add("show");
+
+  }
+
+
+  function closeModal(){
+
+    $("modal")
+      .classList
+      .remove("show");
+
+    editingUserId =
+      null;
+
+  }
+
+
+  async function saveUser(){
+
+    if(
+      !canManageUsers()
+    ){
+      return;
+    }
+
+
+    const userId =
+      $("userIdInput")
+        .value
+        .trim();
+
+
+    const email =
+      $("userEmailInput")
+        .value
+        .trim();
+
+
+    const name =
+      $("userNameInput")
+        .value
+        .trim();
+
+
+    const role =
+      $("userRoleInput")
+        .value;
+
+
+    if(!userId){
+
+      alert(
+        "กรุณาระบุ User ID"
+      );
+
+      return;
+
+    }
+
+
+    if(!/^[0-9a-fA-F-]{36}$/.test(userId)){
+
+      alert(
+        "User ID ไม่ถูกต้อง ต้องเป็น UUID"
+      );
+
+      return;
+
+    }
+
+
+    const result =
+      await db
+        .from("admin_users")
+        .insert({
+          user_id:userId,
+          email:
+            email || null,
+          name:
+            name || null,
+          role,
+          active:true
+        });
+
+
+    if(result.error){
+
+      alert(
+        "เพิ่มผู้ดูแลไม่สำเร็จ\n\n" +
+        result.error.message
+      );
+
+      return;
+
+    }
+
+
+    $("userIdInput")
+      .value = "";
+
+
+    $("userEmailInput")
+      .value = "";
+
+
+    $("userNameInput")
+      .value = "";
+
+
+    $("userRoleInput")
+      .value = "viewer";
+
+
+    await loadUsers();
+
+
+    alert(
+      "เพิ่มผู้ดูแลเรียบร้อย"
+    );
+
+  }
+
+
+  async function saveEdit(){
+
+    if(
+      !canManageUsers() ||
+      !editingUserId
+    ){
+      return;
+    }
+
+
+    const email =
+      $("editEmail")
+        .value
+        .trim();
+
+
+    const name =
+      $("editName")
+        .value
+        .trim();
+
+
+    const role =
+      $("editRole")
+        .value;
+
+
+    const active =
+      $("editActive")
+        .value === "true";
+
+
+    if(
+      editingUserId === currentUser?.id &&
+      !active
+    ){
+
+      alert(
+        "ไม่สามารถปิดการใช้งานบัญชีของตัวเองได้"
+      );
+
+      return;
+
+    }
+
+
+    const result =
+      await db
+        .from("admin_users")
+        .update({
+          email:
+            email || null,
+          name:
+            name || null,
+          role,
+          active,
+          updated_at:
+            new Date().toISOString()
+        })
+        .eq(
+          "user_id",
+          editingUserId
+        );
+
+
+    if(result.error){
+
+      alert(
+        "บันทึกไม่สำเร็จ\n\n" +
+        result.error.message
+      );
+
+      return;
+
+    }
+
+
+    closeModal();
+
+    await loadUsers();
+
+  }
+
+
+  async function deleteUser(userId){
+
+    if(
+      !canManageUsers()
+    ){
+      return;
+    }
+
+
+    if(
+      userId === currentUser?.id
+    ){
+
+      alert(
+        "ไม่สามารถลบบัญชีของตัวเองได้"
+      );
+
+      return;
+
+    }
+
+
+    const user =
+      users.find(
+        item =>
+          item.user_id === userId
+      );
+
+
+    const ok =
+      confirm(
+        `ต้องการลบ ${
+          user?.name ||
+          user?.email ||
+          "ผู้ดูแล"
+        } ออกจากระบบหรือไม่?`
+      );
+
+
+    if(!ok){
+      return;
+    }
+
+
+    const result =
+      await db
+        .from("admin_users")
+        .delete()
+        .eq(
+          "user_id",
+          userId
+        );
+
+
+    if(result.error){
+
+      alert(
+        "ลบผู้ดูแลไม่สำเร็จ\n\n" +
+        result.error.message
+      );
+
+      return;
+
+    }
+
+
+    await loadUsers();
+
+  }
+
+
+  $("loginBtn")
+    .addEventListener(
+      "click",
+      login
+    );
+
+
+  $("loginPassword")
+    .addEventListener(
+      "keydown",
+      event => {
+
+        if(
+          event.key === "Enter"
+        ){
+
+          login();
+
+        }
+
+      }
+    );
+
+
+  $("logoutBtn")
+    .addEventListener(
+      "click",
+      async event => {
+
+        event.preventDefault();
+
+        await db.auth.signOut();
+
+      }
+    );
+
+
+  $("mobileBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        $("nav")
+          .classList
+          .toggle("open");
+
+      }
+    );
+
+
+  $("saveUserBtn")
+    .addEventListener(
+      "click",
+      saveUser
+    );
+
+
+  $("cancelEditBtn")
+    .addEventListener(
+      "click",
+      () => {
+
+        $("userIdInput").value = "";
+        $("userEmailInput").value = "";
+        $("userNameInput").value = "";
+        $("userRoleInput").value = "viewer";
+
+        $("cancelEditBtn")
+          .style.display =
+          "none";
+
+      }
+    );
+
+
+  $("refreshBtn")
+    .addEventListener(
+      "click",
+      async () => {
+
+        try{
+
+          await loadUsers();
+
+        }
+        catch(error){
+
+          alert(
+            error.message
+          );
+
+        }
+
+      }
+    );
+
+
+  $("searchInput")
+    .addEventListener(
+      "input",
+      renderUsers
+    );
+
+
+  $("roleFilter")
+    .addEventListener(
+      "change",
+      renderUsers
+    );
+
+
+  $("usersTable")
+    .addEventListener(
+      "click",
+      event => {
+
+        const button =
+          event.target.closest(
+            "[data-action]"
+          );
+
+
+        if(!button){
+          return;
+        }
+
+
+        const action =
+          button.dataset.action;
+
+
+        const id =
+          button.dataset.id;
+
+
+        if(
+          action === "edit"
+        ){
+
+          openEdit(id);
+
+        }
+
+
+        if(
+          action === "delete"
+        ){
+
+          deleteUser(id);
+
+        }
+
+      }
+    );
+
+
+  $("modalClose")
+    .addEventListener(
+      "click",
+      closeModal
+    );
+
+
+  $("modal")
+    .addEventListener(
+      "click",
+      event => {
+
+        if(
+          event.target ===
+          $("modal")
+        ){
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if(
+        event.key === "Escape"
+      ){
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+  db.auth.onAuthStateChange(
+    async (
+      event,
+      session
+    ) => {
+
+      if(!session){
+
+        currentUser = null;
+        currentAdmin = null;
+        currentRole = null;
+
+        showLogin();
+
+        return;
+
+      }
+
+
+      if(
+        currentUser &&
+        currentAdmin
+      ){
+
+        return;
+
+      }
+
+
+      try{
+
+        currentUser =
+          session.user;
+
+
+        currentAdmin =
+          await getProfile(
+            currentUser
+          );
+
+
+        currentRole =
+          currentAdmin.role;
+
+
+        $("roleText")
+          .textContent =
+          currentRole.toUpperCase();
+
+
+        $("heroStatus")
+          .textContent =
+          `เข้าสู่ระบบแล้ว · ${
+            currentAdmin.name ||
+            currentAdmin.email
+          }`;
+
+
+        hideLogin();
+
+        await loadUsers();
+
+      }
+      catch(error){
+
+        $("authError")
+          .textContent =
+          error.message;
+
+        await db.auth.signOut();
+
+      }
+
+    }
+  );
+
+
+  boot();
+
+})();
+</script>
+
+</body>
+</html>
