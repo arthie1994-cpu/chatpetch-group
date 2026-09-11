@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products | Admin | Chatpetch Group</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+:root{
+    --black:#050505;
+    --dark:#0b0b0b;
+    --dark2:#111;
+    --gold:#c8a45b;
+    --gold-light:#f0d991;
+    --line:rgba(255,255,255,.08);
+    --gold-line:rgba(200,164,91,.28);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+
+    color:#fff;
+
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(200,164,91,.10),
+            transparent 28%
+        ),
+        #050505;
+
+    font-family:"Kanit","Prompt",sans-serif;
+}
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:60px 60px;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    height:82px;
+
+    background:rgba(5,5,5,.90);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+    max-width:1400px;
+    height:100%;
+
+    margin:auto;
+    padding:0 28px;
+
+    display:flex;
+    align-items:center;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.logo{
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid var(--gold);
+
+    color:var(--gold-light);
+
+    font-weight:700;
+}
+
+.brand-title{
+    font-size:17px;
+    font-weight:600;
+}
+
+.brand-sub{
+    color:var(--gold);
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+.nav{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+
+    gap:5px;
+}
+
+.nav a{
+    padding:10px 15px;
+
+    color:#999;
+
+    font-size:14px;
+
+    position:relative;
+}
+
+.nav a:hover,
+.nav a.active{
+    color:var(--gold-light);
+}
+
+.nav a.active::after{
+    content:"";
+
+    position:absolute;
+
+    left:15px;
+    right:15px;
+    bottom:3px;
+
+    height:2px;
+
+    background:var(--gold);
+}
+
+.logout{
+    margin-left:12px;
+
+    padding:8px 12px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:none;
+
+    color:#999;
+}
+
+.logout:hover{
+    border-color:var(--gold);
+    color:var(--gold-light);
+}
+
+.mobile{
+    display:none;
+
+    margin-left:auto;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--gold-line);
+
+    background:#111;
+
+    color:var(--gold-light);
+}
+
+.main{
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:60px 28px 100px;
+}
+
+.eyebrow{
+    color:var(--gold);
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    margin-bottom:12px;
+}
+
+h1{
+    font-size:clamp(44px,6vw,72px);
+
+    line-height:1;
+
+    margin-bottom:15px;
+}
+
+.description{
+    max-width:650px;
+
+    color:#888;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:13px;
+
+    line-height:1.9;
+
+    margin-bottom:40px;
+}
+
+.toolbar{
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:25px;
+}
+
+.search{
+    flex:1;
+
+    padding:14px 16px;
+
+    background:#0a0a0a;
+
+    border:1px solid var(--line);
+
+    color:#fff;
+
+    outline:none;
+}
+
+.search:focus{
+    border-color:var(--gold);
+}
+
+.filter{
+    width:180px;
+
+    padding:14px;
+
+    background:#0a0a0a;
+
+    border:1px solid var(--line);
+
+    color:#fff;
+
+    outline:none;
+}
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+    gap:16px;
+}
+
+.card{
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+
+    border-color:var(--gold-line);
+}
+
+.image{
+    aspect-ratio:1/1;
+
+    background:#111;
+
+    overflow:hidden;
+}
+
+.image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+}
+
+.card:hover img{
+    transform:scale(1.06);
+}
+
+.no-image{
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#555;
+
+    font-size:13px;
+}
+
+.info{
+    padding:20px;
+}
+
+.category{
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-bottom:8px;
+}
+
+.name{
+    font-size:19px;
+
+    font-weight:500;
+
+    min-height:52px;
+}
+
+.desc{
+    color:#888;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:11px;
+
+    line-height:1.7;
+
+    margin:8px 0 15px;
+}
+
+.status{
+    display:inline-flex;
+
+    padding:5px 9px;
+
+    border:1px solid rgba(100,200,120,.2);
+
+    background:rgba(100,200,120,.06);
+
+    color:#83d08d;
+
+    font-size:10px;
+}
+
+.status.hidden{
+    border-color:rgba(220,80,80,.2);
+
+    background:rgba(220,80,80,.06);
+
+    color:#e98d8d;
+}
+
+.empty{
+    padding:70px 20px;
+
+    text-align:center;
+
+    border:1px dashed var(--line);
+
+    color:#666;
+}
+
+.loading{
+    color:#888;
+}
+
+@media(max-width:1050px){
+
+    .grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:800px){
+
+    .brand-title,
+    .brand-sub{
+        display:none;
+    }
+
+    .nav{
+        display:none;
+
+        position:absolute;
+
+        top:78px;
+        left:15px;
+        right:15px;
+
+        padding:10px;
+
+        background:#0d0d0d;
+
+        border:1px solid var(--gold-line);
+
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .nav.open{
+        display:flex;
+    }
+
+    .nav a{
+        padding:13px 15px;
+    }
+
+    .logout{
+        margin:5px 0 0;
+    }
+
+    .mobile{
+        display:block;
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .toolbar{
+        flex-direction:column;
+    }
+
+    .filter{
+        width:100%;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .main{
+        padding:45px 18px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    h1{
+        font-size:46px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="header-inner">
+
+<a href="admin.html" class="brand">
+
+<div class="logo">
+CG
+</div>
+
+<div>
+<div class="brand-title">
+CHATPETCH GROUP
+</div>
+
+<div class="brand-sub">
+ADMIN BACK OFFICE
+</div>
+</div>
+
+</a>
+
+
+<nav class="nav" id="nav">
+
+<a href="admin.html">
+หน้าแรก
+</a>
+
+<a href="admin-store.html" class="active">
+สินค้า
+</a>
+
+<a href="admin-products.html">
+การจัดการสินค้า
+</a>
+
+<button class="logout" id="logout">
+ออกจากระบบ
+</button>
+
+</nav>
+
+
+<button class="mobile" id="mobile">
+☰
+</button>
+
+</div>
+
+</header>
+
+
+<main class="main">
+
+<div class="eyebrow">
+BACK OFFICE / PRODUCTS
+</div>
+
+<h1>
+สินค้า
+</h1>
+
+<p class="description">
+รายการสินค้าภายในระบบหลังบ้าน
+หน้านี้ใช้สำหรับตรวจสอบข้อมูลสินค้า
+ที่เชื่อมต่อกับฐานข้อมูล Supabase
+โดยแยกออกจากหน้าร้านสำหรับลูกค้า
+</p>
+
+
+<div class="toolbar">
+
+<input
+id="search"
+class="search"
+placeholder="ค้นหาชื่อสินค้า / รหัสสินค้า..."
+>
+
+<select id="category" class="filter">
+
+<option value="">
+ทุกหมวดหมู่
+</option>
+
+<option value="floor">
+วัสดุงานพื้น
+</option>
+
+<option value="coating">
+น้ำยา / เคมี
+</option>
+
+<option value="construction">
+วัสดุก่อสร้าง
+</option>
+
+</select>
+
+</div>
+
+
+<div id="productGrid" class="grid">
+
+<div class="empty loading">
+กำลังโหลดสินค้า...
+</div>
+
+</div>
+
+</main>
+
+
+<script>
+
+const SUPABASE_URL =
+"https://mfhllgklcfnnbyyzzljz.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
+
+
+const client =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth:{
+            persistSession:true,
+            autoRefreshToken:true,
+            detectSessionInUrl:false
+        }
+    }
+);
+
+
+let products = [];
+
+
+async function checkAuth(){
+
+    const {
+        data
+    } =
+    await client.auth.getSession();
+
+
+    if(
+        !data.session
+    ){
+
+        window.location.href =
+            "admin.html";
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+async function loadProducts(){
+
+    const {
+        data,
+        error
+    } =
+    await client
+        .from("products")
+        .select("*")
+        .order("created_at",{ascending:false});
+
+
+    if(error){
+
+        document
+            .getElementById("productGrid")
+            .innerHTML = `
+                <div class="empty">
+                    ไม่สามารถโหลดข้อมูลสินค้าได้<br>
+                    <small>${escapeHtml(error.message)}</small>
+                </div>
+            `;
+
+        return;
+
+    }
+
+
+    products = data || [];
+
+    render();
+
+}
+
+
+function render(){
+
+    const search =
+        document
+            .getElementById("search")
+            .value
+            .trim()
+            .toLowerCase();
+
+    const category =
+        document
+            .getElementById("category")
+            .value;
+
+
+    const filtered =
+        products.filter(product => {
+
+            const matchSearch =
+                !search ||
+                String(product.id || "")
+                    .toLowerCase()
+                    .includes(search) ||
+                String(product.name || "")
+                    .toLowerCase()
+                    .includes(search);
+
+            const matchCategory =
+                !category ||
+                product.category === category;
+
+            return matchSearch &&
+                   matchCategory;
+
+        });
+
+
+    const grid =
+        document.getElementById(
+            "productGrid"
+        );
+
+
+    if(!filtered.length){
+
+        grid.innerHTML = `
+            <div class="empty">
+                ไม่พบสินค้า
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filtered
+        .map(product => {
+
+            const hidden =
+                product.hidden === true;
+
+
+            const image =
+                product.image
+                ? `
+                    <img
+                        src="${escapeAttr(product.image)}"
+                        alt="${escapeAttr(product.name || "")}"
+                        onerror="this.style.display='none';this.parentElement.innerHTML='<div class=no-image>ไม่มีรูปภาพ</div>'"
+                    >
+                  `
+                : `
+                    <div class="no-image">
+                        ไม่มีรูปภาพ
+                    </div>
+                  `;
+
+
+            return `
+                <article class="card">
+
+                    <div class="image">
+                        ${image}
+                    </div>
+
+                    <div class="info">
+
+                        <div class="category">
+                            ${escapeHtml(
+                                product.category_label ||
+                                product.category ||
+                                "PRODUCT"
+                            )}
+                        </div>
+
+                        <div class="name">
+                            ${escapeHtml(
+                                product.name ||
+                                "ไม่มีชื่อสินค้า"
+                            )}
+                        </div>
+
+                        <div class="desc">
+                            ${escapeHtml(
+                                product.short_desc ||
+                                "ไม่มีรายละเอียด"
+                            )}
+                        </div>
+
+                        <span class="status ${hidden ? "hidden" : ""}">
+                            ${hidden ? "ซ่อนอยู่" : "เปิดใช้งาน"}
+                        </span>
+
+                    </div>
+
+                </article>
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function escapeHtml(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttr(value){
+
+    return escapeHtml(value);
+
+}
+
+
+document
+.getElementById("search")
+.addEventListener(
+    "input",
+    render
+);
+
+
+document
+.getElementById("category")
+.addEventListener(
+    "change",
+    render
+);
+
+
+document
+.getElementById("mobile")
+.addEventListener(
+    "click",
+    function(){
+
+        document
+            .getElementById("nav")
+            .classList
+            .toggle("open");
+
+    }
+);
+
+
+document
+.getElementById("logout")
+.addEventListener(
+    "click",
+    async function(){
+
+        await client.auth.signOut();
+
+        window.location.href =
+            "admin.html";
+
+    }
+);
+
+
+async function start(){
+
+    const authenticated =
+        await checkAuth();
+
+    if(!authenticated)
+        return;
+
+    await loadProducts();
+
+}
+
+
+start();
+
+</script>
+
+</body>
+</html>
