@@ -48,6 +48,7 @@ body{
   overflow-x:hidden;
   color:var(--white);
   font-family:"Prompt",sans-serif;
+  font-size:14px;
   background:
     radial-gradient(circle at 15% 0%,rgba(200,164,91,.10),transparent 30%),
     radial-gradient(circle at 90% 20%,rgba(255,255,255,.025),transparent 28%),
@@ -137,7 +138,7 @@ button{
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
   font-weight:600;
-  font-size:15px;
+  font-size:16px;
   letter-spacing:1px;
   background:linear-gradient(
     145deg,
@@ -157,7 +158,7 @@ button{
 
 .logo-title{
   font-family:"Kanit",sans-serif;
-  font-size:17px;
+  font-size:18px;
   font-weight:500;
   letter-spacing:.5px;
 }
@@ -165,7 +166,7 @@ button{
 .logo-sub{
   margin-top:4px;
   color:#666;
-  font-size:8px;
+  font-size:9px;
   letter-spacing:2px;
 }
 
@@ -179,8 +180,8 @@ button{
   padding:10px 12px;
   border:1px solid transparent;
   border-radius:9px;
-  color:#7e7e7e;
-  font-size:10px;
+  color:#8a8a8a;
+  font-size:12px;
   transition:.25s ease;
 }
 
@@ -245,15 +246,15 @@ button{
 }
 
 .eyebrow{
-  margin-bottom:13px;
+  margin-bottom:14px;
   color:var(--gold);
-  font-size:10px;
+  font-size:12px;
   letter-spacing:3px;
 }
 
 .hero h1{
   font-family:"Kanit",sans-serif;
-  font-size:clamp(55px,8.5vw,110px);
+  font-size:clamp(58px,8.5vw,112px);
   font-weight:300;
   letter-spacing:-4px;
   line-height:.9;
@@ -266,22 +267,22 @@ button{
 
 .hero-desc{
   max-width:720px;
-  margin-top:24px;
-  color:#888;
-  font-size:12px;
+  margin-top:25px;
+  color:#8f8f8f;
+  font-size:14px;
   line-height:2;
 }
 
 .hero-status{
   display:inline-flex;
   align-items:center;
-  gap:8px;
+  gap:9px;
   margin-top:20px;
-  padding:8px 12px;
+  padding:9px 13px;
   border:1px solid var(--gold-line);
   border-radius:999px;
   color:var(--gold-light);
-  font-size:9px;
+  font-size:10px;
   background:rgba(200,164,91,.05);
 }
 
@@ -295,8 +296,8 @@ button{
 }
 
 .hero-side{
-  min-width:220px;
-  padding:22px;
+  min-width:230px;
+  padding:23px;
   border:1px solid var(--gold-line);
   border-radius:20px;
   background:
@@ -311,7 +312,7 @@ button{
   display:block;
   margin-bottom:8px;
   color:#666;
-  font-size:8px;
+  font-size:9px;
   letter-spacing:2px;
 }
 
@@ -319,7 +320,7 @@ button{
   display:block;
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:30px;
+  font-size:31px;
   font-weight:400;
 }
 
@@ -339,8 +340,8 @@ main{
 .stat-card{
   position:relative;
   overflow:hidden;
-  min-height:145px;
-  padding:23px;
+  min-height:150px;
+  padding:24px;
   border:1px solid var(--line);
   border-radius:19px;
   background:
@@ -373,16 +374,16 @@ main{
 }
 
 .stat-label{
-  color:#666;
-  font-size:9px;
+  color:#707070;
+  font-size:11px;
   letter-spacing:1px;
 }
 
 .stat-value{
-  margin-top:13px;
+  margin-top:14px;
   color:#eee;
   font-family:"Kanit",sans-serif;
-  font-size:38px;
+  font-size:42px;
   font-weight:400;
   line-height:1;
 }
@@ -392,9 +393,9 @@ main{
 }
 
 .stat-note{
-  margin-top:12px;
-  color:#555;
-  font-size:9px;
+  margin-top:13px;
+  color:#5a5a5a;
+  font-size:11px;
 }
 
 .summary-grid{
@@ -405,7 +406,7 @@ main{
 }
 
 .summary-card{
-  padding:18px 20px;
+  padding:19px 21px;
   border:1px solid var(--line);
   border-radius:16px;
   background:rgba(255,255,255,.02);
@@ -414,7 +415,7 @@ main{
 .summary-card small{
   display:block;
   color:#666;
-  font-size:8px;
+  font-size:10px;
   margin-bottom:8px;
 }
 
@@ -422,7 +423,7 @@ main{
   display:block;
   color:#e7e7e7;
   font-family:"Kanit",sans-serif;
-  font-size:23px;
+  font-size:26px;
   font-weight:400;
 }
 
@@ -462,14 +463,18 @@ main{
 
 .search{
   width:100%;
-  height:44px;
-  padding:0 13px;
+  height:46px;
+  padding:0 14px;
   border:1px solid var(--line);
   border-radius:10px;
   outline:none;
   background:#080808;
   color:#fff;
-  font-size:10px;
+  font-size:13px;
+}
+
+.search::placeholder{
+  color:#666;
 }
 
 .search:focus{
@@ -477,24 +482,24 @@ main{
 }
 
 .select{
-  height:44px;
-  padding:0 12px;
+  height:46px;
+  padding:0 13px;
   border:1px solid var(--line);
   border-radius:10px;
   outline:none;
   background:#080808;
   color:#fff;
-  font-size:10px;
+  font-size:13px;
 }
 
 .btn{
-  min-height:44px;
-  padding:0 14px;
+  min-height:46px;
+  padding:0 15px;
   border:1px solid var(--line);
   border-radius:10px;
   background:#0c0c0c;
   color:#aaa;
-  font-size:10px;
+  font-size:12px;
   transition:.25s;
 }
 
@@ -544,13 +549,13 @@ main{
 
 .table-header h2{
   font-family:"Kanit",sans-serif;
-  font-size:21px;
+  font-size:25px;
   font-weight:400;
 }
 
 .table-header span{
   color:#666;
-  font-size:9px;
+  font-size:11px;
 }
 
 .table-scroll{
@@ -564,20 +569,20 @@ table{
 }
 
 th{
-  padding:13px 18px;
+  padding:14px 18px;
   border-bottom:1px solid var(--line);
-  color:#5d5d5d;
-  font-size:8px;
+  color:#6a6a6a;
+  font-size:10px;
   font-weight:400;
   text-align:left;
   white-space:nowrap;
 }
 
 td{
-  padding:17px 18px;
+  padding:18px;
   border-bottom:1px solid rgba(255,255,255,.045);
   color:#bbb;
-  font-size:10px;
+  font-size:13px;
   vertical-align:middle;
 }
 
@@ -592,64 +597,64 @@ tbody tr:hover{
 .order-number{
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:13px;
+  font-size:16px;
 }
 
 .order-uuid{
-  margin-top:4px;
-  max-width:160px;
+  margin-top:5px;
+  max-width:165px;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
-  color:#444;
-  font-size:8px;
+  color:#4d4d4d;
+  font-size:9px;
 }
 
 .customer-name{
   color:#eee;
-  font-size:11px;
+  font-size:14px;
 }
 
 .customer-meta{
-  margin-top:4px;
-  color:#606060;
-  font-size:8px;
+  margin-top:5px;
+  color:#666;
+  font-size:10px;
   line-height:1.5;
 }
 
 .item-count{
   color:#ddd;
-  font-size:10px;
+  font-size:13px;
 }
 
 .item-sub{
-  margin-top:3px;
+  margin-top:4px;
   color:#555;
-  font-size:8px;
+  font-size:10px;
 }
 
 .amount{
-  margin-top:4px;
+  margin-top:5px;
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:15px;
+  font-size:19px;
 }
 
 .date{
   color:#666;
-  font-size:8px;
-  line-height:1.7;
+  font-size:10px;
+  line-height:1.8;
 }
 
 .status{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:84px;
-  padding:7px 10px;
+  min-width:98px;
+  padding:8px 12px;
   border:1px solid transparent;
   border-radius:999px;
-  font-size:8px;
+  font-size:10px;
 }
 
 .status.pending{
@@ -688,15 +693,15 @@ tbody tr:hover{
 }
 
 .icon-btn{
-  width:34px;
-  height:34px;
+  width:37px;
+  height:37px;
   display:grid;
   place-items:center;
   border:1px solid var(--line);
   border-radius:9px;
   background:#0a0a0a;
   color:#aaa;
-  font-size:13px;
+  font-size:15px;
 }
 
 .icon-btn:hover{
@@ -710,32 +715,32 @@ tbody tr:hover{
 }
 
 .empty{
-  padding:80px 20px;
+  padding:85px 20px;
   text-align:center;
 }
 
 .empty-mark{
-  width:58px;
-  height:58px;
+  width:60px;
+  height:60px;
   display:grid;
   place-items:center;
-  margin:0 auto 17px;
+  margin:0 auto 18px;
   border:1px solid var(--gold-line);
   border-radius:17px;
   color:var(--gold);
-  font-size:19px;
+  font-size:20px;
 }
 
 .empty h3{
-  margin-bottom:6px;
+  margin-bottom:7px;
   font-family:"Kanit",sans-serif;
-  font-size:19px;
+  font-size:21px;
   font-weight:400;
 }
 
 .empty p{
   color:#5d5d5d;
-  font-size:10px;
+  font-size:11px;
   line-height:1.8;
 }
 
@@ -783,18 +788,18 @@ tbody tr:hover{
 
 .modal-head h2{
   font-family:"Kanit",sans-serif;
-  font-size:23px;
+  font-size:27px;
   font-weight:400;
 }
 
 .modal-close{
-  width:38px;
-  height:38px;
+  width:40px;
+  height:40px;
   border:1px solid var(--line);
   border-radius:10px;
   background:#0a0a0a;
   color:#aaa;
-  font-size:18px;
+  font-size:20px;
 }
 
 .modal-body{
@@ -808,23 +813,23 @@ tbody tr:hover{
 }
 
 .detail-card{
-  padding:15px;
+  padding:16px;
   border:1px solid var(--line);
   border-radius:12px;
   background:rgba(255,255,255,.018);
 }
 
 .detail-label{
-  margin-bottom:7px;
+  margin-bottom:8px;
   color:#555;
-  font-size:8px;
+  font-size:10px;
   letter-spacing:.6px;
 }
 
 .detail-value{
   color:#ddd;
-  font-size:10px;
-  line-height:1.8;
+  font-size:13px;
+  line-height:1.9;
   word-break:break-word;
 }
 
@@ -833,9 +838,9 @@ tbody tr:hover{
 }
 
 .section-title{
-  margin:26px 0 13px;
+  margin:28px 0 14px;
   font-family:"Kanit",sans-serif;
-  font-size:18px;
+  font-size:21px;
   font-weight:400;
 }
 
@@ -875,13 +880,13 @@ tbody tr:hover{
 
 .item-name{
   color:#eee;
-  font-size:11px;
+  font-size:14px;
 }
 
 .item-meta{
   margin-top:5px;
   color:#666;
-  font-size:8px;
+  font-size:10px;
   line-height:1.75;
 }
 
@@ -892,13 +897,13 @@ tbody tr:hover{
 .item-price{
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:15px;
+  font-size:18px;
 }
 
 .item-qty{
-  margin-top:3px;
+  margin-top:4px;
   color:#666;
-  font-size:8px;
+  font-size:10px;
 }
 
 .total-row{
@@ -913,24 +918,24 @@ tbody tr:hover{
 
 .total-row span{
   color:#666;
-  font-size:10px;
+  font-size:12px;
 }
 
 .total-row strong{
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:29px;
+  font-size:33px;
   font-weight:400;
 }
 
 .slip{
   display:inline-flex;
   margin-top:17px;
-  padding:9px 12px;
+  padding:10px 13px;
   border:1px solid var(--gold-line);
   border-radius:9px;
   color:var(--gold-light);
-  font-size:9px;
+  font-size:10px;
 }
 
 .status-editor{
@@ -987,26 +992,26 @@ tbody tr:hover{
   border-radius:16px;
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:18px;
+  font-size:19px;
 }
 
 .auth-card h2{
   font-family:"Kanit",sans-serif;
-  font-size:31px;
+  font-size:34px;
   font-weight:400;
 }
 
 .auth-card p{
-  margin-top:6px;
+  margin-top:7px;
   margin-bottom:23px;
   color:#666;
-  font-size:10px;
+  font-size:12px;
   line-height:1.8;
 }
 
 .auth-input{
   width:100%;
-  height:49px;
+  height:50px;
   margin-bottom:10px;
   padding:0 14px;
   border:1px solid var(--line);
@@ -1014,28 +1019,32 @@ tbody tr:hover{
   outline:none;
   background:#080808;
   color:#fff;
-  font-size:11px;
+  font-size:13px;
 }
 
 .auth-input:focus{
   border-color:var(--gold);
 }
 
+.auth-input::placeholder{
+  color:#666;
+}
+
 .auth-error{
-  min-height:19px;
+  min-height:20px;
   margin:3px 0 10px;
   color:var(--red);
-  font-size:9px;
+  font-size:10px;
   line-height:1.7;
 }
 
 .auth-btn{
   width:100%;
-  height:49px;
+  height:50px;
   border:0;
   border-radius:10px;
   color:#050505;
-  font-size:11px;
+  font-size:13px;
   font-weight:600;
   background:
     linear-gradient(
@@ -1054,9 +1063,9 @@ tbody tr:hover{
 
 .footer{
   border-top:1px solid var(--line);
-  padding:28px 0;
+  padding:30px 0;
   color:#555;
-  font-size:8px;
+  font-size:10px;
 }
 
 .footer-inner{
@@ -1093,7 +1102,8 @@ tbody tr:hover{
   }
 
   .nav a{
-    padding:12px;
+    padding:13px;
+    font-size:13px;
   }
 
   .hero-inner{
@@ -1112,18 +1122,34 @@ tbody tr:hover{
     width:calc(100% - 24px);
   }
 
+  .header-inner{
+    min-height:70px;
+  }
+
+  .logo-title{
+    font-size:16px;
+  }
+
+  .logo-sub{
+    display:none;
+  }
+
   .hero{
-    padding:75px 0 55px;
+    padding:76px 0 56px;
   }
 
   .hero h1{
-    font-size:56px;
+    font-size:58px;
     letter-spacing:-2px;
   }
 
+  .hero-desc{
+    font-size:13px;
+  }
+
   .hero-side{
-    min-width:0;
     width:100%;
+    min-width:0;
   }
 
   .stats-grid{
@@ -1141,11 +1167,46 @@ tbody tr:hover{
 
   .toolbar-left{
     flex-direction:column;
+    align-items:stretch;
   }
 
   .toolbar-right{
     display:grid;
     grid-template-columns:1fr 1fr 1fr;
+  }
+
+  .search,
+  .select,
+  .btn{
+    font-size:13px;
+  }
+
+  .table-header h2{
+    font-size:24px;
+  }
+
+  td{
+    font-size:13px;
+  }
+
+  .order-number{
+    font-size:16px;
+  }
+
+  .customer-name{
+    font-size:14px;
+  }
+
+  .customer-meta{
+    font-size:11px;
+  }
+
+  .amount{
+    font-size:19px;
+  }
+
+  .status{
+    font-size:11px;
   }
 
   .detail-grid{
@@ -1166,6 +1227,14 @@ tbody tr:hover{
     text-align:left;
   }
 
+  .item-name{
+    font-size:14px;
+  }
+
+  .item-meta{
+    font-size:10px;
+  }
+
   .total-row{
     flex-direction:column;
     align-items:flex-start;
@@ -1175,7 +1244,6 @@ tbody tr:hover{
     flex-direction:column;
     align-items:flex-start;
   }
-
 }
 </style>
 </head>
@@ -1728,39 +1796,6 @@ tbody tr:hover{
     "sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
 
 
-  if(
-    !window.supabase ||
-    typeof window.supabase.createClient !== "function"
-  ){
-
-    document.body.innerHTML = `
-      <div style="
-        min-height:100vh;
-        display:grid;
-        place-items:center;
-        padding:30px;
-        background:#050505;
-        color:#fff;
-        font-family:Arial,sans-serif;
-        text-align:center;
-      ">
-        <div>
-          <h2 style="margin-bottom:12px;">
-            ไม่สามารถโหลดระบบเชื่อมต่อได้
-          </h2>
-
-          <p style="color:#888;">
-            กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต
-            แล้วเปิดหน้าเว็บใหม่
-          </p>
-        </div>
-      </div>
-    `;
-
-    return;
-  }
-
-
   const db =
     window.supabase.createClient(
       SUPABASE_URL,
@@ -1817,21 +1852,12 @@ tbody tr:hover{
   const PAYMENT = {
 
     bank_transfer:"โอนเงิน",
-
     bankTransfer:"โอนเงิน",
-
     "bank-transfer":"โอนเงิน",
-
     promptpay:"PromptPay",
-
     prompt_pay:"PromptPay",
-
     cod:"เก็บเงินปลายทาง",
-
     cash_on_delivery:"เก็บเงินปลายทาง",
-
-    "เงินสดปลายทาง":"เก็บเงินปลายทาง",
-
     "เก็บเงินปลายทาง":"เก็บเงินปลายทาง"
 
   };
@@ -1896,16 +1922,6 @@ tbody tr:hover{
   }
 
 
-  function statusInfo(value){
-
-    return STATUS[value] || {
-      label:value || "ไม่ระบุ",
-      cls:"pending"
-    };
-
-  }
-
-
   function paymentLabel(value){
 
     return PAYMENT[value] ||
@@ -1915,27 +1931,12 @@ tbody tr:hover{
   }
 
 
-  function showLogin(){
+  function statusInfo(value){
 
-    $("auth").classList.add("show");
-
-    $("heroStatus").textContent =
-      "กรุณาเข้าสู่ระบบ";
-
-  }
-
-
-  function hideLogin(){
-
-    $("auth").classList.remove("show");
-
-  }
-
-
-  function setError(message){
-
-    $("authError").textContent =
-      message || "";
+    return STATUS[value] || {
+      label:value || "ไม่ระบุ",
+      cls:"pending"
+    };
 
   }
 
@@ -1956,6 +1957,37 @@ tbody tr:hover{
   function canDelete(){
 
     return currentRole === "owner";
+
+  }
+
+
+  function showLogin(){
+
+    $("auth")
+      .classList
+      .add("show");
+
+    $("heroStatus")
+      .textContent =
+      "กรุณาเข้าสู่ระบบ";
+
+  }
+
+
+  function hideLogin(){
+
+    $("auth")
+      .classList
+      .remove("show");
+
+  }
+
+
+  function setError(message){
+
+    $("authError")
+      .textContent =
+      message || "";
 
   }
 
@@ -1998,10 +2030,11 @@ tbody tr:hover{
     try{
 
       const result =
-        await db.auth.signInWithPassword({
-          email,
-          password
-        });
+        await db.auth
+          .signInWithPassword({
+            email,
+            password
+          });
 
 
       if(result.error){
@@ -2137,11 +2170,13 @@ tbody tr:hover{
       currentAdmin.role;
 
 
-    $("roleText").textContent =
+    $("roleText")
+      .textContent =
       currentRole.toUpperCase();
 
 
-    $("heroStatus").textContent =
+    $("heroStatus")
+      .textContent =
       `เข้าสู่ระบบแล้ว · ${
         currentAdmin.name ||
         currentAdmin.email
@@ -2170,16 +2205,15 @@ tbody tr:hover{
 
   async function loadOrders(){
 
-    $("heroStatus").textContent =
+    $("heroStatus")
+      .textContent =
       "กำลังโหลดข้อมูลคำสั่งซื้อ...";
 
 
     const result =
       await db
         .from("orders")
-        .select(
-          "*"
-        )
+        .select("*")
         .order(
           "created_at",
           {
@@ -2213,9 +2247,7 @@ tbody tr:hover{
       const itemsResult =
         await db
           .from("order_items")
-          .select(
-            "*"
-          )
+          .select("*")
           .in(
             "order_id",
             ids
@@ -2228,15 +2260,7 @@ tbody tr:hover{
           );
 
 
-      if(itemsResult.error){
-
-        console.warn(
-          "ORDER ITEMS ERROR:",
-          itemsResult.error
-        );
-
-      }
-      else{
+      if(!itemsResult.error){
 
         (itemsResult.data || [])
           .forEach(
@@ -2268,11 +2292,11 @@ tbody tr:hover{
 
 
     updateStats();
-
     renderOrders();
 
 
-    $("heroStatus").textContent =
+    $("heroStatus")
+      .textContent =
       `เชื่อมต่อแล้ว · ${
         currentAdmin?.name ||
         currentAdmin?.email ||
@@ -2303,16 +2327,23 @@ tbody tr:hover{
       );
 
 
-    $("statAll").textContent =
+    $("statAll")
+      .textContent =
       orders.length;
 
-    $("statPending").textContent =
+
+    $("statPending")
+      .textContent =
       pending.length;
 
-    $("statShipping").textContent =
+
+    $("statShipping")
+      .textContent =
       shipping.length;
 
-    $("statCompleted").textContent =
+
+    $("statCompleted")
+      .textContent =
       completed.length;
 
 
@@ -2338,17 +2369,20 @@ tbody tr:hover{
       );
 
 
-    $("sumAll").textContent =
+    $("sumAll")
+      .textContent =
       "฿" +
       money(allTotal);
 
 
-    $("sumPending").textContent =
+    $("sumPending")
+      .textContent =
       "฿" +
       money(pendingTotal);
 
 
-    $("sumLatest").textContent =
+    $("sumLatest")
+      .textContent =
       orders.length
         ? dateTH(
             orders[0].created_at
@@ -2367,7 +2401,7 @@ tbody tr:hover{
         .toLowerCase();
 
 
-    const selectedStatus =
+    const statusFilter =
       $("statusFilter")
         .value;
 
@@ -2376,7 +2410,7 @@ tbody tr:hover{
       orders.filter(
         order => {
 
-          const text = [
+          const searchable = [
 
             order.id,
 
@@ -2402,14 +2436,14 @@ tbody tr:hover{
 
           const searchOK =
             !query ||
-            text.includes(
+            searchable.includes(
               query
             );
 
 
           const statusOK =
-            selectedStatus === "all" ||
-            order.status === selectedStatus;
+            statusFilter === "all" ||
+            order.status === statusFilter;
 
 
           return (
@@ -2421,52 +2455,58 @@ tbody tr:hover{
       );
 
 
-    $("visibleCount").textContent =
+    $("visibleCount")
+      .textContent =
       `${filtered.length} รายการ`;
 
 
     if(!filtered.length){
 
-      $("ordersTable").innerHTML = `
+      $("ordersTable")
+        .innerHTML = `
 
-        <tr>
+          <tr>
 
-          <td colspan="7">
+            <td colspan="7">
 
-            <div class="empty">
+              <div class="empty">
 
-              <div class="empty-mark">
-                ◇
+                <div class="empty-mark">
+                  ◇
+                </div>
+
+                <h3>
+                  ${
+                    orders.length
+                      ? "ไม่พบคำสั่งซื้อ"
+                      : "ยังไม่มีคำสั่งซื้อ"
+                  }
+                </h3>
+
+                <p>
+                  ${
+                    orders.length
+                      ? "ไม่พบข้อมูลตามเงื่อนไขการค้นหา"
+                      : "เมื่อมีลูกค้าสั่งซื้อ ข้อมูลจะปรากฏที่นี่"
+                  }
+                </p>
+
               </div>
 
-              <h3>
-                ไม่พบคำสั่งซื้อ
-              </h3>
+            </td>
 
-              <p>
-                ${
-                  orders.length
-                    ? "ไม่พบข้อมูลตามเงื่อนไขการค้นหา"
-                    : "ยังไม่มีคำสั่งซื้อจากระบบออนไลน์"
-                }
-              </p>
+          </tr>
 
-            </div>
-
-          </td>
-
-        </tr>
-
-      `;
+        `;
 
       return;
 
     }
 
 
-    $("ordersTable").innerHTML =
-      filtered
-      .map(
+    $("ordersTable")
+      .innerHTML =
+      filtered.map(
         order => {
 
           const st =
@@ -2550,16 +2590,12 @@ tbody tr:hover{
               <td>
 
                 <div class="item-count">
-                  ${
-                    quantity ||
-                    0
-                  } ชิ้น
+                  ${quantity} ชิ้น
                 </div>
 
                 <div class="item-sub">
-                  ${
-                    items.length
-                  } รายการสินค้า
+                  ${items.length}
+                  รายการสินค้า
                 </div>
 
               </td>
@@ -2587,10 +2623,7 @@ tbody tr:hover{
               <td>
 
                 <span
-                  class="
-                    status
-                    ${st.cls}
-                  "
+                  class="status ${st.cls}"
                 >
                   ${esc(
                     st.label
@@ -2618,11 +2651,11 @@ tbody tr:hover{
                   <button
                     class="icon-btn"
                     type="button"
-                    title="ดูรายละเอียด"
                     data-action="view"
                     data-id="${esc(
                       order.id
                     )}"
+                    title="ดูรายละเอียด"
                   >
                     ⌕
                   </button>
@@ -2633,11 +2666,11 @@ tbody tr:hover{
                         <button
                           class="icon-btn delete"
                           type="button"
-                          title="ลบ"
                           data-action="delete"
                           data-id="${esc(
                             order.id
                           )}"
+                          title="ลบ"
                         >
                           ×
                         </button>
@@ -2727,399 +2760,417 @@ tbody tr:hover{
       );
 
 
-    $("modalBody").innerHTML = `
+    $("modalBody")
+      .innerHTML = `
 
-      <div class="detail-grid">
+        <div class="detail-grid">
 
-        <div class="detail-card">
+          <div class="detail-card">
 
-          <div class="detail-label">
-            ORDER NUMBER
+            <div class="detail-label">
+              ORDER NUMBER
+            </div>
+
+            <div class="detail-value gold">
+              ${esc(
+                order.order_number ||
+                "-"
+              )}
+            </div>
+
           </div>
 
-          <div class="detail-value gold">
-            ${esc(
-              order.order_number ||
-              "-"
-            )}
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              ORDER ID
+            </div>
+
+            <div class="detail-value">
+              ${esc(
+                order.id ||
+                "-"
+              )}
+            </div>
+
+          </div>
+
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              CUSTOMER NAME
+            </div>
+
+            <div class="detail-value">
+              ${esc(
+                order.customer_name ||
+                "-"
+              )}
+            </div>
+
+          </div>
+
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              PHONE
+            </div>
+
+            <div class="detail-value">
+              ${esc(
+                order.customer_phone ||
+                "-"
+              )}
+            </div>
+
+          </div>
+
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              EMAIL
+            </div>
+
+            <div class="detail-value">
+              ${esc(
+                order.customer_email ||
+                "-"
+              )}
+            </div>
+
+          </div>
+
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              PAYMENT
+            </div>
+
+            <div class="detail-value">
+              ${esc(
+                paymentLabel(
+                  order.payment_method
+                )
+              )}
+            </div>
+
+          </div>
+
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              ADDRESS
+            </div>
+
+            <div class="detail-value">
+              ${esc(
+                address ||
+                "-"
+              )}
+            </div>
+
+          </div>
+
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              STATUS
+            </div>
+
+            <div class="detail-value">
+              ${esc(
+                st.label
+              )}
+            </div>
+
+          </div>
+
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              CREATED AT
+            </div>
+
+            <div class="detail-value">
+              ${dateTH(
+                order.created_at
+              )}
+            </div>
+
+          </div>
+
+
+          <div class="detail-card">
+
+            <div class="detail-label">
+              CUSTOMER NOTE
+            </div>
+
+            <div class="detail-value">
+              ${esc(
+                order.customer_note ||
+                "-"
+              )}
+            </div>
+
           </div>
 
         </div>
 
 
-        <div class="detail-card">
-
-          <div class="detail-label">
-            ORDER ID
-          </div>
-
-          <div class="detail-value">
-            ${esc(
-              order.id ||
-              "-"
-            )}
-          </div>
-
-        </div>
+        <h3 class="section-title">
+          รายการสินค้า
+        </h3>
 
 
-        <div class="detail-card">
+        <div class="items">
 
-          <div class="detail-label">
-            CUSTOMER NAME
-          </div>
+          ${
+            items.length
+              ? items.map(
+                  item => `
 
-          <div class="detail-value">
-            ${esc(
-              order.customer_name ||
-              "-"
-            )}
-          </div>
+                    <div class="item">
 
-        </div>
+                      <div class="item-image">
 
+                        ${
+                          item.product_image
+                            ? `
+                              <img
+                                src="${esc(
+                                  item.product_image
+                                )}"
+                                alt=""
+                                onerror="
+                                  this.style.display='none'
+                                "
+                              >
+                            `
+                            : "◇"
+                        }
 
-        <div class="detail-card">
-
-          <div class="detail-label">
-            PHONE
-          </div>
-
-          <div class="detail-value">
-            ${esc(
-              order.customer_phone ||
-              "-"
-            )}
-          </div>
-
-        </div>
+                      </div>
 
 
-        <div class="detail-card">
+                      <div>
 
-          <div class="detail-label">
-            EMAIL
-          </div>
+                        <div class="item-name">
+                          ${esc(
+                            item.product_name ||
+                            "-"
+                          )}
+                        </div>
 
-          <div class="detail-value">
-            ${esc(
-              order.customer_email ||
-              "-"
-            )}
-          </div>
+                        <div class="item-meta">
 
-        </div>
+                          ${
+                            item.product_id
+                              ? `
+                                รหัสสินค้า:
+                                ${esc(
+                                  item.product_id
+                                )}
+                                <br>
+                              `
+                              : ""
+                          }
 
+                          ${
+                            item.price_label
+                              ? `
+                                ราคา:
+                                ${esc(
+                                  item.price_label
+                                )}
+                                <br>
+                              `
+                              : ""
+                          }
 
-        <div class="detail-card">
+                          ${
+                            item.selected_option
+                              ? `
+                                ตัวเลือก:
+                                ${esc(
+                                  formatOption(
+                                    item.selected_option
+                                  )
+                                )}
+                              `
+                              : ""
+                          }
 
-          <div class="detail-label">
-            PAYMENT
-          </div>
+                        </div>
 
-          <div class="detail-value">
-            ${esc(
-              paymentLabel(
-                order.payment_method
-              )
-            )}
-          </div>
-
-        </div>
-
-
-        <div class="detail-card">
-
-          <div class="detail-label">
-            ADDRESS
-          </div>
-
-          <div class="detail-value">
-            ${esc(
-              address ||
-              "-"
-            )}
-          </div>
-
-        </div>
-
-
-        <div class="detail-card">
-
-          <div class="detail-label">
-            STATUS
-          </div>
-
-          <div class="detail-value">
-            ${esc(
-              st.label
-            )}
-          </div>
-
-        </div>
+                      </div>
 
 
-        <div class="detail-card">
+                      <div class="item-right">
 
-          <div class="detail-label">
-            CREATED AT
-          </div>
+                        <div class="item-price">
+                          ฿${money(
+                            item.line_total ||
+                            (
+                              Number(
+                                item.unit_price || 0
+                              ) *
+                              Number(
+                                item.quantity || 0
+                              )
+                            )
+                          )}
+                        </div>
 
-          <div class="detail-value">
-            ${dateTH(
-              order.created_at
-            )}
-          </div>
+                        <div class="item-qty">
+                          จำนวน ×${Number(
+                            item.quantity || 0
+                          )}
+                        </div>
 
-        </div>
+                      </div>
 
+                    </div>
 
-        <div class="detail-card">
-
-          <div class="detail-label">
-            CUSTOMER NOTE
-          </div>
-
-          <div class="detail-value">
-            ${esc(
-              order.customer_note ||
-              "-"
-            )}
-          </div>
+                  `
+                ).join("")
+              : `
+                <div class="detail-card">
+                  <div class="detail-value">
+                    ไม่พบรายการสินค้า
+                  </div>
+                </div>
+              `
+          }
 
         </div>
 
-      </div>
-
-
-      <h3 class="section-title">
-        รายการสินค้า
-      </h3>
-
-
-      <div class="items">
 
         ${
-          items.length
-            ? items
-              .map(
-                item => `
+          order.customer_note
+            ? `
+              <h3 class="section-title">
+                หมายเหตุจากลูกค้า
+              </h3>
 
-                  <div class="item">
-
-                    <div class="item-image">
-
-                      ${
-                        item.product_image
-                          ? `
-                            <img
-                              src="${esc(
-                                item.product_image
-                              )}"
-                              alt=""
-                              onerror="
-                                this.style.display='none'
-                              "
-                            >
-                          `
-                          : "◇"
-                      }
-
-                    </div>
-
-
-                    <div>
-
-                      <div class="item-name">
-                        ${esc(
-                          item.product_name ||
-                          "-"
-                        )}
-                      </div>
-
-                      <div class="item-meta">
-
-                        ${
-                          item.product_id
-                            ? `
-                              รหัสสินค้า:
-                              ${esc(
-                                item.product_id
-                              )}
-                              <br>
-                            `
-                            : ""
-                        }
-
-                        ${
-                          item.price_label
-                            ? `
-                              ราคา:
-                              ${esc(
-                                item.price_label
-                              )}
-                              <br>
-                            `
-                            : ""
-                        }
-
-                        ${
-                          item.selected_option
-                            ? `
-                              ตัวเลือก:
-                              ${esc(
-                                formatOption(
-                                  item.selected_option
-                                )
-                              )}
-                            `
-                            : ""
-                        }
-
-                      </div>
-
-                    </div>
-
-
-                    <div class="item-right">
-
-                      <div class="item-price">
-                        ฿${money(
-                          item.line_total ||
-                          (
-                            Number(
-                              item.unit_price || 0
-                            ) *
-                            Number(
-                              item.quantity || 0
-                            )
-                          )
-                        )}
-                      </div>
-
-                      <div class="item-qty">
-                        จำนวน ×${Number(
-                          item.quantity || 0
-                        )}
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                `
-              )
-              .join("")
-            : `
               <div class="detail-card">
                 <div class="detail-value">
-                  ไม่พบรายการสินค้า
+                  ${esc(
+                    order.customer_note
+                  )}
                 </div>
               </div>
-            `
-        }
-
-      </div>
-
-
-      ${
-        order.slip_path
-          ? `
-            <a
-              class="slip"
-              href="${esc(
-                order.slip_path
-              )}"
-              target="_blank"
-              rel="noopener"
-            >
-              ดูหลักฐานการชำระเงิน ↗
-            </a>
-          `
-          : `
-            <div
-              style="
-                margin-top:16px;
-                color:#555;
-                font-size:9px;
-              "
-            >
-              ยังไม่มีหลักฐานการชำระเงิน
-            </div>
-          `
-      }
-
-
-      <div class="total-row">
-
-        <span>
-          ยอดรวมคำสั่งซื้อ
-        </span>
-
-        <strong>
-          ฿${money(
-            order.total
-          )}
-        </strong>
-
-      </div>
-
-
-      <div class="status-editor">
-
-        <select
-          id="modalStatus"
-          class="select"
-          ${
-            canUpdate()
-              ? ""
-              : "disabled"
-          }
-        >
-
-          ${
-            Object.entries(
-              STATUS
-            )
-            .map(
-              ([key,value]) => `
-
-                <option
-                  value="${key}"
-                  ${
-                    order.status === key
-                      ? "selected"
-                      : ""
-                  }
-                >
-                  ${value.label}
-                </option>
-
-              `
-            )
-            .join("")
-          }
-
-        </select>
-
-
-        ${
-          canUpdate()
-            ? `
-              <button
-                id="saveStatusBtn"
-                class="btn btn-gold"
-                type="button"
-              >
-                บันทึกสถานะ
-              </button>
             `
             : ""
         }
 
-      </div>
 
-    `;
+        ${
+          order.slip_path
+            ? `
+              <a
+                class="slip"
+                href="${esc(
+                  order.slip_path
+                )}"
+                target="_blank"
+                rel="noopener"
+              >
+                ดูหลักฐานการชำระเงิน ↗
+              </a>
+            `
+            : `
+              <div
+                style="
+                  margin-top:16px;
+                  color:#555;
+                  font-size:10px;
+                "
+              >
+                ยังไม่มีหลักฐานการชำระเงิน
+              </div>
+            `
+        }
+
+
+        <div class="total-row">
+
+          <span>
+            ยอดรวมคำสั่งซื้อ
+          </span>
+
+          <strong>
+            ฿${money(
+              order.total
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="status-editor">
+
+          <select
+            id="modalStatus"
+            class="select"
+            ${
+              canUpdate()
+                ? ""
+                : "disabled"
+            }
+          >
+
+            ${
+              Object.entries(
+                STATUS
+              )
+              .map(
+                ([key,value]) => `
+
+                  <option
+                    value="${key}"
+                    ${
+                      order.status === key
+                        ? "selected"
+                        : ""
+                    }
+                  >
+                    ${value.label}
+                  </option>
+
+                `
+              )
+              .join("")
+            }
+
+          </select>
+
+
+          ${
+            canUpdate()
+              ? `
+                <button
+                  id="saveStatusBtn"
+                  class="btn btn-gold"
+                  type="button"
+                >
+                  บันทึกสถานะ
+                </button>
+              `
+              : ""
+          }
+
+        </div>
+
+      `;
 
 
     $("orderModal")
@@ -3231,9 +3282,18 @@ tbody tr:hover{
     }
 
 
+    const order =
+      orders.find(
+        item => item.id === id
+      );
+
+
     const ok =
       confirm(
-        "ต้องการลบคำสั่งซื้อนี้หรือไม่?"
+        `ต้องการลบ ${
+          order?.order_number ||
+          "คำสั่งซื้อ"
+        } หรือไม่?`
       );
 
 
@@ -3264,7 +3324,7 @@ tbody tr:hover{
     }
 
 
-    const orderResult =
+    const result =
       await db
         .from("orders")
         .delete()
@@ -3274,11 +3334,11 @@ tbody tr:hover{
         );
 
 
-    if(orderResult.error){
+    if(result.error){
 
       alert(
         "ลบคำสั่งซื้อไม่สำเร็จ\n\n" +
-        orderResult.error.message
+        result.error.message
       );
 
       return;
@@ -3318,7 +3378,7 @@ tbody tr:hover{
       );
 
 
-    const itemsResult =
+    const itemResult =
       await db
         .from("order_items")
         .delete()
@@ -3328,10 +3388,11 @@ tbody tr:hover{
         );
 
 
-    if(itemsResult.error){
+    if(itemResult.error){
 
       alert(
-        itemsResult.error.message
+        "ลบรายการสินค้าไม่สำเร็จ\n\n" +
+        itemResult.error.message
       );
 
       return;
@@ -3339,7 +3400,7 @@ tbody tr:hover{
     }
 
 
-    const ordersResult =
+    const result =
       await db
         .from("orders")
         .delete()
@@ -3349,10 +3410,11 @@ tbody tr:hover{
         );
 
 
-    if(ordersResult.error){
+    if(result.error){
 
       alert(
-        ordersResult.error.message
+        "ลบคำสั่งซื้อไม่สำเร็จ\n\n" +
+        result.error.message
       );
 
       return;
@@ -3423,8 +3485,9 @@ tbody tr:hover{
     a.remove();
 
     setTimeout(
-      () =>
-        URL.revokeObjectURL(url),
+      () => {
+        URL.revokeObjectURL(url);
+      },
       1000
     );
 
@@ -3456,7 +3519,8 @@ tbody tr:hover{
       event => {
 
         if(
-          event.key === "Enter"
+          event.key ===
+          "Enter"
         ){
 
           login();
@@ -3480,10 +3544,12 @@ tbody tr:hover{
         currentAdmin = null;
         currentRole = null;
 
-        $("roleText").textContent =
+        $("roleText")
+          .textContent =
           "-";
 
-        $("heroStatus").textContent =
+        $("heroStatus")
+          .textContent =
           "กรุณาเข้าสู่ระบบ";
 
       }
@@ -3633,7 +3699,9 @@ tbody tr:hover{
 
         $("nav")
           .classList
-          .toggle("open");
+          .toggle(
+            "open"
+          );
 
       }
     );
@@ -3651,10 +3719,12 @@ tbody tr:hover{
         currentAdmin = null;
         currentRole = null;
 
-        $("roleText").textContent =
+        $("roleText")
+          .textContent =
           "-";
 
-        $("heroStatus").textContent =
+        $("heroStatus")
+          .textContent =
           "กรุณาเข้าสู่ระบบ";
 
         showLogin();
@@ -3668,7 +3738,9 @@ tbody tr:hover{
         currentUser &&
         currentAdmin
       ){
+
         return;
+
       }
 
 
@@ -3677,20 +3749,24 @@ tbody tr:hover{
         currentUser =
           session.user;
 
+
         currentAdmin =
           await getAdminProfile(
             currentUser
           );
 
+
         currentRole =
           currentAdmin.role;
 
 
-        $("roleText").textContent =
+        $("roleText")
+          .textContent =
           currentRole.toUpperCase();
 
 
-        $("heroStatus").textContent =
+        $("heroStatus")
+          .textContent =
           `เข้าสู่ระบบแล้ว · ${
             currentAdmin.name ||
             currentAdmin.email
@@ -3747,7 +3823,8 @@ tbody tr:hover{
         error
       );
 
-      $("heroStatus").textContent =
+      $("heroStatus")
+        .textContent =
         "เกิดข้อผิดพลาดในการเชื่อมต่อ";
 
       setError(
