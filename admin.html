@@ -1,10 +1,1644 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | Chatpetch Group</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#050505;
+  --black2:#080808;
+  --dark:#0d0d0d;
+  --dark2:#111;
+  --dark3:#181818;
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --gold-dark:#806127;
+  --white:#fff;
+  --soft:#e8e8e8;
+  --gray:#999;
+  --muted:#666;
+  --line:rgba(255,255,255,.08);
+  --gold-line:rgba(200,164,91,.25);
+  --green:#55d68a;
+  --red:#ff6767;
+  --yellow:#e9c96b;
+  --container:1240px;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(200,164,91,.08),transparent 30%),
+    radial-gradient(circle at 90% 15%,rgba(255,255,255,.03),transparent 25%),
+    linear-gradient(180deg,#060606,#090909 50%,#050505);
+  color:var(--white);
+  font-family:"Prompt",sans-serif;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:70px 70px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.container{
+  width:min(var(--container),calc(100% - 36px));
+  margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid var(--line);
+  background:rgba(6,6,6,.82);
+  backdrop-filter:blur(18px);
+}
+
+.header-inner{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:13px;
+}
+
+.logo-mark{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--gold);
+  border-radius:12px;
+  color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
+  font-weight:600;
+  letter-spacing:1px;
+  background:
+    linear-gradient(145deg,rgba(200,164,91,.12),rgba(200,164,91,.02));
+}
+
+.logo-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+}
+
+.logo-title{
+  font-family:"Kanit",sans-serif;
+  font-size:17px;
+  font-weight:500;
+  letter-spacing:.4px;
+}
+
+.logo-sub{
+  color:#6e6e6e;
+  font-size:9px;
+  letter-spacing:1px;
+  margin-top:3px;
+}
+
+.nav-menu{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.nav-menu a{
+  padding:9px 11px;
+  border-radius:8px;
+  color:#858585;
+  font-size:11px;
+  transition:.25s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active{
+  color:var(--gold-light);
+  background:rgba(200,164,91,.07);
+}
+
+.nav-menu .nav-gold{
+  color:var(--gold-light);
+  border:1px solid var(--gold-line);
+}
+
+.mobile-btn{
+  display:none;
+  width:42px;
+  height:42px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:transparent;
+  color:#fff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:105px 0 75px;
+  border-bottom:1px solid var(--line);
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  right:-200px;
+  top:-260px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(200,164,91,.17),transparent 68%);
+  filter:blur(20px);
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:40px;
+  align-items:end;
+}
+
+.hero-eyebrow{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:13px;
+}
+
+.hero h1{
+  font-family:"Kanit",sans-serif;
+  font-size:clamp(48px,8vw,104px);
+  font-weight:400;
+  letter-spacing:-3px;
+  line-height:.92;
+}
+
+.hero h1 span{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(200,164,91,.65);
+}
+
+.hero-description{
+  max-width:670px;
+  margin-top:24px;
+  color:#8c8c8c;
+  font-size:13px;
+  line-height:2;
+}
+
+.hero-side{
+  min-width:220px;
+  padding:22px;
+  border:1px solid var(--gold-line);
+  border-radius:20px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.07),
+      rgba(255,255,255,.015)
+    );
+}
+
+.hero-side small{
+  display:block;
+  color:#666;
+  font-size:9px;
+  letter-spacing:2px;
+  margin-bottom:7px;
+}
+
+.hero-side strong{
+  font-family:"Kanit",sans-serif;
+  color:var(--gold-light);
+  font-size:28px;
+  font-weight:400;
+}
+
+/* ================= MAIN ================= */
+
+main{
+  padding:55px 0 90px;
+}
+
+.toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:17px;
+  margin-bottom:20px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.025);
+}
+
+.toolbar-left{
+  display:flex;
+  gap:10px;
+  flex:1;
+}
+
+.search{
+  flex:1;
+  min-width:180px;
+  height:46px;
+  padding:0 14px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#080808;
+  color:#fff;
+  outline:none;
+}
+
+.search:focus{
+  border-color:var(--gold);
+}
+
+.select{
+  height:46px;
+  padding:0 13px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#080808;
+  color:#fff;
+  outline:none;
+}
+
+.btn{
+  min-height:44px;
+  padding:0 15px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#101010;
+  color:#bbb;
+  font-size:11px;
+  transition:.25s;
+}
+
+.btn:hover{
+  border-color:var(--gold-line);
+  color:#fff;
+  transform:translateY(-1px);
+}
+
+.btn-gold{
+  color:#050505;
+  border-color:transparent;
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold)
+    );
+}
+
+.btn-danger{
+  color:#ff8c8c;
+  border-color:rgba(255,103,103,.2);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:
+    repeat(4,1fr);
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.stat{
+  position:relative;
+  overflow:hidden;
+  min-height:150px;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    );
+}
+
+.stat:after{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  right:-55px;
+  bottom:-55px;
+  border:1px solid rgba(200,164,91,.10);
+  border-radius:50%;
+}
+
+.stat small{
+  display:block;
+  color:#666;
+  font-size:10px;
+  margin-bottom:10px;
+}
+
+.stat strong{
+  display:block;
+  font-family:"Kanit",sans-serif;
+  font-size:36px;
+  line-height:1;
+  font-weight:400;
+}
+
+.stat.gold{
+  border-color:var(--gold-line);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.10),
+      rgba(255,255,255,.015)
+    );
+}
+
+.stat.gold strong{
+  color:var(--gold-light);
+}
+
+.summary{
+  display:grid;
+  grid-template-columns:
+    repeat(3,1fr);
+  gap:14px;
+  margin-bottom:30px;
+}
+
+.summary-card{
+  padding:19px 21px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.02);
+}
+
+.summary-card small{
+  display:block;
+  color:#666;
+  font-size:9px;
+  margin-bottom:7px;
+}
+
+.summary-card strong{
+  display:block;
+  font-family:"Kanit",sans-serif;
+  color:#eee;
+  font-weight:400;
+  font-size:24px;
+}
+
+.summary-card.gold{
+  border-color:var(--gold-line);
+}
+
+.summary-card.gold strong{
+  color:var(--gold-light);
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.01)
+    );
+}
+
+.table-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:20px 22px;
+  border-bottom:1px solid var(--line);
+}
+
+.table-head h2{
+  font-family:"Kanit",sans-serif;
+  font-weight:400;
+  font-size:22px;
+}
+
+.table-count{
+  color:#777;
+  font-size:10px;
+}
+
+.table-scroll{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  min-width:930px;
+  border-collapse:collapse;
+}
+
+th{
+  padding:14px 18px;
+  text-align:left;
+  color:#666;
+  font-size:9px;
+  font-weight:400;
+  letter-spacing:.7px;
+  border-bottom:1px solid var(--line);
+  white-space:nowrap;
+}
+
+td{
+  padding:17px 18px;
+  border-bottom:1px solid rgba(255,255,255,.045);
+  vertical-align:middle;
+  font-size:11px;
+}
+
+tbody tr{
+  transition:.2s;
+}
+
+tbody tr:hover{
+  background:rgba(255,255,255,.018);
+}
+
+.order-number{
+  color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
+  font-size:14px;
+}
+
+.order-id{
+  margin-top:4px;
+  color:#555;
+  font-size:8px;
+}
+
+.customer-name{
+  color:#eee;
+  font-size:12px;
+}
+
+.customer-meta{
+  margin-top:4px;
+  color:#666;
+  font-size:9px;
+}
+
+.item-count{
+  color:#ddd;
+}
+
+.amount{
+  color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
+  font-size:16px;
+}
+
+.order-date{
+  color:#666;
+  font-size:9px;
+  line-height:1.7;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:85px;
+  padding:7px 10px;
+  border-radius:30px;
+  font-size:9px;
+  border:1px solid transparent;
+}
+
+.status.pending{
+  color:#f0cc72;
+  border-color:rgba(240,204,114,.18);
+  background:rgba(240,204,114,.07);
+}
+
+.status.confirmed{
+  color:#7ccaff;
+  border-color:rgba(124,202,255,.18);
+  background:rgba(124,202,255,.07);
+}
+
+.status.shipping{
+  color:#b895ff;
+  border-color:rgba(184,149,255,.18);
+  background:rgba(184,149,255,.07);
+}
+
+.status.completed{
+  color:var(--green);
+  border-color:rgba(85,214,138,.18);
+  background:rgba(85,214,138,.07);
+}
+
+.status.cancelled{
+  color:var(--red);
+  border-color:rgba(255,103,103,.18);
+  background:rgba(255,103,103,.07);
+}
+
+.actions{
+  display:flex;
+  gap:7px;
+}
+
+.icon-btn{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#0a0a0a;
+  color:#bbb;
+}
+
+.icon-btn:hover{
+  color:var(--gold-light);
+  border-color:var(--gold-line);
+}
+
+.icon-btn.delete:hover{
+  color:var(--red);
+  border-color:rgba(255,103,103,.2);
+}
+
+.empty{
+  padding:80px 25px;
+  text-align:center;
+}
+
+.empty-icon{
+  width:60px;
+  height:60px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 16px;
+  border:1px solid var(--gold-line);
+  border-radius:18px;
+  color:var(--gold);
+  font-size:22px;
+}
+
+.empty h3{
+  margin-bottom:7px;
+  font-family:"Kanit",sans-serif;
+  font-size:20px;
+  font-weight:400;
+}
+
+.empty p{
+  color:#666;
+  font-size:11px;
+  line-height:1.8;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  display:none;
+  place-items:center;
+  padding:20px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(15px);
+}
+
+.modal.show{
+  display:grid;
+}
+
+.modal-card{
+  width:min(900px,100%);
+  max-height:90vh;
+  overflow:auto;
+  border:1px solid var(--gold-line);
+  border-radius:23px;
+  background:
+    linear-gradient(
+      145deg,
+      #171717,
+      #090909
+    );
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.7);
+}
+
+.modal-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:22px 24px;
+  border-bottom:1px solid var(--line);
+}
+
+.modal-top h3{
+  font-family:"Kanit",sans-serif;
+  font-size:24px;
+  font-weight:400;
+}
+
+.modal-close{
+  width:38px;
+  height:38px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#0b0b0b;
+  color:#aaa;
+}
+
+.modal-body{
+  padding:24px;
+}
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:
+    repeat(2,1fr);
+  gap:12px;
+}
+
+.detail-box{
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:rgba(255,255,255,.02);
+}
+
+.detail-label{
+  color:#5f5f5f;
+  font-size:9px;
+  margin-bottom:7px;
+  letter-spacing:.4px;
+}
+
+.detail-value{
+  color:#ddd;
+  font-size:12px;
+  line-height:1.8;
+  word-break:break-word;
+}
+
+.detail-value.gold{
+  color:var(--gold-light);
+}
+
+.section-title{
+  margin:28px 0 13px;
+  color:#eee;
+  font-family:"Kanit",sans-serif;
+  font-size:18px;
+  font-weight:400;
+}
+
+.items{
+  display:grid;
+  gap:10px;
+}
+
+.item{
+  display:grid;
+  grid-template-columns:64px 1fr auto;
+  gap:13px;
+  align-items:center;
+  padding:13px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#0b0b0b;
+}
+
+.item-image{
+  width:64px;
+  height:64px;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#111;
+}
+
+.item-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.item-name{
+  color:#eee;
+  font-size:12px;
+}
+
+.item-meta{
+  margin-top:5px;
+  color:#666;
+  font-size:9px;
+  line-height:1.7;
+}
+
+.item-right{
+  text-align:right;
+}
+
+.item-price{
+  color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
+  font-size:16px;
+}
+
+.item-qty{
+  color:#777;
+  font-size:9px;
+}
+
+.total-row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+  padding-top:20px;
+  margin-top:20px;
+  border-top:1px solid var(--line);
+}
+
+.total-row span{
+  color:#777;
+  font-size:11px;
+}
+
+.total-row strong{
+  color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
+  font-size:30px;
+  font-weight:400;
+}
+
+.slip{
+  display:inline-flex;
+  margin-top:18px;
+  padding:10px 13px;
+  border:1px solid var(--gold-line);
+  border-radius:9px;
+  color:var(--gold-light);
+  font-size:10px;
+}
+
+.status-editor{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+/* ================= AUTH ================= */
+
+.auth{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  place-items:center;
+  padding:20px;
+  background:#050505;
+  background-image:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(200,164,91,.12),
+      transparent 40%
+    );
+}
+
+.auth.show{
+  display:grid;
+}
+
+.auth-card{
+  width:min(430px,100%);
+  padding:34px;
+  border:1px solid var(--gold-line);
+  border-radius:24px;
+  background:
+    linear-gradient(
+      145deg,
+      #171717,
+      #080808
+    );
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.7);
+}
+
+.auth-mark{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  margin-bottom:20px;
+  border:1px solid var(--gold);
+  border-radius:16px;
+  color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
+  font-size:18px;
+}
+
+.auth h2{
+  font-family:"Kanit",sans-serif;
+  font-size:32px;
+  font-weight:400;
+  margin-bottom:7px;
+}
+
+.auth p{
+  color:#666;
+  font-size:10px;
+  line-height:1.9;
+  margin-bottom:22px;
+}
+
+.auth-input{
+  width:100%;
+  height:49px;
+  padding:0 14px;
+  margin-bottom:11px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#080808;
+  color:#fff;
+  outline:none;
+}
+
+.auth-input:focus{
+  border-color:var(--gold);
+}
+
+.auth-error{
+  min-height:21px;
+  margin:3px 0 10px;
+  color:var(--red);
+  font-size:10px;
+  line-height:1.6;
+}
+
+.auth-btn{
+  width:100%;
+  height:49px;
+  border:0;
+  border-radius:10px;
+  color:#050505;
+  font-weight:600;
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold)
+    );
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+  border-top:1px solid var(--line);
+  padding:30px 0;
+  color:#555;
+  font-size:9px;
+}
+
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+
+  .nav-menu{
+    display:none;
+    position:absolute;
+    left:18px;
+    right:18px;
+    top:70px;
+    padding:12px;
+    flex-direction:column;
+    align-items:stretch;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:#0a0a0a;
+  }
+
+  .nav-menu.open{
+    display:flex;
+  }
+
+  .nav-menu a{
+    padding:12px;
+  }
+
+  .mobile-btn{
+    display:block;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .hero-side{
+    width:max-content;
+  }
+
+  .stats{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .summary{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:650px){
+
+  .container{
+    width:min(
+      var(--container),
+      calc(100% - 24px)
+    );
+  }
+
+  .header-inner{
+    min-height:68px;
+  }
+
+  .logo-sub{
+    display:none;
+  }
+
+  .hero{
+    padding:80px 0 60px;
+  }
+
+  .hero h1{
+    font-size:58px;
+    letter-spacing:-2px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .toolbar{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .toolbar-left{
+    flex-direction:column;
+  }
+
+  .toolbar-right{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .detail-grid{
+    grid-template-columns:1fr;
+  }
+
+  .item{
+    grid-template-columns:52px 1fr;
+  }
+
+  .item-image{
+    width:52px;
+    height:52px;
+  }
+
+  .item-right{
+    grid-column:2;
+    text-align:left;
+  }
+
+  .total-row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .footer-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+  <div class="container header-inner">
+
+    <a href="admin.html" class="logo">
+
+      <div class="logo-mark">
+        CG
+      </div>
+
+      <div class="logo-text">
+
+        <div class="logo-title">
+          CHATPETCH GROUP
+        </div>
+
+        <div class="logo-sub">
+          ADMINISTRATION SYSTEM
+        </div>
+
+      </div>
+
+    </a>
+
+    <button
+      id="mobileBtn"
+      class="mobile-btn"
+      type="button"
+      aria-label="Menu"
+    >
+      ☰
+    </button>
+
+    <nav
+      id="navMenu"
+      class="nav-menu"
+    >
+
+      <a
+        href="admin.html"
+        class="active"
+      >
+        Dashboard
+      </a>
+
+      <a href="admin-store.html">
+        สินค้า
+      </a>
+
+      <a href="admin-products.html">
+        จัดการสินค้า
+      </a>
+
+      <a
+        href="admin-users.html"
+        id="usersNav"
+      >
+        ผู้ใช้งาน
+      </a>
+
+      <a
+        href="index.html"
+        target="_blank"
+        class="nav-gold"
+      >
+        เว็บไซต์
+      </a>
+
+      <a
+        href="#"
+        id="logoutBtn"
+      >
+        ออกจากระบบ
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+  <div class="container hero-inner">
+
+    <div>
+
+      <div class="hero-eyebrow">
+        CHATPETCH GROUP · ADMIN SYSTEM
+      </div>
+
+      <h1>
+        ADMIN
+        <span>DASHBOARD</span>
+      </h1>
+
+      <p class="hero-description">
+        ข้อมูลคำสั่งซื้อจากระบบออนไลน์
+        Chatpetch Group
+        เชื่อมต่อกับฐานข้อมูล Supabase
+        เพื่อดูข้อมูลลูกค้า รายการสินค้า
+        การชำระเงิน ยอดคำสั่งซื้อ
+        และสถานะการจัดส่ง
+      </p>
+
+      <div
+        id="loginStatus"
+        style="
+          margin-top:20px;
+          color:#666;
+          font-size:10px;
+        "
+      >
+        กำลังตรวจสอบสิทธิ์...
+      </div>
+
+    </div>
+
+    <div class="hero-side">
+
+      <small>
+        SYSTEM STATUS
+      </small>
+
+      <strong id="roleText">
+        -
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+  <div class="container">
+
+    <div class="stats">
+
+      <div class="stat gold">
+
+        <small>
+          ORDERS
+        </small>
+
+        <strong id="statAll">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <small>
+          PENDING
+        </small>
+
+        <strong id="statPending">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <small>
+          SHIPPING
+        </small>
+
+        <strong id="statShipping">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat">
+
+        <small>
+          COMPLETED
+        </small>
+
+        <strong id="statCompleted">
+          0
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="summaryStrip"
+      class="summary"
+    >
+
+      <div class="summary-card gold">
+
+        <small>
+          ยอดคำสั่งซื้อทั้งหมด
+        </small>
+
+        <strong id="sumAll">
+          ฿0.00
+        </strong>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <small>
+          ยอดรอตรวจสอบ
+        </small>
+
+        <strong id="sumPending">
+          ฿0.00
+        </strong>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <small>
+          อัปเดตล่าสุด
+        </small>
+
+        <strong id="sumLatest">
+          -
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="toolbar">
+
+      <div class="toolbar-left">
+
+        <input
+          id="searchInput"
+          class="search"
+          type="search"
+          placeholder="ค้นหาเลขออเดอร์ / ชื่อลูกค้า / โทรศัพท์ / อีเมล"
+        >
+
+        <select
+          id="statusFilter"
+          class="select"
+        >
+
+          <option value="all">
+            ทุกสถานะ
+          </option>
+
+          <option value="pending">
+            รอตรวจสอบ
+          </option>
+
+          <option value="confirmed">
+            ยืนยันแล้ว
+          </option>
+
+          <option value="shipping">
+            กำลังจัดส่ง
+          </option>
+
+          <option value="completed">
+            สำเร็จ
+          </option>
+
+          <option value="cancelled">
+            ยกเลิก
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="toolbar-right">
+
+        <button
+          id="refreshBtn"
+          class="btn"
+          type="button"
+        >
+          ↻ รีเฟรช
+        </button>
+
+        <button
+          id="exportBtn"
+          class="btn"
+          type="button"
+        >
+          ↓ Export
+        </button>
+
+        <button
+          id="clearAllBtn"
+          class="btn btn-danger"
+          type="button"
+        >
+          ล้างทั้งหมด
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <div class="table-head">
+
+        <h2>
+          คำสั่งซื้อล่าสุด
+        </h2>
+
+        <div
+          id="visibleCount"
+          class="table-count"
+        >
+          0 รายการ
+        </div>
+
+      </div>
+
+      <div class="table-scroll">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                ORDER
+              </th>
+
+              <th>
+                CUSTOMER
+              </th>
+
+              <th>
+                ITEMS
+              </th>
+
+              <th>
+                PAYMENT / TOTAL
+              </th>
+
+              <th>
+                STATUS
+              </th>
+
+              <th>
+                CREATED
+              </th>
+
+              <th>
+                ACTION
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="ordersTable">
+
+            <tr>
+
+              <td
+                colspan="7"
+                style="padding:0"
+              >
+
+                <div class="empty">
+
+                  <div class="empty-icon">
+                    ◇
+                  </div>
+
+                  <h3>
+                    กำลังโหลดข้อมูล
+                  </h3>
+
+                  <p>
+                    กรุณารอสักครู่
+                  </p>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- ================= MODAL ================= -->
+
+<div
+  id="orderModal"
+  class="modal"
+>
+
+  <div class="modal-card">
+
+    <div class="modal-top">
+
+      <h3>
+        รายละเอียดคำสั่งซื้อ
+      </h3>
+
+      <button
+        id="modalClose"
+        class="modal-close"
+        type="button"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      id="modalBody"
+      class="modal-body"
+    >
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= AUTH ================= -->
+
+<div
+  id="auth"
+  class="auth"
+>
+
+  <div class="auth-card">
+
+    <div class="auth-mark">
+      CG
+    </div>
+
+    <h2>
+      Admin Login
+    </h2>
+
+    <p>
+      เข้าสู่ระบบผู้ดูแล
+      Chatpetch Group
+    </p>
+
+    <input
+      id="email"
+      class="auth-input"
+      type="email"
+      autocomplete="username"
+      placeholder="อีเมล"
+    >
+
+    <input
+      id="password"
+      class="auth-input"
+      type="password"
+      autocomplete="current-password"
+      placeholder="รหัสผ่าน"
+    >
+
+    <div
+      id="authError"
+      class="auth-error"
+    ></div>
+
+    <button
+      id="loginBtn"
+      class="auth-btn"
+      type="button"
+    >
+      เข้าสู่ระบบ
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <div>
+      © 2026 Chatpetch Group Co., Ltd.
+    </div>
+
+    <div>
+      Supabase Admin Dashboard
+    </div>
+
+  </div>
+
+</footer>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  /* =========================================================
-     CHATPETCH GROUP — ADMIN DASHBOARD
-     Supabase + Role Based Admin
-  ========================================================= */
+(() => {
 
   const SUPABASE_URL =
     "https://mfhllgklcfnnbyyzzljz.supabase.co";
@@ -12,1384 +1646,387 @@
   const SUPABASE_KEY =
     "sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
 
-  const db = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY,
-    {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-        detectSessionInUrl: true
+  const client =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY,
+      {
+        auth:{
+          persistSession:true,
+          autoRefreshToken:true,
+          detectSessionInUrl:true
+        }
       }
-    }
-  );
+    );
+
 
   let orders = [];
-  let orderItemsMap = {};
-  let selectedOrderId = null;
+  let orderItems = {};
   let currentUser = null;
   let currentAdmin = null;
   let currentRole = null;
+  let selectedOrderId = null;
+
 
   const STATUS = {
-    pending: {
-      label: "รอตรวจสอบ",
-      cls: "pending"
+
+    pending:{
+      label:"รอตรวจสอบ",
+      cls:"pending"
     },
-    confirmed: {
-      label: "ยืนยันแล้ว",
-      cls: "confirmed"
+
+    confirmed:{
+      label:"ยืนยันแล้ว",
+      cls:"confirmed"
     },
-    shipping: {
-      label: "กำลังจัดส่ง",
-      cls: "shipping"
+
+    shipping:{
+      label:"กำลังจัดส่ง",
+      cls:"shipping"
     },
-    completed: {
-      label: "สำเร็จ",
-      cls: "completed"
+
+    completed:{
+      label:"สำเร็จ",
+      cls:"completed"
     },
-    cancelled: {
-      label: "ยกเลิก",
-      cls: "cancelled"
+
+    cancelled:{
+      label:"ยกเลิก",
+      cls:"cancelled"
     }
+
   };
 
-  /* =========================================================
-     HELPERS
-  ========================================================= */
 
-  function escapeHtml(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+  const PAYMENT = {
+
+    bank_transfer:"โอนเงิน",
+
+    promptpay:"PromptPay",
+
+    cod:"เก็บเงินปลายทาง",
+
+    "bank-transfer":"โอนเงิน",
+
+    "พร้อมเพย์":"PromptPay",
+
+    "เก็บเงินปลายทาง":"เก็บเงินปลายทาง"
+
+  };
+
+
+  function $(id){
+    return document.getElementById(id);
   }
 
-  function formatDate(value) {
-    if (!value) return "-";
 
-    const date = new Date(value);
+  function esc(value){
 
-    if (Number.isNaN(date.getTime())) {
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  function money(value){
+
+    return Number(value || 0)
+      .toLocaleString(
+        "th-TH",
+        {
+          minimumFractionDigits:2,
+          maximumFractionDigits:2
+        }
+      );
+
+  }
+
+
+  function dateTH(value){
+
+    if(!value){
+      return "-";
+    }
+
+    const date =
+      new Date(value);
+
+    if(
+      Number.isNaN(
+        date.getTime()
+      )
+    ){
       return "-";
     }
 
     return date.toLocaleString(
       "th-TH",
       {
-        dateStyle: "medium",
-        timeStyle: "short"
+        dateStyle:"medium",
+        timeStyle:"short"
       }
     );
+
   }
 
-  function money(value) {
-    return Number(value || 0).toLocaleString(
-      "th-TH",
-      {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      }
-    );
+
+  function statusInfo(status){
+
+    return STATUS[status] || {
+      label:status || "ไม่ระบุ",
+      cls:"pending"
+    };
+
   }
 
-  function statusInfo(status) {
-    return (
-      STATUS[status] || {
-        label: status || "รอตรวจสอบ",
-        cls: "pending"
-      }
-    );
+
+  function paymentLabel(value){
+
+    return PAYMENT[value] ||
+      value ||
+      "-";
+
   }
 
-  function canUpdate() {
+
+  function canUpdate(){
+
     return [
       "owner",
       "manager",
       "staff"
-    ].includes(currentRole);
+    ].includes(
+      currentRole
+    );
+
   }
 
-  function canDelete() {
+
+  function canDelete(){
+
     return currentRole === "owner";
+
   }
 
-  /* =========================================================
-     LOGIN UI
-  ========================================================= */
 
-  function addLoginStyles() {
-    if (document.getElementById("adminLoginStyles")) {
-      return;
-    }
+  function showLogin(){
 
-    const style = document.createElement("style");
+    $("auth").classList.add(
+      "show"
+    );
 
-    style.id = "adminLoginStyles";
+    $("loginStatus").textContent =
+      "กรุณาเข้าสู่ระบบ";
 
-    style.textContent = `
-      .auth-screen{
-        position:fixed;
-        inset:0;
-        z-index:9999;
-        display:none;
-        place-items:center;
-        padding:20px;
-        background:rgba(5,5,5,.97);
-        backdrop-filter:blur(20px);
-      }
-
-      .auth-card{
-        width:min(460px,100%);
-        padding:34px;
-        border:1px solid var(--gold-line);
-        border-radius:24px;
-        background:
-          linear-gradient(
-            145deg,
-            #171717,
-            #090909
-          );
-        box-shadow:
-          0 30px 100px rgba(0,0,0,.75);
-      }
-
-      .auth-logo{
-        width:58px;
-        height:58px;
-        display:grid;
-        place-items:center;
-        border:1px solid var(--gold);
-        border-radius:16px;
-        color:var(--gold-light);
-        font-family:"Kanit",sans-serif;
-        font-weight:600;
-        margin-bottom:22px;
-        background:rgba(200,164,91,.06);
-      }
-
-      .auth-card h2{
-        margin-bottom:8px;
-        font-family:"Kanit",sans-serif;
-        font-size:32px;
-        font-weight:500;
-      }
-
-      .auth-card p{
-        color:#777;
-        font-size:12px;
-        line-height:1.8;
-        margin-bottom:24px;
-      }
-
-      .auth-input{
-        width:100%;
-        height:48px;
-        margin-bottom:11px;
-        padding:0 14px;
-        border:1px solid var(--line);
-        border-radius:10px;
-        background:#080808;
-        color:#fff;
-        outline:none;
-      }
-
-      .auth-input:focus{
-        border-color:var(--gold);
-        box-shadow:
-          0 0 0 3px
-          rgba(200,164,91,.05);
-      }
-
-      .auth-error{
-        min-height:20px;
-        margin:6px 0 10px;
-        color:var(--red);
-        font-size:11px;
-        line-height:1.6;
-      }
-
-      .auth-btn{
-        width:100%;
-        height:48px;
-        border:0;
-        border-radius:10px;
-        background:
-          linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-          );
-        color:#050505;
-        font-weight:600;
-        cursor:pointer;
-      }
-
-      .admin-user{
-        display:inline-flex;
-        align-items:center;
-        gap:8px;
-        margin-left:10px;
-        color:#777;
-        font-size:10px;
-      }
-
-      .admin-user b{
-        color:var(--gold-light);
-        font-weight:500;
-      }
-
-      .hero-status{
-        display:inline-flex;
-        align-items:center;
-        gap:8px;
-        margin-top:20px;
-        padding:8px 12px;
-        border:1px solid var(--gold-line);
-        border-radius:30px;
-        color:var(--gold-light);
-        font-size:10px;
-        background:rgba(200,164,91,.05);
-      }
-
-      .hero-status::before{
-        content:"";
-        width:7px;
-        height:7px;
-        border-radius:50%;
-        background:var(--green);
-        box-shadow:
-          0 0 12px var(--green);
-      }
-
-      .summary-strip{
-        display:grid;
-        grid-template-columns:
-          repeat(4,1fr);
-        gap:15px;
-        margin:0 0 25px;
-      }
-
-      .summary-box{
-        position:relative;
-        overflow:hidden;
-        padding:20px;
-        border:1px solid var(--line);
-        border-radius:16px;
-        background:
-          linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
-          );
-      }
-
-      .summary-box::after{
-        content:"";
-        position:absolute;
-        width:90px;
-        height:90px;
-        right:-35px;
-        bottom:-35px;
-        border:1px solid
-          rgba(200,164,91,.12);
-        border-radius:50%;
-      }
-
-      .summary-box small{
-        display:block;
-        color:#666;
-        font-size:10px;
-        margin-bottom:8px;
-      }
-
-      .summary-box strong{
-        display:block;
-        font-family:"Kanit",sans-serif;
-        font-size:25px;
-        font-weight:500;
-        color:#eee;
-      }
-
-      .summary-box.gold{
-        border-color:var(--gold-line);
-        background:
-          linear-gradient(
-            145deg,
-            rgba(200,164,91,.10),
-            rgba(255,255,255,.015)
-          );
-      }
-
-      .summary-box.gold strong{
-        color:var(--gold-light);
-      }
-
-      .mini-value{
-        margin-top:5px;
-        color:#666;
-        font-size:9px;
-      }
-
-      .slip-link{
-        display:inline-flex;
-        margin-top:12px;
-        padding:8px 12px;
-        border:1px solid var(--gold-line);
-        border-radius:8px;
-        color:var(--gold-light);
-        font-size:11px;
-        transition:.25s;
-      }
-
-      .slip-link:hover{
-        background:rgba(200,164,91,.08);
-        transform:translateY(-1px);
-      }
-
-      .customer-address-block{
-        line-height:1.9;
-      }
-
-      .detail-total-row{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:20px;
-        padding-top:15px;
-        margin-top:15px;
-        border-top:1px solid var(--line);
-      }
-
-      .detail-total-row span:first-child{
-        color:#777;
-        font-size:12px;
-      }
-
-      .detail-total-row strong{
-        color:var(--gold-light);
-        font-family:"Kanit",sans-serif;
-        font-size:25px;
-        font-weight:500;
-      }
-
-      .detail-mini-grid{
-        display:grid;
-        grid-template-columns:
-          repeat(3,1fr);
-        gap:10px;
-        margin-bottom:20px;
-      }
-
-      .detail-mini-card{
-        padding:13px;
-        border:1px solid var(--line);
-        border-radius:11px;
-        background:rgba(255,255,255,.02);
-      }
-
-      .detail-mini-card small{
-        display:block;
-        color:#666;
-        font-size:9px;
-        margin-bottom:5px;
-      }
-
-      .detail-mini-card strong{
-        color:#ddd;
-        font-size:12px;
-      }
-
-      @media(max-width:900px){
-        .summary-strip{
-          grid-template-columns:1fr 1fr;
-        }
-      }
-
-      @media(max-width:600px){
-        .summary-strip{
-          grid-template-columns:1fr;
-        }
-
-        .detail-mini-grid{
-          grid-template-columns:1fr;
-        }
-
-        .auth-card{
-          padding:25px;
-        }
-
-        .admin-user{
-          display:none;
-        }
-      }
-    `;
-
-    document.head.appendChild(style);
   }
 
-  function showLogin() {
-    let screen =
-      document.getElementById("authScreen");
 
-    if (!screen) {
-      screen = document.createElement("div");
+  function hideLogin(){
 
-      screen.id = "authScreen";
+    $("auth").classList.remove(
+      "show"
+    );
 
-      screen.className =
-        "auth-screen";
-
-      screen.innerHTML = `
-        <div class="auth-card">
-
-          <div class="auth-logo">
-            CG
-          </div>
-
-          <h2>
-            Admin Login
-          </h2>
-
-          <p>
-            เข้าสู่ระบบจัดการ
-            Chatpetch Group
-            ด้วยบัญชีผู้ดูแลที่ได้รับอนุญาต
-          </p>
-
-          <input
-            id="authEmail"
-            class="auth-input"
-            type="email"
-            autocomplete="username"
-            placeholder="อีเมล"
-          >
-
-          <input
-            id="authPassword"
-            class="auth-input"
-            type="password"
-            autocomplete="current-password"
-            placeholder="รหัสผ่าน"
-          >
-
-          <div
-            id="authError"
-            class="auth-error"
-          ></div>
-
-          <button
-            id="authBtn"
-            class="auth-btn"
-          >
-            เข้าสู่ระบบ
-          </button>
-
-        </div>
-      `;
-
-      document.body.appendChild(screen);
-    }
-
-    screen.style.display = "grid";
-
-    const btn =
-      document.getElementById("authBtn");
-
-    if (btn) {
-      btn.onclick = login;
-    }
-
-    const password =
-      document.getElementById(
-        "authPassword"
-      );
-
-    if (password) {
-      password.onkeydown = event => {
-        if (event.key === "Enter") {
-          login();
-        }
-      };
-    }
   }
 
-  function hideLogin() {
-    const screen =
-      document.getElementById(
-        "authScreen"
-      );
 
-    if (screen) {
-      screen.style.display = "none";
-    }
-  }
+  async function signIn(){
 
-  async function login() {
     const email =
-      document.getElementById(
-        "authEmail"
-      )?.value.trim();
+      $("email")
+        .value
+        .trim();
 
     const password =
-      document.getElementById(
-        "authPassword"
-      )?.value;
+      $("password")
+        .value;
 
-    const errorBox =
-      document.getElementById(
-        "authError"
-      );
+    $("authError").textContent =
+      "";
 
-    if (errorBox) {
-      errorBox.textContent = "";
-    }
+    if(
+      !email ||
+      !password
+    ){
 
-    if (!email || !password) {
-      if (errorBox) {
-        errorBox.textContent =
-          "กรุณากรอกอีเมลและรหัสผ่าน";
-      }
+      $("authError").textContent =
+        "กรุณากรอกอีเมลและรหัสผ่าน";
+
       return;
+
     }
+
+
+    $("loginBtn").disabled =
+      true;
+
+    $("loginBtn").textContent =
+      "กำลังเข้าสู่ระบบ...";
+
 
     const {
       error
     } =
-      await db.auth.signInWithPassword({
-        email,
-        password
-      });
+      await client.auth
+        .signInWithPassword({
+          email,
+          password
+        });
 
-    if (error && errorBox) {
-      errorBox.textContent =
+
+    $("loginBtn").disabled =
+      false;
+
+    $("loginBtn").textContent =
+      "เข้าสู่ระบบ";
+
+
+    if(error){
+
+      $("authError").textContent =
         error.message ||
         "เข้าสู่ระบบไม่สำเร็จ";
+
+      return;
+
     }
+
   }
 
-  /* =========================================================
-     ADMIN PROFILE
-  ========================================================= */
 
-  async function loadAdminProfile(user) {
+  async function loadProfile(user){
+
     const {
       data,
       error
     } =
-      await db
+      await client
         .from("admin_users")
         .select(
           "user_id,email,name,role,active"
         )
-        .eq("user_id", user.id)
+        .eq(
+          "user_id",
+          user.id
+        )
         .maybeSingle();
 
-    if (error) {
-      throw error;
+
+    if(error){
+
+      throw new Error(
+        "ตรวจสอบสิทธิ์ไม่สำเร็จ: " +
+        error.message
+      );
+
     }
 
-    if (
+
+    if(
       !data ||
-      !data.active ||
-      !data.role
-    ) {
+      !data.active
+    ){
+
       throw new Error(
         "บัญชีนี้ยังไม่ได้รับสิทธิ์ผู้ดูแลระบบ"
       );
+
     }
 
-    currentAdmin = data;
-    currentRole = data.role;
 
-    const adminTag =
-      document.querySelector(
-        ".admin-tag"
-      );
+    currentAdmin =
+      data;
 
-    if (adminTag) {
-      adminTag.textContent =
-        String(data.role).toUpperCase();
+    currentRole =
+      data.role;
+
+
+    $("roleText").textContent =
+      String(
+        data.role || "ADMIN"
+      ).toUpperCase();
+
+
+    $("loginStatus").textContent =
+      `เข้าสู่ระบบแล้ว · ${
+        data.name ||
+        data.email
+      }`;
+
+
+    const usersNav =
+      $("usersNav");
+
+    if(usersNav){
+
+      usersNav.style.display =
+        currentRole === "owner"
+          ? ""
+          : "none";
+
     }
 
-    let userInfo =
-      document.getElementById(
-        "adminUserInfo"
-      );
+    $("clearAllBtn").style.display =
+      currentRole === "owner"
+        ? ""
+        : "none";
 
-    if (!userInfo) {
-      userInfo =
-        document.createElement("span");
-
-      userInfo.id =
-        "adminUserInfo";
-
-      userInfo.className =
-        "admin-user";
-
-      document
-        .querySelector(".logo-text")
-        ?.appendChild(userInfo);
-    }
-
-    userInfo.innerHTML = `
-      <b>
-        ${escapeHtml(
-          data.name ||
-          data.email ||
-          "Admin"
-        )}
-      </b>
-      ·
-      ${escapeHtml(data.role)}
-    `;
-
-    if (!canDelete()) {
-      const clearButton =
-        document.getElementById(
-          "clearAllBtn"
-        );
-
-      if (clearButton) {
-        clearButton.style.display =
-          "none";
-      }
-    }
   }
 
-  /* =========================================================
-     LOAD ORDERS
-  ========================================================= */
 
-  async function loadOrders() {
-    try {
-      const {
-        data,
-        error
-      } =
-        await db
-          .from("orders")
-          .select("*")
-          .order(
-            "created_at",
-            {
-              ascending:false
-            }
-          );
-
-      if (error) {
-        throw error;
-      }
-
-      orders = Array.isArray(data)
-        ? data
-        : [];
-
-      await loadAllOrderItems();
-
-      updateDashboard();
-
-      renderOrders();
-
-    } catch (error) {
-      console.error(
-        "LOAD ORDERS ERROR:",
-        error
-      );
-
-      showToast(
-        error.message ||
-        "ไม่สามารถโหลดคำสั่งซื้อได้"
-      );
-    }
-  }
-
-  /* =========================================================
-     LOAD ORDER ITEMS
-  ========================================================= */
-
-  async function loadAllOrderItems() {
-    orderItemsMap = {};
-
-    if (!orders.length) {
-      return;
-    }
-
-    const orderIds =
-      orders.map(order => order.id);
+  async function loadOrders(){
 
     const {
       data,
       error
     } =
-      await db
-        .from("order_items")
+      await client
+        .from("orders")
         .select("*")
-        .in(
-          "order_id",
-          orderIds
-        )
         .order(
           "created_at",
           {
-            ascending:true
+            ascending:false
           }
         );
 
-    if (error) {
-      console.warn(
-        "ORDER ITEMS:",
-        error
-      );
 
-      return;
+    if(error){
+
+      throw error;
+
     }
 
-    (data || []).forEach(item => {
-      if (
-        !orderItemsMap[item.order_id]
-      ) {
-        orderItemsMap[
-          item.order_id
-        ] = [];
-      }
 
-      orderItemsMap[
-        item.order_id
-      ].push(item);
-    });
-  }
+    orders =
+      data || [];
 
-  function getOrderItems(order) {
-    return (
-      orderItemsMap[
-        order.id
-      ] || []
-    );
-  }
 
-  function getOrderItemQuantity(order) {
-    return getOrderItems(order)
-      .reduce(
-        (total,item) =>
-          total +
-          Number(
-            item.quantity || 0
-          ),
-        0
-      );
-  }
+    orderItems = {};
 
-  /* =========================================================
-     DASHBOARD STATS
-  ========================================================= */
 
-  function updateDashboard() {
+    if(orders.length){
 
-    const all =
-      orders.length;
-
-    const pending =
-      orders.filter(
-        order =>
-          order.status ===
-          "pending"
-      ).length;
-
-    const shipping =
-      orders.filter(
-        order =>
-          order.status ===
-          "shipping"
-      ).length;
-
-    const completed =
-      orders.filter(
-        order =>
-          order.status ===
-          "completed"
-      ).length;
-
-    const confirmed =
-      orders.filter(
-        order =>
-          order.status ===
-          "confirmed"
-      ).length;
-
-    const cancelled =
-      orders.filter(
-        order =>
-          order.status ===
-          "cancelled"
-      ).length;
-
-    const total =
-      orders.reduce(
-        (sum,order) =>
-          sum +
-          Number(
-            order.total || 0
-          ),
-        0
-      );
-
-    const pendingTotal =
-      orders
-        .filter(
-          order =>
-            order.status ===
-            "pending"
-        )
-        .reduce(
-          (sum,order) =>
-            sum +
-            Number(
-              order.total || 0
-            ),
-          0
+      const ids =
+        orders.map(
+          item => item.id
         );
 
-    const completedTotal =
-      orders
-        .filter(
-          order =>
-            order.status ===
-            "completed"
-        )
-        .reduce(
-          (sum,order) =>
-            sum +
-            Number(
-              order.total || 0
-            ),
-          0
-        );
-
-    const quantityTotal =
-      orders.reduce(
-        (sum,order) =>
-          sum +
-          getOrderItemQuantity(
-            order
-          ),
-        0
-      );
-
-    const statAll =
-      document.getElementById(
-        "statAll"
-      );
-
-    const statPending =
-      document.getElementById(
-        "statPending"
-      );
-
-    const statShipping =
-      document.getElementById(
-        "statShipping"
-      );
-
-    const statCompleted =
-      document.getElementById(
-        "statCompleted"
-      );
-
-    if (statAll) {
-      statAll.textContent =
-        all;
-    }
-
-    if (statPending) {
-      statPending.textContent =
-        pending;
-    }
-
-    if (statShipping) {
-      statShipping.textContent =
-        shipping;
-    }
-
-    if (statCompleted) {
-      statCompleted.textContent =
-        completed;
-    }
-
-    let strip =
-      document.getElementById(
-        "summaryStrip"
-      );
-
-    if (!strip) {
-
-      strip =
-        document.createElement(
-          "div"
-        );
-
-      strip.id =
-        "summaryStrip";
-
-      strip.className =
-        "summary-strip reveal";
-
-      const stats =
-        document.querySelector(
-          ".stats-grid"
-        );
-
-      if (stats) {
-        stats.after(strip);
-      }
-    }
-
-    strip.innerHTML = `
-      <div class="summary-box gold">
-
-        <small>
-          ยอดขายรวม
-        </small>
-
-        <strong>
-          ฿${money(total)}
-        </strong>
-
-        <div class="mini-value">
-          จาก ${all} คำสั่งซื้อ
-        </div>
-
-      </div>
-
-
-      <div class="summary-box">
-
-        <small>
-          ยอดรอตรวจสอบ
-        </small>
-
-        <strong>
-          ฿${money(pendingTotal)}
-        </strong>
-
-        <div class="mini-value">
-          ${pending} คำสั่งซื้อ
-        </div>
-
-      </div>
-
-
-      <div class="summary-box">
-
-        <small>
-          ยอดขายสำเร็จ
-        </small>
-
-        <strong>
-          ฿${money(completedTotal)}
-        </strong>
-
-        <div class="mini-value">
-          ${completed} คำสั่งซื้อ
-        </div>
-
-      </div>
-
-
-      <div class="summary-box">
-
-        <small>
-          สินค้าทั้งหมดในออเดอร์
-        </small>
-
-        <strong>
-          ${quantityTotal}
-        </strong>
-
-        <div class="mini-value">
-          ยืนยันแล้ว ${confirmed}
-          · ยกเลิก ${cancelled}
-        </div>
-
-      </div>
-    `;
-
-    strip.classList.add(
-      "active"
-    );
-
-    const hero =
-      document.querySelector(
-        ".admin-hero .container"
-      );
-
-    if (
-      hero &&
-      !document.getElementById(
-        "heroStatus"
-      )
-    ) {
-
-      const status =
-        document.createElement(
-          "div"
-        );
-
-      status.id =
-        "heroStatus";
-
-      status.className =
-        "hero-status";
-
-      status.textContent =
-        currentAdmin
-          ? `เข้าสู่ระบบในสิทธิ์ ${currentAdmin.role}`
-          : "Admin System";
-
-      const desc =
-        hero.querySelector(
-          ".hero-description"
-        );
-
-      if (desc) {
-        desc.after(status);
-      }
-    }
-  }
-
-  /* =========================================================
-     FILTER
-  ========================================================= */
-
-  function getFilteredOrders() {
-
-    const search =
-      document
-        .getElementById(
-          "searchInput"
-        )
-        ?.value
-        .trim()
-        .toLowerCase() || "";
-
-    const status =
-      document
-        .getElementById(
-          "statusFilter"
-        )?.value || "all";
-
-    return orders
-      .map(
-        (
-          order,
-          index
-        ) => ({
-          order,
-          index
-        })
-      )
-      .filter(
-        ({
-          order
-        }) => {
-
-          const searchable =
-            [
-              order.id,
-              order.order_number,
-              order.customer_name,
-              order.customer_phone,
-              order.customer_email,
-              order.customer_province,
-              order.customer_address,
-              order.payment_method,
-              order.customer_note
-            ]
-              .filter(Boolean)
-              .join(" ")
-              .toLowerCase();
-
-          const matchesSearch =
-            !search ||
-            searchable.includes(
-              search
-            );
-
-          const matchesStatus =
-            status === "all" ||
-            order.status === status;
-
-          return (
-            matchesSearch &&
-            matchesStatus
-          );
-        }
-      );
-  }
-
-  /* =========================================================
-     RENDER TABLE
-  ========================================================= */
-
-  function renderOrders() {
-
-    const filtered =
-      getFilteredOrders();
-
-    const table =
-      document.getElementById(
-        "ordersTable"
-      );
-
-    const visibleCount =
-      document.getElementById(
-        "visibleCount"
-      );
-
-    if (visibleCount) {
-      visibleCount.textContent =
-        `${filtered.length} รายการ`;
-    }
-
-    if (!table) {
-      return;
-    }
-
-    if (!filtered.length) {
-
-      table.innerHTML = `
-        <tr>
-
-          <td
-            colspan="7"
-            style="padding:0;"
-          >
-
-            <div class="empty-state">
-
-              <div class="empty-icon">
-                ◇
-              </div>
-
-              <h3>
-                ยังไม่มีคำสั่งซื้อ
-              </h3>
-
-              <p>
-                เมื่อมีลูกค้าสั่งซื้อ
-                จากหน้า Checkout
-                รายละเอียดจะปรากฏที่นี่
-              </p>
-
-            </div>
-
-          </td>
-
-        </tr>
-      `;
-
-      return;
-    }
-
-    table.innerHTML =
-      filtered
-        .map(
-          ({
-            order,
-            index
-          }) => {
-
-            const status =
-              statusInfo(
-                order.status
-              );
-
-            const quantity =
-              getOrderItemQuantity(
-                order
-              );
-
-            return `
-              <tr>
-
-                <td>
-
-                  <div class="order-id">
-                    ${escapeHtml(
-                      order.order_number ||
-                      String(
-                        order.id || ""
-                      ).slice(0,8)
-                    )}
-                  </div>
-
-                  <div class="order-date">
-                    ID:
-                    ${escapeHtml(
-                      String(
-                        order.id || ""
-                      ).slice(0,8)
-                    )}
-                  </div>
-
-                </td>
-
-
-                <td>
-
-                  <div class="customer-name">
-                    ${escapeHtml(
-                      order.customer_name ||
-                      "-"
-                    )}
-                  </div>
-
-                  <div class="customer-phone">
-                    ${escapeHtml(
-                      order.customer_phone ||
-                      "-"
-                    )}
-                  </div>
-
-                </td>
-
-
-                <td>
-
-                  <div class="item-count">
-                    ${quantity}
-                    ชิ้น
-                  </div>
-
-                  <div class="order-date">
-                    ${getOrderItems(
-                      order
-                    ).length}
-                    รายการสินค้า
-                  </div>
-
-                </td>
-
-
-                <td>
-
-                  <div>
-                    ${escapeHtml(
-                      order.payment_method ||
-                      "-"
-                    )}
-                  </div>
-
-                  <div class="order-date">
-                    ฿${money(
-                      order.total
-                    )}
-                  </div>
-
-                </td>
-
-
-                <td>
-
-                  <span
-                    class="status ${status.cls}"
-                  >
-                    ${escapeHtml(
-                      status.label
-                    )}
-                  </span>
-
-                </td>
-
-
-                <td>
-
-                  <div class="order-date">
-                    ${formatDate(
-                      order.created_at
-                    )}
-                  </div>
-
-                </td>
-
-
-                <td>
-
-                  <div class="row-actions">
-
-                    <button
-                      class="icon-btn"
-                      title="ดูรายละเอียด"
-                      data-action="view"
-                      data-id="${escapeHtml(
-                        order.id
-                      )}"
-                    >
-                      ⌕
-                    </button>
-
-                    ${
-                      canDelete()
-                        ? `
-                          <button
-                            class="icon-btn delete"
-                            title="ลบ"
-                            data-action="delete"
-                            data-id="${escapeHtml(
-                              order.id
-                            )}"
-                          >
-                            ×
-                          </button>
-                        `
-                        : ""
-                    }
-
-                  </div>
-
-                </td>
-
-              </tr>
-            `;
-          }
-        )
-        .join("");
-  }
-
-  /* =========================================================
-     ORDER DETAIL
-  ========================================================= */
-
-  async function openOrder(id) {
-
-    const order =
-      orders.find(
-        item => item.id === id
-      );
-
-    if (!order) {
-      return;
-    }
-
-    selectedOrderId =
-      id;
-
-    let items =
-      getOrderItems(order);
-
-    if (!items.length) {
 
       const {
-        data
+        data:items,
+        error:itemError
       } =
-        await db
+        await client
           .from("order_items")
           .select("*")
-          .eq(
+          .in(
             "order_id",
-            id
+            ids
           )
           .order(
             "created_at",
@@ -1398,252 +2035,475 @@
             }
           );
 
-      items =
-        data || [];
 
-      orderItemsMap[id] =
-        items;
+      if(!itemError){
+
+        (items || [])
+          .forEach(
+            item => {
+
+              if(
+                !orderItems[
+                  item.order_id
+                ]
+              ){
+
+                orderItems[
+                  item.order_id
+                ] = [];
+
+              }
+
+
+              orderItems[
+                item.order_id
+              ].push(item);
+
+            }
+          );
+
+      }
+
     }
 
-    const modal =
-      document.getElementById(
-        "orderModal"
-      );
 
-    const modalBody =
-      document.getElementById(
-        "modalBody"
-      );
+    updateStats();
+    render();
 
-    if (!modal || !modalBody) {
-      return;
-    }
+  }
 
-    const status =
-      statusInfo(
-        order.status
-      );
 
-    const quantity =
-      items.reduce(
-        (sum,item) =>
+  function updateStats(){
+
+    const all =
+      orders.length;
+
+    const pending =
+      orders.filter(
+        o =>
+          o.status ===
+          "pending"
+      ).length;
+
+    const shipping =
+      orders.filter(
+        o =>
+          o.status ===
+          "shipping"
+      ).length;
+
+    const completed =
+      orders.filter(
+        o =>
+          o.status ===
+          "completed"
+      ).length;
+
+
+    $("statAll").textContent =
+      all;
+
+    $("statPending").textContent =
+      pending;
+
+    $("statShipping").textContent =
+      shipping;
+
+    $("statCompleted").textContent =
+      completed;
+
+
+    const total =
+      orders.reduce(
+        (sum,o) =>
           sum +
           Number(
-            item.quantity || 0
+            o.total || 0
           ),
         0
       );
 
-    const customerAddress =
+
+    const pendingTotal =
+      orders
+        .filter(
+          o =>
+            o.status ===
+            "pending"
+        )
+        .reduce(
+          (sum,o) =>
+            sum +
+            Number(
+              o.total || 0
+            ),
+          0
+        );
+
+
+    $("sumAll").textContent =
+      "฿" +
+      money(total);
+
+
+    $("sumPending").textContent =
+      "฿" +
+      money(pendingTotal);
+
+
+    $("sumLatest").textContent =
+      orders.length
+        ? dateTH(
+            orders[0]
+              .created_at
+          )
+        : "-";
+
+  }
+
+
+  function getFiltered(){
+
+    const q =
+      $("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const status =
+      $("statusFilter")
+        .value;
+
+
+    return orders.filter(
+      order => {
+
+        const haystack = [
+
+          order.id,
+
+          order.order_number,
+
+          order.customer_name,
+
+          order.customer_phone,
+
+          order.customer_email,
+
+          order.customer_province,
+
+          order.customer_address
+
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+
+
+        const searchMatch =
+          !q ||
+          haystack.includes(q);
+
+
+        const statusMatch =
+          status === "all" ||
+          order.status === status;
+
+
+        return (
+          searchMatch &&
+          statusMatch
+        );
+
+      }
+    );
+
+  }
+
+
+  function render(){
+
+    const rows =
+      getFiltered();
+
+
+    $("visibleCount").textContent =
+      `${rows.length} รายการ`;
+
+
+    if(!rows.length){
+
+      $("ordersTable").innerHTML = `
+
+        <tr>
+
+          <td
+            colspan="7"
+            style="padding:0"
+          >
+
+            <div class="empty">
+
+              <div class="empty-icon">
+                ◇
+              </div>
+
+              <h3>
+                ไม่พบคำสั่งซื้อ
+              </h3>
+
+              <p>
+                ยังไม่มีข้อมูลที่ตรงกับเงื่อนไขการค้นหา
+              </p>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `;
+
+      return;
+
+    }
+
+
+    $("ordersTable").innerHTML =
+      rows.map(
+        order => {
+
+          const st =
+            statusInfo(
+              order.status
+            );
+
+
+          const items =
+            orderItems[
+              order.id
+            ] || [];
+
+
+          const quantity =
+            items.reduce(
+              (sum,item) =>
+                sum +
+                Number(
+                  item.quantity || 0
+                ),
+              0
+            );
+
+
+          return `
+
+            <tr>
+
+              <td>
+
+                <div class="order-number">
+                  ${esc(
+                    order.order_number ||
+                    String(
+                      order.id || ""
+                    ).slice(0,8)
+                  )}
+                </div>
+
+                <div class="order-id">
+                  ${esc(
+                    order.id || ""
+                  )}
+                </div>
+
+              </td>
+
+
+              <td>
+
+                <div class="customer-name">
+                  ${esc(
+                    order.customer_name ||
+                    "-"
+                  )}
+                </div>
+
+                <div class="customer-meta">
+                  ${esc(
+                    order.customer_phone ||
+                    "-"
+                  )}
+                </div>
+
+                ${
+                  order.customer_email
+                    ? `
+                      <div class="customer-meta">
+                        ${esc(
+                          order.customer_email
+                        )}
+                      </div>
+                    `
+                    : ""
+                }
+
+              </td>
+
+
+              <td>
+
+                <div class="item-count">
+                  ${quantity || "-"} ชิ้น
+                </div>
+
+                <div class="customer-meta">
+                  ${items.length} รายการ
+                </div>
+
+              </td>
+
+
+              <td>
+
+                <div>
+                  ${esc(
+                    paymentLabel(
+                      order.payment_method
+                    )
+                  )}
+                </div>
+
+                <div class="amount">
+                  ฿${money(
+                    order.total
+                  )}
+                </div>
+
+              </td>
+
+
+              <td>
+
+                <span
+                  class="status ${st.cls}"
+                >
+                  ${esc(
+                    st.label
+                  )}
+                </span>
+
+              </td>
+
+
+              <td>
+
+                <div class="order-date">
+                  ${dateTH(
+                    order.created_at
+                  )}
+                </div>
+
+              </td>
+
+
+              <td>
+
+                <div class="actions">
+
+                  <button
+                    class="icon-btn"
+                    data-action="view"
+                    data-id="${esc(
+                      order.id
+                    )}"
+                    title="ดูรายละเอียด"
+                    type="button"
+                  >
+                    ⌕
+                  </button>
+
+                  ${
+                    canDelete()
+                      ? `
+                        <button
+                          class="icon-btn delete"
+                          data-action="delete"
+                          data-id="${esc(
+                            order.id
+                          )}"
+                          title="ลบ"
+                          type="button"
+                        >
+                          ×
+                        </button>
+                      `
+                      : ""
+                  }
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }
+      ).join("");
+
+  }
+
+
+  async function openOrder(id){
+
+    const order =
+      orders.find(
+        o => o.id === id
+      );
+
+
+    if(!order){
+      return;
+    }
+
+
+    selectedOrderId =
+      id;
+
+
+    const items =
+      orderItems[id] || [];
+
+
+    const address =
       [
         order.customer_address,
         order.customer_province
       ]
-        .filter(Boolean)
-        .join(" ");
-
-    const itemsHtml =
-      items.length
-        ? items
-            .map(
-              item => {
-
-                const image =
-                  item.product_image ||
-                  "";
-
-                return `
-                  <div class="detail-item">
-
-                    <div class="detail-item-image">
-
-                      ${
-                        image
-                          ? `
-                            <img
-                              src="${escapeHtml(
-                                image
-                              )}"
-                              alt="${escapeHtml(
-                                item.product_name ||
-                                "สินค้า"
-                              )}"
-                              onerror="
-                                this.style.display='none'
-                              "
-                            >
-                          `
-                          : ""
-                      }
-
-                    </div>
+      .filter(Boolean)
+      .join(" ");
 
 
-                    <div style="min-width:0;">
-
-                      <div class="detail-item-name">
-                        ${escapeHtml(
-                          item.product_name ||
-                          "สินค้า"
-                        )}
-                      </div>
-
-                      <div class="detail-item-meta">
-
-                        ${
-                          item.product_id
-                            ? `รหัส ${escapeHtml(
-                                item.product_id
-                              )}`
-                            : ""
-                        }
-
-                        ${
-                          item.price_label
-                            ? ` · ${escapeHtml(
-                                item.price_label
-                              )}`
-                            : ""
-                        }
-
-                      </div>
-
-                      ${
-                        item.selected_option
-                          ? `
-                            <div
-                              class="detail-item-meta"
-                            >
-                              ${escapeHtml(
-                                formatOption(
-                                  item.selected_option
-                                )
-                              )}
-                            </div>
-                          `
-                          : ""
-                      }
-
-                    </div>
+    const st =
+      statusInfo(
+        order.status
+      );
 
 
-                    <div
-                      style="
-                        margin-left:auto;
-                        text-align:right;
-                        flex-shrink:0;
-                      "
-                    >
-
-                      <div
-                        class="detail-item-quantity"
-                      >
-                        ×
-                        ${Number(
-                          item.quantity || 1
-                        )}
-                      </div>
-
-                      <div
-                        class="detail-item-meta"
-                      >
-                        ฿${money(
-                          item.line_total ||
-                          (
-                            Number(
-                              item.unit_price || 0
-                            ) *
-                            Number(
-                              item.quantity || 1
-                            )
-                          )
-                        )}
-                      </div>
-
-                    </div>
-
-                  </div>
-                `;
-              }
-            )
-            .join("")
-        : `
-          <div
-            style="
-              color:#777;
-              font-size:12px;
-              padding:15px 0;
-            "
-          >
-            ไม่พบรายการสินค้า
-          </div>
-        `;
-
-    modalBody.innerHTML = `
-
-      <div class="detail-mini-grid">
-
-        <div class="detail-mini-card">
-          <small>
-            STATUS
-          </small>
-          <strong>
-            ${escapeHtml(
-              status.label
-            )}
-          </strong>
-        </div>
-
-        <div class="detail-mini-card">
-          <small>
-            TOTAL ITEMS
-          </small>
-          <strong>
-            ${quantity} ชิ้น
-          </strong>
-        </div>
-
-        <div class="detail-mini-card">
-          <small>
-            ORDER DATE
-          </small>
-          <strong>
-            ${formatDate(
-              order.created_at
-            )}
-          </strong>
-        </div>
-
-      </div>
-
+    $("modalBody").innerHTML = `
 
       <div class="detail-grid">
 
-        <div class="detail-card">
+        <div class="detail-box">
 
           <div class="detail-label">
             ORDER NUMBER
           </div>
 
           <div class="detail-value gold">
-            ${escapeHtml(
+            ${esc(
               order.order_number ||
-              order.id
-            )}
-          </div>
-
-        </div>
-
-
-        <div class="detail-card">
-
-          <div class="detail-label">
-            ORDER ID
-          </div>
-
-          <div class="detail-value">
-            ${escapeHtml(
-              order.id ||
               "-"
             )}
           </div>
@@ -1651,14 +2511,29 @@
         </div>
 
 
-        <div class="detail-card">
+        <div class="detail-box">
+
+          <div class="detail-label">
+            CREATED
+          </div>
+
+          <div class="detail-value">
+            ${dateTH(
+              order.created_at
+            )}
+          </div>
+
+        </div>
+
+
+        <div class="detail-box">
 
           <div class="detail-label">
             CUSTOMER
           </div>
 
           <div class="detail-value">
-            ${escapeHtml(
+            ${esc(
               order.customer_name ||
               "-"
             )}
@@ -1667,14 +2542,14 @@
         </div>
 
 
-        <div class="detail-card">
+        <div class="detail-box">
 
           <div class="detail-label">
             PHONE
           </div>
 
           <div class="detail-value">
-            ${escapeHtml(
+            ${esc(
               order.customer_phone ||
               "-"
             )}
@@ -1683,14 +2558,14 @@
         </div>
 
 
-        <div class="detail-card">
+        <div class="detail-box">
 
           <div class="detail-label">
             EMAIL
           </div>
 
           <div class="detail-value">
-            ${escapeHtml(
+            ${esc(
               order.customer_email ||
               "-"
             )}
@@ -1699,53 +2574,47 @@
         </div>
 
 
-        <div class="detail-card">
+        <div class="detail-box">
 
           <div class="detail-label">
             PAYMENT
           </div>
 
           <div class="detail-value">
-            ${escapeHtml(
-              order.payment_method ||
-              "-"
+            ${esc(
+              paymentLabel(
+                order.payment_method
+              )
             )}
           </div>
 
         </div>
 
 
-        <div class="detail-card">
+        <div class="detail-box">
 
           <div class="detail-label">
             ADDRESS
           </div>
 
-          <div
-            class="
-              detail-value
-              customer-address-block
-            "
-          >
-            ${escapeHtml(
-              customerAddress ||
-              "-"
+          <div class="detail-value">
+            ${esc(
+              address || "-"
             )}
           </div>
 
         </div>
 
 
-        <div class="detail-card">
+        <div class="detail-box">
 
           <div class="detail-label">
-            NOTE
+            STATUS
           </div>
 
           <div class="detail-value">
-            ${escapeHtml(
-              order.customer_note ||
-              "-"
+            ${esc(
+              st.label
             )}
           </div>
 
@@ -1754,19 +2623,198 @@
       </div>
 
 
-      <h3 class="detail-section-title">
-        สินค้าในคำสั่งซื้อ
+      <h3 class="section-title">
+        รายการสินค้า
       </h3>
 
 
-      <div class="detail-items">
+      <div class="items">
 
-        ${itemsHtml}
+        ${
+          items.length
+            ? items.map(
+                item => `
+
+                  <div class="item">
+
+                    <div class="item-image">
+
+                      ${
+                        item.product_image
+                          ? `
+                            <img
+                              src="${esc(
+                                item.product_image
+                              )}"
+                              alt=""
+                              onerror="
+                                this.style.display='none'
+                              "
+                            >
+                          `
+                          : "◇"
+                      }
+
+                    </div>
+
+
+                    <div>
+
+                      <div class="item-name">
+                        ${esc(
+                          item.product_name ||
+                          "-"
+                        )}
+                      </div>
+
+                      <div class="item-meta">
+
+                        ${
+                          item.product_id
+                            ? `
+                              รหัสสินค้า:
+                              ${esc(
+                                item.product_id
+                              )}
+                            `
+                            : ""
+                        }
+
+                        ${
+                          item.price_label
+                            ? `
+                              ·
+                              ${esc(
+                                item.price_label
+                              )}
+                            `
+                            : ""
+                        }
+
+                        ${
+                          item.selected_option
+                            ? `
+                              <br>
+                              ตัวเลือก:
+                              ${esc(
+                                formatOption(
+                                  item.selected_option
+                                )
+                              )}
+                            `
+                            : ""
+                        }
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="item-right">
+
+                      <div class="item-price">
+
+                        ฿${money(
+                          item.line_total ||
+                          (
+                            Number(
+                              item.unit_price || 0
+                            ) *
+                            Number(
+                              item.quantity || 0
+                            )
+                          )
+                        )}
+
+                      </div>
+
+                      <div class="item-qty">
+                        ×${Number(
+                          item.quantity || 0
+                        )}
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                `
+              ).join("")
+            : `
+              <div
+                style="
+                  padding:16px;
+                  color:#666;
+                  font-size:11px;
+                  border:1px solid var(--line);
+                  border-radius:12px;
+                "
+              >
+                ไม่พบรายการสินค้า
+              </div>
+            `
+        }
 
       </div>
 
 
-      <div class="detail-total-row">
+      ${
+        order.customer_note
+          ? `
+
+            <h3 class="section-title">
+              หมายเหตุจากลูกค้า
+            </h3>
+
+            <div
+              class="detail-box"
+              style="margin-bottom:10px"
+            >
+              <div class="detail-value">
+                ${esc(
+                  order.customer_note
+                )}
+              </div>
+            </div>
+
+          `
+          : ""
+      }
+
+
+      ${
+        order.slip_path
+          ? `
+
+            <a
+              href="${esc(
+                order.slip_path
+              )}"
+              target="_blank"
+              rel="noopener"
+              class="slip"
+            >
+              ดูหลักฐานการชำระเงิน ↗
+            </a>
+
+          `
+          : `
+
+            <div
+              style="
+                margin-top:15px;
+                color:#666;
+                font-size:10px;
+              "
+            >
+              ยังไม่มีหลักฐานการชำระเงิน
+            </div>
+
+          `
+      }
+
+
+      <div class="total-row">
 
         <span>
           ยอดรวมคำสั่งซื้อ
@@ -1781,50 +2829,25 @@
       </div>
 
 
-      ${
-        order.slip_path
-          ? `
-            <a
-              class="slip-link"
-              href="${escapeHtml(
-                order.slip_path
-              )}"
-              target="_blank"
-              rel="noopener"
-            >
-              ดูหลักฐานการชำระเงิน ↗
-            </a>
-          `
-          : `
-            <div
-              style="
-                color:#666;
-                font-size:10px;
-                margin-top:15px;
-              "
-            >
-              ยังไม่มีหลักฐานการชำระเงิน
-            </div>
-          `
-      }
-
-
-      <div
-        class="status-edit"
-        style="margin-top:20px;"
-      >
+      <div class="status-editor">
 
         <select
           id="modalStatus"
-          class="status-select"
-          ${canUpdate() ? "" : "disabled"}
+          class="select"
+          ${
+            canUpdate()
+              ? ""
+              : "disabled"
+          }
         >
 
-          ${Object.entries(
-            STATUS
-          )
+          ${
+            Object.entries(
+              STATUS
+            )
             .map(
               ([key,value]) => `
+
                 <option
                   value="${key}"
                   ${
@@ -1835,107 +2858,107 @@
                 >
                   ${value.label}
                 </option>
+
               `
             )
-            .join("")}
+            .join("")
+          }
 
         </select>
 
 
-        ${
-          canUpdate()
-            ? `
-              <button
-                class="btn btn-gold"
-                id="saveStatusBtn"
-              >
-                บันทึกสถานะ
-              </button>
-            `
-            : ""
-        }
+        <button
+          id="saveStatusBtn"
+          class="btn btn-gold"
+          type="button"
+          ${
+            canUpdate()
+              ? ""
+              : "disabled"
+          }
+        >
+          บันทึกสถานะ
+        </button>
 
       </div>
+
     `;
 
-    modal.classList.add(
-      "show"
-    );
 
-    document
-      .getElementById(
-        "saveStatusBtn"
-      )
+    $("orderModal")
+      .classList
+      .add("show");
+
+
+    $("saveStatusBtn")
       ?.addEventListener(
         "click",
         saveStatus
       );
+
   }
 
-  function formatOption(option) {
 
-    if (!option) {
+  function formatOption(value){
+
+    if(!value){
       return "";
     }
 
-    if (
-      typeof option ===
+
+    if(
+      typeof value ===
       "string"
-    ) {
-      return option;
+    ){
+      return value;
     }
 
-    if (
-      typeof option ===
+
+    if(
+      typeof value ===
       "object"
-    ) {
+    ){
 
       return Object.entries(
-        option
+        value
       )
-        .map(
-          ([key,value]) =>
-            `${key}: ${
-              typeof value === "object"
-                ? JSON.stringify(value)
-                : value
-            }`
-        )
-        .join(" · ");
+      .map(
+        ([key,val]) =>
+          `${key}: ${
+            typeof val === "object"
+              ? JSON.stringify(val)
+              : val
+          }`
+      )
+      .join(" · ");
+
     }
 
-    return String(option);
+
+    return String(value);
+
   }
 
-  /* =========================================================
-     STATUS UPDATE
-  ========================================================= */
 
-  async function saveStatus() {
+  async function saveStatus(){
 
-    if (
+    if(
       !selectedOrderId ||
       !canUpdate()
-    ) {
+    ){
       return;
     }
 
-    const select =
-      document.getElementById(
-        "modalStatus"
-      );
-
-    if (!select) {
-      return;
-    }
 
     const status =
-      select.value;
+      $("modalStatus")
+        .value;
+
 
     const {
       error
     } =
-      await db
+      await client
         .from("orders")
         .update({
           status
@@ -1945,56 +2968,46 @@
           selectedOrderId
         );
 
-    if (error) {
-      showToast(
-        error.message ||
-        "ไม่สามารถบันทึกสถานะได้"
+
+    if(error){
+
+      alert(
+        "บันทึกไม่สำเร็จ\n\n" +
+        error.message
       );
+
       return;
+
     }
 
-    showToast(
-      "อัปเดตสถานะเรียบร้อย"
-    );
 
     closeModal();
 
     await loadOrders();
+
   }
 
-  /* =========================================================
-     DELETE
-  ========================================================= */
 
-  async function deleteOrder(id) {
+  async function deleteOrder(id){
 
-    if (!canDelete()) {
+    if(!canDelete()){
       return;
     }
 
-    const order =
-      orders.find(
-        item => item.id === id
-      );
 
-    if (!order) {
-      return;
-    }
-
-    const confirmed =
+    const ok =
       confirm(
-        `ต้องการลบคำสั่งซื้อ ${
-          order.order_number ||
-          order.id
-        } หรือไม่?`
+        "ต้องการลบคำสั่งซื้อนี้หรือไม่?"
       );
 
-    if (!confirmed) {
+
+    if(!ok){
       return;
     }
 
-    const itemDelete =
-      await db
+
+    const itemResult =
+      await client
         .from("order_items")
         .delete()
         .eq(
@@ -2002,17 +3015,20 @@
           id
         );
 
-    if (itemDelete.error) {
-      showToast(
-        itemDelete.error.message
+
+    if(itemResult.error){
+
+      alert(
+        itemResult.error.message
       );
+
       return;
+
     }
 
-    const {
-      error
-    } =
-      await db
+
+    const result =
+      await client
         .from("orders")
         .delete()
         .eq(
@@ -2020,116 +3036,117 @@
           id
         );
 
-    if (error) {
-      showToast(
-        error.message ||
-        "ไม่สามารถลบคำสั่งซื้อได้"
+
+    if(result.error){
+
+      alert(
+        "ลบคำสั่งซื้อไม่สำเร็จ\n\n" +
+        result.error.message
       );
+
       return;
+
     }
 
-    showToast(
-      "ลบคำสั่งซื้อแล้ว"
-    );
 
     await loadOrders();
+
   }
 
-  /* =========================================================
-     CLEAR ALL
-  ========================================================= */
 
-  async function clearAll() {
+  async function clearAll(){
 
-    if (
+    if(
       !canDelete() ||
       !orders.length
-    ) {
+    ){
       return;
     }
 
-    const confirmed =
+
+    const ok =
       confirm(
         "ต้องการลบคำสั่งซื้อทั้งหมดหรือไม่?"
       );
 
-    if (!confirmed) {
+
+    if(!ok){
       return;
     }
 
-    const orderIds =
+
+    const ids =
       orders.map(
-        order => order.id
+        o => o.id
       );
 
-    if (orderIds.length) {
 
-      const itemDelete =
-        await db
-          .from("order_items")
-          .delete()
-          .in(
-            "order_id",
-            orderIds
-          );
-
-      if (itemDelete.error) {
-        showToast(
-          itemDelete.error.message
+    const items =
+      await client
+        .from("order_items")
+        .delete()
+        .in(
+          "order_id",
+          ids
         );
-        return;
-      }
+
+
+    if(items.error){
+
+      alert(
+        items.error.message
+      );
+
+      return;
 
     }
 
-    const {
-      error
-    } =
-      await db
+
+    const result =
+      await client
         .from("orders")
         .delete()
         .in(
           "id",
-          orderIds
+          ids
         );
 
-    if (error) {
-      showToast(
-        error.message ||
-        "ไม่สามารถล้างคำสั่งซื้อได้"
+
+    if(result.error){
+
+      alert(
+        result.error.message
       );
+
       return;
+
     }
 
-    showToast(
-      "ล้างคำสั่งซื้อแล้ว"
-    );
 
     await loadOrders();
+
   }
 
-  /* =========================================================
-     EXPORT
-  ========================================================= */
 
-  function exportJSON() {
+  function exportJSON(){
 
-    const exportData =
+    const data =
       orders.map(
         order => ({
           ...order,
           items:
-            getOrderItems(
-              order
-            )
+            orderItems[
+              order.id
+            ] || []
         })
       );
+
 
     const blob =
       new Blob(
         [
           JSON.stringify(
-            exportData,
+            data,
             null,
             2
           )
@@ -2140,462 +3157,368 @@
         }
       );
 
+
     const url =
       URL.createObjectURL(
         blob
       );
 
-    const link =
+
+    const a =
       document.createElement(
         "a"
       );
 
-    link.href = url;
 
-    link.download =
-      `chatpetch-orders-${new Date()
+    a.href = url;
+
+    a.download =
+      "chatpetch-orders-" +
+      new Date()
         .toISOString()
-        .slice(0,10)}.json`;
+        .slice(0,10) +
+      ".json";
+
 
     document.body.appendChild(
-      link
+      a
     );
 
-    link.click();
+    a.click();
 
-    link.remove();
+    a.remove();
 
-    URL.revokeObjectURL(
-      url
+    setTimeout(
+      () =>
+        URL.revokeObjectURL(
+          url
+        ),
+      1000
     );
+
   }
 
-  /* =========================================================
-     TOAST
-  ========================================================= */
 
-  let toastTimer = null;
+  function closeModal(){
 
-  function showToast(message) {
-
-    const toast =
-      document.getElementById(
-        "toast"
-      );
-
-    if (!toast) {
-      return;
-    }
-
-    toast.textContent =
-      message;
-
-    toast.classList.add(
-      "show"
-    );
-
-    clearTimeout(
-      toastTimer
-    );
-
-    toastTimer =
-      setTimeout(
-        () => {
-          toast.classList.remove(
-            "show"
-          );
-        },
-        3500
-      );
-  }
-
-  /* =========================================================
-     CLOSE MODAL
-  ========================================================= */
-
-  function closeModal() {
-
-    const modal =
-      document.getElementById(
-        "orderModal"
-      );
-
-    if (modal) {
-      modal.classList.remove(
-        "show"
-      );
-    }
+    $("orderModal")
+      .classList
+      .remove("show");
 
     selectedOrderId =
       null;
+
   }
 
-  /* =========================================================
-     EVENTS
-  ========================================================= */
 
-  const ordersTable =
-    document.getElementById(
-      "ordersTable"
+  $("loginBtn")
+    .addEventListener(
+      "click",
+      signIn
     );
 
-  if (ordersTable) {
 
-    ordersTable.addEventListener(
-      "click",
-      event => {
-
-        const button =
-          event.target.closest(
-            "button[data-action]"
-          );
-
-        if (!button) {
-          return;
-        }
-
-        const action =
-          button.dataset.action;
-
-        const id =
-          button.dataset.id;
-
-        if (
-          action === "view"
-        ) {
-          openOrder(id);
-        }
-
-        if (
-          action === "delete"
-        ) {
-          deleteOrder(id);
+  $("password")
+    .addEventListener(
+      "keydown",
+      e => {
+        if(
+          e.key ===
+          "Enter"
+        ){
+          signIn();
         }
       }
     );
-  }
 
-  document
-    .getElementById(
-      "refreshBtn"
-    )
-    ?.addEventListener(
+
+  $("logoutBtn")
+    .addEventListener(
       "click",
-      async () => {
-        await loadOrders();
-        showToast(
-          "รีเฟรชข้อมูลเรียบร้อย"
-        );
+      async e => {
+
+        e.preventDefault();
+
+        await client.auth.signOut();
+
       }
     );
 
-  document
-    .getElementById(
-      "exportBtn"
-    )
-    ?.addEventListener(
+
+  $("refreshBtn")
+    .addEventListener(
+      "click",
+      loadOrders
+    );
+
+
+  $("exportBtn")
+    .addEventListener(
       "click",
       exportJSON
     );
 
-  document
-    .getElementById(
-      "clearAllBtn"
-    )
-    ?.addEventListener(
+
+  $("clearAllBtn")
+    .addEventListener(
       "click",
       clearAll
     );
 
-  document
-    .getElementById(
-      "searchInput"
-    )
-    ?.addEventListener(
+
+  $("searchInput")
+    .addEventListener(
       "input",
-      renderOrders
+      render
     );
 
-  document
-    .getElementById(
-      "statusFilter"
-    )
-    ?.addEventListener(
+
+  $("statusFilter")
+    .addEventListener(
       "change",
-      renderOrders
+      render
     );
 
-  document
-    .getElementById(
-      "modalClose"
-    )
-    ?.addEventListener(
-      "click",
-      closeModal
-    );
 
-  document
-    .getElementById(
-      "modalCancel"
-    )
-    ?.addEventListener(
+  $("ordersTable")
+    .addEventListener(
       "click",
-      closeModal
-    );
+      e => {
 
-  document
-    .getElementById(
-      "orderModal"
-    )
-    ?.addEventListener(
-      "click",
-      event => {
-        if (
-          event.target ===
-          event.currentTarget
-        ) {
-          closeModal();
+        const btn =
+          e.target.closest(
+            "[data-action]"
+          );
+
+
+        if(!btn){
+          return;
         }
+
+
+        const action =
+          btn.dataset.action;
+
+        const id =
+          btn.dataset.id;
+
+
+        if(
+          action === "view"
+        ){
+
+          openOrder(id);
+
+        }
+        else if(
+          action === "delete"
+        ){
+
+          deleteOrder(id);
+
+        }
+
       }
     );
+
+
+  $("modalClose")
+    .addEventListener(
+      "click",
+      closeModal
+    );
+
+
+  $("orderModal")
+    .addEventListener(
+      "click",
+      e => {
+
+        if(
+          e.target ===
+          $("orderModal")
+        ){
+
+          closeModal();
+
+        }
+
+      }
+    );
+
 
   document.addEventListener(
     "keydown",
-    event => {
-      if (
-        event.key ===
+    e => {
+
+      if(
+        e.key ===
         "Escape"
-      ) {
+      ){
+
         closeModal();
+
       }
+
     }
   );
 
-  document
-    .getElementById(
-      "mobileBtn"
-    )
-    ?.addEventListener(
+
+  $("mobileBtn")
+    .addEventListener(
       "click",
       () => {
-        document
-          .getElementById(
-            "navMenu"
-          )
-          ?.classList.toggle(
+
+        $("navMenu")
+          .classList
+          .toggle(
             "open"
           );
+
       }
     );
 
-  document
-    .querySelectorAll(
-      ".nav-menu a"
-    )
-    .forEach(
-      link => {
-        link.addEventListener(
-          "click",
-          () => {
-            document
-              .getElementById(
-                "navMenu"
-              )
-              ?.classList.remove(
-                "open"
-              );
+
+  client.auth
+    .onAuthStateChange(
+      async (
+        event,
+        session
+      ) => {
+
+        if(
+          session &&
+          !currentAdmin
+        ){
+
+          try{
+
+            currentUser =
+              session.user;
+
+            await loadProfile(
+              currentUser
+            );
+
+            hideLogin();
+
+            await loadOrders();
+
           }
-        );
+          catch(error){
+
+            console.error(
+              error
+            );
+
+            $("authError")
+              .textContent =
+              error.message;
+
+            await client.auth
+              .signOut();
+
+            showLogin();
+
+          }
+
+        }
+
+
+        if(
+          !session
+        ){
+
+          currentUser =
+            null;
+
+          currentAdmin =
+            null;
+
+          currentRole =
+            null;
+
+          $("roleText")
+            .textContent =
+            "-";
+
+          $("loginStatus")
+            .textContent =
+            "กรุณาเข้าสู่ระบบ";
+
+          showLogin();
+
+        }
+
       }
     );
 
-  /* =========================================================
-     REVEAL
-  ========================================================= */
 
-  if (
-    "IntersectionObserver"
-    in window
-  ) {
+  async function boot(){
 
-    const observer =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(
-            entry => {
-
-              if (
-                entry.isIntersecting
-              ) {
-
-                entry.target.classList.add(
-                  "active"
-                );
-
-                observer.unobserve(
-                  entry.target
-                );
-              }
-
-            }
-          );
-        },
-        {
-          threshold:.08
-        }
-      );
-
-    document
-      .querySelectorAll(
-        ".reveal"
-      )
-      .forEach(
-        element =>
-          observer.observe(
-            element
-          )
-      );
-  } else {
-
-    document
-      .querySelectorAll(
-        ".reveal"
-      )
-      .forEach(
-        element =>
-          element.classList.add(
-            "active"
-          )
-      );
-  }
-
-  /* =========================================================
-     BOOT
-  ========================================================= */
-
-  async function boot() {
-
-    addLoginStyles();
-
-    try {
+    try{
 
       const {
         data,
         error
       } =
-        await db.auth.getSession();
+        await client.auth
+          .getSession();
 
-      if (error) {
+
+      if(error){
         throw error;
       }
 
-      const session =
-        data?.session;
 
-      if (!session) {
+      if(
+        !data.session
+      ){
+
         showLogin();
+
         return;
+
       }
 
-      currentUser =
-        session.user;
 
-      await loadAdminProfile(
+      currentUser =
+        data.session.user;
+
+
+      await loadProfile(
         currentUser
       );
+
 
       hideLogin();
 
       await loadOrders();
 
-    } catch (error) {
+    }
+    catch(error){
 
       console.error(
-        "ADMIN BOOT ERROR:",
+        "BOOT ERROR:",
         error
       );
 
+      $("authError")
+        .textContent =
+        error.message ||
+        "ไม่สามารถเข้าสู่ระบบได้";
+
       showLogin();
 
-      const errorBox =
-        document.getElementById(
-          "authError"
-        );
-
-      if (errorBox) {
-        errorBox.textContent =
-          error.message ||
-          "ไม่สามารถเข้าสู่ระบบได้";
-      }
-
-      await db.auth.signOut();
     }
+
   }
 
-  /* =========================================================
-     AUTH STATE
-  ========================================================= */
-
-  db.auth.onAuthStateChange(
-    async (
-      event,
-      session
-    ) => {
-
-      if (
-        session &&
-        !currentAdmin
-      ) {
-
-        try {
-
-          currentUser =
-            session.user;
-
-          await loadAdminProfile(
-            currentUser
-          );
-
-          hideLogin();
-
-          await loadOrders();
-
-        } catch (error) {
-
-          console.error(
-            "AUTH PROFILE ERROR:",
-            error
-          );
-
-          showLogin();
-
-          const errorBox =
-            document.getElementById(
-              "authError"
-            );
-
-          if (errorBox) {
-            errorBox.textContent =
-              error.message ||
-              "ไม่มีสิทธิ์เข้าใช้งาน";
-          }
-
-          await db.auth.signOut();
-        }
-
-      } else if (
-        !session
-      ) {
-
-        currentUser = null;
-        currentAdmin = null;
-        currentRole = null;
-
-        showLogin();
-      }
-    }
-  );
 
   boot();
+
+})();
 </script>
+
+</body>
+</html>
