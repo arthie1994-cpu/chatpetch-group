@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ชำระเงิน | Chatpetch Group</title>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>ชำระเงิน — Chatpetch Group</title>
+
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <style>
+
 :root{
   --black:#050505;
   --black2:#080808;
@@ -25,15 +44,15 @@
   --gold-dark:#806127;
 
   --white:#fff;
-  --soft:#e9e9e9;
+  --soft:#e8e8e8;
   --gray:#9b9b9b;
-  --gray2:#707070;
 
   --line:rgba(255,255,255,.09);
   --gold-line:rgba(200,164,91,.28);
 
-  --green:#55d58c;
-  --red:#ef7272;
+  --green:#42d392;
+  --red:#ff6868;
+  --orange:#f0a94b;
 
   --container:1240px;
 }
@@ -49,38 +68,60 @@ html{
 }
 
 body{
+
   min-height:100vh;
+
   color:var(--white);
+
+  font-family:"Prompt",sans-serif;
+
   background:
-    radial-gradient(circle at 80% 10%,rgba(200,164,91,.11),transparent 28%),
-    radial-gradient(circle at 5% 80%,rgba(200,164,91,.07),transparent 25%),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(200,164,91,.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 25%,
+      rgba(200,164,91,.08),
+      transparent 28%
+    ),
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
     var(--black);
 
-  font-family:"Kanit","Prompt",sans-serif;
-  font-size:18px;
-  overflow-x:hidden;
+  background-size:
+    auto,
+    auto,
+    45px 45px,
+    45px 45px;
 }
 
-body::before{
+body:before{
+
   content:"";
+
   position:fixed;
+
   inset:0;
+
   pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(200,164,91,.08),
+      transparent 40%
+    );
+
   z-index:-1;
-
-  opacity:.35;
-
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-
-  background-size:55px 55px;
-
-  mask-image:linear-gradient(
-    to bottom,
-    black,
-    transparent 92%
-  );
 }
 
 a{
@@ -99,319 +140,264 @@ button{
   cursor:pointer;
 }
 
+img{
+  max-width:100%;
+}
+
 ::-webkit-scrollbar{
   width:9px;
 }
 
 ::-webkit-scrollbar-track{
-  background:#080808;
+  background:#050505;
 }
 
 ::-webkit-scrollbar-thumb{
   background:linear-gradient(
-    var(--gold-light),
-    var(--gold-dark)
+    var(--gold-dark),
+    var(--gold)
   );
   border-radius:20px;
 }
 
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .header{
+
   position:sticky;
+
   top:0;
-  z-index:1000;
 
-  border-bottom:1px solid var(--line);
+  z-index:100;
 
-  background:rgba(5,5,5,.88);
-  backdrop-filter:blur(22px);
+  border-bottom:
+    1px solid var(--line);
+
+  background:
+    rgba(5,5,5,.88);
+
+  backdrop-filter:
+    blur(18px);
 }
 
 .header-inner{
-  width:min(
-    var(--container),
-    calc(100% - 40px)
-  );
 
-  min-height:88px;
+  width:
+    min(
+      var(--container),
+      calc(100% - 40px)
+    );
+
+  min-height:78px;
+
   margin:auto;
 
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 
   gap:25px;
 }
 
 .logo{
+
   display:flex;
+
   align-items:center;
-  gap:14px;
-  min-width:max-content;
+
+  gap:13px;
 }
 
 .logo-mark{
-  width:52px;
-  height:52px;
+
+  width:48px;
+  height:48px;
 
   display:grid;
+
   place-items:center;
 
-  border:1px solid var(--gold);
+  border:
+    1px solid var(--gold);
 
-  color:var(--gold-light);
+  color:
+    var(--gold-light);
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(200,164,91,.16),
-      transparent
-    );
+  font-family:"Kanit",sans-serif;
 
-  font-family:serif;
-  font-size:22px;
-  font-weight:bold;
+  font-weight:700;
+
+  font-size:20px;
+
   letter-spacing:-2px;
-
-  position:relative;
-}
-
-.logo-mark::before{
-  content:"";
-
-  position:absolute;
-  width:7px;
-  height:1px;
-
-  left:-7px;
-  top:10px;
-
-  background:var(--gold);
-}
-
-.logo-mark::after{
-  content:"";
-
-  position:absolute;
-  width:1px;
-  height:7px;
-
-  right:10px;
-  bottom:-7px;
-
-  background:var(--gold);
 }
 
 .logo-text strong{
+
   display:block;
 
-  font-size:20px;
-  letter-spacing:1px;
+  font-family:"Kanit",sans-serif;
+
+  font-size:18px;
 }
 
 .logo-text span{
+
   display:block;
 
-  color:var(--gold);
+  color:var(--gray);
 
-  font-size:12px;
-  letter-spacing:2px;
+  font-size:11px;
 }
 
 .nav{
+
   display:flex;
+
   align-items:center;
-  gap:4px;
+
+  gap:25px;
 }
 
 .nav a{
-  padding:12px 14px;
 
   color:#aaa;
 
-  font-size:16px;
-
-  border:1px solid transparent;
+  font-size:14px;
 
   transition:.25s;
 }
 
-.nav a:hover,
-.nav a.active{
-  color:var(--gold-light);
+.nav a:hover{
 
-  border-color:var(--gold-line);
-
-  background:rgba(200,164,91,.06);
+  color:
+    var(--gold-light);
 }
 
-.nav-shop{
-  position:relative;
-}
+.nav-cart{
 
-.cart-count{
-  position:absolute;
+  padding:
+    10px 15px;
 
-  top:3px;
-  right:4px;
+  border:
+    1px solid var(--gold-line);
 
-  min-width:20px;
-  height:20px;
+  border-radius:9px;
 
-  padding:0 5px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:var(--gold);
-  color:#111;
-
-  font-size:11px;
-  font-weight:700;
+  color:
+    var(--gold-light)!important;
 }
 
 
-/* =========================
-   PAGE HERO
-========================= */
+/* =========================================================
+   PAGE
+========================================================= */
 
-.page-hero{
-  position:relative;
+.page{
 
-  padding:75px 0 55px;
-
-  overflow:hidden;
-}
-
-.hero-glow{
-  position:absolute;
-
-  width:420px;
-  height:420px;
-
-  border-radius:50%;
-
-  right:-180px;
-  top:-180px;
-
-  background:rgba(200,164,91,.09);
-
-  filter:blur(80px);
-
-  pointer-events:none;
-}
-
-.hero-inner{
-  width:min(
-    var(--container),
-    calc(100% - 40px)
-  );
+  width:
+    min(
+      var(--container),
+      calc(100% - 40px)
+    );
 
   margin:auto;
 
-  position:relative;
+  padding:
+    70px 0 90px;
+}
+
+.hero{
+
+  margin-bottom:35px;
 }
 
 .eyebrow{
+
   display:flex;
+
   align-items:center;
-  gap:12px;
+
+  gap:10px;
 
   color:var(--gold);
 
-  font-size:15px;
-  letter-spacing:3px;
+  font-size:14px;
 
-  margin-bottom:15px;
+  letter-spacing:2px;
+
+  margin-bottom:12px;
 }
 
-.eyebrow::before{
+.eyebrow:before{
+
   content:"";
 
-  width:38px;
+  width:35px;
+
   height:1px;
 
   background:var(--gold);
 }
 
-.page-hero h1{
-  font-size:clamp(
-    48px,
-    7vw,
-    92px
-  );
+.hero h1{
 
-  line-height:.95;
+  font-family:"Kanit",sans-serif;
+
+  font-size:
+    clamp(
+      48px,
+      7vw,
+      82px
+    );
+
+  line-height:.98;
+
   letter-spacing:-2px;
 }
 
-.page-hero h1 span{
-  color:var(--gold-light);
+.hero h1 span{
+
+  color:var(--gold);
 }
 
-.page-hero p{
-  max-width:750px;
+.hero p{
 
-  margin-top:22px;
+  max-width:700px;
 
   color:var(--gray);
 
-  font-size:19px;
+  font-size:17px;
+
   line-height:1.8;
-}
 
-.hero-number{
-  position:absolute;
-
-  right:0;
-  bottom:-25px;
-
-  color:rgba(255,255,255,.025);
-
-  font-size:170px;
-  line-height:1;
-
-  font-family:serif;
-  font-weight:bold;
-
-  pointer-events:none;
+  margin-top:18px;
 }
 
 
-/* =========================
-   MAIN
-========================= */
+/* =========================================================
+   LAYOUT
+========================================================= */
 
-.container{
-  width:min(
-    var(--container),
-    calc(100% - 40px)
-  );
+.checkout-grid{
 
-  margin:auto;
-}
-
-.checkout-layout{
   display:grid;
 
   grid-template-columns:
     minmax(0,1.2fr)
-    minmax(350px,.8fr);
+    minmax(360px,.8fr);
 
-  gap:24px;
+  gap:22px;
 
-  padding-bottom:80px;
+  align-items:start;
 }
 
 .card{
-  border:1px solid var(--line);
 
   background:
     linear-gradient(
@@ -420,152 +406,194 @@ button{
       rgba(255,255,255,.015)
     );
 
-  backdrop-filter:blur(18px);
+  border:
+    1px solid var(--line);
+
+  border-radius:20px;
+
+  padding:25px;
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,.28);
+    0 25px 80px rgba(0,0,0,.28);
 
-  position:relative;
+  backdrop-filter:blur(15px);
 }
 
-.card-head{
-  padding:24px 27px;
+.card-title{
 
-  border-bottom:1px solid var(--line);
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  margin-bottom:22px;
 }
 
-.card-head h2{
+.card-title h2{
+
+  font-family:"Kanit",sans-serif;
+
   font-size:26px;
 }
 
-.card-head p{
-  margin-top:4px;
+.card-title span{
 
-  color:var(--gray);
+  color:var(--gold);
 
-  font-size:15px;
-}
-
-.card-body{
-  padding:27px;
+  font-size:13px;
 }
 
 
-/* =========================
+/* =========================================================
    FORM
-========================= */
+========================================================= */
 
 .form-grid{
+
   display:grid;
 
   grid-template-columns:
     1fr 1fr;
 
-  gap:18px;
+  gap:15px;
 }
 
-.form-group{
-  margin-bottom:19px;
+.field{
+
+  margin-bottom:17px;
 }
 
-.form-group.full{
+.field.full{
+
   grid-column:1/-1;
 }
 
-.form-group label{
+.field label{
+
   display:block;
 
+  color:#d3d3d3;
+
+  font-size:15px;
+
   margin-bottom:8px;
-
-  color:#ddd;
-
-  font-size:17px;
 }
 
-.required{
-  color:var(--gold-light);
+.field label em{
+
+  color:var(--gold);
+
+  font-style:normal;
 }
 
-.input{
+.field input,
+.field textarea,
+.field select{
+
   width:100%;
 
-  min-height:56px;
+  border:
+    1px solid var(--line);
 
-  padding:12px 16px;
-
-  color:#fff;
+  border-radius:11px;
 
   background:#090909;
 
-  border:1px solid rgba(255,255,255,.13);
+  color:#fff;
 
   outline:none;
 
   transition:.25s;
 }
 
-textarea.input{
-  min-height:125px;
+.field input,
+.field select{
 
-  resize:vertical;
+  height:53px;
+
+  padding:0 15px;
 }
 
-.input:focus{
-  border-color:var(--gold);
+.field textarea{
+
+  min-height:120px;
+
+  resize:vertical;
+
+  padding:14px 15px;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+
+  border-color:
+    var(--gold);
 
   box-shadow:
     0 0 0 3px
     rgba(200,164,91,.08);
 }
 
-.input::placeholder{
-  color:#555;
-}
 
-
-/* =========================
+/* =========================================================
    PAYMENT
-========================= */
+========================================================= */
 
 .payment-list{
+
   display:grid;
 
-  gap:12px;
-
-  margin-top:10px;
+  gap:11px;
 }
 
 .payment-option{
+
   position:relative;
 }
 
 .payment-option input{
+
   position:absolute;
 
   opacity:0;
+
   pointer-events:none;
 }
 
 .payment-label{
+
   display:block;
 
   padding:18px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
-  background:#0c0c0c;
+  border-radius:13px;
+
+  background:#090909;
 
   transition:.25s;
 }
 
 .payment-label:hover{
-  border-color:var(--gold-line);
 
-  background:rgba(200,164,91,.035);
+  border-color:
+    var(--gold-line);
+
+  transform:
+    translateY(-1px);
 }
 
-.payment-option input:checked + .payment-label{
-  border-color:var(--gold);
+.payment-option input:checked
++ .payment-label{
+
+  border-color:
+    var(--gold);
 
   background:
     linear-gradient(
@@ -576,97 +604,134 @@ textarea.input{
 
   box-shadow:
     inset 0 0 0 1px
-    rgba(200,164,91,.1);
+    rgba(200,164,91,.08);
 }
 
-.payment-title{
+.payment-name{
+
   display:flex;
+
   align-items:center;
+
   gap:10px;
 
-  color:var(--gold-light);
+  font-size:17px;
 
-  font-size:19px;
   font-weight:500;
 }
 
-.payment-desc{
-  margin-top:5px;
+.payment-description{
 
   color:#888;
 
-  font-size:14px;
+  font-size:13px;
+
   line-height:1.6;
+
+  margin-top:5px;
+
+  padding-left:29px;
 }
 
 .payment-info{
-  margin-top:16px;
+
+  display:none;
+
+  margin-top:14px;
 
   padding:17px;
 
-  border-left:2px solid var(--gold);
+  border:
+    1px dashed
+    var(--gold-line);
+
+  border-radius:12px;
+
+  background:
+    rgba(200,164,91,.035);
 
   color:#aaa;
 
-  background:rgba(200,164,91,.04);
+  font-size:13px;
 
   line-height:1.8;
-
-  font-size:15px;
 }
 
+.payment-info.show{
 
-/* =========================
-   SLIP
-========================= */
-
-.slip-box{
-  display:none;
-
-  margin-top:18px;
-
-  padding:20px;
-
-  border:1px dashed var(--gold-line);
-
-  background:rgba(200,164,91,.025);
-}
-
-.slip-box.show{
   display:block;
 }
 
-.slip-title{
-  color:var(--gold-light);
+.payment-info strong{
 
-  font-size:18px;
-
-  margin-bottom:8px;
+  color:
+    var(--gold-light);
 }
 
-.slip-desc{
+
+/* =========================================================
+   SLIP
+========================================================= */
+
+.slip-box{
+
+  margin-top:20px;
+
+  padding:20px;
+
+  border:
+    1px solid var(--gold-line);
+
+  border-radius:15px;
+
+  background:
+    rgba(200,164,91,.035);
+}
+
+.slip-box h3{
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:20px;
+
+  margin-bottom:5px;
+}
+
+.slip-box p{
+
   color:#888;
 
-  font-size:14px;
+  font-size:13px;
 
   line-height:1.7;
 
-  margin-bottom:14px;
+  margin-bottom:15px;
 }
 
 .file-input{
+
+  position:relative;
+}
+
+.file-input input{
+
   width:100%;
 
   padding:13px;
 
+  border:
+    1px dashed
+    var(--gold-line);
+
+  border-radius:11px;
+
+  background:#080808;
+
   color:#aaa;
-
-  border:1px solid var(--line);
-
-  background:#090909;
 }
 
-.file-preview{
+.preview{
+
   display:none;
 
   margin-top:15px;
@@ -674,240 +739,287 @@ textarea.input{
   text-align:center;
 }
 
-.file-preview.show{
+.preview.show{
+
   display:block;
 }
 
-.file-preview img{
-  max-width:100%;
-  max-height:330px;
+.preview img{
 
-  border:1px solid var(--gold-line);
+  max-height:320px;
+
+  width:auto;
+
+  border-radius:11px;
+
+  border:
+    1px solid var(--gold-line);
+}
+
+.file-name{
+
+  margin-top:8px;
+
+  color:#999;
+
+  font-size:12px;
 }
 
 
-/* =========================
-   CART SUMMARY
-========================= */
+/* =========================================================
+   SUMMARY
+========================================================= */
 
-.sticky-summary{
+.summary-card{
+
   position:sticky;
-  top:112px;
+
+  top:100px;
 }
 
 .cart-items{
+
   display:grid;
 
   gap:12px;
+
+  max-height:470px;
+
+  overflow:auto;
+
+  padding-right:3px;
 }
 
 .cart-item{
+
   display:grid;
 
   grid-template-columns:
-    76px 1fr auto;
+    65px 1fr auto;
 
-  gap:13px;
+  gap:12px;
 
   align-items:center;
 
-  padding:13px;
+  padding:11px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
-  background:#0b0b0b;
+  border-radius:12px;
+
+  background:#090909;
 }
 
 .cart-item img{
-  width:76px;
-  height:76px;
+
+  width:65px;
+
+  height:65px;
 
   object-fit:cover;
 
-  background:#181818;
+  border-radius:8px;
 
-  border:1px solid rgba(255,255,255,.06);
+  border:
+    1px solid var(--line);
+
+  background:#151515;
 }
 
-.cart-item-name{
-  color:#eee;
+.item-name{
 
-  font-size:17px;
-  line-height:1.35;
+  font-size:15px;
+
+  font-weight:500;
+
+  line-height:1.4;
 }
 
-.cart-item-meta{
+.item-meta{
+
   color:#777;
 
-  font-size:14px;
+  font-size:12px;
 
-  margin-top:5px;
+  margin-top:4px;
 
   line-height:1.5;
 }
 
-.cart-item-price{
-  color:var(--gold-light);
+.item-price{
+
+  color:
+    var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
 
   font-size:16px;
-
-  text-align:right;
 
   white-space:nowrap;
 }
 
-.summary{
-  margin-top:22px;
+.summary-lines{
 
-  padding-top:20px;
+  margin-top:20px;
 
-  border-top:1px solid var(--line);
+  border-top:
+    1px solid var(--line);
+
+  padding-top:15px;
 }
 
-.summary-row{
+.summary-line{
+
   display:flex;
 
   justify-content:space-between;
 
-  gap:20px;
+  gap:15px;
 
-  padding:9px 0;
+  padding:8px 0;
 
   color:#aaa;
 
-  font-size:16px;
+  font-size:14px;
 }
 
-.summary-row.total{
-  margin-top:8px;
+.summary-line.total{
 
-  padding-top:17px;
+  margin-top:6px;
 
-  border-top:1px solid var(--gold-line);
+  padding-top:15px;
 
-  color:#fff;
+  border-top:
+    1px solid var(--line);
 
-  font-size:23px;
+  color:white;
+
+  font-size:19px;
+
+  font-weight:500;
 }
 
-.summary-row.total strong{
-  color:var(--gold-light);
+.summary-line.total strong{
+
+  color:
+    var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:25px;
 }
 
+.order-btn{
 
-/* =========================
-   BUTTONS
-========================= */
-
-.btn{
   width:100%;
 
   min-height:58px;
 
-  padding:13px 20px;
+  margin-top:20px;
 
-  border:1px solid var(--gold);
+  border:
+    1px solid var(--gold);
+
+  border-radius:12px;
 
   background:
     linear-gradient(
       135deg,
-      var(--gold-light),
-      var(--gold)
+      var(--gold),
+      #9e7a35
     );
 
-  color:#111;
+  color:#080808;
 
-  font-weight:600;
+  font-size:17px;
+
+  font-weight:700;
 
   transition:.25s;
 }
 
-.btn:hover{
-  transform:translateY(-2px);
+.order-btn:hover{
+
+  transform:
+    translateY(-2px);
 
   box-shadow:
-    0 12px 35px
-    rgba(200,164,91,.18);
+    0 15px 40px
+    rgba(200,164,91,.2);
 }
 
-.btn:disabled{
-  opacity:.55;
+.order-btn:disabled{
+
+  opacity:.5;
 
   cursor:not-allowed;
 
   transform:none;
+
+  box-shadow:none;
 }
 
-.btn-dark{
-  color:#ddd;
+.notice{
 
-  border-color:rgba(255,255,255,.14);
+  margin-top:13px;
 
-  background:#111;
-}
+  color:#777;
 
-.button-row{
-  display:grid;
+  font-size:12px;
 
-  grid-template-columns:1fr 1fr;
-
-  gap:10px;
-
-  margin-top:22px;
-}
-
-
-/* =========================
-   EMPTY
-========================= */
-
-.empty{
-  padding:65px 20px;
+  line-height:1.7;
 
   text-align:center;
-
-  color:var(--gray);
-}
-
-.empty-icon{
-  font-size:50px;
-
-  opacity:.45;
-
-  margin-bottom:15px;
 }
 
 
-/* =========================
+/* =========================================================
    SUCCESS
-========================= */
+========================================================= */
 
 .success-screen{
+
   display:none;
 
   min-height:
-    calc(100vh - 88px);
+    calc(100vh - 78px);
 
-  padding:90px 20px;
+  align-items:center;
+
+  justify-content:center;
+
+  padding:40px 0;
 }
 
-.success-card{
-  width:min(720px,100%);
+.success-screen.show{
 
-  margin:auto;
+  display:flex;
+}
 
-  padding:50px 35px;
+.success-box{
+
+  width:
+    min(
+      650px,
+      100%
+    );
+
+  padding:45px;
 
   text-align:center;
-
-  border:1px solid var(--gold-line);
 
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,.06),
-      rgba(255,255,255,.018)
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.015)
     );
+
+  border:
+    1px solid var(--gold-line);
+
+  border-radius:25px;
 
   box-shadow:
     0 35px 100px
@@ -915,275 +1027,409 @@ textarea.input{
 }
 
 .success-icon{
+
   width:90px;
+
   height:90px;
 
+  margin:
+    0 auto 25px;
+
   display:grid;
+
   place-items:center;
 
-  margin:0 auto 25px;
+  border:
+    1px solid var(--gold);
 
-  border:1px solid var(--green);
+  border-radius:50%;
 
-  color:var(--green);
+  color:
+    var(--gold-light);
 
   font-size:40px;
 }
 
-.success-card h2{
-  font-size:40px;
+.success-box .eyebrow{
 
-  margin-bottom:12px;
+  justify-content:center;
 }
 
-.success-card p{
-  color:var(--gray);
+.success-box h2{
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:
+    clamp(38px,6vw,60px);
+
+  line-height:1;
+
+  margin-bottom:15px;
+}
+
+.success-box p{
+
+  color:#999;
 
   line-height:1.8;
+
+  font-size:16px;
 }
 
-.order-number-success{
+.order-number-big{
+
   display:inline-block;
 
-  margin:25px 0;
+  margin:20px 0;
 
-  padding:13px 22px;
+  padding:13px 20px;
 
-  border:1px solid var(--gold-line);
+  border:
+    1px solid var(--gold-line);
 
-  color:var(--gold-light);
+  border-radius:10px;
 
-  background:rgba(200,164,91,.05);
+  background:#0b0b0b;
 
-  font-size:23px;
-  font-weight:600;
+  color:
+    var(--gold-light);
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:24px;
 }
 
+.success-actions{
 
-/* =========================
-   TOAST
-========================= */
-
-.toast{
-  position:fixed;
-
-  right:22px;
-  bottom:22px;
-
-  z-index:5000;
-
-  max-width:
-    min(480px,calc(100% - 40px));
-
-  padding:16px 20px;
-
-  color:#eee;
-
-  border:1px solid var(--gold-line);
-
-  background:#111;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.55);
-
-  transform:translateY(120px);
-
-  opacity:0;
-
-  pointer-events:none;
-
-  transition:.3s;
-}
-
-.toast.show{
-  transform:translateY(0);
-
-  opacity:1;
-}
-
-.toast.error{
-  border-color:rgba(239,114,114,.45);
-}
-
-.toast.success{
-  border-color:rgba(85,213,140,.45);
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-  padding:50px 0 35px;
-
-  border-top:1px solid var(--line);
-
-  color:#666;
-
-  font-size:14px;
-}
-
-.footer-inner{
   display:flex;
 
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:20px;
+}
+
+.btn{
+
+  min-height:48px;
+
+  padding:
+    0 18px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:10px;
+
+  background:#171717;
+
+  color:#fff;
+
+  transition:.25s;
+}
+
+.btn:hover{
+
+  transform:
+    translateY(-2px);
+
+  border-color:
+    var(--gold-line);
+}
+
+.btn-gold{
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold),
+      #9e7a35
+    );
+
+  border-color:
+    var(--gold);
+
+  color:#080808;
+
+  font-weight:700;
+}
+
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.alert{
+
+  display:none;
+
+  margin-bottom:18px;
+
+  padding:14px 16px;
+
+  border-radius:11px;
+
+  font-size:14px;
+
+  line-height:1.6;
+}
+
+.alert.show{
+
+  display:block;
+}
+
+.alert.error{
+
+  color:#ffabab;
+
+  background:
+    rgba(255,104,104,.08);
+
+  border:
+    1px solid
+    rgba(255,104,104,.25);
+}
+
+.alert.success{
+
+  color:#98efbd;
+
+  background:
+    rgba(66,211,146,.08);
+
+  border:
+    1px solid
+    rgba(66,211,146,.25);
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading{
+
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:999;
+
+  background:
+    rgba(0,0,0,.78);
+
+  backdrop-filter:
+    blur(7px);
+
   align-items:center;
-  justify-content:space-between;
 
-  gap:20px;
+  justify-content:center;
 }
 
-.footer strong{
-  color:#999;
+.loading.show{
+
+  display:flex;
+}
+
+.loading-box{
+
+  padding:25px 30px;
+
+  border:
+    1px solid var(--gold-line);
+
+  border-radius:15px;
+
+  background:#101010;
+
+  text-align:center;
+}
+
+.spinner{
+
+  width:35px;
+
+  height:35px;
+
+  margin:
+    0 auto 13px;
+
+  border:
+    3px solid
+    rgba(255,255,255,.12);
+
+  border-top-color:
+    var(--gold);
+
+  border-radius:50%;
+
+  animation:
+    spin .8s linear infinite;
+}
+
+@keyframes spin{
+
+  to{
+    transform:rotate(360deg);
+  }
+
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
-@media(max-width:1000px){
+@media(max-width:900px){
 
-  .checkout-layout{
+  .checkout-grid{
+
     grid-template-columns:1fr;
   }
 
-  .sticky-summary{
+  .summary-card{
+
     position:static;
+
+    grid-row:1;
   }
 
-  .nav{
-    display:none;
-  }
-
-  .hero-number{
-    display:none;
-  }
 }
 
-@media(max-width:700px){
-
-  body{
-    font-size:17px;
-  }
-
-  .container,
-  .header-inner,
-  .hero-inner{
-    width:calc(100% - 26px);
-  }
+@media(max-width:650px){
 
   .header-inner{
-    min-height:75px;
+
+    width:
+      calc(100% - 24px);
+
+    min-height:70px;
   }
 
   .logo-text{
+
     display:none;
   }
 
-  .logo-mark{
-    width:46px;
-    height:46px;
+  .nav{
+
+    gap:8px;
   }
 
-  .page-hero{
-    padding:48px 0 38px;
+  .nav a{
+
+    font-size:12px;
   }
 
-  .page-hero h1{
-    font-size:48px;
+  .nav a:not(.nav-cart){
+
+    display:none;
   }
 
-  .page-hero p{
-    font-size:17px;
+  .nav-cart{
+
+    padding:
+      9px 11px;
   }
 
-  .card-head{
-    padding:20px;
+  .page{
+
+    width:
+      calc(100% - 24px);
+
+    padding:
+      45px 0 65px;
   }
 
-  .card-head h2{
-    font-size:23px;
+  .hero h1{
+
+    font-size:47px;
   }
 
-  .card-body{
-    padding:20px;
+  .hero p{
+
+    font-size:15px;
+  }
+
+  .card{
+
+    padding:18px;
+
+    border-radius:16px;
   }
 
   .form-grid{
+
     grid-template-columns:1fr;
-    gap:0;
   }
 
-  .form-group.full{
+  .field.full{
+
     grid-column:auto;
   }
 
-  .button-row{
-    grid-template-columns:1fr;
+  .success-box{
+
+    padding:30px 20px;
   }
 
-  .cart-item{
-    grid-template-columns:62px 1fr;
+  .success-box h2{
+
+    font-size:42px;
   }
 
-  .cart-item img{
-    width:62px;
-    height:62px;
-  }
-
-  .cart-item-price{
-    grid-column:2;
-    text-align:left;
-  }
-
-  .success-card{
-    padding:38px 20px;
-  }
-
-  .success-card h2{
-    font-size:32px;
-  }
-
-  .footer-inner{
-    flex-direction:column;
-    align-items:flex-start;
-  }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- =========================
+
+<!-- =======================================================
      HEADER
-========================= -->
+======================================================= -->
 
 <header class="header">
 
   <div class="header-inner">
 
-    <a href="index.html" class="logo">
+    <a
+      class="logo"
+      href="index.html"
+    >
 
       <div class="logo-mark">
         CG
       </div>
 
       <div class="logo-text">
-        <strong>CHATPETCH GROUP</strong>
-        <span>FLOORING MATERIALS</span>
+
+        <strong>
+          CHATPETCH GROUP
+        </strong>
+
+        <span>
+          Premium Flooring Materials
+        </span>
+
       </div>
 
     </a>
+
 
     <nav class="nav">
 
       <a href="index.html">
         หน้าแรก
-      </a>
-
-      <a href="about.html">
-        เกี่ยวกับเรา
       </a>
 
       <a href="products.html">
@@ -1194,17 +1440,11 @@ textarea.input{
         บริการ
       </a>
 
-      <a href="projects.html">
-        ผลงาน
-      </a>
-
-      <a href="contact.html">
-        ติดต่อเรา
-      </a>
-
-      <a href="cart.html" class="nav-shop active">
+      <a
+        href="cart.html"
+        class="nav-cart"
+      >
         🛒 ตะกร้า
-        <span id="cartCount" class="cart-count">0</span>
       </a>
 
     </nav>
@@ -1214,156 +1454,153 @@ textarea.input{
 </header>
 
 
-<!-- =========================
+<!-- =======================================================
      CHECKOUT
-========================= -->
+======================================================= -->
 
-<div id="checkoutPage">
+<main id="checkoutPage">
 
-  <section class="page-hero">
+  <section class="page">
 
-    <div class="hero-glow"></div>
-
-    <div class="hero-inner">
+    <div class="hero">
 
       <div class="eyebrow">
         CHECKOUT
       </div>
 
       <h1>
-        ชำระ<span>เงิน</span>
+        ยืนยัน<br>
+        <span>คำสั่งซื้อ</span>
       </h1>
 
       <p>
-        กรุณากรอกข้อมูลสำหรับจัดส่งสินค้า
-        และเลือกวิธีการชำระเงินเพื่อยืนยันคำสั่งซื้อ
+        กรุณากรอกข้อมูลสำหรับจัดส่ง
+        เลือกวิธีการชำระเงิน
+        และแนบหลักฐานการชำระเงิน
+        หากมี
       </p>
-
-      <div class="hero-number">
-        03
-      </div>
 
     </div>
 
-  </section>
+
+    <div
+      class="alert"
+      id="alert"
+    ></div>
 
 
-  <main class="container">
+    <div class="checkout-grid">
 
-    <div class="checkout-layout">
 
-      <!-- =========================
-           CUSTOMER FORM
-      ========================= -->
+      <!-- =================================================
+           FORM
+      ================================================== -->
 
-      <section class="card">
+      <div>
 
-        <div class="card-head">
+        <section class="card">
 
-          <h2>
-            👤 ข้อมูลผู้สั่งซื้อ
-          </h2>
+          <div class="card-title">
 
-          <p>
-            ข้อมูลนี้จะใช้สำหรับติดต่อและจัดส่งสินค้า
-          </p>
+            <h2>
+              ข้อมูลลูกค้า
+            </h2>
 
-        </div>
+            <span>
+              CUSTOMER
+            </span>
 
-        <div class="card-body">
+          </div>
+
 
           <form id="checkoutForm">
 
             <div class="form-grid">
 
-              <div class="form-group">
+
+              <div class="field">
 
                 <label>
-                  ชื่อ - นามสกุล
-                  <span class="required">*</span>
+                  ชื่อ-นามสกุล
+                  <em>*</em>
                 </label>
 
                 <input
-                  id="customerName"
-                  class="input"
                   type="text"
-                  placeholder="กรอกชื่อ - นามสกุล"
+                  id="customerName"
+                  placeholder="ชื่อสำหรับจัดส่ง"
                   required
                 >
 
               </div>
 
 
-              <div class="form-group">
+              <div class="field">
 
                 <label>
                   เบอร์โทรศัพท์
-                  <span class="required">*</span>
+                  <em>*</em>
                 </label>
 
                 <input
-                  id="customerPhone"
-                  class="input"
                   type="tel"
-                  placeholder="เช่น 082-8223678"
+                  id="customerPhone"
+                  placeholder="08x-xxx-xxxx"
                   required
                 >
 
               </div>
 
 
-              <div class="form-group">
+              <div class="field">
 
                 <label>
                   อีเมล
                 </label>
 
                 <input
-                  id="customerEmail"
-                  class="input"
                   type="email"
+                  id="customerEmail"
                   placeholder="example@email.com"
                 >
 
               </div>
 
 
-              <div class="form-group">
+              <div class="field">
 
                 <label>
                   จังหวัด
-                  <span class="required">*</span>
+                  <em>*</em>
                 </label>
 
                 <input
-                  id="customerProvince"
-                  class="input"
                   type="text"
-                  placeholder="เช่น สงขลา"
+                  id="customerProvince"
+                  placeholder="จังหวัด"
                   required
                 >
 
               </div>
 
 
-              <div class="form-group full">
+              <div class="field full">
 
                 <label>
                   ที่อยู่จัดส่ง
-                  <span class="required">*</span>
+                  <em>*</em>
                 </label>
 
                 <textarea
                   id="customerAddress"
-                  class="input"
-                  placeholder="บ้านเลขที่ หมู่ ถนน ตำบล อำเภอ และรายละเอียดที่อยู่"
+                  placeholder="บ้านเลขที่ / หมู่ / ถนน / ตำบล / อำเภอ / จังหวัด / รหัสไปรษณีย์"
                   required
                 ></textarea>
 
               </div>
 
 
-              <div class="form-group full">
+              <div class="field full">
 
                 <label>
                   หมายเหตุเพิ่มเติม
@@ -1371,269 +1608,285 @@ textarea.input{
 
                 <textarea
                   id="customerNote"
-                  class="input"
-                  placeholder="เช่น เวลาที่สะดวกรับสินค้า หรือรายละเอียดเพิ่มเติม"
+                  placeholder="รายละเอียดเพิ่มเติมสำหรับทีมงาน เช่น ต้องการโทรก่อนส่งสินค้า"
                 ></textarea>
 
               </div>
 
             </div>
 
-
-            <!-- PAYMENT -->
-
-            <div style="margin-top:20px">
-
-              <div class="card-head" style="
-                margin:0 -27px 22px;
-                padding:20px 27px;
-              ">
-
-                <h2>
-                  💳 วิธีการชำระเงิน
-                </h2>
-
-                <p>
-                  กรุณาเลือกช่องทางที่ต้องการ
-                </p>
-
-              </div>
-
-
-              <div class="payment-list">
-
-                <div class="payment-option">
-
-                  <input
-                    id="paymentBank"
-                    type="radio"
-                    name="payment"
-                    value="bank_transfer"
-                    checked
-                  >
-
-                  <label
-                    for="paymentBank"
-                    class="payment-label"
-                  >
-
-                    <div class="payment-title">
-                      🏦 โอนเงินผ่านธนาคาร
-                    </div>
-
-                    <div class="payment-desc">
-                      ชำระโดยการโอนเงินเข้าบัญชีบริษัท
-                    </div>
-
-                  </label>
-
-                </div>
-
-
-                <div class="payment-option">
-
-                  <input
-                    id="paymentPromptpay"
-                    type="radio"
-                    name="payment"
-                    value="promptpay"
-                  >
-
-                  <label
-                    for="paymentPromptpay"
-                    class="payment-label"
-                  >
-
-                    <div class="payment-title">
-                      📱 PromptPay
-                    </div>
-
-                    <div class="payment-desc">
-                      ชำระผ่าน QR PromptPay ของบริษัท
-                    </div>
-
-                  </label>
-
-                </div>
-
-
-                <div class="payment-option">
-
-                  <input
-                    id="paymentCod"
-                    type="radio"
-                    name="payment"
-                    value="cod"
-                  >
-
-                  <label
-                    for="paymentCod"
-                    class="payment-label"
-                  >
-
-                    <div class="payment-title">
-                      💵 เก็บเงินปลายทาง
-                    </div>
-
-                    <div class="payment-desc">
-                      ชำระเงินเมื่อได้รับสินค้า
-                    </div>
-
-                  </label>
-
-                </div>
-
-              </div>
-
-
-              <div class="payment-info">
-
-                ข้อมูลบัญชีธนาคารและ QR PromptPay
-                จะแจ้งให้ลูกค้าทราบหลังยืนยันคำสั่งซื้อ
-                เนื่องจากระบบยังไม่ได้กำหนดข้อมูลบัญชีจริงไว้ในเว็บไซต์
-
-              </div>
-
-
-              <!-- SLIP -->
-
-              <div id="slipBox" class="slip-box show">
-
-                <div class="slip-title">
-                  🧾 แนบหลักฐานการโอนเงิน
-                </div>
-
-                <div class="slip-desc">
-
-                  หากคุณชำระเงินแล้ว
-                  สามารถแนบสลิปเพื่อให้เจ้าหน้าที่ตรวจสอบได้
-
-                  <br>
-
-                  <strong style="color:#aaa">
-                    หมายเหตุ:
-                  </strong>
-                  ระบบจะบันทึกออเดอร์ก่อน
-                  และการอัปโหลดสลิปจะทำงานเมื่อมี
-                  Supabase Storage bucket สำหรับสลิป
-
-                </div>
-
-                <input
-                  id="slipFile"
-                  class="file-input"
-                  type="file"
-                  accept="image/*,.pdf"
-                >
-
-                <div id="filePreview" class="file-preview">
-
-                  <img
-                    id="previewImage"
-                    alt="ตัวอย่างสลิป"
-                  >
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="button-row">
-
-              <a
-                href="cart.html"
-                class="btn btn-dark"
-                style="
-                  display:flex;
-                  align-items:center;
-                  justify-content:center;
-                "
-              >
-                ← กลับตะกร้า
-              </a>
-
-              <button
-                id="submitBtn"
-                class="btn"
-                type="submit"
-              >
-                ยืนยันคำสั่งซื้อ →
-              </button>
-
-            </div>
-
           </form>
 
-        </div>
-
-      </section>
+        </section>
 
 
-      <!-- =========================
-           SUMMARY
-      ========================= -->
+        <!-- PAYMENT -->
 
-      <aside class="card sticky-summary">
+        <section
+          class="card"
+          style="margin-top:20px;"
+        >
 
-        <div class="card-head">
+          <div class="card-title">
 
-          <h2>
-            🛒 สรุปคำสั่งซื้อ
-          </h2>
+            <h2>
+              วิธีการชำระเงิน
+            </h2>
 
-          <p id="summaryCount">
-            0 รายการ
-          </p>
+            <span>
+              PAYMENT
+            </span>
 
-        </div>
+          </div>
 
-        <div class="card-body">
 
-          <div id="cartItems" class="cart-items"></div>
+          <div class="payment-list">
 
-          <div class="summary">
 
-            <div class="summary-row">
+            <div class="payment-option">
 
-              <span>
-                ยอดสินค้า
-              </span>
+              <input
+                type="radio"
+                name="payment"
+                id="paymentBank"
+                value="bank_transfer"
+                checked
+              >
 
-              <strong id="subtotal">
-                ฿0.00
-              </strong>
+              <label
+                class="payment-label"
+                for="paymentBank"
+              >
+
+                <div class="payment-name">
+                  🏦 โอนเงินผ่านธนาคาร
+                </div>
+
+                <div class="payment-description">
+                  ทีมงานจะแจ้งรายละเอียดบัญชีสำหรับชำระเงิน
+                  หลังได้รับคำสั่งซื้อ
+                </div>
+
+              </label>
 
             </div>
 
 
-            <div class="summary-row">
+            <div class="payment-option">
 
-              <span>
-                ค่าจัดส่ง
-              </span>
+              <input
+                type="radio"
+                name="payment"
+                id="paymentPromptPay"
+                value="promptpay"
+              >
 
-              <strong id="shipping">
-                ฿0.00
-              </strong>
+              <label
+                class="payment-label"
+                for="paymentPromptPay"
+              >
+
+                <div class="payment-name">
+                  📱 PromptPay
+                </div>
+
+                <div class="payment-description">
+                  ทีมงานจะแจ้ง QR Code สำหรับชำระเงิน
+                  หลังได้รับคำสั่งซื้อ
+                </div>
+
+              </label>
 
             </div>
 
 
-            <div class="summary-row total">
+            <div class="payment-option">
 
-              <span>
-                ยอดสุทธิ
-              </span>
+              <input
+                type="radio"
+                name="payment"
+                id="paymentCOD"
+                value="cod"
+              >
 
-              <strong id="total">
-                ฿0.00
-              </strong>
+              <label
+                class="payment-label"
+                for="paymentCOD"
+              >
+
+                <div class="payment-name">
+                  🚚 เก็บเงินปลายทาง
+                </div>
+
+                <div class="payment-description">
+                  ใช้ได้ตามเงื่อนไขการจัดส่งของบริษัท
+                </div>
+
+              </label>
 
             </div>
 
           </div>
+
+
+          <div
+            class="payment-info show"
+            id="paymentInfo"
+          >
+
+            <strong>
+              ข้อมูลการชำระเงิน
+            </strong>
+
+            <br>
+
+            ขณะนี้ยังไม่ได้ใส่ข้อมูลบัญชีธนาคาร
+            หรือ QR PromptPay จริงลงในเว็บไซต์
+
+            <br>
+
+            ทีมงานจะติดต่อกลับเพื่อแจ้งรายละเอียด
+            การชำระเงินหลังยืนยันคำสั่งซื้อ
+
+          </div>
+
+
+          <!-- SLIP -->
+
+          <div
+            class="slip-box"
+            id="slipBox"
+          >
+
+            <h3>
+              🧾 แนบสลิปการโอนเงิน
+            </h3>
+
+            <p>
+              หากชำระเงินแล้ว
+              สามารถแนบสลิปได้ทันที
+              ระบบจะผูกไฟล์สลิปเข้ากับเลขคำสั่งซื้ออัตโนมัติ
+            </p>
+
+
+            <div class="file-input">
+
+              <input
+                type="file"
+                id="slipFile"
+                accept="image/jpeg,image/png,image/webp,application/pdf"
+              >
+
+            </div>
+
+
+            <div
+              class="preview"
+              id="slipPreview"
+            >
+
+              <img
+                id="slipPreviewImage"
+                alt="Slip Preview"
+              >
+
+              <div
+                class="file-name"
+                id="slipFileName"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- =================================================
+           SUMMARY
+      ================================================== -->
+
+      <aside class="card summary-card">
+
+        <div class="card-title">
+
+          <h2>
+            สรุปคำสั่งซื้อ
+          </h2>
+
+          <span>
+            ORDER
+          </span>
+
+        </div>
+
+
+        <div
+          class="cart-items"
+          id="cartItems"
+        ></div>
+
+
+        <div class="summary-lines">
+
+          <div class="summary-line">
+
+            <span>
+              ยอดสินค้า
+            </span>
+
+            <strong id="subtotal">
+              ฿0.00
+            </strong>
+
+          </div>
+
+
+          <div class="summary-line">
+
+            <span>
+              ค่าจัดส่ง
+            </span>
+
+            <strong id="shipping">
+              ฿0.00
+            </strong>
+
+          </div>
+
+
+          <div class="summary-line total">
+
+            <span>
+              ยอดรวม
+            </span>
+
+            <strong id="total">
+              ฿0.00
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="order-btn"
+          id="submitBtn"
+          type="submit"
+          form="checkoutForm"
+        >
+          ยืนยันคำสั่งซื้อ
+        </button>
+
+
+        <div class="notice">
+
+          เมื่อกดยืนยัน
+          ระบบจะสร้างเลขคำสั่งซื้อ
+          และบันทึกข้อมูลลงระบบ
 
         </div>
 
@@ -1641,21 +1894,28 @@ textarea.input{
 
     </div>
 
-  </main>
+  </section>
 
-</div>
+</main>
 
 
-<!-- =========================
+<!-- =======================================================
      SUCCESS
-========================= -->
+======================================================= -->
 
-<section id="successScreen" class="success-screen">
+<section
+  class="success-screen"
+  id="successScreen"
+>
 
-  <div class="success-card">
+  <div class="success-box">
 
     <div class="success-icon">
       ✓
+    </div>
+
+    <div class="eyebrow">
+      ORDER CONFIRMED
     </div>
 
     <h2>
@@ -1664,44 +1924,34 @@ textarea.input{
 
     <p>
       ระบบได้รับคำสั่งซื้อของคุณเรียบร้อยแล้ว
-      เจ้าหน้าที่จะตรวจสอบข้อมูลและติดต่อกลับตามข้อมูลที่แจ้งไว้
+      ทีมงานบริษัท ฉัตรเพชร กรุ๊ป จำกัด
+      จะตรวจสอบข้อมูลและติดต่อกลับ
     </p>
 
-    <div class="order-number-success">
-
-      เลขที่คำสั่งซื้อ:
-      <span id="successOrderNumber">
-        -
-      </span>
-
+    <div
+      class="order-number-big"
+      id="successOrderNumber"
+    >
+      #
     </div>
 
     <p>
-      กรุณาเก็บเลขคำสั่งซื้อนี้ไว้สำหรับติดต่อบริษัท
+      กรุณาเก็บเลขคำสั่งซื้อนี้ไว้
+      สำหรับติดต่อสอบถามกับทีมงาน
     </p>
 
-    <div class="button-row" style="max-width:500px;margin:28px auto 0">
+    <div class="success-actions">
 
       <a
+        class="btn btn-gold"
         href="products.html"
-        class="btn btn-dark"
-        style="
-          display:flex;
-          align-items:center;
-          justify-content:center;
-        "
       >
         เลือกซื้อสินค้าเพิ่ม
       </a>
 
       <a
-        href="index.html"
         class="btn"
-        style="
-          display:flex;
-          align-items:center;
-          justify-content:center;
-        "
+        href="index.html"
       >
         กลับหน้าแรก
       </a>
@@ -1713,37 +1963,30 @@ textarea.input{
 </section>
 
 
-<!-- FOOTER -->
+<!-- =======================================================
+     LOADING
+======================================================= -->
 
-<footer class="footer">
+<div
+  class="loading"
+  id="loading"
+>
 
-  <div class="container footer-inner">
+  <div class="loading-box">
 
-    <div>
+    <div class="spinner"></div>
 
-      <strong>
-        CHATPETCH GROUP CO., LTD.
-      </strong>
-
-      <br>
-
-      โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท
-
-    </div>
-
-    <div>
-      © 2026 Chatpetch Group
+    <div id="loadingText">
+      กำลังบันทึกคำสั่งซื้อ...
     </div>
 
   </div>
 
-</footer>
-
-
-<div id="toast" class="toast"></div>
+</div>
 
 
 <script>
+
 /* =========================================================
    SUPABASE
 ========================================================= */
@@ -1760,455 +2003,425 @@ const checkoutClient =
     SUPABASE_KEY,
     {
       auth:{
-        persistSession:true,
-        autoRefreshToken:true,
-        detectSessionInUrl:true
+        persistSession:false,
+        autoRefreshToken:false,
+        detectSessionInUrl:false
       }
     }
   );
+
+
+/* =========================================================
+   CONSTANTS
+========================================================= */
+
+const CART_KEY =
+  "chatpetch_cart";
+
+const BUCKET =
+  "payment-slips";
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let cart = [];
+
+let subtotalValue = 0;
+
+let shippingValue = 0;
+
+let totalValue = 0;
+
+let selectedSlip = null;
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const checkoutForm =
+  document.getElementById(
+    "checkoutForm"
+  );
+
+const cartItems =
+  document.getElementById(
+    "cartItems"
+  );
+
+const subtotalEl =
+  document.getElementById(
+    "subtotal"
+  );
+
+const shippingEl =
+  document.getElementById(
+    "shipping"
+  );
+
+const totalEl =
+  document.getElementById(
+    "total"
+  );
+
+const submitBtn =
+  document.getElementById(
+    "submitBtn"
+  );
+
+const slipFile =
+  document.getElementById(
+    "slipFile"
+  );
+
+const slipPreview =
+  document.getElementById(
+    "slipPreview"
+  );
+
+const slipPreviewImage =
+  document.getElementById(
+    "slipPreviewImage"
+  );
+
+const slipFileName =
+  document.getElementById(
+    "slipFileName"
+  );
+
+const paymentInfo =
+  document.getElementById(
+    "paymentInfo"
+  );
+
+const slipBox =
+  document.getElementById(
+    "slipBox"
+  );
+
+const alertBox =
+  document.getElementById(
+    "alert"
+  );
+
+const loading =
+  document.getElementById(
+    "loading"
+  );
+
+const loadingText =
+  document.getElementById(
+    "loadingText"
+  );
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  init
+);
+
+function init(){
+
+  loadCart();
+
+  setupPaymentEvents();
+
+  setupSlipPreview();
+
+  checkoutForm.addEventListener(
+    "submit",
+    submitOrder
+  );
+
+}
 
 
 /* =========================================================
    CART
 ========================================================= */
 
-const CART_KEY =
-  "chatpetch_cart";
-
-let cart = [];
-
-let selectedSlipFile = null;
-
-
-function readCart(){
+function loadCart(){
 
   try{
 
-    const raw =
-      localStorage.getItem(
-        CART_KEY
+    cart =
+      JSON.parse(
+        localStorage.getItem(
+          CART_KEY
+        ) || "[]"
       );
-
-    const parsed =
-      raw
-        ? JSON.parse(raw)
-        : [];
-
-    return Array.isArray(parsed)
-      ? parsed
-      : [];
 
   }catch(error){
 
-    console.error(error);
+    cart = [];
 
-    return [];
-  }
-}
-
-
-function saveCart(){
-
-  localStorage.setItem(
-    CART_KEY,
-    JSON.stringify(cart)
-  );
-}
-
-
-function getNumericPrice(item){
-
-  if(
-    typeof item.numericPrice ===
-    "number"
-  ){
-
-    return item.numericPrice;
   }
 
-  if(
-    typeof item.price ===
-    "number"
-  ){
+  cart =
+    Array.isArray(cart)
+      ? cart
+      : [];
 
-    return item.price;
-  }
+  renderCart();
 
-  const text =
-    String(
-      item.priceLabel ||
-      item.price ||
-      "0"
-    );
-
-  const number =
-    parseFloat(
-      text
-        .replace(/,/g,"")
-        .replace(/[^\d.]/g,"")
-    );
-
-  return Number.isFinite(number)
-    ? number
-    : 0;
 }
 
-
-function formatMoney(value){
-
-  return Number(
-    value || 0
-  ).toLocaleString(
-    "th-TH",
-    {
-      minimumFractionDigits:2,
-      maximumFractionDigits:2
-    }
-  );
-}
-
-
-/* =========================================================
-   RENDER CART
-========================================================= */
 
 function renderCart(){
 
-  const count =
-    cart.reduce(
-      (sum,item)=>
-        sum +
-        Number(
-          item.quantity || 0
-        ),
-      0
-    );
-
-  document.getElementById(
-    "cartCount"
-  ).textContent =
-    count;
-
-
-  document.getElementById(
-    "summaryCount"
-  ).textContent =
-    `${count} รายการ`;
-
-
-  const container =
-    document.getElementById(
-      "cartItems"
-    );
-
-
   if(!cart.length){
 
-    container.innerHTML =
-      `
-        <div class="empty">
-
-          <div class="empty-icon">
-            🛒
-          </div>
-
-          <div style="font-size:20px">
-            ไม่มีสินค้าในตะกร้า
-          </div>
-
-          <div style="
-            margin-top:8px;
-            font-size:15px;
-          ">
-            กรุณาเลือกสินค้าก่อนดำเนินการชำระเงิน
-          </div>
-
-          <a
-            href="products.html"
-            class="btn"
-            style="
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              margin-top:20px;
-            "
-          >
-            ไปเลือกสินค้า
-          </a>
-
+    cartItems.innerHTML = `
+      <div
+        style="
+          padding:35px 10px;
+          text-align:center;
+          color:#777;
+        "
+      >
+        <div
+          style="
+            font-size:40px;
+            margin-bottom:10px;
+          "
+        >
+          🛒
         </div>
-      `;
 
-    document.getElementById(
-      "subtotal"
-    ).textContent =
-      "฿0.00";
+        ไม่มีสินค้าในตะกร้า
+      </div>
+    `;
 
-    document.getElementById(
-      "shipping"
-    ).textContent =
-      "฿0.00";
-
-    document.getElementById(
-      "total"
-    ).textContent =
-      "฿0.00";
-
-    document.getElementById(
-      "submitBtn"
-    ).disabled = true;
+    submitBtn.disabled = true;
 
     return;
+
   }
 
-
-  document.getElementById(
-    "submitBtn"
-  ).disabled = false;
+  submitBtn.disabled = false;
 
 
-  let subtotal = 0;
+  subtotalValue =
+    cart.reduce(
+      (sum,item) => {
 
-
-  container.innerHTML =
-    cart.map(
-      item => {
-
-        const numericPrice =
-          getNumericPrice(item);
+        const price =
+          Number(
+            item.numericPrice ||
+            item.price ||
+            0
+          );
 
         const quantity =
           Number(
             item.quantity || 1
           );
 
-        const lineTotal =
-          numericPrice *
-          quantity;
-
-        subtotal +=
-          lineTotal;
-
-
-        let optionText = "";
-
-        if(item.selectedOption){
-
-          if(
-            typeof item.selectedOption ===
-            "string"
-          ){
-
-            optionText =
-              item.selectedOption;
-
-          }else{
-
-            optionText =
-              item.selectedOption.label ||
-              item.selectedOption.name ||
-              "";
-          }
-        }
-
-
-        return `
-          <div class="cart-item">
-
-            <img
-              src="${escapeHTML(
-                item.image || ""
-              )}"
-              alt=""
-              onerror="
-                this.style.opacity='.25';
-              "
-            >
-
-            <div>
-
-              <div class="cart-item-name">
-                ${escapeHTML(
-                  item.name ||
-                  "สินค้า"
-                )}
-              </div>
-
-              <div class="cart-item-meta">
-
-                จำนวน
-                ${quantity.toLocaleString("th-TH")}
-
-                ${
-                  optionText
-                    ? " • " +
-                      escapeHTML(
-                        optionText
-                      )
-                    : ""
-                }
-
-              </div>
-
-              <div class="cart-item-meta">
-                ${escapeHTML(
-                  item.priceLabel ||
-                  ""
-                )}
-              </div>
-
-            </div>
-
-            <div class="cart-item-price">
-
-              ฿${formatMoney(
-                lineTotal
-              )}
-
-            </div>
-
-          </div>
-        `;
-      }
-    )
-    .join("");
-
-
-  const shipping =
-    0;
-
-  const total =
-    subtotal +
-    shipping;
-
-
-  document.getElementById(
-    "subtotal"
-  ).textContent =
-    "฿" +
-    formatMoney(subtotal);
-
-
-  document.getElementById(
-    "shipping"
-  ).textContent =
-    "฿" +
-    formatMoney(shipping);
-
-
-  document.getElementById(
-    "total"
-  ).textContent =
-    "฿" +
-    formatMoney(total);
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value){
-
-  if(
-    value === null ||
-    value === undefined
-  ){
-    return "";
-  }
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
-
-
-/* =========================================================
-   TOTAL
-========================================================= */
-
-function calculateSubtotal(){
-
-  return cart.reduce(
-    (sum,item)=>{
-
-      const price =
-        getNumericPrice(item);
-
-      const quantity =
-        Number(
-          item.quantity || 1
+        return (
+          sum +
+          price * quantity
         );
 
-      return (
-        sum +
-        price *
-        quantity
-      );
+      },
+      0
+    );
 
-    },
-    0
-  );
+
+  /*
+    ตอนนี้ยังไม่กำหนด
+    ค่าจัดส่งตายตัว
+  */
+
+  shippingValue = 0;
+
+  totalValue =
+    subtotalValue +
+    shippingValue;
+
+
+  cartItems.innerHTML =
+    cart
+      .map(
+        renderCartItem
+      )
+      .join("");
+
+
+  subtotalEl.textContent =
+    formatBaht(
+      subtotalValue
+    );
+
+  shippingEl.textContent =
+    shippingValue > 0
+      ? formatBaht(shippingValue)
+      : "แจ้งภายหลัง";
+
+  totalEl.textContent =
+    formatBaht(
+      totalValue
+    );
+
 }
 
 
-function calculateShipping(){
+function renderCartItem(item){
 
-  return 0;
+  const image =
+    item.image ||
+    "assets/products/placeholder.jpg";
+
+  const quantity =
+    Number(
+      item.quantity || 1
+    );
+
+  const price =
+    Number(
+      item.numericPrice ||
+      item.price ||
+      0
+    );
+
+  let optionText = "";
+
+  if(item.selectedOption){
+
+    if(
+      typeof item.selectedOption ===
+      "object"
+    ){
+
+      optionText =
+        item.selectedOption.label ||
+        item.selectedOption.name ||
+        item.selectedOption.size ||
+        "";
+
+    }else{
+
+      optionText =
+        String(
+          item.selectedOption
+        );
+
+    }
+
+  }
+
+  return `
+
+    <div class="cart-item">
+
+      <img
+        src="${escapeAttribute(image)}"
+        alt=""
+        onerror="
+          this.style.opacity='.25'
+        "
+      >
+
+      <div>
+
+        <div class="item-name">
+          ${escapeHtml(
+            item.name || "-"
+          )}
+        </div>
+
+        <div class="item-meta">
+
+          จำนวน:
+          ${quantity}
+
+          ${
+            optionText
+            ? `
+              <br>
+              ${escapeHtml(optionText)}
+            `
+            : ""
+          }
+
+        </div>
+
+      </div>
+
+      <div class="item-price">
+
+        ${formatBaht(
+          price * quantity
+        )}
+
+      </div>
+
+    </div>
+
+  `;
+
 }
 
 
 /* =========================================================
-   PAYMENT UI
+   PAYMENT
 ========================================================= */
 
-const paymentInputs =
-  document.querySelectorAll(
-    'input[name="payment"]'
-  );
+function setupPaymentEvents(){
 
-paymentInputs.forEach(
-  input => {
-
-    input.addEventListener(
-      "change",
-      updatePaymentUI
+  const radios =
+    document.querySelectorAll(
+      'input[name="payment"]'
     );
 
-  }
-);
+  radios.forEach(
+    radio => {
+
+      radio.addEventListener(
+        "change",
+        updatePaymentUI
+      );
+
+    }
+  );
+
+}
 
 
 function updatePaymentUI(){
 
-  const selected =
+  const payment =
     document.querySelector(
       'input[name="payment"]:checked'
     )?.value;
 
-  const slipBox =
-    document.getElementById(
-      "slipBox"
-    );
-
-
   if(
-    selected === "cod"
+    payment === "cod"
   ){
 
-    slipBox.classList.remove(
+    paymentInfo.classList.remove(
       "show"
     );
+
+    slipBox.style.display =
+      "none";
 
   }else{
 
-    slipBox.classList.add(
+    paymentInfo.classList.add(
       "show"
     );
+
+    slipBox.style.display =
+      "block";
+
   }
+
 }
 
 
@@ -2216,81 +2429,718 @@ function updatePaymentUI(){
    SLIP PREVIEW
 ========================================================= */
 
-document.getElementById(
-  "slipFile"
-).addEventListener(
-  "change",
-  event => {
+function setupSlipPreview(){
 
-    const file =
-      event.target.files?.[0];
+  slipFile.addEventListener(
+    "change",
+    handleSlipFile
+  );
 
-    selectedSlipFile =
-      file || null;
-
-    const preview =
-      document.getElementById(
-        "filePreview"
-      );
-
-    const image =
-      document.getElementById(
-        "previewImage"
-      );
+}
 
 
-    if(!file){
+function handleSlipFile(){
 
-      preview.classList.remove(
-        "show"
-      );
+  selectedSlip =
+    slipFile.files?.[0] || null;
 
-      return;
-    }
+  slipPreview.classList.remove(
+    "show"
+  );
+
+  if(!selectedSlip){
+
+    return;
+
+  }
 
 
-    if(
-      !file.type.startsWith(
-        "image/"
-      )
-    ){
+  const maxSize =
+    10 * 1024 * 1024;
 
-      preview.classList.remove(
-        "show"
-      );
 
-      return;
-    }
+  if(
+    selectedSlip.size >
+    maxSize
+  ){
 
+    slipFile.value = "";
+
+    selectedSlip = null;
+
+    showAlert(
+      "error",
+      "ไฟล์สลิปต้องมีขนาดไม่เกิน 10 MB"
+    );
+
+    return;
+
+  }
+
+
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "application/pdf"
+  ];
+
+
+  if(
+    !allowedTypes.includes(
+      selectedSlip.type
+    )
+  ){
+
+    slipFile.value = "";
+
+    selectedSlip = null;
+
+    showAlert(
+      "error",
+      "รองรับเฉพาะ JPG, PNG, WEBP หรือ PDF"
+    );
+
+    return;
+
+  }
+
+
+  slipFileName.textContent =
+    `${selectedSlip.name} — ${formatFileSize(selectedSlip.size)}`;
+
+
+  if(
+    selectedSlip.type.startsWith(
+      "image/"
+    )
+  ){
 
     const reader =
       new FileReader();
 
-
     reader.onload =
       event => {
 
-        image.src =
+        slipPreviewImage.src =
           event.target.result;
 
-        preview.classList.add(
+        slipPreview.classList.add(
           "show"
         );
+
       };
 
-
     reader.readAsDataURL(
-      file
+      selectedSlip
     );
+
+  }else{
+
+    slipPreviewImage.removeAttribute(
+      "src"
+    );
+
+    slipPreview.classList.add(
+      "show"
+    );
+
   }
-);
+
+}
 
 
 /* =========================================================
-   CREATE ORDER NUMBER
+   SUBMIT ORDER
 ========================================================= */
 
-function createOrderNumber(){
+async function submitOrder(event){
+
+  event.preventDefault();
+
+
+  if(!cart.length){
+
+    showAlert(
+      "error",
+      "ไม่มีสินค้าในตะกร้า"
+    );
+
+    return;
+
+  }
+
+
+  const customer =
+    getCustomerData();
+
+
+  if(
+    !customer.name ||
+    !customer.phone ||
+    !customer.province ||
+    !customer.address
+  ){
+
+    showAlert(
+      "error",
+      "กรุณากรอกข้อมูลลูกค้าให้ครบถ้วน"
+    );
+
+    return;
+
+  }
+
+
+  const payment =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    )?.value ||
+    "bank_transfer";
+
+
+  if(
+    payment !== "cod" &&
+    selectedSlip
+  ){
+
+    if(
+      selectedSlip.size >
+      10 * 1024 * 1024
+    ){
+
+      showAlert(
+        "error",
+        "ไฟล์สลิปมีขนาดใหญ่เกิน 10 MB"
+      );
+
+      return;
+
+    }
+
+  }
+
+
+  hideAlert();
+
+  setLoading(
+    true,
+    "กำลังสร้างคำสั่งซื้อ..."
+  );
+
+
+  /*
+    สร้าง UUID ฝั่ง Browser
+    เพื่อให้รู้ order_id ก่อน upload slip
+  */
+
+  const orderId =
+    crypto.randomUUID();
+
+
+  const orderNumber =
+    generateOrderNumber();
+
+
+  /*
+    token นี้จะถูกเก็บใน order
+    และใช้ยืนยันว่า customer
+    สามารถแนบ slip ให้ order นี้ได้
+  */
+
+  const slipToken =
+    crypto.randomUUID();
+
+
+  try{
+
+
+    /* =====================================================
+       1. CREATE ORDER
+    ===================================================== */
+
+    const orderPayload = {
+
+      id:
+        orderId,
+
+      order_number:
+        orderNumber,
+
+      customer_name:
+        customer.name,
+
+      customer_phone:
+        customer.phone,
+
+      customer_email:
+        customer.email,
+
+      customer_province:
+        customer.province,
+
+      customer_address:
+        customer.address,
+
+      customer_note:
+        customer.note,
+
+      payment_method:
+        payment,
+
+      subtotal:
+        subtotalValue,
+
+      shipping_fee:
+        shippingValue,
+
+      total:
+        totalValue,
+
+      status:
+        "pending",
+
+      slip_path:
+        null,
+
+      slip_token:
+        slipToken,
+
+      payment_verified:
+        false
+
+    };
+
+
+    const {
+      error:orderError
+    } =
+      await checkoutClient
+        .from("orders")
+        .insert(
+          orderPayload
+        );
+
+
+    if(orderError){
+
+      throw new Error(
+        "ไม่สามารถสร้างคำสั่งซื้อ: " +
+        orderError.message
+      );
+
+    }
+
+
+    /* =====================================================
+       2. CREATE ORDER ITEMS
+    ===================================================== */
+
+    setLoading(
+      true,
+      "กำลังบันทึกรายการสินค้า..."
+    );
+
+
+    const itemRows =
+      cart.map(
+        item => {
+
+          const unitPrice =
+            Number(
+              item.numericPrice ||
+              item.price ||
+              0
+            );
+
+          const quantity =
+            Number(
+              item.quantity || 1
+            );
+
+          return {
+
+            id:
+              crypto.randomUUID(),
+
+            order_id:
+              orderId,
+
+            product_id:
+              item.productId ||
+              item.id ||
+              null,
+
+            product_name:
+              item.name ||
+              "-",
+
+            product_image:
+              item.image ||
+              null,
+
+            category:
+              item.category ||
+              null,
+
+            quantity:
+              quantity,
+
+            selected_option:
+              item.selectedOption ||
+              null,
+
+            price_label:
+              item.priceLabel ||
+              null,
+
+            unit_price:
+              unitPrice,
+
+            line_total:
+              unitPrice *
+              quantity
+
+          };
+
+        }
+      );
+
+
+    const {
+      error:itemError
+    } =
+      await checkoutClient
+        .from("order_items")
+        .insert(
+          itemRows
+        );
+
+
+    if(itemError){
+
+      /*
+        หากรายการสินค้า insert ไม่สำเร็จ
+        เราจะหยุดไว้ก่อน
+        เพื่อไม่ให้ลูกค้าเข้าใจว่า
+        order สมบูรณ์
+      */
+
+      throw new Error(
+        "ไม่สามารถบันทึกรายการสินค้า: " +
+        itemError.message
+      );
+
+    }
+
+
+    /* =====================================================
+       3. UPLOAD SLIP
+    ===================================================== */
+
+    let uploadedSlipPath =
+      null;
+
+
+    if(
+      payment !== "cod" &&
+      selectedSlip
+    ){
+
+      setLoading(
+        true,
+        "กำลังอัปโหลดสลิป..."
+      );
+
+
+      const safeFileName =
+        createSafeFileName(
+          selectedSlip.name
+        );
+
+
+      /*
+        เก็บไฟล์ในโฟลเดอร์ตาม order UUID
+
+        payment-slips/
+          order-id/
+            timestamp-filename.jpg
+      */
+
+      const filePath =
+        `${orderId}/${Date.now()}-${safeFileName}`;
+
+
+      const {
+        error:uploadError
+      } =
+        await checkoutClient
+          .storage
+          .from(BUCKET)
+          .upload(
+            filePath,
+            selectedSlip,
+            {
+              cacheControl:"3600",
+              upsert:false,
+              contentType:
+                selectedSlip.type
+            }
+          );
+
+
+      if(uploadError){
+
+        /*
+          Order ถูกสร้างแล้ว
+          แต่แจ้งชัดเจนว่าสลิปอัปโหลดไม่ได้
+        */
+
+        console.error(
+          "Slip upload error:",
+          uploadError
+        );
+
+        showAlert(
+          "error",
+          "สร้างคำสั่งซื้อแล้ว แต่ไม่สามารถอัปโหลดสลิปได้ กรุณาอย่าเพิ่งปิดหน้านี้"
+        );
+
+        setLoading(
+          false
+        );
+
+        /*
+          ยังให้ลูกค้าเห็นเลข Order
+          เพื่อให้สามารถติดต่อทีมงาน
+        */
+
+        showSuccess(
+          orderNumber
+        );
+
+        return;
+
+      }
+
+
+      uploadedSlipPath =
+        filePath;
+
+
+      /* =================================================
+         4. ATTACH SLIP TO ORDER
+      ================================================= */
+
+      setLoading(
+        true,
+        "กำลังเชื่อมสลิปกับคำสั่งซื้อ..."
+      );
+
+
+      const {
+        data:attachResult,
+        error:attachError
+      } =
+        await checkoutClient
+          .rpc(
+            "attach_payment_slip",
+            {
+              p_order_id:
+                orderId,
+
+              p_slip_token:
+                slipToken,
+
+              p_slip_path:
+                uploadedSlipPath
+            }
+          );
+
+
+      if(attachError){
+
+        console.error(
+          "Attach slip error:",
+          attachError
+        );
+
+        /*
+          Order ยังอยู่
+          Slip ยังอยู่ใน Storage
+          แต่ไม่สามารถผูกได้
+        */
+
+        showAlert(
+          "error",
+          "สร้างคำสั่งซื้อแล้ว แต่ไม่สามารถเชื่อมสลิปกับออเดอร์ได้ กรุณาติดต่อทีมงานพร้อมเลขคำสั่งซื้อ"
+        );
+
+        setLoading(
+          false
+        );
+
+        showSuccess(
+          orderNumber
+        );
+
+        return;
+
+      }
+
+
+      if(
+        attachResult !== true
+      ){
+
+        showAlert(
+          "error",
+          "ไม่สามารถยืนยันไฟล์สลิปกับคำสั่งซื้อได้ กรุณาติดต่อทีมงาน"
+        );
+
+        setLoading(
+          false
+        );
+
+        showSuccess(
+          orderNumber
+        );
+
+        return;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       5. SUCCESS
+    ===================================================== */
+
+    setLoading(
+      true,
+      "ดำเนินการเสร็จสิ้น..."
+    );
+
+
+    /*
+      ล้างตะกร้า
+    */
+
+    localStorage.removeItem(
+      CART_KEY
+    );
+
+
+    /*
+      event เผื่อหน้าอื่นใช้
+    */
+
+    window.dispatchEvent(
+      new Event(
+        "cartUpdated"
+      )
+    );
+
+
+    setLoading(
+      false
+    );
+
+
+    showSuccess(
+      orderNumber
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Checkout error:",
+      error
+    );
+
+    setLoading(
+      false
+    );
+
+    showAlert(
+      "error",
+      error.message ||
+      "เกิดข้อผิดพลาดในการสร้างคำสั่งซื้อ"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   CUSTOMER DATA
+========================================================= */
+
+function getCustomerData(){
+
+  return {
+
+    name:
+      document
+        .getElementById(
+          "customerName"
+        )
+        .value
+        .trim(),
+
+    phone:
+      document
+        .getElementById(
+          "customerPhone"
+        )
+        .value
+        .trim(),
+
+    email:
+      document
+        .getElementById(
+          "customerEmail"
+        )
+        .value
+        .trim(),
+
+    province:
+      document
+        .getElementById(
+          "customerProvince"
+        )
+        .value
+        .trim(),
+
+    address:
+      document
+        .getElementById(
+          "customerAddress"
+        )
+        .value
+        .trim(),
+
+    note:
+      document
+        .getElementById(
+          "customerNote"
+        )
+        .value
+        .trim()
+
+  };
+
+}
+
+
+/* =========================================================
+   ORDER NUMBER
+========================================================= */
+
+function generateOrderNumber(){
 
   const now =
     new Date();
@@ -2314,598 +3164,259 @@ function createOrderNumber(){
       Math.random() * 9000
     );
 
-  return (
-    "CG" +
-    year +
-    month +
-    day +
-    "-" +
-    random
-  );
+  return `CG-${year}${month}${day}-${random}`;
+
 }
 
 
 /* =========================================================
-   UUID
+   SUCCESS
 ========================================================= */
 
-function createUUID(){
-
-  if(
-    crypto &&
-    crypto.randomUUID
-  ){
-
-    return crypto.randomUUID();
-  }
-
-  return (
-    "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
-  ).replace(
-    /[xy]/g,
-    char => {
-
-      const random =
-        Math.random() * 16 | 0;
-
-      const value =
-        char === "x"
-          ? random
-          : (
-              random & 0x3
-            ) | 0x8;
-
-      return value.toString(16);
-    }
-  );
-}
-
-
-/* =========================================================
-   UPLOAD SLIP
-========================================================= */
-
-async function uploadSlip(
-  orderId,
-  file
+function showSuccess(
+  orderNumber
 ){
 
-  /*
-    ระบบนี้จะพยายามอัปโหลดไปยัง bucket
-    ชื่อ "payment-slips"
-
-    หากยังไม่มี bucket
-    ออเดอร์จะยังถูกสร้างสำเร็จ
-    และระบบจะไม่ทำให้ออเดอร์ล้มเหลว
-    เพียงเพราะยังไม่มี Storage
-  */
-
-  if(!file){
-    return null;
-  }
+  document
+    .getElementById(
+      "checkoutPage"
+    )
+    .style.display =
+    "none";
 
 
-  try{
-
-    const extension =
-      (
-        file.name
-          .split(".")
-          .pop() ||
-        "jpg"
-      )
-      .toLowerCase();
-
-
-    const filePath =
-      `${orderId}/${Date.now()}.${extension}`;
-
-
-    const {
-      error
-    } =
-      await checkoutClient
-        .storage
-        .from("payment-slips")
-        .upload(
-          filePath,
-          file,
-          {
-            upsert:false,
-            contentType:
-              file.type ||
-              "application/octet-stream"
-          }
-        );
-
-
-    if(error){
-
-      console.warn(
-        "Slip upload skipped:",
-        error.message
-      );
-
-      return null;
-    }
-
-
-    return filePath;
-
-  }catch(error){
-
-    console.warn(
-      "Slip upload skipped:",
-      error
+  document
+    .getElementById(
+      "successScreen"
+    )
+    .classList.add(
+      "show"
     );
 
-    return null;
-  }
+
+  document
+    .getElementById(
+      "successOrderNumber"
+    )
+    .textContent =
+    `#${orderNumber}`;
+
+
+  window.scrollTo(
+    {
+      top:0,
+      behavior:"smooth"
+    }
+  );
+
 }
 
 
 /* =========================================================
-   SUBMIT CHECKOUT
+   ALERT
 ========================================================= */
 
-document.getElementById(
-  "checkoutForm"
-).addEventListener(
-  "submit",
-  async event => {
+function showAlert(
+  type,
+  message
+){
 
-    event.preventDefault();
+  alertBox.className =
+    `alert ${type} show`;
 
+  alertBox.textContent =
+    message;
 
-    if(!cart.length){
-
-      showToast(
-        "ไม่มีสินค้าในตะกร้า",
-        "error"
-      );
-
-      return;
+  window.scrollTo(
+    {
+      top:0,
+      behavior:"smooth"
     }
+  );
+
+}
 
 
-    const submitBtn =
-      document.getElementById(
-        "submitBtn"
-      );
+function hideAlert(){
+
+  alertBox.className =
+    "alert";
+
+  alertBox.textContent =
+    "";
+
+}
 
 
-    const customerName =
-      document.getElementById(
-        "customerName"
-      ).value.trim();
+/* =========================================================
+   LOADING
+========================================================= */
 
+function setLoading(
+  show,
+  text
+){
 
-    const customerPhone =
-      document.getElementById(
-        "customerPhone"
-      ).value.trim();
+  if(
+    typeof text ===
+    "string"
+  ){
 
+    loadingText.textContent =
+      text;
 
-    const customerEmail =
-      document.getElementById(
-        "customerEmail"
-      ).value.trim();
+  }
 
+  if(show){
 
-    const customerProvince =
-      document.getElementById(
-        "customerProvince"
-      ).value.trim();
-
-
-    const customerAddress =
-      document.getElementById(
-        "customerAddress"
-      ).value.trim();
-
-
-    const customerNote =
-      document.getElementById(
-        "customerNote"
-      ).value.trim();
-
-
-    const paymentMethod =
-      document.querySelector(
-        'input[name="payment"]:checked'
-      )?.value;
-
-
-    if(!customerName){
-
-      showToast(
-        "กรุณากรอกชื่อ - นามสกุล",
-        "error"
-      );
-
-      return;
-    }
-
-
-    if(!customerPhone){
-
-      showToast(
-        "กรุณากรอกเบอร์โทรศัพท์",
-        "error"
-      );
-
-      return;
-    }
-
-
-    if(!customerProvince){
-
-      showToast(
-        "กรุณากรอกจังหวัด",
-        "error"
-      );
-
-      return;
-    }
-
-
-    if(!customerAddress){
-
-      showToast(
-        "กรุณากรอกที่อยู่จัดส่ง",
-        "error"
-      );
-
-      return;
-    }
-
-
-    if(!paymentMethod){
-
-      showToast(
-        "กรุณาเลือกวิธีการชำระเงิน",
-        "error"
-      );
-
-      return;
-    }
-
+    loading.classList.add(
+      "show"
+    );
 
     submitBtn.disabled =
       true;
 
-    submitBtn.textContent =
-      "กำลังบันทึกคำสั่งซื้อ...";
+  }else{
 
+    loading.classList.remove(
+      "show"
+    );
 
-    const orderId =
-      createUUID();
-
-
-    const orderNumber =
-      createOrderNumber();
-
-
-    const subtotal =
-      calculateSubtotal();
-
-
-    const shippingFee =
-      calculateShipping();
-
-
-    const total =
-      subtotal +
-      shippingFee;
-
-
-    try{
-
-      /*
-        IMPORTANT:
-        ไม่ใช้ .select().single()
-        หลัง insert เพราะ RLS ของ orders
-        อนุญาต anonymous INSERT
-        แต่ไม่ได้เปิด anonymous SELECT
-      */
-
-      const {
-        error:
-          orderError
-      } =
-        await checkoutClient
-          .from("orders")
-          .insert({
-
-            id:
-              orderId,
-
-            order_number:
-              orderNumber,
-
-            customer_name:
-              customerName,
-
-            customer_phone:
-              customerPhone,
-
-            customer_email:
-              customerEmail ||
-              null,
-
-            customer_province:
-              customerProvince,
-
-            customer_address:
-              customerAddress,
-
-            customer_note:
-              customerNote ||
-              null,
-
-            payment_method:
-              paymentMethod,
-
-            subtotal:
-              subtotal,
-
-            shipping_fee:
-              shippingFee,
-
-            total:
-              total,
-
-            status:
-              "pending"
-
-          });
-
-
-      if(orderError){
-        throw orderError;
-      }
-
-
-      /* =========================
-         ORDER ITEMS
-      ========================= */
-
-      const orderItems =
-        cart.map(
-          item => {
-
-            const unitPrice =
-              getNumericPrice(
-                item
-              );
-
-            const quantity =
-              Number(
-                item.quantity || 1
-              );
-
-
-            return {
-
-              id:
-                createUUID(),
-
-              order_id:
-                orderId,
-
-              product_id:
-                item.productId ||
-                item.id ||
-                null,
-
-              product_name:
-                item.name ||
-                "สินค้า",
-
-              product_image:
-                item.image ||
-                null,
-
-              category:
-                item.category ||
-                null,
-
-              quantity:
-                quantity,
-
-              selected_option:
-                item.selectedOption ||
-                null,
-
-              price_label:
-                item.priceLabel ||
-                null,
-
-              unit_price:
-                unitPrice,
-
-              line_total:
-                unitPrice *
-                quantity
-
-            };
-          }
-        );
-
-
-      const {
-        error:
-          itemsError
-      } =
-        await checkoutClient
-          .from("order_items")
-          .insert(
-            orderItems
-          );
-
-
-      if(itemsError){
-
-        /*
-          หาก order_items ล้มเหลว
-          จะยังแจ้ง error ให้ผู้ใช้ทราบ
-        */
-
-        throw itemsError;
-      }
-
-
-      /* =========================
-         SLIP
-      ========================= */
-
-      if(
-        selectedSlipFile &&
-        paymentMethod !== "cod"
-      ){
-
-        const slipPath =
-          await uploadSlip(
-            orderId,
-            selectedSlipFile
-          );
-
-
-        if(slipPath){
-
-          /*
-            Anonymous UPDATE orders
-            ยังไม่ได้เปิด RLS ตามระบบที่ตั้งไว้
-
-            ดังนั้นจะไม่พยายาม update จาก browser
-            เพื่อไม่ทำให้ checkout ล้มเหลว
-
-            ภายหลังสามารถทำ Edge Function
-            หรือ policy สำหรับผูก slip อย่างปลอดภัยได้
-          */
-
-          console.log(
-            "Slip uploaded:",
-            slipPath
-          );
-        }
-      }
-
-
-      /* =========================
-         CLEAR CART
-      ========================= */
-
-      cart = [];
-
-      saveCart();
-
-
-      /* =========================
-         SUCCESS
-      ========================= */
-
-      document.getElementById(
-        "checkoutPage"
-      ).style.display =
-        "none";
-
-
-      document.getElementById(
-        "successScreen"
-      ).style.display =
-        "block";
-
-
-      document.getElementById(
-        "successOrderNumber"
-      ).textContent =
-        orderNumber;
-
-
-      window.scrollTo({
-        top:0,
-        behavior:"smooth"
-      });
-
-
-    }catch(error){
-
-      console.error(
-        "Checkout error:",
-        error
-      );
-
-
-      showToast(
-        "ไม่สามารถบันทึกคำสั่งซื้อได้: " +
-        (
-          error.message ||
-          "เกิดข้อผิดพลาด"
-        ),
-        "error"
-      );
-
-
-      submitBtn.disabled =
-        false;
-
-      submitBtn.textContent =
-        "ยืนยันคำสั่งซื้อ →";
-    }
+    submitBtn.disabled =
+      !cart.length;
 
   }
-);
 
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function showToast(
-  message,
-  type="success"
-){
-
-  const toast =
-    document.getElementById(
-      "toast"
-    );
-
-
-  toast.textContent =
-    message;
-
-
-  toast.className =
-    "toast show " +
-    type;
-
-
-  clearTimeout(
-    window.__toastTimer
-  );
-
-
-  window.__toastTimer =
-    setTimeout(
-      ()=>{
-        toast.className =
-          "toast";
-      },
-      3500
-    );
 }
 
 
 /* =========================================================
-   INITIALIZE
+   FILE HELPERS
 ========================================================= */
 
-cart =
-  readCart();
+function createSafeFileName(
+  filename
+){
 
-renderCart();
+  const extension =
+    filename.includes(".")
+      ? filename
+          .split(".")
+          .pop()
+          .toLowerCase()
+      : "file";
+
+
+  return (
+    "payment-slip." +
+    extension
+  );
+
+}
+
+
+function formatFileSize(
+  bytes
+){
+
+  if(bytes < 1024){
+
+    return bytes + " B";
+
+  }
+
+  if(bytes < 1024 * 1024){
+
+    return (
+      (bytes / 1024)
+        .toFixed(1) +
+      " KB"
+    );
+
+  }
+
+  return (
+    (bytes / 1024 / 1024)
+      .toFixed(2) +
+    " MB"
+  );
+
+}
+
+
+/* =========================================================
+   FORMAT
+========================================================= */
+
+function formatBaht(
+  value
+){
+
+  return (
+    "฿" +
+    Number(
+      value || 0
+    ).toLocaleString(
+      "th-TH",
+      {
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+      }
+    )
+  );
+
+}
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+function escapeHtml(
+  value
+){
+
+  return String(
+    value ?? ""
+  )
+  .replaceAll(
+    "&",
+    "&amp;"
+  )
+  .replaceAll(
+    "<",
+    "&lt;"
+  )
+  .replaceAll(
+    ">",
+    "&gt;"
+  )
+  .replaceAll(
+    '"',
+    "&quot;"
+  )
+  .replaceAll(
+    "'",
+    "&#039;"
+  );
+
+}
+
+
+function escapeAttribute(
+  value
+){
+
+  return escapeHtml(
+    value
+  );
+
+}
+
+
+/* =========================================================
+   PAYMENT INITIAL STATE
+========================================================= */
 
 updatePaymentUI();
 
