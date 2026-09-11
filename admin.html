@@ -15,20 +15,21 @@
   --black:#050505;
   --black2:#080808;
   --dark:#0d0d0d;
-  --dark2:#111;
+  --dark2:#111111;
   --dark3:#181818;
   --gold:#c8a45b;
   --gold-light:#f0d991;
   --gold-dark:#806127;
-  --white:#fff;
+  --white:#ffffff;
   --soft:#e8e8e8;
-  --gray:#999;
-  --muted:#666;
-  --line:rgba(255,255,255,.08);
-  --gold-line:rgba(200,164,91,.25);
-  --green:#55d68a;
-  --red:#ff6767;
-  --yellow:#e9c96b;
+  --gray:#9b9b9b;
+  --muted:#666666;
+  --line:rgba(255,255,255,.09);
+  --gold-line:rgba(200,164,91,.28);
+  --green:#61d89a;
+  --red:#ff6969;
+  --blue:#78bfff;
+  --purple:#b89aff;
   --container:1240px;
 }
 
@@ -44,26 +45,40 @@ html{
 
 body{
   min-height:100vh;
-  background:
-    radial-gradient(circle at 15% 0%,rgba(200,164,91,.08),transparent 30%),
-    radial-gradient(circle at 90% 15%,rgba(255,255,255,.03),transparent 25%),
-    linear-gradient(180deg,#060606,#090909 50%,#050505);
+  overflow-x:hidden;
   color:var(--white);
   font-family:"Prompt",sans-serif;
-  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(200,164,91,.10),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(255,255,255,.025),transparent 28%),
+    linear-gradient(180deg,#050505,#090909 50%,#050505);
 }
 
-body:before{
+body::before{
   content:"";
   position:fixed;
   inset:0;
+  z-index:-1;
   pointer-events:none;
   opacity:.22;
   background-image:
     linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
   background-size:70px 70px;
-  mask-image:linear-gradient(to bottom,black,transparent 85%);
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:520px;
+  height:520px;
+  top:-230px;
+  right:-150px;
+  z-index:-1;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(200,164,91,.12),transparent 68%);
+  filter:blur(20px);
+  pointer-events:none;
 }
 
 a{
@@ -83,7 +98,7 @@ button{
 
 .container{
   width:min(var(--container),calc(100% - 36px));
-  margin:auto;
+  margin:0 auto;
 }
 
 /* ================= HEADER ================= */
@@ -93,12 +108,12 @@ button{
   top:0;
   z-index:1000;
   border-bottom:1px solid var(--line);
-  background:rgba(6,6,6,.82);
-  backdrop-filter:blur(18px);
+  background:rgba(5,5,5,.84);
+  backdrop-filter:blur(20px);
 }
 
 .header-inner{
-  min-height:76px;
+  min-height:78px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -109,66 +124,81 @@ button{
   display:flex;
   align-items:center;
   gap:13px;
+  flex-shrink:0;
 }
 
 .logo-mark{
-  width:44px;
-  height:44px;
+  width:46px;
+  height:46px;
   display:grid;
   place-items:center;
   border:1px solid var(--gold);
-  border-radius:12px;
+  border-radius:13px;
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
   font-weight:600;
+  font-size:15px;
   letter-spacing:1px;
-  background:
-    linear-gradient(145deg,rgba(200,164,91,.12),rgba(200,164,91,.02));
+  background:linear-gradient(
+    145deg,
+    rgba(200,164,91,.14),
+    rgba(200,164,91,.025)
+  );
+  box-shadow:
+    inset 0 0 20px rgba(200,164,91,.04),
+    0 0 30px rgba(200,164,91,.04);
 }
 
 .logo-text{
   display:flex;
   flex-direction:column;
-  line-height:1.15;
+  line-height:1.1;
 }
 
 .logo-title{
   font-family:"Kanit",sans-serif;
   font-size:17px;
   font-weight:500;
-  letter-spacing:.4px;
+  letter-spacing:.5px;
 }
 
 .logo-sub{
-  color:#6e6e6e;
-  font-size:9px;
-  letter-spacing:1px;
-  margin-top:3px;
+  margin-top:4px;
+  color:#666;
+  font-size:8px;
+  letter-spacing:2px;
 }
 
-.nav-menu{
+.nav{
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:5px;
 }
 
-.nav-menu a{
-  padding:9px 11px;
-  border-radius:8px;
-  color:#858585;
-  font-size:11px;
-  transition:.25s;
+.nav a{
+  padding:10px 12px;
+  border:1px solid transparent;
+  border-radius:9px;
+  color:#7e7e7e;
+  font-size:10px;
+  transition:.25s ease;
 }
 
-.nav-menu a:hover,
-.nav-menu a.active{
+.nav a:hover{
   color:var(--gold-light);
+  border-color:var(--gold-line);
+  background:rgba(200,164,91,.045);
+}
+
+.nav a.active{
+  color:var(--gold-light);
+  border-color:var(--gold-line);
   background:rgba(200,164,91,.07);
 }
 
-.nav-menu .nav-gold{
+.nav .site-link{
+  margin-left:5px;
   color:var(--gold-light);
-  border:1px solid var(--gold-line);
 }
 
 .mobile-btn{
@@ -186,58 +216,82 @@ button{
 .hero{
   position:relative;
   overflow:hidden;
-  padding:105px 0 75px;
+  padding:95px 0 70px;
   border-bottom:1px solid var(--line);
 }
 
-.hero:before{
+.hero::before{
   content:"";
   position:absolute;
-  width:600px;
-  height:600px;
-  right:-200px;
-  top:-260px;
+  left:-220px;
+  bottom:-340px;
+  width:650px;
+  height:650px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(200,164,91,.17),transparent 68%);
-  filter:blur(20px);
-  pointer-events:none;
+  background:radial-gradient(
+    circle,
+    rgba(200,164,91,.08),
+    transparent 65%
+  );
+  filter:blur(25px);
 }
 
 .hero-inner{
   position:relative;
   display:grid;
   grid-template-columns:1fr auto;
-  gap:40px;
+  gap:45px;
   align-items:end;
 }
 
-.hero-eyebrow{
-  color:var(--gold);
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
+.eyebrow{
   margin-bottom:13px;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:3px;
 }
 
 .hero h1{
   font-family:"Kanit",sans-serif;
-  font-size:clamp(48px,8vw,104px);
-  font-weight:400;
-  letter-spacing:-3px;
-  line-height:.92;
+  font-size:clamp(55px,8.5vw,110px);
+  font-weight:300;
+  letter-spacing:-4px;
+  line-height:.9;
 }
 
 .hero h1 span{
   color:transparent;
-  -webkit-text-stroke:1px rgba(200,164,91,.65);
+  -webkit-text-stroke:1px rgba(200,164,91,.75);
 }
 
-.hero-description{
-  max-width:670px;
+.hero-desc{
+  max-width:720px;
   margin-top:24px;
-  color:#8c8c8c;
-  font-size:13px;
+  color:#888;
+  font-size:12px;
   line-height:2;
+}
+
+.hero-status{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:20px;
+  padding:8px 12px;
+  border:1px solid var(--gold-line);
+  border-radius:999px;
+  color:var(--gold-light);
+  font-size:9px;
+  background:rgba(200,164,91,.05);
+}
+
+.hero-status::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 12px rgba(97,216,154,.8);
 }
 
 .hero-side{
@@ -248,23 +302,24 @@ button{
   background:
     linear-gradient(
       145deg,
-      rgba(200,164,91,.07),
+      rgba(200,164,91,.09),
       rgba(255,255,255,.015)
     );
 }
 
 .hero-side small{
   display:block;
+  margin-bottom:8px;
   color:#666;
-  font-size:9px;
+  font-size:8px;
   letter-spacing:2px;
-  margin-bottom:7px;
 }
 
 .hero-side strong{
-  font-family:"Kanit",sans-serif;
+  display:block;
   color:var(--gold-light);
-  font-size:28px;
+  font-family:"Kanit",sans-serif;
+  font-size:30px;
   font-weight:400;
 }
 
@@ -274,98 +329,20 @@ main{
   padding:55px 0 90px;
 }
 
-.toolbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  padding:17px;
-  margin-bottom:20px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:rgba(255,255,255,.025);
-}
-
-.toolbar-left{
-  display:flex;
-  gap:10px;
-  flex:1;
-}
-
-.search{
-  flex:1;
-  min-width:180px;
-  height:46px;
-  padding:0 14px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#080808;
-  color:#fff;
-  outline:none;
-}
-
-.search:focus{
-  border-color:var(--gold);
-}
-
-.select{
-  height:46px;
-  padding:0 13px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#080808;
-  color:#fff;
-  outline:none;
-}
-
-.btn{
-  min-height:44px;
-  padding:0 15px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#101010;
-  color:#bbb;
-  font-size:11px;
-  transition:.25s;
-}
-
-.btn:hover{
-  border-color:var(--gold-line);
-  color:#fff;
-  transform:translateY(-1px);
-}
-
-.btn-gold{
-  color:#050505;
-  border-color:transparent;
-  background:
-    linear-gradient(
-      135deg,
-      var(--gold-light),
-      var(--gold)
-    );
-}
-
-.btn-danger{
-  color:#ff8c8c;
-  border-color:rgba(255,103,103,.2);
-}
-
-.stats{
+.stats-grid{
   display:grid;
-  grid-template-columns:
-    repeat(4,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:14px;
-  margin-bottom:22px;
+  margin-bottom:14px;
 }
 
-.stat{
+.stat-card{
   position:relative;
   overflow:hidden;
-  min-height:150px;
-  padding:22px;
+  min-height:145px;
+  padding:23px;
   border:1px solid var(--line);
-  border-radius:18px;
+  border-radius:19px;
   background:
     linear-gradient(
       145deg,
@@ -374,56 +351,61 @@ main{
     );
 }
 
-.stat:after{
+.stat-card::after{
   content:"";
   position:absolute;
-  width:120px;
-  height:120px;
   right:-55px;
   bottom:-55px;
-  border:1px solid rgba(200,164,91,.10);
+  width:125px;
+  height:125px;
+  border:1px solid rgba(200,164,91,.08);
   border-radius:50%;
 }
 
-.stat small{
-  display:block;
-  color:#666;
-  font-size:10px;
-  margin-bottom:10px;
-}
-
-.stat strong{
-  display:block;
-  font-family:"Kanit",sans-serif;
-  font-size:36px;
-  line-height:1;
-  font-weight:400;
-}
-
-.stat.gold{
+.stat-card.gold{
   border-color:var(--gold-line);
   background:
     linear-gradient(
       145deg,
-      rgba(200,164,91,.10),
+      rgba(200,164,91,.11),
       rgba(255,255,255,.015)
     );
 }
 
-.stat.gold strong{
+.stat-label{
+  color:#666;
+  font-size:9px;
+  letter-spacing:1px;
+}
+
+.stat-value{
+  margin-top:13px;
+  color:#eee;
+  font-family:"Kanit",sans-serif;
+  font-size:38px;
+  font-weight:400;
+  line-height:1;
+}
+
+.stat-card.gold .stat-value{
   color:var(--gold-light);
 }
 
-.summary{
+.stat-note{
+  margin-top:12px;
+  color:#555;
+  font-size:9px;
+}
+
+.summary-grid{
   display:grid;
-  grid-template-columns:
-    repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:14px;
   margin-bottom:30px;
 }
 
 .summary-card{
-  padding:19px 21px;
+  padding:18px 20px;
   border:1px solid var(--line);
   border-radius:16px;
   background:rgba(255,255,255,.02);
@@ -432,16 +414,16 @@ main{
 .summary-card small{
   display:block;
   color:#666;
-  font-size:9px;
-  margin-bottom:7px;
+  font-size:8px;
+  margin-bottom:8px;
 }
 
 .summary-card strong{
   display:block;
+  color:#e7e7e7;
   font-family:"Kanit",sans-serif;
-  color:#eee;
+  font-size:23px;
   font-weight:400;
-  font-size:24px;
 }
 
 .summary-card.gold{
@@ -452,38 +434,123 @@ main{
   color:var(--gold-light);
 }
 
+/* ================= TOOLBAR ================= */
+
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:20px;
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.025);
+}
+
+.toolbar-left{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex:1;
+}
+
+.toolbar-right{
+  display:flex;
+  gap:8px;
+}
+
+.search{
+  width:100%;
+  height:44px;
+  padding:0 13px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  outline:none;
+  background:#080808;
+  color:#fff;
+  font-size:10px;
+}
+
+.search:focus{
+  border-color:var(--gold-line);
+}
+
+.select{
+  height:44px;
+  padding:0 12px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  outline:none;
+  background:#080808;
+  color:#fff;
+  font-size:10px;
+}
+
+.btn{
+  min-height:44px;
+  padding:0 14px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#0c0c0c;
+  color:#aaa;
+  font-size:10px;
+  transition:.25s;
+}
+
+.btn:hover{
+  color:#fff;
+  border-color:var(--gold-line);
+  transform:translateY(-1px);
+}
+
+.btn-gold{
+  border-color:transparent;
+  background:linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold)
+  );
+  color:#050505;
+}
+
+.btn-danger{
+  color:#ff8989;
+  border-color:rgba(255,105,105,.20);
+}
+
 /* ================= TABLE ================= */
 
 .table-wrap{
   overflow:hidden;
   border:1px solid var(--line);
-  border-radius:20px;
+  border-radius:21px;
   background:
     linear-gradient(
       145deg,
-      rgba(255,255,255,.03),
-      rgba(255,255,255,.01)
+      rgba(255,255,255,.032),
+      rgba(255,255,255,.008)
     );
 }
 
-.table-head{
+.table-header{
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   gap:15px;
-  padding:20px 22px;
+  padding:21px 22px;
   border-bottom:1px solid var(--line);
 }
 
-.table-head h2{
+.table-header h2{
   font-family:"Kanit",sans-serif;
+  font-size:21px;
   font-weight:400;
-  font-size:22px;
 }
 
-.table-count{
-  color:#777;
-  font-size:10px;
+.table-header span{
+  color:#666;
+  font-size:9px;
 }
 
 .table-scroll{
@@ -492,26 +559,26 @@ main{
 
 table{
   width:100%;
-  min-width:930px;
+  min-width:1050px;
   border-collapse:collapse;
 }
 
 th{
-  padding:14px 18px;
-  text-align:left;
-  color:#666;
-  font-size:9px;
-  font-weight:400;
-  letter-spacing:.7px;
+  padding:13px 18px;
   border-bottom:1px solid var(--line);
+  color:#5d5d5d;
+  font-size:8px;
+  font-weight:400;
+  text-align:left;
   white-space:nowrap;
 }
 
 td{
   padding:17px 18px;
   border-bottom:1px solid rgba(255,255,255,.045);
+  color:#bbb;
+  font-size:10px;
   vertical-align:middle;
-  font-size:11px;
 }
 
 tbody tr{
@@ -525,39 +592,52 @@ tbody tr:hover{
 .order-number{
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:14px;
+  font-size:13px;
 }
 
-.order-id{
+.order-uuid{
   margin-top:4px;
-  color:#555;
+  max-width:160px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#444;
   font-size:8px;
 }
 
 .customer-name{
   color:#eee;
-  font-size:12px;
+  font-size:11px;
 }
 
 .customer-meta{
   margin-top:4px;
-  color:#666;
-  font-size:9px;
+  color:#606060;
+  font-size:8px;
+  line-height:1.5;
 }
 
 .item-count{
   color:#ddd;
+  font-size:10px;
+}
+
+.item-sub{
+  margin-top:3px;
+  color:#555;
+  font-size:8px;
 }
 
 .amount{
+  margin-top:4px;
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:16px;
+  font-size:15px;
 }
 
-.order-date{
+.date{
   color:#666;
-  font-size:9px;
+  font-size:8px;
   line-height:1.7;
 }
 
@@ -565,57 +645,58 @@ tbody tr:hover{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:85px;
+  min-width:84px;
   padding:7px 10px;
-  border-radius:30px;
-  font-size:9px;
   border:1px solid transparent;
+  border-radius:999px;
+  font-size:8px;
 }
 
 .status.pending{
-  color:#f0cc72;
-  border-color:rgba(240,204,114,.18);
-  background:rgba(240,204,114,.07);
+  color:#f0ce70;
+  border-color:rgba(240,206,112,.20);
+  background:rgba(240,206,112,.06);
 }
 
 .status.confirmed{
-  color:#7ccaff;
-  border-color:rgba(124,202,255,.18);
-  background:rgba(124,202,255,.07);
+  color:var(--blue);
+  border-color:rgba(120,191,255,.20);
+  background:rgba(120,191,255,.06);
 }
 
 .status.shipping{
-  color:#b895ff;
-  border-color:rgba(184,149,255,.18);
-  background:rgba(184,149,255,.07);
+  color:var(--purple);
+  border-color:rgba(184,154,255,.20);
+  background:rgba(184,154,255,.06);
 }
 
 .status.completed{
   color:var(--green);
-  border-color:rgba(85,214,138,.18);
-  background:rgba(85,214,138,.07);
+  border-color:rgba(97,216,154,.20);
+  background:rgba(97,216,154,.06);
 }
 
 .status.cancelled{
   color:var(--red);
-  border-color:rgba(255,103,103,.18);
-  background:rgba(255,103,103,.07);
+  border-color:rgba(255,105,105,.20);
+  background:rgba(255,105,105,.06);
 }
 
 .actions{
   display:flex;
-  gap:7px;
+  gap:6px;
 }
 
 .icon-btn{
-  width:36px;
-  height:36px;
+  width:34px;
+  height:34px;
   display:grid;
   place-items:center;
   border:1px solid var(--line);
   border-radius:9px;
   background:#0a0a0a;
-  color:#bbb;
+  color:#aaa;
+  font-size:13px;
 }
 
 .icon-btn:hover{
@@ -625,36 +706,36 @@ tbody tr:hover{
 
 .icon-btn.delete:hover{
   color:var(--red);
-  border-color:rgba(255,103,103,.2);
+  border-color:rgba(255,105,105,.25);
 }
 
 .empty{
-  padding:80px 25px;
+  padding:80px 20px;
   text-align:center;
 }
 
-.empty-icon{
-  width:60px;
-  height:60px;
+.empty-mark{
+  width:58px;
+  height:58px;
   display:grid;
   place-items:center;
-  margin:0 auto 16px;
+  margin:0 auto 17px;
   border:1px solid var(--gold-line);
-  border-radius:18px;
+  border-radius:17px;
   color:var(--gold);
-  font-size:22px;
+  font-size:19px;
 }
 
 .empty h3{
-  margin-bottom:7px;
+  margin-bottom:6px;
   font-family:"Kanit",sans-serif;
-  font-size:20px;
+  font-size:19px;
   font-weight:400;
 }
 
 .empty p{
-  color:#666;
-  font-size:11px;
+  color:#5d5d5d;
+  font-size:10px;
   line-height:1.8;
 }
 
@@ -668,7 +749,7 @@ tbody tr:hover{
   place-items:center;
   padding:20px;
   background:rgba(0,0,0,.78);
-  backdrop-filter:blur(15px);
+  backdrop-filter:blur(14px);
 }
 
 .modal.show{
@@ -676,7 +757,7 @@ tbody tr:hover{
 }
 
 .modal-card{
-  width:min(900px,100%);
+  width:min(930px,100%);
   max-height:90vh;
   overflow:auto;
   border:1px solid var(--gold-line);
@@ -684,24 +765,25 @@ tbody tr:hover{
   background:
     linear-gradient(
       145deg,
-      #171717,
-      #090909
+      #161616,
+      #080808
     );
   box-shadow:
-    0 40px 120px rgba(0,0,0,.7);
+    0 35px 120px rgba(0,0,0,.75);
 }
 
-.modal-top{
+.modal-head{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   gap:15px;
   padding:22px 24px;
   border-bottom:1px solid var(--line);
 }
 
-.modal-top h3{
+.modal-head h2{
   font-family:"Kanit",sans-serif;
-  font-size:24px;
+  font-size:23px;
   font-weight:400;
 }
 
@@ -710,8 +792,9 @@ tbody tr:hover{
   height:38px;
   border:1px solid var(--line);
   border-radius:10px;
-  background:#0b0b0b;
+  background:#0a0a0a;
   color:#aaa;
+  font-size:18px;
 }
 
 .modal-body{
@@ -720,28 +803,27 @@ tbody tr:hover{
 
 .detail-grid{
   display:grid;
-  grid-template-columns:
-    repeat(2,1fr);
-  gap:12px;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
 }
 
-.detail-box{
-  padding:16px;
+.detail-card{
+  padding:15px;
   border:1px solid var(--line);
-  border-radius:13px;
-  background:rgba(255,255,255,.02);
+  border-radius:12px;
+  background:rgba(255,255,255,.018);
 }
 
 .detail-label{
-  color:#5f5f5f;
-  font-size:9px;
   margin-bottom:7px;
-  letter-spacing:.4px;
+  color:#555;
+  font-size:8px;
+  letter-spacing:.6px;
 }
 
 .detail-value{
   color:#ddd;
-  font-size:12px;
+  font-size:10px;
   line-height:1.8;
   word-break:break-word;
 }
@@ -751,8 +833,7 @@ tbody tr:hover{
 }
 
 .section-title{
-  margin:28px 0 13px;
-  color:#eee;
+  margin:26px 0 13px;
   font-family:"Kanit",sans-serif;
   font-size:18px;
   font-weight:400;
@@ -765,23 +846,24 @@ tbody tr:hover{
 
 .item{
   display:grid;
-  grid-template-columns:64px 1fr auto;
+  grid-template-columns:62px 1fr auto;
   gap:13px;
   align-items:center;
-  padding:13px;
+  padding:12px;
   border:1px solid var(--line);
   border-radius:13px;
   background:#0b0b0b;
 }
 
 .item-image{
-  width:64px;
-  height:64px;
-  overflow:hidden;
+  width:62px;
+  height:62px;
   display:grid;
   place-items:center;
+  overflow:hidden;
   border:1px solid var(--line);
-  border-radius:11px;
+  border-radius:10px;
+  color:#555;
   background:#111;
 }
 
@@ -793,14 +875,14 @@ tbody tr:hover{
 
 .item-name{
   color:#eee;
-  font-size:12px;
+  font-size:11px;
 }
 
 .item-meta{
   margin-top:5px;
   color:#666;
-  font-size:9px;
-  line-height:1.7;
+  font-size:8px;
+  line-height:1.75;
 }
 
 .item-right{
@@ -810,53 +892,55 @@ tbody tr:hover{
 .item-price{
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:16px;
+  font-size:15px;
 }
 
 .item-qty{
-  color:#777;
-  font-size:9px;
+  margin-top:3px;
+  color:#666;
+  font-size:8px;
 }
 
 .total-row{
   display:flex;
   justify-content:space-between;
-  gap:15px;
   align-items:center;
+  gap:15px;
   padding-top:20px;
   margin-top:20px;
   border-top:1px solid var(--line);
 }
 
 .total-row span{
-  color:#777;
-  font-size:11px;
+  color:#666;
+  font-size:10px;
 }
 
 .total-row strong{
   color:var(--gold-light);
   font-family:"Kanit",sans-serif;
-  font-size:30px;
+  font-size:29px;
   font-weight:400;
 }
 
 .slip{
   display:inline-flex;
-  margin-top:18px;
-  padding:10px 13px;
+  margin-top:17px;
+  padding:9px 12px;
   border:1px solid var(--gold-line);
   border-radius:9px;
   color:var(--gold-light);
-  font-size:10px;
+  font-size:9px;
 }
 
 .status-editor{
   display:flex;
-  gap:10px;
+  align-items:center;
+  gap:9px;
   margin-top:20px;
 }
 
-/* ================= AUTH ================= */
+/* ================= LOGIN ================= */
 
 .auth{
   position:fixed;
@@ -865,13 +949,13 @@ tbody tr:hover{
   display:none;
   place-items:center;
   padding:20px;
-  background:#050505;
-  background-image:
+  background:
     radial-gradient(
       circle at 50% 20%,
       rgba(200,164,91,.12),
-      transparent 40%
-    );
+      transparent 38%
+    ),
+    #050505;
 }
 
 .auth.show{
@@ -882,7 +966,7 @@ tbody tr:hover{
   width:min(430px,100%);
   padding:34px;
   border:1px solid var(--gold-line);
-  border-radius:24px;
+  border-radius:23px;
   background:
     linear-gradient(
       145deg,
@@ -890,10 +974,10 @@ tbody tr:hover{
       #080808
     );
   box-shadow:
-    0 35px 100px rgba(0,0,0,.7);
+    0 35px 100px rgba(0,0,0,.75);
 }
 
-.auth-mark{
+.auth-logo{
   width:58px;
   height:58px;
   display:grid;
@@ -906,30 +990,31 @@ tbody tr:hover{
   font-size:18px;
 }
 
-.auth h2{
+.auth-card h2{
   font-family:"Kanit",sans-serif;
-  font-size:32px;
+  font-size:31px;
   font-weight:400;
-  margin-bottom:7px;
 }
 
-.auth p{
+.auth-card p{
+  margin-top:6px;
+  margin-bottom:23px;
   color:#666;
   font-size:10px;
-  line-height:1.9;
-  margin-bottom:22px;
+  line-height:1.8;
 }
 
 .auth-input{
   width:100%;
   height:49px;
+  margin-bottom:10px;
   padding:0 14px;
-  margin-bottom:11px;
   border:1px solid var(--line);
   border-radius:10px;
+  outline:none;
   background:#080808;
   color:#fff;
-  outline:none;
+  font-size:11px;
 }
 
 .auth-input:focus{
@@ -937,11 +1022,11 @@ tbody tr:hover{
 }
 
 .auth-error{
-  min-height:21px;
+  min-height:19px;
   margin:3px 0 10px;
   color:var(--red);
-  font-size:10px;
-  line-height:1.6;
+  font-size:9px;
+  line-height:1.7;
 }
 
 .auth-btn{
@@ -950,6 +1035,7 @@ tbody tr:hover{
   border:0;
   border-radius:10px;
   color:#050505;
+  font-size:11px;
   font-weight:600;
   background:
     linear-gradient(
@@ -959,13 +1045,18 @@ tbody tr:hover{
     );
 }
 
+.auth-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
 /* ================= FOOTER ================= */
 
 .footer{
   border-top:1px solid var(--line);
-  padding:30px 0;
+  padding:28px 0;
   color:#555;
-  font-size:9px;
+  font-size:8px;
 }
 
 .footer-inner{
@@ -975,81 +1066,71 @@ tbody tr:hover{
   gap:15px;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:1000px){
 
-  .nav-menu{
-    display:none;
-    position:absolute;
-    left:18px;
-    right:18px;
-    top:70px;
-    padding:12px;
-    flex-direction:column;
-    align-items:stretch;
-    border:1px solid var(--line);
-    border-radius:14px;
-    background:#0a0a0a;
+  .mobile-btn{
+    display:block;
   }
 
-  .nav-menu.open{
+  .nav{
+    display:none;
+    position:absolute;
+    top:69px;
+    left:12px;
+    right:12px;
+    flex-direction:column;
+    align-items:stretch;
+    padding:10px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:#090909;
+  }
+
+  .nav.open{
     display:flex;
   }
 
-  .nav-menu a{
+  .nav a{
     padding:12px;
-  }
-
-  .mobile-btn{
-    display:block;
   }
 
   .hero-inner{
     grid-template-columns:1fr;
   }
 
-  .hero-side{
-    width:max-content;
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .stats{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .summary{
-    grid-template-columns:1fr;
-  }
 }
 
-@media(max-width:650px){
+@media(max-width:680px){
 
   .container{
-    width:min(
-      var(--container),
-      calc(100% - 24px)
-    );
-  }
-
-  .header-inner{
-    min-height:68px;
-  }
-
-  .logo-sub{
-    display:none;
+    width:calc(100% - 24px);
   }
 
   .hero{
-    padding:80px 0 60px;
+    padding:75px 0 55px;
   }
 
   .hero h1{
-    font-size:58px;
+    font-size:56px;
     letter-spacing:-2px;
   }
 
-  .stats{
+  .hero-side{
+    min-width:0;
+    width:100%;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .summary-grid{
     grid-template-columns:1fr;
   }
 
@@ -1064,8 +1145,7 @@ tbody tr:hover{
 
   .toolbar-right{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
+    grid-template-columns:1fr 1fr 1fr;
   }
 
   .detail-grid{
@@ -1073,12 +1153,12 @@ tbody tr:hover{
   }
 
   .item{
-    grid-template-columns:52px 1fr;
+    grid-template-columns:54px 1fr;
   }
 
   .item-image{
-    width:52px;
-    height:52px;
+    width:54px;
+    height:54px;
   }
 
   .item-right{
@@ -1095,13 +1175,12 @@ tbody tr:hover{
     flex-direction:column;
     align-items:flex-start;
   }
+
 }
 </style>
 </head>
 
 <body>
-
-<!-- ================= HEADER ================= -->
 
 <header class="header">
 
@@ -1131,14 +1210,13 @@ tbody tr:hover{
       id="mobileBtn"
       class="mobile-btn"
       type="button"
-      aria-label="Menu"
     >
       ☰
     </button>
 
     <nav
-      id="navMenu"
-      class="nav-menu"
+      id="nav"
+      class="nav"
     >
 
       <a
@@ -1166,7 +1244,7 @@ tbody tr:hover{
       <a
         href="index.html"
         target="_blank"
-        class="nav-gold"
+        class="site-link"
       >
         เว็บไซต์
       </a>
@@ -1185,15 +1263,13 @@ tbody tr:hover{
 </header>
 
 
-<!-- ================= HERO ================= -->
-
 <section class="hero">
 
   <div class="container hero-inner">
 
     <div>
 
-      <div class="hero-eyebrow">
+      <div class="eyebrow">
         CHATPETCH GROUP · ADMIN SYSTEM
       </div>
 
@@ -1202,24 +1278,18 @@ tbody tr:hover{
         <span>DASHBOARD</span>
       </h1>
 
-      <p class="hero-description">
-        ข้อมูลคำสั่งซื้อจากระบบออนไลน์
-        Chatpetch Group
-        เชื่อมต่อกับฐานข้อมูล Supabase
-        เพื่อดูข้อมูลลูกค้า รายการสินค้า
-        การชำระเงิน ยอดคำสั่งซื้อ
-        และสถานะการจัดส่ง
+      <p class="hero-desc">
+        ศูนย์จัดการคำสั่งซื้อออนไลน์ของ Chatpetch Group
+        ตรวจสอบข้อมูลลูกค้า รายการสินค้า ยอดคำสั่งซื้อ
+        ช่องทางการชำระเงิน หลักฐานการชำระเงิน
+        และจัดการสถานะคำสั่งซื้อจากระบบ Supabase
       </p>
 
       <div
-        id="loginStatus"
-        style="
-          margin-top:20px;
-          color:#666;
-          font-size:10px;
-        "
+        id="heroStatus"
+        class="hero-status"
       >
-        กำลังตรวจสอบสิทธิ์...
+        กำลังตรวจสอบสิทธิ์
       </div>
 
     </div>
@@ -1227,7 +1297,7 @@ tbody tr:hover{
     <div class="hero-side">
 
       <small>
-        SYSTEM STATUS
+        ADMIN ROLE
       </small>
 
       <strong id="roleText">
@@ -1241,72 +1311,95 @@ tbody tr:hover{
 </section>
 
 
-<!-- ================= MAIN ================= -->
-
 <main>
 
   <div class="container">
 
-    <div class="stats">
+    <div class="stats-grid">
 
-      <div class="stat gold">
+      <div class="stat-card gold">
 
-        <small>
+        <div class="stat-label">
           ORDERS
-        </small>
+        </div>
 
-        <strong id="statAll">
+        <div
+          id="statAll"
+          class="stat-value"
+        >
           0
-        </strong>
+        </div>
+
+        <div class="stat-note">
+          คำสั่งซื้อทั้งหมด
+        </div>
 
       </div>
 
 
-      <div class="stat">
+      <div class="stat-card">
 
-        <small>
+        <div class="stat-label">
           PENDING
-        </small>
+        </div>
 
-        <strong id="statPending">
+        <div
+          id="statPending"
+          class="stat-value"
+        >
           0
-        </strong>
+        </div>
+
+        <div class="stat-note">
+          รอตรวจสอบ
+        </div>
 
       </div>
 
 
-      <div class="stat">
+      <div class="stat-card">
 
-        <small>
+        <div class="stat-label">
           SHIPPING
-        </small>
+        </div>
 
-        <strong id="statShipping">
+        <div
+          id="statShipping"
+          class="stat-value"
+        >
           0
-        </strong>
+        </div>
+
+        <div class="stat-note">
+          กำลังจัดส่ง
+        </div>
 
       </div>
 
 
-      <div class="stat">
+      <div class="stat-card">
 
-        <small>
+        <div class="stat-label">
           COMPLETED
-        </small>
+        </div>
 
-        <strong id="statCompleted">
+        <div
+          id="statCompleted"
+          class="stat-value"
+        >
           0
-        </strong>
+        </div>
+
+        <div class="stat-note">
+          สำเร็จ
+        </div>
 
       </div>
 
     </div>
 
 
-    <div
-      id="summaryStrip"
-      class="summary"
-    >
+    <div class="summary-grid">
 
       <div class="summary-card gold">
 
@@ -1324,7 +1417,7 @@ tbody tr:hover{
       <div class="summary-card">
 
         <small>
-          ยอดรอตรวจสอบ
+          ยอดที่รอตรวจสอบ
         </small>
 
         <strong id="sumPending">
@@ -1427,18 +1520,15 @@ tbody tr:hover{
 
     <div class="table-wrap">
 
-      <div class="table-head">
+      <div class="table-header">
 
         <h2>
-          คำสั่งซื้อล่าสุด
+          คำสั่งซื้อ
         </h2>
 
-        <div
-          id="visibleCount"
-          class="table-count"
-        >
+        <span id="visibleCount">
           0 รายการ
-        </div>
+        </span>
 
       </div>
 
@@ -1486,14 +1576,11 @@ tbody tr:hover{
 
             <tr>
 
-              <td
-                colspan="7"
-                style="padding:0"
-              >
+              <td colspan="7">
 
                 <div class="empty">
 
-                  <div class="empty-icon">
+                  <div class="empty-mark">
                     ◇
                   </div>
 
@@ -1502,7 +1589,7 @@ tbody tr:hover{
                   </h3>
 
                   <p>
-                    กรุณารอสักครู่
+                    กำลังเชื่อมต่อฐานข้อมูล Supabase
                   </p>
 
                 </div>
@@ -1524,8 +1611,6 @@ tbody tr:hover{
 </main>
 
 
-<!-- ================= MODAL ================= -->
-
 <div
   id="orderModal"
   class="modal"
@@ -1533,11 +1618,11 @@ tbody tr:hover{
 
   <div class="modal-card">
 
-    <div class="modal-top">
+    <div class="modal-head">
 
-      <h3>
+      <h2>
         รายละเอียดคำสั่งซื้อ
-      </h3>
+      </h2>
 
       <button
         id="modalClose"
@@ -1552,15 +1637,12 @@ tbody tr:hover{
     <div
       id="modalBody"
       class="modal-body"
-    >
-    </div>
+    ></div>
 
   </div>
 
 </div>
 
-
-<!-- ================= AUTH ================= -->
 
 <div
   id="auth"
@@ -1569,7 +1651,7 @@ tbody tr:hover{
 
   <div class="auth-card">
 
-    <div class="auth-mark">
+    <div class="auth-logo">
       CG
     </div>
 
@@ -1578,24 +1660,23 @@ tbody tr:hover{
     </h2>
 
     <p>
-      เข้าสู่ระบบผู้ดูแล
-      Chatpetch Group
+      เข้าสู่ระบบจัดการ Chatpetch Group
     </p>
 
     <input
       id="email"
       class="auth-input"
       type="email"
-      autocomplete="username"
       placeholder="อีเมล"
+      autocomplete="username"
     >
 
     <input
       id="password"
       class="auth-input"
       type="password"
-      autocomplete="current-password"
       placeholder="รหัสผ่าน"
+      autocomplete="current-password"
     >
 
     <div
@@ -1616,8 +1697,6 @@ tbody tr:hover{
 </div>
 
 
-<!-- ================= FOOTER ================= -->
-
 <footer class="footer">
 
   <div class="container footer-inner">
@@ -1627,7 +1706,7 @@ tbody tr:hover{
     </div>
 
     <div>
-      Supabase Admin Dashboard
+      CHATPETCH ADMINISTRATION SYSTEM
     </div>
 
   </div>
@@ -1638,7 +1717,9 @@ tbody tr:hover{
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-(() => {
+(function(){
+
+  "use strict";
 
   const SUPABASE_URL =
     "https://mfhllgklcfnnbyyzzljz.supabase.co";
@@ -1646,7 +1727,41 @@ tbody tr:hover{
   const SUPABASE_KEY =
     "sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
 
-  const client =
+
+  if(
+    !window.supabase ||
+    typeof window.supabase.createClient !== "function"
+  ){
+
+    document.body.innerHTML = `
+      <div style="
+        min-height:100vh;
+        display:grid;
+        place-items:center;
+        padding:30px;
+        background:#050505;
+        color:#fff;
+        font-family:Arial,sans-serif;
+        text-align:center;
+      ">
+        <div>
+          <h2 style="margin-bottom:12px;">
+            ไม่สามารถโหลดระบบเชื่อมต่อได้
+          </h2>
+
+          <p style="color:#888;">
+            กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต
+            แล้วเปิดหน้าเว็บใหม่
+          </p>
+        </div>
+      </div>
+    `;
+
+    return;
+  }
+
+
+  const db =
     window.supabase.createClient(
       SUPABASE_URL,
       SUPABASE_KEY,
@@ -1660,11 +1775,12 @@ tbody tr:hover{
     );
 
 
-  let orders = [];
-  let orderItems = {};
   let currentUser = null;
   let currentAdmin = null;
   let currentRole = null;
+
+  let orders = [];
+  let orderItems = {};
   let selectedOrderId = null;
 
 
@@ -1702,13 +1818,19 @@ tbody tr:hover{
 
     bank_transfer:"โอนเงิน",
 
-    promptpay:"PromptPay",
-
-    cod:"เก็บเงินปลายทาง",
+    bankTransfer:"โอนเงิน",
 
     "bank-transfer":"โอนเงิน",
 
-    "พร้อมเพย์":"PromptPay",
+    promptpay:"PromptPay",
+
+    prompt_pay:"PromptPay",
+
+    cod:"เก็บเงินปลายทาง",
+
+    cash_on_delivery:"เก็บเงินปลายทาง",
+
+    "เงินสดปลายทาง":"เก็บเงินปลายทาง",
 
     "เก็บเงินปลายทาง":"เก็บเงินปลายทาง"
 
@@ -1752,18 +1874,18 @@ tbody tr:hover{
       return "-";
     }
 
-    const date =
+    const d =
       new Date(value);
 
     if(
       Number.isNaN(
-        date.getTime()
+        d.getTime()
       )
     ){
       return "-";
     }
 
-    return date.toLocaleString(
+    return d.toLocaleString(
       "th-TH",
       {
         dateStyle:"medium",
@@ -1774,10 +1896,10 @@ tbody tr:hover{
   }
 
 
-  function statusInfo(status){
+  function statusInfo(value){
 
-    return STATUS[status] || {
-      label:status || "ไม่ระบุ",
+    return STATUS[value] || {
+      label:value || "ไม่ระบุ",
       cls:"pending"
     };
 
@@ -1789,6 +1911,31 @@ tbody tr:hover{
     return PAYMENT[value] ||
       value ||
       "-";
+
+  }
+
+
+  function showLogin(){
+
+    $("auth").classList.add("show");
+
+    $("heroStatus").textContent =
+      "กรุณาเข้าสู่ระบบ";
+
+  }
+
+
+  function hideLogin(){
+
+    $("auth").classList.remove("show");
+
+  }
+
+
+  function setError(message){
+
+    $("authError").textContent =
+      message || "";
 
   }
 
@@ -1813,28 +1960,7 @@ tbody tr:hover{
   }
 
 
-  function showLogin(){
-
-    $("auth").classList.add(
-      "show"
-    );
-
-    $("loginStatus").textContent =
-      "กรุณาเข้าสู่ระบบ";
-
-  }
-
-
-  function hideLogin(){
-
-    $("auth").classList.remove(
-      "show"
-    );
-
-  }
-
-
-  async function signIn(){
+  async function login(){
 
     const email =
       $("email")
@@ -1845,16 +1971,17 @@ tbody tr:hover{
       $("password")
         .value;
 
-    $("authError").textContent =
-      "";
+    setError("");
+
 
     if(
       !email ||
       !password
     ){
 
-      $("authError").textContent =
-        "กรุณากรอกอีเมลและรหัสผ่าน";
+      setError(
+        "กรุณากรอกอีเมลและรหัสผ่าน"
+      );
 
       return;
 
@@ -1868,43 +1995,45 @@ tbody tr:hover{
       "กำลังเข้าสู่ระบบ...";
 
 
-    const {
-      error
-    } =
-      await client.auth
-        .signInWithPassword({
+    try{
+
+      const result =
+        await db.auth.signInWithPassword({
           email,
           password
         });
 
 
-    $("loginBtn").disabled =
-      false;
+      if(result.error){
+        throw result.error;
+      }
 
-    $("loginBtn").textContent =
-      "เข้าสู่ระบบ";
+    }
+    catch(error){
 
+      setError(
+        error?.message ||
+        "เข้าสู่ระบบไม่สำเร็จ"
+      );
 
-    if(error){
+    }
+    finally{
 
-      $("authError").textContent =
-        error.message ||
-        "เข้าสู่ระบบไม่สำเร็จ";
+      $("loginBtn").disabled =
+        false;
 
-      return;
+      $("loginBtn").textContent =
+        "เข้าสู่ระบบ";
 
     }
 
   }
 
 
-  async function loadProfile(user){
+  async function getAdminProfile(user){
 
-    const {
-      data,
-      error
-    } =
-      await client
+    const result =
+      await db
         .from("admin_users")
         .select(
           "user_id,email,name,role,active"
@@ -1916,77 +2045,141 @@ tbody tr:hover{
         .maybeSingle();
 
 
-    if(error){
+    if(result.error){
 
       throw new Error(
         "ตรวจสอบสิทธิ์ไม่สำเร็จ: " +
-        error.message
+        result.error.message
+      );
+
+    }
+
+
+    if(!result.data){
+
+      throw new Error(
+        "ไม่พบบัญชีผู้ดูแลใน admin_users"
+      );
+
+    }
+
+
+    if(!result.data.active){
+
+      throw new Error(
+        "บัญชีผู้ดูแลนี้ถูกปิดการใช้งาน"
       );
 
     }
 
 
     if(
-      !data ||
-      !data.active
+      ![
+        "owner",
+        "manager",
+        "staff",
+        "viewer"
+      ].includes(
+        result.data.role
+      )
     ){
 
       throw new Error(
-        "บัญชีนี้ยังไม่ได้รับสิทธิ์ผู้ดูแลระบบ"
+        "Role ของผู้ใช้งานไม่ถูกต้อง"
       );
 
     }
 
 
-    currentAdmin =
-      data;
+    return result.data;
 
-    currentRole =
-      data.role;
+  }
 
 
-    $("roleText").textContent =
-      String(
-        data.role || "ADMIN"
-      ).toUpperCase();
+  async function initializeAdmin(){
+
+    const {
+      data,
+      error
+    } =
+      await db.auth.getSession();
 
 
-    $("loginStatus").textContent =
-      `เข้าสู่ระบบแล้ว · ${
-        data.name ||
-        data.email
-      }`;
+    if(error){
+      throw error;
+    }
 
 
-    const usersNav =
-      $("usersNav");
+    if(!data.session){
 
-    if(usersNav){
+      currentUser = null;
+      currentAdmin = null;
+      currentRole = null;
 
-      usersNav.style.display =
-        currentRole === "owner"
-          ? ""
-          : "none";
+      showLogin();
+
+      return;
 
     }
 
-    $("clearAllBtn").style.display =
+
+    currentUser =
+      data.session.user;
+
+
+    currentAdmin =
+      await getAdminProfile(
+        currentUser
+      );
+
+
+    currentRole =
+      currentAdmin.role;
+
+
+    $("roleText").textContent =
+      currentRole.toUpperCase();
+
+
+    $("heroStatus").textContent =
+      `เข้าสู่ระบบแล้ว · ${
+        currentAdmin.name ||
+        currentAdmin.email
+      }`;
+
+
+    $("usersNav").style.display =
       currentRole === "owner"
         ? ""
         : "none";
+
+
+    $("clearAllBtn").style.display =
+      canDelete()
+        ? ""
+        : "none";
+
+
+    hideLogin();
+
+
+    await loadOrders();
 
   }
 
 
   async function loadOrders(){
 
-    const {
-      data,
-      error
-    } =
-      await client
+    $("heroStatus").textContent =
+      "กำลังโหลดข้อมูลคำสั่งซื้อ...";
+
+
+    const result =
+      await db
         .from("orders")
-        .select("*")
+        .select(
+          "*"
+        )
         .order(
           "created_at",
           {
@@ -1995,15 +2188,15 @@ tbody tr:hover{
         );
 
 
-    if(error){
+    if(result.error){
 
-      throw error;
+      throw result.error;
 
     }
 
 
     orders =
-      data || [];
+      result.data || [];
 
 
     orderItems = {};
@@ -2013,17 +2206,16 @@ tbody tr:hover{
 
       const ids =
         orders.map(
-          item => item.id
+          order => order.id
         );
 
 
-      const {
-        data:items,
-        error:itemError
-      } =
-        await client
+      const itemsResult =
+        await db
           .from("order_items")
-          .select("*")
+          .select(
+            "*"
+          )
           .in(
             "order_id",
             ids
@@ -2036,9 +2228,17 @@ tbody tr:hover{
           );
 
 
-      if(!itemError){
+      if(itemsResult.error){
 
-        (items || [])
+        console.warn(
+          "ORDER ITEMS ERROR:",
+          itemsResult.error
+        );
+
+      }
+      else{
+
+        (itemsResult.data || [])
           .forEach(
             item => {
 
@@ -2068,82 +2268,79 @@ tbody tr:hover{
 
 
     updateStats();
-    render();
+
+    renderOrders();
+
+
+    $("heroStatus").textContent =
+      `เชื่อมต่อแล้ว · ${
+        currentAdmin?.name ||
+        currentAdmin?.email ||
+        "Admin"
+      }`;
 
   }
 
 
   function updateStats(){
 
-    const all =
-      orders.length;
-
     const pending =
       orders.filter(
-        o =>
-          o.status ===
-          "pending"
-      ).length;
+        order =>
+          order.status === "pending"
+      );
 
     const shipping =
       orders.filter(
-        o =>
-          o.status ===
-          "shipping"
-      ).length;
+        order =>
+          order.status === "shipping"
+      );
 
     const completed =
       orders.filter(
-        o =>
-          o.status ===
-          "completed"
-      ).length;
+        order =>
+          order.status === "completed"
+      );
 
 
     $("statAll").textContent =
-      all;
+      orders.length;
 
     $("statPending").textContent =
-      pending;
+      pending.length;
 
     $("statShipping").textContent =
-      shipping;
+      shipping.length;
 
     $("statCompleted").textContent =
-      completed;
+      completed.length;
 
 
-    const total =
+    const allTotal =
       orders.reduce(
-        (sum,o) =>
+        (sum,order) =>
           sum +
           Number(
-            o.total || 0
+            order.total || 0
           ),
         0
       );
 
 
     const pendingTotal =
-      orders
-        .filter(
-          o =>
-            o.status ===
-            "pending"
-        )
-        .reduce(
-          (sum,o) =>
-            sum +
-            Number(
-              o.total || 0
-            ),
-          0
-        );
+      pending.reduce(
+        (sum,order) =>
+          sum +
+          Number(
+            order.total || 0
+          ),
+        0
+      );
 
 
     $("sumAll").textContent =
       "฿" +
-      money(total);
+      money(allTotal);
 
 
     $("sumPending").textContent =
@@ -2154,97 +2351,91 @@ tbody tr:hover{
     $("sumLatest").textContent =
       orders.length
         ? dateTH(
-            orders[0]
-              .created_at
+            orders[0].created_at
           )
         : "-";
 
   }
 
 
-  function getFiltered(){
+  function renderOrders(){
 
-    const q =
+    const query =
       $("searchInput")
         .value
         .trim()
         .toLowerCase();
 
-    const status =
+
+    const selectedStatus =
       $("statusFilter")
         .value;
 
 
-    return orders.filter(
-      order => {
+    const filtered =
+      orders.filter(
+        order => {
 
-        const haystack = [
+          const text = [
 
-          order.id,
+            order.id,
 
-          order.order_number,
+            order.order_number,
 
-          order.customer_name,
+            order.customer_name,
 
-          order.customer_phone,
+            order.customer_phone,
 
-          order.customer_email,
+            order.customer_email,
 
-          order.customer_province,
+            order.customer_province,
 
-          order.customer_address
+            order.customer_address,
 
-        ]
+            order.payment_method
+
+          ]
           .filter(Boolean)
           .join(" ")
           .toLowerCase();
 
 
-        const searchMatch =
-          !q ||
-          haystack.includes(q);
+          const searchOK =
+            !query ||
+            text.includes(
+              query
+            );
 
 
-        const statusMatch =
-          status === "all" ||
-          order.status === status;
+          const statusOK =
+            selectedStatus === "all" ||
+            order.status === selectedStatus;
 
 
-        return (
-          searchMatch &&
-          statusMatch
-        );
+          return (
+            searchOK &&
+            statusOK
+          );
 
-      }
-    );
-
-  }
-
-
-  function render(){
-
-    const rows =
-      getFiltered();
+        }
+      );
 
 
     $("visibleCount").textContent =
-      `${rows.length} รายการ`;
+      `${filtered.length} รายการ`;
 
 
-    if(!rows.length){
+    if(!filtered.length){
 
       $("ordersTable").innerHTML = `
 
         <tr>
 
-          <td
-            colspan="7"
-            style="padding:0"
-          >
+          <td colspan="7">
 
             <div class="empty">
 
-              <div class="empty-icon">
+              <div class="empty-mark">
                 ◇
               </div>
 
@@ -2253,7 +2444,11 @@ tbody tr:hover{
               </h3>
 
               <p>
-                ยังไม่มีข้อมูลที่ตรงกับเงื่อนไขการค้นหา
+                ${
+                  orders.length
+                    ? "ไม่พบข้อมูลตามเงื่อนไขการค้นหา"
+                    : "ยังไม่มีคำสั่งซื้อจากระบบออนไลน์"
+                }
               </p>
 
             </div>
@@ -2270,7 +2465,8 @@ tbody tr:hover{
 
 
     $("ordersTable").innerHTML =
-      rows.map(
+      filtered
+      .map(
         order => {
 
           const st =
@@ -2311,9 +2507,9 @@ tbody tr:hover{
                   )}
                 </div>
 
-                <div class="order-id">
+                <div class="order-uuid">
                   ${esc(
-                    order.id || ""
+                    order.id || "-"
                   )}
                 </div>
 
@@ -2354,11 +2550,16 @@ tbody tr:hover{
               <td>
 
                 <div class="item-count">
-                  ${quantity || "-"} ชิ้น
+                  ${
+                    quantity ||
+                    0
+                  } ชิ้น
                 </div>
 
-                <div class="customer-meta">
-                  ${items.length} รายการ
+                <div class="item-sub">
+                  ${
+                    items.length
+                  } รายการสินค้า
                 </div>
 
               </td>
@@ -2386,7 +2587,10 @@ tbody tr:hover{
               <td>
 
                 <span
-                  class="status ${st.cls}"
+                  class="
+                    status
+                    ${st.cls}
+                  "
                 >
                   ${esc(
                     st.label
@@ -2398,7 +2602,7 @@ tbody tr:hover{
 
               <td>
 
-                <div class="order-date">
+                <div class="date">
                   ${dateTH(
                     order.created_at
                   )}
@@ -2413,12 +2617,12 @@ tbody tr:hover{
 
                   <button
                     class="icon-btn"
+                    type="button"
+                    title="ดูรายละเอียด"
                     data-action="view"
                     data-id="${esc(
                       order.id
                     )}"
-                    title="ดูรายละเอียด"
-                    type="button"
                   >
                     ⌕
                   </button>
@@ -2428,12 +2632,12 @@ tbody tr:hover{
                       ? `
                         <button
                           class="icon-btn delete"
+                          type="button"
+                          title="ลบ"
                           data-action="delete"
                           data-id="${esc(
                             order.id
                           )}"
-                          title="ลบ"
-                          type="button"
                         >
                           ×
                         </button>
@@ -2450,7 +2654,8 @@ tbody tr:hover{
           `;
 
         }
-      ).join("");
+      )
+      .join("");
 
   }
 
@@ -2459,7 +2664,7 @@ tbody tr:hover{
 
     const order =
       orders.find(
-        o => o.id === id
+        item => item.id === id
       );
 
 
@@ -2472,8 +2677,39 @@ tbody tr:hover{
       id;
 
 
-    const items =
+    let items =
       orderItems[id] || [];
+
+
+    if(!items.length){
+
+      const result =
+        await db
+          .from("order_items")
+          .select("*")
+          .eq(
+            "order_id",
+            id
+          )
+          .order(
+            "created_at",
+            {
+              ascending:true
+            }
+          );
+
+
+      if(!result.error){
+
+        items =
+          result.data || [];
+
+        orderItems[id] =
+          items;
+
+      }
+
+    }
 
 
     const address =
@@ -2495,7 +2731,7 @@ tbody tr:hover{
 
       <div class="detail-grid">
 
-        <div class="detail-box">
+        <div class="detail-card">
 
           <div class="detail-label">
             ORDER NUMBER
@@ -2511,25 +2747,26 @@ tbody tr:hover{
         </div>
 
 
-        <div class="detail-box">
+        <div class="detail-card">
 
           <div class="detail-label">
-            CREATED
+            ORDER ID
           </div>
 
           <div class="detail-value">
-            ${dateTH(
-              order.created_at
+            ${esc(
+              order.id ||
+              "-"
             )}
           </div>
 
         </div>
 
 
-        <div class="detail-box">
+        <div class="detail-card">
 
           <div class="detail-label">
-            CUSTOMER
+            CUSTOMER NAME
           </div>
 
           <div class="detail-value">
@@ -2542,7 +2779,7 @@ tbody tr:hover{
         </div>
 
 
-        <div class="detail-box">
+        <div class="detail-card">
 
           <div class="detail-label">
             PHONE
@@ -2558,7 +2795,7 @@ tbody tr:hover{
         </div>
 
 
-        <div class="detail-box">
+        <div class="detail-card">
 
           <div class="detail-label">
             EMAIL
@@ -2574,7 +2811,7 @@ tbody tr:hover{
         </div>
 
 
-        <div class="detail-box">
+        <div class="detail-card">
 
           <div class="detail-label">
             PAYMENT
@@ -2591,7 +2828,7 @@ tbody tr:hover{
         </div>
 
 
-        <div class="detail-box">
+        <div class="detail-card">
 
           <div class="detail-label">
             ADDRESS
@@ -2599,14 +2836,15 @@ tbody tr:hover{
 
           <div class="detail-value">
             ${esc(
-              address || "-"
+              address ||
+              "-"
             )}
           </div>
 
         </div>
 
 
-        <div class="detail-box">
+        <div class="detail-card">
 
           <div class="detail-label">
             STATUS
@@ -2615,6 +2853,37 @@ tbody tr:hover{
           <div class="detail-value">
             ${esc(
               st.label
+            )}
+          </div>
+
+        </div>
+
+
+        <div class="detail-card">
+
+          <div class="detail-label">
+            CREATED AT
+          </div>
+
+          <div class="detail-value">
+            ${dateTH(
+              order.created_at
+            )}
+          </div>
+
+        </div>
+
+
+        <div class="detail-card">
+
+          <div class="detail-label">
+            CUSTOMER NOTE
+          </div>
+
+          <div class="detail-value">
+            ${esc(
+              order.customer_note ||
+              "-"
             )}
           </div>
 
@@ -2632,7 +2901,8 @@ tbody tr:hover{
 
         ${
           items.length
-            ? items.map(
+            ? items
+              .map(
                 item => `
 
                   <div class="item">
@@ -2676,6 +2946,7 @@ tbody tr:hover{
                               ${esc(
                                 item.product_id
                               )}
+                              <br>
                             `
                             : ""
                         }
@@ -2683,10 +2954,11 @@ tbody tr:hover{
                         ${
                           item.price_label
                             ? `
-                              ·
+                              ราคา:
                               ${esc(
                                 item.price_label
                               )}
+                              <br>
                             `
                             : ""
                         }
@@ -2694,7 +2966,6 @@ tbody tr:hover{
                         ${
                           item.selected_option
                             ? `
-                              <br>
                               ตัวเลือก:
                               ${esc(
                                 formatOption(
@@ -2713,7 +2984,6 @@ tbody tr:hover{
                     <div class="item-right">
 
                       <div class="item-price">
-
                         ฿${money(
                           item.line_total ||
                           (
@@ -2725,11 +2995,10 @@ tbody tr:hover{
                             )
                           )
                         )}
-
                       </div>
 
                       <div class="item-qty">
-                        ×${Number(
+                        จำนวน ×${Number(
                           item.quantity || 0
                         )}
                       </div>
@@ -2739,18 +3008,13 @@ tbody tr:hover{
                   </div>
 
                 `
-              ).join("")
+              )
+              .join("")
             : `
-              <div
-                style="
-                  padding:16px;
-                  color:#666;
-                  font-size:11px;
-                  border:1px solid var(--line);
-                  border-radius:12px;
-                "
-              >
-                ไม่พบรายการสินค้า
+              <div class="detail-card">
+                <div class="detail-value">
+                  ไม่พบรายการสินค้า
+                </div>
               </div>
             `
         }
@@ -2759,57 +3023,29 @@ tbody tr:hover{
 
 
       ${
-        order.customer_note
-          ? `
-
-            <h3 class="section-title">
-              หมายเหตุจากลูกค้า
-            </h3>
-
-            <div
-              class="detail-box"
-              style="margin-bottom:10px"
-            >
-              <div class="detail-value">
-                ${esc(
-                  order.customer_note
-                )}
-              </div>
-            </div>
-
-          `
-          : ""
-      }
-
-
-      ${
         order.slip_path
           ? `
-
             <a
+              class="slip"
               href="${esc(
                 order.slip_path
               )}"
               target="_blank"
               rel="noopener"
-              class="slip"
             >
               ดูหลักฐานการชำระเงิน ↗
             </a>
-
           `
           : `
-
             <div
               style="
-                margin-top:15px;
-                color:#666;
-                font-size:10px;
+                margin-top:16px;
+                color:#555;
+                font-size:9px;
               "
             >
               ยังไม่มีหลักฐานการชำระเงิน
             </div>
-
           `
       }
 
@@ -2867,18 +3103,19 @@ tbody tr:hover{
         </select>
 
 
-        <button
-          id="saveStatusBtn"
-          class="btn btn-gold"
-          type="button"
-          ${
-            canUpdate()
-              ? ""
-              : "disabled"
-          }
-        >
-          บันทึกสถานะ
-        </button>
+        ${
+          canUpdate()
+            ? `
+              <button
+                id="saveStatusBtn"
+                class="btn btn-gold"
+                type="button"
+              >
+                บันทึกสถานะ
+              </button>
+            `
+            : ""
+        }
 
       </div>
 
@@ -2907,30 +3144,26 @@ tbody tr:hover{
 
 
     if(
-      typeof value ===
-      "string"
+      typeof value === "string"
     ){
       return value;
     }
 
 
     if(
-      typeof value ===
-      "object"
+      typeof value === "object"
     ){
 
-      return Object.entries(
-        value
-      )
-      .map(
-        ([key,val]) =>
-          `${key}: ${
-            typeof val === "object"
-              ? JSON.stringify(val)
-              : val
-          }`
-      )
-      .join(" · ");
+      return Object.entries(value)
+        .map(
+          ([key,val]) =>
+            `${key}: ${
+              typeof val === "object"
+                ? JSON.stringify(val)
+                : val
+            }`
+        )
+        .join(" · ");
 
     }
 
@@ -2952,13 +3185,16 @@ tbody tr:hover{
 
     const status =
       $("modalStatus")
-        .value;
+        ?.value;
 
 
-    const {
-      error
-    } =
-      await client
+    if(!status){
+      return;
+    }
+
+
+    const result =
+      await db
         .from("orders")
         .update({
           status
@@ -2969,11 +3205,11 @@ tbody tr:hover{
         );
 
 
-    if(error){
+    if(result.error){
 
       alert(
-        "บันทึกไม่สำเร็จ\n\n" +
-        error.message
+        "บันทึกสถานะไม่สำเร็จ\n\n" +
+        result.error.message
       );
 
       return;
@@ -3007,7 +3243,7 @@ tbody tr:hover{
 
 
     const itemResult =
-      await client
+      await db
         .from("order_items")
         .delete()
         .eq(
@@ -3019,6 +3255,7 @@ tbody tr:hover{
     if(itemResult.error){
 
       alert(
+        "ลบรายการสินค้าไม่สำเร็จ\n\n" +
         itemResult.error.message
       );
 
@@ -3027,8 +3264,8 @@ tbody tr:hover{
     }
 
 
-    const result =
-      await client
+    const orderResult =
+      await db
         .from("orders")
         .delete()
         .eq(
@@ -3037,11 +3274,11 @@ tbody tr:hover{
         );
 
 
-    if(result.error){
+    if(orderResult.error){
 
       alert(
         "ลบคำสั่งซื้อไม่สำเร็จ\n\n" +
-        result.error.message
+        orderResult.error.message
       );
 
       return;
@@ -3077,12 +3314,12 @@ tbody tr:hover{
 
     const ids =
       orders.map(
-        o => o.id
+        order => order.id
       );
 
 
-    const items =
-      await client
+    const itemsResult =
+      await db
         .from("order_items")
         .delete()
         .in(
@@ -3091,10 +3328,10 @@ tbody tr:hover{
         );
 
 
-    if(items.error){
+    if(itemsResult.error){
 
       alert(
-        items.error.message
+        itemsResult.error.message
       );
 
       return;
@@ -3102,8 +3339,8 @@ tbody tr:hover{
     }
 
 
-    const result =
-      await client
+    const ordersResult =
+      await db
         .from("orders")
         .delete()
         .in(
@@ -3112,10 +3349,10 @@ tbody tr:hover{
         );
 
 
-    if(result.error){
+    if(ordersResult.error){
 
       alert(
-        result.error.message
+        ordersResult.error.message
       );
 
       return;
@@ -3152,8 +3389,7 @@ tbody tr:hover{
           )
         ],
         {
-          type:
-            "application/json"
+          type:"application/json"
         }
       );
 
@@ -3180,9 +3416,7 @@ tbody tr:hover{
       ".json";
 
 
-    document.body.appendChild(
-      a
-    );
+    document.body.appendChild(a);
 
     a.click();
 
@@ -3190,9 +3424,7 @@ tbody tr:hover{
 
     setTimeout(
       () =>
-        URL.revokeObjectURL(
-          url
-        ),
+        URL.revokeObjectURL(url),
       1000
     );
 
@@ -3214,20 +3446,23 @@ tbody tr:hover{
   $("loginBtn")
     .addEventListener(
       "click",
-      signIn
+      login
     );
 
 
   $("password")
     .addEventListener(
       "keydown",
-      e => {
+      event => {
+
         if(
-          e.key ===
-          "Enter"
+          event.key === "Enter"
         ){
-          signIn();
+
+          login();
+
         }
+
       }
     );
 
@@ -3235,11 +3470,21 @@ tbody tr:hover{
   $("logoutBtn")
     .addEventListener(
       "click",
-      async e => {
+      async event => {
 
-        e.preventDefault();
+        event.preventDefault();
 
-        await client.auth.signOut();
+        await db.auth.signOut();
+
+        currentUser = null;
+        currentAdmin = null;
+        currentRole = null;
+
+        $("roleText").textContent =
+          "-";
+
+        $("heroStatus").textContent =
+          "กรุณาเข้าสู่ระบบ";
 
       }
     );
@@ -3248,7 +3493,23 @@ tbody tr:hover{
   $("refreshBtn")
     .addEventListener(
       "click",
-      loadOrders
+      async () => {
+
+        try{
+
+          await loadOrders();
+
+        }
+        catch(error){
+
+          alert(
+            error.message ||
+            "โหลดข้อมูลไม่สำเร็จ"
+          );
+
+        }
+
+      }
     );
 
 
@@ -3269,38 +3530,38 @@ tbody tr:hover{
   $("searchInput")
     .addEventListener(
       "input",
-      render
+      renderOrders
     );
 
 
   $("statusFilter")
     .addEventListener(
       "change",
-      render
+      renderOrders
     );
 
 
   $("ordersTable")
     .addEventListener(
       "click",
-      e => {
+      event => {
 
-        const btn =
-          e.target.closest(
+        const button =
+          event.target.closest(
             "[data-action]"
           );
 
 
-        if(!btn){
+        if(!button){
           return;
         }
 
 
         const action =
-          btn.dataset.action;
+          button.dataset.action;
 
         const id =
-          btn.dataset.id;
+          button.dataset.id;
 
 
         if(
@@ -3310,7 +3571,9 @@ tbody tr:hover{
           openOrder(id);
 
         }
-        else if(
+
+
+        if(
           action === "delete"
         ){
 
@@ -3332,10 +3595,10 @@ tbody tr:hover{
   $("orderModal")
     .addEventListener(
       "click",
-      e => {
+      event => {
 
         if(
-          e.target ===
+          event.target ===
           $("orderModal")
         ){
 
@@ -3349,11 +3612,10 @@ tbody tr:hover{
 
   document.addEventListener(
     "keydown",
-    e => {
+    event => {
 
       if(
-        e.key ===
-        "Escape"
+        event.key === "Escape"
       ){
 
         closeModal();
@@ -3369,111 +3631,31 @@ tbody tr:hover{
       "click",
       () => {
 
-        $("navMenu")
+        $("nav")
           .classList
-          .toggle(
-            "open"
-          );
+          .toggle("open");
 
       }
     );
 
 
-  client.auth
-    .onAuthStateChange(
-      async (
-        event,
-        session
-      ) => {
+  db.auth.onAuthStateChange(
+    async (
+      event,
+      session
+    ) => {
 
-        if(
-          session &&
-          !currentAdmin
-        ){
+      if(!session){
 
-          try{
+        currentUser = null;
+        currentAdmin = null;
+        currentRole = null;
 
-            currentUser =
-              session.user;
+        $("roleText").textContent =
+          "-";
 
-            await loadProfile(
-              currentUser
-            );
-
-            hideLogin();
-
-            await loadOrders();
-
-          }
-          catch(error){
-
-            console.error(
-              error
-            );
-
-            $("authError")
-              .textContent =
-              error.message;
-
-            await client.auth
-              .signOut();
-
-            showLogin();
-
-          }
-
-        }
-
-
-        if(
-          !session
-        ){
-
-          currentUser =
-            null;
-
-          currentAdmin =
-            null;
-
-          currentRole =
-            null;
-
-          $("roleText")
-            .textContent =
-            "-";
-
-          $("loginStatus")
-            .textContent =
-            "กรุณาเข้าสู่ระบบ";
-
-          showLogin();
-
-        }
-
-      }
-    );
-
-
-  async function boot(){
-
-    try{
-
-      const {
-        data,
-        error
-      } =
-        await client.auth
-          .getSession();
-
-
-      if(error){
-        throw error;
-      }
-
-
-      if(
-        !data.session
-      ){
+        $("heroStatus").textContent =
+          "กรุณาเข้าสู่ระบบ";
 
         showLogin();
 
@@ -3482,40 +3664,102 @@ tbody tr:hover{
       }
 
 
-      currentUser =
-        data.session.user;
+      if(
+        currentUser &&
+        currentAdmin
+      ){
+        return;
+      }
 
 
-      await loadProfile(
-        currentUser
-      );
+      try{
+
+        currentUser =
+          session.user;
+
+        currentAdmin =
+          await getAdminProfile(
+            currentUser
+          );
+
+        currentRole =
+          currentAdmin.role;
 
 
-      hideLogin();
+        $("roleText").textContent =
+          currentRole.toUpperCase();
 
-      await loadOrders();
+
+        $("heroStatus").textContent =
+          `เข้าสู่ระบบแล้ว · ${
+            currentAdmin.name ||
+            currentAdmin.email
+          }`;
+
+
+        $("usersNav").style.display =
+          currentRole === "owner"
+            ? ""
+            : "none";
+
+
+        $("clearAllBtn").style.display =
+          canDelete()
+            ? ""
+            : "none";
+
+
+        hideLogin();
+
+        await loadOrders();
+
+      }
+      catch(error){
+
+        console.error(
+          error
+        );
+
+        setError(
+          error.message ||
+          "ไม่สามารถตรวจสอบสิทธิ์ได้"
+        );
+
+        await db.auth.signOut();
+
+      }
+
+    }
+  );
+
+
+  (async function(){
+
+    try{
+
+      await initializeAdmin();
 
     }
     catch(error){
 
       console.error(
-        "BOOT ERROR:",
+        "ADMIN ERROR:",
         error
       );
 
-      $("authError")
-        .textContent =
+      $("heroStatus").textContent =
+        "เกิดข้อผิดพลาดในการเชื่อมต่อ";
+
+      setError(
         error.message ||
-        "ไม่สามารถเข้าสู่ระบบได้";
+        "ไม่สามารถเชื่อมต่อระบบได้"
+      );
 
       showLogin();
 
     }
 
-  }
-
-
-  boot();
+  })();
 
 })();
 </script>
