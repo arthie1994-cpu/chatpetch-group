@@ -8,11 +8,20 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
   --black:#050505;
   --black2:#080808;
@@ -29,19 +38,20 @@
   --gray:#9b9b9b;
 
   --line:rgba(255,255,255,.09);
-  --gold-line:rgba(200,164,91,.30);
+  --gold-line:rgba(200,164,91,.28);
 
   --container:1240px;
 }
 
-/* =========================
+
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 html{
@@ -49,31 +59,39 @@ html{
 }
 
 body{
-  font-family:"Kanit","Prompt",sans-serif;
+  min-height:100vh;
+
+  overflow-x:hidden;
+
   color:var(--white);
+
+  font-family:
+    "Kanit",
+    "Prompt",
+    sans-serif;
+
   background:
     radial-gradient(
-      circle at 15% 20%,
-      rgba(200,164,91,.09),
+      circle at 15% 15%,
+      rgba(200,164,91,.10),
       transparent 28%
     ),
     radial-gradient(
-      circle at 85% 60%,
+      circle at 85% 55%,
       rgba(200,164,91,.07),
       transparent 30%
     ),
     var(--black);
-
-  min-height:100vh;
-  overflow-x:hidden;
 }
-
-/* Grid Background */
 
 body::before{
   content:"";
+
   position:fixed;
+
   inset:0;
+
+  z-index:-2;
 
   pointer-events:none;
 
@@ -90,7 +108,8 @@ body::before{
       transparent 1px
     );
 
-  background-size:50px 50px;
+  background-size:
+    50px 50px;
 
   mask-image:
     linear-gradient(
@@ -98,8 +117,29 @@ body::before{
       black,
       transparent 90%
     );
+}
+
+body::after{
+  content:"";
+
+  position:fixed;
+
+  width:500px;
+  height:500px;
+
+  top:20%;
+  left:-250px;
 
   z-index:-1;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.06),
+      transparent 70%
+    );
 }
 
 a{
@@ -107,7 +147,10 @@ a{
   text-decoration:none;
 }
 
-button{
+button,
+input,
+textarea,
+select{
   font-family:inherit;
 }
 
@@ -117,63 +160,81 @@ button{
     calc(100% - 40px)
   );
 
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-/* =========================
+
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .site-header{
   position:sticky;
+
   top:0;
+
   z-index:1000;
-
-  background:rgba(5,5,5,.90);
-
-  backdrop-filter:blur(18px);
 
   border-bottom:
     1px solid
     rgba(200,164,91,.18);
+
+  background:
+    rgba(5,5,5,.90);
+
+  backdrop-filter:
+    blur(18px);
 }
 
 .header-inner{
-  max-width:var(--container);
+  width:min(
+    var(--container),
+    calc(100% - 40px)
+  );
 
   min-height:78px;
 
   margin:auto;
-  padding:0 20px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 
-  gap:30px;
+  gap:25px;
 }
 
 .brand{
   display:flex;
+
   align-items:center;
+
   gap:13px;
+
+  flex-shrink:0;
 }
 
 .logo{
   width:48px;
   height:48px;
 
-  border:1px solid var(--gold);
-
   display:grid;
+
   place-items:center;
+
+  position:relative;
 
   color:var(--gold-light);
 
   font-size:18px;
+
   font-weight:700;
 
-  position:relative;
+  border:
+    1px solid
+    var(--gold);
 
   background:
     linear-gradient(
@@ -212,37 +273,46 @@ button{
 
   font-size:10px;
 
-  letter-spacing:.8px;
+  letter-spacing:.7px;
 }
 
 .nav-menu{
   display:flex;
+
   align-items:center;
-  gap:5px;
+
+  gap:4px;
 }
 
 .nav-menu a{
+  position:relative;
+
   padding:10px 13px;
 
   color:#ddd;
 
   font-size:14px;
 
-  transition:.25s;
+  transition:
+    color .25s ease,
+    background .25s ease;
 }
 
 .nav-menu a:hover{
   color:var(--gold-light);
 }
 
-.nav-shop{
-  position:relative;
+.nav-menu a.active{
+  color:var(--gold-light);
+}
 
+.nav-shop{
   border:
     1px solid
     var(--gold-line);
 
-  color:var(--gold-light)!important;
+  color:
+    var(--gold-light)!important;
 }
 
 .cart-badge{
@@ -256,6 +326,10 @@ button{
 
   padding:0 5px;
 
+  display:grid;
+
+  place-items:center;
+
   border-radius:20px;
 
   background:var(--gold);
@@ -264,14 +338,13 @@ button{
 
   font-size:11px;
 
-  display:grid;
-  place-items:center;
-
   font-weight:700;
 }
 
 .menu-btn{
   display:none;
+
+  padding:8px 12px;
 
   border:
     1px solid
@@ -281,106 +354,22 @@ button{
 
   color:var(--gold-light);
 
-  padding:8px 12px;
-
   font-size:20px;
 
   cursor:pointer;
 }
 
-/* =========================
-   TOP BACK BUTTON
-========================= */
 
-.back-products-top{
-  position:relative;
-
-  z-index:5;
-
-  padding-top:32px;
-
-  padding-bottom:0;
-}
-
-/*
-  ปุ่มนี้ถูกตั้งใจให้เด่นมาก
-  และอยู่ก่อน Hero
-*/
-
-.back-products{
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:center;
-
-  gap:14px;
-
-  min-height:62px;
-
-  padding:15px 30px;
-
-  border:
-    1px solid
-    var(--gold);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(200,164,91,.18),
-      rgba(200,164,91,.045)
-    );
-
-  color:var(--gold-light);
-
-  font-size:20px;
-
-  font-weight:600;
-
-  letter-spacing:.2px;
-
-  box-shadow:
-    0 10px 35px
-    rgba(0,0,0,.30),
-
-    inset 0 0 25px
-    rgba(200,164,91,.04);
-
-  transition:
-    background .25s ease,
-    color .25s ease,
-    transform .25s ease,
-    box-shadow .25s ease;
-
-  cursor:pointer;
-}
-
-.back-products:hover{
-  background:var(--gold);
-
-  color:#050505;
-
-  transform:translateX(-5px);
-
-  box-shadow:
-    0 14px 40px
-    rgba(200,164,91,.18);
-}
-
-.back-arrow{
-  font-size:25px;
-  line-height:1;
-}
-
-/* =========================
+/* =========================================================
    PAGE HERO
-========================= */
+========================================================= */
 
 .page-hero{
   position:relative;
 
   padding:
-    60px 0
-    45px;
+    58px 0
+    35px;
 
   overflow:hidden;
 }
@@ -391,16 +380,17 @@ button{
   position:absolute;
 
   right:2%;
-  bottom:-45px;
+
+  bottom:-48px;
+
+  color:
+    rgba(200,164,91,.035);
 
   font-size:120px;
 
   line-height:1;
 
   font-weight:700;
-
-  color:
-    rgba(200,164,91,.035);
 
   pointer-events:none;
 }
@@ -412,13 +402,13 @@ button{
 
   gap:12px;
 
+  margin-bottom:15px;
+
   color:var(--gold-light);
 
   font-size:13px;
 
   letter-spacing:3px;
-
-  margin-bottom:15px;
 }
 
 .eyebrow::before{
@@ -434,11 +424,11 @@ button{
   font-size:
     clamp(
       48px,
-      8vw,
-      95px
+      7vw,
+      88px
     );
 
-  line-height:.95;
+  line-height:.98;
 
   letter-spacing:-3px;
 }
@@ -452,18 +442,103 @@ button{
 
   -webkit-text-stroke:
     1px
-    rgba(240,217,145,.70);
+    rgba(240,217,145,.65);
 }
 
-/* =========================
+
+/* =========================================================
    DETAIL SECTION
-========================= */
+========================================================= */
 
 .detail-section{
   padding:
-    15px 0
+    10px 0
     100px;
 }
+
+
+/* =========================================================
+   BACK BUTTON
+   อยู่เหนือรูปสินค้า
+   ไม่อยู่บนสุดของเว็บไซต์
+========================================================= */
+
+.detail-back{
+  margin-bottom:20px;
+
+  display:flex;
+
+  align-items:center;
+}
+
+.back-products{
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:11px;
+
+  min-height:52px;
+
+  padding:
+    11px 22px;
+
+  border:
+    1px solid
+    var(--gold);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200,164,91,.16),
+      rgba(200,164,91,.035)
+    );
+
+  color:var(--gold-light);
+
+  font-size:17px;
+
+  font-weight:600;
+
+  box-shadow:
+    0 8px 25px
+    rgba(0,0,0,.25),
+
+    inset 0 0 20px
+    rgba(200,164,91,.03);
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.back-products:hover{
+  background:var(--gold);
+
+  color:#050505;
+
+  transform:
+    translateX(-4px);
+
+  box-shadow:
+    0 12px 32px
+    rgba(200,164,91,.18);
+}
+
+.back-arrow{
+  font-size:22px;
+
+  line-height:1;
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
 
 .detail-grid{
   display:grid;
@@ -472,42 +547,50 @@ button{
     minmax(0,1fr)
     minmax(0,1fr);
 
-  gap:55px;
+  gap:52px;
 
   align-items:start;
 }
 
-/* =========================
-   PRODUCT IMAGE
-========================= */
+
+/* =========================================================
+   IMAGE AREA
+========================================================= */
+
+.detail-image-column{
+  min-width:0;
+}
 
 .detail-image-wrap{
-  position:relative;
-
   width:100%;
 
   aspect-ratio:1 / 1;
 
-  max-height:650px;
+  position:relative;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(200,164,91,.09),
-      transparent 55%
-    ),
-    #101010;
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
 
   border:
     1px solid
     var(--gold-line);
 
-  overflow:hidden;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(200,164,91,.10),
+      transparent 57%
+    ),
+    #101010;
 
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
+  box-shadow:
+    0 25px 70px
+    rgba(0,0,0,.35);
 }
 
 .detail-image-wrap::before{
@@ -519,16 +602,40 @@ button{
 
   border:
     1px solid
-    rgba(200,164,91,.08);
+    rgba(200,164,91,.10);
 
   pointer-events:none;
 }
 
+.detail-image-wrap::after{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--gold),
+      transparent
+    );
+
+  opacity:.7;
+}
+
 .detail-image-wrap img{
   position:relative;
+
   z-index:1;
 
   width:100%;
+
   height:100%;
 
   padding:35px;
@@ -536,70 +643,92 @@ button{
   object-fit:contain;
 
   transition:
-    transform .5s ease;
+    transform .55s ease;
 }
 
 .detail-image-wrap:hover img{
   transform:scale(1.035);
 }
 
-/* =========================
-   PRODUCT INFO
-========================= */
+.no-image{
+  color:#666;
+
+  font-size:15px;
+
+  text-align:center;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
 
 .detail-info{
-  padding-top:5px;
+  min-width:0;
+
+  padding-top:3px;
 }
 
 .detail-category{
+  margin-bottom:12px;
+
   color:var(--gold);
 
   font-size:12px;
 
   letter-spacing:2px;
 
-  margin-bottom:12px;
-
   text-transform:uppercase;
 }
 
 .detail-info h2{
+  margin-bottom:15px;
+
+  color:#fff;
+
   font-size:
     clamp(
       30px,
       4vw,
-      54px
+      52px
     );
 
-  line-height:1.05;
-
-  margin-bottom:16px;
+  line-height:1.08;
 }
 
 .detail-short{
+  max-width:650px;
+
+  margin-bottom:17px;
+
   color:#aaa;
 
   font-size:17px;
 
   line-height:1.8;
-
-  margin-bottom:18px;
 }
 
 .detail-price{
+  margin-bottom:8px;
+
   color:var(--gold-light);
 
   font-size:36px;
 
   font-weight:600;
 
-  margin-bottom:8px;
+  line-height:1.2;
 }
 
 .shipping-highlight{
-  display:inline-block;
+  display:inline-flex;
 
-  padding:9px 13px;
+  align-items:center;
+
+  margin-bottom:25px;
+
+  padding:
+    8px 13px;
 
   border:
     1px solid
@@ -611,20 +740,19 @@ button{
   color:var(--gold-light);
 
   font-size:13px;
-
-  margin-bottom:25px;
 }
 
-/* =========================
+
+/* =========================================================
    OPTIONS
-========================= */
+========================================================= */
 
 .option-title{
+  margin-bottom:10px;
+
   color:#ddd;
 
   font-size:15px;
-
-  margin-bottom:10px;
 }
 
 .options{
@@ -634,11 +762,12 @@ button{
 
   gap:10px;
 
-  margin-bottom:25px;
+  margin-bottom:24px;
 }
 
 .option-btn{
-  padding:12px 18px;
+  padding:
+    11px 17px;
 
   border:
     1px solid
@@ -648,31 +777,49 @@ button{
 
   color:#ddd;
 
+  font-size:14px;
+
   cursor:pointer;
 
-  transition:.25s;
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    color .25s ease;
 }
 
-.option-btn:hover,
+.option-btn:hover{
+  border-color:var(--gold);
+
+  color:var(--gold-light);
+
+  background:
+    rgba(200,164,91,.08);
+}
+
 .option-btn.active{
   border-color:var(--gold);
 
-  background:
-    rgba(200,164,91,.12);
-
   color:var(--gold-light);
+
+  background:
+    rgba(200,164,91,.13);
+
+  box-shadow:
+    inset 0 0 15px
+    rgba(200,164,91,.04);
 }
 
-/* =========================
+
+/* =========================================================
    QUANTITY
-========================= */
+========================================================= */
 
 .quantity-title{
+  margin-bottom:8px;
+
   color:#aaa;
 
   font-size:14px;
-
-  margin-bottom:8px;
 }
 
 .quantity-row{
@@ -713,14 +860,17 @@ button{
 .qty-number{
   min-width:45px;
 
-  text-align:center;
+  color:#fff;
 
   font-size:18px;
+
+  text-align:center;
 }
 
-/* =========================
+
+/* =========================================================
    ADD CART
-========================= */
+========================================================= */
 
 .add-cart{
   width:100%;
@@ -746,23 +896,32 @@ button{
 
   cursor:pointer;
 
-  transition:.25s;
+  transition:
+    transform .25s ease,
+    filter .25s ease,
+    box-shadow .25s ease;
 }
 
 .add-cart:hover{
   filter:brightness(1.08);
 
-  transform:translateY(-2px);
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(200,164,91,.12);
 }
 
-/* =========================
+
+/* =========================================================
    INFO BOX
-========================= */
+========================================================= */
 
 .info-box{
-  margin-top:25px;
+  margin-top:24px;
 
-  padding:24px;
+  padding:23px;
 
   border:
     1px solid
@@ -773,11 +932,11 @@ button{
 }
 
 .info-box h3{
+  margin-bottom:13px;
+
   color:var(--gold-light);
 
   font-size:20px;
-
-  margin-bottom:14px;
 }
 
 .info-box ul{
@@ -792,51 +951,79 @@ button{
   color:var(--gold);
 }
 
-/* =========================
-   NOT FOUND
-========================= */
+
+/* =========================================================
+   NOT FOUND / LOADING
+========================================================= */
 
 .not-found{
-  padding:80px 20px;
+  padding:70px 25px;
 
   border:
     1px solid
     var(--gold-line);
 
-  text-align:center;
-
   background:
-    rgba(200,164,91,.04);
+    rgba(200,164,91,.035);
+
+  text-align:center;
 }
 
 .not-found h2{
+  margin-bottom:13px;
+
   color:var(--gold-light);
 
-  font-size:35px;
-
-  margin-bottom:15px;
+  font-size:32px;
 }
 
 .not-found p{
-  color:#999;
+  margin-bottom:24px;
 
-  margin-bottom:25px;
+  color:#999;
 }
 
-/* =========================
+.loading-mark{
+  width:36px;
+  height:36px;
+
+  margin:
+    0 auto 20px;
+
+  border:
+    2px solid
+    rgba(200,164,91,.20);
+
+  border-top-color:
+    var(--gold);
+
+  border-radius:50%;
+
+  animation:
+    spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
+  padding:
+    60px 0
+    30px;
+
   border-top:
     1px solid
     var(--line);
 
   background:#070707;
-
-  padding:
-    60px 0
-    30px;
 }
 
 .footer-grid{
@@ -849,20 +1036,20 @@ footer{
 }
 
 .footer-title{
+  margin-bottom:15px;
+
   color:var(--gold-light);
 
   font-size:20px;
-
-  margin-bottom:15px;
 }
 
 footer p,
 footer a{
   color:#999;
 
-  line-height:1.9;
-
   font-size:14px;
+
+  line-height:1.9;
 }
 
 footer a:hover{
@@ -883,27 +1070,37 @@ footer a:hover{
   font-size:12px;
 }
 
-/* =========================
+
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
 .toast{
   position:fixed;
 
   right:20px;
+
   bottom:25px;
 
   z-index:2000;
 
-  padding:15px 20px;
+  max-width:
+    calc(100% - 40px);
 
-  background:#111;
+  padding:
+    14px 20px;
 
   border:
     1px solid
     var(--gold-line);
 
+  background:#111;
+
   color:#fff;
+
+  box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.4);
 
   transform:
     translateY(120px);
@@ -920,39 +1117,50 @@ footer a:hover{
   opacity:1;
 }
 
-/* =========================
-   MOBILE
-========================= */
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
 
 @media(max-width:800px){
+
+  .header-inner{
+    min-height:68px;
+  }
 
   .nav-menu{
     display:none;
 
     position:absolute;
 
-    top:78px;
+    top:68px;
 
     left:0;
     right:0;
 
-    background:#080808;
-
-    border-bottom:
-      1px solid
-      var(--gold-line);
-
     padding:
-      15px 20px
+      12px 20px
       20px;
 
     flex-direction:column;
 
     align-items:stretch;
+
+    border-bottom:
+      1px solid
+      var(--gold-line);
+
+    background:
+      rgba(8,8,8,.98);
   }
 
   .nav-menu.open{
     display:flex;
+  }
+
+  .nav-menu a{
+    padding:
+      13px 12px;
   }
 
   .menu-btn{
@@ -962,7 +1170,7 @@ footer a:hover{
   .detail-grid{
     grid-template-columns:1fr;
 
-    gap:30px;
+    gap:32px;
   }
 
   .footer-grid{
@@ -971,9 +1179,10 @@ footer a:hover{
 
 }
 
-/* =========================
-   MOBILE SMALL
-========================= */
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:560px){
 
@@ -983,10 +1192,8 @@ footer a:hover{
   }
 
   .header-inner{
-    min-height:68px;
-
-    padding:
-      0 14px;
+    width:
+      calc(100% - 28px);
   }
 
   .brand-text{
@@ -998,63 +1205,55 @@ footer a:hover{
     height:43px;
   }
 
-  /*
-    ปุ่มกลับหน้าสินค้า
-    ใหญ่และอยู่บนสุด
-  */
-
-  .back-products-top{
-    padding-top:20px;
-  }
-
-  .back-products{
-    width:100%;
-
-    min-height:62px;
-
-    padding:
-      15px 18px;
-
-    justify-content:center;
-
-    font-size:18px;
-
-    font-weight:600;
-
-    gap:11px;
-  }
-
-  .back-arrow{
-    font-size:24px;
-  }
-
   .page-hero{
     padding:
-      48px 0
-      25px;
+      45px 0
+      28px;
   }
 
   .page-hero h1{
-    font-size:55px;
+    font-size:54px;
 
     letter-spacing:-2px;
   }
 
   .page-hero h1 span{
-    font-size:43px;
+    font-size:40px;
   }
 
   /*
-    รูปมือถือเล็กลง
+    ปุ่มกลับอยู่ในโซนรูป
+    และไม่ใหญ่เกินไป
+  */
+
+  .detail-back{
+    margin-bottom:14px;
+  }
+
+  .back-products{
+    min-height:48px;
+
+    padding:
+      9px 15px;
+
+    font-size:15px;
+
+    gap:9px;
+  }
+
+  .back-arrow{
+    font-size:20px;
+  }
+
+  /*
+    รูปสินค้าเล็กลงบนมือถือ
   */
 
   .detail-image-wrap{
     aspect-ratio:
-      1 / .72;
+      1 / .68;
 
-    max-height:220px;
-
-    min-height:0;
+    max-height:210px;
   }
 
   .detail-image-wrap img{
@@ -1062,7 +1261,7 @@ footer a:hover{
     height:100%;
 
     padding:
-      18px 35px;
+      16px 30px;
 
     object-fit:contain;
   }
@@ -1075,6 +1274,8 @@ footer a:hover{
 
   .detail-short{
     font-size:14px;
+
+    line-height:1.7;
   }
 
   .detail-price{
@@ -1082,12 +1283,14 @@ footer a:hover{
   }
 
   .shipping-highlight{
+    margin-bottom:20px;
+
     font-size:12px;
   }
 
   .option-btn{
     padding:
-      11px 14px;
+      10px 13px;
 
     font-size:13px;
   }
@@ -1098,52 +1301,58 @@ footer a:hover{
     font-size:17px;
   }
 
+  .info-box{
+    padding:19px;
+  }
+
 }
 
-/* =========================
-   VERY SMALL PHONE
-========================= */
+
+/* =========================================================
+   VERY SMALL
+========================================================= */
 
 @media(max-width:380px){
 
-  .back-products{
-    min-height:58px;
+  .page-hero h1{
+    font-size:47px;
+  }
 
-    font-size:17px;
-
-    padding:
-      14px 12px;
+  .page-hero h1 span{
+    font-size:35px;
   }
 
   .detail-image-wrap{
     aspect-ratio:
-      1 / .65;
+      1 / .62;
 
     max-height:185px;
   }
 
   .detail-image-wrap img{
     padding:
-      15px 28px;
+      14px 25px;
   }
 
-  .page-hero h1{
-    font-size:48px;
-  }
+  .back-products{
+    font-size:14px;
 
-  .page-hero h1 span{
-    font-size:37px;
+    padding:
+      9px 12px;
   }
 
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =========================================================
      HEADER
-========================= -->
+========================================================= -->
 
 <header class="site-header">
 
@@ -1171,6 +1380,7 @@ footer a:hover{
       </div>
 
     </a>
+
 
     <nav
       class="nav-menu"
@@ -1208,6 +1418,7 @@ footer a:hover{
         href="cart.html"
         class="nav-shop"
       >
+
         🛒 ตะกร้า
 
         <span
@@ -1221,10 +1432,12 @@ footer a:hover{
 
     </nav>
 
+
     <button
+      type="button"
       class="menu-btn"
       id="menuBtn"
-      type="button"
+      aria-label="เปิดเมนู"
     >
       ☰
     </button>
@@ -1233,45 +1446,18 @@ footer a:hover{
 
 </header>
 
-<!-- =========================
+
+
+<!-- =========================================================
      MAIN
-========================= -->
+========================================================= -->
 
 <main>
 
-  <!--
-    ปุ่มกลับอยู่ตรงนี้
-    ก่อน Hero
-    ไม่อยู่ข้างล่างอีกแล้ว
-  -->
 
-  <div class="back-products-top">
-
-    <div class="container">
-
-      <a
-        href="products.html"
-        class="back-products"
-      >
-
-        <span class="back-arrow">
-          ←
-        </span>
-
-        <span>
-          กลับไปดูสินค้าทั้งหมด
-        </span>
-
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
+  <!-- =======================================================
        HERO
-  ========================= -->
+  ======================================================== -->
 
   <section class="page-hero">
 
@@ -1296,28 +1482,61 @@ footer a:hover{
   </section>
 
 
-  <!-- =========================
-       DETAIL
-  ========================= -->
+
+  <!-- =======================================================
+       PRODUCT DETAIL
+  ======================================================== -->
 
   <section class="detail-section">
 
-    <div
-      class="container"
-      id="detailContainer"
-    >
+    <div class="container">
 
-      <div class="not-found">
 
-        <h2>
-          กำลังโหลดสินค้า...
-        </h2>
+      <!--
+        ปุ่มกลับอยู่ตรงนี้
+        เหนือรูปสินค้า
+      -->
 
-        <p>
-          กรุณารอสักครู่
-        </p>
+      <div class="detail-back">
+
+        <a
+          href="products.html"
+          class="back-products"
+        >
+
+          <span class="back-arrow">
+            ←
+          </span>
+
+          <span>
+            กลับไปดูสินค้าทั้งหมด
+          </span>
+
+        </a>
 
       </div>
+
+
+      <!-- PRODUCT CONTENT -->
+
+      <div id="detailContainer">
+
+        <div class="not-found">
+
+          <div class="loading-mark"></div>
+
+          <h2>
+            กำลังโหลดสินค้า...
+          </h2>
+
+          <p>
+            กรุณารอสักครู่
+          </p>
+
+        </div>
+
+      </div>
+
 
     </div>
 
@@ -1326,13 +1545,15 @@ footer a:hover{
 </main>
 
 
-<!-- =========================
+
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
   <div class="container footer-grid">
+
 
     <div>
 
@@ -1341,11 +1562,17 @@ footer a:hover{
       </div>
 
       <p>
+
         บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+
         <br>
 
         โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท
+
+        <br>
+
         พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+
       </p>
 
     </div>
@@ -1405,12 +1632,15 @@ footer a:hover{
       <p>
 
         082-8223678 คุณหญิง
+
         <br>
 
         063-0630046 คุณเอ้
+
         <br>
 
         085-6299778 ฝ่ายเทคนิค
+
         <br>
 
         098-6710888 แอดมิน
@@ -1420,6 +1650,7 @@ footer a:hover{
       <p>
 
         10/1 ม.9 ต.นาหม่อม
+
         <br>
 
         อ.นาหม่อม จ.สงขลา 90310
@@ -1427,6 +1658,7 @@ footer a:hover{
       </p>
 
     </div>
+
 
   </div>
 
@@ -1441,7 +1673,10 @@ footer a:hover{
 </footer>
 
 
-<!-- TOAST -->
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
 
 <div
   class="toast"
@@ -1451,17 +1686,18 @@ footer a:hover{
 </div>
 
 
+
 <script>
 
-/* =========================
+/* =========================================================
    SUPABASE
-========================= */
+========================================================= */
 
 const SUPABASE_URL =
   "https://mfhllgklcfnnbyyzzljz.supabase.co";
 
 const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzg5MDI2NjcxLCJleHAiOjIxMDQ2MDI2NzF9.bjpjXkB0tpgrJu8BwmpSO3_MSQSLMWC1xI0v-9hNlIc";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1maGxsZ2tsY2Zubn5eXp6bGp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwMjY2NzEsImV4cCI6MjEwNDYwMjY3MX0.bjpjXkB0tpgrJu8BwmpSO3_MSQSLMWC1xI0v-9hNlIc";
 
 const supabaseClient =
   window.supabase.createClient(
@@ -1470,9 +1706,9 @@ const supabaseClient =
   );
 
 
-/* =========================
+/* =========================================================
    DEFAULT PRODUCTS
-========================= */
+========================================================= */
 
 const DEFAULT_PRODUCTS = {
 
@@ -1501,15 +1737,23 @@ const DEFAULT_PRODUCTS = {
       799,
 
     details:[
+
       "เฉดสี : M 1 - 26",
+
       "ปริมาณ : 1 กระสอบ = 25 กก.",
+
       "ได้พื้นที่ประมาณ 8-10 ตร.ม./กระสอบ"
+
     ],
 
     features:[
+
       "สีคงทน ไม่ซีดจาง",
+
       "มีหลากหลายสีสัน",
+
       "ทนต่อทุกสภาพอากาศ"
+
     ],
 
     options:[]
@@ -1587,16 +1831,25 @@ const DEFAULT_PRODUCTS = {
       388,
 
     details:[
+
       "750 มล. : 2-3 ตร.ม. / 2 เที่ยว",
+
       "4 กก. : 12-15 ตร.ม.",
+
       "9 กก. : 25-30 ตร.ม.",
+
       "18 กก. : 40-50 ตร.ม."
+
     ],
 
     features:[
+
       "ป้องกันรังสี UV",
+
       "เพิ่มความเงางาม",
+
       "ช่วยป้องกันคราบสกปรก"
+
     ],
 
     options:[
@@ -1651,17 +1904,27 @@ const DEFAULT_PRODUCTS = {
       369,
 
     details:[
+
       "(เฉดสีตามลูกค้าต้องการ)",
+
       "750 มล. : 2-3 ตร.ม. / 2 เที่ยว",
+
       "4 กก. : 12-15 ตร.ม.",
+
       "9 กก. : 25-30 ตร.ม.",
+
       "18 กก. : 40-50 ตร.ม."
+
     ],
 
     features:[
+
       "ป้องกันรังสี UV",
+
       "เพิ่มความเงางาม",
+
       "ช่วยป้องกันคราบสกปรก"
+
     ],
 
     options:[
@@ -1693,9 +1956,9 @@ const DEFAULT_PRODUCTS = {
 };
 
 
-/* =========================
+/* =========================================================
    STATE
-========================= */
+========================================================= */
 
 let product = null;
 
@@ -1704,9 +1967,9 @@ let quantity = 1;
 let selectedOption = null;
 
 
-/* =========================
-   GET ID
-========================= */
+/* =========================================================
+   GET PRODUCT ID
+========================================================= */
 
 function getProductId(){
 
@@ -1720,9 +1983,9 @@ function getProductId(){
 }
 
 
-/* =========================
-   ESCAPE
-========================= */
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
 function escapeHtml(value){
 
@@ -1756,99 +2019,127 @@ function escapeHtml(value){
 }
 
 
-/* =========================
-   NORMALIZE
-========================= */
+/* =========================================================
+   NORMALIZE PRODUCT
+========================================================= */
 
-function normalizeProduct(p){
+function normalizeProduct(data){
 
   let details = [];
 
-  if(Array.isArray(p.details)){
+  if(Array.isArray(data.details)){
 
-    details = p.details;
+    details =
+      data.details;
 
   }else if(
-    typeof p.details === "string"
+    typeof data.details === "string"
   ){
 
     details =
-      p.details
+      data.details
         .split("\n")
-        .map(x => x.trim())
+        .map(
+          item =>
+            item.trim()
+        )
         .filter(Boolean);
+
+  }
+
+
+  let features = [];
+
+  if(Array.isArray(data.features)){
+
+    features =
+      data.features;
+
+  }
+
+
+  let options = [];
+
+  if(Array.isArray(data.options)){
+
+    options =
+      data.options;
 
   }
 
 
   return {
 
-    id:String(p.id),
+    id:
+      String(data.id),
 
     category:
-      p.category || "floor",
+      data.category ||
+      "floor",
 
     category_label:
-      p.category_label ||
-      p.categoryLabel ||
+      data.category_label ||
+      data.categoryLabel ||
       "สินค้า",
 
     image:
-      p.image || "",
+      data.image ||
+      "",
 
     name:
-      p.name || "",
+      data.name ||
+      "",
 
     short_desc:
-      p.short_desc ||
-      p.shortDesc ||
+      data.short_desc ||
+      data.shortDesc ||
       "",
 
     price_label:
-      p.price_label ||
-      p.priceLabel ||
+      data.price_label ||
+      data.priceLabel ||
       "",
 
     numeric_price:
       Number(
-        p.numeric_price ||
-        p.numericPrice ||
+        data.numeric_price ||
+        data.numericPrice ||
         0
       ),
 
     details,
 
-    features:
-      Array.isArray(p.features)
-        ? p.features
-        : [],
+    features,
 
-    options:
-      Array.isArray(p.options)
-        ? p.options
-        : []
+    options
 
   };
 
 }
 
 
-/* =========================
+/* =========================================================
    LOAD PRODUCT
-========================= */
+========================================================= */
 
 async function loadProduct(){
 
   const id =
     getProductId();
 
+
   if(!id){
 
     showNotFound();
 
     return;
+
   }
 
+
+  /*
+    พยายามอ่านจาก Supabase ก่อน
+  */
 
   try{
 
@@ -1862,9 +2153,15 @@ async function loadProduct(){
 
         .select("*")
 
-        .eq("id",id)
+        .eq(
+          "id",
+          id
+        )
 
-        .eq("hidden",false)
+        .eq(
+          "hidden",
+          false
+        )
 
         .maybeSingle();
 
@@ -1875,24 +2172,37 @@ async function loadProduct(){
     ){
 
       product =
-        normalizeProduct(data);
-
-    }else{
-
-      product =
-        DEFAULT_PRODUCTS[id];
+        normalizeProduct(
+          data
+        );
 
     }
 
   }catch(error){
 
     console.warn(
-      "Supabase product error:",
+      "Supabase error:",
       error
     );
 
-    product =
-      DEFAULT_PRODUCTS[id];
+  }
+
+
+  /*
+    ถ้า Supabase ไม่มีข้อมูล
+    ใช้ข้อมูล fallback
+  */
+
+  if(!product){
+
+    if(
+      DEFAULT_PRODUCTS[id]
+    ){
+
+      product =
+        DEFAULT_PRODUCTS[id];
+
+    }
 
   }
 
@@ -1902,12 +2212,17 @@ async function loadProduct(){
     showNotFound();
 
     return;
+
   }
 
 
+  /*
+    เลือก option แรกไว้ก่อน
+  */
+
   if(
     product.options &&
-    product.options.length
+    product.options.length > 0
   ){
 
     selectedOption =
@@ -1921,59 +2236,61 @@ async function loadProduct(){
 }
 
 
-/* =========================
+/* =========================================================
    NOT FOUND
-========================= */
+========================================================= */
 
 function showNotFound(){
 
-  document
-    .getElementById(
+  const container =
+    document.getElementById(
       "detailContainer"
-    )
-    .innerHTML = `
+    );
 
-      <div class="not-found">
 
-        <h2>
-          ไม่พบสินค้า
-        </h2>
+  container.innerHTML = `
 
-        <p>
-          ขออภัย ไม่พบสินค้าที่คุณกำลังค้นหา
-        </p>
+    <div class="not-found">
 
-        <a
-          href="products.html"
-          class="back-products"
-        >
+      <h2>
+        ไม่พบสินค้า
+      </h2>
 
-          <span class="back-arrow">
-            ←
-          </span>
+      <p>
+        ขออภัย ไม่พบสินค้าที่คุณกำลังค้นหา
+      </p>
 
-          <span>
-            กลับไปดูสินค้าทั้งหมด
-          </span>
+      <a
+        href="products.html"
+        class="back-products"
+      >
 
-        </a>
+        <span class="back-arrow">
+          ←
+        </span>
 
-      </div>
+        <span>
+          กลับไปดูสินค้าทั้งหมด
+        </span>
+
+      </a>
+
+    </div>
 
   `;
 
 }
 
 
-/* =========================
+/* =========================================================
    CURRENT PRICE
-========================= */
+========================================================= */
 
 function getCurrentPrice(){
 
   if(
     selectedOption &&
-    selectedOption.price != null
+    selectedOption.price !== undefined
   ){
 
     return Number(
@@ -1982,6 +2299,7 @@ function getCurrentPrice(){
 
   }
 
+
   return Number(
     product.numeric_price || 0
   );
@@ -1989,32 +2307,39 @@ function getCurrentPrice(){
 }
 
 
-/* =========================
-   PRICE LABEL
-========================= */
+/* =========================================================
+   CURRENT PRICE LABEL
+========================================================= */
 
 function getCurrentPriceLabel(){
 
   const price =
     getCurrentPrice();
 
-  if(price){
+
+  if(price > 0){
 
     return (
-      price.toLocaleString() +
+      price.toLocaleString(
+        "th-TH"
+      ) +
       ".-"
     );
 
   }
 
-  return product.price_label;
+
+  return (
+    product.price_label ||
+    ""
+  );
 
 }
 
 
-/* =========================
-   RENDER
-========================= */
+/* =========================================================
+   RENDER PRODUCT
+========================================================= */
 
 function renderProduct(){
 
@@ -2024,33 +2349,42 @@ function renderProduct(){
     );
 
 
-  const image =
-    product.image
+  let imageHtml = "";
 
-      ? `
 
-        <img
-          src="${escapeHtml(product.image)}"
-          alt="${escapeHtml(product.name)}"
-          onerror="
-            this.style.display='none';
-          "
-        >
+  if(product.image){
 
-      `
+    imageHtml = `
 
-      : `
+      <img
+        src="${escapeHtml(product.image)}"
+        alt="${escapeHtml(product.name)}"
+        onerror="
+          this.style.display='none';
+          this.nextElementSibling.style.display='block';
+        "
+      >
 
-        <div
-          style="
-            color:#777;
-            text-align:center;
-          "
-        >
-          ไม่มีรูปสินค้า
-        </div>
+      <div
+        class="no-image"
+        style="display:none"
+      >
+        ไม่มีรูปสินค้า
+      </div>
 
-      `;
+    `;
+
+  }else{
+
+    imageHtml = `
+
+      <div class="no-image">
+        ไม่มีรูปสินค้า
+      </div>
+
+    `;
+
+  }
 
 
   let optionsHtml = "";
@@ -2071,12 +2405,14 @@ function renderProduct(){
 
         ${product.options
           .map(
-            (option,index)=>`
+            (
+              option,
+              index
+            ) => `
 
               <button
                 type="button"
-                class="option-btn
-                ${
+                class="option-btn ${
                   index === 0
                     ? "active"
                     : ""
@@ -2097,8 +2433,10 @@ function renderProduct(){
                 —
 
                 ${Number(
-                  option.price
-                ).toLocaleString()}.-
+                  option.price || 0
+                ).toLocaleString(
+                  "th-TH"
+                )}.-
 
               </button>
 
@@ -2114,92 +2452,109 @@ function renderProduct(){
   }
 
 
-  const detailsHtml =
+  let detailsHtml = "";
+
+
+  if(
     product.details &&
     product.details.length
+  ){
 
-      ? `
+    detailsHtml = `
 
-        <div class="info-box">
+      <div class="info-box">
 
-          <h3>
-            รายละเอียดสินค้า
-          </h3>
+        <h3>
+          รายละเอียดสินค้า
+        </h3>
 
-          <ul>
+        <ul>
 
-            ${product.details
-              .map(
-                item => `
-                  <li>
-                    ${escapeHtml(item)}
-                  </li>
-                `
-              )
-              .join("")
-            }
+          ${product.details
+            .map(
+              item => `
 
-          </ul>
+                <li>
+                  ${escapeHtml(item)}
+                </li>
 
-        </div>
+              `
+            )
+            .join("")
+          }
 
-      `
+        </ul>
 
-      : "";
+      </div>
+
+    `;
+
+  }
 
 
-  const featuresHtml =
+  let featuresHtml = "";
+
+
+  if(
     product.features &&
     product.features.length
+  ){
 
-      ? `
+    featuresHtml = `
 
-        <div class="info-box">
+      <div class="info-box">
 
-          <h3>
-            จุดเด่นสินค้า
-          </h3>
+        <h3>
+          จุดเด่นสินค้า
+        </h3>
 
-          <ul>
+        <ul>
 
-            ${product.features
-              .map(
-                item => `
-                  <li>
-                    ${escapeHtml(item)}
-                  </li>
-                `
-              )
-              .join("")
-            }
+          ${product.features
+            .map(
+              item => `
 
-          </ul>
+                <li>
+                  ${escapeHtml(item)}
+                </li>
 
-        </div>
+              `
+            )
+            .join("")
+          }
 
-      `
+        </ul>
 
-      : "";
+      </div>
+
+    `;
+
+  }
 
 
   container.innerHTML = `
 
     <div class="detail-grid">
 
-      <!-- IMAGE -->
 
-      <div>
+      <!-- ===============================================
+           PRODUCT IMAGE
+      ================================================ -->
+
+      <div class="detail-image-column">
 
         <div class="detail-image-wrap">
 
-          ${image}
+          ${imageHtml}
 
         </div>
 
       </div>
 
 
-      <!-- INFO -->
+      <!-- ===============================================
+           PRODUCT INFORMATION
+      ================================================ -->
 
       <div class="detail-info">
 
@@ -2292,7 +2647,9 @@ function renderProduct(){
         <button
           type="button"
           class="add-cart"
-          onclick="addToCart()"
+          onclick="
+            addToCart()
+          "
         >
 
           🛒 เพิ่มสินค้าลงตะกร้า
@@ -2313,9 +2670,9 @@ function renderProduct(){
 }
 
 
-/* =========================
-   OPTION
-========================= */
+/* =========================================================
+   SELECT OPTION
+========================================================= */
 
 function selectOption(
   index,
@@ -2328,6 +2685,7 @@ function selectOption(
   ){
 
     return;
+
   }
 
 
@@ -2340,10 +2698,13 @@ function selectOption(
       ".option-btn"
     )
     .forEach(
-      btn =>
-        btn.classList.remove(
+      item => {
+
+        item.classList.remove(
           "active"
-        )
+        );
+
+      }
     );
 
 
@@ -2368,9 +2729,9 @@ function selectOption(
 }
 
 
-/* =========================
-   QUANTITY
-========================= */
+/* =========================================================
+   CHANGE QUANTITY
+========================================================= */
 
 function changeQuantity(
   amount
@@ -2399,9 +2760,9 @@ function changeQuantity(
 }
 
 
-/* =========================
-   CART
-========================= */
+/* =========================================================
+   GET CART
+========================================================= */
 
 function getCart(){
 
@@ -2422,6 +2783,10 @@ function getCart(){
 }
 
 
+/* =========================================================
+   SAVE CART
+========================================================= */
+
 function saveCart(cart){
 
   localStorage.setItem(
@@ -2435,11 +2800,16 @@ function saveCart(cart){
 }
 
 
+/* =========================================================
+   ADD TO CART
+========================================================= */
+
 function addToCart(){
 
   if(!product){
 
     return;
+
   }
 
 
@@ -2464,8 +2834,15 @@ function addToCart(){
 
 
   const priceLabel =
-    numericPrice
-      ? `${numericPrice.toLocaleString()}.-`
+    numericPrice > 0
+
+      ? (
+          numericPrice.toLocaleString(
+            "th-TH"
+          ) +
+          ".-"
+        )
+
       : product.price_label;
 
 
@@ -2481,13 +2858,15 @@ function addToCart(){
     existing.quantity =
       Number(
         existing.quantity || 0
-      ) + quantity;
+      ) +
+      quantity;
 
   }else{
 
     cart.push({
 
-      id:cartId,
+      id:
+        cartId,
 
       productId:
         String(product.id),
@@ -2505,7 +2884,6 @@ function addToCart(){
         product.category_label,
 
       quantity:
-
         quantity,
 
       priceLabel:
@@ -2516,7 +2894,6 @@ function addToCart(){
 
       selectedOption:
         selectedOption
-
           ? {
 
               label:
@@ -2524,11 +2901,10 @@ function addToCart(){
 
               price:
                 Number(
-                  selectedOption.price
+                  selectedOption.price || 0
                 )
 
             }
-
           : null
 
     });
@@ -2543,9 +2919,9 @@ function addToCart(){
 }
 
 
-/* =========================
-   CART BADGE
-========================= */
+/* =========================================================
+   UPDATE CART BADGE
+========================================================= */
 
 function updateCartBadge(){
 
@@ -2558,13 +2934,16 @@ function updateCartBadge(){
       (
         total,
         item
-      ) =>
+      ) => {
 
-        total +
-        Number(
-          item.quantity || 0
-        ),
+        return (
+          total +
+          Number(
+            item.quantity || 0
+          )
+        );
 
+      },
       0
     );
 
@@ -2585,9 +2964,9 @@ function updateCartBadge(){
 }
 
 
-/* =========================
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
 function showToast(){
 
@@ -2600,6 +2979,7 @@ function showToast(){
   if(!toast){
 
     return;
+
   }
 
 
@@ -2622,33 +3002,40 @@ function showToast(){
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE MENU
-========================= */
+========================================================= */
 
-document
-  .getElementById(
+const menuBtn =
+  document.getElementById(
     "menuBtn"
-  )
-  .addEventListener(
+  );
+
+const navMenu =
+  document.getElementById(
+    "navMenu"
+  );
+
+
+if(menuBtn){
+
+  menuBtn.addEventListener(
     "click",
     () => {
 
-      document
-        .getElementById(
-          "navMenu"
-        )
-        .classList.toggle(
-          "open"
-        );
+      navMenu.classList.toggle(
+        "open"
+      );
 
     }
   );
 
+}
 
-/* =========================
+
+/* =========================================================
    INIT
-========================= */
+========================================================= */
 
 updateCartBadge();
 
