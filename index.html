@@ -8,9 +8,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
 
 <style>
+
 :root{
     --black:#050505;
     --black2:#080808;
@@ -23,7 +28,7 @@
     --gold-dark:#806127;
 
     --white:#ffffff;
-    --soft:#eeeeee;
+    --soft:#ededed;
     --gray:#999999;
 
     --line:rgba(255,255,255,.09);
@@ -31,6 +36,10 @@
 
     --container:1240px;
 }
+
+/* =====================================================
+   RESET
+===================================================== */
 
 *{
     margin:0;
@@ -44,47 +53,70 @@ html{
 
 body{
     font-family:"Kanit","Prompt",sans-serif;
-    background:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),
-        var(--black);
-    background-size:42px 42px;
     color:var(--white);
+    background:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        var(--black);
+
+    background-size:42px 42px;
+
     min-height:100vh;
+
     overflow-x:hidden;
 }
 
-/* ambient light */
 body::before{
     content:"";
+
     position:fixed;
+
     width:700px;
     height:700px;
+
     top:-350px;
-    right:-250px;
-    background:radial-gradient(
-        circle,
-        rgba(200,164,91,.16) 0%,
-        rgba(200,164,91,.06) 35%,
-        transparent 70%
-    );
+    right:-280px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(200,164,91,.17) 0%,
+            rgba(200,164,91,.07) 35%,
+            transparent 70%
+        );
+
     pointer-events:none;
+
     z-index:-1;
 }
 
 body::after{
     content:"";
+
     position:fixed;
-    width:600px;
-    height:600px;
+
+    width:650px;
+    height:650px;
+
     bottom:-350px;
-    left:-250px;
-    background:radial-gradient(
-        circle,
-        rgba(200,164,91,.08) 0%,
-        transparent 70%
-    );
+    left:-280px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(200,164,91,.10),
+            transparent 70%
+        );
+
     pointer-events:none;
+
     z-index:-1;
 }
 
@@ -98,62 +130,77 @@ input{
     font-family:inherit;
 }
 
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 .header{
     position:sticky;
     top:0;
-    z-index:1000;
+
+    z-index:9999;
 
     height:94px;
 
-    background:rgba(5,5,5,.92);
+    background:rgba(5,5,5,.94);
+
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
 
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .header-inner{
-    width:min(var(--container),calc(100% - 40px));
+    width:min(
+        var(--container),
+        calc(100% - 40px)
+    );
+
     height:100%;
+
     margin:auto;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:30px;
 }
 
-/* LOGO AREA */
+/* =====================================================
+   LOGO
+===================================================== */
 
 .brand{
     display:flex;
+
     align-items:center;
-    gap:14px;
+
     flex-shrink:0;
+
+    text-decoration:none;
 }
 
-/*
-   โลโก้ใหม่
-   ไฟล์ต้องอยู่:
-   assets/logo.png
-*/
-
 .brand-logo{
-    width:76px;
-    height:70px;
-
-    object-fit:contain;
-    object-position:center;
+    width:300px;
+    height:82px;
 
     display:block;
 
+    object-fit:contain;
+    object-position:left center;
+
     filter:
-        drop-shadow(0 0 8px rgba(200,164,91,.22))
-        drop-shadow(0 0 20px rgba(200,164,91,.08));
+        drop-shadow(
+            0 0 8px
+            rgba(200,164,91,.20)
+        )
+        drop-shadow(
+            0 0 22px
+            rgba(200,164,91,.08)
+        );
 
     transition:
         transform .3s ease,
@@ -161,48 +208,31 @@ input{
 }
 
 .brand:hover .brand-logo{
-    transform:scale(1.05);
+    transform:scale(1.015);
+
     filter:
-        drop-shadow(0 0 12px rgba(200,164,91,.38))
-        drop-shadow(0 0 25px rgba(200,164,91,.15));
+        drop-shadow(
+            0 0 12px
+            rgba(200,164,91,.40)
+        )
+        drop-shadow(
+            0 0 28px
+            rgba(200,164,91,.12)
+        );
 }
 
-.brand-text{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    line-height:1;
-}
-
-.brand-text strong{
-    color:#fff;
-
-    font-size:20px;
-    font-weight:800;
-
-    letter-spacing:1.6px;
-    white-space:nowrap;
-}
-
-.brand-text span{
-    margin-top:7px;
-
-    color:var(--gold);
-
-    font-size:10px;
-    font-weight:600;
-
-    letter-spacing:2.3px;
-    white-space:nowrap;
-}
-
-/* NAV */
+/* =====================================================
+   NAV
+===================================================== */
 
 .nav-menu{
     display:flex;
+
     align-items:center;
+
     justify-content:flex-end;
-    gap:28px;
+
+    gap:25px;
 
     margin-left:auto;
 }
@@ -213,9 +243,12 @@ input{
     color:#aaa;
 
     font-size:15px;
+
     font-weight:500;
 
     padding:10px 0;
+
+    white-space:nowrap;
 
     transition:
         color .25s ease,
@@ -226,6 +259,7 @@ input{
     content:"";
 
     position:absolute;
+
     left:0;
     bottom:3px;
 
@@ -239,6 +273,7 @@ input{
 
 .nav-menu > a:hover{
     color:#fff;
+
     transform:translateY(-1px);
 }
 
@@ -246,15 +281,21 @@ input{
     width:100%;
 }
 
-/* TRACK ORDER */
+/* =====================================================
+   ORDER TRACKING
+===================================================== */
 
 .nav-track{
-    border:1px solid rgba(200,164,91,.38);
     padding:11px 15px !important;
-    border-radius:12px;
-    color:#ddd !important;
 
-    background:rgba(200,164,91,.025);
+    border:1px solid rgba(200,164,91,.35);
+
+    border-radius:12px;
+
+    background:
+        rgba(200,164,91,.025);
+
+    color:#ddd !important;
 }
 
 .nav-track::after{
@@ -262,28 +303,35 @@ input{
 }
 
 .nav-track:hover{
-    border-color:var(--gold);
-    background:rgba(200,164,91,.08);
     color:var(--gold-light) !important;
+
+    border-color:var(--gold);
+
+    background:
+        rgba(200,164,91,.08);
 }
 
-/* CART */
+/* =====================================================
+   CART
+===================================================== */
 
 .nav-shop{
-    position:relative;
-
     display:flex !important;
-    align-items:center;
-    gap:9px;
 
-    padding:11px 14px !important;
+    align-items:center;
+
+    gap:8px;
+
+    padding:11px 13px !important;
 
     border:1px solid rgba(200,164,91,.38);
+
     border-radius:12px;
 
-    color:#ddd !important;
+    background:
+        rgba(200,164,91,.035);
 
-    background:rgba(200,164,91,.035);
+    color:#ddd !important;
 }
 
 .nav-shop::after{
@@ -291,31 +339,39 @@ input{
 }
 
 .nav-shop:hover{
-    border-color:var(--gold);
-    background:rgba(200,164,91,.09);
     color:#fff !important;
+
+    border-color:var(--gold);
+
+    background:
+        rgba(200,164,91,.09);
 }
 
 .cart-count{
     min-width:25px;
     height:25px;
 
+    padding:0 7px;
+
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
-
-    padding:0 7px;
 
     border-radius:50px;
 
     background:var(--gold);
+
     color:#080808;
 
     font-size:12px;
+
     font-weight:800;
 }
 
-/* MOBILE BUTTON */
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
 
 .menu-toggle{
     display:none;
@@ -324,26 +380,30 @@ input{
     height:44px;
 
     border:1px solid var(--gold-line);
+
     border-radius:10px;
 
     background:#101010;
+
     color:#fff;
 
-    font-size:22px;
+    font-size:21px;
 
     cursor:pointer;
 }
 
-/* =========================================================
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero{
     position:relative;
 
-    min-height:calc(100vh - 94px);
+    min-height:
+        calc(100vh - 94px);
 
     display:flex;
+
     align-items:center;
 
     overflow:hidden;
@@ -353,19 +413,20 @@ input{
     content:"";
 
     position:absolute;
+
     inset:0;
 
     background:
         radial-gradient(
             circle at 75% 45%,
             rgba(200,164,91,.12),
-            transparent 30%
+            transparent 31%
         ),
         linear-gradient(
             90deg,
             rgba(5,5,5,1) 0%,
-            rgba(5,5,5,.82) 52%,
-            rgba(5,5,5,.45) 100%
+            rgba(5,5,5,.88) 50%,
+            rgba(5,5,5,.55) 100%
         );
 
     pointer-events:none;
@@ -373,36 +434,50 @@ input{
 
 .hero-inner{
     position:relative;
+
     z-index:2;
 
-    width:min(var(--container),calc(100% - 40px));
+    width:min(
+        var(--container),
+        calc(100% - 40px)
+    );
+
     margin:auto;
 
-    padding:100px 0;
+    padding:95px 0 90px;
 }
 
 .hero-grid{
     display:grid;
-    grid-template-columns:1.1fr .9fr;
+
+    grid-template-columns:
+        1.08fr .92fr;
+
     align-items:center;
-    gap:80px;
+
+    gap:70px;
 }
 
-/* LEFT */
+/* =====================================================
+   HERO TEXT
+===================================================== */
 
 .eyebrow{
     display:flex;
+
     align-items:center;
+
     gap:14px;
 
     color:var(--gold);
 
     font-size:14px;
+
     font-weight:600;
 
     letter-spacing:3px;
 
-    margin-bottom:25px;
+    margin-bottom:24px;
 }
 
 .eyebrow::before{
@@ -415,7 +490,8 @@ input{
 }
 
 .hero h1{
-    font-size:clamp(48px,6vw,88px);
+    font-size:
+        clamp(48px,6vw,88px);
 
     line-height:.98;
 
@@ -436,15 +512,17 @@ input{
     color:#aaa;
 
     font-size:19px;
+
     line-height:1.9;
 
-    margin-bottom:35px;
+    margin-bottom:26px;
 }
 
 .hero-tagline{
     color:#ddd;
 
     font-size:16px;
+
     line-height:1.9;
 
     margin-bottom:35px;
@@ -454,32 +532,39 @@ input{
     color:var(--gold-light);
 }
 
-/* BUTTONS */
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .hero-buttons{
     display:flex;
+
     flex-wrap:wrap;
-    gap:14px;
+
+    gap:13px;
 }
 
 .btn{
-    min-height:50px;
+    min-height:51px;
 
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
 
-    padding:0 24px;
+    padding:0 25px;
 
     border-radius:10px;
 
     font-size:15px;
+
     font-weight:600;
 
     transition:
         transform .25s ease,
         box-shadow .25s ease,
-        background .25s ease;
+        background .25s ease,
+        border-color .25s ease;
 }
 
 .btn:hover{
@@ -489,17 +574,22 @@ input{
 .btn-gold{
     color:#080808;
 
-    background:linear-gradient(
-        135deg,
-        #f0d991,
-        #c8a45b
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #f0d991,
+            #c8a45b
+        );
 
-    box-shadow:0 10px 35px rgba(200,164,91,.15);
+    box-shadow:
+        0 10px 35px
+        rgba(200,164,91,.15);
 }
 
 .btn-gold:hover{
-    box-shadow:0 14px 45px rgba(200,164,91,.25);
+    box-shadow:
+        0 14px 45px
+        rgba(200,164,91,.28);
 }
 
 .btn-line{
@@ -507,56 +597,67 @@ input{
 
     border:1px solid var(--gold-line);
 
-    background:rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 }
 
 .btn-line:hover{
     border-color:var(--gold);
-    background:rgba(200,164,91,.06);
+
+    background:
+        rgba(200,164,91,.07);
 }
 
-/* RIGHT DECORATION */
+/* =====================================================
+   HERO LOGO DECORATION
+===================================================== */
 
 .hero-art{
     position:relative;
 
-    min-height:470px;
+    min-height:500px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 }
 
 .hero-frame{
     position:relative;
 
-    width:min(440px,100%);
+    width:min(480px,100%);
+
     aspect-ratio:1/1;
 
-    border:1px solid rgba(200,164,91,.28);
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(200,164,91,.11),
-            rgba(200,164,91,.025) 45%,
-            transparent 70%
-        );
+    border:1px solid rgba(200,164,91,.25);
 
     border-radius:50%;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(200,164,91,.12),
+            rgba(200,164,91,.035) 45%,
+            transparent 72%
+        );
 }
 
 .hero-frame::before{
     content:"";
 
     position:absolute;
+
     inset:24px;
 
-    border:1px solid rgba(200,164,91,.18);
+    border:1px solid rgba(200,164,91,.17);
 
     border-radius:50%;
 }
@@ -566,40 +667,52 @@ input{
 
     position:absolute;
 
-    color:rgba(200,164,91,.08);
+    color:
+        rgba(200,164,91,.06);
 
-    font-size:150px;
+    font-size:155px;
+
     font-weight:800;
-    letter-spacing:-10px;
+
+    letter-spacing:-12px;
 }
 
 .hero-logo{
     position:relative;
+
     z-index:2;
 
-    width:230px;
-    height:230px;
+    width:300px;
+    height:300px;
 
     object-fit:contain;
 
     filter:
-        drop-shadow(0 0 25px rgba(200,164,91,.25))
-        drop-shadow(0 0 60px rgba(200,164,91,.08));
+        drop-shadow(
+            0 0 25px
+            rgba(200,164,91,.27)
+        )
+        drop-shadow(
+            0 0 60px
+            rgba(200,164,91,.08)
+        );
 
-    animation:floatLogo 5s ease-in-out infinite;
+    animation:
+        floatingLogo 5s ease-in-out infinite;
 }
 
-@keyframes floatLogo{
-    0%,100%{
+@keyframes floatingLogo{
+
+    0%,
+    100%{
         transform:translateY(0);
     }
 
     50%{
         transform:translateY(-10px);
     }
-}
 
-/* DECORATIVE NUMBERS */
+}
 
 .hero-number{
     position:absolute;
@@ -607,50 +720,60 @@ input{
     right:0;
     bottom:0;
 
-    color:rgba(255,255,255,.025);
+    color:
+        rgba(255,255,255,.025);
 
     font-size:150px;
+
     font-weight:800;
 
     line-height:1;
 }
 
-/* =========================================================
+/* =====================================================
    QUICK MENU
-========================================================= */
+===================================================== */
 
 .quick-section{
     position:relative;
 
-    padding:30px 0 90px;
+    padding:25px 0 90px;
 }
 
 .container{
-    width:min(var(--container),calc(100% - 40px));
+    width:min(
+        var(--container),
+        calc(100% - 40px)
+    );
+
     margin:auto;
 }
 
 .quick-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:15px;
 }
 
 .quick-card{
     position:relative;
 
-    padding:25px;
+    min-height:155px;
 
-    min-height:150px;
+    padding:26px;
 
     border:1px solid var(--line);
+
     border-radius:16px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.018)
+            rgba(255,255,255,.05),
+            rgba(255,255,255,.015)
         );
 
     overflow:hidden;
@@ -666,17 +789,18 @@ input{
 
     position:absolute;
 
-    width:130px;
-    height:130px;
+    width:140px;
+    height:140px;
 
     top:-70px;
     right:-50px;
 
-    background:radial-gradient(
-        circle,
-        rgba(200,164,91,.16),
-        transparent 70%
-    );
+    background:
+        radial-gradient(
+            circle,
+            rgba(200,164,91,.17),
+            transparent 70%
+        );
 }
 
 .quick-card:hover{
@@ -688,19 +812,21 @@ input{
         linear-gradient(
             145deg,
             rgba(200,164,91,.09),
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.02)
         );
 }
 
 .quick-icon{
     font-size:28px;
-    margin-bottom:14px;
+
+    margin-bottom:13px;
 }
 
 .quick-card h3{
     color:#fff;
 
     font-size:19px;
+
     font-weight:700;
 
     margin-bottom:5px;
@@ -710,19 +836,20 @@ input{
     color:#888;
 
     font-size:14px;
+
     line-height:1.6;
 }
 
-/* =========================================================
-   COMPANY
-========================================================= */
+/* =====================================================
+   COMPANY SECTION
+===================================================== */
 
 .company-section{
     padding:90px 0;
 }
 
 .section-heading{
-    max-width:750px;
+    max-width:760px;
 
     margin-bottom:45px;
 }
@@ -731,6 +858,7 @@ input{
     color:var(--gold);
 
     font-size:13px;
+
     font-weight:600;
 
     letter-spacing:3px;
@@ -739,7 +867,8 @@ input{
 }
 
 .section-heading h2{
-    font-size:clamp(34px,4vw,58px);
+    font-size:
+        clamp(34px,4vw,58px);
 
     line-height:1.05;
 
@@ -750,12 +879,15 @@ input{
     color:#999;
 
     font-size:17px;
+
     line-height:1.9;
 }
 
 .company-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
 
     gap:20px;
 }
@@ -764,6 +896,7 @@ input{
     padding:35px;
 
     border:1px solid var(--line);
+
     border-radius:18px;
 
     background:
@@ -774,7 +907,8 @@ input{
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.03);
+        inset 0 1px 0
+        rgba(255,255,255,.03);
 }
 
 .glass-card h3{
@@ -789,12 +923,13 @@ input{
     color:#aaa;
 
     font-size:16px;
+
     line-height:1.9;
 }
 
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 .footer{
     margin-top:80px;
@@ -805,7 +940,11 @@ input{
 }
 
 .footer-inner{
-    width:min(var(--container),calc(100% - 40px));
+    width:min(
+        var(--container),
+        calc(100% - 40px)
+    );
+
     margin:auto;
 
     padding:55px 0 25px;
@@ -813,52 +952,35 @@ input{
 
 .footer-grid{
     display:grid;
-    grid-template-columns:1.5fr 1fr 1fr;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
     gap:50px;
 }
 
 .footer-brand{
     display:flex;
+
     align-items:center;
-    gap:14px;
 
     margin-bottom:18px;
 }
 
 .footer-logo{
-    width:65px;
-    height:60px;
+    width:260px;
+    height:78px;
 
     object-fit:contain;
-}
 
-.footer-brand-text strong{
-    display:block;
-
-    color:#fff;
-
-    font-size:19px;
-    font-weight:800;
-
-    letter-spacing:1.4px;
-}
-
-.footer-brand-text span{
-    display:block;
-
-    color:var(--gold);
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
-    margin-top:5px;
+    object-position:left center;
 }
 
 .footer p{
     color:#777;
 
     font-size:14px;
+
     line-height:1.8;
 }
 
@@ -872,7 +994,9 @@ input{
 
 .footer-links{
     display:flex;
+
     flex-direction:column;
+
     gap:10px;
 }
 
@@ -890,12 +1014,17 @@ input{
 
 .footer-bottom{
     margin-top:45px;
+
     padding-top:20px;
 
-    border-top:1px solid rgba(255,255,255,.06);
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
 
     display:flex;
+
     justify-content:space-between;
+
     gap:20px;
 
     color:#666;
@@ -903,9 +1032,9 @@ input{
     font-size:12px;
 }
 
-/* =========================================================
+/* =====================================================
    FLOATING CONTACT
-========================================================= */
+===================================================== */
 
 .floating-contact{
     position:fixed;
@@ -916,7 +1045,9 @@ input{
     z-index:900;
 
     display:flex;
+
     flex-direction:column;
+
     gap:9px;
 }
 
@@ -925,13 +1056,16 @@ input{
     height:48px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     border:1px solid var(--gold-line);
+
     border-radius:50%;
 
-    background:rgba(10,10,10,.9);
+    background:
+        rgba(10,10,10,.92);
 
     backdrop-filter:blur(10px);
 
@@ -948,7 +1082,9 @@ input{
     border-color:var(--gold);
 }
 
-/* BACK TO TOP */
+/* =====================================================
+   BACK TO TOP
+===================================================== */
 
 .back-top{
     position:fixed;
@@ -960,10 +1096,12 @@ input{
     height:42px;
 
     display:none;
+
     align-items:center;
     justify-content:center;
 
     border:1px solid var(--gold-line);
+
     border-radius:50%;
 
     background:#0b0b0b;
@@ -973,13 +1111,20 @@ input{
     cursor:pointer;
 
     z-index:800;
+
+    font-size:18px;
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media(max-width:1100px){
+
+    .brand-logo{
+        width:250px;
+        height:75px;
+    }
 
     .nav-menu{
         gap:17px;
@@ -989,14 +1134,15 @@ input{
         font-size:14px;
     }
 
-    .brand-text strong{
-        font-size:18px;
+    .hero-grid{
+        gap:40px;
     }
 
-    .hero-grid{
-        gap:45px;
-    }
 }
+
+/* =====================================================
+   MOBILE NAV
+===================================================== */
 
 @media(max-width:900px){
 
@@ -1009,18 +1155,8 @@ input{
     }
 
     .brand-logo{
-        width:62px;
-        height:58px;
-    }
-
-    .brand-text strong{
-        font-size:16px;
-        letter-spacing:1px;
-    }
-
-    .brand-text span{
-        font-size:8px;
-        letter-spacing:1.6px;
+        width:220px;
+        height:68px;
     }
 
     .menu-toggle{
@@ -1028,6 +1164,7 @@ input{
     }
 
     .nav-menu{
+
         position:absolute;
 
         top:80px;
@@ -1035,16 +1172,22 @@ input{
         right:0;
 
         display:none;
+
         flex-direction:column;
+
         align-items:stretch;
 
-        padding:16px;
+        padding:15px;
 
-        background:rgba(7,7,7,.98);
+        background:
+            rgba(7,7,7,.98);
 
-        border-bottom:1px solid var(--line);
+        border-bottom:
+            1px solid var(--line);
 
-        box-shadow:0 20px 40px rgba(0,0,0,.4);
+        box-shadow:
+            0 20px 40px
+            rgba(0,0,0,.45);
     }
 
     .nav-menu.active{
@@ -1064,7 +1207,8 @@ input{
     }
 
     .nav-menu > a:hover{
-        background:rgba(200,164,91,.06);
+        background:
+            rgba(200,164,91,.06);
     }
 
     .nav-track,
@@ -1077,7 +1221,7 @@ input{
     }
 
     .hero-inner{
-        padding:75px 0 60px;
+        padding:70px 0 60px;
     }
 
     .hero-grid{
@@ -1085,7 +1229,8 @@ input{
     }
 
     .hero-art{
-        min-height:380px;
+        min-height:390px;
+
         order:-1;
     }
 
@@ -1094,12 +1239,13 @@ input{
     }
 
     .hero-logo{
-        width:190px;
-        height:190px;
+        width:210px;
+        height:210px;
     }
 
     .quick-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .company-grid{
@@ -1107,13 +1253,19 @@ input{
     }
 
     .footer-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .footer-grid > :first-child{
         grid-column:1/-1;
     }
+
 }
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
 @media(max-width:600px){
 
@@ -1124,32 +1276,18 @@ input{
         width:calc(100% - 28px);
     }
 
-    .brand{
-        gap:9px;
-    }
-
     .brand-logo{
-        width:52px;
-        height:52px;
-    }
-
-    .brand-text strong{
-        font-size:14px;
-        letter-spacing:.8px;
-    }
-
-    .brand-text span{
-        font-size:7px;
-        letter-spacing:1.3px;
-        margin-top:5px;
+        width:185px;
+        height:60px;
     }
 
     .hero-inner{
-        padding-top:50px;
+        padding-top:45px;
     }
 
     .eyebrow{
         font-size:11px;
+
         letter-spacing:2px;
     }
 
@@ -1158,7 +1296,8 @@ input{
     }
 
     .hero h1{
-        font-size:48px;
+        font-size:47px;
+
         letter-spacing:-1.5px;
     }
 
@@ -1187,8 +1326,8 @@ input{
     }
 
     .hero-logo{
-        width:145px;
-        height:145px;
+        width:155px;
+        height:155px;
     }
 
     .quick-grid{
@@ -1209,11 +1348,15 @@ input{
 
     .footer-grid{
         grid-template-columns:1fr;
-        gap:30px;
     }
 
     .footer-grid > :first-child{
         grid-column:auto;
+    }
+
+    .footer-logo{
+        width:220px;
+        height:70px;
     }
 
     .footer-bottom{
@@ -1229,7 +1372,9 @@ input{
         right:12px;
         bottom:115px;
     }
+
 }
+
 </style>
 </head>
 
@@ -1243,32 +1388,37 @@ input{
 
     <div class="header-inner">
 
-        <a href="index.html" class="brand">
+        <!-- LOGO -->
+        <a
+            href="index.html"
+            class="brand"
+        >
 
-            <!-- โลโก้ใหม่ -->
             <img
                 src="./assets/logo.png"
                 alt="CHATPHETCH GROUP"
                 class="brand-logo"
             >
 
-            <!-- ชื่อด้านขวาของโลโก้ -->
-            <div class="brand-text">
-                <strong>CHATPHETCH GROUP</strong>
-                <span>FLOORING &amp; CONSTRUCTION</span>
-            </div>
-
         </a>
 
+
+        <!-- MOBILE MENU -->
         <button
             class="menu-toggle"
             id="menuToggle"
+            type="button"
             aria-label="เปิดเมนู"
         >
             ☰
         </button>
 
-        <nav class="nav-menu" id="navMenu">
+
+        <!-- NAV -->
+        <nav
+            class="nav-menu"
+            id="navMenu"
+        >
 
             <a href="index.html">
                 หน้าแรก
@@ -1305,6 +1455,7 @@ input{
                 href="cart.html"
                 class="nav-shop"
             >
+
                 🛒 ตะกร้า
 
                 <span
@@ -1313,6 +1464,7 @@ input{
                 >
                     0
                 </span>
+
             </a>
 
         </nav>
@@ -1323,10 +1475,14 @@ input{
 
 
 <!-- =====================================================
-     HERO
+     MAIN
 ===================================================== -->
 
 <main>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
@@ -1334,27 +1490,43 @@ input{
 
         <div class="hero-grid">
 
+            <!-- LEFT -->
+
             <div>
 
                 <div class="eyebrow">
                     CHATPHETCH GROUP
                 </div>
 
+
                 <h1>
                     วัสดุงานพื้น<br>
                     <span>ครบทุกระบบ</span>
                 </h1>
 
+
                 <p class="hero-description">
                     โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท
-                    พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+                    พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบ
+                    แบบครบวงจร
                 </p>
 
+
                 <p class="hero-tagline">
-                    ♠️ <strong>สร้างสรรค์ผลงาน</strong>
-                    &nbsp;♠️ <strong>มาตรฐานเข้าถึง</strong>
-                    &nbsp;♠️ <strong>ยืน 1 คุณภาพ</strong>
+
+                    ♠️
+                    <strong>สร้างสรรค์ผลงาน</strong>
+
+                    &nbsp;♠️
+
+                    <strong>มาตรฐานเข้าถึง</strong>
+
+                    &nbsp;♠️
+
+                    <strong>ยืน 1 คุณภาพ</strong>
+
                 </p>
+
 
                 <div class="hero-buttons">
 
@@ -1377,13 +1549,15 @@ input{
             </div>
 
 
+            <!-- RIGHT -->
+
             <div class="hero-art">
 
                 <div class="hero-frame">
 
                     <img
                         src="./assets/logo.png"
-                        alt="CHATPHETCH GROUP Logo"
+                        alt="CHATPHETCH GROUP"
                         class="hero-logo"
                     >
 
@@ -1411,6 +1585,7 @@ input{
     <div class="container">
 
         <div class="quick-grid">
+
 
             <a
                 href="products.html"
@@ -1491,6 +1666,7 @@ input{
 
             </a>
 
+
         </div>
 
     </div>
@@ -1506,27 +1682,32 @@ input{
 
     <div class="container">
 
+
         <div class="section-heading">
 
             <div class="section-kicker">
                 ABOUT CHATPHETCH GROUP
             </div>
 
+
             <h2>
                 สร้างสรรค์งานพื้น<br>
                 ด้วยมาตรฐานที่เข้าถึงได้
             </h2>
 
+
             <p>
                 บริษัท ฉัตรเพชร กรุ๊ป จำกัด
                 ดำเนินธุรกิจเกี่ยวกับวัสดุและอุปกรณ์สำหรับงานพื้น
-                พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+                พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบ
+                แบบครบวงจร
             </p>
 
         </div>
 
 
         <div class="company-grid">
+
 
             <div class="glass-card">
 
@@ -1559,6 +1740,7 @@ input{
 
             </div>
 
+
         </div>
 
     </div>
@@ -1576,7 +1758,11 @@ input{
 
     <div class="footer-inner">
 
+
         <div class="footer-grid">
+
+
+            <!-- BRAND -->
 
             <div>
 
@@ -1588,23 +1774,14 @@ input{
                         class="footer-logo"
                     >
 
-                    <div class="footer-brand-text">
-
-                        <strong>
-                            CHATPHETCH GROUP
-                        </strong>
-
-                        <span>
-                            FLOORING &amp; CONSTRUCTION
-                        </span>
-
-                    </div>
-
                 </div>
 
+
                 <p>
-                    🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
+                    🌹 โรงงานผลิต-จำหน่าย
+                    วัสดุงานพื้นทุกประเภท 🌹
                 </p>
+
 
                 <p>
                     ✅ บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
@@ -1613,11 +1790,14 @@ input{
             </div>
 
 
+            <!-- MENU -->
+
             <div>
 
                 <h4>
                     เมนู
                 </h4>
+
 
                 <div class="footer-links">
 
@@ -1645,16 +1825,23 @@ input{
                         ติดต่อเรา
                     </a>
 
+                    <a href="order-status.html">
+                        🔎 ติดตามคำสั่งซื้อ
+                    </a>
+
                 </div>
 
             </div>
 
 
+            <!-- CONTACT -->
+
             <div>
 
                 <h4>
-                    ติดต่อ
+                    ติดต่อเรา
                 </h4>
+
 
                 <p>
                     082-8223678 คุณหญิง
@@ -1679,6 +1866,7 @@ input{
 
             </div>
 
+
         </div>
 
 
@@ -1694,13 +1882,14 @@ input{
 
         </div>
 
+
     </div>
 
 </footer>
 
 
 <!-- =====================================================
-     FLOATING BUTTONS
+     FLOATING CONTACT
 ===================================================== -->
 
 <div class="floating-contact">
@@ -1712,6 +1901,7 @@ input{
     >
         📞
     </a>
+
 
     <a
         href="https://www.facebook.com/ChatphetchGroup"
@@ -1726,9 +1916,14 @@ input{
 </div>
 
 
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
 <button
     class="back-top"
     id="backTop"
+    type="button"
     aria-label="กลับด้านบน"
 >
     ↑
@@ -1737,66 +1932,98 @@ input{
 
 <script>
 
-/* =========================================================
+/* =====================================================
    MOBILE MENU
-========================================================= */
+===================================================== */
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navMenu =
+    document.getElementById("navMenu");
+
 
 if(menuToggle && navMenu){
 
-    menuToggle.addEventListener("click", function(){
+    menuToggle.addEventListener(
+        "click",
+        function(){
 
-        navMenu.classList.toggle("active");
+            navMenu.classList.toggle("active");
 
-        this.textContent =
-            navMenu.classList.contains("active")
-                ? "✕"
-                : "☰";
+            if(
+                navMenu.classList.contains("active")
+            ){
 
-    });
+                menuToggle.textContent = "✕";
 
-    navMenu.querySelectorAll("a").forEach(function(link){
+            }else{
 
-        link.addEventListener("click", function(){
+                menuToggle.textContent = "☰";
 
-            navMenu.classList.remove("active");
+            }
 
-            menuToggle.textContent = "☰";
+        }
+    );
+
+
+    navMenu
+        .querySelectorAll("a")
+        .forEach(function(link){
+
+            link.addEventListener(
+                "click",
+                function(){
+
+                    navMenu.classList.remove("active");
+
+                    menuToggle.textContent = "☰";
+
+                }
+            );
 
         });
-
-    });
 
 }
 
 
-/* =========================================================
+/* =====================================================
    CART COUNT
-========================================================= */
+===================================================== */
 
 function updateCartCount(){
 
     const cartCount =
         document.getElementById("cartCount");
 
-    if(!cartCount) return;
+    if(!cartCount){
+        return;
+    }
+
 
     try{
 
         const cart =
             JSON.parse(
-                localStorage.getItem("chatpetch_cart") || "[]"
+                localStorage.getItem(
+                    "chatpetch_cart"
+                ) || "[]"
             );
 
+
         const total =
-            cart.reduce(function(sum,item){
+            cart.reduce(
+                function(sum,item){
 
-                return sum +
-                    Number(item.quantity || 0);
+                    return sum +
+                        Number(
+                            item.quantity || 0
+                        );
 
-            },0);
+                },
+                0
+            );
+
 
         cartCount.textContent = total;
 
@@ -1808,61 +2035,101 @@ function updateCartCount(){
 
 }
 
+
 updateCartCount();
 
 
-/* =========================================================
+/* =====================================================
+   UPDATE CART WHEN RETURNING TO PAGE
+===================================================== */
+
+window.addEventListener(
+    "storage",
+    function(event){
+
+        if(
+            event.key ===
+            "chatpetch_cart"
+        ){
+
+            updateCartCount();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
    BACK TO TOP
-========================================================= */
+===================================================== */
 
 const backTop =
     document.getElementById("backTop");
 
-window.addEventListener("scroll",function(){
 
-    if(window.scrollY > 500){
+window.addEventListener(
+    "scroll",
+    function(){
 
-        backTop.style.display = "flex";
+        if(
+            window.scrollY > 500
+        ){
 
-    }else{
+            backTop.style.display = "flex";
 
-        backTop.style.display = "none";
+        }else{
+
+            backTop.style.display = "none";
+
+        }
 
     }
+);
 
-});
 
 if(backTop){
 
-    backTop.addEventListener("click",function(){
+    backTop.addEventListener(
+        "click",
+        function(){
 
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
+            window.scrollTo({
 
-    });
+                top:0,
+
+                behavior:"smooth"
+
+            });
+
+        }
+    );
 
 }
 
 
-/* =========================================================
-   LOGO ERROR CHECK
-========================================================= */
+/* =====================================================
+   LOGO CHECK
+===================================================== */
 
-document.querySelectorAll("img").forEach(function(img){
+const logos =
+    document.querySelectorAll(
+        'img[src="./assets/logo.png"]'
+    );
 
-    img.addEventListener("error",function(){
 
-        if(this.src.includes("logo.png")){
+logos.forEach(function(img){
 
-            console.warn(
-                "ไม่พบไฟล์โลโก้: ./assets/logo.png"
+    img.addEventListener(
+        "error",
+        function(){
+
+            console.error(
+                "ไม่พบไฟล์ ./assets/logo.png"
             );
 
         }
-
-    });
+    );
 
 });
 
