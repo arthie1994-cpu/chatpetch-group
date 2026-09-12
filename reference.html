@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ผลงานอ้างอิง | CHATPETCH GROUP</title>
+  <meta name="description" content="ผลงานอ้างอิง บริษัท ฉัตรเพชร กรุ๊ป จำกัด">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --black:#050505;
+      --black2:#080808;
+      --dark:#0d0d0d;
+      --dark2:#111111;
+      --dark3:#181818;
+
+      --gold:#c8a45b;
+      --gold-light:#f0d991;
+      --gold-dark:#806127;
+
+      --white:#ffffff;
+      --soft:#e8e8e8;
+      --gray:#9b9b9b;
+
+      --line:rgba(255,255,255,.09);
+      --gold-line:rgba(200,164,91,.28);
+
+      --container:1240px;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Prompt","Kanit",sans-serif;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 12% 10%,rgba(200,164,91,.08),transparent 28%),
+        radial-gradient(circle at 88% 20%,rgba(200,164,91,.06),transparent 25%),
+        linear-gradient(180deg,#050505,#080808 45%,#050505);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:60px 60px;
+      mask-image:linear-gradient(to bottom,black,transparent 90%);
+      z-index:-3;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      background:rgba(200,164,91,.07);
+      filter:blur(100px);
+      right:-180px;
+      top:180px;
+      pointer-events:none;
+      z-index:-2;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    button,
+    input,
+    select{
+      font:inherit;
+    }
+
+    .container{
+      width:min(var(--container),calc(100% - 40px));
+      margin:auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(5,5,5,.86);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .header-inner{
+      min-height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      min-width:max-content;
+    }
+
+    .brand-logo{
+      width:72px;
+      height:72px;
+      object-fit:contain;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.15;
+    }
+
+    .brand-text strong{
+      font-family:"Kanit",sans-serif;
+      font-size:19px;
+      letter-spacing:1.4px;
+      font-weight:600;
+    }
+
+    .brand-text span{
+      color:var(--gold);
+      font-size:11px;
+      letter-spacing:2px;
+      margin-top:4px;
+    }
+
+    .nav-menu{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:4px;
+      flex-wrap:wrap;
+    }
+
+    .nav-menu a{
+      color:#d9d9d9;
+      font-size:14px;
+      padding:11px 12px;
+      border-radius:10px;
+      transition:.25s ease;
+      white-space:nowrap;
+    }
+
+    .nav-menu a:hover{
+      color:var(--gold-light);
+      background:rgba(200,164,91,.08);
+    }
+
+    .nav-menu .nav-shop{
+      border:1px solid var(--gold-line);
+      color:var(--gold-light);
+      margin-left:5px;
+    }
+
+    .menu-toggle{
+      display:none;
+      width:44px;
+      height:44px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      border-radius:10px;
+      cursor:pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero{
+      position:relative;
+      min-height:460px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:600px;
+      height:600px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(200,164,91,.13),transparent 68%);
+      top:-260px;
+      right:-100px;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold-dark),
+        transparent
+      );
+    }
+
+    .hero-grid{
+      position:absolute;
+      inset:0;
+      opacity:.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+      background-size:80px 80px;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      padding:80px 0;
+      max-width:900px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--gold-light);
+      font-size:13px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:36px;
+      height:1px;
+      background:var(--gold);
+    }
+
+    .hero h1{
+      font-family:"Kanit",sans-serif;
+      font-size:clamp(42px,6vw,76px);
+      line-height:1.2;
+      font-weight:600;
+      letter-spacing:-1px;
+      margin-bottom:20px;
+      overflow:visible;
+    }
+
+    .hero h1 span{
+      display:block;
+      color:var(--gold);
+      font-size:.45em;
+      letter-spacing:4px;
+      font-weight:400;
+      margin-top:7px;
+    }
+
+    .hero p{
+      max-width:760px;
+      color:#bcbcbc;
+      font-size:17px;
+      line-height:1.9;
+    }
+
+    .hero-mark{
+      position:absolute;
+      right:5%;
+      bottom:30px;
+      font-family:"Kanit",sans-serif;
+      font-size:150px;
+      line-height:1;
+      color:rgba(200,164,91,.035);
+      font-weight:700;
+      letter-spacing:-8px;
+      pointer-events:none;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    .section{
+      padding:90px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:30px;
+      margin-bottom:42px;
+    }
+
+    .section-kicker{
+      color:var(--gold);
+      font-size:12px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .section-title{
+      font-family:"Kanit",sans-serif;
+      font-size:38px;
+      line-height:1.3;
+      font-weight:600;
+    }
+
+    .section-description{
+      max-width:650px;
+      color:var(--gray);
+      font-size:15px;
+      line-height:1.9;
+    }
+
+    /* =========================
+       INFO BAR
+    ========================= */
+
+    .reference-info{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-bottom:45px;
+    }
+
+    .info-card{
+      position:relative;
+      padding:25px;
+      min-height:145px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.018)
+        );
+      overflow:hidden;
+    }
+
+    .info-card::after{
+      content:"";
+      position:absolute;
+      width:100px;
+      height:100px;
+      border-radius:50%;
+      background:rgba(200,164,91,.08);
+      filter:blur(35px);
+      right:-30px;
+      bottom:-35px;
+    }
+
+    .info-number{
+      color:var(--gold);
+      font-family:"Kanit",sans-serif;
+      font-size:34px;
+      font-weight:600;
+      margin-bottom:3px;
+    }
+
+    .info-title{
+      font-size:16px;
+      font-weight:500;
+      margin-bottom:5px;
+    }
+
+    .info-text{
+      color:#8e8e8e;
+      font-size:13px;
+      line-height:1.7;
+    }
+
+    /* =========================
+       FILTER
+    ========================= */
+
+    .filter-wrap{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      padding:7px;
+      margin-bottom:32px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+      border-radius:14px;
+      width:max-content;
+      max-width:100%;
+    }
+
+    .filter-btn{
+      border:1px solid transparent;
+      color:#aaa;
+      background:transparent;
+      padding:10px 16px;
+      border-radius:9px;
+      cursor:pointer;
+      transition:.25s ease;
+      font-size:13px;
+    }
+
+    .filter-btn:hover{
+      color:#fff;
+      background:rgba(255,255,255,.05);
+    }
+
+    .filter-btn.active{
+      color:#111;
+      background:linear-gradient(135deg,var(--gold-light),var(--gold));
+      border-color:var(--gold-light);
+      font-weight:600;
+    }
+
+    /* =========================
+       REFERENCE GRID
+    ========================= */
+
+    .reference-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .reference-card{
+      position:relative;
+      min-height:390px;
+      display:flex;
+      flex-direction:column;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.018)
+        );
+      overflow:hidden;
+      transition:.35s ease;
+    }
+
+    .reference-card:hover{
+      transform:translateY(-7px);
+      border-color:var(--gold-line);
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.45),
+        0 0 35px rgba(200,164,91,.06);
+    }
+
+    .reference-image{
+      height:205px;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg,#151515,#090909);
+    }
+
+    .reference-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.5s ease;
+    }
+
+    .reference-card:hover .reference-image img{
+      transform:scale(1.06);
+    }
+
+    .reference-placeholder{
+      width:100%;
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#454545;
+      font-family:"Kanit",sans-serif;
+      font-size:42px;
+      letter-spacing:4px;
+      background:
+        radial-gradient(circle at 50% 40%,rgba(200,164,91,.09),transparent 40%),
+        repeating-linear-gradient(
+          135deg,
+          rgba(255,255,255,.025) 0 1px,
+          transparent 1px 10px
+        );
+    }
+
+    .reference-badge{
+      position:absolute;
+      left:16px;
+      top:16px;
+      padding:6px 11px;
+      border-radius:7px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(200,164,91,.35);
+      color:var(--gold-light);
+      font-size:11px;
+      backdrop-filter:blur(8px);
+    }
+
+    .reference-body{
+      padding:23px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+
+    .reference-code{
+      color:#666;
+      font-family:"Kanit",sans-serif;
+      font-size:11px;
+      letter-spacing:2px;
+      margin-bottom:8px;
+    }
+
+    .reference-title{
+      font-family:"Kanit",sans-serif;
+      font-size:22px;
+      font-weight:500;
+      line-height:1.4;
+      margin-bottom:9px;
+    }
+
+    .reference-description{
+      color:#999;
+      font-size:13px;
+      line-height:1.75;
+      flex:1;
+    }
+
+    .reference-meta{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:20px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .meta-item small{
+      display:block;
+      color:#666;
+      font-size:10px;
+      margin-bottom:3px;
+    }
+
+    .meta-item strong{
+      color:#ddd;
+      font-size:12px;
+      font-weight:400;
+    }
+
+    .reference-actions{
+      display:flex;
+      gap:9px;
+      margin-top:20px;
+    }
+
+    .btn{
+      min-height:43px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border-radius:10px;
+      padding:0 15px;
+      font-size:12px;
+      cursor:pointer;
+      transition:.25s ease;
+      border:1px solid var(--line);
+    }
+
+    .btn-primary{
+      color:#111;
+      background:linear-gradient(135deg,var(--gold-light),var(--gold));
+      border-color:var(--gold);
+      font-weight:600;
+      flex:1;
+    }
+
+    .btn-primary:hover{
+      filter:brightness(1.08);
+      transform:translateY(-1px);
+    }
+
+    .btn-outline{
+      color:#ddd;
+      background:rgba(255,255,255,.03);
+    }
+
+    .btn-outline:hover{
+      border-color:var(--gold-line);
+      color:var(--gold-light);
+    }
+
+    /* =========================
+       DOWNLOAD AREA
+    ========================= */
+
+    .download-panel{
+      margin-top:65px;
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--gold-line);
+      border-radius:22px;
+      padding:36px;
+      background:
+        radial-gradient(
+          circle at 100% 0%,
+          rgba(200,164,91,.13),
+          transparent 38%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(200,164,91,.055),
+          rgba(255,255,255,.018)
+        );
+    }
+
+    .download-panel::before{
+      content:"REFERENCE";
+      position:absolute;
+      right:28px;
+      bottom:-20px;
+      font-family:"Kanit",sans-serif;
+      font-size:100px;
+      color:rgba(200,164,91,.035);
+      font-weight:700;
+      letter-spacing:-4px;
+    }
+
+    .download-content{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .download-content h3{
+      font-family:"Kanit",sans-serif;
+      font-size:28px;
+      margin-bottom:8px;
+    }
+
+    .download-content p{
+      color:#999;
+      font-size:14px;
+      line-height:1.8;
+      max-width:700px;
+    }
+
+    .download-btn{
+      flex-shrink:0;
+      min-height:52px;
+      padding:0 25px;
+      border-radius:11px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      background:linear-gradient(135deg,var(--gold-light),var(--gold));
+      color:#111;
+      font-weight:600;
+      font-size:13px;
+      border:0;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+
+    .download-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 35px rgba(200,164,91,.15);
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:25px;
+      background:rgba(0,0,0,.78);
+      backdrop-filter:blur(12px);
+      z-index:3000;
+    }
+
+    .modal.show{
+      display:flex;
+    }
+
+    .modal-box{
+      width:min(760px,100%);
+      max-height:90vh;
+      overflow:auto;
+      position:relative;
+      border:1px solid var(--gold-line);
+      border-radius:20px;
+      background:
+        linear-gradient(
+          145deg,
+          #151515,
+          #0a0a0a
+        );
+      box-shadow:0 30px 100px rgba(0,0,0,.7);
+    }
+
+    .modal-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:22px 25px;
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      background:rgba(12,12,12,.96);
+      z-index:2;
+    }
+
+    .modal-head h3{
+      font-family:"Kanit",sans-serif;
+      font-size:23px;
+    }
+
+    .modal-close{
+      width:40px;
+      height:40px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      border-radius:9px;
+      cursor:pointer;
+      font-size:18px;
+    }
+
+    .modal-content{
+      padding:28px 25px 30px;
+    }
+
+    .modal-section{
+      margin-bottom:25px;
+    }
+
+    .modal-section:last-child{
+      margin-bottom:0;
+    }
+
+    .modal-label{
+      color:var(--gold);
+      font-size:11px;
+      letter-spacing:2px;
+      margin-bottom:7px;
+    }
+
+    .modal-value{
+      color:#ddd;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .modal-note{
+      padding:15px;
+      border:1px solid var(--gold-line);
+      border-radius:11px;
+      color:#aaa;
+      font-size:13px;
+      line-height:1.8;
+      background:rgba(200,164,91,.035);
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta{
+      padding:85px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(200,164,91,.08),
+          transparent 48%
+        );
+      text-align:center;
+    }
+
+    .cta h2{
+      font-family:"Kanit",sans-serif;
+      font-size:42px;
+      line-height:1.3;
+      margin-bottom:15px;
+    }
+
+    .cta p{
+      color:#999;
+      max-width:680px;
+      margin:0 auto 28px;
+      font-size:15px;
+      line-height:1.9;
+    }
+
+    .cta-buttons{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .cta-button{
+      min-height:50px;
+      padding:0 23px;
+      border-radius:11px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      font-size:13px;
+      transition:.25s ease;
+    }
+
+    .cta-gold{
+      background:linear-gradient(135deg,var(--gold-light),var(--gold));
+      color:#111;
+      font-weight:600;
+    }
+
+    .cta-dark{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:#ddd;
+    }
+
+    .cta-button:hover{
+      transform:translateY(-2px);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer{
+      padding:55px 0 30px;
+      background:#030303;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr;
+      gap:50px;
+      padding-bottom:40px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:16px;
+    }
+
+    .footer-brand img{
+      width:62px;
+      height:62px;
+      object-fit:contain;
+    }
+
+    .footer-brand strong{
+      font-family:"Kanit",sans-serif;
+      font-size:19px;
+      letter-spacing:1px;
+    }
+
+    .footer-description{
+      color:#777;
+      font-size:13px;
+      line-height:1.9;
+      max-width:500px;
+    }
+
+    .footer-title{
+      color:var(--gold-light);
+      font-family:"Kanit",sans-serif;
+      font-size:17px;
+      margin-bottom:15px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+    }
+
+    .footer-links a{
+      color:#777;
+      font-size:13px;
+      transition:.2s;
+    }
+
+    .footer-links a:hover{
+      color:var(--gold-light);
+    }
+
+    .footer-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding-top:22px;
+      color:#555;
+      font-size:11px;
+    }
+
+    /* =========================
+       FLOATING BUTTONS
+    ========================= */
+
+    .floating-actions{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:900;
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+    }
+
+    .float-btn{
+      width:50px;
+      height:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(12,12,12,.9);
+      backdrop-filter:blur(12px);
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+      font-size:20px;
+      transition:.25s ease;
+    }
+
+    .float-btn:hover{
+      transform:translateY(-3px);
+      border-color:var(--gold-line);
+    }
+
+    .float-phone{
+      color:var(--gold-light);
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:1100px){
+
+      .nav-menu{
+        gap:0;
+      }
+
+      .nav-menu a{
+        padding:9px 8px;
+        font-size:12px;
+      }
+
+      .reference-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .footer-grid > :first-child{
+        grid-column:1/-1;
+      }
+    }
+
+    @media(max-width:820px){
+
+      .header-inner{
+        min-height:76px;
+      }
+
+      .brand-logo{
+        width:58px;
+        height:58px;
+      }
+
+      .brand-text strong{
+        font-size:16px;
+      }
+
+      .brand-text span{
+        font-size:9px;
+      }
+
+      .menu-toggle{
+        display:block;
+      }
+
+      .nav-menu{
+        position:absolute;
+        left:15px;
+        right:15px;
+        top:calc(100% + 8px);
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        padding:10px;
+        background:rgba(10,10,10,.97);
+        border:1px solid var(--line);
+        border-radius:14px;
+        box-shadow:0 20px 50px rgba(0,0,0,.5);
+      }
+
+      .nav-menu.open{
+        display:flex;
+      }
+
+      .nav-menu a{
+        width:100%;
+        padding:13px 14px;
+        font-size:14px;
+      }
+
+      .nav-menu .nav-shop{
+        margin:3px 0 0;
+      }
+
+      .hero{
+        min-height:430px;
+      }
+
+      .hero-content{
+        padding:65px 0;
+      }
+
+      .hero-mark{
+        font-size:90px;
+        right:0;
+        bottom:20px;
+      }
+
+      .reference-info{
+        grid-template-columns:1fr;
+      }
+
+      .section{
+        padding:70px 0;
+      }
+
+      .section-head{
+        display:block;
+      }
+
+      .section-description{
+        margin-top:12px;
+      }
+
+      .download-content{
+        display:block;
+      }
+
+      .download-btn{
+        margin-top:20px;
+      }
+    }
+
+    @media(max-width:620px){
+
+      .container{
+        width:min(var(--container),calc(100% - 28px));
+      }
+
+      .hero h1{
+        font-size:43px;
+      }
+
+      .hero h1 span{
+        font-size:13px;
+        letter-spacing:2px;
+      }
+
+      .hero p{
+        font-size:14px;
+      }
+
+      .section-title{
+        font-size:31px;
+      }
+
+      .filter-wrap{
+        width:100%;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+      }
+
+      .filter-btn{
+        white-space:nowrap;
+        flex-shrink:0;
+      }
+
+      .reference-grid{
+        grid-template-columns:1fr;
+      }
+
+      .reference-card{
+        min-height:0;
+      }
+
+      .reference-image{
+        height:210px;
+      }
+
+      .download-panel{
+        padding:27px 20px;
+      }
+
+      .download-content h3{
+        font-size:23px;
+      }
+
+      .cta h2{
+        font-size:32px;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .footer-grid > :first-child{
+        grid-column:auto;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .floating-actions{
+        right:13px;
+        bottom:13px;
+      }
+
+      .float-btn{
+        width:47px;
+        height:47px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a href="index.html" class="brand">
+        <img
+          src="assets/logo.png"
+          alt="CHATPETCH GROUP"
+          class="brand-logo"
+        >
+
+        <div class="brand-text">
+          <strong>CHATPETCH GROUP</strong>
+          <span>FLOORING SYSTEM SPECIALIST</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="เปิดเมนู">
+        ☰
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html">หน้าแรก</a>
+        <a href="about.html">เกี่ยวกับเรา</a>
+        <a href="products.html">สินค้า</a>
+        <a href="services.html">บริการ</a>
+        <a href="projects.html">ผลงาน</a>
+        <a href="reference.html">ผลงานอ้างอิง</a>
+        <a href="technical-center.html">Technical Center</a>
+        <a href="knowledge.html">คลังความรู้</a>
+        <a href="contact.html">ติดต่อเรา</a>
+        <a href="order-status.html">ติดตามคำสั่งซื้อ</a>
+        <a href="cart.html" class="nav-shop">🛒 ตะกร้า</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero">
+
+    <div class="hero-grid"></div>
+
+    <div class="container hero-content">
+
+      <div class="eyebrow">
+        PROJECT REFERENCE
+      </div>
+
+      <h1>
+        ผลงานอ้างอิง
+        <span>CHATPETCH GROUP</span>
+      </h1>
+
+      <p>
+        รวบรวมผลงานอ้างอิงและข้อมูลโครงการของบริษัท
+        สำหรับใช้ประกอบการพิจารณาระบบพื้น งานกันรั่วซึม
+        งานซ่อมคอนกรีต และงานระบบอื่น ๆ
+      </p>
+
+    </div>
+
+    <div class="hero-mark">
+      CG
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MAIN
+  ========================= -->
+
+  <main>
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <div>
+            <div class="section-kicker">
+              PROJECT PORTFOLIO
+            </div>
+
+            <h2 class="section-title">
+              Reference Projects
+            </h2>
+          </div>
+
+          <p class="section-description">
+            เลือกดูผลงานตามประเภทงานเพื่อใช้เป็นข้อมูลอ้างอิง
+            โดยรายละเอียดเชิงเทคนิคจะระบุเฉพาะข้อมูลที่บริษัทมีเอกสารหรือข้อมูลโครงการรองรับ
+          </p>
+
+        </div>
+
+
+        <!-- INFO -->
+
+        <div class="reference-info">
+
+          <div class="info-card reveal">
+            <div class="info-number">01</div>
+            <div class="info-title">
+              ระบบพื้น
+            </div>
+            <div class="info-text">
+              งานพื้นอุตสาหกรรม พื้นอีพ็อกซี่ พื้น PU และระบบพื้นเฉพาะทาง
+            </div>
+          </div>
+
+          <div class="info-card reveal">
+            <div class="info-number">02</div>
+            <div class="info-title">
+              งานปรับปรุง
+            </div>
+            <div class="info-text">
+              งานซ่อมคอนกรีต งาน Injection และงานปรับปรุงพื้นผิว
+            </div>
+          </div>
+
+          <div class="info-card reveal">
+            <div class="info-number">03</div>
+            <div class="info-title">
+              งานภายนอก
+            </div>
+            <div class="info-text">
+              งานกันรั่วซึม สนามกีฬา พื้นตกแต่ง และระบบสัญลักษณ์
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- FILTER -->
+
+        <div class="filter-wrap reveal">
+
+          <button
+            class="filter-btn active"
+            data-filter="all">
+            ทั้งหมด
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="industrial">
+            พื้นอุตสาหกรรม
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="waterproof">
+            กันรั่วซึม
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="concrete">
+            ซ่อมคอนกรีต
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="sports">
+            สนามกีฬา
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="decorative">
+            พื้นตกแต่ง
+          </button>
+
+          <button
+            class="filter-btn"
+            data-filter="traffic">
+            เส้นจราจร
+          </button>
+
+        </div>
+
+
+        <!-- REFERENCE GRID -->
+
+        <div class="reference-grid" id="referenceGrid"></div>
+
+
+        <!-- DOWNLOAD -->
+
+        <div class="download-panel reveal">
+
+          <div class="download-content">
+
+            <div>
+
+              <h3>
+                Reference Project PDF
+              </h3>
+
+              <p>
+                สำหรับเอกสารผลงานอ้างอิงฉบับเต็ม
+                ให้เชื่อมต่อไฟล์ PDF ของบริษัทในภายหลัง
+                โดยหน้านี้จะเตรียมระบบดาวน์โหลดไว้ให้แล้ว
+              </p>
+
+            </div>
+
+            <button
+              class="download-btn"
+              id="downloadReference">
+              ↓ ดาวน์โหลด Reference PDF
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <div class="section-kicker">
+          WORK WITH US
+        </div>
+
+        <h2>
+          ต้องการดูผลงานที่ใกล้เคียงกับหน้างานของคุณ?
+        </h2>
+
+        <p>
+          แจ้งประเภทพื้นที่ จังหวัด ลักษณะปัญหา และขนาดพื้นที่โดยประมาณ
+          ทีมงานสามารถใช้ข้อมูลดังกล่าวเพื่อคัดเลือกผลงานอ้างอิงและระบบที่เหมาะสม
+        </p>
+
+        <div class="cta-buttons">
+
+          <a
+            href="contact.html"
+            class="cta-button cta-gold">
+            ขอคำปรึกษา / ขอใบเสนอราคา
+          </a>
+
+          <a
+            href="projects.html"
+            class="cta-button cta-dark">
+            ดูผลงานทั้งหมด
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-brand">
+
+            <img
+              src="assets/logo.png"
+              alt="CHATPETCH GROUP">
+
+            <strong>
+              CHATPETCH GROUP
+            </strong>
+
+          </div>
+
+          <p class="footer-description">
+            🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
+            <br><br>
+            สร้างสรรค์ผลงาน • มาตรฐานเข้าถึง • ยืน 1 คุณภาพ
+            <br>
+            บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-title">
+            MENU
+          </div>
+
+          <div class="footer-links">
+            <a href="index.html">หน้าแรก</a>
+            <a href="about.html">เกี่ยวกับเรา</a>
+            <a href="products.html">สินค้า</a>
+            <a href="services.html">บริการ</a>
+            <a href="projects.html">ผลงาน</a>
+            <a href="reference.html">ผลงานอ้างอิง</a>
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <div class="footer-title">
+            CONTACT
+          </div>
+
+          <div class="footer-links">
+
+            <a href="contact.html">
+              ติดต่อบริษัท
+            </a>
+
+            <a href="https://www.facebook.com/ChatphetchGroup" target="_blank">
+              Facebook
+            </a>
+
+            <a href="tel:0856299778">
+              ฝ่ายเทคนิค 085-6299778
+            </a>
+
+            <a href="tel:0980153271">
+              ฝ่ายบัญชี 098-0153271
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <div>
+          © 2026 CHATPETCH GROUP CO., LTD. All Rights Reserved.
+        </div>
+
+        <div>
+          10/1 ม.9 ต.นาหม่อม อ.นาหม่อม จ.สงขลา 90310
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       FLOATING
+  ========================= -->
+
+  <div class="floating-actions">
+
+    <a
+      href="tel:0856299778"
+      class="float-btn float-phone"
+      aria-label="โทรฝ่ายเทคนิค">
+      ☎
+    </a>
+
+    <a
+      href="https://www.facebook.com/ChatphetchGroup"
+      target="_blank"
+      class="float-btn"
+      aria-label="Facebook">
+      f
+    </a>
+
+  </div>
+
+
+  <!-- =========================
+       MODAL
+  ========================= -->
+
+  <div class="modal" id="referenceModal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h3 id="modalTitle">
+          รายละเอียดผลงาน
+        </h3>
+
+        <button
+          class="modal-close"
+          id="modalClose">
+          ×
+        </button>
+
+      </div>
+
+      <div class="modal-content">
+
+        <div class="modal-section">
+
+          <div class="modal-label">
+            PROJECT TYPE
+          </div>
+
+          <div
+            class="modal-value"
+            id="modalType">
+          </div>
+
+        </div>
+
+
+        <div class="modal-section">
+
+          <div class="modal-label">
+            CUSTOMER TYPE
+          </div>
+
+          <div
+            class="modal-value"
+            id="modalCustomer">
+          </div>
+
+        </div>
+
+
+        <div class="modal-section">
+
+          <div class="modal-label">
+            LOCATION
+          </div>
+
+          <div
+            class="modal-value"
+            id="modalLocation">
+          </div>
+
+        </div>
+
+
+        <div class="modal-section">
+
+          <div class="modal-label">
+            AREA
+          </div>
+
+          <div
+            class="modal-value"
+            id="modalArea">
+          </div>
+
+        </div>
+
+
+        <div class="modal-section">
+
+          <div class="modal-label">
+            SYSTEM
+          </div>
+
+          <div
+            class="modal-value"
+            id="modalSystem">
+          </div>
+
+        </div>
+
+
+        <div class="modal-section">
+
+          <div class="modal-label">
+            NOTE
+          </div>
+
+          <div class="modal-note">
+            ข้อมูลรายละเอียดเชิงลึกของโครงการ
+            จะแสดงเมื่อมีข้อมูลและเอกสารจากบริษัทครบถ้วน
+            เพื่อหลีกเลี่ยงการระบุข้อมูลที่ไม่ตรงกับหน้างานจริง
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /* =========================================
+       REFERENCE DATA
+       =========================================
+       ใส่ข้อมูลจริงของบริษัทภายหลังได้ทันที
+       ไม่สร้างข้อมูลโครงการปลอม
+    ========================================= */
+
+    const referenceProjects = [
+
+      {
+        id:"project-001",
+        category:"industrial",
+        categoryLabel:"พื้นอุตสาหกรรม",
+        title:"โครงการพื้นอุตสาหกรรม",
+        code:"REF-IND-001",
+        customer:"ข้อมูลลูกค้าโครงการ",
+        province:"รอข้อมูล",
+        area:"รอข้อมูล",
+        system:"รอข้อมูลระบบ",
+        description:
+          "พื้นที่สำหรับงานอุตสาหกรรม โดยรายละเอียดระบบและภาพผลงานจะเพิ่มจากข้อมูลโครงการจริง",
+        image:""
+      },
+
+      {
+        id:"project-002",
+        category:"waterproof",
+        categoryLabel:"กันรั่วซึม",
+        title:"โครงการกันรั่วซึม",
+        code:"REF-WP-001",
+        customer:"ข้อมูลลูกค้าโครงการ",
+        province:"รอข้อมูล",
+        area:"รอข้อมูล",
+        system:"รอข้อมูลระบบ",
+        description:
+          "งานแก้ไขปัญหาการรั่วซึมของพื้นที่อาคาร ดาดฟ้า หรือหลังคา โดยรอข้อมูลระบบจริงจากบริษัท",
+        image:""
+      },
+
+      {
+        id:"project-003",
+        category:"concrete",
+        categoryLabel:"ซ่อมคอนกรีต",
+        title:"โครงการซ่อมปรับปรุงคอนกรีต",
+        code:"REF-CON-001",
+        customer:"ข้อมูลลูกค้าโครงการ",
+        province:"รอข้อมูล",
+        area:"รอข้อมูล",
+        system:"รอข้อมูลระบบ",
+        description:
+          "งานซ่อมแซมและปรับปรุงพื้นผิวคอนกรีต สำหรับพื้นที่ที่มีปัญหารอยร้าวหรือความเสียหาย",
+        image:""
+      },
+
+      {
+        id:"project-004",
+        category:"sports",
+        categoryLabel:"สนามกีฬา",
+        title:"โครงการพื้นสนามกีฬา",
+        code:"REF-SPT-001",
+        customer:"ข้อมูลลูกค้าโครงการ",
+        province:"รอข้อมูล",
+        area:"รอข้อมูล",
+        system:"รอข้อมูลระบบ",
+        description:
+          "งานพื้นสำหรับสนามกีฬา โดยรายละเอียดชนิดสนาม ระบบพื้น และวัสดุจะระบุเมื่อได้รับข้อมูลจริง",
+        image:""
+      },
+
+      {
+        id:"project-005",
+        category:"decorative",
+        categoryLabel:"พื้นตกแต่ง",
+        title:"โครงการพื้นตกแต่ง",
+        code:"REF-DEC-001",
+        customer:"ข้อมูลลูกค้าโครงการ",
+        province:"รอข้อมูล",
+        area:"รอข้อมูล",
+        system:"รอข้อมูลระบบ",
+        description:
+          "งานพื้นตกแต่งเพื่อความสวยงาม เช่น พื้นคอนกรีตพิมพ์ลาย พื้น Flake หรือระบบตกแต่งอื่น ๆ",
+        image:""
+      },
+
+      {
+        id:"project-006",
+        category:"traffic",
+        categoryLabel:"เส้นจราจร",
+        title:"โครงการระบบสัญลักษณ์และเส้นจราจร",
+        code:"REF-TRF-001",
+        customer:"ข้อมูลลูกค้าโครงการ",
+        province:"รอข้อมูล",
+        area:"รอข้อมูล",
+        system:"รอข้อมูลระบบ",
+        description:
+          "งานตีเส้นจราจรและระบบสัญลักษณ์สำหรับพื้นที่ใช้งาน โดยรอข้อมูลโครงการจริง",
+        image:""
+      }
+
+    ];
+
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const grid =
+      document.getElementById("referenceGrid");
+
+    const modal =
+      document.getElementById("referenceModal");
+
+    const modalClose =
+      document.getElementById("modalClose");
+
+    const modalTitle =
+      document.getElementById("modalTitle");
+
+    const modalType =
+      document.getElementById("modalType");
+
+    const modalCustomer =
+      document.getElementById("modalCustomer");
+
+    const modalLocation =
+      document.getElementById("modalLocation");
+
+    const modalArea =
+      document.getElementById("modalArea");
+
+    const modalSystem =
+      document.getElementById("modalSystem");
+
+
+    /* =========================================
+       RENDER
+    ========================================= */
+
+    function renderReferences(filter = "all"){
+
+      const items =
+        filter === "all"
+          ? referenceProjects
+          : referenceProjects.filter(
+              item => item.category === filter
+            );
+
+      grid.innerHTML = items.map(item => {
+
+        const imageBlock =
+          item.image
+            ? `
+              <img
+                src="${item.image}"
+                alt="${item.title}"
+                loading="lazy">
+            `
+            : `
+              <div class="reference-placeholder">
+                CG
+              </div>
+            `;
+
+        return `
+
+          <article
+            class="reference-card reveal">
+
+            <div class="reference-image">
+
+              ${imageBlock}
+
+              <div class="reference-badge">
+                ${item.categoryLabel}
+              </div>
+
+            </div>
+
+
+            <div class="reference-body">
+
+              <div class="reference-code">
+                ${item.code}
+              </div>
+
+              <h3 class="reference-title">
+                ${item.title}
+              </h3>
+
+              <p class="reference-description">
+                ${item.description}
+              </p>
+
+
+              <div class="reference-meta">
+
+                <div class="meta-item">
+                  <small>จังหวัด</small>
+                  <strong>
+                    ${item.province}
+                  </strong>
+                </div>
+
+                <div class="meta-item">
+                  <small>พื้นที่</small>
+                  <strong>
+                    ${item.area}
+                  </strong>
+                </div>
+
+              </div>
+
+
+              <div class="reference-actions">
+
+                <button
+                  class="btn btn-primary"
+                  onclick="openReference('${item.id}')">
+                  ดูรายละเอียด
+                </button>
+
+                <a
+                  class="btn btn-outline"
+                  href="project-detail.html?id=${item.id}">
+                  Case Study
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        `;
+
+      }).join("");
+
+      initReveal();
+
+    }
+
+
+    /* =========================================
+       OPEN MODAL
+    ========================================= */
+
+    window.openReference = function(id){
+
+      const item =
+        referenceProjects.find(
+          project => project.id === id
+        );
+
+      if(!item) return;
+
+      modalTitle.textContent =
+        item.title;
+
+      modalType.textContent =
+        item.categoryLabel;
+
+      modalCustomer.textContent =
+        item.customer;
+
+      modalLocation.textContent =
+        item.province;
+
+      modalArea.textContent =
+        item.area;
+
+      modalSystem.textContent =
+        item.system;
+
+      modal.classList.add("show");
+
+      document.body.style.overflow = "hidden";
+
+    };
+
+
+    function closeModal(){
+
+      modal.classList.remove("show");
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    modalClose.addEventListener(
+      "click",
+      closeModal
+    );
+
+
+    modal.addEventListener(
+      "click",
+      event => {
+
+        if(event.target === modal){
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if(event.key === "Escape"){
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+
+    /* =========================================
+       FILTER
+    ========================================= */
+
+    document
+      .querySelectorAll(".filter-btn")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            document
+              .querySelectorAll(".filter-btn")
+              .forEach(btn =>
+                btn.classList.remove("active")
+              );
+
+            button.classList.add("active");
+
+            renderReferences(
+              button.dataset.filter
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =========================================
+       MOBILE MENU
+    ========================================= */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const navMenu =
+      document.getElementById("navMenu");
+
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        navMenu.classList.toggle("open");
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(".nav-menu a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navMenu.classList.remove("open");
+
+          }
+        );
+
+      });
+
+
+    /* =========================================
+       REVEAL
+    ========================================= */
+
+    function initReveal(){
+
+      const elements =
+        document.querySelectorAll(".reveal");
+
+      const observer =
+        new IntersectionObserver(
+          entries => {
+
+            entries.forEach(entry => {
+
+              if(entry.isIntersecting){
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            });
+
+          },
+          {
+            threshold:.08
+          }
+        );
+
+      elements.forEach(
+        element => observer.observe(element)
+      );
+
+    }
+
+
+    /* =========================================
+       PDF DOWNLOAD
+       ========================================= */
+
+    document
+      .getElementById("downloadReference")
+      .addEventListener(
+        "click",
+        () => {
+
+          /*
+            เมื่อมีไฟล์ PDF จริง
+            ให้เปลี่ยนตรงนี้เป็น เช่น
+
+            window.location.href =
+              "assets/documents/reference-project.pdf";
+
+            ตอนนี้ยังไม่สร้างไฟล์ปลอม
+          */
+
+          alert(
+            "กรุณาเพิ่มไฟล์ Reference Project PDF ของบริษัทก่อน แล้วจึงเชื่อมลิงก์ดาวน์โหลดในหน้านี้"
+          );
+
+        }
+      );
+
+
+    /* =========================================
+       INIT
+    ========================================= */
+
+    renderReferences("all");
+
+    initReveal();
+
+  </script>
+
+</body>
+</html>
