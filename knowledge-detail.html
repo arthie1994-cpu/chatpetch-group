@@ -1,3619 +1,3309 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>บทความ | CHATPETCH GROUP</title>
-
-  <meta
-    id="metaDescription"
-    name="description"
-    content="คลังความรู้ด้านระบบพื้น งานกันรั่วซึม งานซ่อมคอนกรีต และพื้นตกแต่ง จาก CHATPETCH GROUP"
-  >
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-    :root{
-      --black:#050505;
-      --black2:#080808;
-      --dark:#0d0d0d;
-      --dark2:#111111;
-      --dark3:#181818;
-
-      --gold:#c8a45b;
-      --gold-light:#f0d991;
-      --gold-dark:#806127;
-
-      --white:#fff;
-      --soft:#e8e8e8;
-      --gray:#9b9b9b;
-
-      --line:rgba(255,255,255,.09);
-      --gold-line:rgba(200,164,91,.28);
-
-      --container:1180px;
-    }
-
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:"Prompt","Kanit",sans-serif;
-      color:var(--white);
-
-      background:
-        radial-gradient(
-          circle at 8% 5%,
-          rgba(200,164,91,.08),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(200,164,91,.06),
-          transparent 30%
-        ),
-        linear-gradient(
-          180deg,
-          #050505,
-          #090909 50%,
-          #050505
-        );
-
-      min-height:100vh;
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:"";
 
-      position:fixed;
-      inset:0;
-
-      z-index:-3;
-
-      pointer-events:none;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      opacity:.18;
-
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,.035) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.035) 1px,
-          transparent 1px
-        );
+<title>บทความ | CHATPETCH GROUP</title>
 
-      background-size:60px 60px;
+<meta
+  name="description"
+  id="metaDescription"
+  content="สาระความรู้เกี่ยวกับระบบงานพื้นจาก CHATPETCH GROUP">
 
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 90%
-        );
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    body::after{
-      content:"";
+<link
+  href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
 
-      position:fixed;
 
-      width:550px;
-      height:550px;
+<style>
 
-      right:-220px;
-      top:220px;
+/* =========================================================
+ROOT
+========================================================= */
 
-      border-radius:50%;
+:root{
 
-      background:
-        rgba(200,164,91,.06);
+  --black:#050505;
+  --black2:#080808;
+  --dark:#0d0d0d;
+  --dark2:#111111;
+  --dark3:#181818;
 
-      filter:blur(100px);
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --gold-dark:#806127;
 
-      z-index:-2;
+  --white:#fff;
+  --soft:#e8e8e8;
+  --gray:#9b9b9b;
 
-      pointer-events:none;
-    }
+  --line:rgba(255,255,255,.09);
+  --gold-line:rgba(200,164,91,.28);
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+  --container:1240px;
 
-    img{
-      display:block;
-      max-width:100%;
-    }
+}
 
-    button,
-    input{
-      font:inherit;
-    }
 
-    .container{
-      width:min(
-        var(--container),
-        calc(100% - 40px)
-      );
+/* =========================================================
+RESET
+========================================================= */
 
-      margin:auto;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 
-    /* =========================================
-       HEADER
-    ========================================= */
+html{
+  scroll-behavior:smooth;
+}
 
-    .site-header{
-      position:sticky;
-      top:0;
-      z-index:1000;
 
-      background:
-        rgba(5,5,5,.88);
+body{
 
-      backdrop-filter:blur(18px);
+  font-family:
+    "Prompt",
+    "Kanit",
+    sans-serif;
 
-      border-bottom:
-        1px solid var(--line);
-    }
+  color:var(--white);
 
-    .header-inner{
-      min-height:86px;
+  background:
 
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+    radial-gradient(
+      circle at 80% 5%,
+      rgba(200,164,91,.10),
+      transparent 28%
+    ),
 
-      gap:20px;
-    }
+    radial-gradient(
+      circle at 10% 50%,
+      rgba(200,164,91,.045),
+      transparent 25%
+    ),
 
-    .brand{
-      display:flex;
-      align-items:center;
+    var(--black);
 
-      gap:13px;
+  line-height:1.8;
 
-      min-width:max-content;
-    }
+  overflow-x:hidden;
 
-    .brand-logo{
-      width:72px;
-      height:72px;
+}
 
-      object-fit:contain;
-    }
 
-    .brand-text{
-      display:flex;
-      flex-direction:column;
+body::before{
 
-      line-height:1.15;
-    }
+  content:"";
 
-    .brand-text strong{
-      font-family:"Kanit",sans-serif;
+  position:fixed;
 
-      font-size:19px;
-      font-weight:600;
+  inset:0;
 
-      letter-spacing:1.3px;
-    }
+  z-index:-1;
 
-    .brand-text span{
-      color:var(--gold);
+  pointer-events:none;
 
-      font-size:10px;
+  opacity:.28;
 
-      letter-spacing:2px;
+  background-image:
 
-      margin-top:5px;
-    }
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
 
-    .nav-menu{
-      display:flex;
-      align-items:center;
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
 
-      gap:3px;
+  background-size:55px 55px;
 
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+}
 
-    .nav-menu a{
-      color:#d1d1d1;
 
-      font-size:12px;
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-      padding:10px;
 
-      border-radius:8px;
+button{
+  font:inherit;
+}
 
-      transition:.25s ease;
 
-      white-space:nowrap;
-    }
+/* =========================================================
+CONTAINER
+========================================================= */
 
-    .nav-menu a:hover{
-      color:var(--gold-light);
+.container{
 
-      background:
-        rgba(200,164,91,.08);
-    }
+  width:
+    min(
+      var(--container),
+      calc(100% - 40px)
+    );
 
-    .nav-menu a.active{
-      color:var(--gold-light);
+  margin:auto;
 
-      background:
-        rgba(200,164,91,.08);
-    }
+}
 
-    .nav-shop{
-      border:1px solid var(--gold-line);
-      color:var(--gold-light)!important;
-    }
 
-    .menu-toggle{
-      display:none;
+/* =========================================================
+HEADER
+========================================================= */
 
-      width:44px;
-      height:44px;
+.header{
 
-      border:1px solid var(--line);
+  position:sticky;
 
-      border-radius:10px;
+  top:0;
 
-      background:
-        rgba(255,255,255,.04);
+  z-index:1000;
 
-      color:#fff;
+  background:
+    rgba(5,5,5,.93);
 
-      cursor:pointer;
-    }
+  backdrop-filter:
+    blur(18px);
 
+  border-bottom:
+    1px solid var(--line);
 
-    /* =========================================
-       ARTICLE HERO
-    ========================================= */
+}
 
-    .article-hero{
-      position:relative;
 
-      overflow:hidden;
+.header-inner{
 
-      border-bottom:
-        1px solid var(--line);
-    }
+  min-height:86px;
 
-    .article-hero-grid{
-      position:absolute;
-      inset:0;
+  display:flex;
 
-      opacity:.13;
+  align-items:center;
 
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,.045) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.045) 1px,
-          transparent 1px
-        );
+  justify-content:space-between;
 
-      background-size:80px 80px;
-    }
+  gap:22px;
 
-    .article-hero-glow{
-      position:absolute;
+}
 
-      width:650px;
-      height:650px;
 
-      right:-220px;
-      top:-330px;
+.brand{
 
-      border-radius:50%;
+  display:flex;
 
-      background:
-        radial-gradient(
-          circle,
-          rgba(200,164,91,.13),
-          transparent 68%
-        );
-    }
+  align-items:center;
 
-    .article-hero-content{
-      position:relative;
-      z-index:2;
+  gap:13px;
 
-      padding:80px 0 72px;
-    }
+  min-width:220px;
 
-    .breadcrumb{
-      display:flex;
-      align-items:center;
+}
 
-      flex-wrap:wrap;
 
-      gap:8px;
+.brand img{
 
-      color:#666;
+  width:72px;
+  height:72px;
 
-      font-size:11px;
+  object-fit:contain;
 
-      margin-bottom:30px;
-    }
+  display:block;
 
-    .breadcrumb a:hover{
-      color:var(--gold-light);
-    }
+}
 
-    .breadcrumb .current{
-      color:#aaa;
-    }
 
-    .article-category{
-      display:inline-flex;
-      align-items:center;
+.brand-text strong{
 
-      gap:9px;
+  display:block;
 
-      color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
 
-      font-size:11px;
+  font-size:20px;
 
-      letter-spacing:2px;
+  letter-spacing:1.3px;
 
-      margin-bottom:17px;
-    }
+}
 
-    .article-category::before{
-      content:"";
 
-      width:34px;
-      height:1px;
+.brand-text span{
 
-      background:var(--gold);
-    }
+  display:block;
 
-    .article-hero h1{
-      max-width:980px;
+  color:var(--gold);
 
-      font-family:"Kanit",sans-serif;
+  font-size:11px;
 
-      font-size:
-        clamp(
-          37px,
-          5vw,
-          64px
-        );
+  letter-spacing:.8px;
 
-      line-height:1.32;
+}
 
-      font-weight:600;
 
-      overflow:visible;
+.nav-menu{
 
-      margin-bottom:20px;
-    }
+  display:flex;
 
-    .article-hero-description{
-      max-width:820px;
+  align-items:center;
 
-      color:#a4a4a4;
+  justify-content:flex-end;
 
-      font-size:15px;
+  gap:3px;
 
-      line-height:1.95;
+  flex-wrap:wrap;
 
-      margin-bottom:25px;
-    }
+}
 
-    .article-info{
-      display:flex;
 
-      align-items:center;
+.nav-menu a{
 
-      flex-wrap:wrap;
+  padding:10px;
 
-      gap:8px 20px;
+  border-radius:8px;
 
-      color:#666;
+  color:#ddd;
 
-      font-size:11px;
-    }
+  font-size:12px;
 
-    .article-info strong{
-      color:#999;
-      font-weight:400;
-    }
+  transition:.25s;
 
+}
 
-    /* =========================================
-       ARTICLE LAYOUT
-    ========================================= */
 
-    .article-section{
-      padding:75px 0 90px;
-    }
+.nav-menu a:hover,
+.nav-menu a.active{
 
-    .article-layout{
-      display:grid;
+  color:var(--gold-light);
 
-      grid-template-columns:
-        minmax(0,1fr)
-        300px;
+  background:
+    rgba(200,164,91,.08);
 
-      gap:50px;
+}
 
-      align-items:start;
-    }
 
+.nav-shop{
 
-    /* =========================================
-       ARTICLE BODY
-    ========================================= */
+  color:var(--gold-light)!important;
 
-    .article-content{
-      min-width:0;
+  border:
+    1px solid var(--gold-line);
 
-      padding:
-        0
-        clamp(0px,2vw,25px);
-    }
+}
 
-    .article-content h2{
-      position:relative;
 
-      font-family:"Kanit",sans-serif;
+.menu-btn{
 
-      color:#f2f2f2;
+  display:none;
 
-      font-size:31px;
+  width:44px;
+  height:44px;
 
-      line-height:1.45;
+  border:
+    1px solid var(--line);
 
-      font-weight:500;
+  border-radius:9px;
 
-      margin:
-        45px 0 17px;
+  background:var(--dark2);
 
-      padding-left:17px;
-    }
+  color:#fff;
 
-    .article-content h2::before{
-      content:"";
+  cursor:pointer;
 
-      position:absolute;
+}
 
-      left:0;
-      top:8px;
 
-      width:3px;
+/* =========================================================
+HERO
+========================================================= */
 
-      height:calc(100% - 16px);
+.article-hero{
 
-      border-radius:5px;
+  position:relative;
 
-      background:
-        linear-gradient(
-          180deg,
-          var(--gold-light),
-          var(--gold-dark)
-        );
-    }
+  min-height:430px;
 
-    .article-content h3{
-      font-family:"Kanit",sans-serif;
+  display:flex;
 
-      color:#ddd;
+  align-items:center;
 
-      font-size:23px;
+  overflow:hidden;
 
-      line-height:1.5;
+  border-bottom:
+    1px solid var(--line);
 
-      font-weight:500;
+}
 
-      margin:
-        32px 0 12px;
-    }
 
-    .article-content p{
-      color:#999;
+.article-hero::before{
 
-      font-size:15px;
+  content:"";
 
-      line-height:2.05;
+  position:absolute;
 
-      margin-bottom:18px;
-    }
+  width:650px;
+  height:650px;
 
-    .article-content strong{
-      color:#ddd;
-      font-weight:500;
-    }
+  right:-260px;
+  top:-320px;
 
-    .article-content ul,
-    .article-content ol{
-      padding-left:24px;
+  border-radius:50%;
 
-      margin:
-        15px 0 25px;
-    }
+  background:
 
-    .article-content li{
-      color:#999;
+    radial-gradient(
+      circle,
+      rgba(200,164,91,.20),
+      transparent 68%
+    );
 
-      font-size:14px;
+}
 
-      line-height:1.95;
 
-      margin-bottom:8px;
+.hero-content{
 
-      padding-left:5px;
-    }
+  position:relative;
 
-    .article-content li::marker{
-      color:var(--gold);
-    }
+  z-index:2;
 
-    .highlight-box{
-      position:relative;
+  padding:75px 0;
 
-      margin:30px 0;
+}
 
-      padding:25px 26px 25px 29px;
 
-      border:
-        1px solid var(--gold-line);
+.eyebrow{
 
-      border-radius:15px;
+  display:inline-flex;
 
-      background:
-        linear-gradient(
-          135deg,
-          rgba(200,164,91,.07),
-          rgba(255,255,255,.02)
-        );
+  align-items:center;
 
-      overflow:hidden;
-    }
+  gap:10px;
 
-    .highlight-box::before{
-      content:"";
+  color:var(--gold-light);
 
-      position:absolute;
+  font-size:11px;
 
-      left:0;
-      top:0;
-      bottom:0;
+  letter-spacing:2.4px;
 
-      width:3px;
+  margin-bottom:18px;
 
-      background:
-        linear-gradient(
-          180deg,
-          var(--gold-light),
-          var(--gold-dark)
-        );
-    }
+}
 
-    .highlight-box strong{
-      display:block;
 
-      color:var(--gold-light);
+.eyebrow::before{
 
-      font-family:"Kanit",sans-serif;
+  content:"";
 
-      font-size:18px;
+  width:40px;
+  height:1px;
 
-      margin-bottom:7px;
-    }
+  background:var(--gold);
 
-    .highlight-box p{
-      margin:0;
+}
 
-      font-size:13px;
 
-      line-height:1.9;
-    }
+.article-hero h1{
 
+  max-width:900px;
 
-    /* =========================================
-       TABLE
-    ========================================= */
+  font-family:"Kanit",sans-serif;
 
-    .comparison-table-wrap{
-      overflow-x:auto;
+  font-size:
+    clamp(
+      36px,
+      5vw,
+      63px
+    );
 
-      margin:25px 0 30px;
+  line-height:1.35;
 
-      border:
-        1px solid var(--line);
+  font-weight:600;
 
-      border-radius:13px;
-    }
+}
 
-    .comparison-table{
-      width:100%;
 
-      min-width:620px;
+.article-meta{
 
-      border-collapse:collapse;
-    }
+  display:flex;
 
-    .comparison-table th{
-      text-align:left;
+  align-items:center;
 
-      padding:15px;
+  flex-wrap:wrap;
 
-      color:var(--gold-light);
+  gap:10px;
 
-      font-family:"Kanit",sans-serif;
+  margin-top:20px;
 
-      font-size:14px;
+}
 
-      font-weight:500;
 
-      background:
-        rgba(200,164,91,.07);
+.meta-tag{
 
-      border-bottom:
-        1px solid var(--gold-line);
-    }
+  padding:5px 11px;
 
-    .comparison-table td{
-      padding:15px;
+  border:
+    1px solid var(--gold-line);
 
-      color:#929292;
+  border-radius:30px;
 
-      font-size:13px;
+  color:var(--gold-light);
 
-      line-height:1.75;
+  background:
+    rgba(200,164,91,.05);
 
-      vertical-align:top;
+  font-size:10px;
 
-      border-bottom:
-        1px solid var(--line);
-    }
+}
 
-    .comparison-table tr:last-child td{
-      border-bottom:0;
-    }
 
+.meta-date{
 
-    /* =========================================
-       SYSTEM LAYERS
-    ========================================= */
+  color:#666;
 
-    .layer-system{
-      display:grid;
+  font-size:11px;
 
-      gap:9px;
+}
 
-      margin:
-        25px 0 30px;
-    }
 
-    .layer{
-      display:flex;
+.hero-number{
 
-      align-items:center;
+  position:absolute;
 
-      gap:15px;
+  right:4%;
+  bottom:-6px;
 
-      padding:16px 18px;
+  font-family:"Kanit",sans-serif;
 
-      border:
-        1px solid var(--line);
+  font-size:180px;
 
-      border-radius:11px;
+  line-height:1;
 
-      background:
-        rgba(255,255,255,.025);
-    }
+  font-weight:700;
 
-    .layer-number{
-      width:34px;
-      height:34px;
+  color:
+    rgba(200,164,91,.045);
 
-      display:flex;
+}
 
-      align-items:center;
-      justify-content:center;
 
-      flex-shrink:0;
+/* =========================================================
+ARTICLE LAYOUT
+========================================================= */
 
-      border-radius:50%;
+.article-section{
 
-      color:#111;
+  padding:80px 0;
 
-      font-family:"Kanit",sans-serif;
+}
 
-      font-weight:600;
 
-      background:
-        linear-gradient(
-          135deg,
-          var(--gold-light),
-          var(--gold)
-        );
-    }
+.article-layout{
 
-    .layer-text strong{
-      display:block;
+  display:grid;
 
-      color:#ddd;
+  grid-template-columns:
+    minmax(0,1fr)
+    300px;
 
-      font-family:"Kanit",sans-serif;
+  gap:35px;
 
-      font-size:15px;
+  align-items:start;
 
-      font-weight:500;
-    }
+}
 
-    .layer-text span{
-      color:#707070;
 
-      font-size:11px;
-    }
+/* =========================================================
+ARTICLE
+========================================================= */
 
+.article{
 
-    /* =========================================
-       WARNING
-    ========================================= */
+  min-width:0;
 
-    .warning-box{
-      margin:28px 0;
+  padding:38px;
 
-      padding:22px;
+  border:
+    1px solid var(--line);
 
-      border:
-        1px solid rgba(255,255,255,.1);
+  border-radius:18px;
 
-      border-radius:13px;
+  background:
 
-      background:
-        rgba(255,255,255,.025);
-    }
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.012)
+    );
 
-    .warning-box strong{
-      display:block;
+}
 
-      color:#ddd;
 
-      font-family:"Kanit",sans-serif;
+.article-intro{
 
-      font-size:17px;
+  padding:22px;
 
-      margin-bottom:7px;
-    }
+  margin-bottom:30px;
 
-    .warning-box p{
-      margin:0;
+  border-left:
+    2px solid var(--gold);
 
-      color:#858585;
+  background:
+    rgba(200,164,91,.035);
 
-      font-size:13px;
+  color:#c5c5c5;
 
-      line-height:1.9;
-    }
+  font-size:16px;
 
+}
 
-    /* =========================================
-       FAQ
-    ========================================= */
 
-    .faq{
-      margin-top:45px;
-    }
+.article h2{
 
-    .faq-item{
-      border-bottom:
-        1px solid var(--line);
-    }
+  font-family:"Kanit",sans-serif;
 
-    .faq-question{
-      width:100%;
+  font-size:30px;
 
-      display:flex;
+  line-height:1.45;
 
-      align-items:center;
-      justify-content:space-between;
+  margin-top:38px;
 
-      gap:15px;
+  margin-bottom:13px;
 
-      padding:19px 2px;
+}
 
-      border:0;
 
-      background:transparent;
+.article h2:first-child{
 
-      color:#ddd;
+  margin-top:0;
 
-      text-align:left;
+}
 
-      cursor:pointer;
 
-      font-family:"Kanit",sans-serif;
+.article h3{
 
-      font-size:16px;
-    }
+  font-family:"Kanit",sans-serif;
 
-    .faq-question span{
-      color:var(--gold);
+  font-size:21px;
 
-      font-size:20px;
+  margin-top:27px;
 
-      transition:.25s;
-    }
+  margin-bottom:8px;
 
-    .faq-answer{
-      max-height:0;
+  color:var(--gold-light);
 
-      overflow:hidden;
+}
 
-      transition:
-        max-height .35s ease;
-    }
 
-    .faq-answer p{
-      padding:
-        0 35px 20px 2px;
+.article p{
 
-      margin:0;
+  color:#aaa;
 
-      color:#818181;
+  font-size:15px;
 
-      font-size:13px;
+  margin-bottom:17px;
 
-      line-height:1.9;
-    }
+}
 
-    .faq-item.open
-    .faq-question span{
-      transform:rotate(45deg);
-    }
 
+.article ul{
 
-    /* =========================================
-       SIDEBAR
-    ========================================= */
+  margin:
+    10px 0
+    22px 23px;
 
-    .article-sidebar{
-      position:sticky;
-      top:110px;
-    }
+}
 
-    .sidebar-card{
-      border:
-        1px solid var(--line);
 
-      border-radius:17px;
+.article li{
 
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.045),
-          rgba(255,255,255,.015)
-        );
+  color:#aaa;
 
-      overflow:hidden;
+  margin:7px 0;
 
-      margin-bottom:15px;
-    }
+  font-size:14px;
 
-    .sidebar-head{
-      padding:18px 20px;
+}
 
-      border-bottom:
-        1px solid var(--line);
 
-      color:var(--gold-light);
+.article strong{
 
-      font-family:"Kanit",sans-serif;
+  color:#ddd;
 
-      font-size:16px;
-    }
+}
 
-    .sidebar-body{
-      padding:16px;
-    }
 
-    .toc{
-      display:flex;
+.highlight{
 
-      flex-direction:column;
+  margin:25px 0;
 
-      gap:3px;
-    }
+  padding:20px 22px;
 
-    .toc a{
-      color:#777;
+  border:
+    1px solid var(--gold-line);
 
-      font-size:12px;
+  border-radius:12px;
 
-      line-height:1.6;
+  background:
+    rgba(200,164,91,.035);
 
-      padding:9px 10px;
+}
 
-      border-radius:8px;
 
-      transition:.2s;
-    }
+.highlight-title{
 
-    .toc a:hover{
-      color:var(--gold-light);
+  color:var(--gold-light);
 
-      background:
-        rgba(200,164,91,.06);
-    }
+  font-family:"Kanit",sans-serif;
 
-    .sidebar-contact{
-      padding:21px;
-    }
+  font-size:17px;
 
-    .sidebar-contact strong{
-      display:block;
+  margin-bottom:5px;
 
-      color:#ddd;
+}
 
-      font-family:"Kanit",sans-serif;
 
-      font-size:18px;
+/* =========================================================
+COMPARISON
+========================================================= */
 
-      margin-bottom:7px;
-    }
+.compare{
 
-    .sidebar-contact p{
-      color:#777;
+  width:100%;
 
-      font-size:12px;
+  margin:20px 0 28px;
 
-      line-height:1.8;
+  border-collapse:collapse;
 
-      margin-bottom:17px;
-    }
+  overflow:hidden;
 
-    .sidebar-btn{
-      display:flex;
+  border:
+    1px solid var(--line);
 
-      align-items:center;
-      justify-content:center;
+  border-radius:10px;
 
-      min-height:43px;
+}
 
-      border-radius:9px;
 
-      color:#111;
+.compare th,
+.compare td{
 
-      font-size:12px;
+  padding:13px;
 
-      font-weight:500;
+  border:
+    1px solid var(--line);
 
-      background:
-        linear-gradient(
-          135deg,
-          var(--gold-light),
-          var(--gold)
-        );
-    }
+  text-align:left;
 
+  vertical-align:top;
 
-    /* =========================================
-       RELATED
-    ========================================= */
+  font-size:12px;
 
-    .related{
-      margin-top:75px;
+}
 
-      padding-top:65px;
 
-      border-top:
-        1px solid var(--line);
-    }
+.compare th{
 
-    .related-title{
-      font-family:"Kanit",sans-serif;
+  color:var(--gold-light);
 
-      font-size:30px;
+  background:
+    rgba(200,164,91,.07);
 
-      margin-bottom:25px;
-    }
+  font-family:"Kanit",sans-serif;
 
-    .related-grid{
-      display:grid;
+}
 
-      grid-template-columns:
-        repeat(3,1fr);
 
-      gap:15px;
-    }
+.compare td{
 
-    .related-card{
-      padding:20px;
+  color:#aaa;
 
-      border:
-        1px solid var(--line);
+}
 
-      border-radius:13px;
 
-      background:
-        rgba(255,255,255,.025);
+/* =========================================================
+FAQ
+========================================================= */
 
-      transition:.25s;
-    }
+.faq{
 
-    .related-card:hover{
-      border-color:var(--gold-line);
+  margin-top:40px;
 
-      transform:translateY(-3px);
-    }
+  padding-top:30px;
 
-    .related-card small{
-      color:var(--gold);
+  border-top:
+    1px solid var(--line);
 
-      font-size:9px;
+}
 
-      letter-spacing:1.5px;
-    }
 
-    .related-card strong{
-      display:block;
+.faq-item{
 
-      color:#ccc;
+  margin-bottom:10px;
 
-      font-family:"Kanit",sans-serif;
+  border:
+    1px solid var(--line);
 
-      font-size:16px;
+  border-radius:10px;
 
-      line-height:1.55;
+  background:#0a0a0a;
 
-      margin-top:8px;
-    }
+  overflow:hidden;
 
+}
 
-    /* =========================================
-       CTA
-    ========================================= */
 
-    .article-cta{
-      margin-top:70px;
+.faq-question{
 
-      padding:55px 30px;
+  width:100%;
 
-      text-align:center;
+  display:flex;
 
-      border:
-        1px solid var(--gold-line);
+  justify-content:space-between;
 
-      border-radius:20px;
+  align-items:center;
 
-      background:
-        radial-gradient(
-          circle at 50% 100%,
-          rgba(200,164,91,.09),
-          transparent 55%
-        );
-    }
+  gap:15px;
 
-    .article-cta h2{
-      font-family:"Kanit",sans-serif;
+  padding:16px;
 
-      font-size:34px;
+  border:0;
 
-      line-height:1.4;
+  background:none;
 
-      margin-bottom:10px;
-    }
+  color:#ddd;
 
-    .article-cta p{
-      max-width:650px;
+  text-align:left;
 
-      margin:
-        0 auto 23px;
+  cursor:pointer;
 
-      color:#888;
+  font-size:13px;
 
-      font-size:13px;
+}
 
-      line-height:1.9;
-    }
 
-    .cta-buttons{
-      display:flex;
+.faq-question span:last-child{
 
-      align-items:center;
-      justify-content:center;
+  color:var(--gold);
 
-      flex-wrap:wrap;
+  font-size:18px;
 
-      gap:9px;
-    }
+}
 
-    .cta-btn{
-      display:inline-flex;
 
-      align-items:center;
-      justify-content:center;
+.faq-answer{
 
-      min-height:47px;
+  display:none;
 
-      padding:0 21px;
+  padding:
+    0 16px
+    17px;
 
-      border-radius:9px;
+  color:#888;
 
-      font-size:12px;
+  font-size:12px;
 
-      transition:.25s;
-    }
+}
 
-    .cta-primary{
-      color:#111;
 
-      background:
-        linear-gradient(
-          135deg,
-          var(--gold-light),
-          var(--gold)
-        );
+.faq-item.open
+.faq-answer{
 
-      font-weight:500;
-    }
+  display:block;
 
-    .cta-secondary{
-      color:#ccc;
+}
 
-      border:
-        1px solid var(--line);
 
-      background:
-        rgba(255,255,255,.03);
-    }
+/* =========================================================
+SIDEBAR
+========================================================= */
 
-    .cta-btn:hover{
-      transform:translateY(-2px);
-    }
+.sidebar{
 
+  position:sticky;
 
-    /* =========================================
-       FOOTER
-    ========================================= */
+  top:110px;
 
-    footer{
-      padding:55px 0 28px;
+  display:flex;
 
-      background:#030303;
+  flex-direction:column;
 
-      border-top:
-        1px solid var(--line);
-    }
+  gap:15px;
 
-    .footer-grid{
-      display:grid;
+}
 
-      grid-template-columns:
-        1.5fr 1fr 1fr;
 
-      gap:45px;
+.side-card{
 
-      padding-bottom:35px;
+  padding:22px;
 
-      border-bottom:
-        1px solid var(--line);
-    }
+  border:
+    1px solid var(--line);
 
-    .footer-brand{
-      display:flex;
+  border-radius:15px;
 
-      align-items:center;
+  background:#0b0b0b;
 
-      gap:13px;
+}
 
-      margin-bottom:15px;
-    }
 
-    .footer-brand img{
-      width:60px;
-      height:60px;
+.side-card h3{
 
-      object-fit:contain;
-    }
+  font-family:"Kanit",sans-serif;
 
-    .footer-brand strong{
-      font-family:"Kanit",sans-serif;
+  font-size:19px;
 
-      font-size:19px;
+  margin-bottom:13px;
 
-      letter-spacing:1px;
-    }
+}
 
-    .footer-description{
-      max-width:490px;
 
-      color:#707070;
+.side-card a{
 
-      font-size:12px;
+  display:block;
 
-      line-height:1.9;
-    }
+  padding:10px 0;
 
-    .footer-title{
-      color:var(--gold-light);
+  border-bottom:
+    1px solid rgba(255,255,255,.055);
 
-      font-family:"Kanit",sans-serif;
+  color:#999;
 
-      font-size:16px;
+  font-size:11px;
 
-      margin-bottom:14px;
-    }
+  transition:.2s;
 
-    .footer-links{
-      display:flex;
+}
 
-      flex-direction:column;
 
-      gap:8px;
-    }
+.side-card a:last-child{
 
-    .footer-links a{
-      color:#707070;
+  border-bottom:0;
 
-      font-size:12px;
+}
 
-      transition:.2s;
-    }
 
-    .footer-links a:hover{
-      color:var(--gold-light);
-    }
+.side-card a:hover{
 
-    .footer-bottom{
-      display:flex;
+  color:var(--gold-light);
 
-      align-items:center;
-      justify-content:space-between;
+}
 
-      gap:20px;
 
-      padding-top:20px;
+.cta-side{
 
-      color:#4e4e4e;
+  border-color:
+    var(--gold-line);
 
-      font-size:10px;
-    }
+  background:
+    rgba(200,164,91,.035);
 
+}
 
-    /* =========================================
-       FLOAT
-    ========================================= */
 
-    .floating-actions{
-      position:fixed;
+.cta-side p{
 
-      right:19px;
-      bottom:19px;
+  color:#777;
 
-      z-index:900;
+  font-size:11px;
 
-      display:flex;
+  margin-bottom:15px;
 
-      flex-direction:column;
+}
 
-      gap:8px;
-    }
 
-    .float-btn{
-      width:49px;
-      height:49px;
+.side-btn{
 
-      display:flex;
+  display:flex!important;
 
-      align-items:center;
-      justify-content:center;
+  align-items:center;
 
-      border-radius:50%;
+  justify-content:center;
 
-      border:
-        1px solid rgba(255,255,255,.12);
+  border:1px solid var(--gold)!important;
 
-      background:
-        rgba(10,10,10,.92);
+  border-radius:8px;
 
-      backdrop-filter:blur(12px);
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold)
+    );
 
-      box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.4);
+  color:#080808!important;
 
-      transition:.25s;
-    }
+  font-weight:600;
 
-    .float-btn:hover{
-      transform:translateY(-3px);
+  padding:10px!important;
 
-      border-color:var(--gold-line);
-    }
+}
 
-    .float-phone{
-      color:var(--gold-light);
-    }
 
+/* =========================================================
+BACK
+========================================================= */
 
-    /* =========================================
-       NOT FOUND
-    ========================================= */
+.back-row{
 
-    .not-found{
-      display:none;
+  margin-bottom:20px;
 
-      min-height:65vh;
+}
 
-      align-items:center;
-      justify-content:center;
 
-      text-align:center;
-    }
+.back-btn{
 
-    .not-found.show{
-      display:flex;
-    }
+  display:inline-flex;
 
-    .not-found-box{
-      max-width:600px;
+  align-items:center;
 
-      padding:45px 25px;
+  gap:7px;
 
-      border:
-        1px solid var(--line);
+  color:#777;
 
-      border-radius:18px;
+  font-size:12px;
 
-      background:
-        rgba(255,255,255,.025);
-    }
+  transition:.2s;
 
-    .not-found-box .big{
-      color:var(--gold);
+}
 
-      font-family:"Kanit",sans-serif;
 
-      font-size:55px;
+.back-btn:hover{
 
-      line-height:1;
+  color:var(--gold-light);
 
-      margin-bottom:12px;
-    }
+}
 
-    .not-found-box h1{
-      font-family:"Kanit",sans-serif;
 
-      font-size:30px;
+/* =========================================================
+RELATED
+========================================================= */
 
-      margin-bottom:8px;
-    }
+.related{
 
-    .not-found-box p{
-      color:#777;
+  margin-top:45px;
 
-      font-size:13px;
+  padding-top:35px;
 
-      line-height:1.8;
+  border-top:
+    1px solid var(--line);
 
-      margin-bottom:20px;
-    }
+}
 
 
-    /* =========================================
-       RESPONSIVE
-    ========================================= */
+.related h2{
 
-    @media(max-width:1100px){
+  font-family:"Kanit",sans-serif;
 
-      .nav-menu a{
-        font-size:10px;
+  font-size:29px;
 
-        padding:8px 6px;
-      }
+  margin-bottom:20px;
 
-      .article-layout{
-        grid-template-columns:
-          minmax(0,1fr)
-          270px;
+}
 
-        gap:30px;
-      }
 
-    }
+.related-grid{
 
+  display:grid;
 
-    @media(max-width:850px){
+  grid-template-columns:
+    repeat(3,1fr);
 
-      .header-inner{
-        min-height:76px;
-      }
+  gap:12px;
 
-      .brand-logo{
-        width:58px;
-        height:58px;
-      }
+}
 
-      .brand-text strong{
-        font-size:16px;
-      }
 
-      .brand-text span{
-        font-size:8px;
-      }
+.related-card{
 
-      .menu-toggle{
-        display:block;
-      }
+  min-height:130px;
 
-      .nav-menu{
-        position:absolute;
+  padding:18px;
 
-        top:
-          calc(100% + 8px);
+  border:
+    1px solid var(--line);
 
-        left:14px;
-        right:14px;
+  border-radius:12px;
 
-        display:none;
+  background:#0a0a0a;
 
-        flex-direction:column;
+  transition:.25s;
 
-        align-items:stretch;
+}
 
-        padding:9px;
 
-        border:
-          1px solid var(--line);
+.related-card:hover{
 
-        border-radius:14px;
+  transform:translateY(-3px);
 
-        background:
-          rgba(9,9,9,.98);
+  border-color:var(--gold-line);
 
-        box-shadow:
-          0 20px 60px
-          rgba(0,0,0,.55);
-      }
+}
 
-      .nav-menu.open{
-        display:flex;
-      }
 
-      .nav-menu a{
-        width:100%;
+.related-card small{
 
-        padding:13px;
+  color:var(--gold);
 
-        font-size:14px;
-      }
+  font-size:9px;
 
-      .article-layout{
-        grid-template-columns:1fr;
-      }
+}
 
-      .article-sidebar{
-        position:static;
 
-        order:-1;
-      }
+.related-card strong{
 
-      .sidebar-card{
-        display:none;
-      }
+  display:block;
 
-      .article-sidebar
-      .sidebar-card:last-child{
-        display:block;
-      }
+  margin-top:8px;
 
-      .related-grid{
-        grid-template-columns:
-          repeat(2,1fr);
-      }
+  font-family:"Kanit",sans-serif;
 
-      .footer-grid{
-        grid-template-columns:
-          1fr 1fr;
-      }
+  font-size:15px;
 
-      .footer-grid > :first-child{
-        grid-column:1/-1;
-      }
+  line-height:1.45;
 
-    }
+}
 
 
-    @media(max-width:620px){
+/* =========================================================
+CTA
+========================================================= */
 
-      .container{
-        width:
-          min(
-            var(--container),
-            calc(100% - 28px)
-          );
-      }
+.cta{
 
-      .article-hero-content{
-        padding:
-          58px 0 55px;
-      }
+  padding:85px 0;
 
-      .article-hero h1{
-        font-size:38px;
+  text-align:center;
 
-        line-height:1.35;
-      }
+  border-top:
+    1px solid var(--line);
 
-      .article-hero-description{
-        font-size:13px;
-      }
+  background:
 
-      .article-section{
-        padding:
-          55px 0 70px;
-      }
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(200,164,91,.11),
+      transparent 45%
+    );
 
-      .article-content{
-        padding:0;
-      }
+}
 
-      .article-content h2{
-        font-size:27px;
-      }
 
-      .article-content h3{
-        font-size:21px;
-      }
+.cta h2{
 
-      .article-content p{
-        font-size:14px;
+  font-family:"Kanit",sans-serif;
 
-        line-height:2;
-      }
+  font-size:40px;
 
-      .article-content li{
-        font-size:13px;
-      }
+  line-height:1.4;
 
-      .related-grid{
-        grid-template-columns:1fr;
-      }
+  margin-bottom:10px;
 
-      .article-cta{
-        padding:
-          42px 20px;
-      }
+}
 
-      .article-cta h2{
-        font-size:29px;
-      }
 
-      .footer-grid{
-        grid-template-columns:1fr;
-      }
+.cta p{
 
-      .footer-grid > :first-child{
-        grid-column:auto;
-      }
+  color:#888;
 
-      .footer-bottom{
-        flex-direction:column;
+  margin-bottom:23px;
 
-        align-items:flex-start;
-      }
+}
 
-      .floating-actions{
-        right:12px;
-        bottom:12px;
-      }
 
-    }
+.btn{
 
-  </style>
+  min-height:44px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:10px 19px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:9px;
+
+  background:var(--dark3);
+
+  color:#ddd;
+
+  font-size:12px;
+
+  transition:.25s;
+
+}
+
+
+.btn:hover{
+
+  color:var(--gold-light);
+
+  border-color:var(--gold);
+
+}
+
+
+.btn-gold{
+
+  color:#080808;
+
+  font-weight:600;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold)
+    );
+
+  border-color:var(--gold);
+
+}
+
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+.footer{
+
+  padding:55px 0 30px;
+
+  background:#030303;
+
+}
+
+
+.footer-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    1.5fr 1fr 1fr 1fr;
+
+  gap:40px;
+
+  padding-bottom:40px;
+
+  border-bottom:
+    1px solid var(--line);
+
+}
+
+
+.footer h3{
+
+  font-family:"Kanit",sans-serif;
+
+  margin-bottom:14px;
+
+}
+
+
+.footer p,
+.footer a{
+
+  color:#888;
+
+  font-size:13px;
+
+}
+
+
+.footer a{
+
+  display:block;
+
+  margin:6px 0;
+
+}
+
+
+.footer a:hover{
+
+  color:var(--gold-light);
+
+}
+
+
+.footer-brand{
+
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:14px;
+
+}
+
+
+.footer-brand img{
+
+  width:65px;
+  height:65px;
+
+  object-fit:contain;
+
+}
+
+
+.copyright{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding-top:22px;
+
+  color:#555;
+
+  font-size:11px;
+
+}
+
+
+/* =========================================================
+FLOAT
+========================================================= */
+
+.float-contact{
+
+  position:fixed;
+
+  right:20px;
+  bottom:20px;
+
+  z-index:900;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:9px;
+
+}
+
+
+.float-btn{
+
+  width:52px;
+  height:52px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  border:
+    1px solid var(--gold-line);
+
+  background:#101010;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.35);
+
+  font-size:21px;
+
+  transition:.25s;
+
+}
+
+
+.float-btn:hover{
+
+  transform:
+    translateY(-3px)
+    scale(1.04);
+
+  border-color:var(--gold);
+
+}
+
+
+/* =========================================================
+NOT FOUND
+========================================================= */
+
+.not-found{
+
+  padding:100px 20px;
+
+  text-align:center;
+
+}
+
+
+.not-found h1{
+
+  font-family:"Kanit",sans-serif;
+
+  font-size:45px;
+
+  margin-bottom:10px;
+
+}
+
+
+.not-found p{
+
+  color:#777;
+
+  margin-bottom:22px;
+
+}
+
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px){
+
+  .nav-menu a{
+
+    padding:8px;
+
+    font-size:10px;
+
+  }
+
+
+  .article-layout{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .sidebar{
+
+    position:static;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+  }
+
+
+  .cta-side{
+
+    grid-column:
+      1 / -1;
+
+  }
+
+
+  .footer-grid{
+
+    grid-template-columns:
+      1fr 1fr;
+
+  }
+
+}
+
+
+@media(max-width:820px){
+
+  .header-inner{
+
+    min-height:72px;
+
+  }
+
+
+  .brand img{
+
+    width:58px;
+    height:58px;
+
+  }
+
+
+  .brand-text strong{
+
+    font-size:17px;
+
+  }
+
+
+  .brand-text span{
+
+    font-size:9px;
+
+  }
+
+
+  .menu-btn{
+
+    display:block;
+
+  }
+
+
+  .nav-menu{
+
+    position:absolute;
+
+    left:20px;
+    right:20px;
+
+    top:80px;
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    padding:12px;
+
+    border:
+      1px solid var(--line);
+
+    border-radius:14px;
+
+    background:
+      rgba(10,10,10,.98);
+
+  }
+
+
+  .nav-menu.open{
+
+    display:flex;
+
+  }
+
+
+  .nav-menu a{
+
+    padding:13px;
+
+    font-size:14px;
+
+  }
+
+
+  .article-hero{
+
+    min-height:390px;
+
+  }
+
+
+  .hero-content{
+
+    padding:65px 0;
+
+  }
+
+
+  .hero-number{
+
+    font-size:100px;
+
+  }
+
+
+  .article{
+
+    padding:23px;
+
+  }
+
+
+  .article-layout{
+
+    gap:20px;
+
+  }
+
+
+  .sidebar{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .cta-side{
+
+    grid-column:auto;
+
+  }
+
+
+  .related-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .footer-grid{
+
+    grid-template-columns:1fr;
+
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .container{
+
+    width:
+      calc(100% - 28px);
+
+  }
+
+
+  .article-hero h1{
+
+    font-size:34px;
+
+  }
+
+
+  .article{
+
+    padding:18px;
+
+  }
+
+
+  .article h2{
+
+    font-size:25px;
+
+  }
+
+
+  .article p{
+
+    font-size:14px;
+
+  }
+
+
+  .article-intro{
+
+    font-size:14px;
+
+    padding:17px;
+
+  }
+
+
+  .compare{
+
+    display:block;
+
+    overflow-x:auto;
+
+    white-space:nowrap;
+
+  }
+
+
+  .cta h2{
+
+    font-size:32px;
+
+  }
+
+
+  .copyright{
+
+    flex-direction:column;
+
+  }
+
+
+  .float-contact{
+
+    right:12px;
+    bottom:12px;
+
+  }
+
+
+  .float-btn{
+
+    width:48px;
+    height:48px;
+
+  }
+
+}
+
+</style>
+
 </head>
 
 
 <body>
 
 
-  <!-- =========================================
-       HEADER
-  ========================================= -->
+<!-- =========================================================
+HEADER
+========================================================= -->
 
-  <header class="site-header">
+<header class="header">
 
-    <div class="container header-inner">
+  <div class="container header-inner">
+
+
+    <a
+      href="index.html"
+      class="brand">
+
+      <img
+        src="assets/logo.png"
+        alt="CHATPETCH GROUP">
+
+      <div class="brand-text">
+
+        <strong>
+          CHATPETCH GROUP
+        </strong>
+
+        <span>
+          บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <button
+      class="menu-btn"
+      id="menuBtn">
+
+      ☰
+
+    </button>
+
+
+    <nav
+      class="nav-menu"
+      id="navMenu">
+
+
+      <a href="index.html">
+        หน้าแรก
+      </a>
+
+
+      <a href="about.html">
+        เกี่ยวกับเรา
+      </a>
+
+
+      <a href="products.html">
+        สินค้า
+      </a>
+
+
+      <a href="services.html">
+        บริการ
+      </a>
+
+
+      <a href="projects.html">
+        ผลงาน
+      </a>
+
+
+      <a href="reference.html">
+        โครงการอ้างอิง
+      </a>
+
+
+      <a href="technical-center.html">
+        ศูนย์เทคนิค
+      </a>
+
 
       <a
-        href="index.html"
-        class="brand"
-      >
+        href="knowledge.html"
+        class="active">
 
-        <img
-          src="assets/logo.png"
-          alt="CHATPETCH GROUP"
-          class="brand-logo"
-        >
-
-        <div class="brand-text">
-
-          <strong>
-            CHATPETCH GROUP
-          </strong>
-
-          <span>
-            FLOORING SYSTEM SPECIALIST
-          </span>
-
-        </div>
+        สาระน่ารู้
 
       </a>
 
 
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="เปิดเมนู"
-      >
-        ☰
-      </button>
+      <a href="contact.html">
+        ติดต่อเรา
+      </a>
 
 
-      <nav
-        class="nav-menu"
-        id="navMenu"
-      >
+      <a href="order-status.html">
+        ติดตามคำสั่งซื้อ
+      </a>
+
+
+      <a
+        href="cart.html"
+        class="nav-shop">
+
+        🛒 ตะกร้า
+
+      </a>
+
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+ARTICLE HERO
+========================================================= -->
+
+<section
+  class="article-hero"
+  id="articleHero">
+
+  <div class="container hero-content">
+
+
+    <div class="eyebrow">
+      KNOWLEDGE CENTER
+    </div>
+
+
+    <h1 id="articleTitle">
+      กำลังโหลดบทความ...
+    </h1>
+
+
+    <div class="article-meta">
+
+      <span
+        class="meta-tag"
+        id="articleCategory">
+
+        สาระความรู้
+
+      </span>
+
+
+      <span
+        class="meta-date"
+        id="articleDate">
+
+        CHATPETCH GROUP
+
+      </span>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="hero-number">
+    05
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+ARTICLE CONTENT
+========================================================= -->
+
+<section class="article-section">
+
+  <div class="container">
+
+
+    <div class="back-row">
+
+      <a
+        href="knowledge.html"
+        class="back-btn">
+
+        ← กลับไปสาระน่ารู้
+
+      </a>
+
+    </div>
+
+
+    <div
+      id="articleLayout"
+      class="article-layout">
+
+
+      <main
+        class="article"
+        id="articleContent">
+
+        <!-- JS INSERT -->
+
+      </main>
+
+
+      <aside class="sidebar">
+
+
+        <div class="side-card">
+
+          <h3>
+            บทความทั้งหมด
+          </h3>
+
+
+          <a href="knowledge-detail.html?id=epoxy-vs-pu">
+            Epoxy กับ PU ต่างกันอย่างไร
+          </a>
+
+
+          <a href="knowledge-detail.html?id=waterproof-roof">
+            ดาดฟ้ารั่วซึมแก้อย่างไร
+          </a>
+
+
+          <a href="knowledge-detail.html?id=concrete-crack">
+            รอยร้าวคอนกรีตอันตรายไหม
+          </a>
+
+
+          <a href="knowledge-detail.html?id=stamped-concrete-care">
+            วิธีดูแลพื้นคอนกรีตพิมพ์ลาย
+          </a>
+
+
+          <a href="knowledge-detail.html?id=moisture-floor">
+            ความชื้นใต้พื้นทำให้สีพองได้อย่างไร
+          </a>
+
+        </div>
+
+
+        <div class="side-card cta-side">
+
+          <h3>
+            มีปัญหาหน้างาน?
+          </h3>
+
+
+          <p>
+            หากไม่แน่ใจว่าควรใช้ระบบใด
+            สามารถส่งข้อมูลหรือรูปหน้างาน
+            ให้ทีมงานช่วยพิจารณาเบื้องต้นได้
+          </p>
+
+
+          <a
+            href="contact.html"
+            class="side-btn">
+
+            ขอคำปรึกษา →
+
+          </a>
+
+        </div>
+
+
+      </aside>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+CTA
+========================================================= -->
+
+<section class="cta">
+
+  <div class="container">
+
+    <h2>
+      เลือกระบบพื้นให้เหมาะกับหน้างาน
+    </h2>
+
+
+    <p>
+      ไม่แน่ใจว่าควรเลือกวัสดุหรือระบบใด
+      ติดต่อทีมงานเพื่อปรึกษาได้
+    </p>
+
+
+    <a
+      href="contact.html"
+      class="btn btn-gold">
+
+      ติดต่อเรา →
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+  <div class="container">
+
+
+    <div class="footer-grid">
+
+
+      <div>
+
+        <div class="footer-brand">
+
+          <img
+            src="assets/logo.png"
+            alt="CHATPETCH GROUP">
+
+          <div>
+
+            <h3>
+              CHATPETCH GROUP
+            </h3>
+
+            <p>
+              บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <p style="margin-top:17px;">
+          🌹 โรงงานผลิต-จำหน่าย
+          วัสดุงานพื้นทุกประเภท 🌹
+        </p>
+
+
+        <p>
+          สร้างสรรค์ผลงาน
+          • มาตรฐานเข้าถึง
+          • ยืน 1 คุณภาพ
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          เว็บไซต์
+        </h3>
+
 
         <a href="index.html">
           หน้าแรก
         </a>
 
+
         <a href="about.html">
           เกี่ยวกับเรา
         </a>
+
 
         <a href="products.html">
           สินค้า
         </a>
 
+
         <a href="services.html">
           บริการ
         </a>
+
 
         <a href="projects.html">
           ผลงาน
         </a>
 
+      </div>
+
+
+      <div>
+
+        <h3>
+          ศูนย์ข้อมูล
+        </h3>
+
+
         <a href="reference.html">
-          ผลงานอ้างอิง
+          โครงการอ้างอิง
         </a>
+
 
         <a href="technical-center.html">
-          Technical Center
+          ศูนย์เทคนิค
         </a>
 
-        <a
-          href="knowledge.html"
-          class="active"
-        >
-          คลังความรู้
+
+        <a href="knowledge.html">
+          สาระน่ารู้
         </a>
 
-        <a href="contact.html">
-          ติดต่อเรา
-        </a>
 
         <a href="order-status.html">
           ติดตามคำสั่งซื้อ
         </a>
 
-        <a
-          href="cart.html"
-          class="nav-shop"
-        >
-          🛒 ตะกร้า
+      </div>
+
+
+      <div>
+
+        <h3>
+          ติดต่อ
+        </h3>
+
+
+        <a href="contact.html">
+          ขอใบเสนอราคา
         </a>
 
-      </nav>
-
-    </div>
-
-  </header>
-
-
-  <!-- =========================================
-       ARTICLE
-    ========================================= -->
-
-  <div id="articlePage">
-
-
-    <section class="article-hero">
-
-      <div class="article-hero-grid"></div>
-
-      <div class="article-hero-glow"></div>
-
-
-      <div class="container article-hero-content">
-
-
-        <div class="breadcrumb">
-
-          <a href="index.html">
-            หน้าแรก
-          </a>
-
-          <span> / </span>
-
-          <a href="knowledge.html">
-            คลังความรู้
-          </a>
-
-          <span> / </span>
-
-          <span
-            class="current"
-            id="breadcrumbTitle"
-          >
-            บทความ
-          </span>
-
-        </div>
-
-
-        <div
-          class="article-category"
-          id="articleCategory"
-        >
-          KNOWLEDGE
-        </div>
-
-
-        <h1 id="articleTitle">
-          บทความ
-        </h1>
-
-
-        <p
-          class="article-hero-description"
-          id="articleDescription"
-        >
-          -
-        </p>
-
-
-        <div class="article-info">
-
-          <span>
-            หมวด:
-            <strong id="articleCategoryText">
-              -
-            </strong>
-          </span>
-
-          <span>
-            รหัสบทความ:
-            <strong id="articleCode">
-              -
-            </strong>
-          </span>
-
-          <span>
-            CHATPETCH GROUP
-          </span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section class="article-section">
-
-      <div class="container">
-
-
-        <div class="article-layout">
-
-
-          <!-- =====================================
-               CONTENT
-          ====================================== -->
-
-          <article
-            class="article-content"
-            id="articleContent"
-          ></article>
-
-
-          <!-- =====================================
-               SIDEBAR
-          ====================================== -->
-
-          <aside class="article-sidebar">
-
-
-            <div class="sidebar-card">
-
-              <div class="sidebar-head">
-                เนื้อหาในบทความ
-              </div>
-
-
-              <div class="sidebar-body">
-
-                <nav
-                  class="toc"
-                  id="toc"
-                ></nav>
-
-              </div>
-
-            </div>
-
-
-            <div class="sidebar-card">
-
-              <div class="sidebar-contact">
-
-                <strong>
-                  ต้องการคำปรึกษา?
-                </strong>
-
-                <p>
-                  หากกำลังวางแผนงานพื้น
-                  หรือมีปัญหาหน้างาน
-                  สามารถส่งรายละเอียดให้ทีมงานประเมินเบื้องต้นได้
-                </p>
-
-
-                <a
-                  href="contact.html"
-                  class="sidebar-btn"
-                >
-                  ขอคำปรึกษา
-                </a>
-
-              </div>
-
-            </div>
-
-
-          </aside>
-
-        </div>
-
-
-        <!-- =====================================
-             RELATED
-        ====================================== -->
-
-        <section class="related">
-
-          <h2 class="related-title">
-            บทความที่เกี่ยวข้อง
-          </h2>
-
-
-          <div
-            class="related-grid"
-            id="relatedGrid"
-          ></div>
-
-        </section>
-
-
-        <!-- =====================================
-             CTA
-        ====================================== -->
-
-        <section class="article-cta">
-
-          <h2>
-            มีปัญหาหน้างานที่ต้องการคำตอบ?
-          </h2>
-
-          <p>
-            ส่งลักษณะพื้นที่ ปัญหาที่พบ
-            จังหวัด และขนาดพื้นที่โดยประมาณ
-            ให้ทีมงาน CHATPETCH GROUP
-            เพื่อประกอบการให้คำปรึกษา
-          </p>
-
-
-          <div class="cta-buttons">
-
-            <a
-              href="contact.html"
-              class="cta-btn cta-primary"
-            >
-              ขอคำปรึกษา
-            </a>
-
-            <a
-              href="services.html"
-              class="cta-btn cta-secondary"
-            >
-              ดูระบบบริการ
-            </a>
-
-            <a
-              href="knowledge.html"
-              class="cta-btn cta-secondary"
-            >
-              ← กลับคลังความรู้
-            </a>
-
-          </div>
-
-        </section>
-
-      </div>
-
-    </section>
-
-  </div>
-
-
-  <!-- =========================================
-       NOT FOUND
-  ========================================= -->
-
-  <section
-    class="not-found"
-    id="notFound"
-  >
-
-    <div class="container">
-
-      <div class="not-found-box">
-
-        <div class="big">
-          404
-        </div>
-
-        <h1>
-          ไม่พบบทความ
-        </h1>
-
-        <p>
-          ไม่พบรหัสบทความที่ต้องการ
-          กรุณากลับไปยังคลังความรู้
-          แล้วเลือกบทความอีกครั้ง
-        </p>
 
         <a
-          href="knowledge.html"
-          class="cta-btn cta-primary"
-        >
-          กลับคลังความรู้
+          href="https://www.facebook.com/ChatphetchGroup"
+          target="_blank"
+          rel="noopener">
+
+          Facebook
+
+        </a>
+
+
+        <a href="tel:0856299778">
+          ฝ่ายเทคนิค
+        </a>
+
+
+        <a href="tel:0828223678">
+          ฝ่ายขาย
         </a>
 
       </div>
 
-    </div>
-
-  </section>
-
-
-  <!-- =========================================
-       FOOTER
-  ========================================= -->
-
-  <footer>
-
-    <div class="container">
-
-
-      <div class="footer-grid">
-
-
-        <div>
-
-          <div class="footer-brand">
-
-            <img
-              src="assets/logo.png"
-              alt="CHATPETCH GROUP"
-            >
-
-            <strong>
-              CHATPETCH GROUP
-            </strong>
-
-          </div>
-
-
-          <p class="footer-description">
-
-            🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
-
-            <br><br>
-
-            ♠️ สร้างสรรค์ผลงาน
-            ♠️ มาตรฐานเข้าถึง
-            ♠️ ยืน 1 คุณภาพ
-
-            <br>
-
-            บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
-
-          </p>
-
-        </div>
-
-
-        <div>
-
-          <div class="footer-title">
-            MENU
-          </div>
-
-          <div class="footer-links">
-
-            <a href="index.html">
-              หน้าแรก
-            </a>
-
-            <a href="about.html">
-              เกี่ยวกับเรา
-            </a>
-
-            <a href="products.html">
-              สินค้า
-            </a>
-
-            <a href="services.html">
-              บริการ
-            </a>
-
-            <a href="projects.html">
-              ผลงาน
-            </a>
-
-            <a href="reference.html">
-              ผลงานอ้างอิง
-            </a>
-
-            <a href="technical-center.html">
-              Technical Center
-            </a>
-
-            <a href="knowledge.html">
-              คลังความรู้
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <div>
-
-          <div class="footer-title">
-            CONTACT
-          </div>
-
-          <div class="footer-links">
-
-            <a href="contact.html">
-              ติดต่อบริษัท
-            </a>
-
-            <a
-              href="https://www.facebook.com/ChatphetchGroup"
-              target="_blank"
-              rel="noopener"
-            >
-              Facebook
-            </a>
-
-            <a href="tel:0856299778">
-              ฝ่ายเทคนิค 085-6299778
-            </a>
-
-            <a href="tel:0980153271">
-              ฝ่ายบัญชี 098-0153271
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <div>
-          © 2026 CHATPETCH GROUP CO., LTD. All Rights Reserved.
-        </div>
-
-        <div>
-          10/1 ม.9 ต.นาหม่อม อ.นาหม่อม จ.สงขลา 90310
-        </div>
-
-      </div>
 
     </div>
 
-  </footer>
+
+    <div class="copyright">
+
+      <span>
+        © 2026 CHATPETCH GROUP CO., LTD.
+      </span>
 
 
-  <!-- =========================================
-       FLOATING
-  ========================================= -->
+      <span>
+        บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+      </span>
 
-  <div class="floating-actions">
+    </div>
 
-    <a
-      href="tel:0856299778"
-      class="float-btn float-phone"
-      aria-label="โทรฝ่ายเทคนิค"
-    >
-      ☎
-    </a>
-
-    <a
-      href="https://www.facebook.com/ChatphetchGroup"
-      target="_blank"
-      rel="noopener"
-      class="float-btn"
-      aria-label="Facebook"
-    >
-      f
-    </a>
 
   </div>
 
+</footer>
 
-  <script>
 
-    /* =========================================
-       ARTICLE DATABASE
-       ใช้ข้อมูลโครงสร้างที่ยังไม่ใส่ค่าทางวิศวกรรม
-       ซึ่งยังไม่มีเอกสาร TDS/SDS จากบริษัท
-    ========================================= */
+<!-- =========================================================
+FLOATING
+========================================================= -->
 
-    const ARTICLES = {
+<div class="float-contact">
 
-      "epoxy-vs-pu": {
 
-        category:"ระบบพื้น",
+  <a
+    href="tel:0856299778"
+    class="float-btn"
+    title="ฝ่ายเทคนิค">
 
-        categoryEn:"FLOORING SYSTEM",
+    ☎
 
-        code:"KNOW-FLR-001",
+  </a>
 
-        title:
-          "พื้นอีพ็อกซีกับพื้นโพลียูรีเทน ต่างกันอย่างไร เลือกแบบไหนดี",
 
-        description:
-          "ทำความเข้าใจแนวทางการเลือกใช้ระบบพื้นอีพ็อกซี่และพื้นโพลียูรีเทน โดยพิจารณาจากลักษณะพื้นที่ สภาพแวดล้อม และรูปแบบการใช้งาน",
+  <a
+    href="https://www.facebook.com/ChatphetchGroup"
+    target="_blank"
+    rel="noopener"
+    class="float-btn"
+    title="Facebook">
 
-        sections:[
+    f
 
-          {
-            id:"overview",
+  </a>
 
-            title:"พื้นอีพ็อกซี่และพื้นโพลียูรีเทนคืออะไร",
 
-            html:`
+</div>
 
-              <p>
-                พื้นอีพ็อกซี่และพื้นโพลียูรีเทนเป็นระบบเคลือบหรือปูพื้น
-                ที่สามารถนำมาใช้กับพื้นที่หลากหลายประเภท
-                แต่การเลือกใช้ควรพิจารณาจากลักษณะของหน้างาน
-                มากกว่าการเลือกจากชื่อวัสดุเพียงอย่างเดียว
-              </p>
 
-              <p>
-                ก่อนเลือกระบบพื้น ควรสำรวจสภาพพื้นเดิม
-                การใช้งาน ปริมาณการสัญจร สารเคมี
-                ความชื้น และสภาพแวดล้อมของพื้นที่
-                เพื่อกำหนดระบบที่เหมาะสม
-              </p>
+<!-- =========================================================
+JAVASCRIPT
+========================================================= -->
 
-              <div class="highlight-box">
+<script>
 
-                <strong>
-                  หลักสำคัญในการเลือกระบบพื้น
-                </strong>
+/* =========================================================
+MOBILE MENU
+========================================================= */
 
-                <p>
-                  ระบบพื้นที่ดีไม่ได้หมายถึงวัสดุที่แพงที่สุด
-                  แต่คือระบบที่เหมาะสมกับปัญหา
-                  การใช้งาน และสภาพหน้างานจริง
-                </p>
+const menuBtn =
+  document.getElementById("menuBtn");
 
-              </div>
+const navMenu =
+  document.getElementById("navMenu");
 
-            `
-          },
 
+menuBtn.addEventListener(
+  "click",
+  function(){
 
-          {
-            id:"comparison",
+    navMenu.classList.toggle("open");
 
-            title:"ความแตกต่างที่ควรพิจารณา",
+  }
+);
 
-            html:`
 
-              <p>
-                การเปรียบเทียบควรดูหลายปัจจัยร่วมกัน
-                เช่น ลักษณะการใช้งาน สภาพพื้นเดิม
-                สภาพแวดล้อม และข้อกำหนดเฉพาะของพื้นที่
-              </p>
+document
+  .querySelectorAll(".nav-menu a")
+  .forEach(function(link){
 
-
-              <div class="comparison-table-wrap">
-
-                <table class="comparison-table">
-
-                  <thead>
-
-                    <tr>
-                      <th>หัวข้อ</th>
-                      <th>อีพ็อกซี่</th>
-                      <th>โพลียูรีเทน</th>
-                    </tr>
-
-                  </thead>
-
-                  <tbody>
-
-                    <tr>
-                      <td>ลักษณะการใช้งาน</td>
-                      <td>
-                        ต้องพิจารณาตามระบบและสภาพหน้างาน
-                      </td>
-                      <td>
-                        ต้องพิจารณาตามระบบและสภาพหน้างาน
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>สภาพแวดล้อม</td>
-                      <td>
-                        ควรพิจารณาข้อกำหนดของพื้นที่
-                      </td>
-                      <td>
-                        ควรพิจารณาข้อกำหนดของพื้นที่
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>การเลือกสูตร</td>
-                      <td>
-                        เลือกตามประเภทระบบที่ต้องการ
-                      </td>
-                      <td>
-                        เลือกตามประเภทระบบที่ต้องการ
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>ข้อมูลที่ต้องตรวจสอบ</td>
-                      <td>
-                        TDS และ Specification ของผลิตภัณฑ์
-                      </td>
-                      <td>
-                        TDS และ Specification ของผลิตภัณฑ์
-                      </td>
-                    </tr>
-
-                  </tbody>
-
-                </table>
-
-              </div>
-
-              <div class="warning-box">
-
-                <strong>
-                  หมายเหตุ
-                </strong>
-
-                <p>
-                  ตารางนี้เป็นแนวทางในการพิจารณาเบื้องต้น
-                  ไม่ควรใช้แทนข้อกำหนดทางวิศวกรรมหรือ TDS
-                  ของผลิตภัณฑ์แต่ละระบบ
-                </p>
-
-              </div>
-
-            `
-          },
-
-
-          {
-            id:"selection",
-
-            title:"เลือกอย่างไรให้เหมาะกับพื้นที่",
-
-            html:`
-
-              <p>
-                ก่อนกำหนดระบบ ควรเก็บข้อมูลหน้างานอย่างน้อย
-                ได้แก่ ประเภทพื้นที่ ลักษณะการใช้งาน
-                สภาพพื้นเดิม ปัญหาที่พบ
-                และสภาพแวดล้อมโดยรอบ
-              </p>
-
-              <ul>
-
-                <li>
-                  พื้นที่โรงงานหรือพื้นที่อุตสาหกรรม
-                </li>
-
-                <li>
-                  พื้นที่จอดรถหรือพื้นที่สัญจร
-                </li>
-
-                <li>
-                  พื้นที่ที่ต้องการความสะอาดง่าย
-                </li>
-
-                <li>
-                  พื้นที่ที่ต้องพิจารณาการสัมผัสสารเคมี
-                </li>
-
-                <li>
-                  พื้นที่ที่มีข้อจำกัดด้านความชื้น
-                </li>
-
-              </ul>
-
-            `
-          },
-
-
-          {
-            id:"conclusion",
-
-            title:"สรุป",
-
-            html:`
-
-              <p>
-                ไม่มีระบบพื้นชนิดใดที่เหมาะกับทุกพื้นที่
-                การเลือกควรเริ่มจากปัญหาและลักษณะการใช้งานจริง
-                จากนั้นจึงกำหนดระบบวัสดุและขั้นตอนการติดตั้ง
-              </p>
-
-              <p>
-                หากเป็นโครงการที่มีข้อกำหนดเฉพาะ
-                ควรตรวจสอบเอกสารทางเทคนิคของผลิตภัณฑ์
-                และให้ผู้เชี่ยวชาญประเมินสภาพหน้างานก่อนดำเนินการ
-              </p>
-
-            `
-          }
-
-        ],
-
-        faq:[
-
-          {
-            q:"อีพ็อกซี่กับ PU เลือกจากราคาอย่างเดียวได้หรือไม่?",
-
-            a:
-              "ไม่ควรเลือกจากราคาเพียงอย่างเดียว ควรพิจารณาสภาพพื้นเดิม การใช้งาน สภาพแวดล้อม และข้อกำหนดของระบบร่วมกัน"
-          },
-
-          {
-            q:"พื้นเดิมมีความชื้นควรทำอย่างไร?",
-
-            a:
-              "ควรตรวจสอบสาเหตุและระดับความชื้นก่อนกำหนดระบบ เพราะความชื้นเป็นปัจจัยสำคัญต่อการยึดเกาะและประสิทธิภาพของระบบพื้น"
-          }
-
-        ]
-
-      },
-
-
-      "waterproof-roof": {
-
-        category:"กันรั่วซึม",
-
-        categoryEn:"WATERPROOFING",
-
-        code:"KNOW-WP-001",
-
-        title:
-          "ดาดฟ้ารั่วซึมเกิดจากอะไร แก้อย่างไรให้จบ",
-
-        description:
-          "แนวทางสำรวจปัญหาน้ำรั่วซึมบนดาดฟ้าและพื้นอาคาร ตั้งแต่การหาสาเหตุจนถึงการเลือกแนวทางแก้ไขให้เหมาะกับพื้นที่",
-
-        sections:[
-
-          {
-            id:"overview",
-
-            title:"ทำไมดาดฟ้าจึงเกิดปัญหารั่วซึม",
-
-            html:`
-
-              <p>
-                ปัญหาน้ำรั่วซึมบนดาดฟ้าอาจเกิดได้จากหลายปัจจัย
-                เช่น สภาพพื้นผิวเดิม รอยแตกร้าว
-                จุดต่อ การระบายน้ำ หรือความเสียหายของระบบกันซึมเดิม
-              </p>
-
-              <div class="highlight-box">
-
-                <strong>
-                  อย่าเริ่มจากการทาวัสดุทันที
-                </strong>
-
-                <p>
-                  การแก้ปัญหาที่ดีควรเริ่มจากการสำรวจว่า
-                  น้ำเข้าจากบริเวณใด และปัญหาเกิดจากอะไร
-                  ก่อนเลือกระบบซ่อม
-                </p>
-
-              </div>
-
-            `
-          },
-
-
-          {
-            id:"inspection",
-
-            title:"จุดที่ควรตรวจสอบ",
-
-            html:`
-
-              <ul>
-
-                <li>
-                  รอยแตกร้าวของพื้นคอนกรีต
-                </li>
-
-                <li>
-                  จุดรอยต่อระหว่างวัสดุ
-                </li>
-
-                <li>
-                  บริเวณรอบท่อและอุปกรณ์บนดาดฟ้า
-                </li>
-
-                <li>
-                  แนวระบายน้ำและจุดที่มีน้ำขัง
-                </li>
-
-                <li>
-                  ระบบกันซึมเดิมและบริเวณที่หลุดล่อน
-                </li>
-
-              </ul>
-
-            `
-          },
-
-
-          {
-            id:"repair",
-
-            title:"แนวทางการแก้ไข",
-
-            html:`
-
-              <p>
-                ระบบแก้ไขควรเลือกตามสาเหตุและสภาพพื้นเดิม
-                ไม่ควรใช้วิธีเดียวกับทุกหน้างาน
-              </p>
-
-              <div class="layer-system">
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    1
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      เตรียมพื้นผิว
-                    </strong>
-
-                    <span>
-                      ตรวจสอบและเตรียมพื้นให้เหมาะกับระบบ
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    2
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      ระบบซ่อม / กันซึม
-                    </strong>
-
-                    <span>
-                      เลือกระบบตามปัญหาและสภาพหน้างาน
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    3
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      ชั้นป้องกัน / เคลือบผิว
-                    </strong>
-
-                    <span>
-                      ดำเนินการตาม Specification ของระบบ
-                    </span>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            `
-          },
-
-
-          {
-            id:"conclusion",
-
-            title:"สรุป",
-
-            html:`
-
-              <p>
-                การแก้ปัญหาดาดฟ้ารั่วซึมให้มีประสิทธิภาพ
-                ควรเริ่มจากการหาต้นเหตุ
-                เตรียมพื้นผิวให้เหมาะสม
-                และเลือกระบบกันซึมที่ตรงกับลักษณะหน้างาน
-              </p>
-
-            `
-          }
-
-        ],
-
-        faq:[
-
-          {
-            q:"ทาสีกันซึมทับพื้นเดิมได้เลยหรือไม่?",
-
-            a:
-              "ไม่ควรสรุปจากสภาพที่มองเห็นเพียงอย่างเดียว ต้องตรวจสอบการยึดเกาะ สภาพพื้นเดิม รอยแตกร้าว และความชื้นก่อน"
-          },
-
-          {
-            q:"น้ำขังบนดาดฟ้ามีผลหรือไม่?",
-
-            a:
-              "น้ำขังเป็นปัจจัยที่ควรนำมาพิจารณาในการประเมินระบบและการระบายน้ำของพื้นที่"
-          }
-
-        ]
-
-      },
-
-
-      "concrete-crack": {
-
-        category:"คอนกรีต",
-
-        categoryEn:"CONCRETE REPAIR",
-
-        code:"KNOW-CON-001",
-
-        title:
-          "รอยร้าวคอนกรีตแบบไหนอันตราย แบบไหนซ่อมเองได้",
-
-        description:
-          "แนวทางเบื้องต้นในการสังเกตรอยร้าวคอนกรีต และประเด็นที่ควรตรวจสอบก่อนตัดสินใจเลือกวิธีซ่อม",
-
-        sections:[
-
-          {
-            id:"overview",
-
-            title:"รอยร้าวคอนกรีตไม่ได้มีสาเหตุเดียว",
-
-            html:`
-
-              <p>
-                รอยร้าวบนคอนกรีตสามารถเกิดจากหลายสาเหตุ
-                และลักษณะรอยร้าวแต่ละแบบอาจต้องใช้แนวทางแก้ไขต่างกัน
-              </p>
-
-              <p>
-                ดังนั้นการเห็นรอยร้าวเพียงอย่างเดียว
-                ยังไม่เพียงพอที่จะระบุวิธีซ่อม
-                ควรดูตำแหน่ง ทิศทาง ขนาด
-                และสภาพแวดล้อมประกอบ
-              </p>
-
-            `
-          },
-
-
-          {
-            id:"inspection",
-
-            title:"สิ่งที่ควรสังเกต",
-
-            html:`
-
-              <ul>
-
-                <li>
-                  ตำแหน่งของรอยร้าว
-                </li>
-
-                <li>
-                  แนวและรูปแบบของรอยร้าว
-                </li>
-
-                <li>
-                  รอยร้าวอยู่บนพื้น ผนัง หรือองค์ประกอบโครงสร้าง
-                </li>
-
-                <li>
-                  มีการหลุดล่อนหรือแตกร่อนร่วมด้วยหรือไม่
-                </li>
-
-                <li>
-                  มีน้ำหรือความชื้นเกี่ยวข้องหรือไม่
-                </li>
-
-              </ul>
-
-              <div class="warning-box">
-
-                <strong>
-                  กรณีที่ควรให้ผู้เชี่ยวชาญตรวจสอบ
-                </strong>
-
-                <p>
-                  หากรอยร้าวเกี่ยวข้องกับองค์ประกอบโครงสร้าง
-                  มีการเปลี่ยนแปลงอย่างต่อเนื่อง
-                  หรือมีความเสียหายอื่นร่วมด้วย
-                  ไม่ควรตัดสินใจซ่อมเองจากข้อมูลออนไลน์เพียงอย่างเดียว
-                </p>
-
-              </div>
-
-            `
-          },
-
-
-          {
-            id:"repair",
-
-            title:"แนวทางการซ่อม",
-
-            html:`
-
-              <p>
-                วิธีซ่อมต้องสัมพันธ์กับชนิดของรอยร้าว
-                และสาเหตุของปัญหา
-                ตัวอย่างระบบที่อาจใช้ในงานซ่อมคอนกรีต ได้แก่
-                การอุดรอยร้าว การ Injection
-                หรือระบบซ่อมปรับระดับตามสภาพพื้นที่
-              </p>
-
-              <div class="layer-system">
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    1
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      สำรวจปัญหา
-                    </strong>
-
-                    <span>
-                      ระบุตำแหน่งและลักษณะความเสียหาย
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    2
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      เตรียมบริเวณซ่อม
-                    </strong>
-
-                    <span>
-                      ทำความสะอาดและเตรียมพื้นผิว
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    3
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      ดำเนินการซ่อม
-                    </strong>
-
-                    <span>
-                      เลือกวิธีตามประเภทความเสียหาย
-                    </span>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            `
-          }
-
-        ],
-
-        faq:[
-
-          {
-            q:"รอยร้าวทุกชนิดซ่อมด้วยวิธีเดียวกันได้หรือไม่?",
-
-            a:
-              "ไม่ได้ วิธีซ่อมควรสัมพันธ์กับสาเหตุ ตำแหน่ง และลักษณะของรอยร้าว"
-          },
-
-          {
-            q:"รอยร้าวแบบไหนควรให้ผู้เชี่ยวชาญดู?",
-
-            a:
-              "หากรอยร้าวเกี่ยวข้องกับโครงสร้าง มีการขยายตัว หรือมีความเสียหายอื่นร่วมด้วย ควรให้ผู้เชี่ยวชาญประเมิน"
-          }
-
-        ]
-
-      },
-
-
-      "stamped-concrete-care": {
-
-        category:"พื้นตกแต่ง",
-
-        categoryEn:"DECORATIVE FLOOR",
-
-        code:"KNOW-DEC-001",
-
-        title:
-          "คอนกรีตพิมพ์ลายต้องดูแลอย่างไร",
-
-        description:
-          "แนวทางดูแลพื้นคอนกรีตพิมพ์ลายและชั้นเคลือบ เพื่อช่วยรักษาสภาพพื้นผิวให้เหมาะสมกับการใช้งาน",
-
-        sections:[
-
-          {
-            id:"overview",
-
-            title:"คอนกรีตพิมพ์ลายต้องดูแลส่วนใดบ้าง",
-
-            html:`
-
-              <p>
-                การดูแลพื้นคอนกรีตพิมพ์ลายไม่ได้มีเพียงการทำความสะอาด
-                แต่ควรพิจารณาสภาพพื้นผิวและชั้นเคลือบ
-                รวมถึงลักษณะการใช้งานของพื้นที่
-              </p>
-
-              <div class="highlight-box">
-
-                <strong>
-                  หัวใจสำคัญ
-                </strong>
-
-                <p>
-                  ควรรักษาความสะอาดและหลีกเลี่ยงพฤติกรรม
-                  ที่อาจทำให้ชั้นผิวเกิดความเสียหาย
-                  พร้อมตรวจสอบสภาพพื้นเป็นระยะ
-                </p>
-
-              </div>
-
-            `
-          },
-
-
-          {
-            id:"maintenance",
-
-            title:"แนวทางการดูแลเบื้องต้น",
-
-            html:`
-
-              <ul>
-
-                <li>
-                  ทำความสะอาดสิ่งสกปรกอย่างสม่ำเสมอ
-                </li>
-
-                <li>
-                  ไม่ปล่อยให้คราบหรือสารต่าง ๆ อยู่บนพื้นเป็นเวลานาน
-                </li>
-
-                <li>
-                  ตรวจสอบบริเวณที่มีการสัญจรหรือใช้งานหนัก
-                </li>
-
-                <li>
-                  ตรวจสอบสภาพชั้นเคลือบเมื่อมีการเปลี่ยนแปลง
-                </li>
-
-                <li>
-                  หากพบความเสียหายควรประเมินก่อนซ่อม
-                </li>
-
-              </ul>
-
-            `
-          },
-
-
-          {
-            id:"coating",
-
-            title:"ชั้นเคลือบมีความสำคัญอย่างไร",
-
-            html:`
-
-              <p>
-                ชั้นเคลือบเป็นส่วนหนึ่งของระบบพื้นตกแต่ง
-                และมีหน้าที่ตามประเภทผลิตภัณฑ์และ Specification
-                ของระบบที่เลือกใช้
-              </p>
-
-              <p>
-                หากชั้นเคลือบเสื่อมสภาพหรือเกิดความเสียหาย
-                ควรตรวจสอบสาเหตุก่อนดำเนินการเคลือบทับ
-                เพื่อหลีกเลี่ยงปัญหาการยึดเกาะในภายหลัง
-              </p>
-
-            `
-          }
-
-        ],
-
-        faq:[
-
-          {
-            q:"พื้นคอนกรีตพิมพ์ลายสามารถล้างด้วยน้ำได้หรือไม่?",
-
-            a:
-              "วิธีทำความสะอาดควรสอดคล้องกับระบบพื้นและผลิตภัณฑ์ที่ใช้ ควรอ้างอิงคำแนะนำของระบบนั้น ๆ"
-          },
-
-          {
-            q:"ถ้าสีหรือชั้นเคลือบเริ่มเสื่อมควรทำอย่างไร?",
-
-            a:
-              "ควรตรวจสอบสภาพพื้นและชั้นเคลือบเดิมก่อน แล้วจึงกำหนดวิธีเตรียมพื้นและระบบเคลือบที่เหมาะสม"
-          }
-
-        ]
-
-      },
-
-
-      "moisture-floor": {
-
-        category:"ระบบพื้น",
-
-        categoryEn:"FLOOR PROBLEM",
-
-        code:"KNOW-FLR-002",
-
-        title:
-          "ความชื้นใต้พื้นคอนกรีตทำให้สีพื้นพองได้อย่างไร",
-
-        description:
-          "ทำความเข้าใจว่าความชื้นในพื้นคอนกรีตสามารถเกี่ยวข้องกับปัญหาสีพื้นพอง หลุดล่อน และความเสียหายของระบบเคลือบได้อย่างไร",
-
-        sections:[
-
-          {
-            id:"overview",
-
-            title:"ความชื้นกับระบบพื้น",
-
-            html:`
-
-              <p>
-                พื้นคอนกรีตสามารถมีความชื้นอยู่ภายในได้
-                และระดับความชื้นของพื้นเป็นหนึ่งในปัจจัย
-                ที่ควรพิจารณาก่อนติดตั้งระบบเคลือบพื้น
-              </p>
-
-              <p>
-                หากติดตั้งระบบโดยไม่ได้ตรวจสอบสภาพพื้นอย่างเหมาะสม
-                อาจเกิดปัญหากับการยึดเกาะหรือสภาพของชั้นเคลือบได้
-              </p>
-
-            `
-          },
-
-
-          {
-            id:"symptoms",
-
-            title:"อาการที่ควรสังเกต",
-
-            html:`
-
-              <ul>
-
-                <li>
-                  สีหรือชั้นเคลือบพอง
-                </li>
-
-                <li>
-                  ผิวเคลือบหลุดล่อน
-                </li>
-
-                <li>
-                  เกิดความเสียหายเป็นบางบริเวณ
-                </li>
-
-                <li>
-                  มีคราบหรือความผิดปกติบริเวณผิว
-                </li>
-
-              </ul>
-
-              <div class="warning-box">
-
-                <strong>
-                  อย่ารีบทาสีทับ
-                </strong>
-
-                <p>
-                  หากพบสีพองหรือหลุดล่อน
-                  ควรตรวจสอบสาเหตุและสภาพพื้นก่อน
-                  เพราะการเคลือบทับโดยไม่แก้ต้นเหตุ
-                  อาจทำให้ปัญหาเกิดซ้ำ
-                </p>
-
-              </div>
-
-            `
-          },
-
-
-          {
-            id:"preparation",
-
-            title:"ก่อนติดตั้งระบบพื้นควรตรวจอะไร",
-
-            html:`
-
-              <p>
-                ขั้นตอนเตรียมพื้นมีความสำคัญต่อระบบพื้นอย่างมาก
-                โดยข้อมูลที่ต้องตรวจสอบจริงควรอ้างอิง
-                Specification และ TDS ของระบบที่จะติดตั้ง
-              </p>
-
-              <div class="layer-system">
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    1
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      ตรวจสอบพื้นเดิม
-                    </strong>
-
-                    <span>
-                      สภาพผิว ความเสียหาย และปัจจัยที่เกี่ยวข้อง
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    2
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      ตรวจสอบความชื้น
-                    </strong>
-
-                    <span>
-                      ใช้วิธีตรวจสอบที่เหมาะสมกับระบบ
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                <div class="layer">
-
-                  <div class="layer-number">
-                    3
-                  </div>
-
-                  <div class="layer-text">
-
-                    <strong>
-                      เตรียมพื้นผิว
-                    </strong>
-
-                    <span>
-                      ดำเนินการตามข้อกำหนดของระบบ
-                    </span>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            `
-          }
-
-        ],
-
-        faq:[
-
-          {
-            q:"พื้นใหม่สามารถลงสีพื้นได้ทันทีหรือไม่?",
-
-            a:
-              "ไม่ควรตัดสินจากอายุพื้นเพียงอย่างเดียว ควรตรวจสอบความพร้อมของพื้นและข้อกำหนดของระบบก่อนติดตั้ง"
-          },
-
-          {
-            q:"สีพื้นพองต้องรื้อทั้งหมดหรือไม่?",
-
-            a:
-              "ขึ้นอยู่กับสาเหตุและขอบเขตความเสียหาย ต้องประเมินสภาพพื้นจริงก่อนกำหนดวิธีซ่อม"
-          }
-
-        ]
-
-      }
-
-    };
-
-
-    /* =========================================
-       ELEMENTS
-    ========================================= */
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-    const articleId =
-      params.get("id") ||
-      "epoxy-vs-pu";
-
-
-    const article =
-      ARTICLES[articleId];
-
-
-    const articlePage =
-      document.getElementById(
-        "articlePage"
-      );
-
-    const notFound =
-      document.getElementById(
-        "notFound"
-      );
-
-
-    /* =========================================
-       RENDER ARTICLE
-    ========================================= */
-
-    function renderArticle(){
-
-      if(!article){
-
-        articlePage.style.display =
-          "none";
-
-        notFound.classList.add(
-          "show"
-        );
-
-        return;
-      }
-
-
-      document.title =
-        article.title +
-        " | CHATPETCH GROUP";
-
-
-      document
-        .getElementById("metaDescription")
-        .setAttribute(
-          "content",
-          article.description
-        );
-
-
-      document
-        .getElementById("articleCategory")
-        .textContent =
-        article.categoryEn;
-
-
-      document
-        .getElementById("articleCategoryText")
-        .textContent =
-        article.category;
-
-
-      document
-        .getElementById("articleTitle")
-        .textContent =
-        article.title;
-
-
-      document
-        .getElementById("breadcrumbTitle")
-        .textContent =
-        article.title;
-
-
-      document
-        .getElementById("articleDescription")
-        .textContent =
-        article.description;
-
-
-      document
-        .getElementById("articleCode")
-        .textContent =
-        article.code;
-
-
-      renderContent();
-
-      renderTOC();
-
-      renderFAQ();
-
-      renderRelated();
-
-    }
-
-
-    /* =========================================
-       CONTENT
-    ========================================= */
-
-    function renderContent(){
-
-      const content =
-        document.getElementById(
-          "articleContent"
-        );
-
-
-      let html = "";
-
-
-      article.sections.forEach(
-        section => {
-
-          html += `
-
-            <section id="${section.id}">
-
-              <h2>
-                ${section.title}
-              </h2>
-
-              ${section.html}
-
-            </section>
-
-          `;
-
-        }
-      );
-
-
-      if(
-        article.faq &&
-        article.faq.length
-      ){
-
-        html += `
-
-          <section
-            class="faq"
-            id="faq"
-          >
-
-            <h2>
-              FAQ — คำถามที่พบบ่อย
-            </h2>
-
-            <div>
-
-              ${article.faq.map(
-                (item,index) => `
-
-                  <div class="faq-item">
-
-                    <button
-                      class="faq-question"
-                      type="button"
-                      data-faq="${index}"
-                    >
-
-                      <span>
-                        ${item.q}
-                      </span>
-
-                      <span>
-                        +
-                      </span>
-
-                    </button>
-
-
-                    <div class="faq-answer">
-
-                      <p>
-                        ${item.a}
-                      </p>
-
-                    </div>
-
-                  </div>
-
-                `
-              ).join("")}
-
-            </div>
-
-          </section>
-
-        `;
-
-      }
-
-
-      content.innerHTML =
-        html;
-
-
-      initFAQ();
-
-    }
-
-
-    /* =========================================
-       TOC
-    ========================================= */
-
-    function renderTOC(){
-
-      const toc =
-        document.getElementById(
-          "toc"
-        );
-
-
-      const links =
-        article.sections.map(
-          section => `
-
-            <a href="#${section.id}">
-              ${section.title}
-            </a>
-
-          `
-        );
-
-
-      if(
-        article.faq &&
-        article.faq.length
-      ){
-
-        links.push(`
-
-          <a href="#faq">
-            FAQ — คำถามที่พบบ่อย
-          </a>
-
-        `);
-
-      }
-
-
-      toc.innerHTML =
-        links.join("");
-
-    }
-
-
-    /* =========================================
-       FAQ
-    ========================================= */
-
-    function initFAQ(){
-
-      document
-        .querySelectorAll(
-          ".faq-question"
-        )
-        .forEach(button => {
-
-          button.addEventListener(
-            "click",
-            () => {
-
-              const item =
-                button.closest(
-                  ".faq-item"
-                );
-
-
-              const answer =
-                item.querySelector(
-                  ".faq-answer"
-                );
-
-
-              const isOpen =
-                item.classList.contains(
-                  "open"
-                );
-
-
-              document
-                .querySelectorAll(
-                  ".faq-item.open"
-                )
-                .forEach(
-                  openItem => {
-
-                    if(
-                      openItem !== item
-                    ){
-
-                      openItem.classList.remove(
-                        "open"
-                      );
-
-                      openItem
-                        .querySelector(
-                          ".faq-answer"
-                        )
-                        .style.maxHeight =
-                        null;
-
-                    }
-
-                  }
-                );
-
-
-              if(isOpen){
-
-                item.classList.remove(
-                  "open"
-                );
-
-                answer.style.maxHeight =
-                  null;
-
-              }else{
-
-                item.classList.add(
-                  "open"
-                );
-
-                answer.style.maxHeight =
-                  answer.scrollHeight +
-                  "px";
-
-              }
-
-            }
-          );
-
-        });
-
-    }
-
-
-    /* =========================================
-       RELATED
-    ========================================= */
-
-    function renderRelated(){
-
-      const grid =
-        document.getElementById(
-          "relatedGrid"
-        );
-
-
-      const related =
-        Object.entries(
-          ARTICLES
-        )
-        .filter(
-          ([id]) =>
-            id !== articleId
-        )
-        .slice(0,3);
-
-
-      grid.innerHTML =
-        related.map(
-          ([id,item]) => `
-
-            <a
-              href="knowledge-detail.html?id=${id}"
-              class="related-card"
-            >
-
-              <small>
-                ${item.categoryEn}
-              </small>
-
-              <strong>
-                ${item.title}
-              </strong>
-
-            </a>
-
-          `
-        ).join("");
-
-    }
-
-
-    /* =========================================
-       MOBILE MENU
-    ========================================= */
-
-    const menuToggle =
-      document.getElementById(
-        "menuToggle"
-      );
-
-    const navMenu =
-      document.getElementById(
-        "navMenu"
-      );
-
-
-    menuToggle.addEventListener(
+    link.addEventListener(
       "click",
-      () => {
+      function(){
 
-        navMenu.classList.toggle(
-          "open"
-        );
+        navMenu.classList.remove("open");
 
       }
     );
 
+  });
 
-    document
-      .querySelectorAll(
-        ".nav-menu a"
-      )
-      .forEach(link => {
 
-        link.addEventListener(
-          "click",
-          () => {
+/* =========================================================
+ARTICLE DATA
+========================================================= */
 
-            navMenu.classList.remove(
-              "open"
-            );
+const articles = {
+
+
+  "epoxy-vs-pu":{
+
+    title:
+      "พื้นอีพ็อกซีกับพื้นโพลียูรีเทน ต่างกันอย่างไร เลือกแบบไหนดี",
+
+    category:
+      "พื้นอุตสาหกรรม",
+
+    date:
+      "KNOWLEDGE • FLOOR SYSTEM",
+
+    intro:
+      "อีพ็อกซี่และโพลียูรีเทนเป็นระบบพื้นเคลือบที่ถูกนำไปใช้งานในพื้นที่อุตสาหกรรม อาคาร และพื้นที่ที่ต้องการพื้นผิวต่อเนื่อง แต่คุณสมบัติและความเหมาะสมของแต่ละระบบแตกต่างกัน การเลือกจึงควรพิจารณาจากสภาพหน้างานและลักษณะการใช้งานจริง",
+
+    content:`
+
+      <h2>
+        อีพ็อกซี่และ PU คืออะไร?
+      </h2>
+
+      <p>
+        ทั้งสองระบบเป็นวัสดุสำหรับสร้างชั้นเคลือบบนพื้นคอนกรีต
+        โดยมีเป้าหมายเพื่อช่วยให้พื้นมีผิวที่ต่อเนื่อง
+        ทำความสะอาดง่าย และเหมาะกับลักษณะการใช้งานที่แตกต่างกัน
+      </p>
+
+      <h2>
+        จุดที่ควรพิจารณาก่อนเลือก
+      </h2>
+
+      <ul>
+
+        <li>
+          ลักษณะการใช้งานและประเภทกิจกรรมบนพื้น
+        </li>
+
+        <li>
+          ปริมาณและลักษณะการสัญจร
+        </li>
+
+        <li>
+          สารเคมีหรือของเหลวที่อาจสัมผัสพื้น
+        </li>
+
+        <li>
+          อุณหภูมิและสภาพแวดล้อม
+        </li>
+
+        <li>
+          สภาพพื้นคอนกรีตเดิม
+        </li>
+
+        <li>
+          ความชื้นของพื้นก่อนเริ่มงาน
+        </li>
+
+      </ul>
+
+
+      <table class="compare">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              ประเด็น
+            </th>
+
+            <th>
+              Epoxy
+            </th>
+
+            <th>
+              PU
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr>
+
+            <td>
+              ลักษณะงาน
+            </td>
+
+            <td>
+              เหมาะกับงานเคลือบพื้นหลายประเภท
+            </td>
+
+            <td>
+              เหมาะกับพื้นที่ที่ต้องพิจารณาสภาพแวดล้อมเฉพาะ
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              สภาพแวดล้อม
+            </td>
+
+            <td>
+              ต้องพิจารณาความเหมาะสมของผลิตภัณฑ์กับหน้างาน
+            </td>
+
+            <td>
+              ต้องพิจารณาระบบและผลิตภัณฑ์ที่เหมาะสมเช่นกัน
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              การเลือกใช้งาน
+            </td>
+
+            <td>
+              ดูจากลักษณะพื้นและการใช้งานเป็นหลัก
+            </td>
+
+            <td>
+              ดูจากลักษณะพื้น สภาพแวดล้อม และการใช้งาน
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+
+      <div class="highlight">
+
+        <div class="highlight-title">
+          จุดสำคัญ
+        </div>
+
+        <p style="margin-bottom:0">
+
+          ไม่ควรเลือกพื้นจากชื่อวัสดุเพียงอย่างเดียว
+          เพราะระบบพื้นจริงประกอบด้วยการเตรียมพื้น
+          ชั้นรองพื้น ชั้นกลาง และชั้นเคลือบผิว
+          ซึ่งต้องทำงานร่วมกัน
+
+        </p>
+
+      </div>
+
+
+      <h2>
+        แล้วควรเลือกแบบไหนดี?
+      </h2>
+
+      <p>
+        คำตอบขึ้นอยู่กับสภาพหน้างานจริง
+        หากเป็นโครงการใหม่หรือกำลังปรับปรุงพื้นเดิม
+        ควรพิจารณาสภาพคอนกรีต ความชื้น การใช้งาน
+        และข้อกำหนดของพื้นที่ก่อนเลือกผลิตภัณฑ์
+      </p>
+
+      <p>
+        สำหรับโครงการที่มีข้อกำหนดเฉพาะ
+        ควรใช้ข้อมูลทางเทคนิคของผลิตภัณฑ์
+        และพิจารณาระบบโดยรวมก่อนตัดสินใจ
+      </p>
+
+    `,
+
+    faq:[
+
+      [
+        "Epoxy ใช้กับพื้นที่โรงงานได้หรือไม่?",
+        "สามารถใช้ได้ในหลายลักษณะงาน แต่ต้องเลือกระบบและผลิตภัณฑ์ให้เหมาะกับสภาพพื้นและการใช้งานจริง"
+      ],
+
+      [
+        "PU ดีกว่า Epoxy เสมอหรือไม่?",
+        "ไม่เสมอไป การเลือกต้องพิจารณาวัตถุประสงค์และสภาพแวดล้อมของพื้นที่"
+      ],
+
+      [
+        "ต้องวัดความชื้นก่อนทำพื้นหรือไม่?",
+        "ควรประเมินสภาพพื้นและความชื้นก่อนติดตั้งระบบพื้น เพราะความชื้นสามารถส่งผลต่อการยึดเกาะและอายุการใช้งานของระบบ"
+      ]
+
+    ]
+
+  },
+
+
+  "waterproof-roof":{
+
+    title:
+      "ดาดฟ้ารั่วซึมเกิดจากอะไร แก้อย่างไรให้จบ",
+
+    category:
+      "งานกันรั่วซึม",
+
+    date:
+      "KNOWLEDGE • WATERPROOFING",
+
+    intro:
+      "ปัญหาน้ำรั่วบนดาดฟ้าไม่ได้เกิดจากสาเหตุเดียว การซ่อมที่ดีจึงควรเริ่มจากการหาต้นเหตุของน้ำและตรวจสอบรายละเอียดของพื้นเดิมก่อนเลือกวิธีแก้ไข",
+
+    content:`
+
+      <h2>
+        สาเหตุที่ทำให้ดาดฟ้ารั่วซึม
+      </h2>
+
+      <p>
+        ดาดฟ้าต้องเผชิญทั้งแดด ฝน ความร้อน
+        และการเปลี่ยนแปลงของอุณหภูมิ
+        จึงอาจเกิดการเสื่อมสภาพของชั้นป้องกันน้ำ
+        รวมถึงรอยแตกร้าวและจุดต่อบริเวณต่าง ๆ
+      </p>
+
+      <h3>
+        จุดที่ควรตรวจสอบ
+      </h3>
+
+      <ul>
+
+        <li>
+          รอยแตกร้าวบนพื้นคอนกรีต
+        </li>
+
+        <li>
+          รอยต่อและบริเวณขอบพื้น
+        </li>
+
+        <li>
+          รอบท่อระบายน้ำ
+        </li>
+
+        <li>
+          จุดเชื่อมต่อกับผนัง
+        </li>
+
+        <li>
+          ระบบกันซึมเดิม
+        </li>
+
+        <li>
+          ความลาดเอียงและทางระบายน้ำ
+        </li>
+
+      </ul>
+
+
+      <h2>
+        ทำไมทาน้ำยาทับอย่างเดียวอาจไม่จบ?
+      </h2>
+
+      <p>
+        หากปัญหาหลักมาจากรอยแตกร้าว
+        จุดต่อ หรือรายละเอียดโครงสร้าง
+        การเคลือบผิวเพียงอย่างเดียวอาจไม่ใช่วิธีแก้ปัญหาที่เหมาะสม
+      </p>
+
+      <p>
+        ขั้นตอนการซ่อมจึงควรเริ่มจากการตรวจสอบสภาพจริง
+        และเลือกวิธีเตรียมพื้นรวมถึงระบบกันซึมให้สอดคล้องกับปัญหา
+      </p>
+
+
+      <div class="highlight">
+
+        <div class="highlight-title">
+          หลักคิดในการแก้ปัญหา
+        </div>
+
+        <p style="margin-bottom:0">
+
+          หาแหล่งน้ำ → ตรวจสอบพื้นเดิม →
+          ซ่อมจุดเสียหาย → เตรียมพื้น →
+          ติดตั้งระบบกันซึม →
+          ตรวจสอบก่อนเปิดใช้งาน
+
+        </p>
+
+      </div>
+
+
+      <h2>
+        ก่อนซ่อมควรเตรียมข้อมูลอะไร?
+      </h2>
+
+      <ul>
+
+        <li>
+          รูปบริเวณที่เกิดน้ำรั่ว
+        </li>
+
+        <li>
+          รูปดาดฟ้าหรือพื้นที่ด้านบน
+        </li>
+
+        <li>
+          ตำแหน่งท่อและจุดระบายน้ำ
+        </li>
+
+        <li>
+          ขนาดพื้นที่โดยประมาณ
+        </li>
+
+        <li>
+          ประวัติการซ่อมเดิม หากมี
+        </li>
+
+      </ul>
+
+    `,
+
+    faq:[
+
+      [
+        "ดาดฟ้ารั่วต้องรื้อระบบเดิมทั้งหมดหรือไม่?",
+        "ไม่จำเป็นเสมอไป ต้องตรวจสอบสภาพระบบเดิมก่อนว่ามีการยึดเกาะและสภาพเหมาะสมสำหรับการซ่อมต่อหรือไม่"
+      ],
+
+      [
+        "รอยร้าวทำให้น้ำรั่วได้หรือไม่?",
+        "สามารถเป็นหนึ่งในสาเหตุได้ แต่ควรตรวจสอบร่วมกับรายละเอียดอื่นของพื้นที่"
+      ],
+
+      [
+        "ทำกันซึมช่วงฝนได้หรือไม่?",
+        "ต้องพิจารณาระบบที่เลือกและสภาพอากาศในช่วงติดตั้งเป็นหลัก"
+      ]
+
+    ]
+
+  },
+
+
+  "concrete-crack":{
+
+    title:
+      "รอยร้าวคอนกรีตแบบไหนอันตราย แบบไหนซ่อมเองได้",
+
+    category:
+      "งานซ่อมคอนกรีต",
+
+    date:
+      "KNOWLEDGE • CONCRETE REPAIR",
+
+    intro:
+      "รอยร้าวบนคอนกรีตมีหลายลักษณะ การประเมินจึงไม่ควรดูจากขนาดของรอยเพียงอย่างเดียว แต่ควรพิจารณาตำแหน่ง รูปแบบ และการเปลี่ยนแปลงของรอยร้าวร่วมกัน",
+
+    content:`
+
+      <h2>
+        รอยร้าวคอนกรีตเกิดจากอะไร?
+      </h2>
+
+      <p>
+        สาเหตุอาจเกี่ยวข้องกับการหดตัวของคอนกรีต
+        การเปลี่ยนแปลงของอุณหภูมิ
+        การเคลื่อนตัวของโครงสร้าง
+        การรับน้ำหนัก และปัจจัยอื่น ๆ
+      </p>
+
+
+      <h2>
+        สิ่งที่ควรสังเกต
+      </h2>
+
+      <ul>
+
+        <li>
+          ตำแหน่งของรอยร้าว
+        </li>
+
+        <li>
+          แนวและรูปแบบของรอย
+        </li>
+
+        <li>
+          ความกว้างและความลึก
+        </li>
+
+        <li>
+          มีน้ำซึมร่วมด้วยหรือไม่
+        </li>
+
+        <li>
+          รอยร้าวมีการเปลี่ยนแปลงหรือไม่
+        </li>
+
+      </ul>
+
+
+      <div class="highlight">
+
+        <div class="highlight-title">
+          อย่าดูแค่ "รอยร้าวกว้างหรือเล็ก"
+        </div>
+
+        <p style="margin-bottom:0">
+
+          รอยร้าวขนาดเล็กบางประเภทอาจต้องติดตาม
+          ในขณะที่รอยร้าวที่เกี่ยวข้องกับการเคลื่อนตัว
+          หรือมีลักษณะผิดปกติควรให้ผู้เชี่ยวชาญตรวจสอบ
+
+        </p>
+
+      </div>
+
+
+      <h2>
+        การซ่อมมีหลายวิธี
+      </h2>
+
+      <p>
+        วิธีซ่อมจะขึ้นอยู่กับชนิดและสาเหตุของรอยร้าว
+        เช่น การอุดซ่อมผิว การใช้วัสดุซ่อม
+        หรือระบบ Injection ในกรณีที่เหมาะสม
+      </p>
+
+      <h3>
+        Epoxy Injection
+      </h3>
+
+      <p>
+        เป็นแนวทางหนึ่งที่ใช้สำหรับซ่อมรอยร้าวบางประเภท
+        โดยรายละเอียดการใช้งานต้องประเมินจากสภาพรอยร้าว
+        และวัสดุที่ใช้จริง
+      </p>
+
+
+      <h2>
+        เมื่อไหร่ควรให้ทีมช่างเข้าตรวจ?
+      </h2>
+
+      <ul>
+
+        <li>
+          รอยร้าวเพิ่มขึ้นอย่างต่อเนื่อง
+        </li>
+
+        <li>
+          มีน้ำรั่วซึมร่วมด้วย
+        </li>
+
+        <li>
+          พบการแตกร้าวบริเวณโครงสร้างสำคัญ
+        </li>
+
+        <li>
+          ไม่ทราบสาเหตุของรอยร้าว
+        </li>
+
+        <li>
+          ต้องการซ่อมพื้นที่ขนาดใหญ่
+        </li>
+
+      </ul>
+
+    `,
+
+    faq:[
+
+      [
+        "รอยร้าวเล็ก ๆ ซ่อมเองได้หรือไม่?",
+        "ขึ้นอยู่กับสาเหตุและตำแหน่งของรอยร้าว หากไม่ทราบสาเหตุควรให้ผู้มีความรู้ประเมินก่อน"
+      ],
+
+      [
+        "Epoxy Injection เหมาะกับรอยร้าวทุกชนิดหรือไม่?",
+        "ไม่ใช่ทุกกรณี ต้องประเมินชนิดของรอยร้าวและสภาพหน้างานก่อน"
+      ],
+
+      [
+        "ถ้ารอยร้าวมีน้ำซึมควรทำอย่างไร?",
+        "ควรตรวจสอบทั้งต้นทางของน้ำและสภาพรอยร้าว ไม่ควรปิดผิวโดยไม่หาสาเหตุ"
+      ]
+
+    ]
+
+  },
+
+
+  "stamped-concrete-care":{
+
+    title:
+      "คอนกรีตพิมพ์ลายต้องดูแลอย่างไร ให้สวยและใช้งานได้นาน",
+
+    category:
+      "พื้นตกแต่ง",
+
+    date:
+      "KNOWLEDGE • DECORATIVE FLOOR",
+
+    intro:
+      "พื้นคอนกรีตพิมพ์ลายมีทั้งชั้นสี ลวดลาย และชั้นเคลือบผิว การดูแลที่เหมาะสมจึงควรคำนึงถึงทั้งการทำความสะอาด การใช้งาน และสภาพของชั้นเคลือบ",
+
+    content:`
+
+      <h2>
+        ทำไมต้องดูแลชั้นเคลือบ?
+      </h2>
+
+      <p>
+        ชั้นเคลือบผิวมีส่วนช่วยปกป้องพื้นและส่งผลต่อรูปลักษณ์ของพื้น
+        เมื่อใช้งานไปเป็นระยะเวลาหนึ่ง
+        ชั้นผิวอาจได้รับผลกระทบจากการเดิน การลากสิ่งของ
+        แสงแดด น้ำ และสิ่งสกปรก
+      </p>
+
+
+      <h2>
+        วิธีดูแลเบื้องต้น
+      </h2>
+
+      <ul>
+
+        <li>
+          ทำความสะอาดสิ่งสกปรกเป็นประจำ
+        </li>
+
+        <li>
+          หลีกเลี่ยงการลากของหนักโดยตรงบนพื้น
+        </li>
+
+        <li>
+          ระวังสารเคมีที่อาจไม่เหมาะกับชั้นเคลือบ
+        </li>
+
+        <li>
+          ตรวจสอบบริเวณที่มีการใช้งานหนัก
+        </li>
+
+        <li>
+          หากผิวเริ่มเสื่อมควรประเมินก่อนซ่อม
+        </li>
+
+      </ul>
+
+
+      <div class="highlight">
+
+        <div class="highlight-title">
+          สิ่งที่ไม่ควรทำ
+        </div>
+
+        <p style="margin-bottom:0">
+
+          ไม่ควรใช้สารทำความสะอาดที่รุนแรง
+          โดยไม่ตรวจสอบความเหมาะสมกับระบบเคลือบพื้น
+          เพราะอาจส่งผลต่อผิวและความเงาของพื้น
+
+        </p>
+
+      </div>
+
+
+      <h2>
+        เมื่อพื้นเริ่มซีดหรือผิวเสื่อม
+      </h2>
+
+      <p>
+        ควรตรวจสอบว่าปัญหาเกิดจากชั้นเคลือบ
+        การใช้งาน หรือสภาพพื้นเดิม
+        ก่อนเลือกวิธีปรับปรุง
+      </p>
+
+
+      <h2>
+        การดูแลที่ดีเริ่มตั้งแต่วันติดตั้ง
+      </h2>
+
+      <p>
+        การเปิดใช้งานในช่วงเวลาที่เหมาะสม
+        รวมถึงการปฏิบัติตามคำแนะนำของระบบที่ติดตั้ง
+        มีส่วนสำคัญต่อการดูแลพื้นในระยะยาว
+      </p>
+
+    `,
+
+    faq:[
+
+      [
+        "สามารถใช้เครื่องฉีดน้ำแรงดันสูงได้หรือไม่?",
+        "ต้องพิจารณาระบบเคลือบและคำแนะนำของผลิตภัณฑ์ก่อน ไม่ควรใช้แรงดันสูงโดยไม่ตรวจสอบ"
+      ],
+
+      [
+        "พื้นพิมพ์ลายซีดสามารถทำใหม่ได้ไหม?",
+        "สามารถประเมินแนวทางปรับปรุงได้ แต่ต้องตรวจสอบสภาพชั้นเคลือบและพื้นเดิมก่อน"
+      ],
+
+      [
+        "ควรเคลือบพื้นซ้ำเมื่อไหร่?",
+        "ขึ้นอยู่กับการใช้งาน สภาพพื้น และชนิดของระบบเคลือบ ควรประเมินสภาพจริงก่อน"
+      ]
+
+    ]
+
+  },
+
+
+  "moisture-floor":{
+
+    title:
+      "ความชื้นใต้พื้นคอนกรีตทำให้สีพื้นพองได้อย่างไร",
+
+    category:
+      "พื้นอุตสาหกรรม",
+
+    date:
+      "KNOWLEDGE • FLOOR PROBLEM",
+
+    intro:
+      "หนึ่งในปัญหาที่พบในการทำระบบเคลือบพื้นคือความชื้นจากพื้นคอนกรีตเดิม หากสภาพพื้นไม่เหมาะสมหรือไม่ได้เตรียมพื้นอย่างถูกต้อง อาจส่งผลต่อการยึดเกาะและทำให้ระบบเคลือบเกิดปัญหาได้",
+
+    content:`
+
+      <h2>
+        ความชื้นอยู่ใต้พื้นได้อย่างไร?
+      </h2>
+
+      <p>
+        คอนกรีตมีโครงสร้างที่สามารถกักเก็บและส่งผ่านความชื้นได้
+        โดยเฉพาะพื้นที่ที่สัมผัสกับดินหรือมีแหล่งความชื้นจากด้านล่าง
+      </p>
+
+
+      <h2>
+        เมื่อความชื้นขึ้นมาที่ระบบเคลือบ
+      </h2>
+
+      <p>
+        หากมีความชื้นสะสมใต้ชั้นเคลือบ
+        อาจส่งผลต่อการยึดเกาะระหว่างชั้นวัสดุ
+        และในบางกรณีอาจเกิดอาการพอง ลอก หรือเสียหายของผิวเคลือบ
+      </p>
+
+
+      <div class="highlight">
+
+        <div class="highlight-title">
+          ปัญหาไม่ได้อยู่ที่ "สี" อย่างเดียว
+        </div>
+
+        <p style="margin-bottom:0">
+
+          หากพื้นเดิมมีความชื้นสูง
+          การเปลี่ยนผลิตภัณฑ์เคลือบเพียงอย่างเดียว
+          อาจไม่สามารถแก้ต้นเหตุของปัญหาได้
+
+        </p>
+
+      </div>
+
+
+      <h2>
+        ก่อนทำพื้นควรตรวจอะไร?
+      </h2>
+
+      <ul>
+
+        <li>
+          สภาพพื้นคอนกรีต
+        </li>
+
+        <li>
+          อายุและประวัติของพื้น
+        </li>
+
+        <li>
+          ความชื้นของพื้นตามวิธีที่เหมาะสม
+        </li>
+
+        <li>
+          การยึดเกาะของระบบเดิม หากมี
+        </li>
+
+        <li>
+          รอยแตกร้าวและจุดเสียหาย
+        </li>
+
+        <li>
+          สภาพแวดล้อมของพื้นที่
+        </li>
+
+      </ul>
+
+
+      <h2>
+        แนวทางป้องกัน
+      </h2>
+
+      <p>
+        การเตรียมพื้นอย่างถูกต้องเป็นส่วนสำคัญของระบบพื้น
+        รวมถึงการเลือกวัสดุรองพื้นและชั้นเคลือบ
+        ให้เหมาะกับสภาพพื้นและการใช้งาน
+      </p>
+
+
+      <h3>
+        ถ้าพื้นเดิมมีปัญหาแล้ว
+      </h3>
+
+      <p>
+        ควรตรวจสอบสาเหตุของการพองหรือลอกก่อน
+        ไม่ควรเคลือบทับทันที
+        เพราะปัญหาเดิมอาจยังคงอยู่ใต้ระบบใหม่
+      </p>
+
+    `,
+
+    faq:[
+
+      [
+        "ความชื้นทำให้ Epoxy พองได้หรือไม่?",
+        "ความชื้นใต้ระบบสามารถเป็นปัจจัยหนึ่งที่ส่งผลต่อการยึดเกาะและทำให้ระบบเกิดปัญหาได้"
+      ],
+
+      [
+        "พื้นเก่าทำระบบใหม่ทับได้เลยหรือไม่?",
+        "ต้องตรวจสอบสภาพพื้นเดิม ความแข็งแรง ความสะอาด การยึดเกาะ และความชื้นก่อน"
+      ],
+
+      [
+        "ต้องแก้ความชื้นก่อนทำพื้นหรือไม่?",
+        "หากความชื้นเป็นปัจจัยที่มีผลต่อระบบ ควรจัดการปัญหาและเลือกวิธีติดตั้งให้เหมาะสมก่อนทำระบบใหม่"
+      ]
+
+    ]
+
+  }
+
+};
+
+
+/* =========================================================
+GET ARTICLE ID
+========================================================= */
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const articleId =
+  params.get("id") || "epoxy-vs-pu";
+
+
+/* =========================================================
+ELEMENTS
+========================================================= */
+
+const titleEl =
+  document.getElementById("articleTitle");
+
+const categoryEl =
+  document.getElementById("articleCategory");
+
+const dateEl =
+  document.getElementById("articleDate");
+
+const contentEl =
+  document.getElementById("articleContent");
+
+const metaDescription =
+  document.getElementById("metaDescription");
+
+
+/* =========================================================
+LOAD ARTICLE
+========================================================= */
+
+const article =
+  articles[articleId];
+
+
+if(!article){
+
+  document.title =
+    "ไม่พบบทความ | CHATPETCH GROUP";
+
+
+  titleEl.textContent =
+    "ไม่พบบทความ";
+
+
+  categoryEl.textContent =
+    "KNOWLEDGE";
+
+
+  dateEl.textContent =
+    "CHATPETCH GROUP";
+
+
+  contentEl.innerHTML = `
+
+    <div class="not-found">
+
+      <h1>
+        ไม่พบบทความ
+      </h1>
+
+      <p>
+        บทความที่คุณกำลังค้นหาอาจไม่มีอยู่
+        หรือ URL ไม่ถูกต้อง
+      </p>
+
+      <a
+        href="knowledge.html"
+        class="btn btn-gold">
+
+        ← กลับไปสาระน่ารู้
+
+      </a>
+
+    </div>
+
+  `;
+
+}else{
+
+  renderArticle(article);
+
+}
+
+
+/* =========================================================
+RENDER
+========================================================= */
+
+function renderArticle(article){
+
+  document.title =
+    article.title +
+    " | CHATPETCH GROUP";
+
+
+  titleEl.textContent =
+    article.title;
+
+
+  categoryEl.textContent =
+    article.category;
+
+
+  dateEl.textContent =
+    article.date;
+
+
+  metaDescription.setAttribute(
+    "content",
+    article.intro
+  );
+
+
+  contentEl.innerHTML = `
+
+    <div class="article-intro">
+      ${article.intro}
+    </div>
+
+    ${article.content}
+
+    <div class="faq">
+
+      <h2>
+        คำถามที่พบบ่อย
+      </h2>
+
+      ${renderFAQ(article.faq)}
+
+    </div>
+
+    <div class="related">
+
+      <h2>
+        บทความที่เกี่ยวข้อง
+      </h2>
+
+      <div class="related-grid">
+
+        <a
+          class="related-card"
+          href="knowledge-detail.html?id=epoxy-vs-pu">
+
+          <small>
+            FLOOR SYSTEM
+          </small>
+
+          <strong>
+            Epoxy กับ PU ต่างกันอย่างไร
+          </strong>
+
+        </a>
+
+
+        <a
+          class="related-card"
+          href="knowledge-detail.html?id=waterproof-roof">
+
+          <small>
+            WATERPROOFING
+          </small>
+
+          <strong>
+            ดาดฟ้ารั่วซึมเกิดจากอะไร
+          </strong>
+
+        </a>
+
+
+        <a
+          class="related-card"
+          href="knowledge-detail.html?id=concrete-crack">
+
+          <small>
+            CONCRETE REPAIR
+          </small>
+
+          <strong>
+            รอยร้าวคอนกรีตแบบไหนอันตราย
+          </strong>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  setupFAQ();
+
+}
+
+
+/* =========================================================
+FAQ HTML
+========================================================= */
+
+function renderFAQ(items){
+
+  if(!items || !items.length){
+
+    return "";
+
+  }
+
+
+  return items.map(
+    function(item,index){
+
+      return `
+
+        <div class="faq-item">
+
+          <button
+            class="faq-question"
+            type="button">
+
+            <span>
+              ${item[0]}
+            </span>
+
+            <span>
+              +
+            </span>
+
+          </button>
+
+
+          <div class="faq-answer">
+            ${item[1]}
+          </div>
+
+        </div>
+
+      `;
+
+    }
+  ).join("");
+
+}
+
+
+/* =========================================================
+FAQ INTERACTION
+========================================================= */
+
+function setupFAQ(){
+
+  document
+    .querySelectorAll(".faq-question")
+    .forEach(function(button){
+
+      button.addEventListener(
+        "click",
+        function(){
+
+          const item =
+            button.closest(".faq-item");
+
+          const isOpen =
+            item.classList.contains("open");
+
+
+          document
+            .querySelectorAll(".faq-item.open")
+            .forEach(function(openItem){
+
+              openItem.classList.remove("open");
+
+              const icon =
+                openItem.querySelector(
+                  ".faq-question span:last-child"
+                );
+
+              if(icon){
+
+                icon.textContent = "+";
+
+              }
+
+            });
+
+
+          if(!isOpen){
+
+            item.classList.add("open");
+
+            const icon =
+              button.querySelector(
+                "span:last-child"
+              );
+
+            if(icon){
+
+              icon.textContent = "−";
+
+            }
 
           }
-        );
 
-      });
+        }
+      );
+
+    });
+
+}
 
 
-    /* =========================================
-       INIT
-    ========================================= */
+/* =========================================================
+KEYBOARD ESC
+========================================================= */
 
-    renderArticle();
+document.addEventListener(
+  "keydown",
+  function(event){
 
-  </script>
+    if(event.key === "Escape"){
+
+      navMenu.classList.remove("open");
+
+    }
+
+  }
+);
+
+</script>
+
 
 </body>
 </html>
