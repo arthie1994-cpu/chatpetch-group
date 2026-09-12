@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Technical Center | CHATPETCH GROUP</title>
-  <meta name="description" content="ศูนย์ข้อมูลทางเทคนิค TDS SDS Method Statement Specification CAD Detail และ Warranty ของ CHATPETCH GROUP">
+
+  <meta
+    name="description"
+    content="Technical Center ศูนย์รวมเอกสารทางเทคนิค TDS, SDS, Method Statement, Specification Text, CAD Detail และเงื่อนไขการรับประกันของ CHATPETCH GROUP"
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
+
     :root{
       --black:#050505;
       --black2:#080808;
@@ -47,9 +57,23 @@
       font-family:"Prompt","Kanit",sans-serif;
       color:var(--white);
       background:
-        radial-gradient(circle at 10% 8%,rgba(200,164,91,.08),transparent 27%),
-        radial-gradient(circle at 90% 18%,rgba(200,164,91,.06),transparent 28%),
-        linear-gradient(180deg,#050505,#080808 48%,#050505);
+        radial-gradient(
+          circle at 10% 5%,
+          rgba(200,164,91,.08),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 25%,
+          rgba(200,164,91,.055),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #050505,
+          #090909 50%,
+          #050505
+        );
+
       min-height:100vh;
       overflow-x:hidden;
     }
@@ -58,28 +82,50 @@
       content:"";
       position:fixed;
       inset:0;
-      pointer-events:none;
       z-index:-3;
-      opacity:.2;
+      pointer-events:none;
+      opacity:.18;
+
       background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+        linear-gradient(
+          rgba(255,255,255,.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.035) 1px,
+          transparent 1px
+        );
+
       background-size:60px 60px;
-      mask-image:linear-gradient(to bottom,black,transparent 90%);
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 90%
+        );
     }
 
     body::after{
       content:"";
       position:fixed;
-      width:520px;
-      height:520px;
-      right:-190px;
-      top:180px;
+
+      width:550px;
+      height:550px;
+
+      right:-220px;
+      top:250px;
+
       border-radius:50%;
-      background:rgba(200,164,91,.07);
-      filter:blur(105px);
-      pointer-events:none;
+
+      background:
+        rgba(200,164,91,.055);
+
+      filter:blur(100px);
+
       z-index:-2;
+      pointer-events:none;
     }
 
     a{
@@ -93,63 +139,86 @@
       font:inherit;
     }
 
+    img{
+      display:block;
+      max-width:100%;
+    }
+
     .container{
-      width:min(var(--container),calc(100% - 40px));
+      width:min(
+        var(--container),
+        calc(100% - 40px)
+      );
+
       margin:auto;
     }
 
-    /* =========================================
+
+    /* ==============================
        HEADER
-    ========================================= */
+    ============================== */
 
     .site-header{
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(5,5,5,.87);
+
+      background:
+        rgba(5,5,5,.88);
+
       backdrop-filter:blur(18px);
-      border-bottom:1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
     }
 
     .header-inner{
       min-height:86px;
+
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:25px;
+
+      gap:20px;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:13px;
+
       min-width:max-content;
     }
 
     .brand-logo{
       width:72px;
       height:72px;
+
       object-fit:contain;
-      flex-shrink:0;
     }
 
     .brand-text{
       display:flex;
       flex-direction:column;
+
       line-height:1.15;
     }
 
     .brand-text strong{
       font-family:"Kanit",sans-serif;
+
       font-size:19px;
       font-weight:600;
+
       letter-spacing:1.3px;
     }
 
     .brand-text span{
       color:var(--gold);
+
       font-size:10px;
       letter-spacing:2px;
+
       margin-top:5px;
     }
 
@@ -157,679 +226,1152 @@
       display:flex;
       align-items:center;
       justify-content:flex-end;
+
       gap:3px;
       flex-wrap:wrap;
     }
 
     .nav-menu a{
-      color:#d4d4d4;
-      font-size:13px;
-      padding:10px 10px;
-      border-radius:9px;
+      color:#d1d1d1;
+
+      font-size:12px;
+
+      padding:10px;
+
+      border-radius:8px;
+
       transition:.25s ease;
+
       white-space:nowrap;
     }
 
     .nav-menu a:hover{
       color:var(--gold-light);
-      background:rgba(200,164,91,.08);
+
+      background:
+        rgba(200,164,91,.08);
     }
 
     .nav-menu a.active{
       color:var(--gold-light);
-      background:rgba(200,164,91,.08);
+
+      background:
+        rgba(200,164,91,.08);
     }
 
-    .nav-menu .nav-shop{
-      color:var(--gold-light);
+    .nav-shop{
       border:1px solid var(--gold-line);
-      margin-left:5px;
+      color:var(--gold-light)!important;
     }
 
     .menu-toggle{
       display:none;
+
       width:44px;
       height:44px;
-      border:1px solid var(--line);
+
+      border:
+        1px solid var(--line);
+
       border-radius:10px;
+
+      background:
+        rgba(255,255,255,.04);
+
       color:#fff;
-      background:rgba(255,255,255,.04);
+
       cursor:pointer;
     }
 
-    /* =========================================
+
+    /* ==============================
        HERO
-    ========================================= */
+    ============================== */
 
     .hero{
       position:relative;
-      min-height:485px;
+
+      min-height:500px;
+
       display:flex;
       align-items:center;
+
       overflow:hidden;
-      border-bottom:1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
     }
 
     .hero-grid{
       position:absolute;
       inset:0;
-      opacity:.15;
+
+      opacity:.13;
+
       background-image:
-        linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+        linear-gradient(
+          rgba(255,255,255,.045) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.045) 1px,
+          transparent 1px
+        );
+
       background-size:80px 80px;
     }
 
-    .hero::before{
-      content:"";
+    .hero-glow{
       position:absolute;
-      width:680px;
-      height:680px;
-      right:-180px;
-      top:-280px;
+
+      width:750px;
+      height:750px;
+
+      right:-270px;
+      top:-360px;
+
       border-radius:50%;
-      background:radial-gradient(
-        circle,
-        rgba(200,164,91,.14),
-        transparent 68%
-      );
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(200,164,91,.14),
+          transparent 68%
+        );
     }
 
-    .hero::after{
-      content:"";
+    .hero-glow-2{
       position:absolute;
-      left:0;
-      right:0;
-      bottom:0;
-      height:1px;
-      background:linear-gradient(
-        90deg,
-        transparent,
-        var(--gold-dark),
-        transparent
-      );
+
+      width:450px;
+      height:450px;
+
+      left:-250px;
+      bottom:-300px;
+
+      border-radius:50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(200,164,91,.07),
+          transparent 70%
+        );
     }
 
     .hero-content{
       position:relative;
       z-index:2;
-      padding:80px 0;
-      max-width:900px;
+
+      padding:85px 0;
     }
 
     .eyebrow{
-      display:inline-flex;
+      display:flex;
       align-items:center;
+
       gap:10px;
+
       color:var(--gold-light);
-      font-size:12px;
+
+      font-size:11px;
       letter-spacing:3px;
+
       margin-bottom:18px;
     }
 
     .eyebrow::before{
       content:"";
-      width:38px;
+
+      width:42px;
       height:1px;
-      background:var(--gold);
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--gold),
+          transparent
+        );
     }
 
     .hero h1{
+      max-width:900px;
+
       font-family:"Kanit",sans-serif;
-      font-size:clamp(43px,6vw,76px);
-      line-height:1.22;
+
+      font-size:
+        clamp(
+          48px,
+          7vw,
+          84px
+        );
+
+      line-height:1.18;
+
       font-weight:600;
-      letter-spacing:-1px;
+
       overflow:visible;
-      margin-bottom:22px;
+
+      margin-bottom:18px;
     }
 
     .hero h1 span{
       display:block;
-      color:var(--gold);
-      font-size:.36em;
-      letter-spacing:5px;
-      font-weight:400;
-      margin-top:8px;
+
+      color:transparent;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--gold-light),
+          var(--gold),
+          #fff0b0
+        );
+
+      -webkit-background-clip:text;
+      background-clip:text;
     }
 
-    .hero p{
-      max-width:780px;
-      color:#b9b9b9;
-      font-size:16px;
-      line-height:1.95;
+    .hero-description{
+      max-width:760px;
+
+      color:#8e8e8e;
+
+      font-size:15px;
+
+      line-height:2;
+
+      margin-bottom:28px;
     }
 
-    .hero-symbol{
-      position:absolute;
-      right:4%;
-      bottom:20px;
-      font-family:"Kanit",sans-serif;
-      font-size:150px;
-      line-height:1;
-      font-weight:700;
-      letter-spacing:-8px;
-      color:rgba(200,164,91,.035);
-      pointer-events:none;
+    .hero-actions{
+      display:flex;
+
+      flex-wrap:wrap;
+
+      gap:10px;
     }
 
-    /* =========================================
-       SECTIONS
-    ========================================= */
+    .hero-btn{
+      display:inline-flex;
+
+      align-items:center;
+      justify-content:center;
+
+      min-height:48px;
+
+      padding:0 22px;
+
+      border-radius:9px;
+
+      font-size:12px;
+
+      transition:.25s;
+    }
+
+    .hero-btn.primary{
+      color:#111;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--gold-light),
+          var(--gold)
+        );
+    }
+
+    .hero-btn.secondary{
+      color:#bbb;
+
+      border:
+        1px solid var(--line);
+
+      background:
+        rgba(255,255,255,.025);
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-2px);
+    }
+
+
+    /* ==============================
+       SECTION
+    ============================== */
 
     .section{
-      padding:90px 0;
+      padding:80px 0;
     }
 
     .section-head{
       display:flex;
+
       align-items:flex-end;
       justify-content:space-between;
+
       gap:30px;
-      margin-bottom:42px;
+
+      margin-bottom:30px;
     }
 
-    .section-kicker{
+    .section-label{
       color:var(--gold);
-      font-size:11px;
-      letter-spacing:3px;
-      margin-bottom:9px;
+
+      font-size:10px;
+
+      letter-spacing:2.5px;
+
+      margin-bottom:7px;
     }
 
     .section-title{
       font-family:"Kanit",sans-serif;
-      font-size:38px;
-      line-height:1.3;
-      font-weight:600;
+
+      font-size:
+        clamp(30px,4vw,44px);
+
+      line-height:1.35;
+
+      font-weight:500;
     }
 
     .section-description{
-      max-width:680px;
-      color:#929292;
-      font-size:14px;
-      line-height:1.9;
-    }
+      max-width:540px;
 
-    /* =========================================
-       TECHNICAL INTRO
-    ========================================= */
-
-    .tech-intro{
-      display:grid;
-      grid-template-columns:1.25fr .75fr;
-      gap:22px;
-      margin-bottom:70px;
-    }
-
-    .intro-main,
-    .intro-side{
-      border:1px solid var(--line);
-      border-radius:20px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.018)
-        );
-    }
-
-    .intro-main{
-      padding:38px;
-    }
-
-    .intro-main h2{
-      font-family:"Kanit",sans-serif;
-      font-size:29px;
-      line-height:1.45;
-      margin-bottom:15px;
-    }
-
-    .intro-main p{
-      color:#999;
-      font-size:14px;
-      line-height:1.95;
-    }
-
-    .intro-side{
-      padding:30px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .side-line{
-      display:flex;
-      align-items:flex-start;
-      gap:13px;
-      padding:14px 0;
-      border-bottom:1px solid var(--line);
-    }
-
-    .side-line:last-child{
-      border-bottom:0;
-    }
-
-    .side-icon{
-      width:34px;
-      height:34px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-shrink:0;
-      border:1px solid var(--gold-line);
-      border-radius:8px;
-      color:var(--gold-light);
-      font-size:14px;
-    }
-
-    .side-line strong{
-      display:block;
-      font-family:"Kanit",sans-serif;
-      font-size:15px;
-      font-weight:500;
-      margin-bottom:3px;
-    }
-
-    .side-line span{
       color:#777;
+
       font-size:12px;
-      line-height:1.6;
+
+      line-height:1.9;
+
+      text-align:right;
     }
 
-    /* =========================================
-       DOCUMENT FILTER
-    ========================================= */
 
-    .document-filter{
+    /* ==============================
+       DOCUMENT FILTER
+    ============================== */
+
+    .document-controls{
       display:flex;
+
       align-items:center;
-      gap:8px;
+
+      justify-content:space-between;
+
+      gap:15px;
+
+      margin-bottom:22px;
+    }
+
+    .filter-buttons{
+      display:flex;
+
+      gap:7px;
+
       flex-wrap:wrap;
-      padding:7px;
-      width:max-content;
-      max-width:100%;
-      border:1px solid var(--line);
-      border-radius:13px;
-      background:rgba(255,255,255,.025);
-      margin-bottom:30px;
     }
 
     .filter-btn{
-      border:1px solid transparent;
+      padding:9px 14px;
+
+      border:
+        1px solid var(--line);
+
       border-radius:8px;
-      background:transparent;
-      color:#999;
-      padding:10px 15px;
-      font-size:12px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      color:#777;
+
       cursor:pointer;
-      transition:.25s ease;
+
+      font-size:11px;
+
+      transition:.25s;
     }
 
     .filter-btn:hover{
-      color:#fff;
-      background:rgba(255,255,255,.04);
+      color:#ddd;
+
+      border-color:var(--gold-line);
     }
 
     .filter-btn.active{
       color:#111;
-      background:linear-gradient(
-        135deg,
-        var(--gold-light),
-        var(--gold)
-      );
-      font-weight:600;
+
+      border-color:var(--gold);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--gold-light),
+          var(--gold)
+        );
     }
 
-    /* =========================================
-       DOCUMENT GRID
-    ========================================= */
+    .search-box{
+      width:280px;
 
-    .document-grid{
+      position:relative;
+    }
+
+    .search-box input{
+      width:100%;
+
+      height:42px;
+
+      padding:
+        0 14px 0 40px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:9px;
+
+      outline:none;
+
+      background:
+        rgba(255,255,255,.035);
+
+      color:#ddd;
+
+      font-size:12px;
+    }
+
+    .search-box input:focus{
+      border-color:var(--gold-line);
+    }
+
+    .search-icon{
+      position:absolute;
+
+      left:14px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      color:#666;
+
+      font-size:14px;
+    }
+
+
+    /* ==============================
+       DOCUMENT GRID
+    ============================== */
+
+    .documents-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:15px;
     }
 
     .document-card{
       position:relative;
+
+      min-height:250px;
+
+      padding:25px;
+
       display:flex;
+
       flex-direction:column;
-      min-height:330px;
-      border:1px solid var(--line);
-      border-radius:19px;
-      overflow:hidden;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:16px;
+
       background:
         linear-gradient(
           145deg,
-          rgba(255,255,255,.05),
-          rgba(255,255,255,.015)
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.012)
         );
-      transition:.35s ease;
+
+      overflow:hidden;
+
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+    }
+
+    .document-card::before{
+      content:"";
+
+      position:absolute;
+
+      width:150px;
+      height:150px;
+
+      right:-70px;
+      top:-70px;
+
+      border-radius:50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(200,164,91,.13),
+          transparent 70%
+        );
     }
 
     .document-card:hover{
-      transform:translateY(-6px);
+      transform:translateY(-5px);
+
       border-color:var(--gold-line);
-      box-shadow:
-        0 25px 70px rgba(0,0,0,.4),
-        0 0 35px rgba(200,164,91,.05);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(200,164,91,.065),
+          rgba(255,255,255,.018)
+        );
     }
 
-    .document-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:15px;
-      padding:21px 22px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .doc-icon{
+    .document-icon{
       width:48px;
       height:48px;
+
       display:flex;
       align-items:center;
       justify-content:center;
-      border:1px solid var(--gold-line);
+
+      border:
+        1px solid var(--gold-line);
+
       border-radius:12px;
-      background:rgba(200,164,91,.055);
+
       color:var(--gold-light);
-      font-family:"Kanit",sans-serif;
-      font-size:12px;
-      font-weight:600;
-    }
 
-    .doc-type{
-      color:var(--gold);
-      font-size:10px;
-      letter-spacing:2px;
-    }
-
-    .document-body{
-      padding:24px 22px;
-      display:flex;
-      flex-direction:column;
-      flex:1;
-    }
-
-    .document-code{
-      color:#5f5f5f;
-      font-family:"Kanit",sans-serif;
-      font-size:10px;
-      letter-spacing:2px;
-      margin-bottom:8px;
-    }
-
-    .document-title{
-      font-family:"Kanit",sans-serif;
-      font-size:22px;
-      line-height:1.45;
-      font-weight:500;
-      margin-bottom:10px;
-    }
-
-    .document-description{
-      color:#8c8c8c;
-      font-size:13px;
-      line-height:1.8;
-      flex:1;
-    }
-
-    .document-footer{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding-top:19px;
-      margin-top:20px;
-      border-top:1px solid var(--line);
-    }
-
-    .document-status{
-      color:#666;
-      font-size:10px;
-    }
-
-    .document-download{
-      min-height:40px;
-      padding:0 13px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:7px;
-      border-radius:9px;
-      border:1px solid var(--gold-line);
-      background:rgba(200,164,91,.045);
-      color:var(--gold-light);
-      font-size:11px;
-      cursor:pointer;
-      transition:.25s ease;
-    }
-
-    .document-download:hover{
-      background:linear-gradient(
-        135deg,
-        var(--gold-light),
-        var(--gold)
-      );
-      color:#111;
-    }
-
-    /* =========================================
-       TECHNICAL PROCESS
-    ========================================= */
-
-    .process-section{
-      margin-top:75px;
-    }
-
-    .process-grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:12px;
-    }
-
-    .process-item{
-      position:relative;
-      min-height:185px;
-      padding:23px 18px;
-      border:1px solid var(--line);
-      border-radius:15px;
-      background:rgba(255,255,255,.025);
-    }
-
-    .process-item:not(:last-child)::after{
-      content:"→";
-      position:absolute;
-      right:-18px;
-      top:50%;
-      transform:translateY(-50%);
-      color:var(--gold);
-      z-index:2;
       font-size:18px;
+
+      background:
+        rgba(200,164,91,.06);
+
+      margin-bottom:20px;
     }
 
-    .process-number{
-      font-family:"Kanit",sans-serif;
-      font-size:30px;
-      color:rgba(200,164,91,.25);
-      margin-bottom:13px;
-    }
+    .document-type{
+      color:var(--gold);
 
-    .process-item h3{
-      font-family:"Kanit",sans-serif;
-      font-size:17px;
-      font-weight:500;
+      font-size:9px;
+
+      letter-spacing:2px;
+
       margin-bottom:7px;
     }
 
-    .process-item p{
+    .document-card h3{
+      font-family:"Kanit",sans-serif;
+
+      font-size:21px;
+
+      font-weight:500;
+
+      line-height:1.4;
+
+      margin-bottom:9px;
+    }
+
+    .document-card p{
       color:#777;
+
+      font-size:12px;
+
+      line-height:1.8;
+
+      margin-bottom:18px;
+    }
+
+    .document-meta{
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      color:#555;
+
+      font-size:10px;
+
+      margin-top:auto;
+
+      margin-bottom:15px;
+    }
+
+    .document-status{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:6px;
+
+      color:#777;
+
+      font-size:10px;
+    }
+
+    .status-dot{
+      width:6px;
+      height:6px;
+
+      border-radius:50%;
+
+      background:#555;
+    }
+
+    .document-status.ready{
+      color:var(--gold-light);
+    }
+
+    .document-status.ready
+    .status-dot{
+      background:var(--gold);
+    }
+
+    .document-btn{
+      width:100%;
+
+      min-height:42px;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      border-radius:8px;
+
+      color:#aaa;
+
+      border:
+        1px solid var(--line);
+
       font-size:11px;
+
+      transition:.25s;
+    }
+
+    .document-btn:hover{
+      color:var(--gold-light);
+
+      border-color:var(--gold-line);
+    }
+
+    .document-btn.disabled{
+      cursor:not-allowed;
+
+      color:#555;
+
+      background:
+        rgba(255,255,255,.015);
+    }
+
+    .document-btn.disabled:hover{
+      color:#555;
+
+      border-color:var(--line);
+    }
+
+
+    /* ==============================
+       QUICK ACCESS
+    ============================== */
+
+    .quick-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:13px;
+    }
+
+    .quick-card{
+      padding:22px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:13px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      transition:.25s;
+    }
+
+    .quick-card:hover{
+      border-color:var(--gold-line);
+
+      transform:translateY(-3px);
+    }
+
+    .quick-number{
+      color:#444;
+
+      font-family:"Kanit",sans-serif;
+
+      font-size:11px;
+
+      letter-spacing:2px;
+
+      margin-bottom:13px;
+    }
+
+    .quick-card strong{
+      display:block;
+
+      color:#ddd;
+
+      font-family:"Kanit",sans-serif;
+
+      font-size:17px;
+
+      font-weight:500;
+
+      margin-bottom:6px;
+    }
+
+    .quick-card span{
+      color:#666;
+
+      font-size:11px;
+
       line-height:1.7;
     }
 
-    /* =========================================
-       TECHNICAL NOTE
-    ========================================= */
 
-    .note-panel{
-      margin-top:70px;
-      padding:31px;
-      border:1px solid var(--gold-line);
-      border-radius:19px;
+    /* ==============================
+       WORKFLOW
+    ============================== */
+
+    .workflow{
+      display:grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:0;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:17px;
+
+      overflow:hidden;
+
+      background:
+        rgba(255,255,255,.018);
+    }
+
+    .workflow-step{
+      position:relative;
+
+      padding:28px 23px;
+
+      min-height:190px;
+
+      border-right:
+        1px solid var(--line);
+    }
+
+    .workflow-step:last-child{
+      border-right:0;
+    }
+
+    .workflow-step::after{
+      content:"";
+
+      position:absolute;
+
+      right:-8px;
+      top:50%;
+
+      width:15px;
+      height:15px;
+
+      transform:
+        translateY(-50%)
+        rotate(45deg);
+
+      border-top:
+        1px solid var(--gold-line);
+
+      border-right:
+        1px solid var(--gold-line);
+
+      background:#090909;
+
+      z-index:2;
+    }
+
+    .workflow-step:last-child::after{
+      display:none;
+    }
+
+    .workflow-number{
+      color:var(--gold);
+
+      font-family:"Kanit",sans-serif;
+
+      font-size:11px;
+
+      letter-spacing:2px;
+
+      margin-bottom:15px;
+    }
+
+    .workflow-step h3{
+      font-family:"Kanit",sans-serif;
+
+      font-size:20px;
+
+      font-weight:500;
+
+      margin-bottom:7px;
+    }
+
+    .workflow-step p{
+      color:#6e6e6e;
+
+      font-size:11px;
+
+      line-height:1.8;
+    }
+
+
+    /* ==============================
+       TECHNICAL NOTE
+    ============================== */
+
+    .technical-note{
+      display:grid;
+
+      grid-template-columns:
+        1.1fr .9fr;
+
+      gap:15px;
+
+      margin-top:15px;
+    }
+
+    .note-card{
+      padding:30px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.012)
+        );
+    }
+
+    .note-card.gold{
+      border-color:var(--gold-line);
+
       background:
         radial-gradient(
-          circle at 100% 0%,
-          rgba(200,164,91,.1),
-          transparent 40%
+          circle at 90% 20%,
+          rgba(200,164,91,.09),
+          transparent 50%
         ),
         rgba(200,164,91,.025);
     }
 
-    .note-panel h3{
+    .note-card h3{
       font-family:"Kanit",sans-serif;
-      font-size:23px;
-      margin-bottom:9px;
-    }
 
-    .note-panel p{
-      max-width:920px;
-      color:#999;
-      font-size:13px;
-      line-height:1.9;
-    }
-
-    /* =========================================
-       CTA
-    ========================================= */
-
-    .cta{
-      padding:85px 0;
-      text-align:center;
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      background:
-        radial-gradient(
-          circle at 50% 100%,
-          rgba(200,164,91,.08),
-          transparent 48%
-        );
-    }
-
-    .cta h2{
-      font-family:"Kanit",sans-serif;
-      font-size:42px;
-      line-height:1.35;
-      margin-bottom:13px;
-    }
-
-    .cta p{
-      max-width:720px;
-      margin:0 auto 28px;
-      color:#8f8f8f;
-      font-size:14px;
-      line-height:1.9;
-    }
-
-    .cta-buttons{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:11px;
-      flex-wrap:wrap;
-    }
-
-    .cta-btn{
-      min-height:50px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:0 23px;
-      border-radius:10px;
-      font-size:12px;
-      transition:.25s ease;
-    }
-
-    .cta-gold{
-      color:#111;
-      background:linear-gradient(
-        135deg,
-        var(--gold-light),
-        var(--gold)
-      );
-      font-weight:600;
-    }
-
-    .cta-dark{
       color:#ddd;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
+
+      font-size:23px;
+
+      font-weight:500;
+
+      margin-bottom:10px;
     }
 
-    .cta-btn:hover{
-      transform:translateY(-2px);
+    .note-card p{
+      color:#777;
+
+      font-size:12px;
+
+      line-height:1.95;
     }
 
-    /* =========================================
+    .note-list{
+      margin-top:17px;
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:8px;
+    }
+
+    .note-list div{
+      display:flex;
+
+      gap:10px;
+
+      color:#777;
+
+      font-size:11px;
+
+      line-height:1.7;
+    }
+
+    .note-list div::before{
+      content:"✓";
+
+      color:var(--gold);
+
+      flex-shrink:0;
+    }
+
+
+    /* ==============================
+       DOWNLOAD MODAL
+    ============================== */
+
+    .modal{
+      position:fixed;
+
+      inset:0;
+
+      z-index:2000;
+
+      display:none;
+
+      align-items:center;
+      justify-content:center;
+
+      padding:20px;
+
+      background:
+        rgba(0,0,0,.78);
+
+      backdrop-filter:blur(8px);
+    }
+
+    .modal.show{
+      display:flex;
+    }
+
+    .modal-box{
+      width:min(
+        600px,
+        100%
+      );
+
+      border:
+        1px solid var(--gold-line);
+
+      border-radius:18px;
+
+      background:
+        #0d0d0d;
+
+      box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.7);
+
+      overflow:hidden;
+    }
+
+    .modal-head{
+      display:flex;
+
+      align-items:center;
+      justify-content:space-between;
+
+      padding:20px 22px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .modal-head h3{
+      font-family:"Kanit",sans-serif;
+
+      font-size:20px;
+
+      font-weight:500;
+    }
+
+    .modal-close{
+      width:35px;
+      height:35px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:8px;
+
+      color:#aaa;
+
+      background:
+        rgba(255,255,255,.03);
+
+      cursor:pointer;
+    }
+
+    .modal-body{
+      padding:25px;
+    }
+
+    .modal-body p{
+      color:#888;
+
+      font-size:13px;
+
+      line-height:1.9;
+
+      margin-bottom:17px;
+    }
+
+    .modal-warning{
+      padding:17px;
+
+      border:
+        1px solid rgba(255,255,255,.08);
+
+      border-radius:10px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      color:#777;
+
+      font-size:11px;
+
+      line-height:1.8;
+
+      margin-bottom:18px;
+    }
+
+    .modal-action{
+      width:100%;
+
+      min-height:45px;
+
+      border:0;
+
+      border-radius:8px;
+
+      color:#111;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--gold-light),
+          var(--gold)
+        );
+
+      cursor:pointer;
+
+      font-size:12px;
+    }
+
+
+    /* ==============================
        FOOTER
-    ========================================= */
+    ============================== */
 
     footer{
-      padding:55px 0 30px;
+      padding:55px 0 28px;
+
       background:#030303;
+
+      border-top:
+        1px solid var(--line);
     }
 
     .footer-grid{
       display:grid;
-      grid-template-columns:1.5fr 1fr 1fr;
-      gap:50px;
-      padding-bottom:40px;
-      border-bottom:1px solid var(--line);
+
+      grid-template-columns:
+        1.5fr 1fr 1fr;
+
+      gap:45px;
+
+      padding-bottom:35px;
+
+      border-bottom:
+        1px solid var(--line);
     }
 
     .footer-brand{
       display:flex;
+
       align-items:center;
-      gap:14px;
-      margin-bottom:16px;
+
+      gap:13px;
+
+      margin-bottom:15px;
     }
 
     .footer-brand img{
-      width:62px;
-      height:62px;
+      width:60px;
+      height:60px;
+
       object-fit:contain;
     }
 
     .footer-brand strong{
       font-family:"Kanit",sans-serif;
+
       font-size:19px;
+
       letter-spacing:1px;
     }
 
     .footer-description{
-      color:#777;
-      font-size:13px;
+      max-width:490px;
+
+      color:#707070;
+
+      font-size:12px;
+
       line-height:1.9;
-      max-width:500px;
     }
 
     .footer-title{
       color:var(--gold-light);
+
       font-family:"Kanit",sans-serif;
-      font-size:17px;
-      margin-bottom:15px;
+
+      font-size:16px;
+
+      margin-bottom:14px;
     }
 
     .footer-links{
       display:flex;
+
       flex-direction:column;
-      gap:9px;
+
+      gap:8px;
     }
 
     .footer-links a{
-      color:#777;
-      font-size:13px;
+      color:#707070;
+
+      font-size:12px;
+
       transition:.2s;
     }
 
@@ -839,45 +1381,68 @@
 
     .footer-bottom{
       display:flex;
+
       align-items:center;
       justify-content:space-between;
+
       gap:20px;
-      padding-top:22px;
-      color:#555;
-      font-size:11px;
+
+      padding-top:20px;
+
+      color:#4e4e4e;
+
+      font-size:10px;
     }
 
-    /* =========================================
-       FLOAT
-    ========================================= */
+
+    /* ==============================
+       FLOATING
+    ============================== */
 
     .floating-actions{
       position:fixed;
-      right:20px;
-      bottom:20px;
+
+      right:19px;
+      bottom:19px;
+
       z-index:900;
+
       display:flex;
+
       flex-direction:column;
-      gap:9px;
+
+      gap:8px;
     }
 
     .float-btn{
-      width:50px;
-      height:50px;
+      width:49px;
+      height:49px;
+
       display:flex;
+
       align-items:center;
       justify-content:center;
+
       border-radius:50%;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(12,12,12,.9);
+
+      border:
+        1px solid rgba(255,255,255,.12);
+
+      background:
+        rgba(10,10,10,.92);
+
       backdrop-filter:blur(12px);
-      box-shadow:0 10px 30px rgba(0,0,0,.4);
-      transition:.25s ease;
-      font-size:19px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.4);
+
+      transition:.25s;
     }
 
     .float-btn:hover{
       transform:translateY(-3px);
+
       border-color:var(--gold-line);
     }
 
@@ -885,54 +1450,81 @@
       color:var(--gold-light);
     }
 
-    /* =========================================
-       REVEAL
-    ========================================= */
 
-    .reveal{
-      opacity:0;
-      transform:translateY(20px);
-      transition:
-        opacity .7s ease,
-        transform .7s ease;
+    /* ==============================
+       EMPTY
+    ============================== */
+
+    .empty-state{
+      display:none;
+
+      padding:55px 20px;
+
+      text-align:center;
+
+      border:
+        1px dashed var(--line);
+
+      border-radius:15px;
+
+      color:#666;
     }
 
-    .reveal.visible{
-      opacity:1;
-      transform:none;
+    .empty-state.show{
+      display:block;
     }
 
-    /* =========================================
+
+    /* ==============================
        RESPONSIVE
-    ========================================= */
+    ============================== */
 
-    @media(max-width:1120px){
+    @media(max-width:1100px){
 
       .nav-menu a{
-        font-size:11px;
-        padding:9px 7px;
+        font-size:10px;
+        padding:8px 6px;
       }
 
-      .document-grid{
-        grid-template-columns:repeat(2,1fr);
+      .documents-grid{
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
-      .process-grid{
-        grid-template-columns:repeat(3,1fr);
+      .quick-grid{
+        grid-template-columns:
+          repeat(2,1fr);
       }
 
-      .process-item:nth-child(3)::after{
+      .workflow{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .workflow-step{
+        border-bottom:
+          1px solid var(--line);
+      }
+
+      .workflow-step:nth-child(2){
+        border-right:0;
+      }
+
+      .workflow-step:nth-child(3){
+        border-bottom:0;
+      }
+
+      .workflow-step:nth-child(4){
+        border-bottom:0;
+        border-right:0;
+      }
+
+      .workflow-step::after{
         display:none;
       }
 
-      .footer-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .footer-grid > :first-child{
-        grid-column:1/-1;
-      }
     }
+
 
     @media(max-width:850px){
 
@@ -959,17 +1551,32 @@
 
       .nav-menu{
         position:absolute;
+
+        top:
+          calc(100% + 8px);
+
         left:14px;
         right:14px;
-        top:calc(100% + 8px);
+
         display:none;
+
         flex-direction:column;
+
         align-items:stretch;
-        padding:10px;
-        border:1px solid var(--line);
+
+        padding:9px;
+
+        border:
+          1px solid var(--line);
+
         border-radius:14px;
-        background:rgba(10,10,10,.97);
-        box-shadow:0 20px 60px rgba(0,0,0,.55);
+
+        background:
+          rgba(9,9,9,.98);
+
+        box-shadow:
+          0 20px 60px
+          rgba(0,0,0,.55);
       }
 
       .nav-menu.open{
@@ -978,28 +1585,10 @@
 
       .nav-menu a{
         width:100%;
-        padding:13px 14px;
+
+        padding:13px;
+
         font-size:14px;
-      }
-
-      .nav-menu .nav-shop{
-        margin:3px 0 0;
-      }
-
-      .hero{
-        min-height:430px;
-      }
-
-      .hero-content{
-        padding:65px 0;
-      }
-
-      .hero-symbol{
-        font-size:90px;
-      }
-
-      .tech-intro{
-        grid-template-columns:1fr;
       }
 
       .section-head{
@@ -1007,87 +1596,95 @@
       }
 
       .section-description{
+        text-align:left;
+
         margin-top:12px;
       }
 
-      .process-grid{
-        grid-template-columns:1fr 1fr;
+      .document-controls{
+        display:block;
       }
 
-      .process-item::after{
-        display:none !important;
+      .search-box{
+        width:100%;
+
+        margin-top:12px;
       }
+
+      .technical-note{
+        grid-template-columns:1fr;
+      }
+
+      .footer-grid{
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .footer-grid > :first-child{
+        grid-column:1/-1;
+      }
+
     }
+
 
     @media(max-width:620px){
 
       .container{
-        width:min(var(--container),calc(100% - 28px));
+        width:
+          min(
+            var(--container),
+            calc(100% - 28px)
+          );
       }
 
-      .hero h1{
-        font-size:43px;
+      .hero{
+        min-height:530px;
       }
 
-      .hero h1 span{
-        font-size:12px;
-        letter-spacing:2px;
-      }
-
-      .hero p{
-        font-size:14px;
-      }
-
-      .section{
+      .hero-content{
         padding:70px 0;
       }
 
-      .section-title{
-        font-size:31px;
+      .hero h1{
+        font-size:46px;
       }
 
-      .intro-main{
-        padding:27px 22px;
+      .hero-description{
+        font-size:13px;
       }
 
-      .intro-main h2{
-        font-size:24px;
+      .section{
+        padding:60px 0;
       }
 
-      .intro-side{
-        padding:22px;
-      }
-
-      .document-filter{
-        width:100%;
-        overflow-x:auto;
-        flex-wrap:nowrap;
-      }
-
-      .filter-btn{
-        flex-shrink:0;
-        white-space:nowrap;
-      }
-
-      .document-grid{
+      .documents-grid{
         grid-template-columns:1fr;
       }
 
-      .process-grid{
+      .quick-grid{
         grid-template-columns:1fr;
       }
 
-      .note-panel{
-        padding:25px 20px;
+      .workflow{
+        grid-template-columns:1fr;
       }
 
-      .cta h2{
-        font-size:32px;
+      .workflow-step,
+      .workflow-step:nth-child(2),
+      .workflow-step:nth-child(3),
+      .workflow-step:nth-child(4){
+        border-right:0;
+
+        border-bottom:
+          1px solid var(--line);
+      }
+
+      .workflow-step:last-child{
+        border-bottom:0;
       }
 
       .footer-grid{
         grid-template-columns:1fr;
-        gap:30px;
       }
 
       .footer-grid > :first-child{
@@ -1096,54 +1693,72 @@
 
       .footer-bottom{
         flex-direction:column;
+
         align-items:flex-start;
       }
 
       .floating-actions{
-        right:13px;
-        bottom:13px;
+        right:12px;
+        bottom:12px;
       }
 
-      .float-btn{
-        width:47px;
-        height:47px;
-      }
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <!-- =========================================
        HEADER
-  ========================================= -->
+  ========================================== -->
 
   <header class="site-header">
 
     <div class="container header-inner">
 
-      <a href="index.html" class="brand">
+      <a
+        href="index.html"
+        class="brand"
+      >
 
         <img
           src="assets/logo.png"
           alt="CHATPETCH GROUP"
-          class="brand-logo">
+          class="brand-logo"
+        >
 
         <div class="brand-text">
-          <strong>CHATPETCH GROUP</strong>
-          <span>FLOORING SYSTEM SPECIALIST</span>
+
+          <strong>
+            CHATPETCH GROUP
+          </strong>
+
+          <span>
+            FLOORING SYSTEM SPECIALIST
+          </span>
+
         </div>
 
       </a>
 
+
       <button
         class="menu-toggle"
         id="menuToggle"
-        aria-label="เปิดเมนู">
+        aria-label="เปิดเมนู"
+      >
         ☰
       </button>
 
-      <nav class="nav-menu" id="navMenu">
+
+      <nav
+        class="nav-menu"
+        id="navMenu"
+      >
 
         <a href="index.html">
           หน้าแรก
@@ -1171,7 +1786,8 @@
 
         <a
           href="technical-center.html"
-          class="active">
+          class="active"
+        >
           Technical Center
         </a>
 
@@ -1189,7 +1805,8 @@
 
         <a
           href="cart.html"
-          class="nav-shop">
+          class="nav-shop"
+        >
           🛒 ตะกร้า
         </a>
 
@@ -1202,11 +1819,16 @@
 
   <!-- =========================================
        HERO
-  ========================================= -->
+  ========================================== -->
 
   <section class="hero">
 
     <div class="hero-grid"></div>
+
+    <div class="hero-glow"></div>
+
+    <div class="hero-glow-2"></div>
+
 
     <div class="container hero-content">
 
@@ -1214,432 +1836,519 @@
         TECHNICAL CENTER
       </div>
 
+
       <h1>
-        ศูนย์ข้อมูลทางเทคนิค
-        <span>TECHNICAL DOCUMENTATION</span>
+        ศูนย์รวม
+        <span>
+          เอกสารทางเทคนิค
+        </span>
       </h1>
 
-      <p>
-        รวมเอกสารและข้อมูลประกอบการเลือกใช้ระบบพื้นและวัสดุ
-        สำหรับฝ่ายจัดซื้อ วิศวกร ผู้รับเหมา ผู้ออกแบบ และทีมหน้างาน
-        เพื่อให้การวางระบบและการทำงานอ้างอิงข้อมูลจากเอกสารจริง
+
+      <p class="hero-description">
+
+        รวมเอกสารที่ใช้ประกอบการออกแบบ
+        เลือกระบบวัสดุ จัดทำ Specification
+        และเตรียมข้อมูลสำหรับงานติดตั้ง
+        เพื่อให้ทีมงาน เจ้าของโครงการ
+        และผู้รับเหมาสามารถเข้าถึงข้อมูลได้สะดวก
+
       </p>
 
-    </div>
 
-    <div class="hero-symbol">
-      TDS
+      <div class="hero-actions">
+
+        <a
+          href="#documents"
+          class="hero-btn primary"
+        >
+          ดูเอกสารทั้งหมด
+        </a>
+
+        <a
+          href="contact.html"
+          class="hero-btn secondary"
+        >
+          ขอข้อมูลทางเทคนิค
+        </a>
+
+      </div>
+
     </div>
 
   </section>
 
 
   <!-- =========================================
-       MAIN
-  ========================================= -->
+       QUICK ACCESS
+  ========================================== -->
 
-  <main>
+  <section class="section">
 
-    <section class="section">
+    <div class="container">
 
-      <div class="container">
+      <div class="section-head">
 
-        <div class="section-head reveal">
+        <div>
 
-          <div>
-
-            <div class="section-kicker">
-              TECHNICAL DOCUMENTATION
-            </div>
-
-            <h2 class="section-title">
-              Technical Center
-            </h2>
-
+          <div class="section-label">
+            DOCUMENT TYPES
           </div>
 
-          <p class="section-description">
-            เอกสารแต่ละประเภทมีหน้าที่แตกต่างกัน
-            สามารถเลือกดูตามประเภทเอกสารได้
-            และดาวน์โหลดไฟล์จริงเมื่อบริษัทนำไฟล์มาเชื่อมต่อ
-          </p>
+          <h2 class="section-title">
+            เอกสารที่ใช้ในงานจริง
+          </h2>
 
         </div>
 
+        <p class="section-description">
 
-        <!-- =====================================
-             INTRO
-        ====================================== -->
+          เอกสารแต่ละประเภทมีหน้าที่แตกต่างกัน
+          ควรเลือกใช้ให้ตรงกับวัตถุประสงค์
+          และตรวจสอบ Revision ก่อนนำไปใช้งาน
 
-        <div class="tech-intro">
+        </p>
 
-          <div class="intro-main reveal">
+      </div>
 
-            <h2>
-              ข้อมูลทางเทคนิคที่ใช้ประกอบการตัดสินใจ
-            </h2>
 
-            <p>
-              หน้านี้จัดเตรียมโครงสร้างสำหรับรวบรวมเอกสาร
-              Technical Data Sheet (TDS), Safety Data Sheet (SDS),
-              Method Statement, Specification Text, CAD Detail
-              และเงื่อนไขการรับประกัน
-              โดยจะใช้ข้อมูลจากเอกสารของบริษัทเป็นหลัก
-            </p>
+      <div class="quick-grid">
 
+        <a
+          href="#documents"
+          class="quick-card"
+        >
+
+          <div class="quick-number">
+            01 / TDS
           </div>
 
+          <strong>
+            Technical Data Sheet
+          </strong>
 
-          <div class="intro-side reveal">
+          <span>
+            ข้อมูลทางเทคนิคของผลิตภัณฑ์
+          </span>
 
-            <div class="side-line">
-
-              <div class="side-icon">
-                T
-              </div>
-
-              <div>
-                <strong>
-                  TDS
-                </strong>
-
-                <span>
-                  Technical Data Sheet
-                </span>
-              </div>
-
-            </div>
+        </a>
 
 
-            <div class="side-line">
+        <a
+          href="#documents"
+          class="quick-card"
+        >
 
-              <div class="side-icon">
-                S
-              </div>
-
-              <div>
-                <strong>
-                  SDS
-                </strong>
-
-                <span>
-                  Safety Data Sheet
-                </span>
-              </div>
-
-            </div>
-
-
-            <div class="side-line">
-
-              <div class="side-icon">
-                M
-              </div>
-
-              <div>
-                <strong>
-                  Method Statement
-                </strong>
-
-                <span>
-                  ขั้นตอนและวิธีการทำงาน
-                </span>
-              </div>
-
-            </div>
-
-
-            <div class="side-line">
-
-              <div class="side-icon">
-                W
-              </div>
-
-              <div>
-                <strong>
-                  Warranty
-                </strong>
-
-                <span>
-                  เงื่อนไขการรับประกัน
-                </span>
-              </div>
-
-            </div>
-
+          <div class="quick-number">
+            02 / SDS
           </div>
+
+          <strong>
+            Safety Data Sheet
+          </strong>
+
+          <span>
+            ข้อมูลด้านความปลอดภัยและการจัดการวัสดุ
+          </span>
+
+        </a>
+
+
+        <a
+          href="#documents"
+          class="quick-card"
+        >
+
+          <div class="quick-number">
+            03 / METHOD
+          </div>
+
+          <strong>
+            Method Statement
+          </strong>
+
+          <span>
+            แนวทางและลำดับขั้นตอนการทำงาน
+          </span>
+
+        </a>
+
+
+        <a
+          href="#documents"
+          class="quick-card"
+        >
+
+          <div class="quick-number">
+            04 / SPEC
+          </div>
+
+          <strong>
+            Specification
+          </strong>
+
+          <span>
+            ข้อความสำหรับใช้ประกอบแบบและเอกสารโครงการ
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       DOCUMENTS
+  ========================================== -->
+
+  <section
+    class="section"
+    id="documents"
+  >
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="section-label">
+            DOWNLOAD CENTER
+          </div>
+
+          <h2 class="section-title">
+            Technical Documents
+          </h2>
 
         </div>
 
+        <p class="section-description">
 
-        <!-- =====================================
-             DOCUMENTS
-        ====================================== -->
+          เลือกประเภทเอกสาร
+          หรือค้นหาชื่อผลิตภัณฑ์
+          เพื่อเข้าถึงข้อมูลที่ต้องการ
 
-        <div class="section-head reveal">
+        </p>
 
-          <div>
-
-            <div class="section-kicker">
-              DOCUMENT LIBRARY
-            </div>
-
-            <h2 class="section-title">
-              เอกสารทางเทคนิค
-            </h2>
-
-          </div>
-
-          <p class="section-description">
-            เลือกประเภทเอกสารที่ต้องการ
-          </p>
-
-        </div>
+      </div>
 
 
-        <div class="document-filter reveal">
+      <div class="document-controls">
+
+
+        <div
+          class="filter-buttons"
+          id="filterButtons"
+        >
 
           <button
             class="filter-btn active"
-            data-filter="all">
+            data-filter="all"
+          >
             ทั้งหมด
           </button>
 
           <button
             class="filter-btn"
-            data-filter="tds">
+            data-filter="tds"
+          >
             TDS
           </button>
 
           <button
             class="filter-btn"
-            data-filter="sds">
+            data-filter="sds"
+          >
             SDS
           </button>
 
           <button
             class="filter-btn"
-            data-filter="method">
+            data-filter="method"
+          >
             Method Statement
           </button>
 
           <button
             class="filter-btn"
-            data-filter="spec">
+            data-filter="spec"
+          >
             Specification
           </button>
 
           <button
             class="filter-btn"
-            data-filter="cad">
+            data-filter="cad"
+          >
             CAD Detail
           </button>
 
           <button
             class="filter-btn"
-            data-filter="warranty">
+            data-filter="warranty"
+          >
             Warranty
           </button>
 
         </div>
 
 
-        <div
-          class="document-grid"
-          id="documentGrid">
-        </div>
+        <div class="search-box">
 
+          <span class="search-icon">
+            ⌕
+          </span>
 
-        <!-- =====================================
-             WORKFLOW
-        ====================================== -->
-
-        <div class="process-section">
-
-          <div class="section-head reveal">
-
-            <div>
-
-              <div class="section-kicker">
-                TECHNICAL WORKFLOW
-              </div>
-
-              <h2 class="section-title">
-                ขั้นตอนการใช้ข้อมูลทางเทคนิค
-              </h2>
-
-            </div>
-
-          </div>
-
-
-          <div class="process-grid">
-
-            <div class="process-item reveal">
-
-              <div class="process-number">
-                01
-              </div>
-
-              <h3>
-                สำรวจปัญหา
-              </h3>
-
-              <p>
-                วิเคราะห์ลักษณะพื้นที่
-                สภาพผิว และปัญหาที่เกิดขึ้น
-              </p>
-
-            </div>
-
-
-            <div class="process-item reveal">
-
-              <div class="process-number">
-                02
-              </div>
-
-              <h3>
-                เลือกระบบ
-              </h3>
-
-              <p>
-                พิจารณาประเภทพื้นที่
-                และความต้องการใช้งาน
-              </p>
-
-            </div>
-
-
-            <div class="process-item reveal">
-
-              <div class="process-number">
-                03
-              </div>
-
-              <h3>
-                ตรวจเอกสาร
-              </h3>
-
-              <p>
-                อ้างอิงข้อมูลผลิตภัณฑ์
-                และเอกสารทางเทคนิค
-              </p>
-
-            </div>
-
-
-            <div class="process-item reveal">
-
-              <div class="process-number">
-                04
-              </div>
-
-              <h3>
-                วางระบบ
-              </h3>
-
-              <p>
-                กำหนดชั้นระบบ
-                ขั้นตอน และเงื่อนไขหน้างาน
-              </p>
-
-            </div>
-
-
-            <div class="process-item reveal">
-
-              <div class="process-number">
-                05
-              </div>
-
-              <h3>
-                ดำเนินงาน
-              </h3>
-
-              <p>
-                ทำงานตามวิธีการและข้อกำหนด
-                ที่ได้รับการยืนยัน
-              </p>
-
-            </div>
-
-          </div>
+          <input
+            type="search"
+            id="documentSearch"
+            placeholder="ค้นหาเอกสาร..."
+            autocomplete="off"
+          >
 
         </div>
 
+      </div>
 
-        <!-- =====================================
-             NOTE
-        ====================================== -->
 
-        <div class="note-panel reveal">
+      <div
+        class="documents-grid"
+        id="documentsGrid"
+      ></div>
+
+
+      <div
+        class="empty-state"
+        id="emptyState"
+      >
+
+        ไม่พบเอกสารที่ตรงกับคำค้นหา
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       WORKFLOW
+  ========================================== -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="section-label">
+            TECHNICAL WORKFLOW
+          </div>
+
+          <h2 class="section-title">
+            เอกสารช่วยงานอย่างไร
+          </h2>
+
+        </div>
+
+        <p class="section-description">
+
+          ใช้ข้อมูลทางเทคนิคให้สอดคล้องกับขั้นตอน
+          ตั้งแต่การสำรวจ ออกแบบ เลือกระบบ
+          ไปจนถึงการติดตั้ง
+
+        </p>
+
+      </div>
+
+
+      <div class="workflow">
+
+
+        <div class="workflow-step">
+
+          <div class="workflow-number">
+            STEP 01
+          </div>
 
           <h3>
-            หมายเหตุเกี่ยวกับเอกสาร
+            สำรวจ
           </h3>
 
           <p>
-            เอกสารในหน้านี้เป็นโครงสร้างสำหรับจัดเก็บเอกสารทางเทคนิคของบริษัท
-            ขณะนี้รายการที่ยังไม่มีไฟล์จริงจะแสดงสถานะ
-            “ยังไม่มีไฟล์” เพื่อป้องกันการนำข้อมูลหรือค่าทางเทคนิคที่ไม่ได้รับการยืนยัน
-            ไปใช้อ้างอิงโดยไม่ถูกต้อง
+            เก็บข้อมูลสภาพพื้นเดิม
+            ลักษณะการใช้งาน
+            ปัญหา และข้อจำกัดของพื้นที่
+          </p>
+
+        </div>
+
+
+        <div class="workflow-step">
+
+          <div class="workflow-number">
+            STEP 02
+          </div>
+
+          <h3>
+            เลือกระบบ
+          </h3>
+
+          <p>
+            พิจารณาระบบวัสดุ
+            ให้เหมาะกับลักษณะงาน
+            และข้อกำหนดของโครงการ
+          </p>
+
+        </div>
+
+
+        <div class="workflow-step">
+
+          <div class="workflow-number">
+            STEP 03
+          </div>
+
+          <h3>
+            ตรวจเอกสาร
+          </h3>
+
+          <p>
+            ตรวจสอบ TDS, SDS,
+            Method Statement
+            และ Specification ที่เกี่ยวข้อง
+          </p>
+
+        </div>
+
+
+        <div class="workflow-step">
+
+          <div class="workflow-number">
+            STEP 04
+          </div>
+
+          <h3>
+            ดำเนินงาน
+          </h3>
+
+          <p>
+            ติดตั้งตามขั้นตอน
+            และข้อกำหนดของระบบ
+            โดยคำนึงถึงสภาพหน้างานจริง
           </p>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+  </section>
 
 
-    <!-- =========================================
-         CTA
-    ========================================== -->
+  <!-- =========================================
+       TECHNICAL NOTE
+  ========================================== -->
 
-    <section class="cta">
+  <section class="section">
 
-      <div class="container">
+    <div class="container">
 
-        <div class="section-kicker">
-          TECHNICAL SUPPORT
+
+      <div class="technical-note">
+
+
+        <div class="note-card gold">
+
+          <h3>
+            เอกสารยังไม่พร้อมใช้งาน?
+          </h3>
+
+          <p>
+            หากเอกสารของผลิตภัณฑ์หรือระบบที่ต้องการ
+            ยังไม่มีในหน้า Technical Center
+            สามารถติดต่อทีมงานเพื่อขอข้อมูลที่เกี่ยวข้องได้
+          </p>
+
+
+          <div class="note-list">
+
+            <div>
+              ขอ TDS ของผลิตภัณฑ์
+            </div>
+
+            <div>
+              ขอ SDS ของผลิตภัณฑ์
+            </div>
+
+            <div>
+              ขอ Method Statement
+            </div>
+
+            <div>
+              ขอ Specification สำหรับโครงการ
+            </div>
+
+            <div>
+              ขอข้อมูล Warranty
+            </div>
+
+          </div>
+
         </div>
 
-        <h2>
-          ต้องการข้อมูลทางเทคนิคเพิ่มเติม?
-        </h2>
 
-        <p>
-          หากต้องการ TDS, SDS, Specification หรือข้อมูลระบบสำหรับโครงการ
-          สามารถติดต่อทีมงานเพื่อสอบถามเอกสารที่เกี่ยวข้องกับหน้างานได้
-        </p>
+        <div class="note-card">
 
-        <div class="cta-buttons">
+          <h3>
+            สำคัญก่อนนำเอกสารไปใช้
+          </h3>
 
-          <a
-            href="contact.html"
-            class="cta-btn cta-gold">
-            ติดต่อทีมงาน
-          </a>
+          <p>
+            ข้อมูลทางเทคนิคควรตรวจสอบชื่อผลิตภัณฑ์
+            รุ่น และ Revision ให้ตรงกับวัสดุที่จะใช้งานจริง
+            โดยเฉพาะโครงการที่มีข้อกำหนดเฉพาะ
+          </p>
 
-          <a
-            href="products.html"
-            class="cta-btn cta-dark">
-            ดูสินค้า
-          </a>
+
+          <div class="note-list">
+
+            <div>
+              ตรวจชื่อผลิตภัณฑ์
+            </div>
+
+            <div>
+              ตรวจ Revision ของเอกสาร
+            </div>
+
+            <div>
+              ตรวจ Specification ของโครงการ
+            </div>
+
+            <div>
+              ตรวจสภาพหน้างานก่อนติดตั้ง
+            </div>
+
+          </div>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
 
-  </main>
+  </section>
 
 
   <!-- =========================================
        FOOTER
-  ========================================= -->
+  ========================================== -->
 
   <footer>
 
@@ -1647,13 +2356,15 @@
 
       <div class="footer-grid">
 
+
         <div>
 
           <div class="footer-brand">
 
             <img
               src="assets/logo.png"
-              alt="CHATPETCH GROUP">
+              alt="CHATPETCH GROUP"
+            >
 
             <strong>
               CHATPETCH GROUP
@@ -1661,14 +2372,21 @@
 
           </div>
 
+
           <p class="footer-description">
+
             🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
+
             <br><br>
+
             ♠️ สร้างสรรค์ผลงาน
             ♠️ มาตรฐานเข้าถึง
             ♠️ ยืน 1 คุณภาพ
+
             <br>
+
             บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+
           </p>
 
         </div>
@@ -1702,16 +2420,12 @@
               ผลงาน
             </a>
 
-            <a href="reference.html">
-              ผลงานอ้างอิง
-            </a>
-
-            <a href="technical-center.html">
-              Technical Center
-            </a>
-
             <a href="knowledge.html">
               คลังความรู้
+            </a>
+
+            <a href="contact.html">
+              ติดต่อเรา
             </a>
 
           </div>
@@ -1722,32 +2436,31 @@
         <div>
 
           <div class="footer-title">
-            CONTACT
+            TECHNICAL
           </div>
 
           <div class="footer-links">
 
+            <a href="technical-center.html">
+              Technical Center
+            </a>
+
+            <a href="reference.html">
+              ผลงานอ้างอิง
+            </a>
+
+            <a href="knowledge.html">
+              คลังความรู้
+            </a>
+
             <a href="contact.html">
-              ติดต่อบริษัท
-            </a>
-
-            <a
-              href="https://www.facebook.com/ChatphetchGroup"
-              target="_blank">
-              Facebook
-            </a>
-
-            <a href="tel:0856299778">
-              ฝ่ายเทคนิค 085-6299778
-            </a>
-
-            <a href="tel:0980153271">
-              ฝ่ายบัญชี 098-0153271
+              ขอข้อมูลทางเทคนิค
             </a>
 
           </div>
 
         </div>
+
 
       </div>
 
@@ -1770,25 +2483,90 @@
 
 
   <!-- =========================================
-       FLOATING ACTIONS
-  ========================================= -->
+       FLOATING
+  ========================================== -->
 
   <div class="floating-actions">
 
     <a
       href="tel:0856299778"
       class="float-btn float-phone"
-      aria-label="โทรฝ่ายเทคนิค">
+      aria-label="โทรฝ่ายเทคนิค"
+    >
       ☎
     </a>
 
     <a
       href="https://www.facebook.com/ChatphetchGroup"
       target="_blank"
+      rel="noopener"
       class="float-btn"
-      aria-label="Facebook">
+      aria-label="Facebook"
+    >
       f
     </a>
+
+  </div>
+
+
+  <!-- =========================================
+       MODAL
+  ========================================== -->
+
+  <div
+    class="modal"
+    id="documentModal"
+  >
+
+    <div class="modal-box">
+
+
+      <div class="modal-head">
+
+        <h3 id="modalTitle">
+          เอกสาร
+        </h3>
+
+        <button
+          class="modal-close"
+          id="modalClose"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+        <p id="modalDescription">
+          -
+        </p>
+
+
+        <div class="modal-warning">
+
+          เอกสารรายการนี้ยังไม่มีไฟล์จริงที่เชื่อมต่อบนเว็บไซต์
+          กรุณาติดต่อบริษัทเพื่อขอเอกสารฉบับล่าสุด
+          หรือเพิ่มไฟล์จริงลงในโฟลเดอร์
+          <strong>assets/docs/</strong>
+          ก่อนเปิดให้ดาวน์โหลด
+
+        </div>
+
+
+        <button
+          class="modal-action"
+          id="modalContact"
+          type="button"
+        >
+          ติดต่อขอเอกสาร
+        </button>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -1797,255 +2575,618 @@
 
     /* =========================================
        DOCUMENT DATA
-       =========================================
-       ยังไม่ใส่ข้อมูลทางเทคนิคจริงที่บริษัท
-       ยังไม่ได้ส่งเอกสารมา
+
+       หมายเหตุ:
+       ยังไม่ใส่ URL ไฟล์ปลอม
+       เมื่อมีเอกสารจริงสามารถเปลี่ยน
+       file: "#"
+       เป็นเช่น
+       assets/docs/91428-tds.pdf
     ========================================= */
 
-    const technicalDocuments = [
+    const DOCUMENTS = [
 
       {
-        id:"tds-001",
+        id:"tds-91428",
         type:"tds",
-        typeLabel:"TDS",
-        icon:"TDS",
-        code:"TDS-001",
-        title:"Technical Data Sheet",
+        typeLabel:"TECHNICAL DATA SHEET",
+        title:"PREMIUM STAMPED CONCRETE (PSC)",
         description:
-          "เอกสารข้อมูลทางเทคนิคของผลิตภัณฑ์ เช่น คุณสมบัติ วิธีใช้งาน การเตรียมพื้นผิว และข้อมูลที่เกี่ยวข้อง",
-        file:""
+          "ข้อมูลทางเทคนิคสำหรับผลิตภัณฑ์ PREMIUM STAMPED CONCRETE (PSC)",
+        product:"91428",
+        revision:"รอเอกสาร",
+        file:"#"
       },
 
-      {
-        id:"tds-002",
-        type:"tds",
-        typeLabel:"TDS",
-        icon:"TDS",
-        code:"TDS-002",
-        title:"Product Technical Data",
-        description:
-          "พื้นที่สำหรับจัดเก็บ TDS ของผลิตภัณฑ์แต่ละรายการ โดยเชื่อมไฟล์จริงจากบริษัทภายหลัง",
-        file:""
-      },
 
       {
-        id:"sds-001",
+        id:"tds-91427",
+        type:"tds",
+        typeLabel:"TECHNICAL DATA SHEET",
+        title:"RELEASER POWER",
+        description:
+          "ข้อมูลทางเทคนิคสำหรับผลิตภัณฑ์ RELEASER POWER",
+        product:"91427",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"tds-91430",
+        type:"tds",
+        typeLabel:"TECHNICAL DATA SHEET",
+        title:"READY COAT (RCT)",
+        description:
+          "ข้อมูลทางเทคนิคสำหรับผลิตภัณฑ์ READY COAT (RCT)",
+        product:"91430",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"tds-91429",
+        type:"tds",
+        typeLabel:"TECHNICAL DATA SHEET",
+        title:"READY COAT COLOR (RCR)",
+        description:
+          "ข้อมูลทางเทคนิคสำหรับผลิตภัณฑ์ READY COAT COLOR (RCR)",
+        product:"91429",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"sds-91428",
         type:"sds",
-        typeLabel:"SDS",
-        icon:"SDS",
-        code:"SDS-001",
-        title:"Safety Data Sheet",
+        typeLabel:"SAFETY DATA SHEET",
+        title:"PREMIUM STAMPED CONCRETE (PSC)",
         description:
-          "เอกสารข้อมูลความปลอดภัยสำหรับผลิตภัณฑ์และสารเคมีที่เกี่ยวข้องกับการใช้งาน",
-        file:""
+          "เอกสารข้อมูลความปลอดภัยสำหรับผลิตภัณฑ์ PSC",
+        product:"91428",
+        revision:"รอเอกสาร",
+        file:"#"
       },
 
+
       {
-        id:"method-001",
+        id:"sds-91427",
+        type:"sds",
+        typeLabel:"SAFETY DATA SHEET",
+        title:"RELEASER POWER",
+        description:
+          "เอกสารข้อมูลความปลอดภัยสำหรับผลิตภัณฑ์ RELEASER POWER",
+        product:"91427",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"sds-91430",
+        type:"sds",
+        typeLabel:"SAFETY DATA SHEET",
+        title:"READY COAT (RCT)",
+        description:
+          "เอกสารข้อมูลความปลอดภัยสำหรับผลิตภัณฑ์ RCT",
+        product:"91430",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"sds-91429",
+        type:"sds",
+        typeLabel:"SAFETY DATA SHEET",
+        title:"READY COAT COLOR (RCR)",
+        description:
+          "เอกสารข้อมูลความปลอดภัยสำหรับผลิตภัณฑ์ RCR",
+        product:"91429",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"method-industrial",
         type:"method",
-        typeLabel:"METHOD",
-        icon:"MS",
-        code:"MS-001",
-        title:"Method Statement",
+        typeLabel:"METHOD STATEMENT",
+        title:"ระบบพื้นอุตสาหกรรม",
         description:
-          "เอกสารขั้นตอนการทำงาน ตั้งแต่การเตรียมพื้นผิว การติดตั้งระบบ จนถึงการตรวจสอบงาน",
-        file:""
+          "เอกสารขั้นตอนการทำงานสำหรับระบบพื้นอุตสาหกรรม",
+        product:"SYSTEM",
+        revision:"รอเอกสาร",
+        file:"#"
       },
 
+
       {
-        id:"spec-001",
+        id:"method-waterproof",
+        type:"method",
+        typeLabel:"METHOD STATEMENT",
+        title:"ระบบกันรั่วซึม",
+        description:
+          "เอกสารขั้นตอนการทำงานสำหรับงานกันรั่วซึม",
+        product:"SYSTEM",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"method-concrete",
+        type:"method",
+        typeLabel:"METHOD STATEMENT",
+        title:"งานซ่อมคอนกรีต",
+        description:
+          "เอกสารขั้นตอนการทำงานสำหรับงานซ่อมและปรับปรุงคอนกรีต",
+        product:"SYSTEM",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"method-stamped",
+        type:"method",
+        typeLabel:"METHOD STATEMENT",
+        title:"พื้นคอนกรีตพิมพ์ลาย",
+        description:
+          "เอกสารขั้นตอนการทำงานสำหรับระบบพื้นคอนกรีตพิมพ์ลาย",
+        product:"SYSTEM",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"spec-floor",
         type:"spec",
-        typeLabel:"SPEC",
-        icon:"SP",
-        code:"SPEC-001",
-        title:"Specification Text",
+        typeLabel:"SPECIFICATION",
+        title:"Flooring System Specification",
         description:
-          "พื้นที่สำหรับจัดเก็บข้อความ Specification สำหรับนำไปใช้ประกอบเอกสารโครงการและงานออกแบบ",
-        file:""
+          "ข้อความ Specification สำหรับระบบงานพื้น",
+        product:"SYSTEM",
+        revision:"รอเอกสาร",
+        file:"#"
       },
 
+
       {
-        id:"cad-001",
+        id:"spec-waterproof",
+        type:"spec",
+        typeLabel:"SPECIFICATION",
+        title:"Waterproofing System Specification",
+        description:
+          "ข้อความ Specification สำหรับระบบกันรั่วซึม",
+        product:"SYSTEM",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"cad-floor",
         type:"cad",
-        typeLabel:"CAD",
-        icon:"CAD",
-        code:"CAD-001",
-        title:"CAD Detail",
+        typeLabel:"CAD DETAIL",
+        title:"Flooring Detail",
         description:
-          "พื้นที่สำหรับจัดเก็บรายละเอียดแบบ CAD เช่น Floor Build-up, Joint และ Detail ที่เกี่ยวข้อง",
-        file:""
+          "รายละเอียดประกอบแบบสำหรับระบบงานพื้น",
+        product:"DETAIL",
+        revision:"รอเอกสาร",
+        file:"#"
       },
 
+
       {
-        id:"warranty-001",
+        id:"cad-waterproof",
+        type:"cad",
+        typeLabel:"CAD DETAIL",
+        title:"Waterproofing Detail",
+        description:
+          "รายละเอียดประกอบแบบสำหรับระบบกันรั่วซึม",
+        product:"DETAIL",
+        revision:"รอเอกสาร",
+        file:"#"
+      },
+
+
+      {
+        id:"warranty-floor",
         type:"warranty",
         typeLabel:"WARRANTY",
-        icon:"W",
-        code:"WAR-001",
-        title:"Warranty Terms",
+        title:"เงื่อนไขการรับประกันระบบพื้น",
         description:
-          "เงื่อนไขและขอบเขตการรับประกันงาน ซึ่งจะต้องอ้างอิงเอกสารและเงื่อนไขจริงของบริษัท",
-        file:""
+          "ข้อมูลเงื่อนไขการรับประกันสำหรับระบบพื้น",
+        product:"SYSTEM",
+        revision:"รอเอกสาร",
+        file:"#"
       },
 
-      {
-        id:"method-002",
-        type:"method",
-        typeLabel:"METHOD",
-        icon:"MS",
-        code:"MS-002",
-        title:"System Installation Guide",
-        description:
-          "พื้นที่สำหรับจัดเก็บคู่มือหรือขั้นตอนการติดตั้งระบบพื้นแต่ละประเภท",
-        file:""
-      },
 
       {
-        id:"spec-002",
-        type:"spec",
-        typeLabel:"SPEC",
-        icon:"SP",
-        code:"SPEC-002",
-        title:"Project Specification",
+        id:"warranty-waterproof",
+        type:"warranty",
+        typeLabel:"WARRANTY",
+        title:"เงื่อนไขการรับประกันงานกันรั่วซึม",
         description:
-          "พื้นที่สำหรับจัดเก็บ Specification ที่จัดเตรียมสำหรับงานโครงการ",
-        file:""
+          "ข้อมูลเงื่อนไขการรับประกันสำหรับงานกันรั่วซึม",
+        product:"SYSTEM",
+        revision:"รอเอกสาร",
+        file:"#"
       }
 
     ];
 
 
     /* =========================================
-       RENDER DOCUMENTS
+       TYPE ICON
     ========================================= */
 
-    const documentGrid =
-      document.getElementById("documentGrid");
+    const ICONS = {
+
+      tds:"▤",
+
+      sds:"⚠",
+
+      method:"☷",
+
+      spec:"≡",
+
+      cad:"⌗",
+
+      warranty:"✓"
+
+    };
 
 
-    function renderDocuments(filter="all"){
+    /* =========================================
+       TYPE LABEL
+    ========================================= */
 
-      const items =
-        filter === "all"
-          ? technicalDocuments
-          : technicalDocuments.filter(
-              item => item.type === filter
-            );
+    const TYPE_NAMES = {
 
+      tds:"TDS",
 
-      documentGrid.innerHTML =
-        items.map(item => {
+      sds:"SDS",
 
-          const available =
-            Boolean(item.file);
+      method:"METHOD",
 
-          return `
+      spec:"SPECIFICATION",
 
-            <article class="document-card reveal">
+      cad:"CAD DETAIL",
 
-              <div class="document-top">
+      warranty:"WARRANTY"
 
-                <div class="doc-icon">
-                  ${item.icon}
-                </div>
-
-                <div class="doc-type">
-                  ${item.typeLabel}
-                </div>
-
-              </div>
+    };
 
 
-              <div class="document-body">
+    /* =========================================
+       STATE
+    ========================================= */
 
-                <div class="document-code">
-                  ${item.code}
-                </div>
+    let currentFilter = "all";
 
-                <h3 class="document-title">
-                  ${item.title}
-                </h3>
-
-                <p class="document-description">
-                  ${item.description}
-                </p>
+    let currentSearch = "";
 
 
-                <div class="document-footer">
+    /* =========================================
+       ELEMENTS
+    ========================================= */
 
-                  <div class="document-status">
+    const documentsGrid =
+      document.getElementById(
+        "documentsGrid"
+      );
 
-                    ${
-                      available
-                        ? "พร้อมดาวน์โหลด"
-                        : "ยังไม่มีไฟล์"
-                    }
+    const emptyState =
+      document.getElementById(
+        "emptyState"
+      );
 
-                  </div>
-
-
-                  <button
-                    class="document-download"
-                    onclick="downloadDocument('${item.id}')">
-
-                    ↓
-                    ${
-                      available
-                        ? "ดาวน์โหลด"
-                        : "ดูข้อมูล"
-                    }
-
-                  </button>
-
-                </div>
-
-              </div>
-
-            </article>
-
-          `;
-
-        }).join("");
+    const documentSearch =
+      document.getElementById(
+        "documentSearch"
+      );
 
 
-      initReveal();
+    /* =========================================
+       RENDER
+    ========================================= */
+
+    function renderDocuments(){
+
+      const search =
+        currentSearch
+          .trim()
+          .toLowerCase();
+
+
+      const filtered =
+        DOCUMENTS.filter(doc => {
+
+          const matchesFilter =
+            currentFilter === "all" ||
+            doc.type === currentFilter;
+
+
+          const searchable = (
+
+            doc.title +
+            " " +
+            doc.description +
+            " " +
+            doc.product +
+            " " +
+            doc.typeLabel
+
+          ).toLowerCase();
+
+
+          const matchesSearch =
+            !search ||
+            searchable.includes(search);
+
+
+          return (
+            matchesFilter &&
+            matchesSearch
+          );
+
+        });
+
+
+      documentsGrid.innerHTML =
+        filtered.map(
+          doc => createDocumentCard(doc)
+        ).join("");
+
+
+      emptyState.classList.toggle(
+        "show",
+        filtered.length === 0
+      );
+
+
+      documentsGrid
+        .querySelectorAll(
+          "[data-document]"
+        )
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const id =
+                button.dataset.document;
+
+              const doc =
+                DOCUMENTS.find(
+                  item => item.id === id
+                );
+
+              if(doc){
+                handleDocument(doc);
+              }
+
+            }
+          );
+
+        });
 
     }
 
 
     /* =========================================
-       DOWNLOAD
+       CARD
     ========================================= */
 
-    window.downloadDocument = function(id){
+    function createDocumentCard(doc){
 
-      const documentItem =
-        technicalDocuments.find(
-          item => item.id === id
-        );
-
-      if(!documentItem){
-        return;
-      }
+      const hasFile =
+        doc.file &&
+        doc.file !== "#";
 
 
-      if(documentItem.file){
+      return `
+
+        <article class="document-card">
+
+          <div class="document-icon">
+            ${ICONS[doc.type] || "▤"}
+          </div>
+
+
+          <div class="document-type">
+            ${doc.typeLabel}
+          </div>
+
+
+          <h3>
+            ${doc.title}
+          </h3>
+
+
+          <p>
+            ${doc.description}
+          </p>
+
+
+          <div class="document-meta">
+
+            <span>
+              ${doc.product}
+            </span>
+
+            <span>
+              •
+            </span>
+
+            <span>
+              ${doc.revision}
+            </span>
+
+          </div>
+
+
+          <div class="document-status ${hasFile ? "ready" : ""}">
+
+            <span class="status-dot"></span>
+
+            ${
+              hasFile
+                ? "พร้อมดาวน์โหลด"
+                : "รอเอกสารจากบริษัท"
+            }
+
+          </div>
+
+
+          <button
+            type="button"
+            class="document-btn ${hasFile ? "" : "disabled"}"
+            data-document="${doc.id}"
+          >
+
+            ${
+              hasFile
+                ? "ดาวน์โหลดเอกสาร"
+                : "ขอเอกสาร / ติดต่อบริษัท"
+            }
+
+          </button>
+
+        </article>
+
+      `;
+
+    }
+
+
+    /* =========================================
+       DOCUMENT ACTION
+    ========================================= */
+
+    function handleDocument(doc){
+
+      if(
+        doc.file &&
+        doc.file !== "#"
+      ){
 
         window.open(
-          documentItem.file,
+          doc.file,
           "_blank"
         );
 
         return;
-
       }
 
 
-      alert(
-        "เอกสารนี้ยังไม่มีไฟล์จริง กรุณาเพิ่มไฟล์ของบริษัทก่อนเชื่อมต่อการดาวน์โหลด"
+      openModal(doc);
+
+    }
+
+
+    /* =========================================
+       MODAL
+    ========================================= */
+
+    const modal =
+      document.getElementById(
+        "documentModal"
       );
 
-    };
+    const modalTitle =
+      document.getElementById(
+        "modalTitle"
+      );
+
+    const modalDescription =
+      document.getElementById(
+        "modalDescription"
+      );
+
+    const modalClose =
+      document.getElementById(
+        "modalClose"
+      );
+
+    const modalContact =
+      document.getElementById(
+        "modalContact"
+      );
+
+
+    function openModal(doc){
+
+      modalTitle.textContent =
+        `${TYPE_NAMES[doc.type] || ""} — ${doc.title}`;
+
+
+      modalDescription.textContent =
+        doc.description;
+
+
+      modal.classList.add(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    function closeModal(){
+
+      modal.classList.remove(
+        "show"
+      );
+
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    modalClose.addEventListener(
+      "click",
+      closeModal
+    );
+
+
+    modal.addEventListener(
+      "click",
+      event => {
+
+        if(
+          event.target === modal
+        ){
+
+          closeModal();
+
+        }
+
+      }
+    );
+
+
+    modalContact.addEventListener(
+      "click",
+      () => {
+
+        window.location.href =
+          "contact.html";
+
+      }
+    );
 
 
     /* =========================================
@@ -2053,7 +3194,9 @@
     ========================================= */
 
     document
-      .querySelectorAll(".filter-btn")
+      .querySelectorAll(
+        ".filter-btn"
+      )
       .forEach(button => {
 
         button.addEventListener(
@@ -2061,19 +3204,92 @@
           () => {
 
             document
-              .querySelectorAll(".filter-btn")
+              .querySelectorAll(
+                ".filter-btn"
+              )
               .forEach(btn => {
 
-                btn.classList.remove("active");
+                btn.classList.remove(
+                  "active"
+                );
 
               });
 
 
-            button.classList.add("active");
+            button.classList.add(
+              "active"
+            );
 
 
-            renderDocuments(
-              button.dataset.filter
+            currentFilter =
+              button.dataset.filter;
+
+
+            renderDocuments();
+
+          }
+        );
+
+      });
+
+
+    /* =========================================
+       SEARCH
+    ========================================= */
+
+    documentSearch.addEventListener(
+      "input",
+      event => {
+
+        currentSearch =
+          event.target.value;
+
+
+        renderDocuments();
+
+      }
+    );
+
+
+    /* =========================================
+       MOBILE MENU
+    ========================================= */
+
+    const menuToggle =
+      document.getElementById(
+        "menuToggle"
+      );
+
+    const navMenu =
+      document.getElementById(
+        "navMenu"
+      );
+
+
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        navMenu.classList.toggle(
+          "open"
+        );
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        ".nav-menu a"
+      )
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navMenu.classList.remove(
+              "open"
             );
 
           }
@@ -2083,94 +3299,10 @@
 
 
     /* =========================================
-       MOBILE MENU
-    ========================================= */
-
-    const menuToggle =
-      document.getElementById("menuToggle");
-
-    const navMenu =
-      document.getElementById("navMenu");
-
-
-    menuToggle.addEventListener(
-      "click",
-      () => {
-
-        navMenu.classList.toggle("open");
-
-      }
-    );
-
-
-    document
-      .querySelectorAll(".nav-menu a")
-      .forEach(link => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            navMenu.classList.remove("open");
-
-          }
-        );
-
-      });
-
-
-    /* =========================================
-       REVEAL
-    ========================================= */
-
-    function initReveal(){
-
-      const elements =
-        document.querySelectorAll(".reveal:not(.visible)");
-
-
-      const observer =
-        new IntersectionObserver(
-          entries => {
-
-            entries.forEach(entry => {
-
-              if(entry.isIntersecting){
-
-                entry.target.classList.add(
-                  "visible"
-                );
-
-                observer.unobserve(
-                  entry.target
-                );
-
-              }
-
-            });
-
-          },
-          {
-            threshold:.08
-          }
-        );
-
-
-      elements.forEach(
-        element =>
-          observer.observe(element)
-      );
-
-    }
-
-
-    /* =========================================
        INIT
     ========================================= */
 
-    renderDocuments("all");
-
-    initReveal();
+    renderDocuments();
 
   </script>
 
