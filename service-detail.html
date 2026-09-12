@@ -6,3124 +6,2348 @@
 
 <title>รายละเอียดบริการ | CHATPETCH GROUP</title>
 
-<meta
-    name="description"
-    content="รายละเอียดระบบงานพื้นและบริการจาก บริษัท ฉัตรเพชร กรุ๊ป จำกัด"
-/>
+<meta name="description"
+content="รายละเอียดระบบงานพื้น งานกันรั่วซึม งานซ่อมคอนกรีต พื้นสนามกีฬา พื้นตกแต่ง และงานสัญลักษณ์และเส้นจราจร โดย บริษัท ฉัตรเพชร กรุ๊ป จำกัด">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-    --black:#050505;
-    --black2:#080808;
-    --dark:#0d0d0d;
-    --dark2:#111111;
-    --dark3:#181818;
+  --black:#050505;
+  --black2:#080808;
+  --dark:#0d0d0d;
+  --dark2:#111111;
+  --dark3:#181818;
 
-    --gold:#c8a45b;
-    --gold-light:#f0d991;
-    --gold-dark:#806127;
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --gold-dark:#806127;
 
-    --white:#ffffff;
-    --soft:#e8e8e8;
-    --gray:#9b9b9b;
+  --white:#fff;
+  --soft:#e8e8e8;
+  --gray:#9b9b9b;
 
-    --line:rgba(255,255,255,.09);
-    --gold-line:rgba(200,164,91,.28);
+  --line:rgba(255,255,255,.09);
+  --gold-line:rgba(200,164,91,.28);
 
-    --container:1240px;
+  --container:1240px;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    background:
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(200,164,91,.11),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 5% 70%,
-            rgba(200,164,91,.06),
-            transparent 25%
-        ),
-        var(--black);
-
-    color:var(--white);
-
-    font-family:"Kanit","Prompt",sans-serif;
-
-    overflow-x:hidden;
+  font-family:"Prompt","Kanit",sans-serif;
+  color:var(--white);
+  background:
+    radial-gradient(circle at 82% 12%,rgba(200,164,91,.10),transparent 25%),
+    radial-gradient(circle at 10% 45%,rgba(200,164,91,.055),transparent 25%),
+    var(--black);
+  line-height:1.7;
+  overflow-x:hidden;
 }
 
 body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
-
-    background-size:50px 50px;
-
-    opacity:.3;
-
-    z-index:-3;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-
-    width:600px;
-    height:600px;
-
-    right:-300px;
-    top:100px;
-
-    border-radius:50%;
-
-    background:rgba(200,164,91,.055);
-
-    filter:blur(100px);
-
-    pointer-events:none;
-
-    z-index:-2;
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.32;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:55px 55px;
 }
 
 a{
-    color:inherit;
-    text-decoration:none;
+  color:inherit;
+  text-decoration:none;
 }
 
-button{
-    font-family:inherit;
+button,
+input,
+select{
+  font:inherit;
 }
-
-img{
-    max-width:100%;
-    display:block;
-}
-
-.container{
-    width:min(
-        var(--container),
-        calc(100% - 40px)
-    );
-
-    margin:auto;
-}
-
 
 /* =========================================================
-   HEADER
+HEADER
 ========================================================= */
 
 .header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    background:rgba(5,5,5,.9);
-
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(200,164,91,.16);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,5,5,.90);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
 }
 
 .header-inner{
-    min-height:86px;
+  width:min(var(--container),calc(100% - 40px));
+  min-height:86px;
+  margin:auto;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
 }
 
 .brand{
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-    flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  min-width:220px;
 }
 
-.brand-logo{
-    width:68px;
-    height:68px;
-
-    object-fit:contain;
-}
-
-.brand-text{
-    display:flex;
-    flex-direction:column;
-
-    line-height:1.1;
+.brand img{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  display:block;
 }
 
 .brand-text strong{
-    font-family:"Prompt",sans-serif;
-
-    font-size:18px;
-
-    letter-spacing:1.5px;
+  display:block;
+  font-family:"Kanit",sans-serif;
+  font-size:20px;
+  letter-spacing:1.3px;
 }
 
 .brand-text span{
-    color:var(--gold);
-
-    font-size:12px;
-
-    margin-top:5px;
+  display:block;
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:.8px;
 }
 
 .nav-menu{
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-
-    gap:5px;
-
-    flex-wrap:wrap;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:4px;
+  flex-wrap:wrap;
 }
 
 .nav-menu a{
-    position:relative;
-
-    padding:10px 12px;
-
-    color:#d2d2d2;
-
-    font-size:14px;
-
-    transition:.3s ease;
-
-    white-space:nowrap;
+  color:#ddd;
+  font-size:13px;
+  padding:10px 11px;
+  border-radius:8px;
+  transition:.25s;
 }
 
-.nav-menu a:hover{
-    color:var(--gold-light);
+.nav-menu a:hover,
+.nav-menu a.active{
+  color:var(--gold-light);
+  background:rgba(200,164,91,.08);
 }
 
-.nav-menu a::after{
-    content:"";
-
-    position:absolute;
-
-    left:12px;
-    right:12px;
-    bottom:4px;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
-
-    transform:scaleX(0);
-
-    transition:.3s ease;
-}
-
-.nav-menu a:hover::after{
-    transform:scaleX(1);
-}
-
-.nav-menu .nav-shop{
-    border:1px solid var(--gold-line);
-
-    border-radius:10px;
-
-    color:var(--gold-light);
-
-    margin-left:4px;
-}
-
-.nav-menu .nav-shop::after{
-    display:none;
+.nav-shop{
+  color:var(--gold-light)!important;
+  border:1px solid var(--gold-line);
 }
 
 .menu-btn{
-    display:none;
-
-    width:46px;
-    height:46px;
-
-    border:1px solid var(--gold-line);
-
-    border-radius:10px;
-
-    background:rgba(255,255,255,.03);
-
-    color:var(--gold-light);
-
-    font-size:21px;
-
-    cursor:pointer;
+  display:none;
+  width:44px;
+  height:44px;
+  color:#fff;
+  background:var(--dark2);
+  border:1px solid var(--line);
+  border-radius:9px;
+  cursor:pointer;
 }
 
-
 /* =========================================================
-   HERO
+HERO
 ========================================================= */
 
 .hero{
-    position:relative;
-
-    min-height:560px;
-
-    display:flex;
-    align-items:center;
-
-    overflow:hidden;
-
-    border-bottom:1px solid var(--line);
+  position:relative;
+  min-height:590px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
 }
 
 .hero::before{
-    content:"";
-
-    position:absolute;
-
-    width:650px;
-    height:650px;
-
-    right:-260px;
-    top:-250px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(200,164,91,.13);
-
-    box-shadow:
-        0 0 0 70px rgba(200,164,91,.025),
-        0 0 0 140px rgba(200,164,91,.018);
+  content:"";
+  position:absolute;
+  width:650px;
+  height:650px;
+  right:-260px;
+  top:-270px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(200,164,91,.20),
+    transparent 68%
+  );
 }
 
 .hero::after{
-    content:"";
-
-    position:absolute;
-
-    width:45%;
-
-    height:1px;
-
-    right:0;
-    bottom:80px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(200,164,91,.5),
-            transparent
-        );
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-line),
+    transparent
+  );
 }
 
 .hero-content{
-    position:relative;
-    z-index:2;
-
-    padding:90px 0;
+  position:relative;
+  z-index:2;
+  width:min(var(--container),calc(100% - 40px));
+  margin:auto;
+  padding:90px 0;
 }
 
-.breadcrumb{
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    color:#777;
-
-    font-size:13px;
-
-    margin-bottom:28px;
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--gold-light);
+  font-size:12px;
+  letter-spacing:2.5px;
+  margin-bottom:18px;
 }
 
-.breadcrumb a{
-    color:#999;
-
-    transition:.3s ease;
-}
-
-.breadcrumb a:hover{
-    color:var(--gold-light);
-}
-
-.breadcrumb span{
-    color:var(--gold);
-}
-
-.hero-number{
-    font-family:"Prompt",sans-serif;
-
-    color:var(--gold);
-
-    font-size:14px;
-
-    letter-spacing:3px;
-
-    margin-bottom:15px;
+.eyebrow::before{
+  content:"";
+  width:42px;
+  height:1px;
+  background:var(--gold);
 }
 
 .hero h1{
-    font-family:"Prompt",sans-serif;
-
-    font-size:clamp(
-        40px,
-        6vw,
-        72px
-    );
-
-    line-height:1.22;
-
-    font-weight:600;
-
-    max-width:900px;
-
-    margin-bottom:20px;
+  max-width:900px;
+  font-family:"Kanit",sans-serif;
+  font-size:clamp(43px,6vw,78px);
+  line-height:1.2;
+  font-weight:600;
+  margin-bottom:20px;
 }
 
 .hero h1 span{
-    color:var(--gold-light);
+  color:var(--gold-light);
 }
 
-.hero-subtitle{
-    max-width:800px;
-
-    color:#c2c2c2;
-
-    font-size:19px;
-
-    line-height:1.9;
-
-    margin-bottom:30px;
+.hero-desc{
+  max-width:750px;
+  color:#aaa;
+  font-size:17px;
 }
 
-.hero-tags{
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
 }
 
 .hero-tag{
-    padding:9px 16px;
-
-    border-radius:999px;
-
-    border:1px solid var(--gold-line);
-
-    background:rgba(200,164,91,.045);
-
-    color:#ddd;
-
-    font-size:13px;
+  padding:8px 14px;
+  border:1px solid var(--gold-line);
+  border-radius:999px;
+  background:rgba(200,164,91,.055);
+  color:#d9c386;
+  font-size:12px;
 }
 
+.hero-number{
+  position:absolute;
+  right:3%;
+  bottom:15px;
+
+  font-family:"Kanit",sans-serif;
+  font-size:190px;
+  line-height:1;
+  font-weight:700;
+
+  color:rgba(200,164,91,.045);
+  pointer-events:none;
+}
 
 /* =========================================================
-   COMMON SECTION
+GENERAL
 ========================================================= */
 
+.container{
+  width:min(var(--container),calc(100% - 40px));
+  margin:auto;
+}
+
 .section{
-    padding:100px 0;
+  padding:90px 0;
 }
 
 .section-head{
-    margin-bottom:45px;
+  margin-bottom:42px;
 }
 
-.section-label{
-    color:var(--gold);
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    margin-bottom:9px;
+.section-title small{
+  display:block;
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:8px;
 }
 
-.section-title{
-    font-family:"Prompt",sans-serif;
-
-    font-size:clamp(
-        30px,
-        4vw,
-        48px
-    );
-
-    line-height:1.25;
-
-    font-weight:600;
+.section-title h2{
+  font-family:"Kanit",sans-serif;
+  font-size:38px;
+  line-height:1.35;
 }
 
-.section-title span{
-    color:var(--gold-light);
+.section-title p{
+  color:var(--gray);
+  margin-top:7px;
+  max-width:780px;
 }
-
-.section-desc{
-    max-width:720px;
-
-    color:#999;
-
-    font-size:15px;
-
-    line-height:1.9;
-
-    margin-top:15px;
-}
-
 
 /* =========================================================
-   PROBLEM SECTION
+PROBLEM
 ========================================================= */
 
 .problem-grid{
-    display:grid;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:24px;
+}
 
-    grid-template-columns:
-        1.05fr
-        .95fr;
+.problem-card{
+  min-height:350px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:18px;
 
-    gap:25px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.012)
+    ),
+    var(--dark);
 }
 
 .problem-image{
-    position:relative;
+  height:100%;
+  min-height:350px;
+  position:relative;
 
-    min-height:430px;
-
-    overflow:hidden;
-
-    border-radius:22px;
-
-    border:1px solid var(--line);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.06),
-            rgba(255,255,255,.015)
-        );
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(200,164,91,.13),
+      transparent 36%
+    ),
+    linear-gradient(135deg,#171717,#070707);
 }
 
 .problem-image::before{
-    content:"";
+  content:"PROBLEM / BEFORE";
+  position:absolute;
+  left:25px;
+  top:22px;
+  z-index:2;
 
-    position:absolute;
-    inset:0;
-
-    background:
-        radial-gradient(
-            circle at 50% 40%,
-            rgba(200,164,91,.09),
-            transparent 40%
-        );
+  color:rgba(240,217,145,.75);
+  font-family:"Kanit",sans-serif;
+  font-size:11px;
+  letter-spacing:2.5px;
 }
 
-.problem-image-placeholder{
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:30px;
+.problem-image::after{
+  content:"";
+  position:absolute;
+  inset:20px;
+  border:1px solid rgba(200,164,91,.16);
 }
 
-.problem-image-placeholder .icon{
-    width:82px;
-    height:82px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:20px;
-
-    border:1px solid var(--gold-line);
-
-    background:rgba(200,164,91,.06);
-
-    color:var(--gold-light);
-
-    font-size:35px;
-
-    margin-bottom:20px;
+.problem-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.problem-image-placeholder strong{
-    font-family:"Prompt",sans-serif;
+.placeholder{
+  height:100%;
+  min-height:350px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    font-size:21px;
-
-    margin-bottom:7px;
-}
-
-.problem-image-placeholder span{
-    color:#777;
-
-    font-size:13px;
-
-    line-height:1.7;
-}
-
-.problem-content{
-    padding:35px;
-
-    border:1px solid var(--line);
-
-    border-radius:22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
-        );
-}
-
-.problem-content h3{
-    font-family:"Prompt",sans-serif;
-
-    font-size:28px;
-
-    line-height:1.35;
-
-    margin-bottom:18px;
-}
-
-.problem-content h3 span{
-    color:var(--gold-light);
-}
-
-.problem-content > p{
-    color:#aaa;
-
-    font-size:15px;
-
-    line-height:1.9;
-
-    margin-bottom:24px;
+  color:#505050;
+  font-size:12px;
+  letter-spacing:1px;
 }
 
 .problem-list{
-    list-style:none;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
+  display:grid;
+  gap:12px;
 }
 
-.problem-list li{
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:12px;
-
-    color:#d0d0d0;
-
-    font-size:14px;
-
-    line-height:1.7;
+.problem-item{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
 }
 
-.problem-list li::before{
-    content:"◆";
-
-    color:var(--gold);
-
-    font-size:7px;
-
-    margin-top:8px;
-
-    flex-shrink:0;
+.problem-item strong{
+  display:block;
+  color:#eee;
+  font-family:"Kanit",sans-serif;
+  font-size:19px;
+  margin-bottom:5px;
 }
 
+.problem-item span{
+  display:block;
+  color:#929292;
+  font-size:14px;
+}
 
 /* =========================================================
-   SYSTEM LAYERS
+SYSTEM
 ========================================================= */
 
 .system-section{
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.015),
-            rgba(200,164,91,.025)
-        );
-
-    border-top:1px solid var(--line);
-
-    border-bottom:1px solid var(--line);
+  padding:90px 0;
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(200,164,91,.025),
+      transparent
+    );
 }
 
-.layer-diagram{
-    position:relative;
-
-    max-width:920px;
-
-    margin:0 auto;
-
-    padding:25px 0 5px;
+.system-diagram{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:40px;
+  position:relative;
 }
 
 .layer{
-    position:relative;
+  position:relative;
+  padding:30px 24px;
+  min-height:220px;
 
-    min-height:92px;
+  border:1px solid var(--gold-line);
+  border-radius:17px;
 
-    display:flex;
-
-    align-items:center;
-
-    gap:25px;
-
-    padding:20px 30px;
-
-    border:1px solid var(--line);
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.015)
-        );
-
-    transition:.3s ease;
-}
-
-.layer:hover{
-    border-color:var(--gold-line);
-
-    transform:translateX(6px);
-}
-
-.layer:first-child{
-    border-radius:18px 18px 0 0;
-}
-
-.layer:last-child{
-    border-radius:0 0 18px 18px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(200,164,91,.10),
+      rgba(255,255,255,.018)
+    );
 }
 
 .layer-number{
-    width:50px;
-    height:50px;
-
-    flex-shrink:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px;
-
-    border:1px solid var(--gold-line);
-
-    color:var(--gold-light);
-
-    font-family:"Prompt",sans-serif;
-
-    font-weight:600;
+  color:var(--gold);
+  font-family:"Kanit",sans-serif;
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:22px;
 }
 
-.layer-info h3{
-    font-family:"Prompt",sans-serif;
+.layer-icon{
+  width:52px;
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    font-size:21px;
+  border:1px solid var(--gold-line);
+  border-radius:12px;
 
-    margin-bottom:4px;
+  color:var(--gold-light);
+  font-size:21px;
+  margin-bottom:18px;
 }
 
-.layer-info p{
-    color:#8f8f8f;
+.layer h3{
+  font-family:"Kanit",sans-serif;
+  font-size:22px;
+  margin-bottom:7px;
+}
 
-    font-size:13px;
-
-    line-height:1.6;
+.layer p{
+  color:#969696;
+  font-size:14px;
 }
 
 .layer-arrow{
-    display:flex;
+  position:absolute;
+  top:50%;
+  right:-28px;
+  transform:translateY(-50%);
 
-    align-items:center;
-    justify-content:center;
+  width:38px;
+  height:38px;
+  border-radius:50%;
 
-    height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    color:var(--gold);
+  border:1px solid var(--gold-line);
+  background:#0b0b0b;
+  color:var(--gold-light);
 
-    font-size:18px;
+  z-index:3;
 }
 
-
 /* =========================================================
-   SUITABILITY
+SUITABILITY
 ========================================================= */
 
 .suitability-grid{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
 }
 
 .suit-card{
-    padding:35px;
-
-    border-radius:20px;
-
-    border:1px solid var(--line);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
-        );
+  padding:32px;
+  border-radius:17px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
 }
 
 .suit-card.good{
-    border-color:rgba(200,164,91,.22);
+  border-color:rgba(200,164,91,.25);
 }
 
 .suit-card h3{
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    font-family:"Prompt",sans-serif;
-
-    font-size:24px;
-
-    margin-bottom:20px;
+  font-family:"Kanit",sans-serif;
+  font-size:24px;
+  margin-bottom:18px;
 }
 
-.suit-card h3 span{
-    color:var(--gold-light);
+.suit-card ul{
+  list-style:none;
+  display:grid;
+  gap:12px;
 }
 
-.suit-list{
-    list-style:none;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
+.suit-card li{
+  position:relative;
+  padding-left:28px;
+  color:#aaa;
+  font-size:14px;
 }
 
-.suit-list li{
-    position:relative;
-
-    padding-left:23px;
-
-    color:#aaa;
-
-    font-size:14px;
-
-    line-height:1.75;
+.suit-card li::before{
+  position:absolute;
+  left:0;
+  top:0;
+  font-size:15px;
 }
 
-.suit-list li::before{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    top:10px;
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:var(--gold);
+.suit-card.good li::before{
+  content:"✓";
+  color:var(--gold-light);
 }
 
-.not-suit .suit-list li::before{
-    background:#666;
+.suit-card.bad li::before{
+  content:"!";
+  color:#888;
 }
-
 
 /* =========================================================
-   WORK INFO
+TIME
 ========================================================= */
 
-.info-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:16px;
+.time-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
-.info-card{
-    min-height:190px;
-
-    padding:30px;
-
-    border:1px solid var(--line);
-
-    border-radius:18px;
-
-    background:rgba(255,255,255,.025);
-
-    transition:.3s ease;
+.time-card{
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#0d0d0d;
 }
 
-.info-card:hover{
-    border-color:var(--gold-line);
-
-    transform:translateY(-5px);
+.time-number{
+  color:var(--gold);
+  font-family:"Kanit",sans-serif;
+  font-size:13px;
+  letter-spacing:2px;
+  margin-bottom:18px;
 }
 
-.info-icon{
-    color:var(--gold);
-
-    font-size:23px;
-
-    margin-bottom:18px;
+.time-card h3{
+  font-family:"Kanit",sans-serif;
+  font-size:21px;
+  margin-bottom:8px;
 }
 
-.info-card h3{
-    font-family:"Prompt",sans-serif;
-
-    font-size:20px;
-
-    margin-bottom:9px;
+.time-card p{
+  color:#919191;
+  font-size:14px;
 }
-
-.info-card p{
-    color:#8e8e8e;
-
-    font-size:14px;
-
-    line-height:1.8;
-}
-
 
 /* =========================================================
-   RELATED PROJECTS
+WARRANTY
 ========================================================= */
 
-.project-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
+.warranty{
+  padding:75px 0;
 }
 
-.project-card{
-    position:relative;
+.warranty-box{
+  position:relative;
+  overflow:hidden;
 
-    min-height:280px;
+  padding:42px;
 
-    overflow:hidden;
+  border:1px solid var(--gold-line);
+  border-radius:20px;
 
-    border:1px solid var(--line);
-
-    border-radius:18px;
-
-    background:#0b0b0b;
+  background:
+    radial-gradient(
+      circle at 90% 50%,
+      rgba(200,164,91,.13),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(200,164,91,.065),
+      rgba(255,255,255,.018)
+    );
 }
 
-.project-placeholder{
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:25px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(200,164,91,.07),
-            transparent 55%
-        );
+.warranty-box h2{
+  font-family:"Kanit",sans-serif;
+  font-size:34px;
+  line-height:1.35;
+  margin-bottom:10px;
 }
 
-.project-placeholder .project-icon{
-    width:60px;
-    height:60px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:1px solid var(--gold-line);
-
-    border-radius:15px;
-
-    color:var(--gold-light);
-
-    margin-bottom:15px;
-
-    font-size:25px;
+.warranty-box p{
+  color:#999;
+  max-width:850px;
 }
 
-.project-placeholder strong{
-    font-family:"Prompt",sans-serif;
-
-    font-size:18px;
+.warranty-note{
+  margin-top:20px;
+  padding:17px 20px;
+  border-radius:11px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.20);
+  color:#777;
+  font-size:13px;
 }
-
-.project-placeholder span{
-    color:#666;
-
-    font-size:12px;
-
-    margin-top:5px;
-}
-
 
 /* =========================================================
-   CTA
+RELATED
+========================================================= */
+
+.related-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.related-card{
+  padding:27px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(255,255,255,.025);
+  transition:.3s;
+}
+
+.related-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--gold-line);
+}
+
+.related-card small{
+  color:var(--gold);
+  letter-spacing:1.5px;
+}
+
+.related-card h3{
+  font-family:"Kanit",sans-serif;
+  font-size:21px;
+  margin:8px 0;
+}
+
+.related-card p{
+  color:#929292;
+  font-size:13px;
+}
+
+/* =========================================================
+CTA
 ========================================================= */
 
 .cta{
-    position:relative;
+  padding:95px 0;
+  text-align:center;
 
-    overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 
-    border:1px solid var(--gold-line);
-
-    border-radius:25px;
-
-    padding:60px;
-
-    background:
-        radial-gradient(
-            circle at 85% 50%,
-            rgba(200,164,91,.15),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.012)
-        );
-}
-
-.cta::before{
-    content:"";
-
-    position:absolute;
-
-    width:420px;
-    height:420px;
-
-    right:-180px;
-    top:-180px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(200,164,91,.17);
-}
-
-.cta-content{
-    position:relative;
-
-    z-index:2;
-
-    max-width:850px;
-}
-
-.cta-label{
-    color:var(--gold);
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    margin-bottom:10px;
+  background:
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(200,164,91,.12),
+      transparent 45%
+    );
 }
 
 .cta h2{
-    font-family:"Prompt",sans-serif;
-
-    font-size:clamp(
-        30px,
-        4vw,
-        48px
-    );
-
-    line-height:1.3;
-
-    margin-bottom:15px;
-}
-
-.cta h2 span{
-    color:var(--gold-light);
+  font-family:"Kanit",sans-serif;
+  font-size:43px;
+  line-height:1.35;
+  margin-bottom:14px;
 }
 
 .cta p{
-    color:#999;
-
-    font-size:15px;
-
-    line-height:1.9;
+  color:#999;
+  margin-bottom:28px;
 }
 
 .cta-buttons{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-top:28px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
 .btn{
-    min-height:50px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
 
-    display:inline-flex;
+  min-height:44px;
+  padding:10px 18px;
 
-    align-items:center;
-    justify-content:center;
+  border:1px solid var(--line);
+  border-radius:9px;
 
-    gap:9px;
+  background:var(--dark3);
+  color:#ddd;
 
-    padding:0 24px;
+  font-size:13px;
+  cursor:pointer;
+  transition:.25s;
+}
 
-    border-radius:11px;
-
-    font-size:14px;
-
-    transition:.3s ease;
+.btn:hover{
+  border-color:var(--gold);
+  color:var(--gold-light);
 }
 
 .btn-gold{
-    color:#080808;
-
-    font-weight:600;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
+  background:linear-gradient(
+    135deg,
+    var(--gold-light),
+    var(--gold)
+  );
+  border-color:var(--gold);
+  color:#080808;
+  font-weight:600;
 }
 
 .btn-gold:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 14px 35px rgba(200,164,91,.2);
+  color:#000;
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(200,164,91,.18);
 }
-
-.btn-outline{
-    color:var(--gold-light);
-
-    border:1px solid var(--gold-line);
-
-    background:rgba(200,164,91,.04);
-}
-
-.btn-outline:hover{
-    background:rgba(200,164,91,.12);
-}
-
 
 /* =========================================================
-   FOOTER
+FOOTER
 ========================================================= */
 
 .footer{
-    padding:65px 0 30px;
-
-    border-top:1px solid var(--line);
-
-    background:#040404;
+  padding:55px 0 30px;
+  background:#030303;
 }
 
 .footer-grid{
-    display:grid;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:40px;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--line);
+}
 
-    grid-template-columns:
-        1.4fr
-        1fr
-        1fr
-        1fr;
+.footer h3{
+  font-family:"Kanit",sans-serif;
+  margin-bottom:14px;
+}
 
-    gap:45px;
+.footer p,
+.footer a{
+  color:#888;
+  font-size:14px;
+}
+
+.footer a{
+  display:block;
+  margin:6px 0;
+}
+
+.footer a:hover{
+  color:var(--gold-light);
 }
 
 .footer-brand{
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    margin-bottom:18px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
 }
 
-.footer-logo{
-    width:64px;
-    height:64px;
-
-    object-fit:contain;
+.footer-brand img{
+  width:65px;
+  height:65px;
+  object-fit:contain;
 }
 
-.footer-brand-text strong{
-    display:block;
+.copyright{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
 
-    font-family:"Prompt",sans-serif;
+  padding-top:22px;
 
-    font-size:18px;
-
-    letter-spacing:1px;
+  color:#555;
+  font-size:12px;
 }
-
-.footer-brand-text span{
-    display:block;
-
-    color:var(--gold);
-
-    font-size:11px;
-
-    margin-top:4px;
-}
-
-.footer-about{
-    max-width:420px;
-
-    color:#8e8e8e;
-
-    font-size:14px;
-
-    line-height:1.9;
-}
-
-.footer-col h4{
-    color:var(--gold-light);
-
-    font-family:"Prompt",sans-serif;
-
-    font-size:16px;
-
-    margin-bottom:18px;
-}
-
-.footer-links{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:9px;
-}
-
-.footer-links a{
-    color:#8f8f8f;
-
-    font-size:14px;
-
-    transition:.3s ease;
-}
-
-.footer-links a:hover{
-    color:var(--gold-light);
-
-    transform:translateX(3px);
-}
-
-.footer-bottom{
-    margin-top:50px;
-
-    padding-top:20px;
-
-    border-top:1px solid rgba(255,255,255,.07);
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    color:#666;
-
-    font-size:12px;
-}
-
-.footer-bottom strong{
-    color:#999;
-}
-
 
 /* =========================================================
-   FLOATING
+FLOAT
 ========================================================= */
 
-.floating-contact{
-    position:fixed;
+.float-contact{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:900;
 
-    right:20px;
-    bottom:20px;
-
-    z-index:900;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
 }
 
 .float-btn{
-    width:50px;
-    height:50px;
+  width:52px;
+  height:52px;
 
-    display:flex;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    align-items:center;
-    justify-content:center;
+  border-radius:50%;
+  border:1px solid var(--gold-line);
 
-    border-radius:50%;
+  background:#101010;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
 
-    border:1px solid var(--gold-line);
-
-    background:rgba(8,8,8,.9);
-
-    backdrop-filter:blur(10px);
-
-    color:var(--gold-light);
-
-    font-size:20px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.35);
-
-    transition:.3s ease;
+  font-size:21px;
+  transition:.25s;
 }
 
 .float-btn:hover{
-    transform:translateY(-4px);
-
-    background:var(--gold);
-
-    color:#050505;
+  transform:translateY(-3px) scale(1.04);
+  border-color:var(--gold);
 }
-
 
 /* =========================================================
-   REVEAL
+RESPONSIVE
 ========================================================= */
 
-.reveal{
-    opacity:0;
+@media(max-width:1100px){
 
-    transform:translateY(25px);
+  .nav-menu a{
+    padding:8px;
+    font-size:12px;
+  }
 
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
+  .problem-grid{
+    grid-template-columns:1fr;
+  }
+
+  .related-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
-.reveal.active{
-    opacity:1;
+@media(max-width:820px){
 
-    transform:none;
+  .header-inner{
+    min-height:72px;
+  }
+
+  .brand img{
+    width:58px;
+    height:58px;
+  }
+
+  .brand-text strong{
+    font-size:17px;
+  }
+
+  .brand-text span{
+    font-size:9px;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .nav-menu{
+    position:absolute;
+    left:20px;
+    right:20px;
+    top:80px;
+
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+
+    padding:12px;
+
+    border:1px solid var(--line);
+    border-radius:14px;
+
+    background:rgba(10,10,10,.98);
+    box-shadow:0 25px 60px rgba(0,0,0,.55);
+  }
+
+  .nav-menu.open{
+    display:flex;
+  }
+
+  .nav-menu a{
+    padding:13px;
+    font-size:14px;
+  }
+
+  .hero{
+    min-height:500px;
+  }
+
+  .hero-content{
+    padding:75px 0;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero-number{
+    font-size:110px;
+  }
+
+  .section{
+    padding:65px 0;
+  }
+
+  .section-title h2{
+    font-size:32px;
+  }
+
+  .system-diagram{
+    grid-template-columns:1fr;
+  }
+
+  .layer-arrow{
+    top:auto;
+    bottom:-28px;
+    right:50%;
+    transform:translateX(50%) rotate(90deg);
+  }
+
+  .layer:last-child .layer-arrow{
+    display:none;
+  }
+
+  .suitability-grid{
+    grid-template-columns:1fr;
+  }
+
+  .time-grid{
+    grid-template-columns:1fr;
+  }
+
+  .related-grid{
+    grid-template-columns:1fr;
+  }
+
+  .warranty-box{
+    padding:30px;
+  }
+
+  .cta h2{
+    font-size:34px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .copyright{
+    flex-direction:column;
+  }
 }
 
+@media(max-width:520px){
 
-/* =========================================================
-   MOBILE
-========================================================= */
+  .container,
+  .header-inner,
+  .hero-content{
+    width:min(100% - 28px,var(--container));
+  }
 
-@media(max-width:1080px){
+  .hero h1{
+    font-size:39px;
+  }
 
-    .nav-menu{
-        display:none;
+  .hero-desc{
+    font-size:15px;
+  }
 
-        position:absolute;
+  .hero-number{
+    display:none;
+  }
 
-        left:20px;
-        right:20px;
+  .problem-image,
+  .placeholder{
+    min-height:260px;
+  }
 
-        top:80px;
+  .warranty-box h2{
+    font-size:27px;
+  }
 
-        padding:14px;
+  .float-contact{
+    right:12px;
+    bottom:12px;
+  }
 
-        flex-direction:column;
-
-        align-items:stretch;
-
-        background:rgba(10,10,10,.98);
-
-        border:1px solid var(--gold-line);
-
-        border-radius:16px;
-
-        box-shadow:
-            0 25px 60px rgba(0,0,0,.5);
-    }
-
-    .nav-menu.open{
-        display:flex;
-    }
-
-    .nav-menu a{
-        padding:13px 15px;
-
-        border-radius:8px;
-    }
-
-    .nav-menu a:hover{
-        background:rgba(200,164,91,.07);
-    }
-
-    .nav-menu a::after{
-        display:none;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .problem-grid{
-        grid-template-columns:1fr;
-    }
-
-    .info-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .project-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .footer-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-
-@media(max-width:700px){
-
-    .container{
-        width:min(
-            calc(100% - 28px),
-            var(--container)
-        );
-    }
-
-    .header-inner{
-        min-height:76px;
-    }
-
-    .brand-logo{
-        width:56px;
-        height:56px;
-    }
-
-    .brand-text strong{
-        font-size:15px;
-    }
-
-    .brand-text span{
-        font-size:10px;
-    }
-
-    .hero{
-        min-height:500px;
-    }
-
-    .hero-content{
-        padding:70px 0;
-    }
-
-    .hero h1{
-        font-size:42px;
-
-        line-height:1.25;
-    }
-
-    .hero-subtitle{
-        font-size:16px;
-    }
-
-    .section{
-        padding:70px 0;
-    }
-
-    .problem-image{
-        min-height:330px;
-    }
-
-    .problem-content{
-        padding:27px;
-    }
-
-    .problem-content h3{
-        font-size:24px;
-    }
-
-    .layer{
-        padding:17px;
-
-        gap:13px;
-    }
-
-    .layer-number{
-        width:43px;
-        height:43px;
-    }
-
-    .layer-info h3{
-        font-size:18px;
-    }
-
-    .suitability-grid{
-        grid-template-columns:1fr;
-    }
-
-    .suit-card{
-        padding:27px;
-    }
-
-    .info-grid{
-        grid-template-columns:1fr;
-    }
-
-    .project-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cta{
-        padding:35px 25px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-
-        gap:32px;
-    }
-
-    .footer-bottom{
-        flex-direction:column;
-
-        gap:8px;
-    }
-
-    .floating-contact{
-        right:14px;
-        bottom:14px;
-    }
-
-    .float-btn{
-        width:46px;
-        height:46px;
-    }
+  .float-btn{
+    width:48px;
+    height:48px;
+  }
 }
 
 </style>
 </head>
 
-
 <body>
 
 
 <!-- =========================================================
-     HEADER
+HEADER
 ========================================================= -->
 
 <header class="header">
 
-    <div class="container header-inner">
+  <div class="header-inner">
 
-        <a href="index.html" class="brand">
+    <a href="index.html" class="brand">
 
-            <img
-                src="assets/logo.png"
-                alt="CHATPETCH GROUP"
-                class="brand-logo"
-            >
+      <img
+        src="assets/logo.png"
+        alt="CHATPETCH GROUP">
 
-            <div class="brand-text">
+      <div class="brand-text">
 
-                <strong>
-                    CHATPETCH GROUP
-                </strong>
+        <strong>CHATPETCH GROUP</strong>
 
-                <span>
-                    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
-                </span>
+        <span>
+          บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+        </span>
 
-            </div>
+      </div>
 
-        </a>
+    </a>
 
 
-        <button
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="เปิดเมนู"
-        >
-            ☰
-        </button>
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      aria-label="เปิดเมนู">
+      ☰
+    </button>
 
 
-        <nav class="nav-menu" id="navMenu">
+    <nav class="nav-menu" id="navMenu">
 
-            <a href="index.html">
-                หน้าแรก
-            </a>
+      <a href="index.html">หน้าแรก</a>
 
-            <a href="about.html">
-                เกี่ยวกับเรา
-            </a>
+      <a href="about.html">เกี่ยวกับเรา</a>
 
-            <a href="products.html">
-                สินค้า
-            </a>
+      <a href="products.html">สินค้า</a>
 
-            <a href="services.html">
-                บริการ
-            </a>
+      <a href="services.html" class="active">บริการ</a>
 
-            <a href="projects.html">
-                ผลงาน
-            </a>
+      <a href="projects.html">ผลงาน</a>
 
-            <a href="technical-center.html">
-                Technical Center
-            </a>
+      <a href="reference.html">โครงการอ้างอิง</a>
 
-            <a href="knowledge.html">
-                Knowledge
-            </a>
+      <a href="technical-center.html">ศูนย์เทคนิค</a>
 
-            <a href="order-status.html">
-                ติดตามคำสั่งซื้อ
-            </a>
+      <a href="knowledge.html">สาระน่ารู้</a>
 
-            <a href="contact.html">
-                ติดต่อเรา
-            </a>
+      <a href="contact.html">ติดต่อเรา</a>
 
-            <a
-                href="cart.html"
-                class="nav-shop"
-            >
-                🛒 ตะกร้า
-            </a>
+      <a href="order-status.html">ติดตามคำสั่งซื้อ</a>
 
-        </nav>
+      <a href="cart.html" class="nav-shop">
+        🛒 ตะกร้า
+      </a>
 
-    </div>
+    </nav>
+
+  </div>
 
 </header>
 
 
-
 <!-- =========================================================
-     HERO
+HERO
 ========================================================= -->
 
 <section class="hero">
 
-    <div class="container hero-content reveal">
+  <div class="hero-content">
 
-        <div class="breadcrumb">
+    <div class="eyebrow">
+      SERVICE SYSTEM
+    </div>
 
-            <a href="services.html">
-                บริการ
-            </a>
+    <h1 id="heroTitle">
+      รายละเอียด<br>
+      <span>ระบบบริการ</span>
+    </h1>
 
-            <span>
-                /
-            </span>
+    <p
+      class="hero-desc"
+      id="heroDescription">
+      ระบบงานสำหรับพื้นที่แต่ละประเภท
+      พร้อมแนวทางพิจารณาการเลือกใช้งานอย่างเหมาะสม
+    </p>
 
-            <span id="breadcrumbName">
-                รายละเอียดระบบ
-            </span>
+    <div class="hero-meta" id="heroTags"></div>
 
-        </div>
+  </div>
 
+  <div class="hero-number" id="heroNumber">
+    01
+  </div>
 
-        <div
-            class="hero-number"
-            id="heroNumber"
-        >
-            SERVICE 01
-        </div>
-
-
-        <h1 id="heroTitle">
-            ระบบงานพื้น
-            <span>อุตสาหกรรม</span>
-        </h1>
+</section>
 
 
-        <p
-            class="hero-subtitle"
-            id="heroSubtitle"
-        >
-            รายละเอียดระบบและแนวทางการเลือกใช้งาน
-            สำหรับพื้นที่แต่ละประเภท
+<!-- =========================================================
+PROBLEM
+========================================================= -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-title">
+
+        <small>01 / PROBLEM</small>
+
+        <h2>ปัญหาที่ระบบนี้ช่วยแก้</h2>
+
+        <p>
+          การเลือกวัสดุและระบบพื้นควรเริ่มจากการวิเคราะห์
+          สภาพพื้นที่ ปัญหาเดิม และลักษณะการใช้งาน
         </p>
 
+      </div>
 
-        <div
-            class="hero-tags"
-            id="heroTags"
-        >
+    </div>
 
-            <div class="hero-tag">
-                วิเคราะห์หน้างาน
-            </div>
 
-            <div class="hero-tag">
-                เลือกระบบ
-            </div>
+    <div class="problem-grid">
 
-            <div class="hero-tag">
-                ให้คำปรึกษา
-            </div>
+      <div class="problem-card">
+
+        <div class="problem-image">
+
+          <div class="placeholder">
+            PROJECT / PROBLEM PHOTO
+          </div>
 
         </div>
 
+      </div>
+
+
+      <div class="problem-list" id="problemList"></div>
+
     </div>
+
+  </div>
 
 </section>
 
 
+<!-- =========================================================
+SYSTEM
+========================================================= -->
+
+<section class="system-section">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div class="section-title">
+
+        <small>02 / SYSTEM</small>
+
+        <h2>โครงสร้างระบบ</h2>
+
+        <p>
+          ตัวอย่างโครงสร้างระบบสำหรับอธิบายแนวคิดการทำงาน
+          โดยรายละเอียดวัสดุจริงให้ยึดตาม Specification และ TDS
+          ของระบบที่เลือกใช้
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="system-diagram">
+
+      <div class="layer">
+
+        <div class="layer-number">
+          LAYER 01
+        </div>
+
+        <div class="layer-icon">
+          01
+        </div>
+
+        <h3>Primer</h3>
+
+        <p>
+          ชั้นเตรียมผิวและรองพื้น
+          สำหรับเตรียมพื้นผิวก่อนเข้าสู่ระบบหลัก
+        </p>
+
+        <div class="layer-arrow">
+          →
+        </div>
+
+      </div>
+
+
+      <div class="layer">
+
+        <div class="layer-number">
+          LAYER 02
+        </div>
+
+        <div class="layer-icon">
+          02
+        </div>
+
+        <h3>Middle Layer</h3>
+
+        <p>
+          ชั้นกลางของระบบ
+          ซึ่งชนิดและความหนาขึ้นอยู่กับระบบและสภาพพื้นที่
+        </p>
+
+        <div class="layer-arrow">
+          →
+        </div>
+
+      </div>
+
+
+      <div class="layer">
+
+        <div class="layer-number">
+          LAYER 03
+        </div>
+
+        <div class="layer-icon">
+          03
+        </div>
+
+        <h3>Top Coat</h3>
+
+        <p>
+          ชั้นผิวบนสุดสำหรับงานระบบ
+          โดยต้องเลือกชนิดให้สอดคล้องกับการใช้งานจริง
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 
 <!-- =========================================================
-     PROBLEM
+SUITABILITY
 ========================================================= -->
 
 <section class="section">
 
-    <div class="container">
+  <div class="container">
 
-        <div class="section-head reveal">
+    <div class="section-head">
 
-            <div class="section-label">
-                PROBLEM
-            </div>
+      <div class="section-title">
 
-            <h2 class="section-title">
-                ปัญหาที่ระบบนี้
-                <span>ช่วยแก้ได้</span>
-            </h2>
+        <small>03 / SUITABILITY</small>
 
-            <p class="section-desc">
-                ก่อนเลือกใช้ระบบพื้น ควรพิจารณาสภาพพื้นเดิม
-                ลักษณะการใช้งาน ความชื้น การรับน้ำหนัก
-                และปัจจัยแวดล้อมของพื้นที่
-            </p>
+        <h2>เหมาะกับพื้นที่แบบไหน?</h2>
 
-        </div>
+        <p>
+          ก่อนเลือกใช้ระบบควรตรวจสอบสภาพพื้นเดิม
+          ความชื้น การรับน้ำหนัก การใช้งาน และเงื่อนไขหน้างาน
+        </p>
 
-
-        <div class="problem-grid">
-
-
-            <!-- IMAGE AREA -->
-
-            <div class="problem-image reveal">
-
-                <div class="problem-image-placeholder">
-
-                    <div class="icon">
-                        ◈
-                    </div>
-
-                    <strong>
-                        ภาพปัญหาหน้างาน
-                    </strong>
-
-                    <span>
-                        พื้นที่ส่วนนี้เตรียมไว้สำหรับ
-                        ภาพปัญหาจริงของระบบ
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- CONTENT -->
-
-            <div class="problem-content reveal">
-
-                <h3>
-                    วิเคราะห์ปัญหา
-                    <span>ก่อนเลือกระบบ</span>
-                </h3>
-
-                <p id="problemIntro">
-                    รายละเอียดปัญหาจะเปลี่ยนตามประเภทบริการ
-                    ที่เลือกจากหน้า Services
-                </p>
-
-
-                <ul
-                    class="problem-list"
-                    id="problemList"
-                >
-
-                    <li>
-                        พื้นผิวเดิมมีสภาพไม่เหมาะกับการใช้งาน
-                    </li>
-
-                    <li>
-                        ต้องการระบบที่เหมาะกับลักษณะพื้นที่
-                    </li>
-
-                    <li>
-                        ต้องพิจารณาสภาพหน้างานก่อนเริ่มงาน
-                    </li>
-
-                    <li>
-                        ต้องเลือกระบบให้สอดคล้องกับการใช้งานจริง
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
+      </div>
 
     </div>
+
+
+    <div class="suitability-grid">
+
+      <div class="suit-card good">
+
+        <h3>
+          ✓ เหมาะกับ
+        </h3>
+
+        <ul id="suitableList"></ul>
+
+      </div>
+
+
+      <div class="suit-card bad">
+
+        <h3>
+          ! ควรตรวจสอบก่อนใช้
+        </h3>
+
+        <ul id="notSuitableList"></ul>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-
 <!-- =========================================================
-     SYSTEM LAYERS
-========================================================= -->
-
-<section class="section system-section">
-
-    <div class="container">
-
-        <div class="section-head reveal">
-
-            <div class="section-label">
-                SYSTEM STRUCTURE
-            </div>
-
-            <h2 class="section-title">
-                โครงสร้าง
-                <span>ระบบงาน</span>
-            </h2>
-
-            <p class="section-desc">
-                ตัวอย่างลำดับชั้นของระบบสำหรับใช้เป็นแนวทางอธิบายงาน
-                รายละเอียดจริงของแต่ละระบบควรอ้างอิง Specification,
-                TDS หรือเอกสารทางเทคนิคของวัสดุที่เลือกใช้
-            </p>
-
-        </div>
-
-
-        <div class="layer-diagram">
-
-
-            <!-- PRIMER -->
-
-            <div class="layer reveal">
-
-                <div class="layer-number">
-                    01
-                </div>
-
-                <div class="layer-info">
-
-                    <h3>
-                        Primer
-                    </h3>
-
-                    <p>
-                        ชั้นรองพื้น / ชั้นเตรียมพื้น
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="layer-arrow">
-                ↓
-            </div>
-
-
-            <!-- MIDDLE -->
-
-            <div class="layer reveal">
-
-                <div class="layer-number">
-                    02
-                </div>
-
-                <div class="layer-info">
-
-                    <h3>
-                        Middle Layer
-                    </h3>
-
-                    <p>
-                        ชั้นกลาง / ชั้นปรับระดับ / ชั้นสร้างความหนา
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="layer-arrow">
-                ↓
-            </div>
-
-
-            <!-- TOP -->
-
-            <div class="layer reveal">
-
-                <div class="layer-number">
-                    03
-                </div>
-
-                <div class="layer-info">
-
-                    <h3>
-                        Top Coat
-                    </h3>
-
-                    <p>
-                        ชั้นเคลือบผิว / ชั้นปิดผิว
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SUITABILITY
+TIME
 ========================================================= -->
 
 <section class="section">
 
-    <div class="container">
+  <div class="container">
 
-        <div class="section-head reveal">
+    <div class="section-head">
 
-            <div class="section-label">
-                APPLICATION
-            </div>
+      <div class="section-title">
 
-            <h2 class="section-title">
-                เหมาะกับพื้นที่
-                <span>แบบไหน?</span>
-            </h2>
+        <small>04 / WORKFLOW</small>
 
-            <p class="section-desc">
-                การเลือกระบบควรพิจารณาจากลักษณะการใช้งานจริง
-                ไม่ควรเลือกจากชื่อระบบเพียงอย่างเดียว
-            </p>
+        <h2>ระยะเวลาการทำงาน</h2>
 
-        </div>
+        <p>
+          ระยะเวลาจริงขึ้นอยู่กับสภาพพื้นที่ ระบบที่เลือกใช้
+          สภาพอากาศ และข้อกำหนดของวัสดุ
+        </p>
 
-
-        <div class="suitability-grid">
-
-
-            <!-- GOOD -->
-
-            <div class="suit-card good reveal">
-
-                <h3>
-                    <span>✓</span>
-                    เหมาะกับ
-                </h3>
-
-                <ul
-                    class="suit-list"
-                    id="suitableList"
-                >
-
-                    <li>
-                        พื้นที่ที่ต้องการระบบเฉพาะตามลักษณะการใช้งาน
-                    </li>
-
-                    <li>
-                        พื้นที่ที่สามารถเตรียมพื้นผิวก่อนติดตั้งได้
-                    </li>
-
-                    <li>
-                        งานที่ต้องมีการวิเคราะห์สภาพหน้างาน
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <!-- NOT GOOD -->
-
-            <div class="suit-card not-suit reveal">
-
-                <h3>
-                    <span>!</span>
-                    ต้องตรวจสอบก่อนใช้
-                </h3>
-
-                <ul
-                    class="suit-list"
-                    id="notSuitableList"
-                >
-
-                    <li>
-                        พื้นที่ที่มีความชื้นหรือปัญหาใต้พื้น
-                    </li>
-
-                    <li>
-                        พื้นที่ที่มีสภาพพื้นเดิมเสียหายมาก
-                    </li>
-
-                    <li>
-                        พื้นที่ที่มีเงื่อนไขการใช้งานเฉพาะ
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
+      </div>
 
     </div>
+
+
+    <div class="time-grid">
+
+      <div class="time-card">
+
+        <div class="time-number">
+          STEP 01
+        </div>
+
+        <h3>
+          สำรวจและเตรียมพื้นที่
+        </h3>
+
+        <p>
+          ตรวจสอบพื้นเดิม ปัญหาของพื้นที่
+          และเตรียมผิวให้เหมาะสมก่อนเริ่มระบบ
+        </p>
+
+      </div>
+
+
+      <div class="time-card">
+
+        <div class="time-number">
+          STEP 02
+        </div>
+
+        <h3>
+          ดำเนินงานตามระบบ
+        </h3>
+
+        <p>
+          ลงวัสดุตามขั้นตอนและข้อกำหนด
+          ของระบบที่ได้รับการเลือกใช้งาน
+        </p>
+
+      </div>
+
+
+      <div class="time-card">
+
+        <div class="time-number">
+          STEP 03
+        </div>
+
+        <h3>
+          รอการบ่มและตรวจสอบ
+        </h3>
+
+        <p>
+          ต้องรอระยะเวลาการบ่มหรือเปิดใช้งาน
+          ตามเอกสารทางเทคนิคของวัสดุ
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-
 <!-- =========================================================
-     WORK INFORMATION
+WARRANTY
 ========================================================= -->
 
-<section class="section system-section">
+<section class="warranty">
 
-    <div class="container">
+  <div class="container">
 
-        <div class="section-head reveal">
+    <div class="warranty-box">
 
-            <div class="section-label">
-                PROJECT INFORMATION
-            </div>
+      <h2>
+        Warranty &amp; เงื่อนไขการรับประกัน
+      </h2>
 
-            <h2 class="section-title">
-                ข้อมูลก่อน
-                <span>เริ่มงาน</span>
-            </h2>
+      <p>
+        เงื่อนไขการรับประกันของแต่ละระบบ
+        ควรพิจารณาตามประเภทงาน วัสดุ
+        วิธีการติดตั้ง และเงื่อนไขที่บริษัทกำหนด
+      </p>
 
-        </div>
+      <div class="warranty-note">
 
+        ข้อมูลระยะเวลารับประกันจริง
+        <strong style="color:var(--gold-light);">
+          รอข้อมูลยืนยันจากบริษัท
+        </strong>
+        ก่อนนำไปเผยแพร่บนเว็บไซต์
 
-        <div class="info-grid">
-
-
-            <!-- DURATION -->
-
-            <div class="info-card reveal">
-
-                <div class="info-icon">
-                    ◷
-                </div>
-
-                <h3>
-                    ระยะเวลาทำงาน
-                </h3>
-
-                <p>
-                    ต้องประเมินตามสภาพพื้นที่
-                    ขนาดพื้นที่ ระบบที่เลือก
-                    และเงื่อนไขของหน้างาน
-                </p>
-
-            </div>
-
-
-            <!-- OPENING -->
-
-            <div class="info-card reveal">
-
-                <div class="info-icon">
-                    ◇
-                </div>
-
-                <h3>
-                    ระยะเวลาก่อนเปิดใช้งาน
-                </h3>
-
-                <p>
-                    ขึ้นอยู่กับระบบวัสดุที่เลือกใช้
-                    อุณหภูมิ สภาพแวดล้อม
-                    และข้อกำหนดทางเทคนิคของระบบ
-                </p>
-
-            </div>
-
-
-            <!-- WARRANTY -->
-
-            <div class="info-card reveal">
-
-                <div class="info-icon">
-                    ✦
-                </div>
-
-                <h3>
-                    การรับประกัน
-                </h3>
-
-                <p>
-                    รายละเอียดเงื่อนไขการรับประกัน
-                    รอข้อมูลและเงื่อนไขอย่างเป็นทางการจากบริษัท
-                </p>
-
-            </div>
-
-
-            <!-- SURFACE -->
-
-            <div class="info-card reveal">
-
-                <div class="info-icon">
-                    ▣
-                </div>
-
-                <h3>
-                    สภาพพื้นเดิม
-                </h3>
-
-                <p>
-                    ควรตรวจสอบสภาพพื้นเดิม
-                    ความแข็งแรง ความสะอาด
-                    และความชื้นก่อนเริ่มงาน
-                </p>
-
-            </div>
-
-
-            <!-- MATERIAL -->
-
-            <div class="info-card reveal">
-
-                <div class="info-icon">
-                    ⬡
-                </div>
-
-                <h3>
-                    วัสดุที่ใช้
-                </h3>
-
-                <p>
-                    เลือกตามระบบงานและ Specification
-                    ของวัสดุที่เหมาะกับพื้นที่
-                </p>
-
-            </div>
-
-
-            <!-- INSPECTION -->
-
-            <div class="info-card reveal">
-
-                <div class="info-icon">
-                    ◎
-                </div>
-
-                <h3>
-                    สำรวจหน้างาน
-                </h3>
-
-                <p>
-                    งานที่มีเงื่อนไขเฉพาะควรมีการสำรวจ
-                    และประเมินพื้นที่ก่อนเสนอระบบ
-                </p>
-
-            </div>
-
-        </div>
+      </div>
 
     </div>
+
+  </div>
 
 </section>
 
 
-
 <!-- =========================================================
-     RELATED PROJECTS
+RELATED
 ========================================================= -->
 
 <section class="section">
 
-    <div class="container">
+  <div class="container">
 
-        <div class="section-head reveal">
+    <div class="section-head">
 
-            <div class="section-label">
-                RELATED PROJECTS
-            </div>
+      <div class="section-title">
 
-            <h2 class="section-title">
-                ผลงานที่
-                <span>เกี่ยวข้อง</span>
-            </h2>
+        <small>05 / RELATED</small>
 
-            <p class="section-desc">
-                ส่วนนี้เตรียมไว้สำหรับแสดงผลงานจริง
-                ที่ตรงกับประเภทระบบบริการ
-            </p>
+        <h2>บริการที่เกี่ยวข้อง</h2>
 
-        </div>
-
-
-        <div class="project-grid">
-
-
-            <a
-                href="projects.html"
-                class="project-card reveal"
-            >
-
-                <div class="project-placeholder">
-
-                    <div class="project-icon">
-                        ◈
-                    </div>
-
-                    <strong>
-                        Case Study 01
-                    </strong>
-
-                    <span>
-                        เพิ่มผลงานจริงภายหลัง
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <a
-                href="projects.html"
-                class="project-card reveal"
-            >
-
-                <div class="project-placeholder">
-
-                    <div class="project-icon">
-                        ◇
-                    </div>
-
-                    <strong>
-                        Case Study 02
-                    </strong>
-
-                    <span>
-                        เพิ่มผลงานจริงภายหลัง
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <a
-                href="projects.html"
-                class="project-card reveal"
-            >
-
-                <div class="project-placeholder">
-
-                    <div class="project-icon">
-                        ✦
-                    </div>
-
-                    <strong>
-                        Case Study 03
-                    </strong>
-
-                    <span>
-                        เพิ่มผลงานจริงภายหลัง
-                    </span>
-
-                </div>
-
-            </a>
-
-
-        </div>
+      </div>
 
     </div>
+
+
+    <div class="related-grid" id="relatedGrid"></div>
+
+  </div>
 
 </section>
 
 
-
 <!-- =========================================================
-     CTA
+CTA
 ========================================================= -->
 
-<section class="section">
+<section class="cta">
 
-    <div class="container">
+  <div class="container">
 
-        <div class="cta reveal">
+    <h2>
+      ต้องการเลือกระบบ<br>
+      สำหรับพื้นที่ของคุณ?
+    </h2>
 
-            <div class="cta-content">
+    <p>
+      ส่งข้อมูลลักษณะพื้นที่และปัญหาที่พบ
+      ให้ทีมงานช่วยประเมินแนวทางเบื้องต้น
+    </p>
 
-                <div class="cta-label">
-                    REQUEST A QUOTE
-                </div>
+    <div class="cta-buttons">
 
-                <h2>
-                    มีปัญหาพื้นหรือกำลังหา
-                    <span>ระบบที่เหมาะกับพื้นที่?</span>
-                </h2>
+      <a
+        href="contact.html"
+        class="btn btn-gold">
+        ขอใบเสนอราคา
+      </a>
 
-                <p>
-                    ส่งข้อมูลประเภทงาน จังหวัด ขนาดพื้นที่โดยประมาณ
-                    และภาพหน้างานเข้ามาให้ทีมงาน
-                    เพื่อใช้ประกอบการให้คำปรึกษาและเสนอแนวทาง
-                </p>
+      <a
+        href="technical-center.html"
+        class="btn">
+        ดูเอกสารทางเทคนิค
+      </a>
 
-
-                <div class="cta-buttons">
-
-                    <a
-                        href="contact.html"
-                        class="btn btn-gold"
-                    >
-                        ขอคำปรึกษา / ขอใบเสนอราคา
-                        →
-                    </a>
-
-                    <a
-                        href="services.html"
-                        class="btn btn-outline"
-                    >
-                        ดูบริการทั้งหมด
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
+      <a
+        href="projects.html"
+        class="btn">
+        ดูผลงาน
+      </a>
 
     </div>
+
+  </div>
 
 </section>
 
 
-
 <!-- =========================================================
-     FOOTER
+FOOTER
 ========================================================= -->
 
 <footer class="footer">
 
-    <div class="container">
+  <div class="container">
 
-        <div class="footer-grid">
+    <div class="footer-grid">
 
+      <div>
 
-            <!-- BRAND -->
+        <div class="footer-brand">
 
-            <div>
+          <img
+            src="assets/logo.png"
+            alt="CHATPETCH GROUP">
 
-                <div class="footer-brand">
+          <div>
 
-                    <img
-                        src="assets/logo.png"
-                        alt="CHATPETCH GROUP"
-                        class="footer-logo"
-                    >
+            <h3>CHATPETCH GROUP</h3>
 
-                    <div class="footer-brand-text">
+            <p>
+              บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+            </p>
 
-                        <strong>
-                            CHATPETCH GROUP
-                        </strong>
-
-                        <span>
-                            บริษัท ฉัตรเพชร กรุ๊ป จำกัด
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <p class="footer-about">
-
-                    🌹 โรงงานผลิต-จำหน่าย
-                    วัสดุงานพื้นทุกประเภท 🌹
-
-                    <br><br>
-
-                    บริการให้คำปรึกษาเกี่ยวกับพื้น
-                    ทุกระบบแบบครบวงจร
-
-                </p>
-
-            </div>
-
-
-            <!-- MENU -->
-
-            <div class="footer-col">
-
-                <h4>
-                    เมนูหลัก
-                </h4>
-
-                <div class="footer-links">
-
-                    <a href="index.html">
-                        หน้าแรก
-                    </a>
-
-                    <a href="about.html">
-                        เกี่ยวกับเรา
-                    </a>
-
-                    <a href="products.html">
-                        สินค้า
-                    </a>
-
-                    <a href="services.html">
-                        บริการ
-                    </a>
-
-                    <a href="projects.html">
-                        ผลงาน
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- INFORMATION -->
-
-            <div class="footer-col">
-
-                <h4>
-                    ข้อมูล
-                </h4>
-
-                <div class="footer-links">
-
-                    <a href="technical-center.html">
-                        Technical Center
-                    </a>
-
-                    <a href="knowledge.html">
-                        Knowledge
-                    </a>
-
-                    <a href="reference.html">
-                        Reference
-                    </a>
-
-                    <a href="order-status.html">
-                        ติดตามคำสั่งซื้อ
-                    </a>
-
-                    <a href="contact.html">
-                        ติดต่อเรา
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- CONTACT -->
-
-            <div class="footer-col">
-
-                <h4>
-                    ติดต่อ
-                </h4>
-
-                <div class="footer-links">
-
-                    <a href="tel:0856299778">
-                        ฝ่ายเทคนิค 085-6299778
-                    </a>
-
-                    <a href="tel:0980153271">
-                        ฝ่ายบัญชี 098-0153271
-                    </a>
-
-                    <a href="tel:0828223678">
-                        Sale พี่หญิง 082-8223678
-                    </a>
-
-                    <a href="tel:0986710888">
-                        Sale มีน 098-6710888
-                    </a>
-
-                    <a href="tel:0630630046">
-                        Sale เอ้ 063-0630046
-                    </a>
-
-                    <a href="tel:0986426962">
-                        Sale สาว 098-6426962
-                    </a>
-
-                </div>
-
-            </div>
-
+          </div>
 
         </div>
 
+        <p style="margin-top:18px;">
+          🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
+        </p>
 
-        <div class="footer-bottom">
+        <p>
+          สร้างสรรค์ผลงาน • มาตรฐานเข้าถึง • ยืน 1 คุณภาพ
+        </p>
 
-            <div>
-
-                © 2026
-
-                <strong>
-                    CHATPETCH GROUP CO., LTD.
-                </strong>
-
-                All Rights Reserved.
-
-            </div>
+      </div>
 
 
-            <div>
+      <div>
 
-                สร้างสรรค์ผลงาน
-                •
-                มาตรฐานเข้าถึง
-                •
-                ยืน 1 คุณภาพ
+        <h3>เมนู</h3>
 
-            </div>
+        <a href="about.html">
+          เกี่ยวกับเรา
+        </a>
 
-        </div>
+        <a href="products.html">
+          สินค้า
+        </a>
+
+        <a href="services.html">
+          บริการ
+        </a>
+
+        <a href="projects.html">
+          ผลงาน
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h3>ข้อมูล</h3>
+
+        <a href="reference.html">
+          โครงการอ้างอิง
+        </a>
+
+        <a href="technical-center.html">
+          ศูนย์เทคนิค
+        </a>
+
+        <a href="knowledge.html">
+          สาระน่ารู้
+        </a>
+
+        <a href="order-status.html">
+          ติดตามคำสั่งซื้อ
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h3>ติดต่อ</h3>
+
+        <a href="contact.html">
+          ขอใบเสนอราคา
+        </a>
+
+        <a
+          href="https://www.facebook.com/ChatphetchGroup"
+          target="_blank"
+          rel="noopener">
+          Facebook
+        </a>
+
+        <p style="margin-top:12px;">
+          10/1 ม.9 ต.นาหม่อม<br>
+          อ.นาหม่อม จ.สงขลา 90310
+        </p>
+
+      </div>
 
     </div>
+
+
+    <div class="copyright">
+
+      <span>
+        © 2026 CHATPETCH GROUP CO., LTD.
+      </span>
+
+      <span>
+        บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+      </span>
+
+    </div>
+
+  </div>
 
 </footer>
 
 
-
 <!-- =========================================================
-     FLOATING CONTACT
+FLOATING CONTACT
 ========================================================= -->
 
-<div class="floating-contact">
+<div class="float-contact">
 
-    <a
-        href="tel:0856299778"
-        class="float-btn"
-        title="โทรฝ่ายเทคนิค"
-    >
-        ☎
-    </a>
+  <a
+    href="tel:0856299778"
+    class="float-btn"
+    title="ฝ่ายเทคนิค">
+    ☎
+  </a>
 
-
-    <a
-        href="contact.html"
-        class="float-btn"
-        title="ติดต่อเรา"
-    >
-        ✉
-    </a>
+  <a
+    href="https://www.facebook.com/ChatphetchGroup"
+    target="_blank"
+    rel="noopener"
+    class="float-btn"
+    title="Facebook">
+    f
+  </a>
 
 </div>
 
 
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
 <script>
 
 /* =========================================================
-   SERVICE DATA
+MOBILE MENU
 ========================================================= */
 
-const SERVICES = {
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
-    industrial: {
+menuBtn.addEventListener("click",function(){
 
-        number: "SERVICE 01",
+  navMenu.classList.toggle("open");
 
-        name: "พื้นอุตสาหกรรม / อีพ็อกซี่ / พียู",
+});
 
-        title:
-            'พื้นอุตสาหกรรม <span>Epoxy / PU</span>',
+document.querySelectorAll(".nav-menu a").forEach(link => {
 
-        subtitle:
-            "ระบบพื้นสำหรับพื้นที่อุตสาหกรรมและพื้นที่ที่ต้องการเลือกผิวพื้นให้เหมาะกับลักษณะการใช้งาน",
+  link.addEventListener("click",function(){
 
-        tags: [
-            "Epoxy",
-            "Polyurethane",
-            "พื้นอุตสาหกรรม"
-        ],
+    navMenu.classList.remove("open");
 
-        problem:
-            "พื้นที่อุตสาหกรรมแต่ละประเภทมีเงื่อนไขการใช้งานแตกต่างกัน จึงควรพิจารณาสภาพพื้นเดิม ลักษณะการใช้งาน และความต้องการของพื้นที่ก่อนเลือกระบบ",
+  });
 
-        problems: [
-            "พื้นที่ต้องการผิวพื้นที่เหมาะกับการใช้งาน",
-            "ต้องการระบบพื้นสำหรับพื้นที่อุตสาหกรรม",
-            "ต้องการผิวพื้นที่ทำความสะอาดและดูแลรักษาได้ง่าย",
-            "ต้องเลือกระบบให้เหมาะกับสภาพหน้างาน"
-        ],
+});
 
-        suitable: [
-            "โรงงานและพื้นที่อุตสาหกรรม",
-            "คลังสินค้าและพื้นที่ใช้งานภายในอาคาร",
-            "พื้นที่ที่ต้องการระบบผิวพื้นเฉพาะ",
-            "พื้นที่ที่สามารถเตรียมพื้นผิวก่อนทำระบบได้"
-        ],
 
-        notSuitable: [
-            "พื้นเดิมที่ยังไม่ได้ตรวจสอบสภาพ",
-            "พื้นที่ที่มีปัญหาความชื้นใต้พื้น",
-            "พื้นที่ที่มีการใช้งานเฉพาะและยังไม่มีข้อมูล",
-            "พื้นที่ที่ยังไม่ทราบเงื่อนไขการรับน้ำหนักหรือการใช้งาน"
-        ]
+/* =========================================================
+SERVICE DATABASE
+========================================================= */
 
-    },
+const services = {
 
+  industrial:{
 
-    waterproof: {
+    number:"01",
 
-        number: "SERVICE 02",
+    title:"พื้นอุตสาหกรรม / อีพ็อกซี่ / พียู",
 
-        name: "งานกันรั่วซึม ดาดฟ้า / หลังคา / พื้นอาคาร",
+    short:
+      "ระบบพื้นสำหรับพื้นที่ใช้งานหลากหลายประเภท โดยต้องเลือกชนิดระบบให้เหมาะกับสภาพพื้นและลักษณะการใช้งาน",
 
-        title:
-            'งานกันรั่วซึม <span>ดาดฟ้า / หลังคา</span>',
+    tags:[
+      "EPOXY",
+      "PU",
+      "INDUSTRIAL FLOOR"
+    ],
 
-        subtitle:
-            "แนวทางงานป้องกันและแก้ไขปัญหาน้ำรั่วซึมสำหรับพื้นที่อาคาร โดยพิจารณาสภาพพื้นที่ก่อนเลือกระบบ",
+    problems:[
 
-        tags: [
-            "Waterproofing",
-            "ดาดฟ้า",
-            "หลังคา"
-        ],
+      {
+        title:"พื้นต้องการผิวสำหรับการใช้งานเฉพาะ",
+        text:"ควรเลือกชนิดวัสดุและระบบให้เหมาะกับการใช้งานของพื้นที่"
+      },
 
-        problem:
-            "ปัญหาน้ำรั่วซึมอาจเกิดจากหลายปัจจัย จึงควรตรวจสอบสภาพพื้นผิว รอยต่อ รอยแตกร้าว และบริเวณที่เกี่ยวข้องก่อนเลือกวิธีแก้ไข",
+      {
+        title:"พื้นเดิมเสื่อมสภาพ",
+        text:"ต้องประเมินพื้นเดิมก่อนกำหนดวิธีเตรียมผิวและระบบที่จะใช้"
+      },
 
-        problems: [
-            "น้ำซึมผ่านพื้นหรือบริเวณดาดฟ้า",
-            "พื้นที่ต้องการระบบป้องกันน้ำ",
-            "พื้นผิวมีรอยแตกร้าวหรือจุดที่ต้องตรวจสอบ",
-            "ต้องการปรับปรุงระบบกันรั่วซึมเดิม"
-        ],
+      {
+        title:"ต้องการปรับปรุงพื้นที่",
+        text:"สามารถพิจารณาระบบพื้นตามลักษณะการใช้งานและเงื่อนไขหน้างาน"
+      }
 
-        suitable: [
-            "ดาดฟ้าอาคาร",
-            "พื้นที่หลังคา",
-            "พื้นอาคารที่ต้องการระบบกันน้ำ",
-            "พื้นที่ที่สามารถเตรียมพื้นผิวก่อนทำระบบ"
-        ],
+    ],
 
-        notSuitable: [
-            "พื้นที่ที่ยังไม่ทราบจุดกำเนิดของน้ำ",
-            "พื้นผิวที่เสียหายและยังไม่ได้ซ่อม",
-            "พื้นที่ที่มีรายละเอียดรอยต่อซับซ้อน",
-            "พื้นที่ที่ต้องประเมินหน้างานเพิ่มเติม"
-        ]
+    suitable:[
 
-    },
+      "โรงงานและพื้นที่อุตสาหกรรม",
 
+      "พื้นที่ที่ต้องการระบบพื้นเฉพาะทาง",
 
-    "concrete-repair": {
+      "พื้นที่ที่สามารถเตรียมพื้นเดิมได้ตามข้อกำหนด"
 
-        number: "SERVICE 03",
+    ],
 
-        name: "ซ่อมปรับปรุงงานคอนกรีต",
+    notSuitable:[
 
-        title:
-            'ซ่อมปรับปรุง <span>งานคอนกรีต</span>',
+      "พื้นที่ที่ยังมีปัญหาความชื้นและยังไม่ได้ตรวจสอบ",
 
-        subtitle:
-            "งานซ่อมและปรับสภาพคอนกรีต เช่น Epoxy Injection และ Cement Self ก่อนหรือระหว่างการปรับปรุงพื้นที่",
+      "พื้นเดิมที่ไม่แข็งแรงหรือมีปัญหาโครงสร้าง",
 
-        tags: [
-            "Epoxy Injection",
-            "Cement Self",
-            "Concrete Repair"
-        ],
+      "พื้นที่ที่ยังไม่ทราบลักษณะการใช้งานจริง"
 
-        problem:
-            "พื้นคอนกรีตที่มีรอยแตกร้าวหรือผิวไม่พร้อมใช้งานควรได้รับการประเมินก่อนดำเนินการ เพื่อเลือกวิธีซ่อมที่เหมาะกับลักษณะปัญหา",
+    ]
 
-        problems: [
-            "คอนกรีตมีรอยแตกร้าว",
-            "พื้นผิวเดิมต้องการปรับสภาพ",
-            "ต้องการซ่อมรอยร้าวก่อนทำระบบพื้น",
-            "ต้องการปรับระดับหรือเตรียมพื้น"
-        ],
+  },
 
-        suitable: [
-            "พื้นคอนกรีตที่ต้องการซ่อม",
-            "พื้นที่ที่มีรอยแตกร้าวและต้องประเมินวิธีซ่อม",
-            "พื้นที่ที่ต้องเตรียมก่อนทำระบบพื้น",
-            "งานปรับปรุงพื้นเดิม"
-        ],
-
-        notSuitable: [
-            "รอยร้าวที่ยังไม่ทราบสาเหตุ",
-            "โครงสร้างที่ต้องประเมินโดยผู้เชี่ยวชาญเฉพาะด้าน",
-            "พื้นผิวที่มีความเสียหายมากโดยยังไม่ได้สำรวจ",
-            "งานที่มีเงื่อนไขโครงสร้างเฉพาะ"
-        ]
 
-    },
+  waterproof:{
 
+    number:"02",
 
-    sports: {
+    title:"งานกันรั่วซึม ดาดฟ้า หลังคา พื้นอาคาร",
 
-        number: "SERVICE 04",
+    short:
+      "ระบบสำหรับงานกันรั่วซึม โดยต้องตรวจสอบจุดรั่ว สภาพพื้นเดิม รอยแตกร้าว และรายละเอียดบริเวณรอยต่อก่อนเลือกวิธีแก้ไข",
 
-        name: "พื้นสนามกีฬา",
+    tags:[
+      "WATERPROOF",
+      "ROOF",
+      "DECK"
+    ],
 
-        title:
-            'ระบบพื้น <span>สนามกีฬา</span>',
+    problems:[
 
-        subtitle:
-            "งานพื้นสำหรับสนามกีฬา พื้นที่ออกกำลังกาย และพื้นที่กิจกรรม โดยพิจารณารูปแบบการใช้งานของพื้นที่",
+      {
+        title:"น้ำรั่วซึมจากพื้นที่ด้านบน",
+        text:"ต้องหาตำแหน่งและสาเหตุของน้ำรั่วก่อนเลือกวิธีซ่อม"
+      },
 
-        tags: [
-            "Sports Floor",
-            "สนามกีฬา",
-            "พื้นที่กิจกรรม"
-        ],
+      {
+        title:"รอยต่อหรือจุดรายละเอียดมีปัญหา",
+        text:"จุดต่อและรายละเอียดรอบพื้นที่ควรได้รับการตรวจสอบเป็นพิเศษ"
+      },
 
-        problem:
-            "พื้นสนามกีฬาต้องพิจารณาการใช้งาน การเคลื่อนไหว และสภาพพื้นเดิม เพื่อเลือกระบบที่เหมาะสมกับประเภทสนาม",
+      {
+        title:"ชั้นกันน้ำเดิมเสื่อมสภาพ",
+        text:"ต้องประเมินสภาพระบบเดิมก่อนวางแนวทางปรับปรุง"
+      }
 
-        problems: [
-            "ต้องการปรับปรุงพื้นสนามเดิม",
-            "ต้องการระบบพื้นสำหรับพื้นที่กีฬา",
-            "พื้นเดิมมีสภาพไม่สม่ำเสมอ",
-            "ต้องการเลือกระบบตามลักษณะการใช้งาน"
-        ],
+    ],
 
-        suitable: [
-            "สนามกีฬา",
-            "พื้นที่ออกกำลังกาย",
-            "พื้นที่กิจกรรม",
-            "พื้นที่ที่ต้องการปรับปรุงพื้นสนามเดิม"
-        ],
+    suitable:[
 
-        notSuitable: [
-            "พื้นที่ที่ยังไม่ทราบประเภทการใช้งาน",
-            "พื้นเดิมที่มีความเสียหายโดยยังไม่ได้ตรวจสอบ",
-            "พื้นที่ที่ต้องการคุณสมบัติเฉพาะแต่ยังไม่มี Specification",
-            "พื้นที่ที่มีปัญหาความชื้นหรือโครงสร้าง"
-        ]
+      "ดาดฟ้าและพื้นที่อาคาร",
 
-    },
+      "หลังคาหรือพื้นที่ที่ต้องการระบบกันน้ำ",
 
+      "พื้นที่ที่สามารถตรวจสอบต้นเหตุของปัญหาได้"
 
-    decorative: {
+    ],
 
-        number: "SERVICE 05",
+    notSuitable:[
 
-        name: "พื้นตกแต่งเพื่อความสวยงาม",
+      "พื้นที่ที่ยังไม่สามารถระบุแหล่งน้ำได้",
 
-        title:
-            'พื้นตกแต่ง <span>เพื่อความสวยงาม</span>',
+      "พื้นผิวที่มีปัญหาโครงสร้างรุนแรง",
 
-        subtitle:
-            "งานพื้นตกแต่งสำหรับสร้างรูปแบบและเอกลักษณ์ให้กับพื้นที่ เช่น PSC, PMC, Flake และ Aura Sand",
+      "พื้นที่ที่ยังไม่ได้เตรียมผิวตามข้อกำหนด"
 
-        tags: [
-            "PSC",
-            "PMC",
-            "Flake",
-            "Aura Sand"
-        ],
+    ]
 
-        problem:
-            "พื้นที่บางประเภทต้องการทั้งความสวยงามและรูปแบบผิวที่เหมาะกับการใช้งาน จึงควรเลือกวัสดุและระบบให้ตรงกับสภาพพื้นที่",
+  },
 
-        problems: [
-            "ต้องการพื้นตกแต่งเพื่อสร้างเอกลักษณ์",
-            "ต้องการเปลี่ยนรูปลักษณ์ของพื้นเดิม",
-            "ต้องการเลือกลวดลายหรือผิวพื้น",
-            "ต้องพิจารณาการใช้งานควบคู่กับความสวยงาม"
-        ],
 
-        suitable: [
-            "พื้นที่ตกแต่ง",
-            "พื้นที่ภายนอกหรือภายในตามระบบที่เลือก",
-            "พื้นที่ที่ต้องการลวดลายหรือผิวตกแต่ง",
-            "พื้นที่ที่สามารถเตรียมพื้นผิวก่อนทำระบบ"
-        ],
+  concrete:{
 
-        notSuitable: [
-            "พื้นที่ที่ยังไม่ได้ตรวจสอบพื้นเดิม",
-            "พื้นที่ที่มีความชื้นหรือปัญหาใต้พื้น",
-            "พื้นที่ที่ต้องการคุณสมบัติเฉพาะแต่ยังไม่มีข้อมูล",
-            "พื้นที่ที่มีเงื่อนไขการใช้งานหนักโดยยังไม่ได้ประเมิน"
-        ]
+    number:"03",
 
-    },
+    title:"งานซ่อมปรับปรุงงานคอนกรีต",
 
+    short:
+      "งานซ่อมและปรับปรุงพื้นคอนกรีต เช่น Epoxy Injection และระบบ Cement Self ตามสภาพปัญหาของพื้นที่",
 
-    traffic: {
+    tags:[
+      "EPOXY INJECTION",
+      "CEMENT SELF",
+      "CONCRETE REPAIR"
+    ],
 
-        number: "SERVICE 06",
+    problems:[
 
-        name: "ระบบงานสัญลักษณ์และเส้นจราจร",
+      {
+        title:"พบรอยแตกร้าวบนคอนกรีต",
+        text:"ต้องประเมินลักษณะและสาเหตุของรอยร้าวก่อนกำหนดวิธีซ่อม"
+      },
 
-        title:
-            'งานสัญลักษณ์และ <span>เส้นจราจร</span>',
+      {
+        title:"พื้นไม่เรียบหรือมีตำหนิ",
+        text:"สามารถพิจารณาวิธีปรับปรุงผิวตามสภาพพื้นเดิม"
+      },
 
-        subtitle:
-            "งานตีเส้น แบ่งช่องพื้นที่ และทำสัญลักษณ์บนพื้นเพื่อช่วยจัดระเบียบพื้นที่ใช้งาน",
+      {
+        title:"ต้องการฟื้นฟูพื้นคอนกรีต",
+        text:"เลือกวิธีซ่อมตามประเภทและความรุนแรงของปัญหา"
+      }
 
-        tags: [
-            "Traffic Line",
-            "Floor Marking",
-            "สัญลักษณ์พื้น"
-        ],
+    ],
 
-        problem:
-            "พื้นที่ใช้งานขนาดใหญ่จำเป็นต้องมีการแบ่งโซน เส้นทาง และจุดใช้งานอย่างชัดเจน เพื่อให้การใช้งานพื้นที่เป็นระเบียบ",
+    suitable:[
 
-        problems: [
-            "ต้องการตีเส้นแบ่งพื้นที่",
-            "ต้องการทำสัญลักษณ์บนพื้น",
-            "ต้องการจัดระเบียบช่องจอดรถ",
-            "ต้องการปรับปรุงเส้นจราจรเดิม"
-        ],
+      "พื้นคอนกรีตที่ต้องการซ่อมแซม",
 
-        suitable: [
-            "โรงงาน",
-            "คลังสินค้า",
-            "พื้นที่จอดรถ",
-            "พื้นที่ที่ต้องการแบ่งโซนการใช้งาน"
-        ],
+      "พื้นที่ที่ต้องการปรับปรุงสภาพผิว",
 
-        notSuitable: [
-            "พื้นผิวที่ยังไม่พร้อมสำหรับการตีเส้น",
-            "พื้นที่ที่มีคราบน้ำมันหรือสิ่งปนเปื้อน",
-            "พื้นที่ที่ต้องตรวจสอบระบบพื้นเดิมก่อน",
-            "พื้นที่ที่ยังไม่มี Layout หรือรูปแบบเส้นที่ต้องการ"
-        ]
+      "งานที่สามารถตรวจสอบสาเหตุของปัญหาได้"
 
-    }
+    ],
+
+    notSuitable:[
+
+      "ปัญหาที่เกี่ยวข้องกับโครงสร้างและยังไม่ได้รับการประเมิน",
+
+      "พื้นผิวที่ไม่แข็งแรง",
+
+      "พื้นที่ที่มีความชื้นหรือเงื่อนไขพิเศษโดยยังไม่มีข้อมูล"
+
+    ]
+
+  },
+
+
+  sports:{
+
+    number:"04",
+
+    title:"พื้นสนามกีฬา",
+
+    short:
+      "ระบบพื้นสำหรับสนามกีฬาและพื้นที่กิจกรรม โดยควรพิจารณาประเภทกีฬา ลักษณะการใช้งาน และสภาพพื้นเดิม",
+
+    tags:[
+      "SPORT FLOOR",
+      "SPORTS",
+      "OUTDOOR / INDOOR"
+    ],
+
+    problems:[
+
+      {
+        title:"ต้องการปรับปรุงพื้นสนาม",
+        text:"ประเมินพื้นเดิมและลักษณะการใช้งานก่อนกำหนดระบบ"
+      },
+
+      {
+        title:"พื้นต้องรองรับกิจกรรมกีฬา",
+        text:"ควรพิจารณาคุณสมบัติของระบบให้สอดคล้องกับประเภทกีฬา"
+      },
+
+      {
+        title:"พื้นเดิมเสื่อมสภาพ",
+        text:"ต้องเตรียมและปรับปรุงพื้นเดิมให้เหมาะกับระบบใหม่"
+      }
+
+    ],
+
+    suitable:[
+
+      "สนามกีฬา",
+
+      "พื้นที่กิจกรรม",
+
+      "พื้นที่ที่สามารถเตรียมพื้นและกำหนดระบบได้ตามประเภทการใช้งาน"
+
+    ],
+
+    notSuitable:[
+
+      "พื้นที่ที่มีปัญหาโครงสร้าง",
+
+      "พื้นที่ที่ยังไม่ทราบประเภทการใช้งาน",
+
+      "พื้นที่ที่ยังมีปัญหาความชื้นโดยไม่ได้ตรวจสอบ"
+
+    ]
+
+  },
+
+
+  decorative:{
+
+    number:"05",
+
+    title:"พื้นตกแต่งเพื่อความสวยงาม",
+
+    short:
+      "งานพื้นคอนกรีตพิมพ์ลาย PSC, PMC รวมถึงระบบพื้น Flake และ Aura Sand สำหรับงานตกแต่งตามรูปแบบที่ต้องการ",
+
+    tags:[
+      "PSC",
+      "PMC",
+      "FLAKE",
+      "AURA SAND"
+    ],
+
+    problems:[
+
+      {
+        title:"ต้องการพื้นตกแต่ง",
+        text:"เลือกพื้นผิว สี และรูปแบบให้เหมาะกับพื้นที่และภาพรวมของโครงการ"
+      },
+
+      {
+        title:"ต้องการปรับภาพลักษณ์พื้นที่",
+        text:"สามารถเลือกแนวทางตกแต่งตามลักษณะพื้นที่และความต้องการ"
+      },
+
+      {
+        title:"พื้นเดิมต้องการปรับปรุง",
+        text:"ต้องประเมินพื้นเดิมก่อนเลือกวิธีการติดตั้งระบบ"
+      }
+
+    ],
+
+    suitable:[
+
+      "พื้นที่ที่ต้องการความสวยงาม",
+
+      "พื้นที่ภายนอกหรือพื้นที่ตกแต่งตามประเภทระบบ",
+
+      "โครงการที่ต้องการกำหนดรูปแบบและสี"
+
+    ],
+
+    notSuitable:[
+
+      "พื้นที่ที่พื้นเดิมยังไม่พร้อม",
+
+      "พื้นที่ที่มีปัญหาโครงสร้าง",
+
+      "พื้นที่ที่ยังไม่ได้กำหนดรูปแบบการใช้งาน"
+
+    ]
+
+  },
+
+
+  traffic:{
+
+    number:"06",
+
+    title:"ระบบงานสัญลักษณ์และเส้นจราจร",
+
+    short:
+      "งานตีเส้นจราจร สัญลักษณ์ และการกำหนดพื้นที่ใช้งานบนพื้น เพื่อช่วยจัดระเบียบพื้นที่ตามการใช้งาน",
+
+    tags:[
+      "TRAFFIC",
+      "LINE MARKING",
+      "SIGNAGE"
+    ],
+
+    problems:[
+
+      {
+        title:"ต้องการแบ่งพื้นที่ใช้งาน",
+        text:"กำหนดแนวเส้นและพื้นที่ให้สอดคล้องกับรูปแบบการใช้งาน"
+      },
+
+      {
+        title:"ต้องการเพิ่มสัญลักษณ์บนพื้น",
+        text:"สามารถวางตำแหน่งและรูปแบบตามความต้องการของพื้นที่"
+      },
+
+      {
+        title:"เส้นเดิมเสื่อมสภาพ",
+        text:"ประเมินสภาพเส้นเดิมและพื้นผิวก่อนดำเนินการใหม่"
+      }
+
+    ],
+
+    suitable:[
+
+      "โรงงานและพื้นที่อุตสาหกรรม",
+
+      "ลานจอดรถและพื้นที่สัญจร",
+
+      "พื้นที่ที่ต้องการกำหนดเส้นหรือสัญลักษณ์"
+
+    ],
+
+    notSuitable:[
+
+      "พื้นผิวที่ไม่แข็งแรง",
+
+      "พื้นที่ที่ยังมีปัญหาน้ำหรือความชื้น",
+
+      "พื้นที่ที่ยังไม่กำหนดรูปแบบการใช้งาน"
+
+    ]
+
+  }
 
 };
 
 
 /* =========================================================
-   GET CATEGORY
+RELATED SERVICE DATABASE
 ========================================================= */
 
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
+const relatedServices = [
 
-const category =
-    params.get("category") || "industrial";
+  {
+    id:"industrial",
+    label:"พื้นอุตสาหกรรม",
+    title:"พื้นอุตสาหกรรม / อีพ็อกซี่ / พียู",
+    text:"ระบบพื้นสำหรับพื้นที่อุตสาหกรรมและการใช้งานเฉพาะทาง"
+  },
+
+  {
+    id:"waterproof",
+    label:"กันรั่วซึม",
+    title:"งานกันรั่วซึม",
+    text:"ระบบสำหรับดาดฟ้า หลังคา และพื้นที่อาคาร"
+  },
+
+  {
+    id:"concrete",
+    label:"ซ่อมคอนกรีต",
+    title:"งานซ่อมปรับปรุงคอนกรีต",
+    text:"งานซ่อมและปรับปรุงพื้นคอนกรีต"
+  },
+
+  {
+    id:"sports",
+    label:"สนามกีฬา",
+    title:"พื้นสนามกีฬา",
+    text:"ระบบพื้นสำหรับสนามกีฬาและพื้นที่กิจกรรม"
+  },
+
+  {
+    id:"decorative",
+    label:"พื้นตกแต่ง",
+    title:"พื้นตกแต่งเพื่อความสวยงาม",
+    text:"PSC, PMC, Flake และ Aura Sand"
+  },
+
+  {
+    id:"traffic",
+    label:"Traffic",
+    title:"สัญลักษณ์และเส้นจราจร",
+    text:"งานตีเส้นและกำหนดพื้นที่บนพื้น"
+  }
+
+];
+
+
+/* =========================================================
+GET SERVICE
+========================================================= */
+
+const params = new URLSearchParams(
+  window.location.search
+);
+
+const serviceId =
+  params.get("id") || "industrial";
 
 const service =
-    SERVICES[category] || SERVICES.industrial;
+  services[serviceId] || services.industrial;
 
 
 /* =========================================================
-   SET HERO
+HERO
 ========================================================= */
 
-document.getElementById("heroNumber")
-    .textContent = service.number;
+document.getElementById("heroTitle").innerHTML = `
 
+  ${service.title}
 
-document.getElementById("heroTitle")
-    .innerHTML = service.title;
+`;
 
+document.getElementById("heroDescription").textContent =
+  service.short;
 
-document.getElementById("heroSubtitle")
-    .textContent = service.subtitle;
+document.getElementById("heroNumber").textContent =
+  service.number;
 
-
-document.getElementById("breadcrumbName")
-    .textContent = service.name;
-
-
-/* =========================================================
-   HERO TAGS
-========================================================= */
 
 const heroTags =
-    document.getElementById("heroTags");
+  document.getElementById("heroTags");
 
-heroTags.innerHTML = "";
+service.tags.forEach(tag => {
 
-service.tags.forEach(function(tag){
+  const element =
+    document.createElement("span");
 
-    const item =
-        document.createElement("div");
+  element.className = "hero-tag";
 
-    item.className = "hero-tag";
+  element.textContent = tag;
 
-    item.textContent = tag;
-
-    heroTags.appendChild(item);
+  heroTags.appendChild(element);
 
 });
 
 
 /* =========================================================
-   PROBLEM
+PROBLEMS
 ========================================================= */
 
-document.getElementById("problemIntro")
-    .textContent = service.problem;
-
-
 const problemList =
-    document.getElementById("problemList");
+  document.getElementById("problemList");
 
-problemList.innerHTML = "";
+service.problems.forEach(problem => {
 
-service.problems.forEach(function(text){
+  const item =
+    document.createElement("div");
 
-    const li =
-        document.createElement("li");
+  item.className = "problem-item";
 
-    li.textContent = text;
+  item.innerHTML = `
 
-    problemList.appendChild(li);
+    <strong>
+      ${problem.title}
+    </strong>
+
+    <span>
+      ${problem.text}
+    </span>
+
+  `;
+
+  problemList.appendChild(item);
 
 });
 
 
 /* =========================================================
-   SUITABLE
+SUITABLE
 ========================================================= */
 
 const suitableList =
-    document.getElementById("suitableList");
+  document.getElementById("suitableList");
 
-suitableList.innerHTML = "";
+service.suitable.forEach(text => {
 
-service.suitable.forEach(function(text){
+  const li =
+    document.createElement("li");
 
-    const li =
-        document.createElement("li");
+  li.textContent = text;
 
-    li.textContent = text;
-
-    suitableList.appendChild(li);
+  suitableList.appendChild(li);
 
 });
 
 
 /* =========================================================
-   NOT SUITABLE
+NOT SUITABLE
 ========================================================= */
 
 const notSuitableList =
-    document.getElementById("notSuitableList");
+  document.getElementById("notSuitableList");
 
-notSuitableList.innerHTML = "";
+service.notSuitable.forEach(text => {
 
-service.notSuitable.forEach(function(text){
+  const li =
+    document.createElement("li");
 
-    const li =
-        document.createElement("li");
+  li.textContent = text;
 
-    li.textContent = text;
-
-    notSuitableList.appendChild(li);
+  notSuitableList.appendChild(li);
 
 });
 
 
 /* =========================================================
-   MOBILE MENU
+RELATED
 ========================================================= */
 
-const menuBtn =
-    document.getElementById("menuBtn");
+const relatedGrid =
+  document.getElementById("relatedGrid");
 
-const navMenu =
-    document.getElementById("navMenu");
+relatedServices
+  .filter(item => item.id !== serviceId)
+  .slice(0,3)
+  .forEach(item => {
 
+    const card =
+      document.createElement("a");
 
-if(menuBtn && navMenu){
+    card.href =
+      `service-detail.html?id=${item.id}`;
 
-    menuBtn.addEventListener(
-        "click",
-        function(){
+    card.className =
+      "related-card";
 
-            navMenu.classList.toggle("open");
+    card.innerHTML = `
 
-            menuBtn.innerHTML =
-                navMenu.classList.contains("open")
-                ? "✕"
-                : "☰";
+      <small>
+        ${item.label}
+      </small>
 
-        }
-    );
+      <h3>
+        ${item.title}
+      </h3>
 
+      <p>
+        ${item.text}
+      </p>
 
-    navMenu
-        .querySelectorAll("a")
-        .forEach(function(link){
+    `;
 
-            link.addEventListener(
-                "click",
-                function(){
+    relatedGrid.appendChild(card);
 
-                    navMenu.classList.remove("open");
-
-                    menuBtn.innerHTML = "☰";
-
-                }
-            );
-
-        });
-
-}
+  });
 
 
 /* =========================================================
-   SCROLL REVEAL
+PAGE TITLE
 ========================================================= */
 
-const revealItems =
-    document.querySelectorAll(".reveal");
+document.title =
+  `${service.title} | CHATPETCH GROUP`;
 
 
-const observer =
-    new IntersectionObserver(
-        function(entries){
+/* =========================================================
+ESCAPE KEY / MENU
+========================================================= */
 
-            entries.forEach(
-                function(entry){
+document.addEventListener("keydown",function(e){
 
-                    if(entry.isIntersecting){
+  if(e.key === "Escape"){
 
-                        entry.target
-                            .classList
-                            .add("active");
+    navMenu.classList.remove("open");
 
-                        observer.unobserve(
-                            entry.target
-                        );
+  }
 
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.12
-        }
-    );
-
-
-revealItems.forEach(
-    function(item){
-
-        observer.observe(item);
-
-    }
-);
+});
 
 </script>
 
