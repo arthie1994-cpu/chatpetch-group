@@ -6,40 +6,19 @@
 
 <title>CHATPHETCH GROUP | Flooring & Construction</title>
 
+<meta name="description"
+content="CHATPHETCH GROUP โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท ให้คำปรึกษางานพื้นทุกระบบแบบครบวงจร">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
-    --black:#050505;
-    --black2:#080808;
-    --dark:#0d0d0d;
-    --dark2:#111111;
-    --dark3:#181818;
-
-    --gold:#c8a45b;
-    --gold-light:#f0d991;
-    --gold-dark:#806127;
-
-    --white:#ffffff;
-    --soft:#ededed;
-    --gray:#999999;
-
-    --line:rgba(255,255,255,.09);
-    --gold-line:rgba(200,164,91,.28);
-
-    --container:1240px;
-}
-
-/* =====================================================
+/* =========================================================
    RESET
-===================================================== */
+========================================================= */
 
 *{
     margin:0;
@@ -53,71 +32,10 @@ html{
 
 body{
     font-family:"Kanit","Prompt",sans-serif;
-    color:var(--white);
-    background:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        var(--black);
-
-    background-size:42px 42px;
-
+    background:#050505;
+    color:#fff;
     min-height:100vh;
-
     overflow-x:hidden;
-}
-
-body::before{
-    content:"";
-
-    position:fixed;
-
-    width:700px;
-    height:700px;
-
-    top:-350px;
-    right:-280px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(200,164,91,.17) 0%,
-            rgba(200,164,91,.07) 35%,
-            transparent 70%
-        );
-
-    pointer-events:none;
-
-    z-index:-1;
-}
-
-body::after{
-    content:"";
-
-    position:fixed;
-
-    width:650px;
-    height:650px;
-
-    bottom:-350px;
-    left:-280px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(200,164,91,.10),
-            transparent 70%
-        );
-
-    pointer-events:none;
-
-    z-index:-1;
 }
 
 a{
@@ -126,133 +44,220 @@ a{
 }
 
 button,
-input{
+input,
+textarea{
     font-family:inherit;
 }
 
-/* =====================================================
-   HEADER
-===================================================== */
+img{
+    max-width:100%;
+}
 
-.header{
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --black:#050505;
+    --black2:#080808;
+    --dark:#0d0d0d;
+    --dark2:#111111;
+    --dark3:#181818;
+
+    --gold:#c8a45b;
+    --gold-light:#f0d991;
+    --gold-dark:#806127;
+
+    --white:#ffffff;
+    --soft:#e8e8e8;
+    --gray:#999999;
+
+    --line:rgba(255,255,255,.09);
+    --gold-line:rgba(200,164,91,.30);
+
+    --container:1240px;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    pointer-events:none;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:800px;
+    height:800px;
+    top:-300px;
+    left:50%;
+    transform:translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(200,164,91,.13),
+            rgba(200,164,91,.04) 35%,
+            transparent 70%
+        );
+
+    filter:blur(20px);
+
+    z-index:-4;
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+    width:min(var(--container),calc(100% - 48px));
+    margin:auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.site-header{
     position:sticky;
     top:0;
-
-    z-index:9999;
+    z-index:1000;
 
     height:94px;
 
-    background:rgba(5,5,5,.94);
+    background:
+        rgba(5,5,5,.92);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
 
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .header-inner{
-    width:min(
-        var(--container),
-        calc(100% - 40px)
-    );
-
     height:100%;
 
+    width:min(1400px,calc(100% - 42px));
     margin:auto;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     gap:30px;
 }
 
-/* =====================================================
-   LOGO
-===================================================== */
 
-.brand{
+/* =========================================================
+   HEADER BRAND
+========================================================= */
+
+.header-brand{
     display:flex;
-
     align-items:center;
+    gap:14px;
+
+    min-width:0;
+}
+
+.header-logo{
+    width:58px;
+    height:58px;
+
+    object-fit:contain;
+    object-position:center;
 
     flex-shrink:0;
 
-    text-decoration:none;
-}
-
-.brand-logo{
-    width:300px;
-    height:82px;
-
-    display:block;
-
-    object-fit:contain;
-    object-position:left center;
-
     filter:
-        drop-shadow(
-            0 0 8px
-            rgba(200,164,91,.20)
-        )
-        drop-shadow(
-            0 0 22px
-            rgba(200,164,91,.08)
-        );
-
-    transition:
-        transform .3s ease,
-        filter .3s ease;
+        drop-shadow(0 0 10px rgba(200,164,91,.16));
 }
 
-.brand:hover .brand-logo{
-    transform:scale(1.015);
-
-    filter:
-        drop-shadow(
-            0 0 12px
-            rgba(200,164,91,.40)
-        )
-        drop-shadow(
-            0 0 28px
-            rgba(200,164,91,.12)
-        );
+.header-brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1;
 }
 
-/* =====================================================
+.header-brand-name{
+    font-family:"Prompt",sans-serif;
+
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:1.2px;
+
+    color:#fff;
+
+    white-space:nowrap;
+}
+
+.header-brand-sub{
+    margin-top:7px;
+
+    font-size:10px;
+    font-weight:500;
+
+    letter-spacing:2.4px;
+
+    color:var(--gold);
+
+    white-space:nowrap;
+}
+
+
+/* =========================================================
    NAV
-===================================================== */
+========================================================= */
 
 .nav-menu{
     display:flex;
-
     align-items:center;
-
     justify-content:flex-end;
 
-    gap:25px;
+    gap:4px;
 
-    margin-left:auto;
+    flex:1;
 }
 
 .nav-menu > a{
     position:relative;
 
+    padding:12px 13px;
+
     color:#aaa;
 
-    font-size:15px;
-
-    font-weight:500;
-
-    padding:10px 0;
+    font-size:16px;
+    font-weight:400;
 
     white-space:nowrap;
 
-    transition:
-        color .25s ease,
-        transform .25s ease;
+    transition:.25s ease;
 }
 
 .nav-menu > a::after{
@@ -260,141 +265,125 @@ input{
 
     position:absolute;
 
-    left:0;
-    bottom:3px;
+    left:13px;
+    right:13px;
+    bottom:5px;
 
-    width:0;
     height:1px;
 
-    background:var(--gold);
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
 
-    transition:width .25s ease;
+    transform:scaleX(0);
+
+    transition:.25s ease;
 }
 
 .nav-menu > a:hover{
     color:#fff;
-
-    transform:translateY(-1px);
 }
 
 .nav-menu > a:hover::after{
-    width:100%;
+    transform:scaleX(1);
 }
 
-/* =====================================================
+
+/* =========================================================
    ORDER TRACKING
-===================================================== */
+========================================================= */
 
 .nav-track{
-    padding:11px 15px !important;
+    color:#f0d991 !important;
 
-    border:1px solid rgba(200,164,91,.35);
+    border:1px solid rgba(200,164,91,.30);
 
     border-radius:12px;
 
-    background:
-        rgba(200,164,91,.025);
-
-    color:#ddd !important;
-}
-
-.nav-track::after{
-    display:none;
+    margin-left:6px;
 }
 
 .nav-track:hover{
-    color:var(--gold-light) !important;
-
-    border-color:var(--gold);
-
-    background:
-        rgba(200,164,91,.08);
+    background:rgba(200,164,91,.08);
 }
 
-/* =====================================================
+
+/* =========================================================
    CART
-===================================================== */
+========================================================= */
 
 .nav-shop{
-    display:flex !important;
+    position:relative;
 
+    display:flex;
     align-items:center;
-
     gap:8px;
 
-    padding:11px 13px !important;
-
-    border:1px solid rgba(200,164,91,.38);
+    border:1px solid rgba(200,164,91,.40);
 
     border-radius:12px;
 
-    background:
-        rgba(200,164,91,.035);
+    margin-left:6px;
 
-    color:#ddd !important;
-}
+    color:#fff !important;
 
-.nav-shop::after{
-    display:none;
+    padding-left:17px !important;
+    padding-right:10px !important;
 }
 
 .nav-shop:hover{
-    color:#fff !important;
-
-    border-color:var(--gold);
-
-    background:
-        rgba(200,164,91,.09);
+    background:rgba(200,164,91,.10);
 }
 
-.cart-count{
+.cart-badge{
     min-width:25px;
     height:25px;
 
-    padding:0 7px;
-
     display:inline-flex;
-
     align-items:center;
     justify-content:center;
+
+    padding:0 7px;
 
     border-radius:50px;
 
     background:var(--gold);
+    color:#111;
 
-    color:#080808;
-
-    font-size:12px;
-
-    font-weight:800;
+    font-size:13px;
+    font-weight:700;
 }
 
-/* =====================================================
-   MOBILE MENU BUTTON
-===================================================== */
 
-.menu-toggle{
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.mobile-menu-btn{
     display:none;
 
-    width:44px;
-    height:44px;
+    width:46px;
+    height:46px;
 
     border:1px solid var(--gold-line);
-
     border-radius:10px;
 
-    background:#101010;
+    background:rgba(200,164,91,.05);
 
     color:#fff;
 
-    font-size:21px;
-
     cursor:pointer;
+
+    font-size:23px;
 }
 
-/* =====================================================
+
+/* =========================================================
    HERO
-===================================================== */
+========================================================= */
 
 .hero{
     position:relative;
@@ -403,10 +392,14 @@ input{
         calc(100vh - 94px);
 
     display:flex;
-
     align-items:center;
+    justify-content:center;
 
     overflow:hidden;
+
+    padding:
+        80px 0
+        100px;
 }
 
 .hero::before{
@@ -414,157 +407,263 @@ input{
 
     position:absolute;
 
-    inset:0;
+    width:780px;
+    height:780px;
 
-    background:
-        radial-gradient(
-            circle at 75% 45%,
-            rgba(200,164,91,.12),
-            transparent 31%
-        ),
-        linear-gradient(
-            90deg,
-            rgba(5,5,5,1) 0%,
-            rgba(5,5,5,.88) 50%,
-            rgba(5,5,5,.55) 100%
-        );
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid rgba(200,164,91,.13);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 100px rgba(200,164,91,.04);
 
     pointer-events:none;
 }
 
-.hero-inner{
-    position:relative;
+.hero::after{
+    content:"";
 
+    position:absolute;
+
+    width:620px;
+    height:620px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid rgba(200,164,91,.08);
+
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content{
+    position:relative;
     z-index:2;
 
-    width:min(
-        var(--container),
-        calc(100% - 40px)
-    );
+    width:min(900px,100%);
 
-    margin:auto;
+    text-align:center;
 
-    padding:95px 0 90px;
-}
-
-.hero-grid{
-    display:grid;
-
-    grid-template-columns:
-        1.08fr .92fr;
-
-    align-items:center;
-
-    gap:70px;
-}
-
-/* =====================================================
-   HERO TEXT
-===================================================== */
-
-.eyebrow{
     display:flex;
-
+    flex-direction:column;
     align-items:center;
+}
 
+
+/* =========================================================
+   HERO LOGO ONLY
+========================================================= */
+
+.hero-logo-only{
+    position:relative;
+
+    width:min(420px,76vw);
+
+    margin:
+        0 auto
+        30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    animation:
+        logoFloat 5s ease-in-out infinite;
+}
+
+.hero-logo-image{
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    max-height:420px;
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(
+            0 0 22px
+            rgba(200,164,91,.20)
+        )
+        drop-shadow(
+            0 20px 45px
+            rgba(0,0,0,.55)
+        );
+
+    transition:
+        transform .4s ease,
+        filter .4s ease;
+}
+
+.hero-logo-image:hover{
+    transform:scale(1.035);
+
+    filter:
+        drop-shadow(
+            0 0 35px
+            rgba(200,164,91,.35)
+        )
+        drop-shadow(
+            0 25px 55px
+            rgba(0,0,0,.65)
+        );
+}
+
+@keyframes logoFloat{
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+
+/* =========================================================
+   HERO EYEBROW
+========================================================= */
+
+.hero-eyebrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     gap:14px;
+
+    margin-bottom:20px;
 
     color:var(--gold);
 
     font-size:14px;
-
-    font-weight:600;
+    font-weight:500;
 
     letter-spacing:3px;
 
-    margin-bottom:24px;
+    text-transform:uppercase;
 }
 
-.eyebrow::before{
+.hero-eyebrow::before,
+.hero-eyebrow::after{
     content:"";
 
     width:55px;
     height:1px;
 
-    background:var(--gold);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold)
+        );
 }
 
-.hero h1{
+.hero-eyebrow::after{
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-title{
+    font-family:"Prompt",sans-serif;
+
     font-size:
-        clamp(48px,6vw,88px);
+        clamp(42px,7vw,86px);
 
-    line-height:.98;
+    line-height:1.02;
 
-    font-weight:800;
+    font-weight:700;
 
-    letter-spacing:-2px;
+    letter-spacing:-1px;
 
-    margin-bottom:28px;
+    color:#fff;
+
+    text-shadow:
+        0 8px 30px rgba(0,0,0,.5);
 }
 
-.hero h1 span{
+.hero-title span{
     color:var(--gold-light);
 }
 
 .hero-description{
-    max-width:650px;
+    max-width:760px;
 
-    color:#aaa;
+    margin:
+        24px auto 0;
 
-    font-size:19px;
+    color:#b7b7b7;
 
+    font-size:18px;
     line-height:1.9;
 
-    margin-bottom:26px;
+    font-weight:300;
 }
 
-.hero-tagline{
-    color:#ddd;
 
-    font-size:16px;
-
-    line-height:1.9;
-
-    margin-bottom:35px;
-}
-
-.hero-tagline strong{
-    color:var(--gold-light);
-}
-
-/* =====================================================
-   BUTTONS
-===================================================== */
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-buttons{
     display:flex;
+    align-items:center;
+    justify-content:center;
 
     flex-wrap:wrap;
 
     gap:13px;
+
+    margin-top:34px;
 }
 
 .btn{
-    min-height:51px;
+    min-height:52px;
 
     display:inline-flex;
-
     align-items:center;
     justify-content:center;
 
-    padding:0 25px;
+    padding:
+        0 25px;
 
     border-radius:10px;
 
-    font-size:15px;
-
-    font-weight:600;
+    font-size:16px;
+    font-weight:500;
 
     transition:
         transform .25s ease,
-        box-shadow .25s ease,
         background .25s ease,
-        border-color .25s ease;
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
 
 .btn:hover{
@@ -572,7 +671,7 @@ input{
 }
 
 .btn-gold{
-    color:#080808;
+    color:#111;
 
     background:
         linear-gradient(
@@ -583,197 +682,329 @@ input{
 
     box-shadow:
         0 10px 35px
-        rgba(200,164,91,.15);
+        rgba(200,164,91,.16);
 }
 
 .btn-gold:hover{
     box-shadow:
-        0 14px 45px
-        rgba(200,164,91,.28);
+        0 14px 40px
+        rgba(200,164,91,.25);
 }
 
 .btn-line{
-    color:#eee;
+    color:#fff;
 
-    border:1px solid var(--gold-line);
+    border:
+        1px solid
+        rgba(200,164,91,.45);
 
     background:
-        rgba(255,255,255,.025);
+        rgba(200,164,91,.04);
 }
 
 .btn-line:hover{
-    border-color:var(--gold);
+    background:
+        rgba(200,164,91,.10);
+
+    border-color:
+        rgba(200,164,91,.75);
+}
+
+
+/* =========================================================
+   INFO STRIP
+========================================================= */
+
+.info-strip{
+    position:relative;
+    z-index:5;
+
+    border-top:
+        1px solid rgba(200,164,91,.16);
+
+    border-bottom:
+        1px solid rgba(200,164,91,.16);
 
     background:
-        rgba(200,164,91,.07);
+        rgba(255,255,255,.018);
+
+    backdrop-filter:blur(8px);
 }
 
-/* =====================================================
-   HERO LOGO DECORATION
-===================================================== */
-
-.hero-art{
-    position:relative;
-
-    min-height:500px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-}
-
-.hero-frame{
-    position:relative;
-
-    width:min(480px,100%);
-
-    aspect-ratio:1/1;
-
-    border:1px solid rgba(200,164,91,.25);
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(200,164,91,.12),
-            rgba(200,164,91,.035) 45%,
-            transparent 72%
-        );
-}
-
-.hero-frame::before{
-    content:"";
-
-    position:absolute;
-
-    inset:24px;
-
-    border:1px solid rgba(200,164,91,.17);
-
-    border-radius:50%;
-}
-
-.hero-frame::after{
-    content:"CG";
-
-    position:absolute;
-
-    color:
-        rgba(200,164,91,.06);
-
-    font-size:155px;
-
-    font-weight:800;
-
-    letter-spacing:-12px;
-}
-
-.hero-logo{
-    position:relative;
-
-    z-index:2;
-
-    width:300px;
-    height:300px;
-
-    object-fit:contain;
-
-    filter:
-        drop-shadow(
-            0 0 25px
-            rgba(200,164,91,.27)
-        )
-        drop-shadow(
-            0 0 60px
-            rgba(200,164,91,.08)
-        );
-
-    animation:
-        floatingLogo 5s ease-in-out infinite;
-}
-
-@keyframes floatingLogo{
-
-    0%,
-    100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-
-}
-
-.hero-number{
-    position:absolute;
-
-    right:0;
-    bottom:0;
-
-    color:
-        rgba(255,255,255,.025);
-
-    font-size:150px;
-
-    font-weight:800;
-
-    line-height:1;
-}
-
-/* =====================================================
-   QUICK MENU
-===================================================== */
-
-.quick-section{
-    position:relative;
-
-    padding:25px 0 90px;
-}
-
-.container{
-    width:min(
-        var(--container),
-        calc(100% - 40px)
-    );
-
-    margin:auto;
-}
-
-.quick-grid{
+.info-grid{
     display:grid;
 
     grid-template-columns:
-        repeat(4,1fr);
-
-    gap:15px;
+        repeat(3,1fr);
 }
 
-.quick-card{
+.info-item{
+    min-height:130px;
+
+    padding:25px 30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.07);
+}
+
+.info-item:last-child{
+    border-right:0;
+}
+
+.info-icon{
+    font-size:25px;
+
+    margin-right:12px;
+}
+
+.info-text strong{
+    display:block;
+
+    color:#fff;
+
+    font-size:17px;
+    font-weight:500;
+}
+
+.info-text span{
+    display:block;
+
+    margin-top:4px;
+
+    color:#888;
+
+    font-size:13px;
+    font-weight:300;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    padding:
+        120px 0;
+}
+
+.intro-grid{
+    display:grid;
+
+    grid-template-columns:
+        .85fr
+        1.15fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.section-label{
+    color:var(--gold);
+
+    font-size:13px;
+
+    letter-spacing:3px;
+
+    font-weight:500;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+}
+
+.section-title{
+    font-family:"Prompt",sans-serif;
+
+    font-size:
+        clamp(34px,4vw,58px);
+
+    line-height:1.15;
+
+    font-weight:700;
+}
+
+.section-title span{
+    color:var(--gold-light);
+}
+
+.section-text{
+    color:#a3a3a3;
+
+    font-size:17px;
+
+    line-height:1.9;
+
+    font-weight:300;
+}
+
+.intro-copy .section-text{
+    margin-top:25px;
+}
+
+
+/* =========================================================
+   INTRO CARD
+========================================================= */
+
+.intro-card{
     position:relative;
 
-    min-height:155px;
+    padding:45px;
 
-    padding:26px;
+    border:
+        1px solid
+        rgba(200,164,91,.22);
 
-    border:1px solid var(--line);
-
-    border-radius:16px;
+    border-radius:22px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.05),
-            rgba(255,255,255,.015)
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.30);
+
+    overflow:hidden;
+}
+
+.intro-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    right:-100px;
+    top:-100px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(200,164,91,.16),
+            transparent 68%
+        );
+}
+
+.intro-card-number{
+    color:rgba(200,164,91,.12);
+
+    font-size:100px;
+
+    line-height:.8;
+
+    font-weight:700;
+
+    position:absolute;
+
+    right:30px;
+    top:25px;
+}
+
+.intro-card h3{
+    position:relative;
+    z-index:2;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:28px;
+
+    margin-bottom:15px;
+}
+
+.intro-card p{
+    position:relative;
+    z-index:2;
+
+    color:#a4a4a4;
+
+    line-height:1.9;
+
+    font-size:16px;
+}
+
+
+/* =========================================================
+   SERVICE CARDS
+========================================================= */
+
+.services-preview{
+    padding:
+        0 0
+        120px;
+}
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+
+    gap:30px;
+
+    margin-bottom:45px;
+}
+
+.section-head-copy{
+    max-width:650px;
+}
+
+.section-head-copy .section-text{
+    margin-top:15px;
+}
+
+.section-more{
+    color:var(--gold-light);
+
+    border-bottom:
+        1px solid
+        rgba(200,164,91,.45);
+
+    padding-bottom:5px;
+
+    white-space:nowrap;
+}
+
+.service-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.service-card{
+    position:relative;
+
+    min-height:290px;
+
+    padding:32px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
         );
 
     overflow:hidden;
@@ -784,245 +1015,272 @@ input{
         background .3s ease;
 }
 
-.quick-card::before{
+.service-card:hover{
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(200,164,91,.38);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(200,164,91,.08),
+            rgba(255,255,255,.018)
+        );
+}
+
+.service-number{
+    color:rgba(200,164,91,.14);
+
+    font-size:70px;
+
+    font-weight:700;
+
+    position:absolute;
+
+    right:22px;
+    top:15px;
+}
+
+.service-icon{
+    width:55px;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:
+        1px solid
+        rgba(200,164,91,.35);
+
+    border-radius:14px;
+
+    color:var(--gold-light);
+
+    font-size:24px;
+
+    margin-bottom:28px;
+}
+
+.service-card h3{
+    font-family:"Prompt",sans-serif;
+
+    font-size:22px;
+
+    margin-bottom:13px;
+}
+
+.service-card p{
+    color:#929292;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.final-cta{
+    padding:
+        0 0
+        120px;
+}
+
+.cta-box{
+    position:relative;
+
+    padding:
+        65px 70px;
+
+    border:
+        1px solid
+        rgba(200,164,91,.28);
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(200,164,91,.10),
+            rgba(255,255,255,.025),
+            rgba(200,164,91,.05)
+        );
+
+    overflow:hidden;
+
+    text-align:center;
+}
+
+.cta-box::before{
     content:"";
 
     position:absolute;
 
-    width:140px;
-    height:140px;
+    width:450px;
+    height:450px;
 
-    top:-70px;
-    right:-50px;
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
 
     background:
         radial-gradient(
             circle,
-            rgba(200,164,91,.17),
-            transparent 70%
+            rgba(200,164,91,.12),
+            transparent 68%
         );
+
+    pointer-events:none;
 }
 
-.quick-card:hover{
-    transform:translateY(-5px);
-
-    border-color:var(--gold-line);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(200,164,91,.09),
-            rgba(255,255,255,.02)
-        );
+.cta-box > *{
+    position:relative;
+    z-index:2;
 }
 
-.quick-icon{
-    font-size:28px;
+.cta-box h2{
+    font-family:"Prompt",sans-serif;
 
-    margin-bottom:13px;
-}
-
-.quick-card h3{
-    color:#fff;
-
-    font-size:19px;
-
-    font-weight:700;
-
-    margin-bottom:5px;
-}
-
-.quick-card p{
-    color:#888;
-
-    font-size:14px;
-
-    line-height:1.6;
-}
-
-/* =====================================================
-   COMPANY SECTION
-===================================================== */
-
-.company-section{
-    padding:90px 0;
-}
-
-.section-heading{
-    max-width:760px;
-
-    margin-bottom:45px;
-}
-
-.section-kicker{
-    color:var(--gold);
-
-    font-size:13px;
-
-    font-weight:600;
-
-    letter-spacing:3px;
-
-    margin-bottom:13px;
-}
-
-.section-heading h2{
     font-size:
-        clamp(34px,4vw,58px);
+        clamp(30px,4vw,50px);
 
-    line-height:1.05;
-
-    margin-bottom:18px;
+    margin-bottom:13px;
 }
 
-.section-heading p{
+.cta-box p{
     color:#999;
-
-    font-size:17px;
-
-    line-height:1.9;
-}
-
-.company-grid{
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:20px;
-}
-
-.glass-card{
-    padding:35px;
-
-    border:1px solid var(--line);
-
-    border-radius:18px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.015)
-        );
-
-    box-shadow:
-        inset 0 1px 0
-        rgba(255,255,255,.03);
-}
-
-.glass-card h3{
-    color:var(--gold-light);
-
-    font-size:25px;
-
-    margin-bottom:16px;
-}
-
-.glass-card p{
-    color:#aaa;
 
     font-size:16px;
 
-    line-height:1.9;
+    line-height:1.8;
+
+    max-width:700px;
+
+    margin:
+        0 auto;
 }
 
-/* =====================================================
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:28px;
+}
+
+
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
-.footer{
-    margin-top:80px;
+.site-footer{
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
 
-    border-top:1px solid var(--line);
+    padding:
+        65px 0 25px;
 
-    background:#070707;
-}
-
-.footer-inner{
-    width:min(
-        var(--container),
-        calc(100% - 40px)
-    );
-
-    margin:auto;
-
-    padding:55px 0 25px;
+    background:#030303;
 }
 
 .footer-grid{
     display:grid;
 
     grid-template-columns:
-        1.5fr 1fr 1fr;
+        1.2fr
+        .8fr
+        .8fr;
 
-    gap:50px;
+    gap:60px;
+
+    padding-bottom:45px;
 }
 
 .footer-brand{
     display:flex;
+    align-items:flex-start;
 
-    align-items:center;
-
-    margin-bottom:18px;
+    gap:15px;
 }
 
 .footer-logo{
-    width:260px;
-    height:78px;
+    width:65px;
+    height:65px;
 
     object-fit:contain;
-
-    object-position:left center;
 }
 
-.footer p{
+.footer-brand h3{
+    font-family:"Prompt",sans-serif;
+
+    font-size:21px;
+}
+
+.footer-brand p{
+    margin-top:6px;
+
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+.footer-description{
     color:#777;
+
+    line-height:1.8;
 
     font-size:14px;
 
-    line-height:1.8;
+    margin-top:20px;
+
+    max-width:500px;
 }
 
-.footer h4{
+.footer-column h4{
     color:#fff;
 
     font-size:17px;
 
-    margin-bottom:17px;
+    margin-bottom:20px;
 }
 
-.footer-links{
-    display:flex;
+.footer-column a{
+    display:block;
 
-    flex-direction:column;
-
-    gap:10px;
-}
-
-.footer-links a{
-    color:#888;
+    color:#858585;
 
     font-size:14px;
 
-    transition:color .2s ease;
+    margin-bottom:11px;
+
+    transition:.2s;
 }
 
-.footer-links a:hover{
-    color:var(--gold);
+.footer-column a:hover{
+    color:var(--gold-light);
 }
 
 .footer-bottom{
-    margin-top:45px;
-
-    padding-top:20px;
+    padding-top:22px;
 
     border-top:
         1px solid
-        rgba(255,255,255,.06);
+        rgba(255,255,255,.07);
 
     display:flex;
-
+    align-items:center;
     justify-content:space-between;
 
     gap:20px;
@@ -1032,23 +1290,23 @@ input{
     font-size:12px;
 }
 
-/* =====================================================
-   FLOATING CONTACT
-===================================================== */
 
-.floating-contact{
+/* =========================================================
+   FLOATING CONTACT
+========================================================= */
+
+.float-contact{
     position:fixed;
 
-    right:20px;
-    bottom:20px;
+    right:22px;
+    bottom:22px;
 
     z-index:900;
 
     display:flex;
-
     flex-direction:column;
 
-    gap:9px;
+    gap:10px;
 }
 
 .float-btn{
@@ -1056,154 +1314,184 @@ input{
     height:48px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
-    border:1px solid var(--gold-line);
-
     border-radius:50%;
 
+    border:
+        1px solid
+        rgba(200,164,91,.35);
+
     background:
-        rgba(10,10,10,.92);
+        rgba(8,8,8,.88);
 
     backdrop-filter:blur(10px);
 
     font-size:20px;
 
-    transition:
-        transform .25s ease,
-        border-color .25s ease;
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.35);
+
+    transition:.25s;
 }
 
 .float-btn:hover{
     transform:translateY(-3px);
 
-    border-color:var(--gold);
+    border-color:
+        rgba(200,164,91,.75);
+
+    background:
+        rgba(200,164,91,.10);
 }
 
-/* =====================================================
+
+/* =========================================================
    BACK TO TOP
-===================================================== */
+========================================================= */
 
 .back-top{
     position:fixed;
 
-    right:20px;
-    bottom:130px;
+    right:22px;
+    bottom:150px;
 
-    width:42px;
-    height:42px;
+    width:44px;
+    height:44px;
 
-    display:none;
-
+    display:flex;
     align-items:center;
     justify-content:center;
 
-    border:1px solid var(--gold-line);
+    border:
+        1px solid
+        rgba(200,164,91,.30);
 
     border-radius:50%;
 
-    background:#0b0b0b;
+    background:#0a0a0a;
 
-    color:var(--gold);
+    color:var(--gold-light);
 
     cursor:pointer;
 
-    z-index:800;
+    opacity:0;
+    visibility:hidden;
 
-    font-size:18px;
+    transform:translateY(10px);
+
+    transition:.25s;
+
+    z-index:850;
 }
 
-/* =====================================================
-   TABLET
-===================================================== */
+.back-top.show{
+    opacity:1;
+    visibility:visible;
 
-@media(max-width:1100px){
+    transform:translateY(0);
+}
 
-    .brand-logo{
-        width:250px;
-        height:75px;
-    }
 
-    .nav-menu{
-        gap:17px;
-    }
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:1150px){
 
     .nav-menu > a{
+        padding-left:8px;
+        padding-right:8px;
+
         font-size:14px;
     }
 
-    .hero-grid{
-        gap:40px;
+    .header-brand-name{
+        font-size:19px;
     }
 
+    .header-brand-sub{
+        font-size:8px;
+    }
+
+    .header-logo{
+        width:52px;
+        height:52px;
+    }
 }
 
-/* =====================================================
-   MOBILE NAV
-===================================================== */
 
-@media(max-width:900px){
+@media(max-width:950px){
 
-    .header{
-        height:80px;
-    }
-
-    .header-inner{
-        width:calc(100% - 28px);
-    }
-
-    .brand-logo{
-        width:220px;
-        height:68px;
-    }
-
-    .menu-toggle{
-        display:block;
+    .mobile-menu-btn{
+        display:flex;
+        align-items:center;
+        justify-content:center;
     }
 
     .nav-menu{
-
         position:absolute;
 
-        top:80px;
-        left:0;
-        right:0;
+        top:94px;
+        left:16px;
+        right:16px;
 
         display:none;
 
         flex-direction:column;
-
         align-items:stretch;
 
-        padding:15px;
+        padding:12px;
+
+        border:
+            1px solid
+            rgba(200,164,91,.20);
+
+        border-radius:16px;
 
         background:
-            rgba(7,7,7,.98);
+            rgba(8,8,8,.97);
 
-        border-bottom:
-            1px solid var(--line);
+        backdrop-filter:blur(20px);
 
         box-shadow:
-            0 20px 40px
-            rgba(0,0,0,.45);
+            0 25px 70px
+            rgba(0,0,0,.55);
     }
 
-    .nav-menu.active{
+    .nav-menu.open{
         display:flex;
     }
 
     .nav-menu > a{
-        padding:14px 15px;
+        padding:15px 16px;
 
-        border-radius:10px;
+        border-radius:9px;
 
         font-size:16px;
-    }
-
-    .nav-menu > a::after{
-        display:none;
     }
 
     .nav-menu > a:hover{
@@ -1211,202 +1499,302 @@ input{
             rgba(200,164,91,.06);
     }
 
-    .nav-track,
-    .nav-shop{
-        justify-content:flex-start;
+    .nav-menu > a::after{
+        display:none;
     }
 
-    .hero{
-        min-height:auto;
+    .nav-shop,
+    .nav-track{
+        margin-left:0;
     }
 
-    .hero-inner{
-        padding:70px 0 60px;
-    }
-
-    .hero-grid{
+    .intro-grid{
         grid-template-columns:1fr;
+
+        gap:35px;
     }
 
-    .hero-art{
-        min-height:390px;
-
-        order:-1;
-    }
-
-    .hero-frame{
-        width:350px;
-    }
-
-    .hero-logo{
-        width:210px;
-        height:210px;
-    }
-
-    .quick-grid{
+    .service-grid{
         grid-template-columns:
             repeat(2,1fr);
-    }
-
-    .company-grid{
-        grid-template-columns:1fr;
     }
 
     .footer-grid{
         grid-template-columns:
             1fr 1fr;
     }
-
-    .footer-grid > :first-child{
-        grid-column:1/-1;
-    }
-
 }
 
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
-    .container,
-    .hero-inner,
-    .header-inner,
-    .footer-inner{
-        width:calc(100% - 28px);
+    .container{
+        width:min(
+            100% - 30px,
+            var(--container)
+        );
     }
 
-    .brand-logo{
-        width:185px;
-        height:60px;
+    .site-header{
+        height:78px;
     }
 
-    .hero-inner{
-        padding-top:45px;
+    .header-inner{
+        width:
+            calc(100% - 26px);
     }
 
-    .eyebrow{
-        font-size:11px;
+    .header-logo{
+        width:46px;
+        height:46px;
+    }
 
+    .header-brand-name{
+        font-size:16px;
+        letter-spacing:.7px;
+    }
+
+    .header-brand-sub{
+        font-size:7px;
+        letter-spacing:1.5px;
+        margin-top:5px;
+    }
+
+    .nav-menu{
+        top:78px;
+    }
+
+    .hero{
+        min-height:
+            calc(100vh - 78px);
+
+        padding:
+            55px 0
+            70px;
+    }
+
+    .hero::before{
+        width:520px;
+        height:520px;
+    }
+
+    .hero::after{
+        width:410px;
+        height:410px;
+    }
+
+    .hero-logo-only{
+        width:min(
+            320px,
+            80vw
+        );
+
+        margin-bottom:25px;
+    }
+
+    .hero-logo-image{
+        max-height:320px;
+    }
+
+    .hero-eyebrow{
+        font-size:10px;
         letter-spacing:2px;
+
+        gap:9px;
     }
 
-    .eyebrow::before{
-        width:35px;
+    .hero-eyebrow::before,
+    .hero-eyebrow::after{
+        width:28px;
     }
 
-    .hero h1{
-        font-size:47px;
-
-        letter-spacing:-1.5px;
+    .hero-title{
+        font-size:
+            clamp(
+                38px,
+                12vw,
+                60px
+            );
     }
 
     .hero-description{
-        font-size:16px;
-    }
+        font-size:15px;
 
-    .hero-tagline{
-        font-size:14px;
+        line-height:1.8;
+
+        padding:0 8px;
     }
 
     .hero-buttons{
+        width:100%;
+
         flex-direction:column;
     }
 
     .btn{
         width:100%;
+        max-width:310px;
     }
 
-    .hero-art{
-        min-height:300px;
-    }
-
-    .hero-frame{
-        width:280px;
-    }
-
-    .hero-logo{
-        width:155px;
-        height:155px;
-    }
-
-    .quick-grid{
+    .info-grid{
         grid-template-columns:1fr;
     }
 
-    .quick-card{
-        min-height:auto;
+    .info-item{
+        min-height:90px;
+
+        border-right:0;
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.07);
     }
 
-    .company-section{
-        padding:60px 0;
+    .info-item:last-child{
+        border-bottom:0;
     }
 
-    .glass-card{
-        padding:25px;
+    .intro{
+        padding:80px 0;
+    }
+
+    .intro-card{
+        padding:30px;
+    }
+
+    .intro-card-number{
+        font-size:70px;
+    }
+
+    .services-preview{
+        padding-bottom:80px;
+    }
+
+    .section-head{
+        align-items:flex-start;
+
+        flex-direction:column;
+
+        margin-bottom:30px;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .service-card{
+        min-height:250px;
+    }
+
+    .final-cta{
+        padding-bottom:80px;
+    }
+
+    .cta-box{
+        padding:
+            45px 22px;
     }
 
     .footer-grid{
         grid-template-columns:1fr;
-    }
 
-    .footer-grid > :first-child{
-        grid-column:auto;
-    }
-
-    .footer-logo{
-        width:220px;
-        height:70px;
+        gap:35px;
     }
 
     .footer-bottom{
         flex-direction:column;
+
+        align-items:flex-start;
     }
 
-    .floating-contact{
-        right:12px;
-        bottom:12px;
+    .float-contact{
+        right:15px;
+        bottom:15px;
     }
 
     .back-top{
-        right:12px;
-        bottom:115px;
+        right:15px;
+        bottom:130px;
+    }
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+========================================================= */
+
+@media(max-width:420px){
+
+    .header-brand-sub{
+        display:none;
     }
 
+    .header-brand-name{
+        font-size:14px;
+    }
+
+    .header-logo{
+        width:42px;
+        height:42px;
+    }
+
+    .hero-logo-only{
+        width:270px;
+    }
+
+    .hero-description{
+        font-size:14px;
+    }
+
+    .service-card{
+        padding:25px;
+    }
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
-<header class="header">
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="site-header">
 
     <div class="header-inner">
 
-        <!-- LOGO -->
-        <a
-            href="index.html"
-            class="brand"
-        >
+        <!-- LOGO + NAME -->
+        <a href="index.html" class="header-brand">
 
             <img
-                src="./assets/logo.png"
-                alt="CHATPHETCH GROUP"
-                class="brand-logo"
+                src="assets/logo.png"
+                alt="CHATPHETCH GROUP Logo"
+                class="header-logo"
             >
+
+            <div class="header-brand-text">
+
+                <div class="header-brand-name">
+                    CHATPHETCH GROUP
+                </div>
+
+                <div class="header-brand-sub">
+                    FLOORING &amp; CONSTRUCTION
+                </div>
+
+            </div>
 
         </a>
 
 
-        <!-- MOBILE MENU -->
+        <!-- MOBILE BUTTON -->
+
         <button
-            class="menu-toggle"
-            id="menuToggle"
+            class="mobile-menu-btn"
+            id="mobileMenuBtn"
             type="button"
             aria-label="เปิดเมนู"
         >
@@ -1415,10 +1803,8 @@ input{
 
 
         <!-- NAV -->
-        <nav
-            class="nav-menu"
-            id="navMenu"
-        >
+
+        <nav class="nav-menu" id="navMenu">
 
             <a href="index.html">
                 หน้าแรก
@@ -1455,12 +1841,11 @@ input{
                 href="cart.html"
                 class="nav-shop"
             >
-
                 🛒 ตะกร้า
 
                 <span
-                    class="cart-count"
-                    id="cartCount"
+                    class="cart-badge"
+                    id="cartBadge"
                 >
                     0
                 </span>
@@ -1474,100 +1859,78 @@ input{
 </header>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <main>
 
-<!-- =====================================================
-     HERO
-===================================================== -->
-
 <section class="hero">
 
-    <div class="hero-inner">
-
-        <div class="hero-grid">
-
-            <!-- LEFT -->
-
-            <div>
-
-                <div class="eyebrow">
-                    CHATPHETCH GROUP
-                </div>
+    <div class="hero-content">
 
 
-                <h1>
-                    วัสดุงานพื้น<br>
-                    <span>ครบทุกระบบ</span>
-                </h1>
+        <!--
+            IMPORTANT:
+            ตรงนี้ใช้เฉพาะโลโก้โพดำ
+            ไม่มี CHATPHETCH GROUP ซ้ำ
+        -->
+
+        <div class="hero-logo-only">
+
+            <img
+                src="assets/logo.png"
+                alt="CHATPHETCH"
+                class="hero-logo-image"
+            >
+
+        </div>
 
 
-                <p class="hero-description">
-                    โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท
-                    พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบ
-                    แบบครบวงจร
-                </p>
+        <div class="hero-eyebrow">
+            CHATPHETCH GROUP
+        </div>
 
 
-                <p class="hero-tagline">
+        <h1 class="hero-title">
 
-                    ♠️
-                    <strong>สร้างสรรค์ผลงาน</strong>
+            โรงงานผลิตและจำหน่าย
+            <br>
 
-                    &nbsp;♠️
+            <span>
+                วัสดุงานพื้นทุกประเภท
+            </span>
 
-                    <strong>มาตรฐานเข้าถึง</strong>
-
-                    &nbsp;♠️
-
-                    <strong>ยืน 1 คุณภาพ</strong>
-
-                </p>
+        </h1>
 
 
-                <div class="hero-buttons">
+        <p class="hero-description">
 
-                    <a
-                        href="about.html"
-                        class="btn btn-gold"
-                    >
-                        รู้จักบริษัท →
-                    </a>
+            สร้างสรรค์ผลงาน • มาตรฐานเข้าถึง • ยืน 1 คุณภาพ
 
-                    <a
-                        href="products.html"
-                        class="btn btn-line"
-                    >
-                        ดูสินค้า
-                    </a>
+            <br>
 
-                </div>
+            บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
 
-            </div>
+        </p>
 
 
-            <!-- RIGHT -->
+        <div class="hero-buttons">
 
-            <div class="hero-art">
+            <a
+                href="about.html"
+                class="btn btn-gold"
+            >
+                รู้จักบริษัท →
+            </a>
 
-                <div class="hero-frame">
-
-                    <img
-                        src="./assets/logo.png"
-                        alt="CHATPHETCH GROUP"
-                        class="hero-logo"
-                    >
-
-                </div>
-
-                <div class="hero-number">
-                    CG
-                </div>
-
-            </div>
+            <a
+                href="products.html"
+                class="btn btn-line"
+            >
+                ดูสินค้า
+            </a>
 
         </div>
 
@@ -1576,92 +1939,303 @@ input{
 </section>
 
 
-<!-- =====================================================
-     QUICK MENU
-===================================================== -->
 
-<section class="quick-section">
+<!-- =======================================================
+     INFO STRIP
+======================================================= -->
+
+<section class="info-strip">
+
+    <div class="info-grid">
+
+
+        <div class="info-item">
+
+            <div class="info-icon">
+                🏭
+            </div>
+
+            <div class="info-text">
+
+                <strong>
+                    วัสดุงานพื้น
+                </strong>
+
+                <span>
+                    ผลิตและจำหน่าย
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <div class="info-icon">
+                🛠️
+            </div>
+
+            <div class="info-text">
+
+                <strong>
+                    ให้คำปรึกษา
+                </strong>
+
+                <span>
+                    พื้นทุกระบบแบบครบวงจร
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <div class="info-icon">
+                📦
+            </div>
+
+            <div class="info-text">
+
+                <strong>
+                    สั่งซื้อออนไลน์
+                </strong>
+
+                <span>
+                    พร้อมระบบติดตามคำสั่งซื้อ
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     INTRO
+======================================================= -->
+
+<section class="intro">
 
     <div class="container">
 
-        <div class="quick-grid">
+        <div class="intro-grid">
 
 
-            <a
-                href="products.html"
-                class="quick-card"
-            >
+            <div class="intro-copy reveal">
 
-                <div class="quick-icon">
-                    🧱
+                <div class="section-label">
+                    ABOUT CHATPHETCH
+                </div>
+
+                <h2 class="section-title">
+
+                    วัสดุงานพื้น
+                    <br>
+
+                    <span>
+                        ที่เราให้ความสำคัญ
+                    </span>
+
+                </h2>
+
+                <p class="section-text">
+
+                    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+                    ดำเนินธุรกิจเกี่ยวกับการจำหน่ายวัสดุและอุปกรณ์
+                    สำหรับงานติดตั้งพื้น รวมถึงสีและน้ำยาเคมี
+                    ตลอดจนวัสดุก่อสร้างและเครื่องมือที่เกี่ยวข้อง
+
+                </p>
+
+                <div style="margin-top:28px;">
+
+                    <a
+                        href="about.html"
+                        class="btn btn-line"
+                    >
+                        อ่านเพิ่มเติม →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="intro-card reveal">
+
+                <div class="intro-card-number">
+                    CG
                 </div>
 
                 <h3>
-                    สินค้า
+                    ฉัตรเพชร กรุ๊ป
                 </h3>
 
                 <p>
-                    วัสดุและอุปกรณ์สำหรับงานพื้น
+
+                    เรามุ่งเน้นการนำเสนอวัสดุงานพื้น
+                    และผลิตภัณฑ์ที่เกี่ยวข้องอย่างครบวงจร
+                    พร้อมบริการให้คำปรึกษาเกี่ยวกับระบบพื้น
+                    เพื่อช่วยให้ลูกค้าเลือกผลิตภัณฑ์
+                    ให้เหมาะสมกับลักษณะของงาน
+
                 </p>
 
+                <p style="margin-top:15px;">
+
+                    ♠️ สร้างสรรค์ผลงาน
+                    <br>
+
+                    ♠️ มาตรฐานเข้าถึง
+                    <br>
+
+                    ♠️ ยืน 1 คุณภาพ
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SERVICES
+======================================================= -->
+
+<section class="services-preview">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <div class="section-head-copy">
+
+                <div class="section-label">
+                    OUR SERVICES
+                </div>
+
+                <h2 class="section-title">
+                    บริการของเรา
+                </h2>
+
+                <p class="section-text">
+
+                    บริการเกี่ยวกับงานพื้นและผลิตภัณฑ์
+                    สำหรับงานก่อสร้างอย่างครบวงจร
+
+                </p>
+
+            </div>
+
+            <a
+                href="services.html"
+                class="section-more"
+            >
+                ดูบริการทั้งหมด →
             </a>
+
+        </div>
+
+
+
+        <div class="service-grid">
 
 
             <a
                 href="services.html"
-                class="quick-card"
+                class="service-card reveal"
             >
 
-                <div class="quick-icon">
+                <div class="service-number">
+                    01
+                </div>
+
+                <div class="service-icon">
+                    🏭
+                </div>
+
+                <h3>
+                    วัสดุงานพื้น
+                </h3>
+
+                <p>
+
+                    จำหน่ายวัสดุและผลิตภัณฑ์
+                    สำหรับงานพื้นหลากหลายระบบ
+                    พร้อมข้อมูลผลิตภัณฑ์สำหรับประกอบการตัดสินใจ
+
+                </p>
+
+            </a>
+
+
+
+            <a
+                href="services.html"
+                class="service-card reveal"
+            >
+
+                <div class="service-number">
+                    02
+                </div>
+
+                <div class="service-icon">
+                    🧪
+                </div>
+
+                <h3>
+                    สีและน้ำยาเคมี
+                </h3>
+
+                <p>
+
+                    ผลิตภัณฑ์สีเคลือบ น้ำยาเคลือบ
+                    และผลิตภัณฑ์ที่เกี่ยวข้องกับระบบพื้น
+
+                </p>
+
+            </a>
+
+
+
+            <a
+                href="services.html"
+                class="service-card reveal"
+            >
+
+                <div class="service-number">
+                    03
+                </div>
+
+                <div class="service-icon">
                     🛠️
                 </div>
 
                 <h3>
-                    บริการ
+                    ให้คำปรึกษางานพื้น
                 </h3>
 
                 <p>
-                    ให้คำปรึกษางานพื้นทุกระบบ
-                </p>
 
-            </a>
+                    ให้คำปรึกษาเกี่ยวกับพื้นทุกระบบ
+                    เพื่อช่วยวางแนวทางการเลือกวัสดุ
+                    ให้เหมาะสมกับงาน
 
-
-            <a
-                href="projects.html"
-                class="quick-card"
-            >
-
-                <div class="quick-icon">
-                    🏗️
-                </div>
-
-                <h3>
-                    ผลงาน
-                </h3>
-
-                <p>
-                    ดูตัวอย่างผลงานและโครงการ
-                </p>
-
-            </a>
-
-
-            <a
-                href="contact.html"
-                class="quick-card"
-            >
-
-                <div class="quick-icon">
-                    📞
-                </div>
-
-                <h3>
-                    ติดต่อเรา
-                </h3>
-
-                <p>
-                    สอบถามข้อมูลและขอคำปรึกษา
                 </p>
 
             </a>
@@ -1674,72 +2248,46 @@ input{
 </section>
 
 
-<!-- =====================================================
-     COMPANY INTRO
-===================================================== -->
 
-<section class="company-section">
+<!-- =======================================================
+     FINAL CTA
+======================================================= -->
+
+<section class="final-cta">
 
     <div class="container">
 
-
-        <div class="section-heading">
-
-            <div class="section-kicker">
-                ABOUT CHATPHETCH GROUP
-            </div>
-
+        <div class="cta-box reveal">
 
             <h2>
-                สร้างสรรค์งานพื้น<br>
-                ด้วยมาตรฐานที่เข้าถึงได้
+                พร้อมเริ่มต้นงานของคุณแล้วหรือยัง?
             </h2>
 
-
             <p>
-                บริษัท ฉัตรเพชร กรุ๊ป จำกัด
-                ดำเนินธุรกิจเกี่ยวกับวัสดุและอุปกรณ์สำหรับงานพื้น
-                พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบ
-                แบบครบวงจร
+
+                เลือกชมสินค้า หรือพูดคุยกับทีมงาน
+                เพื่อขอคำปรึกษาเกี่ยวกับระบบพื้น
+                และผลิตภัณฑ์ที่เหมาะกับงานของคุณ
+
             </p>
 
-        </div>
+            <div class="cta-buttons">
 
+                <a
+                    href="products.html"
+                    class="btn btn-gold"
+                >
+                    🛒 เลือกซื้อสินค้า
+                </a>
 
-        <div class="company-grid">
-
-
-            <div class="glass-card">
-
-                <h3>
-                    🌹 โรงงานผลิต-จำหน่าย
-                </h3>
-
-                <p>
-                    วัสดุงานพื้นทุกประเภท
-                    พร้อมผลิตภัณฑ์สำหรับงานพื้น
-                    และวัสดุที่เกี่ยวข้องกับงานก่อสร้าง
-                    เพื่อรองรับการใช้งานอย่างหลากหลาย
-                </p>
+                <a
+                    href="contact.html"
+                    class="btn btn-line"
+                >
+                    ติดต่อเรา
+                </a>
 
             </div>
-
-
-            <div class="glass-card">
-
-                <h3>
-                    ♠️ มาตรฐานเข้าถึง
-                </h3>
-
-                <p>
-                    เราให้ความสำคัญกับคุณภาพของสินค้า
-                    การให้คำปรึกษา และการบริการ
-                    เพื่อให้ลูกค้าสามารถเลือกใช้วัสดุ
-                    ได้อย่างเหมาะสมกับลักษณะงาน
-                </p>
-
-            </div>
-
 
         </div>
 
@@ -1750,119 +2298,116 @@ input{
 </main>
 
 
-<!-- =====================================================
+
+<!-- =======================================================
      FOOTER
-===================================================== -->
+======================================================= -->
 
-<footer class="footer">
+<footer class="site-footer">
 
-    <div class="footer-inner">
+    <div class="container">
 
 
         <div class="footer-grid">
 
-
-            <!-- BRAND -->
 
             <div>
 
                 <div class="footer-brand">
 
                     <img
-                        src="./assets/logo.png"
+                        src="assets/logo.png"
                         alt="CHATPHETCH GROUP"
                         class="footer-logo"
                     >
 
+                    <div>
+
+                        <h3>
+                            CHATPHETCH GROUP
+                        </h3>
+
+                        <p>
+                            FLOORING &amp; CONSTRUCTION
+                        </p>
+
+                    </div>
+
                 </div>
 
 
-                <p>
-                    🌹 โรงงานผลิต-จำหน่าย
-                    วัสดุงานพื้นทุกประเภท 🌹
-                </p>
+                <p class="footer-description">
 
+                    โรงงานผลิตและจำหน่าย
+                    วัสดุงานพื้นทุกประเภท
+                    พร้อมบริการให้คำปรึกษา
+                    เกี่ยวกับพื้นทุกระบบแบบครบวงจร
 
-                <p>
-                    ✅ บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
                 </p>
 
             </div>
 
 
-            <!-- MENU -->
 
-            <div>
+            <div class="footer-column">
 
                 <h4>
                     เมนู
                 </h4>
 
+                <a href="index.html">
+                    หน้าแรก
+                </a>
 
-                <div class="footer-links">
+                <a href="about.html">
+                    เกี่ยวกับเรา
+                </a>
 
-                    <a href="index.html">
-                        หน้าแรก
-                    </a>
+                <a href="products.html">
+                    สินค้า
+                </a>
 
-                    <a href="about.html">
-                        เกี่ยวกับเรา
-                    </a>
+                <a href="services.html">
+                    บริการ
+                </a>
 
-                    <a href="products.html">
-                        สินค้า
-                    </a>
-
-                    <a href="services.html">
-                        บริการ
-                    </a>
-
-                    <a href="projects.html">
-                        ผลงาน
-                    </a>
-
-                    <a href="contact.html">
-                        ติดต่อเรา
-                    </a>
-
-                    <a href="order-status.html">
-                        🔎 ติดตามคำสั่งซื้อ
-                    </a>
-
-                </div>
+                <a href="projects.html">
+                    ผลงาน
+                </a>
 
             </div>
 
 
-            <!-- CONTACT -->
 
-            <div>
+            <div class="footer-column">
 
                 <h4>
-                    ติดต่อเรา
+                    ติดต่อ
                 </h4>
 
+                <a href="tel:0828223678">
+                    ☎️ 082-8223678 คุณหญิง
+                </a>
 
-                <p>
-                    082-8223678 คุณหญิง
-                </p>
+                <a href="tel:0630630046">
+                    ☎️ 063-0630046 คุณเอ้
+                </a>
 
-                <p>
-                    063-0630046 คุณเอ้
-                </p>
+                <a href="tel:0856299778">
+                    🛠️ 085-6299778 ฝ่ายเทคนิค
+                </a>
 
-                <p>
-                    085-6299778 ฝ่ายเทคนิค
-                </p>
+                <a href="tel:0986710888">
+                    💬 098-6710888 แอดมิน
+                </a>
 
-                <p>
-                    098-6710888 แอดมิน
-                </p>
-
-                <p>
-                    10/1 ม.9 ต.นาหม่อม
-                    อ.นาหม่อม จ.สงขลา 90310
-                </p>
+                <a
+                    href="https://www.facebook.com/ChatphetchGroup"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Facebook
+                </a>
 
             </div>
 
@@ -1870,15 +2415,16 @@ input{
         </div>
 
 
+
         <div class="footer-bottom">
 
-            <span>
+            <div>
                 © 2026 CHATPHETCH GROUP CO., LTD.
-            </span>
+            </div>
 
-            <span>
-                สร้างสรรค์ผลงาน • มาตรฐานเข้าถึง • ยืน 1 คุณภาพ
-            </span>
+            <div>
+                10/1 ม.9 ต.นาหม่อม อ.นาหม่อม จ.สงขลา 90310
+            </div>
 
         </div>
 
@@ -1888,25 +2434,25 @@ input{
 </footer>
 
 
-<!-- =====================================================
-     FLOATING CONTACT
-===================================================== -->
 
-<div class="floating-contact">
+<!-- =======================================================
+     FLOATING CONTACT
+======================================================= -->
+
+<div class="float-contact">
 
     <a
         href="tel:0828223678"
         class="float-btn"
         title="โทรหาเรา"
     >
-        📞
+        ☎️
     </a>
-
 
     <a
         href="https://www.facebook.com/ChatphetchGroup"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         class="float-btn"
         title="Facebook"
     >
@@ -1916,9 +2462,10 @@ input{
 </div>
 
 
-<!-- =====================================================
+
+<!-- =======================================================
      BACK TO TOP
-===================================================== -->
+======================================================= -->
 
 <button
     class="back-top"
@@ -1930,76 +2477,73 @@ input{
 </button>
 
 
+
 <script>
 
-/* =====================================================
+/* =========================================================
    MOBILE MENU
-===================================================== */
+========================================================= */
 
-const menuToggle =
-    document.getElementById("menuToggle");
+const mobileMenuBtn =
+    document.getElementById("mobileMenuBtn");
 
 const navMenu =
     document.getElementById("navMenu");
 
 
-if(menuToggle && navMenu){
+if(mobileMenuBtn){
 
-    menuToggle.addEventListener(
+    mobileMenuBtn.addEventListener(
         "click",
         function(){
 
-            navMenu.classList.toggle("active");
+            navMenu.classList.toggle("open");
 
-            if(
-                navMenu.classList.contains("active")
-            ){
-
-                menuToggle.textContent = "✕";
-
-            }else{
-
-                menuToggle.textContent = "☰";
-
-            }
+            this.textContent =
+                navMenu.classList.contains("open")
+                ? "✕"
+                : "☰";
 
         }
     );
 
-
-    navMenu
-        .querySelectorAll("a")
-        .forEach(function(link){
-
-            link.addEventListener(
-                "click",
-                function(){
-
-                    navMenu.classList.remove("active");
-
-                    menuToggle.textContent = "☰";
-
-                }
-            );
-
-        });
-
 }
 
 
-/* =====================================================
+/* =========================================================
+   CLOSE MOBILE MENU WHEN CLICK LINK
+========================================================= */
+
+document
+    .querySelectorAll(".nav-menu a")
+    .forEach(function(link){
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                navMenu.classList.remove("open");
+
+                if(mobileMenuBtn){
+                    mobileMenuBtn.textContent = "☰";
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
    CART COUNT
-===================================================== */
+========================================================= */
 
-function updateCartCount(){
+function updateCartBadge(){
 
-    const cartCount =
-        document.getElementById("cartCount");
+    const badge =
+        document.getElementById("cartBadge");
 
-    if(!cartCount){
-        return;
-    }
-
+    if(!badge) return;
 
     try{
 
@@ -2010,59 +2554,87 @@ function updateCartCount(){
                 ) || "[]"
             );
 
-
-        const total =
+        const count =
             cart.reduce(
-                function(sum,item){
+                function(total,item){
 
-                    return sum +
-                        Number(
-                            item.quantity || 0
-                        );
+                    return total +
+                        Number(item.quantity || 0);
 
                 },
                 0
             );
 
-
-        cartCount.textContent = total;
+        badge.textContent = count;
 
     }catch(error){
 
-        cartCount.textContent = "0";
+        badge.textContent = "0";
 
     }
 
 }
 
 
-updateCartCount();
+/* =========================================================
+   UPDATE CART
+========================================================= */
 
-
-/* =====================================================
-   UPDATE CART WHEN RETURNING TO PAGE
-===================================================== */
+updateCartBadge();
 
 window.addEventListener(
     "storage",
-    function(event){
+    updateCartBadge
+);
 
-        if(
-            event.key ===
-            "chatpetch_cart"
-        ){
 
-            updateCartCount();
+/* =========================================================
+   REVEAL ON SCROLL
+========================================================= */
 
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add("show");
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
         }
+    );
+
+
+revealElements.forEach(
+    function(element){
+
+        revealObserver.observe(element);
 
     }
 );
 
 
-/* =====================================================
+/* =========================================================
    BACK TO TOP
-===================================================== */
+========================================================= */
 
 const backTop =
     document.getElementById("backTop");
@@ -2072,15 +2644,13 @@ window.addEventListener(
     "scroll",
     function(){
 
-        if(
-            window.scrollY > 500
-        ){
+        if(window.scrollY > 500){
 
-            backTop.style.display = "flex";
+            backTop.classList.add("show");
 
         }else{
 
-            backTop.style.display = "none";
+            backTop.classList.remove("show");
 
         }
 
@@ -2088,52 +2658,48 @@ window.addEventListener(
 );
 
 
-if(backTop){
+backTop.addEventListener(
+    "click",
+    function(){
 
-    backTop.addEventListener(
-        "click",
-        function(){
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
 
-            window.scrollTo({
-
-                top:0,
-
-                behavior:"smooth"
-
-            });
-
-        }
-    );
-
-}
+    }
+);
 
 
-/* =====================================================
-   LOGO CHECK
-===================================================== */
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
 
-const logos =
+const logoImages =
     document.querySelectorAll(
-        'img[src="./assets/logo.png"]'
+        'img[src="assets/logo.png"]'
     );
 
 
-logos.forEach(function(img){
+logoImages.forEach(
+    function(img){
 
-    img.addEventListener(
-        "error",
-        function(){
+        img.addEventListener(
+            "error",
+            function(){
 
-            console.error(
-                "ไม่พบไฟล์ ./assets/logo.png"
-            );
+                console.error(
+                    "ไม่พบไฟล์ assets/logo.png"
+                );
 
-        }
-    );
+            }
+        );
 
-});
+    }
+);
 
 </script>
+
 
 </body>
 </html>
