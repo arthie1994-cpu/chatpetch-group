@@ -1,0 +1,4079 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Case Study | CHATPETCH GROUP</title>
+
+<meta
+    name="description"
+    content="รายละเอียด Case Study ผลงานงานระบบพื้น กันรั่วซึม ซ่อมคอนกรีต และงานระบบพื้นจาก บริษัท ฉัตรเพชร กรุ๊ป จำกัด"
+/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#050505;
+    --black2:#080808;
+    --dark:#0d0d0d;
+    --dark2:#111111;
+    --dark3:#181818;
+
+    --gold:#c8a45b;
+    --gold-light:#f0d991;
+    --gold-dark:#806127;
+
+    --white:#ffffff;
+    --soft:#e8e8e8;
+    --gray:#9b9b9b;
+
+    --line:rgba(255,255,255,.09);
+    --gold-line:rgba(200,164,91,.28);
+
+    --container:1240px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    color:var(--white);
+
+    font-family:"Kanit","Prompt",sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 85% 8%,
+            rgba(200,164,91,.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 5% 55%,
+            rgba(200,164,91,.05),
+            transparent 28%
+        ),
+        var(--black);
+
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-5;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
+
+    opacity:.3;
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+
+    width:700px;
+    height:700px;
+
+    right:-360px;
+    top:250px;
+
+    border-radius:50%;
+
+    background:rgba(200,164,91,.045);
+
+    filter:blur(120px);
+
+    pointer-events:none;
+
+    z-index:-4;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+.container{
+    width:min(
+        var(--container),
+        calc(100% - 40px)
+    );
+
+    margin:0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+
+    background:rgba(5,5,5,.92);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(200,164,91,.16);
+}
+
+.header-inner{
+    min-height:86px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:25px;
+}
+
+.brand{
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    flex-shrink:0;
+}
+
+.brand-logo{
+    width:68px;
+    height:68px;
+
+    object-fit:contain;
+}
+
+.brand-text{
+    display:flex;
+
+    flex-direction:column;
+
+    line-height:1.1;
+}
+
+.brand-text strong{
+    font-family:"Prompt",sans-serif;
+
+    font-size:18px;
+
+    letter-spacing:1.5px;
+}
+
+.brand-text span{
+    margin-top:5px;
+
+    color:var(--gold);
+
+    font-size:12px;
+}
+
+.nav-menu{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:4px;
+
+    flex-wrap:wrap;
+}
+
+.nav-menu a{
+    position:relative;
+
+    padding:10px 11px;
+
+    color:#d0d0d0;
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+    transition:.3s ease;
+}
+
+.nav-menu a:hover{
+    color:var(--gold-light);
+}
+
+.nav-menu a::after{
+    content:"";
+
+    position:absolute;
+
+    left:11px;
+    right:11px;
+    bottom:4px;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    transform:scaleX(0);
+
+    transition:.3s ease;
+}
+
+.nav-menu a:hover::after{
+    transform:scaleX(1);
+}
+
+.nav-menu .nav-shop{
+    color:var(--gold-light);
+
+    border:1px solid var(--gold-line);
+
+    border-radius:10px;
+
+    margin-left:4px;
+}
+
+.nav-menu .nav-shop::after{
+    display:none;
+}
+
+.menu-btn{
+    display:none;
+
+    width:46px;
+    height:46px;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.035);
+
+    color:var(--gold-light);
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:520px;
+
+    display:flex;
+
+    align-items:center;
+
+    border-bottom:1px solid var(--line);
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:760px;
+    height:760px;
+
+    right:-390px;
+    top:-330px;
+
+    border:1px solid rgba(200,164,91,.15);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 0 80px rgba(200,164,91,.025),
+        0 0 0 160px rgba(200,164,91,.014);
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:80px;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(200,164,91,.35),
+            transparent
+        );
+}
+
+.hero-content{
+    position:relative;
+
+    z-index:2;
+
+    padding:90px 0;
+}
+
+.breadcrumb{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:28px;
+
+    color:#777;
+
+    font-size:13px;
+}
+
+.breadcrumb a{
+    color:#999;
+
+    transition:.3s ease;
+}
+
+.breadcrumb a:hover{
+    color:var(--gold-light);
+}
+
+.breadcrumb span:last-child{
+    color:var(--gold);
+}
+
+.hero-number{
+    margin-bottom:14px;
+
+    color:var(--gold);
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:13px;
+
+    letter-spacing:4px;
+}
+
+.hero h1{
+    max-width:950px;
+
+    margin-bottom:18px;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:clamp(
+        40px,
+        6vw,
+        70px
+    );
+
+    line-height:1.25;
+
+    font-weight:600;
+}
+
+.hero h1 span{
+    color:var(--gold-light);
+}
+
+.hero-description{
+    max-width:780px;
+
+    color:#999;
+
+    font-size:17px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.section{
+    padding:95px 0;
+}
+
+.section-head{
+    margin-bottom:38px;
+}
+
+.section-label{
+    margin-bottom:9px;
+
+    color:var(--gold);
+
+    font-size:13px;
+
+    letter-spacing:2px;
+}
+
+.section-title{
+    font-family:"Prompt",sans-serif;
+
+    font-size:clamp(
+        29px,
+        4vw,
+        46px
+    );
+
+    line-height:1.28;
+
+    font-weight:600;
+}
+
+.section-title span{
+    color:var(--gold-light);
+}
+
+.section-desc{
+    max-width:800px;
+
+    margin-top:12px;
+
+    color:#898989;
+
+    font-size:15px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   PROJECT SUMMARY
+========================================================= */
+
+.summary-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.4fr
+        .8fr;
+
+    gap:20px;
+}
+
+.summary-card{
+    position:relative;
+
+    padding:34px;
+
+    border:1px solid var(--line);
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.16);
+}
+
+.summary-card::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:22px;
+    bottom:22px;
+
+    width:2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+.summary-card h2{
+    margin-bottom:15px;
+
+    padding-left:12px;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:28px;
+
+    line-height:1.35;
+}
+
+.summary-card p{
+    color:#999;
+
+    font-size:14px;
+
+    line-height:1.95;
+}
+
+.meta-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+}
+
+.meta-item{
+    min-height:100px;
+
+    padding:20px;
+
+    border:1px solid var(--line);
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.02);
+}
+
+.meta-label{
+    margin-bottom:7px;
+
+    color:#666;
+
+    font-size:11px;
+
+    letter-spacing:.8px;
+}
+
+.meta-value{
+    color:#ddd;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:17px;
+
+    line-height:1.5;
+}
+
+.meta-value.pending{
+    color:#777;
+
+    font-family:"Kanit","Prompt",sans-serif;
+
+    font-size:14px;
+}
+
+
+/* =========================================================
+   PROBLEM SECTION
+========================================================= */
+
+.problem-box{
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:20px;
+}
+
+.problem-content,
+.problem-image{
+    min-height:350px;
+
+    border:1px solid var(--line);
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.problem-content{
+    padding:38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.012)
+        );
+}
+
+.problem-content h3{
+    margin-bottom:18px;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:28px;
+
+    line-height:1.35;
+}
+
+.problem-content p{
+    color:#999;
+
+    font-size:15px;
+
+    line-height:2;
+}
+
+.problem-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:25px;
+}
+
+.problem-list div{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    color:#aaa;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+.problem-list span{
+    color:var(--gold);
+}
+
+.problem-image{
+    position:relative;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(200,164,91,.09),
+            transparent 55%
+        );
+}
+
+.problem-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.placeholder-image{
+    width:100%;
+    height:100%;
+
+    min-height:350px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.placeholder-icon{
+    width:76px;
+    height:76px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:17px;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:20px;
+
+    color:var(--gold-light);
+
+    font-size:31px;
+
+    background:rgba(200,164,91,.04);
+}
+
+.placeholder-image strong{
+    font-family:"Prompt",sans-serif;
+
+    font-size:21px;
+}
+
+.placeholder-image p{
+    margin-top:5px;
+
+    color:#666;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   SYSTEM LAYERS
+========================================================= */
+
+.system-section{
+    border-top:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.012),
+            rgba(200,164,91,.025)
+        );
+}
+
+.layer-diagram{
+    position:relative;
+
+    max-width:900px;
+
+    margin:45px auto 0;
+
+    padding:25px;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:22px;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(200,164,91,.08),
+            transparent 55%
+        );
+}
+
+.layer{
+    position:relative;
+
+    min-height:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    border:1px solid var(--line);
+
+    background:rgba(255,255,255,.025);
+
+    text-align:center;
+}
+
+.layer:first-child{
+    border-radius:16px 16px 5px 5px;
+}
+
+.layer:last-child{
+    border-radius:5px 5px 16px 16px;
+}
+
+.layer + .layer{
+    margin-top:8px;
+}
+
+.layer-number{
+    position:absolute;
+
+    left:20px;
+
+    color:var(--gold);
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+}
+
+.layer strong{
+    font-family:"Prompt",sans-serif;
+
+    font-size:20px;
+
+    line-height:1.4;
+}
+
+.layer span{
+    display:block;
+
+    margin-top:4px;
+
+    color:#777;
+
+    font-family:"Kanit","Prompt",sans-serif;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   SUITABILITY
+========================================================= */
+
+.suitability-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+}
+
+.suitable-card{
+    padding:32px;
+
+    border:1px solid var(--line);
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.012)
+        );
+}
+
+.suitable-card.good{
+    border-color:
+        rgba(200,164,91,.3);
+}
+
+.suitable-card h3{
+    margin-bottom:18px;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:24px;
+}
+
+.suitable-card.good h3{
+    color:var(--gold-light);
+}
+
+.suitable-card.bad h3{
+    color:#aaa;
+}
+
+.suitable-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.suitable-list div{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    color:#999;
+
+    font-size:14px;
+
+    line-height:1.75;
+}
+
+.suitable-list b{
+    color:var(--gold);
+
+    font-weight:500;
+}
+
+
+/* =========================================================
+   TIME / WARRANTY
+========================================================= */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
+.info-card{
+    min-height:180px;
+
+    padding:28px;
+
+    border:1px solid var(--line);
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.02);
+
+    transition:.3s ease;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+
+    border-color:var(--gold-line);
+}
+
+.info-icon{
+    width:45px;
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:20px;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:12px;
+
+    color:var(--gold-light);
+
+    background:rgba(200,164,91,.04);
+
+    font-size:20px;
+}
+
+.info-card h3{
+    margin-bottom:7px;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:19px;
+}
+
+.info-card p{
+    color:#777;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   PHOTO GALLERY
+========================================================= */
+
+.gallery-tabs{
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:22px;
+}
+
+.gallery-tab{
+    min-height:42px;
+
+    padding:0 18px;
+
+    border:1px solid var(--line);
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.025);
+
+    color:#888;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.gallery-tab:hover{
+    color:var(--gold-light);
+
+    border-color:var(--gold-line);
+}
+
+.gallery-tab.active{
+    color:#080808;
+
+    border-color:var(--gold);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+}
+
+.gallery{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+}
+
+.gallery-item{
+    position:relative;
+
+    min-height:260px;
+
+    overflow:hidden;
+
+    border:1px solid var(--line);
+
+    border-radius:17px;
+
+    background:#0b0b0b;
+
+    cursor:pointer;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s ease;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+}
+
+.gallery-placeholder{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    padding:25px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(200,164,91,.07),
+            transparent 60%
+        );
+}
+
+.gallery-placeholder-icon{
+    width:55px;
+    height:55px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:12px;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:15px;
+
+    color:var(--gold-light);
+
+    font-size:23px;
+}
+
+.gallery-placeholder strong{
+    font-family:"Prompt",sans-serif;
+
+    font-size:16px;
+}
+
+.gallery-placeholder span{
+    margin-top:4px;
+
+    color:#666;
+
+    font-size:12px;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox{
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:30px;
+
+    background:rgba(0,0,0,.94);
+
+    backdrop-filter:blur(10px);
+}
+
+.lightbox.open{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:min(
+        1100px,
+        95vw
+    );
+
+    max-height:88vh;
+
+    object-fit:contain;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:12px;
+}
+
+.lightbox-close{
+    position:absolute;
+
+    right:25px;
+    top:20px;
+
+    width:48px;
+    height:48px;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:50%;
+
+    color:var(--gold-light);
+
+    background:#090909;
+
+    font-size:22px;
+
+    cursor:pointer;
+}
+
+
+/* =========================================================
+   RELATED PROJECTS
+========================================================= */
+
+.related-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
+.related-card{
+    padding:25px;
+
+    border:1px solid var(--line);
+
+    border-radius:17px;
+
+    background:rgba(255,255,255,.02);
+
+    transition:.3s ease;
+}
+
+.related-card:hover{
+    transform:translateY(-5px);
+
+    border-color:var(--gold-line);
+}
+
+.related-number{
+    margin-bottom:13px;
+
+    color:var(--gold);
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+}
+
+.related-card h3{
+    margin-bottom:7px;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:19px;
+
+    line-height:1.4;
+}
+
+.related-card p{
+    color:#777;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:60px;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:24px;
+
+    background:
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(200,164,91,.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.01)
+        );
+}
+
+.cta::before{
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    right:-200px;
+    top:-190px;
+
+    border:1px solid rgba(200,164,91,.14);
+
+    border-radius:50%;
+}
+
+.cta-content{
+    position:relative;
+
+    z-index:2;
+
+    max-width:850px;
+}
+
+.cta-label{
+    margin-bottom:10px;
+
+    color:var(--gold);
+
+    font-size:13px;
+
+    letter-spacing:2px;
+}
+
+.cta h2{
+    margin-bottom:14px;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:clamp(
+        29px,
+        4vw,
+        47px
+    );
+
+    line-height:1.3;
+}
+
+.cta h2 span{
+    color:var(--gold-light);
+}
+
+.cta p{
+    color:#888;
+
+    font-size:15px;
+
+    line-height:1.9;
+}
+
+.cta-buttons{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:26px;
+}
+
+.btn{
+    min-height:50px;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    padding:0 24px;
+
+    border-radius:11px;
+
+    font-size:14px;
+
+    transition:.3s ease;
+}
+
+.btn-gold{
+    color:#080808;
+
+    font-weight:600;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+}
+
+.btn-gold:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 14px 35px rgba(200,164,91,.2);
+}
+
+.btn-outline{
+    color:var(--gold-light);
+
+    border:1px solid var(--gold-line);
+
+    background:rgba(200,164,91,.04);
+}
+
+.btn-outline:hover{
+    background:rgba(200,164,91,.1);
+}
+
+
+/* =========================================================
+   ERROR PANEL
+========================================================= */
+
+.error-panel{
+    display:none;
+
+    padding:80px 30px;
+
+    text-align:center;
+
+    border:1px solid rgba(200,164,91,.25);
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.01)
+        );
+}
+
+.error-panel.show{
+    display:block;
+}
+
+.error-panel h2{
+    margin-bottom:10px;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:32px;
+
+    line-height:1.3;
+}
+
+.error-panel p{
+    margin-bottom:25px;
+
+    color:#777;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    padding:65px 0 30px;
+
+    border-top:1px solid var(--line);
+
+    background:#040404;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.4fr
+        1fr
+        1fr
+        1fr;
+
+    gap:45px;
+}
+
+.footer-brand{
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:18px;
+}
+
+.footer-logo{
+    width:64px;
+    height:64px;
+
+    object-fit:contain;
+}
+
+.footer-brand-text strong{
+    display:block;
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:18px;
+
+    letter-spacing:1px;
+}
+
+.footer-brand-text span{
+    display:block;
+
+    margin-top:4px;
+
+    color:var(--gold);
+
+    font-size:11px;
+}
+
+.footer-about{
+    max-width:420px;
+
+    color:#8d8d8d;
+
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+.footer-col h4{
+    margin-bottom:18px;
+
+    color:var(--gold-light);
+
+    font-family:"Prompt",sans-serif;
+
+    font-size:16px;
+}
+
+.footer-links{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+}
+
+.footer-links a{
+    color:#8d8d8d;
+
+    font-size:14px;
+
+    transition:.3s ease;
+}
+
+.footer-links a:hover{
+    color:var(--gold-light);
+
+    transform:translateX(3px);
+}
+
+.footer-bottom{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-top:50px;
+
+    padding-top:20px;
+
+    border-top:1px solid rgba(255,255,255,.07);
+
+    color:#666;
+
+    font-size:12px;
+}
+
+.footer-bottom strong{
+    color:#999;
+}
+
+
+/* =========================================================
+   FLOATING CONTACT
+========================================================= */
+
+.floating-contact{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    z-index:900;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.float-btn{
+    width:50px;
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid var(--gold-line);
+
+    border-radius:50%;
+
+    color:var(--gold-light);
+
+    background:rgba(8,8,8,.92);
+
+    backdrop-filter:blur(10px);
+
+    font-size:20px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+    transition:.3s ease;
+}
+
+.float-btn:hover{
+    transform:translateY(-4px);
+
+    color:#050505;
+
+    background:var(--gold);
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .75s ease,
+        transform .75s ease;
+}
+
+.reveal.active{
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1180px){
+
+    .nav-menu{
+        display:none;
+
+        position:absolute;
+
+        left:20px;
+        right:20px;
+
+        top:80px;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        padding:14px;
+
+        border:1px solid var(--gold-line);
+
+        border-radius:16px;
+
+        background:rgba(8,8,8,.98);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,.55);
+    }
+
+    .nav-menu.open{
+        display:flex;
+    }
+
+    .nav-menu a{
+        padding:13px 15px;
+
+        border-radius:8px;
+    }
+
+    .nav-menu a:hover{
+        background:rgba(200,164,91,.06);
+    }
+
+    .nav-menu a::after{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:800px){
+
+    .problem-box,
+    .suitability-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .related-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+
+@media(max-width:700px){
+
+    .container{
+        width:calc(100% - 28px);
+    }
+
+    .header-inner{
+        min-height:76px;
+    }
+
+    .brand-logo{
+        width:56px;
+        height:56px;
+    }
+
+    .brand-text strong{
+        font-size:15px;
+    }
+
+    .brand-text span{
+        font-size:10px;
+    }
+
+    .hero{
+        min-height:460px;
+    }
+
+    .hero-content{
+        padding:70px 0;
+    }
+
+    .hero h1{
+        font-size:42px;
+
+        line-height:1.28;
+    }
+
+    .hero-description{
+        font-size:15px;
+    }
+
+    .section{
+        padding:70px 0;
+    }
+
+    .summary-card{
+        padding:27px;
+    }
+
+    .summary-card h2{
+        font-size:23px;
+    }
+
+    .meta-grid{
+        grid-template-columns:1fr;
+    }
+
+    .problem-content{
+        padding:27px;
+    }
+
+    .problem-content h3{
+        font-size:23px;
+    }
+
+    .layer-diagram{
+        padding:12px;
+    }
+
+    .layer{
+        min-height:100px;
+    }
+
+    .layer-number{
+        left:12px;
+        top:13px;
+    }
+
+    .layer strong{
+        font-size:18px;
+
+        padding-top:18px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-item{
+        min-height:230px;
+    }
+
+    .related-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cta{
+        padding:35px 25px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+
+        gap:32px;
+    }
+
+    .footer-bottom{
+        align-items:flex-start;
+
+        flex-direction:column;
+
+        gap:8px;
+    }
+
+    .floating-contact{
+        right:14px;
+        bottom:14px;
+    }
+
+    .float-btn{
+        width:46px;
+        height:46px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+    <div class="container header-inner">
+
+        <a
+            href="index.html"
+            class="brand"
+        >
+
+            <img
+                src="assets/logo.png"
+                alt="CHATPETCH GROUP"
+                class="brand-logo"
+            >
+
+            <div class="brand-text">
+
+                <strong>
+                    CHATPETCH GROUP
+                </strong>
+
+                <span>
+                    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <button
+            type="button"
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="เปิดเมนู"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            class="nav-menu"
+            id="navMenu"
+        >
+
+            <a href="index.html">
+                หน้าแรก
+            </a>
+
+            <a href="about.html">
+                เกี่ยวกับเรา
+            </a>
+
+            <a href="products.html">
+                สินค้า
+            </a>
+
+            <a href="services.html">
+                บริการ
+            </a>
+
+            <a href="projects.html">
+                ผลงาน
+            </a>
+
+            <a href="technical-center.html">
+                Technical Center
+            </a>
+
+            <a href="knowledge.html">
+                Knowledge
+            </a>
+
+            <a href="order-status.html">
+                ติดตามคำสั่งซื้อ
+            </a>
+
+            <a href="contact.html">
+                ติดต่อเรา
+            </a>
+
+            <a
+                href="cart.html"
+                class="nav-shop"
+            >
+                🛒 ตะกร้า
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="container hero-content reveal">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">
+                หน้าแรก
+            </a>
+
+            <span>
+                /
+            </span>
+
+            <a href="projects.html">
+                ผลงาน
+            </a>
+
+            <span>
+                /
+            </span>
+
+            <span>
+                Case Study
+            </span>
+
+        </div>
+
+
+        <div class="hero-number">
+            PROJECT / CASE STUDY
+        </div>
+
+
+        <h1 id="heroTitle">
+            Case Study
+            <span>ผลงานโครงการ</span>
+        </h1>
+
+
+        <p
+            class="hero-description"
+            id="heroDescription"
+        >
+            รายละเอียดโครงการ ปัญหาที่พบ ระบบที่เลือกใช้
+            ขั้นตอนการดำเนินงาน และผลลัพธ์หลังเสร็จงาน
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main id="mainContent">
+
+
+<!-- =========================================================
+     SUMMARY
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <div class="section-label">
+                PROJECT OVERVIEW
+            </div>
+
+            <h2 class="section-title">
+                ข้อมูล
+                <span>โครงการ</span>
+            </h2>
+
+        </div>
+
+
+        <div class="summary-grid">
+
+
+            <div class="summary-card reveal">
+
+                <h2 id="projectTitle">
+                    ชื่อโครงการ
+                </h2>
+
+                <p id="projectSummary">
+                    รายละเอียดโครงการจะแสดงที่นี่
+                </p>
+
+            </div>
+
+
+            <div class="meta-grid reveal">
+
+
+                <div class="meta-item">
+
+                    <div class="meta-label">
+                        CUSTOMER TYPE
+                    </div>
+
+                    <div
+                        class="meta-value"
+                        id="customerType"
+                    >
+                        รอข้อมูล
+                    </div>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <div class="meta-label">
+                        JOB TYPE
+                    </div>
+
+                    <div
+                        class="meta-value"
+                        id="jobType"
+                    >
+                        รอข้อมูล
+                    </div>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <div class="meta-label">
+                        PROVINCE
+                    </div>
+
+                    <div
+                        class="meta-value pending"
+                        id="province"
+                    >
+                        รอข้อมูลจังหวัด
+                    </div>
+
+                </div>
+
+
+                <div class="meta-item">
+
+                    <div class="meta-label">
+                        AREA
+                    </div>
+
+                    <div
+                        class="meta-value pending"
+                        id="area"
+                    >
+                        รอข้อมูลพื้นที่
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROBLEM
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <div class="section-label">
+                BEFORE WORK
+            </div>
+
+            <h2 class="section-title">
+                ปัญหา
+                <span>ก่อนเริ่มงาน</span>
+            </h2>
+
+            <p class="section-desc">
+                แสดงสภาพพื้นที่และปัญหาที่พบก่อนเริ่มดำเนินงาน
+            </p>
+
+        </div>
+
+
+        <div class="problem-box">
+
+
+            <div class="problem-content reveal">
+
+                <h3>
+                    สภาพพื้นที่เดิม
+                </h3>
+
+                <p id="problemText">
+                    ยังไม่มีข้อมูลปัญหาจากโครงการจริง
+                </p>
+
+
+                <div class="problem-list">
+
+                    <div>
+                        <span>◆</span>
+                        <span>
+                            รายละเอียดปัญหาจะระบุจากข้อมูลโครงการจริง
+                        </span>
+                    </div>
+
+                    <div>
+                        <span>◆</span>
+                        <span>
+                            สภาพพื้นผิวเดิมจะบันทึกพร้อมภาพ Before
+                        </span>
+                    </div>
+
+                    <div>
+                        <span>◆</span>
+                        <span>
+                            สาเหตุและแนวทางแก้ไขจะระบุตามหน้างาน
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="problem-image reveal">
+
+                <div
+                    class="placeholder-image"
+                    id="beforeImage"
+                >
+
+                    <div class="placeholder-icon">
+                        ◈
+                    </div>
+
+                    <strong>
+                        ภาพ Before
+                    </strong>
+
+                    <p>
+                        เพิ่มภาพสภาพพื้นที่จริงภายหลัง
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SYSTEM
+========================================================= -->
+
+<section class="section system-section">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <div class="section-label">
+                SYSTEM SPECIFICATION
+            </div>
+
+            <h2 class="section-title">
+                ระบบที่
+                <span>เลือกใช้</span>
+            </h2>
+
+            <p class="section-desc">
+
+                โครงสร้างระบบสามารถระบุเป็น Layer
+                เพื่อให้เห็นลำดับการทำงานของวัสดุแต่ละชั้น
+
+            </p>
+
+        </div>
+
+
+        <div class="layer-diagram reveal">
+
+
+            <div class="layer">
+
+                <div class="layer-number">
+                    LAYER 03
+                </div>
+
+                <div>
+
+                    <strong>
+                        Top Coat
+                    </strong>
+
+                    <span id="topCoat">
+                        รอระบุวัสดุจริง
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="layer">
+
+                <div class="layer-number">
+                    LAYER 02
+                </div>
+
+                <div>
+
+                    <strong>
+                        Middle Layer
+                    </strong>
+
+                    <span id="middleLayer">
+                        รอระบุวัสดุจริง
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="layer">
+
+                <div class="layer-number">
+                    LAYER 01
+                </div>
+
+                <div>
+
+                    <strong>
+                        Primer
+                    </strong>
+
+                    <span id="primer">
+                        รอระบุวัสดุจริง
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="layer">
+
+                <div class="layer-number">
+                    BASE
+                </div>
+
+                <div>
+
+                    <strong>
+                        Concrete / Existing Surface
+                    </strong>
+
+                    <span>
+                        พื้นผิวเดิมของโครงการ
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SUITABILITY
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <div class="section-label">
+                APPLICATION
+            </div>
+
+            <h2 class="section-title">
+                เหมาะกับพื้นที่
+                <span>แบบไหน</span>
+            </h2>
+
+        </div>
+
+
+        <div class="suitability-grid">
+
+
+            <div class="suitable-card good reveal">
+
+                <h3>
+                    ✓ เหมาะกับ
+                </h3>
+
+                <div class="suitable-list">
+
+                    <div>
+                        <b>01</b>
+                        <span>
+                            ระบุประเภทพื้นที่ตามโครงการจริง
+                        </span>
+                    </div>
+
+                    <div>
+                        <b>02</b>
+                        <span>
+                            ระบุลักษณะการใช้งานของพื้นที่
+                        </span>
+                    </div>
+
+                    <div>
+                        <b>03</b>
+                        <span>
+                            ระบุเงื่อนไขที่เหมาะสมกับระบบ
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="suitable-card bad reveal">
+
+                <h3>
+                    ! ไม่เหมาะกับ
+                </h3>
+
+                <div class="suitable-list">
+
+                    <div>
+                        <b>01</b>
+                        <span>
+                            ต้องพิจารณาตามสภาพพื้นจริง
+                        </span>
+                    </div>
+
+                    <div>
+                        <b>02</b>
+                        <span>
+                            ต้องตรวจสอบเงื่อนไขหน้างานก่อนเลือกระบบ
+                        </span>
+                    </div>
+
+                    <div>
+                        <b>03</b>
+                        <span>
+                            รายละเอียดจะอ้างอิงจากข้อมูลโครงการจริง
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TIME / WARRANTY
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <div class="section-label">
+                PROJECT CONDITIONS
+            </div>
+
+            <h2 class="section-title">
+                ระยะเวลา
+                <span>และเงื่อนไข</span>
+            </h2>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-card reveal">
+
+                <div class="info-icon">
+                    ◷
+                </div>
+
+                <h3>
+                    ระยะเวลาทำงาน
+                </h3>
+
+                <p id="workDuration">
+                    รอข้อมูลจากโครงการจริง
+                </p>
+
+            </div>
+
+
+            <div class="info-card reveal">
+
+                <div class="info-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    ระยะเวลาก่อนเปิดใช้งาน
+                </h3>
+
+                <p id="openingTime">
+                    รอข้อมูลตามระบบและเอกสารจริง
+                </p>
+
+            </div>
+
+
+            <div class="info-card reveal">
+
+                <div class="info-icon">
+                    ◈
+                </div>
+
+                <h3>
+                    Warranty
+                </h3>
+
+                <p id="warranty">
+                    รอระบุเงื่อนไขรับประกันจากบริษัท
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section class="section system-section">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <div class="section-label">
+                PROJECT GALLERY
+            </div>
+
+            <h2 class="section-title">
+                ภาพ
+                <span>การดำเนินงาน</span>
+            </h2>
+
+            <p class="section-desc">
+                แยกภาพตามช่วงของโครงการ Before / During / After
+            </p>
+
+        </div>
+
+
+        <div class="gallery-tabs reveal">
+
+            <button
+                type="button"
+                class="gallery-tab active"
+                data-gallery="before"
+            >
+                BEFORE
+            </button>
+
+            <button
+                type="button"
+                class="gallery-tab"
+                data-gallery="during"
+            >
+                DURING
+            </button>
+
+            <button
+                type="button"
+                class="gallery-tab"
+                data-gallery="after"
+            >
+                AFTER
+            </button>
+
+        </div>
+
+
+        <div
+            class="gallery"
+            id="gallery"
+        ></div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RELATED PROJECTS
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-head reveal">
+
+            <div class="section-label">
+                RELATED
+            </div>
+
+            <h2 class="section-title">
+                ผลงาน
+                <span>ที่เกี่ยวข้อง</span>
+            </h2>
+
+        </div>
+
+
+        <div
+            class="related-grid"
+            id="relatedGrid"
+        ></div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="cta reveal">
+
+            <div class="cta-content">
+
+                <div class="cta-label">
+                    REQUEST A QUOTATION
+                </div>
+
+                <h2>
+                    มีพื้นที่ลักษณะใกล้เคียง
+                    <span>โครงการนี้?</span>
+                </h2>
+
+                <p>
+                    ส่งข้อมูลพื้นที่ ปัญหาที่พบ
+                    และภาพหน้างานให้ทีมงานประเมิน
+                    ระบบที่เหมาะสมกับโครงการของคุณ
+                </p>
+
+
+                <div class="cta-buttons">
+
+                    <a
+                        href="contact.html"
+                        class="btn btn-gold"
+                    >
+                        ขอใบเสนอราคา
+                        →
+                    </a>
+
+                    <a
+                        href="projects.html"
+                        class="btn btn-outline"
+                    >
+                        กลับไปดูผลงาน
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     ERROR
+========================================================= -->
+
+<section
+    class="section"
+    id="errorSection"
+    style="display:none;"
+>
+
+    <div class="container">
+
+        <div class="error-panel show">
+
+            <h2>
+                ไม่พบข้อมูลโครงการ
+            </h2>
+
+            <p>
+                ไม่พบรหัสโครงการที่ต้องการ
+                กรุณากลับไปที่หน้าผลงาน
+                และเลือก Case Study อีกครั้ง
+            </p>
+
+            <a
+                href="projects.html"
+                class="btn btn-gold"
+            >
+                ← กลับหน้าผลงาน
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+
+        <div class="footer-grid">
+
+
+            <div>
+
+                <div class="footer-brand">
+
+                    <img
+                        src="assets/logo.png"
+                        alt="CHATPETCH GROUP"
+                        class="footer-logo"
+                    >
+
+                    <div class="footer-brand-text">
+
+                        <strong>
+                            CHATPETCH GROUP
+                        </strong>
+
+                        <span>
+                            บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <p class="footer-about">
+
+                    🌹 โรงงานผลิต-จำหน่าย
+                    วัสดุงานพื้นทุกประเภท 🌹
+
+                    <br><br>
+
+                    บริการให้คำปรึกษาเกี่ยวกับพื้น
+                    ทุกระบบแบบครบวงจร
+
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-col">
+
+                <h4>
+                    เมนูหลัก
+                </h4>
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        หน้าแรก
+                    </a>
+
+                    <a href="about.html">
+                        เกี่ยวกับเรา
+                    </a>
+
+                    <a href="products.html">
+                        สินค้า
+                    </a>
+
+                    <a href="services.html">
+                        บริการ
+                    </a>
+
+                    <a href="projects.html">
+                        ผลงาน
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-col">
+
+                <h4>
+                    ข้อมูล
+                </h4>
+
+                <div class="footer-links">
+
+                    <a href="technical-center.html">
+                        Technical Center
+                    </a>
+
+                    <a href="knowledge.html">
+                        Knowledge
+                    </a>
+
+                    <a href="reference.html">
+                        Reference
+                    </a>
+
+                    <a href="order-status.html">
+                        ติดตามคำสั่งซื้อ
+                    </a>
+
+                    <a href="contact.html">
+                        ติดต่อเรา
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-col">
+
+                <h4>
+                    ติดต่อ
+                </h4>
+
+                <div class="footer-links">
+
+                    <a href="tel:0856299778">
+                        ฝ่ายเทคนิค 085-6299778
+                    </a>
+
+                    <a href="tel:0980153271">
+                        ฝ่ายบัญชี 098-0153271
+                    </a>
+
+                    <a href="tel:0828223678">
+                        Sale พี่หญิง 082-8223678
+                    </a>
+
+                    <a href="tel:0986710888">
+                        Sale มีน 098-6710888
+                    </a>
+
+                    <a href="tel:0630630046">
+                        Sale เอ้ 063-0630046
+                    </a>
+
+                    <a href="tel:0986426962">
+                        Sale สาว 098-6426962
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <div>
+
+                © 2026
+
+                <strong>
+                    CHATPETCH GROUP CO., LTD.
+                </strong>
+
+                All Rights Reserved.
+
+            </div>
+
+
+            <div>
+
+                สร้างสรรค์ผลงาน
+                •
+                มาตรฐานเข้าถึง
+                •
+                ยืน 1 คุณภาพ
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     FLOATING
+========================================================= -->
+
+<div class="floating-contact">
+
+    <a
+        href="tel:0856299778"
+        class="float-btn"
+        title="โทรฝ่ายเทคนิค"
+    >
+        ☎
+    </a>
+
+    <a
+        href="contact.html"
+        class="float-btn"
+        title="ติดต่อเรา"
+    >
+        ✉
+    </a>
+
+</div>
+
+
+
+<!-- =========================================================
+     LIGHTBOX
+========================================================= -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+>
+
+    <button
+        type="button"
+        class="lightbox-close"
+        id="lightboxClose"
+    >
+        ×
+    </button>
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Project image"
+    >
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* =========================================================
+   PROJECT DATABASE
+
+   IMPORTANT:
+   ตอนนี้ยังไม่มีข้อมูล Case Study จริงจากบริษัท
+   จึงใช้โครงสร้างข้อมูลสำหรับเตรียมระบบเท่านั้น
+
+   เมื่อนำข้อมูลจริงมาใส่:
+   - title
+   - province
+   - area
+   - problem
+   - system
+   - duration
+   - warranty
+   - images
+
+   สามารถแก้เฉพาะส่วนนี้ได้
+========================================================= */
+
+const PROJECTS = [
+
+    {
+        id:"project-001",
+
+        title:"Case Study — พื้นอุตสาหกรรม",
+
+        jobType:"industrial",
+
+        jobLabel:"พื้นอุตสาหกรรม",
+
+        customerType:"factory",
+
+        customerLabel:"โรงงาน",
+
+        province:"",
+
+        area:"",
+
+        summary:
+            "พื้นที่สำหรับจัดเก็บรายละเอียด Case Study งานพื้นอุตสาหกรรมจากโครงการจริง",
+
+        problem:
+            "ยังไม่มีข้อมูลสภาพพื้นที่และปัญหาของโครงการจริง",
+
+        system:{
+            primer:"",
+            middle:"",
+            top:""
+        },
+
+        duration:"",
+
+        openingTime:"",
+
+        warranty:"",
+
+        images:{
+            before:[],
+            during:[],
+            after:[]
+        }
+
+    },
+
+
+    {
+        id:"project-002",
+
+        title:"Case Study — งานกันรั่วซึม",
+
+        jobType:"waterproof",
+
+        jobLabel:"กันรั่วซึม",
+
+        customerType:"commercial",
+
+        customerLabel:"อาคารพาณิชย์",
+
+        province:"",
+
+        area:"",
+
+        summary:
+            "พื้นที่สำหรับจัดเก็บรายละเอียด Case Study งานกันรั่วซึมจากโครงการจริง",
+
+        problem:
+            "ยังไม่มีข้อมูลสภาพพื้นที่และปัญหาของโครงการจริง",
+
+        system:{
+            primer:"",
+            middle:"",
+            top:""
+        },
+
+        duration:"",
+
+        openingTime:"",
+
+        warranty:"",
+
+        images:{
+            before:[],
+            during:[],
+            after:[]
+        }
+
+    },
+
+
+    {
+        id:"project-003",
+
+        title:"Case Study — ซ่อมปรับปรุงคอนกรีต",
+
+        jobType:"concrete",
+
+        jobLabel:"ซ่อมคอนกรีต",
+
+        customerType:"other",
+
+        customerLabel:"อื่น ๆ",
+
+        province:"",
+
+        area:"",
+
+        summary:
+            "พื้นที่สำหรับจัดเก็บรายละเอียด Case Study งานซ่อมปรับปรุงคอนกรีตจากโครงการจริง",
+
+        problem:
+            "ยังไม่มีข้อมูลสภาพพื้นที่และปัญหาของโครงการจริง",
+
+        system:{
+            primer:"",
+            middle:"",
+            top:""
+        },
+
+        duration:"",
+
+        openingTime:"",
+
+        warranty:"",
+
+        images:{
+            before:[],
+            during:[],
+            after:[]
+        }
+
+    },
+
+
+    {
+        id:"project-004",
+
+        title:"Case Study — พื้นสนามกีฬา",
+
+        jobType:"sports",
+
+        jobLabel:"สนามกีฬา",
+
+        customerType:"government",
+
+        customerLabel:"หน่วยงาน",
+
+        province:"",
+
+        area:"",
+
+        summary:
+            "พื้นที่สำหรับจัดเก็บรายละเอียด Case Study งานพื้นสนามกีฬาจากโครงการจริง",
+
+        problem:
+            "ยังไม่มีข้อมูลสภาพพื้นที่และปัญหาของโครงการจริง",
+
+        system:{
+            primer:"",
+            middle:"",
+            top:""
+        },
+
+        duration:"",
+
+        openingTime:"",
+
+        warranty:"",
+
+        images:{
+            before:[],
+            during:[],
+            after:[]
+        }
+
+    },
+
+
+    {
+        id:"project-005",
+
+        title:"Case Study — พื้นตกแต่ง",
+
+        jobType:"decorative",
+
+        jobLabel:"พื้นตกแต่ง",
+
+        customerType:"residential",
+
+        customerLabel:"บ้านพักอาศัย",
+
+        province:"",
+
+        area:"",
+
+        summary:
+            "พื้นที่สำหรับจัดเก็บรายละเอียด Case Study งานพื้นตกแต่งจากโครงการจริง",
+
+        problem:
+            "ยังไม่มีข้อมูลสภาพพื้นที่และปัญหาของโครงการจริง",
+
+        system:{
+            primer:"",
+            middle:"",
+            top:""
+        },
+
+        duration:"",
+
+        openingTime:"",
+
+        warranty:"",
+
+        images:{
+            before:[],
+            during:[],
+            after:[]
+        }
+
+    },
+
+
+    {
+        id:"project-006",
+
+        title:"Case Study — เส้นจราจร",
+
+        jobType:"traffic",
+
+        jobLabel:"เส้นจราจร",
+
+        customerType:"factory",
+
+        customerLabel:"โรงงาน",
+
+        province:"",
+
+        area:"",
+
+        summary:
+            "พื้นที่สำหรับจัดเก็บรายละเอียด Case Study งานสัญลักษณ์และเส้นจราจรจากโครงการจริง",
+
+        problem:
+            "ยังไม่มีข้อมูลสภาพพื้นที่และปัญหาของโครงการจริง",
+
+        system:{
+            primer:"",
+            middle:"",
+            top:""
+        },
+
+        duration:"",
+
+        openingTime:"",
+
+        warranty:"",
+
+        images:{
+            before:[],
+            during:[],
+            after:[]
+        }
+
+    }
+
+];
+
+
+/* =========================================================
+   GET PROJECT ID
+========================================================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const projectId =
+    params.get("id") || "project-001";
+
+
+/* =========================================================
+   FIND PROJECT
+========================================================= */
+
+const project =
+    PROJECTS.find(function(item){
+
+        return item.id === projectId;
+
+    });
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const mainContent =
+    document.getElementById("mainContent");
+
+const errorSection =
+    document.getElementById("errorSection");
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   DISPLAY PROJECT
+========================================================= */
+
+function displayProject(){
+
+    if(!project){
+
+        mainContent.style.display = "none";
+
+        errorSection.style.display = "block";
+
+        return;
+
+    }
+
+
+    document.title =
+        `${project.title} | CHATPETCH GROUP`;
+
+
+    document.getElementById(
+        "heroTitle"
+    ).innerHTML = `
+        ${escapeHTML(project.title)}
+        <span>${escapeHTML(project.jobLabel)}</span>
+    `;
+
+
+    document.getElementById(
+        "heroDescription"
+    ).textContent =
+        project.summary;
+
+
+    document.getElementById(
+        "projectTitle"
+    ).textContent =
+        project.title;
+
+
+    document.getElementById(
+        "projectSummary"
+    ).textContent =
+        project.summary;
+
+
+    document.getElementById(
+        "customerType"
+    ).textContent =
+        project.customerLabel;
+
+
+    document.getElementById(
+        "jobType"
+    ).textContent =
+        project.jobLabel;
+
+
+    document.getElementById(
+        "province"
+    ).textContent =
+        project.province
+        || "รอข้อมูลจังหวัด";
+
+
+    if(project.province){
+
+        document.getElementById(
+            "province"
+        ).classList.remove("pending");
+
+    }
+
+
+    document.getElementById(
+        "area"
+    ).textContent =
+        project.area
+        || "รอข้อมูลพื้นที่";
+
+
+    if(project.area){
+
+        document.getElementById(
+            "area"
+        ).classList.remove("pending");
+
+    }
+
+
+    document.getElementById(
+        "problemText"
+    ).textContent =
+        project.problem
+        || "ยังไม่มีข้อมูลปัญหาจากโครงการจริง";
+
+
+    document.getElementById(
+        "primer"
+    ).textContent =
+        project.system?.primer
+        || "รอระบุวัสดุจริง";
+
+
+    document.getElementById(
+        "middleLayer"
+    ).textContent =
+        project.system?.middle
+        || "รอระบุวัสดุจริง";
+
+
+    document.getElementById(
+        "topCoat"
+    ).textContent =
+        project.system?.top
+        || "รอระบุวัสดุจริง";
+
+
+    document.getElementById(
+        "workDuration"
+    ).textContent =
+        project.duration
+        || "รอข้อมูลจากโครงการจริง";
+
+
+    document.getElementById(
+        "openingTime"
+    ).textContent =
+        project.openingTime
+        || "รอข้อมูลตามระบบและเอกสารจริง";
+
+
+    document.getElementById(
+        "warranty"
+    ).textContent =
+        project.warranty
+        || "รอระบุเงื่อนไขรับประกันจากบริษัท";
+
+
+    renderBeforeImage();
+
+    renderGallery("before");
+
+    renderRelatedProjects();
+
+}
+
+
+/* =========================================================
+   BEFORE IMAGE
+========================================================= */
+
+function renderBeforeImage(){
+
+    const wrapper =
+        document.getElementById(
+            "beforeImage"
+        );
+
+
+    const firstImage =
+        project.images?.before?.[0];
+
+
+    if(firstImage){
+
+        wrapper.innerHTML = `
+            <img
+                src="${escapeHTML(firstImage)}"
+                alt="Before - ${escapeHTML(project.title)}"
+            >
+        `;
+
+        wrapper.style.padding = "0";
+
+        return;
+
+    }
+
+
+    wrapper.innerHTML = `
+
+        <div class="placeholder-image">
+
+            <div class="placeholder-icon">
+                ◈
+            </div>
+
+            <strong>
+                ภาพ Before
+            </strong>
+
+            <p>
+                เพิ่มภาพสภาพพื้นที่จริงภายหลัง
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+let currentGallery =
+    "before";
+
+
+function renderGallery(type){
+
+    currentGallery = type;
+
+
+    const gallery =
+        document.getElementById(
+            "gallery"
+        );
+
+
+    const images =
+        project.images?.[type] || [];
+
+
+    if(!images.length){
+
+        gallery.innerHTML = `
+
+            <div
+                class="gallery-item"
+                style="grid-column:1/-1;"
+            >
+
+                <div class="gallery-placeholder">
+
+                    <div class="gallery-placeholder-icon">
+                        ◈
+                    </div>
+
+                    <strong>
+                        ${
+                            type === "before"
+                            ? "ภาพ Before"
+                            : type === "during"
+                                ? "ภาพ During"
+                                : "ภาพ After"
+                        }
+                    </strong>
+
+                    <span>
+                        ยังไม่มีภาพโครงการจริง
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    gallery.innerHTML =
+        images
+            .map(function(image,index){
+
+                return `
+
+                    <div
+                        class="gallery-item"
+                        data-image="${escapeHTML(image)}"
+                    >
+
+                        <img
+                            src="${escapeHTML(image)}"
+                            alt="${escapeHTML(type)} ${index + 1}"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                `;
+
+            })
+            .join("");
+
+
+    gallery
+        .querySelectorAll(".gallery-item[data-image]")
+        .forEach(function(item){
+
+            item.addEventListener(
+                "click",
+                function(){
+
+                    openLightbox(
+                        item.dataset.image
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   GALLERY TABS
+========================================================= */
+
+document
+    .querySelectorAll("[data-gallery]")
+    .forEach(function(button){
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                document
+                    .querySelectorAll("[data-gallery]")
+                    .forEach(function(item){
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                button.classList.add("active");
+
+
+                renderGallery(
+                    button.dataset.gallery
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   RELATED PROJECTS
+========================================================= */
+
+function renderRelatedProjects(){
+
+    const relatedGrid =
+        document.getElementById(
+            "relatedGrid"
+        );
+
+
+    const related =
+        PROJECTS
+            .filter(function(item){
+
+                return (
+                    item.id !== project.id
+                    &&
+                    item.jobType === project.jobType
+                );
+
+            })
+            .slice(0,3);
+
+
+    if(!related.length){
+
+        relatedGrid.innerHTML = `
+
+            <div
+                class="related-card"
+                style="grid-column:1/-1;"
+            >
+
+                <div class="related-number">
+                    RELATED PROJECT
+                </div>
+
+                <h3>
+                    ยังไม่มีผลงานที่เกี่ยวข้อง
+                </h3>
+
+                <p>
+                    เมื่อมีการเพิ่ม Case Study จริง
+                    ระบบจะแสดงผลงานที่อยู่ในหมวดเดียวกัน
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    relatedGrid.innerHTML =
+        related
+            .map(function(item,index){
+
+                return `
+
+                    <a
+                        href="project-detail.html?id=${encodeURIComponent(item.id)}"
+                        class="related-card reveal"
+                    >
+
+                        <div class="related-number">
+                            RELATED 0${index + 1}
+                        </div>
+
+                        <h3>
+                            ${escapeHTML(item.title)}
+                        </h3>
+
+                        <p>
+                            ${escapeHTML(item.summary)}
+                        </p>
+
+                    </a>
+
+                `;
+
+            })
+            .join("");
+
+
+    activateReveal();
+
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+const lightbox =
+    document.getElementById(
+        "lightbox"
+    );
+
+const lightboxImage =
+    document.getElementById(
+        "lightboxImage"
+    );
+
+const lightboxClose =
+    document.getElementById(
+        "lightboxClose"
+    );
+
+
+function openLightbox(image){
+
+    lightboxImage.src = image;
+
+    lightbox.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+function closeLightbox(){
+
+    lightbox.classList.remove("open");
+
+    lightboxImage.src = "";
+
+    document.body.style.overflow = "";
+
+}
+
+
+lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+);
+
+
+lightbox.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === lightbox){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+    document.getElementById(
+        "menuBtn"
+    );
+
+const navMenu =
+    document.getElementById(
+        "navMenu"
+    );
+
+
+menuBtn.addEventListener(
+    "click",
+    function(){
+
+        navMenu.classList.toggle("open");
+
+        menuBtn.innerHTML =
+            navMenu.classList.contains("open")
+            ? "✕"
+            : "☰";
+
+    }
+);
+
+
+navMenu
+    .querySelectorAll("a")
+    .forEach(function(link){
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                navMenu.classList.remove(
+                    "open"
+                );
+
+                menuBtn.innerHTML = "☰";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+let revealObserver;
+
+
+function activateReveal(){
+
+    const items =
+        document.querySelectorAll(
+            ".reveal:not(.active)"
+        );
+
+
+    if(!revealObserver){
+
+        revealObserver =
+            new IntersectionObserver(
+                function(entries){
+
+                    entries.forEach(
+                        function(entry){
+
+                            if(
+                                entry.isIntersecting
+                            ){
+
+                                entry.target
+                                    .classList
+                                    .add("active");
+
+                                revealObserver
+                                    .unobserve(
+                                        entry.target
+                                    );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold:.08
+                }
+            );
+
+    }
+
+
+    items.forEach(function(item){
+
+        revealObserver.observe(item);
+
+    });
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+displayProject();
+
+activateReveal();
+
+</script>
+
+</body>
+</html>
