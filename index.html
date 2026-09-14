@@ -1043,169 +1043,278 @@ body::before{
 
 
 /* =========================================================
-   CUSTOMER MASTER FOOTER
-   Footer แบบเดียวกันทุกหน้าฝั่งลูกค้า
+   APPROVED CUSTOMER FOOTER — PREMIUM GOLD MASTER
 ========================================================= */
 .footer{
-    border-top:1px solid rgba(201,164,92,.16);
-    background:
-        radial-gradient(circle at 18% 10%, rgba(201,164,92,.055), transparent 34%),
-        #050505;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(201,164,92,.055), transparent 30%),
+    radial-gradient(circle at 88% 88%, rgba(201,164,92,.035), transparent 34%),
+    #050505;
+  border-top:1px solid rgba(201,164,92,.30);
 }
 
 .footer-main{
-    padding:72px 0 58px;
-    display:grid;
-    grid-template-columns:minmax(0, 1fr) 280px;
-    gap:90px;
-    align-items:start;
+  padding:70px 0 62px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:80px;
+  align-items:start;
 }
 
-.footer-brand .footer-logo{
-    display:inline-flex;
-    align-items:center;
-    gap:18px;
-    text-decoration:none;
+.footer-brand{
+  min-width:0;
 }
 
-.footer-brand .footer-logo img{
-    width:62px;
-    height:62px;
-    object-fit:contain;
-    display:block;
-    filter:drop-shadow(0 0 12px rgba(201,164,92,.18));
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  text-decoration:none;
+  width:max-content;
 }
 
-.footer-brand .footer-logo-text strong{
-    display:block;
-    color:#fff;
-    font-family:'Kanit',sans-serif;
-    font-size:22px;
-    line-height:1.15;
-    letter-spacing:1.5px;
-    font-weight:600;
+.footer-logo img{
+  width:76px;
+  height:76px;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 0 14px rgba(201,164,92,.18));
 }
 
-.footer-brand .footer-logo-text small{
-    display:block;
-    margin-top:5px;
-    color:var(--gold);
-    font-size:10px;
-    letter-spacing:2px;
-    line-height:1.2;
+.footer-logo-text strong{
+  display:block;
+  color:#fff;
+  font-family:'Kanit',sans-serif;
+  font-size:27px;
+  line-height:1.1;
+  letter-spacing:1.3px;
+  font-weight:600;
 }
 
-.footer-brand p{
-    color:#777;
-    font-size:13px;
-    line-height:2;
-    max-width:590px;
-    margin:22px 0 0;
+.footer-logo-text small{
+  display:block;
+  margin-top:7px;
+  color:#d8b86b;
+  font-size:11px;
+  letter-spacing:2.2px;
+  line-height:1.2;
+}
+
+.footer-brand .footer-description{
+  margin:30px 0 0;
+  color:#858585;
+  font-size:15px;
+  line-height:1.9;
+  max-width:700px;
 }
 
 .footer-brand .footer-tagline{
-    color:#a7a7a7;
-    margin-top:12px;
+  margin:25px 0 0;
+  color:#8f8f8f;
+  font-size:15px;
+  line-height:2;
 }
 
-.footer-title{
-    color:var(--gold2);
-    font-size:13px;
-    letter-spacing:2px;
-    margin:0 0 20px;
-    font-weight:600;
+.footer-menu-title{
+  color:#e4c978;
+  font-size:15px;
+  letter-spacing:2px;
+  font-weight:500;
+  margin:2px 0 22px;
+  position:relative;
+  padding-bottom:13px;
+}
+
+.footer-menu-title:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:42px;
+  height:2px;
+  background:#d8b86b;
 }
 
 .footer-links{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+  display:flex;
+  flex-direction:column;
+  gap:13px;
 }
 
 .footer-links a{
-    color:#777;
-    font-size:13px;
-    line-height:1.5;
-    text-decoration:none;
-    transition:.25s ease;
+  color:#777;
+  text-decoration:none;
+  font-size:14px;
+  line-height:1.5;
+  transition:.25s ease;
 }
 
 .footer-links a:hover{
-    color:var(--gold2);
-    transform:translateX(4px);
+  color:#e4c978;
+  transform:translateX(4px);
 }
 
 .footer-bottom{
-    padding:20px 0;
-    border-top:1px solid rgba(255,255,255,.06);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    color:#555;
-    font-size:10px;
-    line-height:1.7;
+  min-height:88px;
+  padding:18px 0;
+  border-top:1px solid rgba(201,164,92,.28);
+  display:grid;
+  grid-template-columns:auto 1fr auto auto;
+  gap:28px;
+  align-items:center;
 }
 
-.footer-bottom span:last-child{
-    text-align:right;
+.footer-copy{
+  color:#777;
+  font-size:12px;
+  white-space:nowrap;
 }
 
-/* =========================================================
-   FOOTER RESPONSIVE
-========================================================= */
-@media(max-width:900px){
-    .footer-main{
-        grid-template-columns:1fr 220px;
-        gap:45px;
-        padding:55px 0 45px;
-    }
+.footer-copy strong{
+  color:#ddd;
+  font-weight:500;
 }
 
-@media(max-width:680px){
-    .footer-main{
-        grid-template-columns:1fr;
-        gap:38px;
-        padding:48px 0 38px;
-    }
-
-    .footer-brand .footer-logo img{
-        width:56px;
-        height:56px;
-    }
-
-    .footer-brand .footer-logo-text strong{
-        font-size:19px;
-    }
-
-    .footer-brand p{
-        font-size:12px;
-        line-height:1.9;
-    }
-
-    .footer-title{
-        margin-bottom:15px;
-    }
-
-    .footer-links{
-        gap:10px;
-    }
-
-    .footer-links a{
-        font-size:12px;
-    }
-
-    .footer-bottom{
-        flex-direction:column;
-        align-items:flex-start;
-        font-size:9px;
-        gap:7px;
-    }
-
-    .footer-bottom span:last-child{
-        text-align:left;
-    }
+.footer-address{
+  color:#777;
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
 }
+
+.footer-address .footer-pin{
+  color:#e4c978;
+  font-size:20px;
+  flex:0 0 auto;
+}
+
+.footer-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-left:24px;
+  border-left:1px solid rgba(201,164,92,.28);
+}
+
+.footer-action{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:46px;
+  padding:0 17px;
+  border:1px solid rgba(201,164,92,.30);
+  border-radius:11px;
+  color:#e4c978;
+  text-decoration:none;
+  font-size:13px;
+  white-space:nowrap;
+  transition:.25s ease;
+}
+
+.footer-action:hover{
+  border-color:#d8b86b;
+  background:rgba(201,164,92,.06);
+  transform:translateY(-2px);
+}
+
+.footer-social{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding-left:24px;
+  border-left:1px solid rgba(201,164,92,.28);
+}
+
+.footer-social a{
+  width:48px;
+  height:48px;
+  border:1px solid rgba(201,164,92,.42);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#e4c978;
+  text-decoration:none;
+  font-size:18px;
+  transition:.25s ease;
+}
+
+.footer-social a:hover{
+  background:rgba(201,164,92,.08);
+  border-color:#e4c978;
+  transform:translateY(-2px);
+}
+
+@media(max-width:1200px){
+  .footer-bottom{
+    grid-template-columns:1fr 1fr;
+  }
+  .footer-actions{
+    border-left:0;
+    padding-left:0;
+  }
+  .footer-social{
+    border-left:0;
+    padding-left:0;
+    justify-content:flex-end;
+  }
+}
+
+@media(max-width:760px){
+  .footer-main{
+    grid-template-columns:1fr;
+    gap:42px;
+    padding:52px 0 45px;
+  }
+
+  .footer-logo img{
+    width:64px;
+    height:64px;
+  }
+
+  .footer-logo-text strong{
+    font-size:21px;
+  }
+
+  .footer-logo-text small{
+    font-size:9px;
+  }
+
+  .footer-brand .footer-description,
+  .footer-brand .footer-tagline{
+    font-size:13px;
+  }
+
+  .footer-bottom{
+    grid-template-columns:1fr;
+    gap:18px;
+    padding:25px 0 30px;
+  }
+
+  .footer-copy{
+    white-space:normal;
+  }
+
+  .footer-actions,
+  .footer-social{
+    padding-left:0;
+    border-left:0;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+  }
+
+  .footer-action{
+    min-height:43px;
+  }
+
+  .footer-social a{
+    width:44px;
+    height:44px;
+  }
+}
+
 
 /* =========================================================
    FLOATING CONTACT
@@ -2267,69 +2376,69 @@ LET'S WORK TOGETHER
 ======================================================= -->
 
 <footer class="footer">
+  <div class="container">
 
-    <div class="container">
+    <div class="footer-main">
 
-        <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/logo.png" alt="CHATPHETCH GROUP">
+          <div class="footer-logo-text">
+            <strong>CHATPHETCH GROUP</strong>
+            <small>FLOORING &amp; CONSTRUCTION</small>
+          </div>
+        </a>
 
-            <div class="footer-brand">
+        <p class="footer-description">
+          🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
+        </p>
 
-                <a href="index.html" class="footer-logo">
+        <p class="footer-tagline">
+          ♠️ สร้างสรรค์ผลงาน &nbsp; ♠️ มาตรฐานเข้าถึง &nbsp; ♠️ ยืน 1 คุณภาพ
+          <br>
+          บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+        </p>
+      </div>
 
-                    <img src="assets/logo.png" alt="CHATPHETCH GROUP">
-
-                    <div class="footer-logo-text">
-                        <strong>CHATPHETCH GROUP</strong>
-                        <small>FLOORING &amp; CONSTRUCTION</small>
-                    </div>
-
-                </a>
-
-                <p>
-                    🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
-                </p>
-
-                <p class="footer-tagline">
-                    ♠️ สร้างสรรค์ผลงาน ♠️ มาตรฐานเข้าถึง ♠️ ยืน 1 คุณภาพ
-                    <br>
-                    บริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
-                </p>
-
-            </div>
-
-            <div>
-
-                <div class="footer-title">MENU</div>
-
-                <div class="footer-links">
-
-                    <a href="index.html">หน้าแรก</a>
-                    <a href="about.html">เกี่ยวกับเรา</a>
-                    <a href="products.html">สินค้า</a>
-                    <a href="services.html">บริการ</a>
-                    <a href="projects.html">ผลงาน</a>
-                    <a href="contact.html">ติดต่อเรา</a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 CHATPHETCH GROUP CO., LTD.
-            </span>
-
-            <span>
-                10/1 ม.9 ต.นาหม่อม อ.นาหม่อม จ.สงขลา 90310
-            </span>
-
-        </div>
+      <div class="footer-menu">
+        <div class="footer-menu-title">MENU</div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="index.html">หน้าแรก</a>
+          <a href="about.html">เกี่ยวกับเรา</a>
+          <a href="products.html">สินค้า</a>
+          <a href="services.html">บริการ</a>
+          <a href="projects.html">ผลงาน</a>
+          <a href="contact.html">ติดต่อเรา</a>
+        </nav>
+      </div>
 
     </div>
 
+    <div class="footer-bottom">
+
+      <div class="footer-copy">
+        © 2026 <strong>CHATPHETCH GROUP</strong> &nbsp; All rights reserved.
+      </div>
+
+      <div class="footer-address">
+        <span class="footer-pin">📍</span>
+        <span>10/1 ม.9 ต.นาหม่อม อ.นาหม่อม จ.สงขลา 90310</span>
+      </div>
+
+      <div class="footer-actions">
+        <a class="footer-action" href="contact.html">☎ ติดต่อเรา</a>
+        <a class="footer-action" href="order-status.html">🔎 ติดตามคำสั่งซื้อ</a>
+      </div>
+
+      <div class="footer-social" aria-label="Social media">
+        <a href="https://www.facebook.com/ChatphetchGroup" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="#" aria-label="YouTube">▶</a>
+        <a href="#" aria-label="LINE">LINE</a>
+      </div>
+
+    </div>
+
+  </div>
 </footer>
 
 
