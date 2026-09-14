@@ -4,32 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CHATPHETCH GROUP | Flooring & Construction</title>
+<title>Chatpetch Group | บริษัท ฉัตรเพชร กรุ๊ป จำกัด</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description"
+content="บริษัท ฉัตรเพชร กรุ๊ป จำกัด โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร">
 
 <style>
+
+/* =========================================================
+   CHATPETCH GROUP
+   PREMIUM CORPORATE HOMEPAGE
+   SINGLE FILE VERSION
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
+
 :root{
-    --black:#050505;
-    --black2:#090909;
-    --dark:#111;
-    --dark2:#171717;
-    --gold:#c8a45b;
-    --gold2:#f0d991;
-    --gold3:#806127;
-    --white:#fff;
-    --gray:#a6a6a6;
-    --line:rgba(255,255,255,.09);
-    --gold-line:rgba(200,164,91,.35);
-    --container:1280px;
+    --black:#030303;
+    --black2:#080808;
+    --dark:#101010;
+
+    --gold:#c9a45c;
+    --gold2:#e9cf8b;
+    --gold3:#8d6b2f;
+
+    --white:#ffffff;
+    --muted:#a6a6a6;
+
+    --line:rgba(255,255,255,.10);
+    --gold-line:rgba(201,164,92,.35);
+
+    --max:1280px;
 }
 
+/* RESET */
+
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -37,90 +50,235 @@ html{
 }
 
 body{
-    font-family:"Kanit","Prompt",sans-serif;
-    background:
-        radial-gradient(circle at 80% 15%,rgba(200,164,91,.12),transparent 28%),
-        radial-gradient(circle at 10% 70%,rgba(200,164,91,.06),transparent 25%),
-        #050505;
-    color:var(--white);
-    min-height:100vh;
+    background:#030303 !important;
+    color:#fff !important;
+    font-family:'Prompt','Kanit',sans-serif;
+    overflow-x:hidden;
 }
 
-/* GRID */
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
 body::before{
     content:"";
     position:fixed;
     inset:0;
     pointer-events:none;
-    opacity:.35;
+    z-index:-10;
+
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-    background-size:55px 55px;
-    z-index:-1;
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
+    background-size:60px 60px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        rgba(0,0,0,.5),
+        transparent
+    );
 }
 
-/* HEADER */
-.header{
-    position:sticky;
+.bg-glow{
+    position:fixed;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201,164,92,.18) 0%,
+            rgba(201,164,92,.07) 30%,
+            transparent 70%
+        );
+
+    filter:blur(30px);
+    pointer-events:none;
+    z-index:-5;
+}
+
+.glow-one{
+    top:-250px;
+    right:-150px;
+}
+
+.glow-two{
+    top:600px;
+    left:-350px;
+}
+
+/* =========================================================
+   DECORATIVE LINES
+========================================================= */
+
+.top-line{
+    position:fixed;
     top:0;
-    z-index:1000;
-    background:rgba(5,5,5,.92);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid var(--line);
+    left:0;
+    width:100%;
+    height:3px;
+    z-index:9999;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            var(--gold2),
+            var(--gold),
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px rgba(201,164,92,.8);
 }
 
-.nav{
-    width:min(var(--container),calc(100% - 40px));
-    min-height:92px;
+.side-line{
+    position:fixed;
+    top:15%;
+    bottom:15%;
+    left:18px;
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(201,164,92,.6),
+            transparent
+        );
+
+    opacity:.7;
+    z-index:20;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+    width:min(var(--max), calc(100% - 80px));
     margin:auto;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
+    top:3px;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(3,3,3,.78);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(201,164,92,.16);
+}
+
+.navbar{
+    height:86px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:25px;
 }
 
 /* LOGO */
+
 .logo{
     display:flex;
     align-items:center;
     gap:14px;
-    text-decoration:none;
-    color:white;
-    min-width:250px;
 }
 
-.logo img{
-    width:72px;
-    height:72px;
-    object-fit:contain;
-    display:block;
-    filter:drop-shadow(0 0 10px rgba(200,164,91,.25));
+.logo-mark{
+    width:50px;
+    height:50px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid var(--gold);
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(201,164,92,.18),
+            rgba(255,255,255,.02)
+        );
+
+    box-shadow:
+        inset 0 0 20px rgba(201,164,92,.08),
+        0 0 25px rgba(201,164,92,.08);
 }
 
-.logo-text{
-    display:flex;
-    flex-direction:column;
-    line-height:1;
+.logo-mark::before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-top:1px solid var(--gold2);
+    border-left:1px solid var(--gold2);
+    top:-1px;
+    left:-1px;
 }
 
-.logo-title{
-    font-family:"Prompt",sans-serif;
+.logo-mark::after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-right:1px solid var(--gold2);
+    border-bottom:1px solid var(--gold2);
+    bottom:-1px;
+    right:-1px;
+}
+
+.logo-mark span{
+    font-family:Arial,sans-serif;
     font-size:20px;
-    font-weight:700;
-    letter-spacing:1.2px;
-    color:#fff;
+    font-weight:800;
+    letter-spacing:-2px;
+    color:var(--gold2);
 }
 
-.logo-sub{
-    margin-top:8px;
-    color:var(--gold);
-    font-size:11px;
+.logo-text strong{
+    display:block;
+
+    font-size:18px;
     letter-spacing:2px;
-    font-weight:500;
+    font-weight:600;
+}
+
+.logo-text small{
+    display:block;
+
+    color:var(--gold);
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:2px;
 }
 
 /* NAV */
+
 .nav-menu{
     display:flex;
     align-items:center;
@@ -128,538 +286,947 @@ body::before{
 }
 
 .nav-menu a{
-    color:#aaa;
-    text-decoration:none;
-    padding:12px 14px;
-    border-radius:10px;
-    font-size:15px;
-    transition:.25s ease;
-    white-space:nowrap;
+    position:relative;
+
+    padding:11px 15px;
+
+    font-size:13px;
+    color:#cfcfcf;
+
+    transition:.3s;
 }
 
-.nav-menu a:hover,
-.nav-menu a.active{
-    color:white;
-    background:rgba(200,164,91,.08);
+.nav-menu a::after{
+    content:"";
+
+    position:absolute;
+    bottom:4px;
+    left:15px;
+    right:15px;
+
+    height:1px;
+
+    transform:scaleX(0);
+    transform-origin:center;
+
+    background:var(--gold);
+
+    transition:.3s;
+}
+
+.nav-menu a:hover{
+    color:#fff;
+}
+
+.nav-menu a:hover::after{
+    transform:scaleX(1);
 }
 
 .nav-shop{
-    border:1px solid var(--gold-line);
-    color:#fff!important;
+    border:1px solid rgba(201,164,92,.4);
+    color:var(--gold2) !important;
     margin-left:8px;
 }
 
 .cart-count{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:23px;
-    height:23px;
-    margin-left:6px;
+    display:inline-grid;
+    place-items:center;
+
+    min-width:18px;
+    height:18px;
+
+    margin-left:5px;
+
     border-radius:50%;
+
     background:var(--gold);
-    color:#111;
-    font-size:12px;
+    color:#000;
+
+    font-size:10px;
     font-weight:700;
 }
 
-/* MOBILE */
-.menu-btn{
+/* MOBILE BUTTON */
+
+.menu-toggle{
     display:none;
-    width:45px;
-    height:45px;
+
+    width:44px;
+    height:44px;
+
     border:1px solid var(--gold-line);
-    background:#111;
-    color:white;
-    border-radius:10px;
-    font-size:22px;
+    background:rgba(255,255,255,.03);
+    color:#fff;
+
     cursor:pointer;
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero{
-    position:relative;
-    min-height:calc(100vh - 92px);
+    min-height:100vh;
+
+    padding-top:89px;
+
     display:flex;
     align-items:center;
+
+    position:relative;
     overflow:hidden;
 }
 
-.hero-inner{
-    width:min(var(--container),calc(100% - 40px));
-    margin:auto;
-    padding:100px 0;
-    display:grid;
-    grid-template-columns:1.15fr .85fr;
-    align-items:center;
-    gap:70px;
+.hero::before{
+    content:"01";
+
+    position:absolute;
+
+    left:4%;
+    bottom:5%;
+
+    font-family:Arial,sans-serif;
+    font-size:160px;
+    font-weight:900;
+
+    color:rgba(255,255,255,.018);
+
+    pointer-events:none;
 }
 
-.eyebrow{
-    color:var(--gold);
-    letter-spacing:4px;
-    font-size:14px;
-    margin-bottom:20px;
-    text-transform:uppercase;
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:70px;
+    align-items:center;
+}
+
+/* HERO LEFT */
+
+.hero-label{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:var(--gold2);
+
+    font-size:12px;
+    letter-spacing:3px;
+
+    margin-bottom:25px;
+}
+
+.hero-label::before{
+    content:"";
+    width:42px;
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold)
+    );
 }
 
 .hero h1{
-    font-family:"Prompt",sans-serif;
-    font-size:clamp(48px,7vw,100px);
-    line-height:.95;
-    font-weight:700;
-    letter-spacing:-3px;
+    font-family:'Kanit',sans-serif;
+
+    font-size:clamp(48px,6vw,88px);
+
+    line-height:1.02;
+
+    font-weight:600;
+
+    letter-spacing:-2px;
+
+    margin-bottom:25px;
 }
 
 .hero h1 span{
-    color:var(--gold2);
+    display:block;
+
+    background:
+        linear-gradient(
+            100deg,
+            #fff,
+            var(--gold2),
+            var(--gold)
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
 }
 
-.hero-desc{
-    max-width:720px;
-    margin-top:30px;
-    color:#bdbdbd;
-    font-size:19px;
-    line-height:1.9;
+.hero-description{
+    max-width:650px;
+
+    color:#aaa;
+
+    font-size:16px;
+    line-height:2;
+
+    margin-bottom:35px;
 }
 
-.hero-actions{
+.hero-buttons{
     display:flex;
-    flex-wrap:wrap;
     gap:14px;
-    margin-top:38px;
+    flex-wrap:wrap;
 }
+
+/* BUTTON */
 
 .btn{
+    min-height:50px;
+
+    padding:0 25px;
+
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    min-height:54px;
-    padding:0 28px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:500;
-    transition:.25s;
+
+    font-size:13px;
+
+    transition:.35s;
+
+    position:relative;
+    overflow:hidden;
 }
 
 .btn-gold{
-    color:#111;
-    background:linear-gradient(135deg,#f0d991,#b68d3e);
-    box-shadow:0 12px 40px rgba(200,164,91,.15);
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold2),
+            var(--gold),
+            var(--gold3)
+        );
+
+    color:#050505;
+
+    font-weight:600;
+
+    box-shadow:
+        0 10px 35px rgba(201,164,92,.18);
 }
 
 .btn-gold:hover{
     transform:translateY(-3px);
-    box-shadow:0 18px 45px rgba(200,164,91,.25);
+
+    box-shadow:
+        0 15px 45px rgba(201,164,92,.35);
 }
 
 .btn-line{
+    border:1px solid rgba(255,255,255,.22);
     color:#fff;
-    border:1px solid var(--gold-line);
-    background:rgba(255,255,255,.02);
+
+    background:rgba(255,255,255,.025);
 }
 
 .btn-line:hover{
     border-color:var(--gold);
-    background:rgba(200,164,91,.08);
+    color:var(--gold2);
+    transform:translateY(-3px);
 }
 
-/* HERO VISUAL */
+/* HERO RIGHT */
+
 .hero-visual{
     position:relative;
-    min-height:500px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    height:570px;
 }
 
-.hero-ring{
+.hero-image{
     position:absolute;
-    width:480px;
-    height:480px;
-    border:1px solid rgba(200,164,91,.25);
-    border-radius:50%;
+    inset:20px 20px 20px 60px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(201,164,92,.18),
+            rgba(0,0,0,.2)
+        ),
+        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+
+    border:1px solid rgba(201,164,92,.32);
+
+    box-shadow:
+        -30px 30px 80px rgba(0,0,0,.7),
+        0 0 60px rgba(201,164,92,.08);
+
+    overflow:hidden;
 }
 
-.hero-ring::before{
+.hero-image::before{
     content:"";
+
     position:absolute;
-    inset:35px;
-    border:1px solid rgba(200,164,91,.18);
-    border-radius:50%;
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(201,164,92,.22),
+            transparent 30%,
+            transparent 65%,
+            rgba(0,0,0,.65)
+        );
 }
 
-.hero-logo{
-    position:relative;
-    z-index:2;
-    width:min(480px,90%);
-    filter:drop-shadow(0 20px 60px rgba(200,164,91,.22));
+.hero-image::after{
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    right:-60px;
+    top:-60px;
+
+    border:1px solid rgba(201,164,92,.7);
+
+    transform:rotate(45deg);
 }
 
-/* SECTION */
-.section{
-    padding:110px 0;
+/* FLOATING CARD */
+
+.hero-card{
+    position:absolute;
+
+    left:0;
+    bottom:55px;
+
+    width:260px;
+
+    padding:24px;
+
+    background:
+        rgba(12,12,12,.84);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(201,164,92,.35);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.65);
 }
 
-.container{
-    width:min(var(--container),calc(100% - 40px));
-    margin:auto;
+.hero-card small{
+    color:var(--gold);
+
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.hero-card strong{
+    display:block;
+
+    font-size:24px;
+
+    margin:7px 0;
+}
+
+.hero-card p{
+    color:#888;
+
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* CORNERS */
+
+.corner{
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    border-color:var(--gold);
+    border-style:solid;
+}
+
+.corner.tl{
+    top:0;
+    left:0;
+    border-width:1px 0 0 1px;
+}
+
+.corner.br{
+    right:0;
+    bottom:0;
+    border-width:0 1px 1px 0;
+}
+
+/* =========================================================
+   INTRO STRIP
+========================================================= */
+
+.intro-strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(201,164,92,.08),
+            transparent,
+            rgba(201,164,92,.06)
+        );
+}
+
+.intro-inner{
+    min-height:115px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    align-items:center;
+}
+
+.intro-item{
+    padding:20px 30px;
+
+    border-right:1px solid var(--line);
+}
+
+.intro-item:last-child{
+    border-right:0;
+}
+
+.intro-item span{
+    display:block;
+
+    color:var(--gold);
+
+    font-size:10px;
+    letter-spacing:2px;
+
+    margin-bottom:7px;
+}
+
+.intro-item strong{
+    font-size:17px;
+    font-weight:500;
+}
+
+/* =========================================================
+   MENU SECTION
+========================================================= */
+
+.menu-section{
+    padding:130px 0;
 }
 
 .section-head{
     display:flex;
     align-items:end;
     justify-content:space-between;
-    gap:30px;
-    margin-bottom:45px;
+
+    margin-bottom:55px;
 }
 
-.section-eyebrow{
+.section-kicker{
     color:var(--gold);
-    font-size:13px;
+
+    font-size:11px;
     letter-spacing:3px;
+
     margin-bottom:10px;
 }
 
 .section-title{
-    font-family:"Prompt",sans-serif;
-    font-size:clamp(34px,5vw,62px);
-    line-height:1;
+    font-family:'Kanit',sans-serif;
+
+    font-size:45px;
+    font-weight:500;
+
+    line-height:1.15;
 }
 
-.section-title span{
-    color:var(--gold2);
+.section-description{
+    color:#888;
+    font-size:13px;
+    max-width:380px;
+    line-height:1.9;
 }
 
-.section-text{
-    max-width:600px;
-    color:#999;
-    line-height:1.8;
-}
+/* MENU GRID */
 
-/* CARDS */
-.cards{
+.menu-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
 }
 
-.card{
-    position:relative;
+.menu-card{
+    min-height:260px;
+
     padding:32px;
-    min-height:250px;
-    border:1px solid var(--line);
-    border-radius:18px;
-    background:
-        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+
+    position:relative;
     overflow:hidden;
-    transition:.3s;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+
+    border:1px solid rgba(255,255,255,.10);
+
+    transition:.4s;
 }
 
-.card::before{
+.menu-card::before{
     content:"";
+
     position:absolute;
-    width:150px;
-    height:150px;
+
+    width:160px;
+    height:160px;
+
     right:-70px;
-    top:-70px;
-    background:radial-gradient(circle,rgba(200,164,91,.22),transparent 70%);
+    bottom:-70px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201,164,92,.16),
+            transparent 65%
+        );
+
+    transition:.4s;
 }
 
-.card:hover{
-    transform:translateY(-7px);
-    border-color:var(--gold-line);
+.menu-card::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:3px;
+    height:0;
+
+    background:
+        linear-gradient(
+            var(--gold2),
+            var(--gold3)
+        );
+
+    transition:.4s;
+}
+
+.menu-card:hover{
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(201,164,92,.45);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.5);
+}
+
+.menu-card:hover::after{
+    height:100%;
+}
+
+.menu-card:hover::before{
+    transform:scale(1.4);
 }
 
 .card-number{
-    color:var(--gold);
-    font-size:13px;
+    color:rgba(201,164,92,.45);
+
+    font-family:Arial,sans-serif;
+    font-size:12px;
     letter-spacing:2px;
 }
 
-.card h3{
-    margin-top:25px;
-    font-size:25px;
+.card-icon{
+    width:58px;
+    height:58px;
+
+    display:grid;
+    place-items:center;
+
+    margin:35px 0 22px;
+
+    border:1px solid rgba(201,164,92,.35);
+
+    color:var(--gold2);
+
+    font-size:22px;
+
+    background:
+        rgba(201,164,92,.045);
 }
 
-.card p{
-    margin-top:14px;
-    color:#999;
+.menu-card h3{
+    font-size:22px;
+    font-weight:500;
+
+    margin-bottom:10px;
+}
+
+.menu-card p{
+    color:#858585;
+
+    font-size:12px;
     line-height:1.8;
 }
 
-/* SERVICE */
-.service-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-}
+.card-arrow{
+    position:absolute;
 
-.service-card{
-    padding:32px;
-    border:1px solid var(--line);
-    background:#0c0c0c;
-    border-radius:18px;
+    right:25px;
+    top:28px;
+
+    color:var(--gold);
+
+    font-size:22px;
+
     transition:.3s;
 }
 
-.service-card:hover{
-    border-color:var(--gold-line);
-    transform:translateY(-5px);
+.menu-card:hover .card-arrow{
+    transform:translate(5px,-5px);
 }
 
-.service-icon{
-    font-size:34px;
-}
+/* =========================================================
+   COMPANY STATEMENT
+========================================================= */
 
-.service-card h3{
-    margin-top:18px;
-    font-size:23px;
-}
+.statement{
+    padding:120px 0;
 
-.service-card p{
-    color:#999;
-    line-height:1.8;
-    margin-top:10px;
-}
+    position:relative;
 
-/* PROCESS */
-.process{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:0;
-    border:1px solid var(--line);
-    border-radius:18px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+
     overflow:hidden;
 }
 
-.process-item{
-    padding:35px 25px;
-    border-right:1px solid var(--line);
-    background:#0b0b0b;
+.statement::before{
+    content:"CG";
+
+    position:absolute;
+
+    right:-20px;
+    top:30px;
+
+    font-family:Arial,sans-serif;
+    font-size:260px;
+    font-weight:900;
+
+    color:rgba(255,255,255,.018);
 }
 
-.process-item:last-child{
-    border-right:0;
-}
-
-.process-no{
-    color:var(--gold);
-    font-size:13px;
-    letter-spacing:2px;
-}
-
-.process-item h3{
-    margin-top:15px;
-    font-size:21px;
-}
-
-.process-item p{
-    color:#888;
-    line-height:1.7;
-    margin-top:10px;
-}
-
-/* COMPANY */
-.company-box{
+.statement-inner{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-    padding:50px;
-    border:1px solid var(--gold-line);
-    border-radius:24px;
-    background:
-        radial-gradient(circle at 80% 20%,rgba(200,164,91,.1),transparent 30%),
-        #0c0c0c;
+    grid-template-columns:.7fr 1.3fr;
+    gap:80px;
+    align-items:center;
 }
 
-.company-box p{
-    color:#aaa;
-    line-height:1.9;
-    font-size:17px;
+.statement-mark{
+    font-size:120px;
+
+    font-family:Arial,sans-serif;
+    font-weight:900;
+
+    color:transparent;
+
+    -webkit-text-stroke:
+        1px rgba(201,164,92,.45);
 }
 
-.company-list{
-    display:grid;
-    gap:14px;
+.statement-content h2{
+    font-family:'Kanit',sans-serif;
+
+    font-size:44px;
+    line-height:1.3;
+
+    font-weight:500;
+
+    margin-bottom:25px;
 }
 
-.company-list div{
-    padding:18px;
-    border-bottom:1px solid var(--line);
-}
-
-.company-list strong{
+.statement-content h2 span{
     color:var(--gold2);
 }
 
-/* CTA */
-.cta{
-    padding:70px 50px;
-    border:1px solid var(--gold-line);
-    border-radius:24px;
-    background:
-        radial-gradient(circle at 85% 50%,rgba(200,164,91,.16),transparent 35%),
-        #0b0b0b;
-    text-align:center;
-}
-
-.cta h2{
-    font-family:"Prompt",sans-serif;
-    font-size:clamp(32px,5vw,55px);
-}
-
-.cta p{
+.statement-content p{
     color:#999;
-    margin:18px auto 30px;
-    max-width:700px;
-    line-height:1.8;
+
+    max-width:720px;
+
+    line-height:2;
+
+    font-size:14px;
 }
 
-/* FOOTER */
+/* =========================================================
+   CONTACT CTA
+========================================================= */
+
+.contact-cta{
+    padding:110px 0;
+}
+
+.cta-box{
+    position:relative;
+
+    padding:65px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(201,164,92,.3);
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(201,164,92,.11),
+            rgba(255,255,255,.025),
+            rgba(201,164,92,.04)
+        );
+
+    box-shadow:
+        inset 0 0 80px rgba(201,164,92,.025);
+}
+
+.cta-box::before{
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border:1px solid rgba(201,164,92,.15);
+
+    border-radius:50%;
+
+    right:-150px;
+    top:-180px;
+}
+
+.cta-box h2{
+    font-family:'Kanit',sans-serif;
+
+    font-size:42px;
+    font-weight:500;
+
+    margin-bottom:12px;
+}
+
+.cta-box p{
+    color:#999;
+    margin-bottom:30px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .footer{
-    margin-top:60px;
-    padding:60px 0 30px;
-    border-top:1px solid var(--line);
-    background:#070707;
+    border-top:1px solid rgba(255,255,255,.08);
+
+    background:#050505;
 }
 
-.footer-grid{
+.footer-main{
+    padding:65px 0;
+
     display:grid;
-    grid-template-columns:1.3fr 1fr 1fr;
-    gap:50px;
+    grid-template-columns:1.4fr .8fr .8fr;
+    gap:60px;
 }
 
-.footer h3{
+.footer-brand p{
+    color:#777;
+
+    font-size:12px;
+    line-height:1.9;
+
+    max-width:430px;
+
+    margin-top:18px;
+}
+
+.footer-title{
+    color:var(--gold2);
+
+    font-size:12px;
+    letter-spacing:2px;
+
     margin-bottom:18px;
 }
 
-.footer p,
-.footer a{
-    color:#888;
-    text-decoration:none;
-    line-height:2;
-}
-
-.footer a:hover{
-    color:var(--gold2);
-}
-
-.footer-bottom{
-    margin-top:50px;
-    padding-top:20px;
-    border-top:1px solid var(--line);
-    color:#666;
-    font-size:13px;
-}
-
-/* FLOAT */
-.float-contact{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    z-index:900;
+.footer-links{
     display:flex;
     flex-direction:column;
     gap:10px;
 }
 
-.float-contact a{
-    width:50px;
-    height:50px;
+.footer-links a{
+    color:#888;
+
+    font-size:12px;
+
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:var(--gold2);
+    padding-left:5px;
+}
+
+.footer-bottom{
+    padding:20px 0;
+
+    border-top:1px solid rgba(255,255,255,.06);
+
     display:flex;
-    align-items:center;
-    justify-content:center;
+    justify-content:space-between;
+    gap:20px;
+
+    color:#555;
+
+    font-size:10px;
+}
+
+/* =========================================================
+   FLOATING CONTACT
+========================================================= */
+
+.floating-contact{
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    z-index:900;
+
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.float-btn{
+    width:46px;
+    height:46px;
+
+    display:grid;
+    place-items:center;
+
     border-radius:50%;
-    background:#111;
-    border:1px solid var(--gold-line);
-    color:white;
-    text-decoration:none;
-    font-size:20px;
+
+    background:#0d0d0d;
+
+    border:1px solid rgba(201,164,92,.4);
+
+    color:var(--gold2);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.45);
+
+    transition:.3s;
 }
 
-/* RESPONSIVE */
+.float-btn:hover{
+    transform:translateY(-4px);
+    background:var(--gold);
+    color:#000;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:none;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#030303;
+}
+
+::-webkit-scrollbar-thumb{
+    background:
+        linear-gradient(
+            var(--gold3),
+            var(--gold)
+        );
+}
+
+\n/* =========================================================\n   CUSTOMER MASTER HEADER\n   ใช้ชุดเดียวกับทุกหน้าฝั่งลูกค้า\n========================================================= */\n.customer-brand{\n    display:flex;\n    align-items:center;\n    gap:14px;\n    flex:0 0 auto;\n    text-decoration:none;\n}\n.customer-brand img{\n    width:72px;\n    height:72px;\n    object-fit:contain;\n    display:block;\n    filter:drop-shadow(0 0 12px rgba(201,164,92,.18));\n}\n.customer-brand-text strong{\n    display:block;\n    font-family:'Kanit',sans-serif;\n    font-size:18px;\n    line-height:1.1;\n    letter-spacing:1.8px;\n    font-weight:600;\n    color:#fff;\n    white-space:nowrap;\n}\n.customer-brand-text small{\n    display:block;\n    margin-top:5px;\n    color:var(--gold);\n    font-size:9px;\n    letter-spacing:2px;\n    white-space:nowrap;\n}\n.customer-nav{\n    display:flex;\n    align-items:center;\n    justify-content:flex-end;\n    gap:2px;\n    min-width:0;\n}\n.customer-nav > a,\n.customer-nav > .nav-dropdown > .nav-drop-trigger{\n    position:relative;\n    display:inline-flex;\n    align-items:center;\n    justify-content:center;\n    min-height:46px;\n    padding:11px 10px;\n    border:0;\n    background:transparent;\n    color:#cfcfcf;\n    font-family:'Prompt','Kanit',sans-serif;\n    font-size:12px;\n    font-weight:400;\n    white-space:nowrap;\n    cursor:pointer;\n    text-decoration:none;\n    transition:.3s;\n}\n.customer-nav > a::after,\n.customer-nav > .nav-dropdown > .nav-drop-trigger::after{\n    content:"";\n    position:absolute;\n    left:10px;\n    right:10px;\n    bottom:5px;\n    height:1px;\n    transform:scaleX(0);\n    background:var(--gold);\n    transition:.3s;\n}\n.customer-nav > a:hover,\n.customer-nav > a.active,\n.customer-nav > .nav-dropdown:hover > .nav-drop-trigger,\n.customer-nav > .nav-dropdown.active > .nav-drop-trigger{\n    color:#fff;\n    background:rgba(201,164,92,.08);\n}\n.customer-nav > a:hover::after,\n.customer-nav > a.active::after,\n.customer-nav > .nav-dropdown:hover > .nav-drop-trigger::after,\n.customer-nav > .nav-dropdown.active > .nav-drop-trigger::after{\n    transform:scaleX(1);\n}\n.nav-dropdown{position:relative;}\n.nav-drop-trigger span.arrow{\n    margin-left:5px;\n    color:var(--gold);\n    font-size:9px;\n    transition:.25s;\n}\n.nav-dropdown:hover .arrow,\n.nav-dropdown.open .arrow{transform:rotate(180deg);}\n.nav-submenu{\n    position:absolute;\n    top:calc(100% + 8px);\n    left:50%;\n    transform:translate(-50%,-8px);\n    width:245px;\n    padding:8px;\n    opacity:0;\n    visibility:hidden;\n    pointer-events:none;\n    background:rgba(7,7,7,.98);\n    border:1px solid rgba(201,164,92,.30);\n    box-shadow:0 24px 55px rgba(0,0,0,.65), inset 0 0 35px rgba(201,164,92,.025);\n    transition:.25s ease;\n    z-index:1100;\n}\n.nav-dropdown:hover .nav-submenu,\n.nav-dropdown.open .nav-submenu{\n    opacity:1;\n    visibility:visible;\n    pointer-events:auto;\n    transform:translate(-50%,0);\n}\n.nav-submenu::before{\n    content:"";\n    position:absolute;\n    top:-5px;\n    left:50%;\n    width:9px;\n    height:9px;\n    transform:translateX(-50%) rotate(45deg);\n    background:#090909;\n    border-left:1px solid rgba(201,164,92,.30);\n    border-top:1px solid rgba(201,164,92,.30);\n}\n.nav-submenu a{\n    display:block;\n    padding:12px 13px;\n    color:#bdbdbd;\n    font-size:12px;\n    line-height:1.45;\n    border-left:2px solid transparent;\n    text-decoration:none;\n    transition:.25s;\n}\n.nav-submenu a + a{border-top:1px solid rgba(255,255,255,.055);}\n.nav-submenu a:hover{\n    color:var(--gold2);\n    background:rgba(201,164,92,.07);\n    border-left-color:var(--gold);\n    padding-left:17px;\n}\n.customer-nav .nav-shop{\n    border:1px solid rgba(201,164,92,.40) !important;\n    color:var(--gold2) !important;\n    margin-left:6px;\n    padding-left:13px !important;\n    padding-right:13px !important;\n}\n.customer-nav .nav-shop::after{display:none !important;}\n.customer-nav .cart-count{\n    display:inline-grid;\n    place-items:center;\n    min-width:19px;\n    height:19px;\n    margin-left:6px;\n    padding:0 5px;\n    border-radius:50%;\n    background:var(--gold);\n    color:#000;\n    font-size:10px;\n    font-weight:700;\n}\n@media(max-width:1250px){\n    .customer-nav > a,\n    .customer-nav > .nav-dropdown > .nav-drop-trigger{\n        padding-left:7px;\n        padding-right:7px;\n        font-size:11px;\n    }\n    .customer-brand img{width:64px;height:64px;}\n    .customer-brand-text strong{font-size:16px;}\n}\n@media(max-width:1050px){\n    .customer-nav{\n        position:fixed;\n        top:89px;\n        left:20px;\n        right:20px;\n        display:none;\n        flex-direction:column;\n        align-items:stretch;\n        padding:15px;\n        background:rgba(10,10,10,.97);\n        border:1px solid rgba(201,164,92,.25);\n        box-shadow:0 30px 60px rgba(0,0,0,.6);\n        max-height:calc(100vh - 110px);\n        overflow-y:auto;\n    }\n    .customer-nav.show{display:flex;}\n    .customer-nav > a,\n    .customer-nav > .nav-dropdown > .nav-drop-trigger{\n        width:100%;\n        text-align:center;\n        padding:14px;\n        min-height:48px;\n        font-size:13px;\n    }\n    .nav-dropdown{width:100%;}\n    .nav-drop-trigger{justify-content:center !important;}\n    .nav-submenu{\n        position:static;\n        width:100%;\n        transform:none !important;\n        display:none;\n        opacity:1;\n        visibility:visible;\n        pointer-events:auto;\n        margin-top:4px;\n    }\n    .nav-dropdown.open .nav-submenu{display:block;}\n    .nav-submenu::before{display:none;}\n    .customer-nav .nav-shop{margin-left:0;}\n    .menu-toggle{display:block;}\n}\n@media(max-width:650px){\n    .customer-brand{gap:9px;}\n    .customer-brand img{width:48px;height:48px;}\n    .customer-brand-text strong{font-size:13px;letter-spacing:1px;}\n    .customer-brand-text small{font-size:7px;letter-spacing:1.3px;margin-top:3px;}\n    .customer-nav{top:78px;left:15px;right:15px;}\n}\n\n/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media(max-width:1050px){
-    .nav-menu{
-        gap:0;
-    }
 
-    .nav-menu a{
-        padding:10px 8px;
-        font-size:13px;
-    }
-
-    .hero-inner{
-        grid-template-columns:1fr;
-    }
-
-    .hero-visual{
-        min-height:400px;
-    }
-
-    .cards{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .process{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .process-item:nth-child(2){
-        border-right:0;
-    }
-
-    .process-item:nth-child(-n+2){
-        border-bottom:1px solid var(--line);
-    }
-}
-
-@media(max-width:780px){
-
-    .nav{
-        min-height:75px;
-    }
-
-    .logo{
-        min-width:auto;
-    }
-
-    .logo img{
-        width:55px;
-        height:55px;
-    }
-
-    .logo-title{
-        font-size:15px;
-    }
-
-    .logo-sub{
-        font-size:8px;
-    }
-
-    .menu-btn{
-        display:block;
+    .container{
+        width:min(100% - 40px, var(--max));
     }
 
     .nav-menu{
-        display:none;
-        position:absolute;
+        position:fixed;
+
+        top:89px;
         left:20px;
         right:20px;
-        top:82px;
-        padding:15px;
+
+        display:none;
         flex-direction:column;
-        align-items:stretch;
-        background:#0b0b0b;
-        border:1px solid var(--gold-line);
-        border-radius:16px;
+
+        padding:15px;
+
+        background:
+            rgba(10,10,10,.97);
+
+        border:1px solid rgba(201,164,92,.25);
+
+        box-shadow:
+            0 30px 60px rgba(0,0,0,.6);
     }
 
-    .nav-menu.open{
+    .nav-menu.show{
         display:flex;
     }
 
     .nav-menu a{
+        width:100%;
+        text-align:center;
         padding:14px;
     }
 
@@ -667,816 +1234,1057 @@ body::before{
         margin-left:0;
     }
 
-    .hero-inner{
-        padding:70px 0;
+    .menu-toggle{
+        display:block;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:130px;
+        padding-bottom:70px;
+    }
+
+    .hero-visual{
+        height:500px;
+    }
+
+    .menu-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .statement-inner{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .statement-mark{
+        font-size:80px;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    .container{
+        width:calc(100% - 30px);
+    }
+
+    .navbar{
+        height:75px;
+    }
+
+    .logo-text strong{
+        font-size:14px;
+    }
+
+    .logo-text small{
+        font-size:7px;
+    }
+
+    .logo-mark{
+        width:43px;
+        height:43px;
+    }
+
+    .hero{
+        padding-top:110px;
     }
 
     .hero h1{
         font-size:48px;
-        letter-spacing:-2px;
+        letter-spacing:-1px;
     }
 
-    .hero-desc{
-        font-size:16px;
+    .hero-description{
+        font-size:13px;
     }
 
-    .hero-ring{
-        width:330px;
-        height:330px;
+    .hero-visual{
+        height:420px;
     }
 
-    .hero-logo{
-        width:300px;
+    .hero-image{
+        inset:10px 5px 20px 35px;
     }
 
-    .cards,
-    .service-grid,
-    .company-box,
-    .footer-grid{
+    .hero-card{
+        width:210px;
+        left:0;
+        bottom:20px;
+        padding:18px;
+    }
+
+    .hero-card strong{
+        font-size:19px;
+    }
+
+    .intro-inner{
         grid-template-columns:1fr;
     }
 
-    .process{
-        grid-template-columns:1fr;
-    }
-
-    .process-item{
+    .intro-item{
         border-right:0;
         border-bottom:1px solid var(--line);
     }
 
-    .process-item:last-child{
+    .intro-item:last-child{
         border-bottom:0;
     }
 
-    .company-box{
-        padding:30px;
+    .section-head{
+        display:block;
     }
 
-    .section{
-        padding:75px 0;
+    .section-title{
+        font-size:34px;
+        margin-bottom:20px;
     }
+
+    .menu-section{
+        padding:80px 0;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+
+    .menu-card{
+        min-height:230px;
+    }
+
+    .statement{
+        padding:80px 0;
+    }
+
+    .statement-content h2{
+        font-size:31px;
+    }
+
+    .cta-box{
+        padding:35px 25px;
+    }
+
+    .cta-box h2{
+        font-size:31px;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+    }
+
+    .side-line{
+        display:none;
+    }
+
+    .floating-contact{
+        right:14px;
+        bottom:14px;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- TOP DECORATION -->
+<div class="top-line"></div>
+<div class="side-line"></div>
+
+<div class="bg-glow glow-one"></div>
+<div class="bg-glow glow-two"></div>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
 <header class="header">
-    <div class="nav">
+<div class="container">
+<nav class="navbar">
 
-        <a href="index.html" class="logo">
-
-            <!-- ใช้ไฟล์โลโก้ใหม่ -->
-            <img src="assets/logo.png" alt="CHATPHETCH GROUP">
-
-            <div class="logo-text">
-                <div class="logo-title">CHATPHETCH GROUP</div>
-                <div class="logo-sub">FLOORING & CONSTRUCTION</div>
-            </div>
-
-        </a>
-
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-        <nav class="nav-menu" id="navMenu">
-
-            <a href="index.html" class="active">หน้าแรก</a>
-
-            <a href="about.html">เกี่ยวกับเรา</a>
-
-            <a href="products.html">สินค้า</a>
-
-            <a href="services.html">บริการ</a>
-
-            <a href="projects.html">ผลงาน</a>
-
-            <a href="contact.html">ติดต่อเรา</a>
-
-            <a href="order-status.html">🔎 ติดตามคำสั่งซื้อ</a>
-
-            <a href="cart.html" class="nav-shop">
-                🛒 ตะกร้า
-                <span class="cart-count" id="cartCount">0</span>
-            </a>
-
-        </nav>
-
+<a href="index.html" class="customer-brand" aria-label="CHATPHETCH GROUP">
+    <img src="assets/logo.png" alt="CHATPHETCH GROUP">
+    <div class="customer-brand-text">
+        <strong>CHATPHETCH GROUP</strong>
+        <small>FLOORING &amp; CONSTRUCTION</small>
     </div>
+</a>
+
+<div class="customer-nav" id="navMenu">
+    <a href="index.html" class="active">หน้าแรก</a>
+    <a href="about.html">เกี่ยวกับเรา</a>
+    <a href="products.html">สินค้า</a>
+
+    <div class="nav-dropdown">
+        <button type="button" class="nav-drop-trigger">บริการ <span class="arrow">▼</span></button>
+        <div class="nav-submenu">
+            <a href="services.html">ดูบริการทั้งหมด</a>
+            <a href="service-detail.html?service=flooring">บริการระบบงานพื้น</a>
+            <a href="service-detail.html?service=coating">บริการเคลือบผิว / สี</a>
+            <a href="service-detail.html?service=consulting">ปรึกษาและเลือกวัสดุ</a>
+            <a href="service-detail.html?service=installation">คำปรึกษางานติดตั้ง</a>
+        </div>
+    </div>
+
+    <div class="nav-dropdown">
+        <button type="button" class="nav-drop-trigger">ผลงาน <span class="arrow">▼</span></button>
+        <div class="nav-submenu">
+            <a href="projects.html">ดูผลงานทั้งหมด</a>
+            <a href="projects.html?category=flooring">ผลงานระบบพื้น</a>
+            <a href="projects.html?category=stamped">ผลงานพื้นพิมพ์ลาย</a>
+            <a href="projects.html?category=coating">ผลงานสี / น้ำยา</a>
+            <a href="projects.html?category=construction">ผลงานงานก่อสร้าง</a>
+        </div>
+    </div>
+
+    <a href="reference.html">โครงการอ้างอิง</a>
+    <a href="technical-center.html">ศูนย์เทคนิค</a>
+    <a href="knowledge.html">คลังความรู้</a>
+    <a href="contact.html">ติดต่อเรา</a>
+    <a href="order-status.html">🔎 ติดตามคำสั่งซื้อ</a>
+    <a href="cart.html" class="nav-shop">🛒 ตะกร้า <span class="cart-count" id="cartCount">0</span></a>
+</div>
+
+<button class="menu-toggle" id="menuToggle" aria-label="เปิดเมนู">☰</button>
+</nav>
+</div>
 </header>
 
 
-<!-- HERO -->
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<main>
+
 <section class="hero">
 
-    <div class="hero-inner">
+<div class="container">
 
-        <div>
+<div class="hero-grid">
 
-            <div class="eyebrow">
-                CHATPHETCH GROUP
-            </div>
 
-            <h1>
-                สร้างสรรค์<br>
-                <span>ระบบพื้น</span><br>
-                อย่างมืออาชีพ
-            </h1>
+<!-- LEFT -->
 
-            <p class="hero-desc">
-                โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท
-                พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
-                ตั้งแต่สำรวจหน้างาน ออกแบบระบบ เสนอราคา ติดตั้ง
-                จนถึงส่งมอบงาน
-            </p>
+<div class="hero-content reveal">
 
-            <div class="hero-actions">
+<div class="hero-label">
+CHATPETCH GROUP
+</div>
 
-                <a href="about.html" class="btn btn-gold">
-                    รู้จักบริษัท →
-                </a>
+<h1>
 
-                <a href="services.html" class="btn btn-line">
-                    ดูกลุ่มงานบริการ
-                </a>
+วัสดุงานพื้น
+<span>ครบทุกระบบ</span>
 
-            </div>
+</h1>
 
-        </div>
+<p class="hero-description">
 
+บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท
+พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+ตั้งแต่วัสดุ อุปกรณ์ ไปจนถึงงานติดตั้ง
 
-        <div class="hero-visual">
+</p>
 
-            <div class="hero-ring"></div>
 
-            <img
-                class="hero-logo"
-                src="assets/logo.png"
-                alt="CHATPHETCH GROUP Logo"
-            >
+<div class="hero-buttons">
 
-        </div>
+<a
+href="about.html"
+class="btn btn-gold">
 
-    </div>
+รู้จักบริษัท →
 
-</section>
+</a>
 
+<a
+href="products.html"
+class="btn btn-line">
 
-<!-- COMPANY -->
-<section class="section">
+ดูสินค้า
 
-    <div class="container">
+</a>
 
-        <div class="section-head">
-
-            <div>
-
-                <div class="section-eyebrow">
-                    COMPANY
-                </div>
-
-                <h2 class="section-title">
-                    บริษัท <span>ฉัตรเพชร กรุ๊ป จำกัด</span>
-                </h2>
-
-            </div>
-
-        </div>
-
-
-        <div class="company-box">
-
-            <div>
-
-                <p>
-                    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
-                    ดำเนินธุรกิจเกี่ยวกับวัสดุและระบบงานพื้น
-                    รวมถึงงานบริการด้านพื้นและงานก่อสร้างที่เกี่ยวข้อง
-                </p>
-
-                <p style="margin-top:20px;">
-                    เราให้ความสำคัญกับการเลือกใช้ระบบวัสดุ
-                    ให้เหมาะสมกับลักษณะหน้างาน
-                    พร้อมให้คำปรึกษาตั้งแต่การสำรวจปัญหา
-                    ไปจนถึงการติดตั้งและส่งมอบงาน
-                </p>
-
-            </div>
-
-
-            <div class="company-list">
-
-                <div>
-                    <strong>ชื่อบริษัท</strong><br>
-                    บริษัท ฉัตรเพชร กรุ๊ป จำกัด
-                </div>
-
-                <div>
-                    <strong>ลักษณะธุรกิจ</strong><br>
-                    วัสดุงานพื้น / งานเคลือบ / งานซ่อม / งานก่อสร้าง
-                </div>
-
-                <div>
-                    <strong>บริการหลัก</strong><br>
-                    ให้คำปรึกษาและบริการระบบพื้นแบบครบวงจร
-                </div>
-
-                <div>
-                    <strong>พื้นที่ตั้งบริษัท</strong><br>
-                    อำเภอนาหม่อม จังหวัดสงขลา
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SERVICE GROUP -->
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-head">
-
-            <div>
-
-                <div class="section-eyebrow">
-                    SERVICE GROUP
-                </div>
-
-                <h2 class="section-title">
-                    กลุ่มงาน <span>บริการ</span>
-                </h2>
-
-            </div>
-
-            <p class="section-text">
-                เลือกประเภทปัญหาหรือประเภทงาน
-                เพื่อดูระบบที่เหมาะสมกับหน้างาน
-            </p>
-
-        </div>
-
-
-        <div class="service-grid">
-
-            <a href="services.html?type=industrial"
-               class="service-card"
-               style="text-decoration:none;color:white;">
-
-                <div class="service-icon">🏭</div>
-
-                <h3>
-                    พื้นอุตสาหกรรม / Epoxy / PU
-                </h3>
-
-                <p>
-                    ระบบพื้นสำหรับโรงงาน อาคารผลิต คลังสินค้า
-                    และพื้นที่ที่ต้องการความแข็งแรงและทนต่อการใช้งาน
-                </p>
-
-            </a>
-
-
-            <a href="services.html?type=waterproof"
-               class="service-card"
-               style="text-decoration:none;color:white;">
-
-                <div class="service-icon">💧</div>
-
-                <h3>
-                    งานกันรั่วซึม
-                </h3>
-
-                <p>
-                    ดาดฟ้า หลังคา พื้นอาคาร
-                    และพื้นที่ที่มีปัญหาน้ำรั่วซึม
-                </p>
-
-            </a>
-
-
-            <a href="services.html?type=repair"
-               class="service-card"
-               style="text-decoration:none;color:white;">
-
-                <div class="service-icon">🧱</div>
-
-                <h3>
-                    ซ่อมและปรับปรุงคอนกรีต
-                </h3>
-
-                <p>
-                    Epoxy Injection, Cement Self และระบบซ่อมแซม
-                    สำหรับพื้นผิวคอนกรีต
-                </p>
-
-            </a>
-
-
-            <a href="services.html?type=sport"
-               class="service-card"
-               style="text-decoration:none;color:white;">
-
-                <div class="service-icon">🏟️</div>
-
-                <h3>
-                    พื้นสนามกีฬา
-                </h3>
-
-                <p>
-                    ระบบพื้นสำหรับสนามกีฬาและพื้นที่กิจกรรม
-                </p>
-
-            </a>
-
-
-            <a href="services.html?type=decorative"
-               class="service-card"
-               style="text-decoration:none;color:white;">
-
-                <div class="service-icon">✨</div>
-
-                <h3>
-                    พื้นตกแต่งเพื่อความสวยงาม
-                </h3>
-
-                <p>
-                    PSC / PMC / Flake / Aura Sand
-                    และระบบพื้นตกแต่งประเภทต่าง ๆ
-                </p>
-
-            </a>
-
-
-            <a href="services.html?type=traffic"
-               class="service-card"
-               style="text-decoration:none;color:white;">
-
-                <div class="service-icon">🚧</div>
-
-                <h3>
-                    งานสัญลักษณ์และเส้นจราจร
-                </h3>
-
-                <p>
-                    ระบบตีเส้นจราจร เส้นแบ่งพื้นที่
-                    และสัญลักษณ์บนพื้น
-                </p>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PROCESS -->
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-head">
-
-            <div>
-
-                <div class="section-eyebrow">
-                    WORK PROCESS
-                </div>
-
-                <h2 class="section-title">
-                    ขั้นตอน <span>การทำงาน</span>
-                </h2>
-
-            </div>
-
-        </div>
-
-
-        <div class="process">
-
-            <div class="process-item">
-
-                <div class="process-no">
-                    STEP 01
-                </div>
-
-                <h3>
-                    สำรวจ
-                </h3>
-
-                <p>
-                    สำรวจสภาพหน้างาน วิเคราะห์ปัญหา
-                    และความต้องการของลูกค้า
-                </p>
-
-            </div>
-
-
-            <div class="process-item">
-
-                <div class="process-no">
-                    STEP 02
-                </div>
-
-                <h3>
-                    เสนอระบบและราคา
-                </h3>
-
-                <p>
-                    เลือกระบบวัสดุที่เหมาะสม
-                    พร้อมเสนอรายละเอียดและราคา
-                </p>
-
-            </div>
-
-
-            <div class="process-item">
-
-                <div class="process-no">
-                    STEP 03
-                </div>
-
-                <h3>
-                    งานติดตั้ง
-                </h3>
-
-                <p>
-                    ดำเนินงานตามระบบและขั้นตอน
-                    ที่เหมาะสมกับหน้างาน
-                </p>
-
-            </div>
-
-
-            <div class="process-item">
-
-                <div class="process-no">
-                    STEP 04
-                </div>
-
-                <h3>
-                    ส่งมอบและรับประกัน
-                </h3>
-
-                <p>
-                    ตรวจสอบงานก่อนส่งมอบ
-                    พร้อมเงื่อนไขการรับประกันตามระบบงาน
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- QUICK MENU -->
-<section class="section">
-
-    <div class="container">
-
-        <div class="section-head">
-
-            <div>
-
-                <div class="section-eyebrow">
-                    EXPLORE
-                </div>
-
-                <h2 class="section-title">
-                    ข้อมูล <span>สำหรับลูกค้า</span>
-                </h2>
-
-            </div>
-
-        </div>
-
-
-        <div class="cards">
-
-            <a href="products.html"
-               class="card"
-               style="text-decoration:none;color:white;">
-
-                <div class="card-number">
-                    01 / PRODUCTS
-                </div>
-
-                <h3>
-                    ผลิตภัณฑ์
-                </h3>
-
-                <p>
-                    วัสดุพื้น วัสดุกันซึม
-                    วัสดุซ่อมคอนกรีต วัสดุพิมพ์ลาย
-                    และสีตีเส้น
-                </p>
-
-            </a>
-
-
-            <a href="projects.html"
-               class="card"
-               style="text-decoration:none;color:white;">
-
-                <div class="card-number">
-                    02 / PROJECTS
-                </div>
-
-                <h3>
-                    ผลงาน
-                </h3>
-
-                <p>
-                    ภาพก่อน / ระหว่าง / หลัง
-                    และข้อมูลผลงานอ้างอิง
-                </p>
-
-            </a>
-
-
-            <a href="contact.html"
-               class="card"
-               style="text-decoration:none;color:white;">
-
-                <div class="card-number">
-                    03 / QUOTATION
-                </div>
-
-                <h3>
-                    ขอใบเสนอราคา
-                </h3>
-
-                <p>
-                    ส่งข้อมูลหน้างาน
-                    ประเภทงาน พื้นที่ และรูปภาพ
-                    เพื่อให้ทีมงานประเมินเบื้องต้น
-                </p>
-
-            </a>
-
-
-            <a href="technical-center.html"
-               class="card"
-               style="text-decoration:none;color:white;">
-
-                <div class="card-number">
-                    04 / TECHNICAL
-                </div>
-
-                <h3>
-                    ศูนย์ข้อมูลเทคนิค
-                </h3>
-
-                <p>
-                    TDS / SDS / Method Statement
-                    Specification และข้อมูลสำหรับผู้ออกแบบ
-                </p>
-
-            </a>
-
-
-            <a href="knowledge.html"
-               class="card"
-               style="text-decoration:none;color:white;">
-
-                <div class="card-number">
-                    05 / KNOWLEDGE
-                </div>
-
-                <h3>
-                    ความรู้
-                </h3>
-
-                <p>
-                    บทความเกี่ยวกับระบบพื้น
-                    การแก้ปัญหาคอนกรีตและงานกันรั่วซึม
-                </p>
-
-            </a>
-
-
-            <a href="order-status.html"
-               class="card"
-               style="text-decoration:none;color:white;">
-
-                <div class="card-number">
-                    06 / ORDER
-                </div>
-
-                <h3>
-                    ติดตามคำสั่งซื้อ
-                </h3>
-
-                <p>
-                    ตรวจสอบสถานะคำสั่งซื้อ
-                    การชำระเงิน และสถานะการจัดส่ง
-                </p>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CTA -->
-<section class="section">
-
-    <div class="container">
-
-        <div class="cta">
-
-            <h2>
-                มีปัญหาเรื่องพื้น?
-                <span style="color:var(--gold2);">
-                    ให้เราช่วยวิเคราะห์
-                </span>
-            </h2>
-
-            <p>
-                ส่งรายละเอียดประเภทงาน พื้นที่โดยประมาณ
-                จังหวัด และรูปภาพหน้างาน
-                เพื่อให้ทีมงานพิจารณาระบบที่เหมาะสม
-            </p>
-
-            <a href="contact.html" class="btn btn-gold">
-                ขอใบเสนอราคา →
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer">
-
-    <div class="container">
-
-        <div class="footer-grid">
-
-            <div>
-
-                <div class="logo" style="margin-bottom:20px;">
-
-                    <img src="assets/logo.png"
-                         alt="CHATPHETCH GROUP">
-
-                    <div class="logo-text">
-
-                        <div class="logo-title">
-                            CHATPHETCH GROUP
-                        </div>
-
-                        <div class="logo-sub">
-                            FLOORING & CONSTRUCTION
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <p>
-                    โรงงานผลิต-จำหน่าย
-                    วัสดุงานพื้นทุกประเภท
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    เมนู
-                </h3>
-
-                <p>
-                    <a href="about.html">เกี่ยวกับเรา</a>
-                </p>
-
-                <p>
-                    <a href="products.html">สินค้า</a>
-                </p>
-
-                <p>
-                    <a href="services.html">บริการ</a>
-                </p>
-
-                <p>
-                    <a href="projects.html">ผลงาน</a>
-                </p>
-
-            </div>
-
-
-            <div>
-
-                <h3>
-                    ติดต่อ
-                </h3>
-
-                <p>
-                    <a href="contact.html">
-                        ติดต่อเรา / ขอใบเสนอราคา
-                    </a>
-                </p>
-
-                <p>
-                    10/1 ม.9 ต.นาหม่อม
-                    อ.นาหม่อม จ.สงขลา 90310
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            © 2026 CHATPHETCH GROUP CO., LTD.
-            All Rights Reserved.
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-<!-- FLOAT CONTACT -->
-<div class="float-contact">
-
-    <a href="tel:0856299778"
-       title="โทรฝ่ายเทคนิค">
-        ☎
-    </a>
-
-    <a href="https://www.facebook.com/ChatphetchGroup"
-       target="_blank"
-       title="Facebook">
-        f
-    </a>
+</div>
 
 </div>
 
 
+
+<!-- RIGHT -->
+
+<div class="hero-visual reveal">
+
+<div class="hero-image">
+
+<div class="corner tl"></div>
+<div class="corner br"></div>
+
+</div>
+
+
+<div class="hero-card">
+
+<small>OUR POSITION</small>
+
+<strong>
+Flooring Solution
+</strong>
+
+<p>
+สร้างสรรค์ผลงาน
+มาตรฐานเข้าถึง
+ยืน 1 คุณภาพ
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     INTRO STRIP
+======================================================= -->
+
+<section class="intro-strip">
+
+<div class="container">
+
+<div class="intro-inner">
+
+
+<div class="intro-item reveal">
+
+<span>BUSINESS</span>
+
+<strong>
+วัสดุงานพื้นทุกประเภท
+</strong>
+
+</div>
+
+
+<div class="intro-item reveal">
+
+<span>SOLUTION</span>
+
+<strong>
+ปรึกษาพื้นทุกระบบ
+</strong>
+
+</div>
+
+
+<div class="intro-item reveal">
+
+<span>LOCATION</span>
+
+<strong>
+สงขลา ประเทศไทย
+</strong>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     MAIN MENU
+======================================================= -->
+
+<section class="menu-section">
+
+<div class="container">
+
+
+<div class="section-head reveal">
+
+<div>
+
+<div class="section-kicker">
+EXPLORE CHATPETCH GROUP
+</div>
+
+<h2 class="section-title">
+เลือกดูข้อมูลที่ต้องการ
+</h2>
+
+</div>
+
+
+<p class="section-description">
+
+เว็บไซต์หลักของบริษัท
+เลือกเข้าสู่หน้าข้อมูล สินค้า บริการ
+ผลงาน หรือช่องทางติดต่อได้ทันที
+
+</p>
+
+</div>
+
+
+
+<div class="menu-grid">
+
+
+<!-- ABOUT -->
+
+<a href="about.html" class="menu-card reveal">
+
+<span class="card-number">
+01 / ABOUT
+</span>
+
+<div class="card-icon">
+◈
+</div>
+
+<h3>
+เกี่ยวกับเรา
+</h3>
+
+<p>
+ทำความรู้จักบริษัท ฉัตรเพชร กรุ๊ป
+ประวัติ แนวทางการดำเนินงาน
+และธุรกิจของบริษัท
+</p>
+
+<span class="card-arrow">
+↗
+</span>
+
+</a>
+
+
+
+<!-- PRODUCTS -->
+
+<a href="products.html" class="menu-card reveal">
+
+<span class="card-number">
+02 / PRODUCTS
+</span>
+
+<div class="card-icon">
+◆
+</div>
+
+<h3>
+สินค้า
+</h3>
+
+<p>
+เลือกซื้อวัสดุงานพื้น สี เคมีภัณฑ์
+วัสดุก่อสร้าง เครื่องมือ
+และสินค้าอื่น ๆ
+</p>
+
+<span class="card-arrow">
+↗
+</span>
+
+</a>
+
+
+
+<!-- SERVICES -->
+
+<a href="services.html" class="menu-card reveal">
+
+<span class="card-number">
+03 / SERVICES
+</span>
+
+<div class="card-icon">
+⌘
+</div>
+
+<h3>
+บริการ
+</h3>
+
+<p>
+บริการให้คำปรึกษาเกี่ยวกับพื้น
+ทุกระบบแบบครบวงจร
+พร้อมแนวทางเลือกวัสดุ
+</p>
+
+<span class="card-arrow">
+↗
+</span>
+
+</a>
+
+
+
+<!-- PROJECTS -->
+
+<a href="projects.html" class="menu-card reveal">
+
+<span class="card-number">
+04 / PROJECTS
+</span>
+
+<div class="card-icon">
+▣
+</div>
+
+<h3>
+ผลงาน
+</h3>
+
+<p>
+ชมตัวอย่างงานพื้น
+งานติดตั้ง และผลงาน
+ที่เกี่ยวข้องกับระบบพื้น
+</p>
+
+<span class="card-arrow">
+↗
+</span>
+
+</a>
+
+
+
+<!-- CONTACT -->
+
+<a href="contact.html" class="menu-card reveal">
+
+<span class="card-number">
+05 / CONTACT
+</span>
+
+<div class="card-icon">
+⌖
+</div>
+
+<h3>
+ติดต่อเรา
+</h3>
+
+<p>
+สอบถามข้อมูลสินค้า
+ขอคำปรึกษา หรือพูดคุย
+กับทีมงานของบริษัท
+</p>
+
+<span class="card-arrow">
+↗
+</span>
+
+</a>
+
+
+
+<!-- CART -->
+
+<a href="cart.html" class="menu-card reveal">
+
+<span class="card-number">
+06 / SHOPPING
+</span>
+
+<div class="card-icon">
+🛒
+</div>
+
+<h3>
+ตะกร้าสินค้า
+</h3>
+
+<p>
+ตรวจสอบสินค้าที่เลือก
+ปรับจำนวนสินค้า
+และดำเนินการสั่งซื้อ
+</p>
+
+<span class="card-arrow">
+↗
+</span>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     COMPANY STATEMENT
+======================================================= -->
+
+<section class="statement">
+
+<div class="container">
+
+<div class="statement-inner">
+
+<div class="statement-mark reveal">
+CG
+</div>
+
+
+<div class="statement-content reveal">
+
+<div class="section-kicker">
+CHATPETCH GROUP
+</div>
+
+<h2>
+
+สร้างสรรค์ผลงาน
+<br>
+
+<span>มาตรฐานเข้าถึง</span>
+<br>
+
+ยืน 1 คุณภาพ
+
+</h2>
+
+<p>
+
+บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+ดำเนินธุรกิจเกี่ยวกับการจำหน่ายวัสดุและอุปกรณ์
+สำหรับงานพื้น รวมถึงผลิตภัณฑ์ที่เกี่ยวข้องกับงานก่อสร้าง
+และให้คำปรึกษาด้านระบบพื้นอย่างครบวงจร
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CTA
+======================================================= -->
+
+<section class="contact-cta">
+
+<div class="container">
+
+<div class="cta-box reveal">
+
+<div class="section-kicker">
+LET'S WORK TOGETHER
+</div>
+
+<h2>
+กำลังมองหาวัสดุงานพื้น?
+</h2>
+
+<p>
+พูดคุยกับทีมงาน ฉัตรเพชร กรุ๊ป
+เพื่อรับคำแนะนำเกี่ยวกับวัสดุและระบบพื้นที่เหมาะกับงานของคุณ
+</p>
+
+<a href="contact.html" class="btn btn-gold">
+ติดต่อเรา →
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-main">
+
+
+<div class="footer-brand">
+
+<a href="index.html" class="logo">
+
+<div class="logo-mark">
+<span>CG</span>
+</div>
+
+<div class="logo-text">
+
+<strong>
+CHATPETCH GROUP
+</strong>
+
+<small>
+FLOORING & CONSTRUCTION
+</small>
+
+</div>
+
+</a>
+
+
+<p>
+
+บริษัท ฉัตรเพชร กรุ๊ป จำกัด
+โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท
+พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
+
+</p>
+
+</div>
+
+
+
+<div>
+
+<div class="footer-title">
+NAVIGATION
+</div>
+
+<div class="footer-links">
+
+<a href="index.html">
+หน้าแรก
+</a>
+
+<a href="about.html">
+เกี่ยวกับเรา
+</a>
+
+<a href="products.html">
+สินค้า
+</a>
+
+<a href="services.html">
+บริการ
+</a>
+
+<a href="projects.html">
+ผลงาน
+</a>
+
+<a href="contact.html">
+ติดต่อเรา
+</a>
+
+</div>
+
+</div>
+
+
+
+<div>
+
+<div class="footer-title">
+CONTACT
+</div>
+
+<div class="footer-links">
+
+<a href="tel:0828223678">
+082-8223678 คุณหญิง
+</a>
+
+<a href="tel:0630630046">
+063-0630046 คุณเอ้
+</a>
+
+<a href="tel:0856299778">
+085-6299778 ฝ่ายเทคนิค
+</a>
+
+<a href="tel:0986710888">
+098-6710888 แอดมิน
+</a>
+
+<a
+href="https://www.facebook.com/ChatphetchGroup"
+target="_blank">
+
+Facebook
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 CHATPETCH GROUP CO., LTD.
+</span>
+
+<span>
+10/1 ม.9 ต.นาหม่อม อ.นาหม่อม จ.สงขลา 90310
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+<!-- =======================================================
+     FLOATING CONTACT
+======================================================= -->
+
+<div class="floating-contact">
+
+<a
+href="tel:0828223678"
+class="float-btn"
+title="โทรหาบริษัท">
+
+☎
+
+</a>
+
+<a
+href="https://www.facebook.com/ChatphetchGroup"
+target="_blank"
+class="float-btn"
+title="Facebook">
+
+f
+
+</a>
+
+<a
+href="contact.html"
+class="float-btn"
+title="ติดต่อเรา">
+
+✉
+
+</a>
+
+</div>
+
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
 <script>
 
 /* MOBILE MENU */
-function toggleMenu(){
 
-    const menu = document.getElementById("navMenu");
+const menuToggle =
+document.getElementById("menuToggle");
 
-    menu.classList.toggle("open");
+const navMenu =
+document.getElementById("navMenu");
+
+if(menuToggle){
+
+    menuToggle.addEventListener("click",function(){
+
+        navMenu.classList.toggle("show");
+
+    });
 
 }
 
 
-/* CART COUNT */
+/* CUSTOMER MASTER DROPDOWNS */
+document.querySelectorAll(".nav-drop-trigger").forEach(trigger => {
+    trigger.addEventListener("click", function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        const parent = trigger.closest(".nav-dropdown");
+        document.querySelectorAll(".nav-dropdown.open").forEach(item => {
+            if(item !== parent) item.classList.remove("open");
+        });
+        parent.classList.toggle("open");
+    });
+});
+
+document.addEventListener("click", function(event){
+    if(!event.target.closest(".nav-dropdown")){
+        document.querySelectorAll(".nav-dropdown.open").forEach(item => item.classList.remove("open"));
+    }
+});
+
+document.querySelectorAll(".customer-nav a").forEach(link => {
+    link.addEventListener("click", function(){
+        navMenu.classList.remove("show");
+    });
+});
+
+
+/* CLOSE MOBILE MENU */
+
+document.querySelectorAll(".nav-menu a")
+.forEach(link => {
+
+    link.addEventListener("click",function(){
+
+        navMenu.classList.remove("show");
+
+    });
+
+});
+
+
+/* =========================================================
+   CART COUNT
+========================================================= */
+
 function updateCartCount(){
+
+    let cart = [];
 
     try{
 
-        const cart =
-            JSON.parse(
-                localStorage.getItem("chatpetch_cart") || "[]"
-            );
+        cart =
+        JSON.parse(
+            localStorage.getItem("chatpetch_cart")
+        ) || [];
 
-        const count =
-            cart.reduce(
-                (sum,item) =>
-                    sum + Number(item.quantity || 0),
-                0
-            );
+    }catch(e){
 
-        document.getElementById("cartCount").textContent =
-            count;
+        cart = [];
 
-    }catch(error){
+    }
 
-        document.getElementById("cartCount").textContent =
-            "0";
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        total += Number(item.qty || 1);
+
+    });
+
+
+    const counter =
+    document.getElementById("cartCount");
+
+    if(counter){
+
+        counter.textContent = total;
 
     }
 
 }
 
 updateCartCount();
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealItems =
+document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+new IntersectionObserver(
+
+(entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("active");
+
+        }
+
+    });
+
+},
+
+{
+    threshold:.12
+}
+
+);
+
+
+revealItems.forEach(item => {
+
+    revealObserver.observe(item);
+
+});
+
+
+/* =========================================================
+   HEADER SCROLL EFFECT
+========================================================= */
+
+window.addEventListener("scroll",function(){
+
+    const header =
+    document.querySelector(".header");
+
+    if(window.scrollY > 30){
+
+        header.style.background =
+        "rgba(3,3,3,.94)";
+
+    }else{
+
+        header.style.background =
+        "rgba(3,3,3,.78)";
+
+    }
+
+});
+
 
 </script>
 
