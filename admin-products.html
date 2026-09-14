@@ -1,2903 +1,897 @@
-<!--
-สาเหตุที่เข้าไม่ได้มักเกิดจาก admin-products.html ยังมีระบบตรวจ ADMIN_EMAIL
-แบบเดิมปนอยู่ หรือไฟล์เก่ายังถูกโหลดจาก GitHub Pages cache
-
-ให้แทนที่ admin-products.html ทั้งไฟล์ด้วยไฟล์นี้
-โดยระบบจะตรวจสิทธิ์จาก public.admin_users เป็นหลัก
-ไม่ใช้ ADMIN_EMAIL เป็นตัวตัดสินสิทธิ์
--->
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>จัดการสินค้า | Chatpetch Group</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<title>CHATPHETCH GROUP — จัดการสินค้า</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 :root{
---black:#050505;
---dark:#0d0d0d;
---dark2:#111;
---dark3:#181818;
---gold:#c8a45b;
---gold-light:#f0d991;
---white:#fff;
---gray:#999;
---line:rgba(255,255,255,.09);
---gold-line:rgba(200,164,91,.28);
+  --black:#050505;
+  --dark:#0d0d0d;
+  --dark2:#111;
+  --gold:#c8a45b;
+  --gold-light:#f0d991;
+  --line:rgba(255,255,255,.09);
+  --gold-line:rgba(200,164,91,.30);
 }
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+*{box-sizing:border-box}
 
 body{
-min-height:100vh;
-color:#fff;
-font-family:"Prompt",sans-serif;
-background:
-radial-gradient(circle at 15% 10%,rgba(200,164,91,.10),transparent 28%),
-radial-gradient(circle at 85% 85%,rgba(200,164,91,.07),transparent 30%),
-#050505;
+  margin:0;
+  min-height:100vh;
+
+  color:#fff;
+
+  font-family:"Prompt","Kanit",sans-serif;
+
+  background:
+    radial-gradient(circle at 12% 12%,rgba(200,164,91,.075),transparent 28%),
+    radial-gradient(circle at 88% 20%,rgba(200,164,91,.055),transparent 28%),
+    #050505;
 }
 
 body:before{
-content:"";
-position:fixed;
-inset:0;
-z-index:-1;
-opacity:.22;
-background-image:
-linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-background-size:42px 42px;
-}
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
 
-button,
-input,
-textarea,
-select{
-font:inherit;
-}
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
 
-button{
-cursor:pointer;
-}
+  background-size:40px 40px;
 
-.loading{
-position:fixed;
-inset:0;
-z-index:9999;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#050505;
-}
-
-.loading-logo{
-width:70px;
-height:70px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin:auto;
-border:1px solid var(--gold);
-color:var(--gold-light);
-font:700 24px "Kanit";
-}
-
-.loading p{
-margin-top:18px;
-color:#777;
-font-size:12px;
-text-align:center;
-}
-
-.login{
-min-height:100vh;
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px;
-}
-
-.login-card{
-width:100%;
-max-width:430px;
-padding:40px;
-background:rgba(17,17,17,.95);
-border:1px solid var(--gold-line);
-box-shadow:0 30px 100px rgba(0,0,0,.65);
-}
-
-.logo{
-width:64px;
-height:64px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:22px;
-border:1px solid var(--gold);
-color:var(--gold-light);
-font:700 22px "Kanit";
-}
-
-.login-card h1{
-font:500 30px "Kanit";
-}
-
-.login-sub{
-margin:5px 0 25px;
-color:#777;
-font-size:10px;
-letter-spacing:1.5px;
-}
-
-.error{
-display:none;
-margin-bottom:15px;
-padding:12px;
-color:#ffb2b2;
-background:rgba(255,0,0,.06);
-border:1px solid rgba(255,80,80,.3);
-font-size:12px;
-line-height:1.6;
-}
-
-label{
-display:block;
-margin-bottom:7px;
-color:#aaa;
-font-size:12px;
-}
-
-.field{
-margin-bottom:16px;
-}
-
-input,
-textarea,
-select{
-width:100%;
-padding:12px 13px;
-outline:none;
-color:#fff;
-background:#080808;
-border:1px solid var(--line);
-}
-
-textarea{
-min-height:110px;
-resize:vertical;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-border-color:var(--gold);
-}
-
-.login-btn,
-.gold{
-color:#050505;
-background:linear-gradient(135deg,#d4b86d,#92753d);
-border:1px solid var(--gold);
-font-weight:700;
-}
-
-.login-btn{
-width:100%;
-padding:13px;
+  z-index:0;
 }
 
 .header{
-position:sticky;
-top:0;
-z-index:100;
-height:76px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 35px;
-background:rgba(5,5,5,.92);
-backdrop-filter:blur(18px);
-border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  min-height:100px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 4vw;
+
+  background:rgba(5,5,5,.95);
+
+  border-top:1px solid rgba(200,164,91,.35);
+  border-bottom:1px solid var(--line);
+
+  backdrop-filter:blur(18px);
 }
 
 .brand{
-display:flex;
-align-items:center;
-gap:12px;
-color:#fff;
-text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
-.brand-logo{
-width:43px;
-height:43px;
-display:flex;
-align-items:center;
-justify-content:center;
-border:1px solid var(--gold);
-color:var(--gold-light);
-font:700 16px "Kanit";
+.logo{
+  width:52px;
+  height:52px;
+
+  border:1px solid var(--gold);
+
+  object-fit:contain;
 }
 
-.brand strong{
-display:block;
-font:500 16px "Kanit";
+.brand-name{
+  font-size:18px;
+  font-weight:700;
 }
 
-.brand span{
-display:block;
-color:#777;
-font-size:9px;
-letter-spacing:1.5px;
-}
-
-.header-right{
-display:flex;
-align-items:center;
-gap:9px;
+.brand-sub{
+  color:#777;
+  font-size:11px;
+  letter-spacing:2px;
 }
 
 .nav{
-display:flex;
-gap:6px;
+  display:flex;
+  gap:7px;
+  align-items:center;
 }
 
 .nav a,
 .logout{
-padding:8px 11px;
-color:#aaa;
-background:#0b0b0b;
-border:1px solid var(--line);
-text-decoration:none;
-font-size:10px;
+  min-height:40px;
+  padding:0 15px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#aaa;
+  text-decoration:none;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  background:#090909;
+
+  font-family:inherit;
+  font-size:13px;
+
+  cursor:pointer;
 }
 
 .nav a:hover,
+.nav a.active,
 .logout:hover{
-color:var(--gold-light);
-border-color:var(--gold-line);
+  color:var(--gold-light);
+  border-color:var(--gold-line);
 }
 
-.user-info{
-color:#777;
-font-size:10px;
+.user{
+  color:#777;
+  font-size:12px;
 }
 
-#app{
-display:none;
+.page{
+  position:relative;
+  z-index:1;
+
+  width:min(
+    calc(100% - 48px),
+    1540px
+  );
+
+  margin:auto;
+
+  padding:55px 0 80px;
 }
 
-.container{
-width:min(1400px,100%);
-margin:auto;
-padding:48px 35px 80px;
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+
+  margin-bottom:35px;
 }
 
-.heading{
-display:flex;
-justify-content:space-between;
-align-items:flex-end;
-gap:20px;
-margin-bottom:30px;
+.kicker{
+  color:var(--gold);
+  font-size:13px;
+  letter-spacing:4px;
+  font-weight:600;
 }
 
-.eyebrow{
-color:var(--gold);
-font-size:10px;
-letter-spacing:3px;
-}
+h1{
+  margin:7px 0 0;
 
-h2{
-margin-top:8px;
-font:500 46px "Kanit";
-line-height:1;
-}
-
-.heading p{
-margin-top:10px;
-color:#777;
-font-size:11px;
-}
-
-.actions{
-display:flex;
-gap:8px;
-}
-
-.btn{
-padding:10px 14px;
-color:#aaa;
-background:#0c0c0c;
-border:1px solid var(--line);
-font-size:11px;
-}
-
-.btn:hover{
-color:var(--gold-light);
-border-color:var(--gold-line);
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin-bottom:20px;
-}
-
-.stat{
-padding:19px;
-background:#101010;
-border:1px solid var(--line);
-}
-
-.stat small{
-color:#777;
-font-size:10px;
-}
-
-.stat strong{
-display:block;
-margin-top:5px;
-color:var(--gold-light);
-font:500 29px "Kanit";
-}
-
-.toolbar{
-display:flex;
-gap:10px;
-margin-bottom:20px;
-padding:13px;
-background:#0c0c0c;
-border:1px solid var(--line);
-}
-
-.toolbar input{
-flex:1;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:16px;
-}
-
-.card{
-overflow:hidden;
-background:linear-gradient(180deg,#121212,#0b0b0b);
-border:1px solid var(--line);
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-4px);
-border-color:var(--gold-line);
-box-shadow:0 20px 55px rgba(0,0,0,.5);
-}
-
-.image{
-height:230px;
-overflow:hidden;
-background:#080808;
-border-bottom:1px solid var(--line);
-}
-
-.image img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:.4s;
-}
-
-.card:hover img{
-transform:scale(1.04);
-}
-
-.no-image{
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:var(--gold);
-font:700 28px "Kanit";
-}
-
-.body{
-padding:16px;
-}
-
-.category{
-color:var(--gold);
-font-size:9px;
-letter-spacing:1.4px;
-}
-
-.name{
-margin-top:6px;
-font:500 19px "Kanit";
+  font-size:clamp(42px,5vw,60px);
+  line-height:1.2;
 }
 
 .desc{
-min-height:38px;
-margin-top:6px;
-color:#888;
-font-size:11px;
-line-height:1.7;
-}
-
-.pid{
-margin-top:8px;
-color:#666;
-font-size:10px;
-}
-
-.card-buttons{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:7px;
-margin-top:14px;
-}
-
-.card-buttons button{
-padding:8px;
-color:#bbb;
-background:#0e0e0e;
-border:1px solid var(--line);
-font-size:10px;
-}
-
-.card-buttons button:hover{
-color:var(--gold-light);
-border-color:var(--gold-line);
-}
-
-.delete{
-width:100%;
-margin-top:7px;
-padding:8px;
-color:#d88;
-background:#0d0d0d;
-border:1px solid rgba(255,80,80,.2);
-font-size:10px;
-}
-
-.empty{
-display:none;
-padding:70px;
-text-align:center;
-color:#777;
-border:1px solid var(--line);
-}
-
-.empty strong{
-display:block;
-margin-bottom:8px;
-color:var(--gold);
-font:500 22px "Kanit";
-}
-
-.modal{
-position:fixed;
-inset:0;
-z-index:500;
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:rgba(0,0,0,.8);
-backdrop-filter:blur(8px);
-}
-
-.modal-box{
-width:100%;
-max-width:700px;
-max-height:92vh;
-overflow:auto;
-background:#111;
-border:1px solid var(--gold-line);
-}
-
-.modal-head{
-position:sticky;
-top:0;
-z-index:2;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:17px 20px;
-background:#111;
-border-bottom:1px solid var(--line);
-}
-
-.modal-head h3{
-font:500 21px "Kanit";
-}
-
-.close{
-color:#888;
-background:none;
-border:0;
-font-size:25px;
-}
-
-.modal-body{
-padding:22px;
-}
-
-.option{
-display:grid;
-grid-template-columns:1fr 150px 40px;
-gap:7px;
-margin-bottom:8px;
-}
-
-.option button{
-color:#d88;
-background:#0b0b0b;
-border:1px solid rgba(255,80,80,.2);
-}
-
-.modal-actions{
-display:flex;
-justify-content:flex-end;
-gap:8px;
-padding-top:18px;
-margin-top:18px;
-border-top:1px solid var(--line);
-}
-
-.toast{
-position:fixed;
-right:20px;
-bottom:20px;
-z-index:1000;
-padding:13px 17px;
-color:#ddd;
-background:#111;
-border:1px solid var(--gold-line);
-font-size:12px;
-opacity:0;
-transform:translateY(10px);
-pointer-events:none;
-transition:.25s;
-}
-
-.toast.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.toast.error{
-color:#ffb2b2;
-border-color:rgba(255,80,80,.4);
-}
-
-@media(max-width:1100px){
-.products{
-grid-template-columns:repeat(3,1fr);
-}
-}
-
-@media(max-width:850px){
-.header{
-padding:0 18px;
-}
-
-.nav{
-display:none;
-}
-
-.user-info{
-display:none;
-}
-
-.container{
-padding:35px 18px 60px;
-}
-
-.heading{
-display:block;
+  margin-top:10px;
+  color:#777;
+  font-size:14px;
 }
 
 .actions{
-margin-top:20px;
+  display:flex;
+  gap:9px;
+}
+
+.btn{
+  min-height:44px;
+  padding:0 18px;
+
+  border:1px solid rgba(255,255,255,.11);
+
+  background:#101010;
+
+  color:#ddd;
+
+  font-family:inherit;
+  cursor:pointer;
+}
+
+.btn:hover{
+  color:var(--gold-light);
+  border-color:var(--gold-line);
+}
+
+.gold{
+  color:var(--gold-light);
+  border-color:var(--gold-line);
 }
 
 .stats{
-grid-template-columns:repeat(2,1fr);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:24px;
 }
 
-.products{
-grid-template-columns:repeat(2,1fr);
-}
+.stat{
+  padding:25px 22px;
+
+  border:1px solid var(--line);
+
+  background:rgba(255,255,255,.025);
 }
 
-@media(max-width:560px){
-.login-card{
-padding:30px 22px;
+.stat small{
+  color:#777;
 }
 
-h2{
-font-size:37px;
-}
+.stat strong{
+  display:block;
+  margin-top:14px;
 
-.products{
-grid-template-columns:1fr;
+  color:var(--gold-light);
+
+  font-size:32px;
 }
 
 .toolbar{
-display:grid;
+  padding:15px;
+
+  display:flex;
+  gap:12px;
+
+  border:1px solid var(--line);
+
+  margin-bottom:24px;
 }
 
-.option{
-grid-template-columns:1fr;
+input,
+select{
+  height:46px;
+
+  border:1px solid rgba(255,255,255,.10);
+
+  background:#090909;
+
+  color:#ddd;
+
+  font-family:inherit;
+
+  padding:0 14px;
+
+  outline:none;
 }
 
-.modal-actions{
-flex-direction:column;
+input{
+  flex:1;
 }
 
-.modal-actions button{
-width:100%;
+select{
+  min-width:210px;
 }
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card{
+  overflow:hidden;
+
+  border:1px solid var(--line);
+
+  background:#0b0b0b;
+}
+
+.card:hover{
+  border-color:var(--gold-line);
+}
+
+.card img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+}
+
+.info{
+  padding:18px;
+}
+
+.code{
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.name{
+  margin-top:7px;
+  color:#eee;
+  font-size:16px;
+  font-weight:600;
+}
+
+.price{
+  margin-top:9px;
+  color:var(--gold-light);
+  font-size:23px;
+  font-weight:700;
+}
+
+.actions2{
+  margin-top:16px;
+  display:flex;
+  gap:8px;
+}
+
+.actions2 button{
+  flex:1;
+}
+
+.empty{
+  padding:70px;
+  text-align:center;
+  color:#777;
+  border:1px solid var(--line);
+}
+
+@media(max-width:1200px){
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:900px){
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .user{
+    display:none;
+  }
+}
+
+@media(max-width:600px){
+
+  .header{
+    flex-direction:column;
+    align-items:stretch;
+    padding:14px 20px;
+    gap:14px;
+  }
+
+  .nav{
+    flex-wrap:wrap;
+  }
+
+  .nav a{
+    flex:1;
+  }
+
+  .page{
+    width:calc(100% - 28px);
+  }
+
+  .top{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:20px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .toolbar{
+    flex-direction:column;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="loading" id="loading">
-<div>
-<div class="loading-logo">CG</div>
-<p>กำลังตรวจสอบสิทธิ์...</p>
-</div>
-</div>
-
-<section class="login" id="login">
-
-<div class="login-card">
-
-<div class="logo">CG</div>
-
-<h1>Product Admin</h1>
-
-<div class="login-sub">
-CHATPETCH GROUP • BACK OFFICE
-</div>
-
-<div class="error" id="loginError"></div>
-
-<form id="loginForm">
-
-<div class="field">
-<label>อีเมล</label>
-<input
-id="email"
-type="email"
-placeholder="อีเมล"
-required
-autocomplete="username"
->
-</div>
-
-<div class="field">
-<label>รหัสผ่าน</label>
-<input
-id="password"
-type="password"
-placeholder="รหัสผ่าน"
-required
-autocomplete="current-password"
->
-</div>
-
-<button
-class="login-btn"
-id="loginButton"
-type="submit"
->
-เข้าสู่ระบบ
-</button>
-
-</form>
-
-</div>
-
-</section>
-
-
-<div id="app">
-
 <header class="header">
 
-<a href="admin.html" class="brand">
+  <div class="brand">
 
-<div class="brand-logo">CG</div>
+    <a href="admin.html">
+      <img
+        src="assets/logo.png"
+        class="logo"
+        alt="CHATPHETCH GROUP"
+      >
+    </a>
 
-<div>
-<strong>CHATPETCH GROUP</strong>
-<span>BACK OFFICE</span>
-</div>
+    <div>
+      <div class="brand-name">
+        CHATPHETCH GROUP
+      </div>
 
-</a>
+      <div class="brand-sub">
+        BACK OFFICE
+      </div>
+    </div>
 
-<div class="header-right">
+  </div>
 
-<nav class="nav">
+  <nav class="nav">
 
-<a href="admin.html">
-หน้าแรก
-</a>
+    <a href="admin.html">
+      หน้าแรก
+    </a>
 
-<a href="admin-store.html">
-สินค้า
-</a>
+    <a href="products.html">
+      สินค้า
+    </a>
 
-<a href="admin-products.html">
-จัดการสินค้า
-</a>
+    <a href="admin-products.html" class="active">
+      จัดการสินค้า
+    </a>
 
-<a
-href="admin-users.html"
-id="usersLink"
-style="display:none"
->
-ผู้ใช้งาน
-</a>
+    <a href="admin-users.html">
+      ผู้ใช้งาน
+    </a>
 
-</nav>
+    <span class="user" id="userName">
+      เจ้าของบริษัท · OWNER
+    </span>
 
-<div
-class="user-info"
-id="userInfo"
-></div>
+    <button
+      class="logout"
+      id="logout"
+    >
+      ออกจากระบบ
+    </button>
 
-<button
-class="logout"
-id="logout"
-type="button"
->
-ออกจากระบบ
-</button>
-
-</div>
+  </nav>
 
 </header>
 
 
-<main class="container">
+<main class="page">
 
-<section class="heading">
+  <div class="top">
 
-<div>
+    <div>
 
-<div class="eyebrow">
-PRODUCT MANAGEMENT
-</div>
+      <div class="kicker">
+        PRODUCT MANAGEMENT
+      </div>
 
-<h2>จัดการสินค้า</h2>
+      <h1>
+        จัดการสินค้า
+      </h1>
 
-<p id="permission">
-กำลังตรวจสอบสิทธิ์...
-</p>
+      <div class="desc">
+        Owner · จัดการสินค้า ลบสินค้า และจัดการข้อมูลหน้าร้าน
+      </div>
 
-</div>
+    </div>
 
-<div class="actions">
+    <div class="actions">
 
-<button
-class="btn"
-id="refresh"
-type="button"
->
-↻ รีเฟรช
-</button>
+      <button
+        class="btn"
+        onclick="loadProducts()"
+      >
+        ↻ รีเฟรช
+      </button>
 
-<button
-class="btn gold"
-id="add"
-type="button"
->
-＋ เพิ่มสินค้า
-</button>
+      <button
+        class="btn gold"
+        onclick="alert('ส่วนเพิ่มสินค้าสามารถเชื่อมกับฟอร์มเพิ่มสินค้าได้')"
+      >
+        ＋ เพิ่มสินค้า
+      </button>
 
-</div>
+    </div>
 
-</section>
-
-
-<section class="stats">
-
-<div class="stat">
-<small>PRODUCTS</small>
-<strong id="total">0</strong>
-</div>
-
-<div class="stat">
-<small>VISIBLE</small>
-<strong id="visible">0</strong>
-</div>
-
-<div class="stat">
-<small>HIDDEN</small>
-<strong id="hidden">0</strong>
-</div>
-
-<div class="stat">
-<small>CATEGORIES</small>
-<strong id="categories">0</strong>
-</div>
-
-</section>
+  </div>
 
 
-<section class="toolbar">
+  <div class="stats">
 
-<input
-id="search"
-type="search"
-placeholder="ค้นหาชื่อสินค้า / รหัสสินค้า / หมวดหมู่..."
->
+    <div class="stat">
+      <small>PRODUCTS</small>
+      <strong id="total">0</strong>
+    </div>
 
-<select id="category">
-<option value="all">
-ทุกหมวดหมู่
-</option>
-</select>
+    <div class="stat">
+      <small>VISIBLE</small>
+      <strong id="visible">0</strong>
+    </div>
 
-</section>
+    <div class="stat">
+      <small>HIDDEN</small>
+      <strong id="hidden">0</strong>
+    </div>
+
+    <div class="stat">
+      <small>CATEGORIES</small>
+      <strong id="categories">0</strong>
+    </div>
+
+  </div>
 
 
-<section
-class="products"
-id="products"
-></section>
+  <div class="toolbar">
+
+    <input
+      id="search"
+      placeholder="ค้นหาสินค้า / รหัสสินค้า"
+    >
+
+    <select id="category">
+
+      <option value="">
+        ทุกหมวดหมู่
+      </option>
+
+      <option value="floor">
+        พื้น
+      </option>
+
+      <option value="coating">
+        น้ำยาเคลือบ
+      </option>
+
+      <option value="other">
+        อื่น ๆ
+      </option>
+
+    </select>
+
+  </div>
 
 
-<section
-class="empty"
-id="empty"
->
-<strong>ไม่พบสินค้า</strong>
-<span>ยังไม่มีสินค้าหรือไม่พบข้อมูลตามเงื่อนไข</span>
-</section>
+  <div
+    class="grid"
+    id="productGrid"
+  ></div>
 
 </main>
-
-</div>
-
-
-<div
-class="modal"
-id="modal"
->
-
-<div class="modal-box">
-
-<div class="modal-head">
-
-<h3 id="modalTitle">
-เพิ่มสินค้า
-</h3>
-
-<button
-class="close"
-id="close"
-type="button"
->
-×
-</button>
-
-</div>
-
-<div class="modal-body">
-
-<form id="productForm">
-
-<div class="field">
-<label>รหัสสินค้า *</label>
-
-<input
-id="p_id"
-required
-placeholder="91428"
->
-</div>
-
-
-<div class="field">
-<label>ชื่อสินค้า *</label>
-
-<input
-id="p_name"
-required
-placeholder="ชื่อสินค้า"
->
-</div>
-
-
-<div class="field">
-<label>Category</label>
-
-<input
-id="p_category"
-placeholder="floor"
->
-</div>
-
-
-<div class="field">
-<label>ชื่อหมวดหมู่</label>
-
-<input
-id="p_category_label"
-placeholder="วัสดุงานพื้น"
->
-</div>
-
-
-<div class="field">
-<label>รูปภาพ</label>
-
-<input
-id="p_image"
-placeholder="assets/products/example.jpg"
->
-</div>
-
-
-<div class="field">
-<label>คำอธิบายสั้น</label>
-
-<textarea
-id="p_short"
-></textarea>
-</div>
-
-
-<div class="field">
-<label>รายละเอียดสินค้า</label>
-
-<textarea
-id="p_details"
-></textarea>
-</div>
-
-
-<div class="field">
-<label>ข้อมูลบรรจุภัณฑ์</label>
-
-<textarea
-id="p_package"
-></textarea>
-</div>
-
-
-<div class="field">
-<label>
-จุดเด่นสินค้า
-<br>
-<span style="color:#666;font-size:10px">
-1 บรรทัดต่อ 1 รายการ
-</span>
-</label>
-
-<textarea
-id="p_features"
-placeholder="สีคงทน ไม่ซีดจาง&#10;มีหลากหลายสีสัน&#10;ทนต่อทุกสภาพอากาศ"
-></textarea>
-</div>
-
-
-<div class="field">
-
-<label>
-ตัวเลือก / ราคา
-</label>
-
-<div id="options"></div>
-
-<button
-type="button"
-class="btn"
-id="addOption"
->
-＋ เพิ่มตัวเลือก
-</button>
-
-</div>
-
-
-<div class="field">
-
-<label
-style="
-display:flex;
-align-items:center;
-gap:8px;
-cursor:pointer;
-"
->
-
-<input
-id="p_hidden"
-type="checkbox"
-style="width:auto"
->
-
-ซ่อนสินค้าจากหน้าร้าน
-
-</label>
-
-</div>
-
-
-<div class="modal-actions">
-
-<button
-class="btn"
-id="cancel"
-type="button"
->
-ยกเลิก
-</button>
-
-<button
-class="btn gold"
-id="save"
-type="submit"
->
-บันทึกสินค้า
-</button>
-
-</div>
-
-</form>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="toast"
-id="toast"
-></div>
 
 
 <script>
 
-/* =====================================================
-   CONFIG
-===================================================== */
-
 const SUPABASE_URL =
-"https://mfhllgklcfnnbyyzzljz.supabase.co";
+  "https://mfhllgklcfnnbyyzzljz.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
+  "sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-/*
-  สำคัญ:
-  ไม่ใช้ ADMIN_EMAIL เป็นตัวล็อกระบบ
-  ระบบใช้ auth.users + public.admin_users
-*/
-
-let db = null;
-
-let currentUser = null;
-
-let currentAdmin = null;
-
-let currentRole = null;
-
-let productsData = [];
-
-let editingId = null;
+let products=[];
 
 
-/* =====================================================
-   DOM
-===================================================== */
+/* ================= PRODUCTS ================= */
 
-const $ = id =>
-document.getElementById(id);
+const defaultProducts=[
+
+  {
+    id:"91428",
+    name:"PREMIUM STAMPED CONCRETE (PSC)",
+    code:"91428",
+    category:"floor",
+    image:"assets/products/91428.jpg",
+    price:799,
+    visible:true
+  },
+
+  {
+    id:"91427",
+    name:"RELEASER POWER",
+    code:"91427",
+    category:"floor",
+    image:"assets/products/releaser-power.jpg",
+    price:1050,
+    visible:true
+  },
+
+  {
+    id:"91430",
+    name:"READY COAT (RCT)",
+    code:"91430",
+    category:"coating",
+    image:"assets/products/91430.jpg",
+    price:388,
+    visible:true
+  },
+
+  {
+    id:"91429",
+    name:"READY COAT COLOR (RCR)",
+    code:"91429",
+    category:"coating",
+    image:"assets/products/91429.jpg",
+    price:369,
+    visible:true
+  }
+
+];
 
 
-/* =====================================================
-   BASIC
-===================================================== */
+function money(value){
 
-function escapeHTML(value){
-
-if(
-value === null ||
-value === undefined
-){
-return "";
-}
-
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-}
-
-
-function toast(
-message,
-error=false
-){
-
-const el =
-$("toast");
-
-el.textContent =
-message;
-
-el.className =
-"toast show" +
-(
-error
-? " error"
-: ""
-);
-
-clearTimeout(
-window.toastTimer
-);
-
-window.toastTimer =
-setTimeout(
-()=>{
-el.className =
-"toast";
-},
-3500
-);
+  return Number(value||0)
+    .toLocaleString(
+      "th-TH"
+    ) + " ฿";
 
 }
 
 
-/* =====================================================
-   PERMISSIONS
-===================================================== */
+function render(){
 
-function isAdmin(){
+  const keyword =
+    document.getElementById(
+      "search"
+    ).value
+      .toLowerCase()
+      .trim();
 
-return Boolean(
-currentAdmin &&
-currentAdmin.active === true &&
-[
-"owner",
-"manager",
-"staff",
-"viewer"
-].includes(
-currentAdmin.role
-)
-);
+  const category =
+    document.getElementById(
+      "category"
+    ).value;
 
-}
+  const list =
+    products.filter(p=>{
 
+      const matchText =
+        !keyword ||
+        (
+          p.name +
+          " " +
+          p.code
+        )
+        .toLowerCase()
+        .includes(keyword);
 
-function canEdit(){
+      const matchCategory =
+        !category ||
+        p.category === category;
 
-return [
-"owner",
-"manager"
-].includes(
-currentRole
-);
+      return (
+        matchText &&
+        matchCategory
+      );
 
-}
-
-
-function canDelete(){
-
-return currentRole ===
-"owner";
-
-}
+    });
 
 
-function canUsers(){
+  if(!list.length){
 
-return currentRole ===
-"owner";
+    document.getElementById(
+      "productGrid"
+    ).innerHTML=`
+      <div class="empty">
+        ไม่พบสินค้า
+      </div>
+    `;
 
-}
+    return;
 
-
-/* =====================================================
-   SUPABASE
-===================================================== */
-
-function init(){
-
-if(
-!window.supabase ||
-!window.supabase.createClient
-){
-
-throw new Error(
-"ไม่สามารถโหลด Supabase SDK ได้"
-);
-
-}
-
-db =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY,
-{
-auth:{
-persistSession:true,
-autoRefreshToken:true,
-detectSessionInUrl:false
-}
-}
-);
-
-}
+  }
 
 
-/* =====================================================
-   AUTH
-===================================================== */
+  document.getElementById(
+    "productGrid"
+  ).innerHTML =
+    list.map(p=>`
 
-async function getAdminProfile(
-user
-){
+      <article class="card">
 
-const {
-data,
-error
-} =
-await db
-.from("admin_users")
-.select(
-"user_id,email,name,role,active"
-)
-.eq(
-"user_id",
-user.id
-)
-.maybeSingle();
+        <img
+          src="${p.image}"
+          alt="${p.name}"
+          onerror="this.style.display='none'"
+        >
 
+        <div class="info">
 
-if(error){
+          <div class="code">
+            ${p.code}
+          </div>
 
-throw new Error(
-"อ่านข้อมูล admin_users ไม่สำเร็จ: " +
-error.message
-);
+          <div class="name">
+            ${p.name}
+          </div>
+
+          <div class="price">
+            ${money(p.price)}
+          </div>
+
+          <div class="actions2">
+
+            <button
+              class="btn"
+              onclick="location.href='product-detail.html?id=${p.id}'"
+            >
+              ดูสินค้า
+            </button>
+
+            <button
+              class="btn"
+              onclick="alert('แก้ไขสินค้า ${p.code}')"
+            >
+              แก้ไข
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `).join("");
 
 }
 
-
-if(!data){
-
-throw new Error(
-"บัญชีนี้ยังไม่ได้รับสิทธิ์ Admin ใน public.admin_users"
-);
-
-}
-
-
-if(
-data.active !== true
-){
-
-throw new Error(
-"บัญชี Admin นี้ถูกปิดการใช้งาน"
-);
-
-}
-
-
-if(
-![
-"owner",
-"manager",
-"staff",
-"viewer"
-].includes(
-data.role
-)
-){
-
-throw new Error(
-"Role ของบัญชีนี้ไม่ถูกต้อง"
-);
-
-}
-
-
-return data;
-
-}
-
-
-async function checkSession(){
-
-const {
-data,
-error
-} =
-await db.auth.getSession();
-
-
-if(error){
-
-throw error;
-
-}
-
-
-if(
-!data.session
-){
-
-showLogin();
-
-return;
-
-}
-
-
-currentUser =
-data.session.user;
-
-
-currentAdmin =
-await getAdminProfile(
-currentUser
-);
-
-
-currentRole =
-currentAdmin.role;
-
-
-showApp();
-
-}
-
-
-function showLogin(){
-
-$("loading").style.display =
-"none";
-
-$("app").style.display =
-"none";
-
-$("login").style.display =
-"flex";
-
-}
-
-
-async function showApp(){
-
-$("loading").style.display =
-"none";
-
-$("login").style.display =
-"none";
-
-$("app").style.display =
-"block";
-
-
-$("userInfo").textContent =
-(
-currentAdmin.name ||
-currentUser.email
-) +
-" • " +
-currentRole.toUpperCase();
-
-
-$("permission").textContent =
-getPermissionText();
-
-
-$("usersLink").style.display =
-canUsers()
-? "inline-block"
-: "none";
-
-
-$("add").style.display =
-canEdit()
-? "block"
-: "none";
-
-
-await loadProducts();
-
-}
-
-
-function getPermissionText(){
-
-if(
-currentRole === "owner"
-){
-
-return "Owner • จัดการสินค้า ลบสินค้า และจัดการผู้ใช้งานได้";
-
-}
-
-if(
-currentRole === "manager"
-){
-
-return "Manager • เพิ่มและแก้ไขสินค้าได้ แต่ไม่สามารถลบสินค้า";
-
-}
-
-if(
-currentRole === "staff"
-){
-
-return "Staff • ดูข้อมูลสินค้าได้";
-
-}
-
-return "Viewer • ดูข้อมูลสินค้าได้อย่างเดียว";
-
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-$("loginForm")
-.addEventListener(
-"submit",
-async event=>{
-
-event.preventDefault();
-
-
-$("loginButton").disabled =
-true;
-
-$("loginButton").textContent =
-"กำลังเข้าสู่ระบบ...";
-
-
-$("loginError").style.display =
-"none";
-
-
-try{
-
-const email =
-$("email")
-.value
-.trim();
-
-
-const password =
-$("password")
-.value;
-
-
-const {
-data,
-error
-} =
-await db.auth.signInWithPassword({
-
-email,
-
-password
-
-});
-
-
-if(error){
-
-throw error;
-
-}
-
-
-if(
-!data ||
-!data.user
-){
-
-throw new Error(
-"ไม่พบผู้ใช้งาน"
-);
-
-}
-
-
-currentUser =
-data.user;
-
-
-currentAdmin =
-await getAdminProfile(
-currentUser
-);
-
-
-currentRole =
-currentAdmin.role;
-
-
-await showApp();
-
-
-}catch(error){
-
-console.error(
-error
-);
-
-
-$("loginError").textContent =
-error.message ||
-"เข้าสู่ระบบไม่สำเร็จ";
-
-
-$("loginError").style.display =
-"block";
-
-
-await db.auth.signOut();
-
-}finally{
-
-$("loginButton").disabled =
-false;
-
-$("loginButton").textContent =
-"เข้าสู่ระบบ";
-
-}
-
-}
-);
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-$("logout")
-.addEventListener(
-"click",
-async()=>{
-
-await db.auth.signOut();
-
-currentUser =
-null;
-
-currentAdmin =
-null;
-
-currentRole =
-null;
-
-productsData =
-[];
-
-showLogin();
-
-}
-);
-
-
-/* =====================================================
-   PRODUCTS
-===================================================== */
 
 async function loadProducts(){
 
-try{
+  products =
+    defaultProducts.slice();
 
-const {
-data,
-error
-} =
-await db
-.from("products")
-.select("*")
-.order(
-"created_at",
-{
-ascending:true
+  /*
+    ถ้ามี table products ใน Supabase
+    ให้ใช้ข้อมูลจากฐานข้อมูลแทนได้ในภายหลัง
+  */
+
+  updateStats();
+
+  render();
+
 }
+
+
+function updateStats(){
+
+  document.getElementById(
+    "total"
+  ).textContent =
+    products.length;
+
+  document.getElementById(
+    "visible"
+  ).textContent =
+    products.filter(
+      p=>p.visible
+    ).length;
+
+  document.getElementById(
+    "hidden"
+  ).textContent =
+    products.filter(
+      p=>!p.visible
+    ).length;
+
+  document.getElementById(
+    "categories"
+  ).textContent =
+    new Set(
+      products.map(
+        p=>p.category
+      )
+    ).size;
+
+}
+
+
+async function init(){
+
+  const {
+    data
+  } =
+    await supabaseClient
+      .auth
+      .getSession();
+
+  if(!data.session){
+
+    location.href =
+      "admin.html";
+
+    return;
+
+  }
+
+  const user =
+    data.session.user;
+
+  const {
+    data:admin
+  } =
+    await supabaseClient
+      .from("admin_users")
+      .select("*")
+      .eq(
+        "user_id",
+        user.id
+      )
+      .maybeSingle();
+
+  if(
+    !admin ||
+    !admin.active
+  ){
+
+    await supabaseClient
+      .auth
+      .signOut();
+
+    location.href =
+      "admin.html";
+
+    return;
+
+  }
+
+  document.getElementById(
+    "userName"
+  ).textContent =
+    `${admin.name || "ผู้ดูแล"} · ${String(admin.role).toUpperCase()}`;
+
+  await loadProducts();
+
+}
+
+
+document.getElementById(
+  "search"
+).addEventListener(
+  "input",
+  render
 );
 
-
-if(error){
-
-throw error;
-
-}
-
-
-productsData =
-data || [];
-
-
-renderStats();
-
-renderCategories();
-
-renderProducts();
-
-
-}catch(error){
-
-console.error(
-error
+document.getElementById(
+  "category"
+).addEventListener(
+  "change",
+  render
 );
 
-toast(
-"โหลดสินค้าไม่สำเร็จ: " +
-error.message,
-true
+document.getElementById(
+  "logout"
+).addEventListener(
+  "click",
+  async()=>{
+
+    await supabaseClient
+      .auth
+      .signOut();
+
+    location.href =
+      "admin.html";
+
+  }
 );
 
-}
-
-}
-
-
-function renderStats(){
-
-$("total").textContent =
-productsData.length;
-
-
-$("visible").textContent =
-productsData.filter(
-p=>!p.hidden
-).length;
-
-
-$("hidden").textContent =
-productsData.filter(
-p=>p.hidden
-).length;
-
-
-$("categories").textContent =
-new Set(
-productsData
-.map(
-p=>p.category
-)
-.filter(Boolean)
-).size;
-
-}
-
-
-function renderCategories(){
-
-const current =
-$("category").value;
-
-
-const categories =
-[
-...new Set(
-productsData
-.map(
-p=>p.category
-)
-.filter(Boolean)
-)
-]
-.sort();
-
-
-$("category").innerHTML =
-`
-<option value="all">
-ทุกหมวดหมู่
-</option>
-`;
-
-
-categories.forEach(
-category=>{
-
-const option =
-document.createElement(
-"option"
-);
-
-option.value =
-category;
-
-option.textContent =
-category;
-
-$("category")
-.appendChild(
-option
-);
-
-}
-);
-
-
-if(
-categories.includes(
-current
-)
-){
-
-$("category").value =
-current;
-
-}
-
-}
-
-
-function filtered(){
-
-const keyword =
-$("search")
-.value
-.trim()
-.toLowerCase();
-
-
-const category =
-$("category")
-.value;
-
-
-return productsData.filter(
-product=>{
-
-if(
-category !== "all" &&
-product.category !== category
-){
-
-return false;
-
-}
-
-
-if(!keyword){
-
-return true;
-
-}
-
-
-const text =
-[
-product.id,
-product.name,
-product.category,
-product.category_label,
-product.short_desc,
-product.details,
-product.package_info
-]
-.filter(Boolean)
-.join(" ")
-.toLowerCase();
-
-
-return text.includes(
-keyword
-);
-
-}
-);
-
-}
-
-
-function renderProducts(){
-
-const list =
-filtered();
-
-
-$("products").innerHTML =
-"";
-
-
-$("empty").style.display =
-list.length
-? "none"
-: "block";
-
-
-list.forEach(
-product=>{
-
-const card =
-document.createElement(
-"article"
-);
-
-card.className =
-"card";
-
-
-const image =
-product.image
-?
-`
-<img
-src="${escapeHTML(product.image)}"
-alt="${escapeHTML(product.name)}"
-onerror="this.style.display='none'"
->
-`
-:
-`
-<div class="no-image">
-CG
-</div>
-`;
-
-
-let buttons =
-"";
-
-
-if(
-canEdit()
-){
-
-buttons =
-`
-<div class="card-buttons">
-
-<button
-type="button"
-data-edit="${escapeHTML(product.id)}"
->
-✎ แก้ไข
-</button>
-
-<button
-type="button"
-data-toggle="${escapeHTML(product.id)}"
->
-${
-product.hidden
-? "◉ แสดง"
-: "◌ ซ่อน"
-}
-</button>
-
-</div>
-`;
-
-}else{
-
-buttons =
-`
-<div
-style="
-margin-top:14px;
-padding:9px;
-text-align:center;
-color:#666;
-border:1px solid var(--line);
-font-size:10px;
-"
->
-ดูข้อมูลอย่างเดียว
-</div>
-`;
-
-}
-
-
-let deleteButton =
-"";
-
-
-if(
-canDelete()
-){
-
-deleteButton =
-`
-<button
-class="delete"
-type="button"
-data-delete="${escapeHTML(product.id)}"
->
-🗑 ลบสินค้า
-</button>
-`;
-
-}
-
-
-card.innerHTML =
-`
-
-<div class="image">
-
-${image}
-
-${
-product.hidden
-?
-`
-<div
-style="
-position:absolute;
-top:10px;
-right:10px;
-padding:5px 8px;
-color:#aaa;
-background:#111;
-border:1px solid var(--line);
-font-size:9px;
-"
->
-ซ่อน
-</div>
-`
-:""
-}
-
-</div>
-
-<div class="body">
-
-<div class="category">
-${
-escapeHTML(
-product.category_label ||
-product.category ||
-"PRODUCT"
-)
-}
-</div>
-
-<div class="name">
-${
-escapeHTML(
-product.name ||
-"ไม่มีชื่อสินค้า"
-)
-}
-</div>
-
-<div class="desc">
-${
-escapeHTML(
-product.short_desc ||
-"ไม่มีคำอธิบาย"
-)
-}
-</div>
-
-<div class="pid">
-ID:
-${
-escapeHTML(
-product.id
-)
-}
-</div>
-
-${buttons}
-
-${deleteButton}
-
-</div>
-`;
-
-
-$("products")
-.appendChild(
-card
-);
-
-}
-);
-
-
-/* EDIT */
-
-document
-.querySelectorAll(
-"[data-edit]"
-)
-.forEach(
-button=>{
-
-button.onclick =
-()=>openEdit(
-button.dataset.edit
-);
-
-}
-);
-
-
-/* TOGGLE */
-
-document
-.querySelectorAll(
-"[data-toggle]"
-)
-.forEach(
-button=>{
-
-button.onclick =
-()=>toggleProduct(
-button.dataset.toggle
-);
-
-}
-);
-
-
-/* DELETE */
-
-document
-.querySelectorAll(
-"[data-delete]"
-)
-.forEach(
-button=>{
-
-button.onclick =
-()=>deleteProduct(
-button.dataset.delete
-);
-
-}
-);
-
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-function openAdd(){
-
-if(
-!canEdit()
-){
-
-toast(
-"บัญชีนี้ไม่มีสิทธิ์เพิ่มสินค้า",
-true
-);
-
-return;
-
-}
-
-
-editingId =
-null;
-
-
-$("modalTitle").textContent =
-"เพิ่มสินค้า";
-
-
-$("productForm").reset();
-
-
-$("p_id").disabled =
-false;
-
-
-$("options").innerHTML =
-"";
-
-
-addOption();
-
-
-$("modal").style.display =
-"flex";
-
-}
-
-
-function openEdit(id){
-
-if(
-!canEdit()
-){
-
-toast(
-"บัญชีนี้ไม่มีสิทธิ์แก้ไขสินค้า",
-true
-);
-
-return;
-
-}
-
-
-const product =
-productsData.find(
-p=>p.id === id
-);
-
-
-if(!product){
-
-return;
-
-}
-
-
-editingId =
-id;
-
-
-$("modalTitle").textContent =
-"แก้ไขสินค้า";
-
-
-$("p_id").value =
-product.id || "";
-
-
-$("p_id").disabled =
-true;
-
-
-$("p_name").value =
-product.name || "";
-
-
-$("p_category").value =
-product.category || "";
-
-
-$("p_category_label").value =
-product.category_label || "";
-
-
-$("p_image").value =
-product.image || "";
-
-
-$("p_short").value =
-product.short_desc || "";
-
-
-$("p_details").value =
-product.details || "";
-
-
-$("p_package").value =
-product.package_info || "";
-
-
-$("p_hidden").checked =
-Boolean(
-product.hidden
-);
-
-
-$("p_features").value =
-Array.isArray(
-product.features
-)
-?
-product.features.join("\n")
-:
-"";
-
-
-$("options").innerHTML =
-"";
-
-
-if(
-Array.isArray(
-product.options
-) &&
-product.options.length
-){
-
-product.options.forEach(
-option=>addOption(
-option
-)
-);
-
-}else{
-
-addOption();
-
-}
-
-
-$("modal").style.display =
-"flex";
-
-}
-
-
-function closeModal(){
-
-$("modal").style.display =
-"none";
-
-editingId =
-null;
-
-$("p_id").disabled =
-false;
-
-}
-
-
-function addOption(
-option={}
-){
-
-const row =
-document.createElement(
-"div"
-);
-
-row.className =
-"option";
-
-
-row.innerHTML =
-`
-
-<input
-class="option-label"
-placeholder="เช่น 18KG"
-value="${escapeHTML(
-option.label ||
-option.name ||
-option.size ||
-""
-)}"
->
-
-<input
-class="option-price"
-type="number"
-min="0"
-step="0.01"
-placeholder="ราคา"
-value="${escapeHTML(
-option.price ??
-""
-)}"
->
-
-<button
-type="button"
->
-×
-</button>
-`;
-
-
-row
-.querySelector("button")
-.onclick =
-()=>row.remove();
-
-
-$("options")
-.appendChild(
-row
-);
-
-}
-
-
-function readOptions(){
-
-return [
-...
-$("options")
-.querySelectorAll(
-".option"
-)
-]
-.map(
-row=>{
-
-const label =
-row
-.querySelector(
-".option-label"
-)
-.value
-.trim();
-
-
-const price =
-row
-.querySelector(
-".option-price"
-)
-.value
-.trim();
-
-
-if(
-!label &&
-!price
-){
-
-return null;
-
-}
-
-
-return {
-
-label,
-
-price:
-price
-?
-Number(price)
-:
-0
-
-};
-
-}
-)
-.filter(Boolean);
-
-}
-
-
-/* =====================================================
-   SAVE
-===================================================== */
-
-$("productForm")
-.addEventListener(
-"submit",
-async event=>{
-
-event.preventDefault();
-
-
-if(
-!canEdit()
-){
-
-toast(
-"ไม่มีสิทธิ์แก้ไขสินค้า",
-true
-);
-
-return;
-
-}
-
-
-const id =
-$("p_id")
-.value
-.trim();
-
-
-const name =
-$("p_name")
-.value
-.trim();
-
-
-if(!id){
-
-toast(
-"กรุณากรอกรหัสสินค้า",
-true
-);
-
-return;
-
-}
-
-
-if(!name){
-
-toast(
-"กรุณากรอกชื่อสินค้า",
-true
-);
-
-return;
-
-}
-
-
-const featuresText =
-$("p_features")
-.value
-.trim();
-
-
-const product = {
-
-id,
-
-name,
-
-category:
-$("p_category")
-.value
-.trim(),
-
-category_label:
-$("p_category_label")
-.value
-.trim(),
-
-image:
-$("p_image")
-.value
-.trim(),
-
-short_desc:
-$("p_short")
-.value
-.trim(),
-
-details:
-$("p_details")
-.value
-.trim(),
-
-package_info:
-$("p_package")
-.value
-.trim(),
-
-features:
-featuresText
-?
-featuresText
-.split(/\r?\n/)
-.map(x=>x.trim())
-.filter(Boolean)
-:[],
-
-options:
-readOptions(),
-
-hidden:
-$("p_hidden")
-.checked,
-
-updated_at:
-new Date()
-.toISOString()
-
-};
-
-
-$("save").disabled =
-true;
-
-$("save").textContent =
-"กำลังบันทึก...";
-
-
-try{
-
-let result;
-
-
-if(
-editingId
-){
-
-result =
-await db
-.from("products")
-.update(
-product
-)
-.eq(
-"id",
-editingId
-);
-
-}else{
-
-result =
-await db
-.from("products")
-.insert(
-product
-);
-
-}
-
-
-if(result.error){
-
-throw result.error;
-
-}
-
-
-toast(
-editingId
-?
-"แก้ไขสินค้าเรียบร้อยแล้ว"
-:
-"เพิ่มสินค้าเรียบร้อยแล้ว"
-);
-
-
-closeModal();
-
-await loadProducts();
-
-
-}catch(error){
-
-console.error(
-error
-);
-
-toast(
-"บันทึกไม่สำเร็จ: " +
-error.message,
-true
-);
-
-}finally{
-
-$("save").disabled =
-false;
-
-$("save").textContent =
-"บันทึกสินค้า";
-
-}
-
-}
-);
-
-
-/* =====================================================
-   TOGGLE
-===================================================== */
-
-async function toggleProduct(id){
-
-if(
-!canEdit()
-){
-
-toast(
-"ไม่มีสิทธิ์เปลี่ยนสถานะสินค้า",
-true
-);
-
-return;
-
-}
-
-
-const product =
-productsData.find(
-p=>p.id === id
-);
-
-
-if(!product){
-
-return;
-
-}
-
-
-const {
-error
-} =
-await db
-.from("products")
-.update({
-hidden:
-!Boolean(
-product.hidden
-),
-updated_at:
-new Date()
-.toISOString()
-})
-.eq(
-"id",
-id
-);
-
-
-if(error){
-
-toast(
-"เปลี่ยนสถานะไม่สำเร็จ: " +
-error.message,
-true
-);
-
-return;
-
-}
-
-
-toast(
-product.hidden
-?
-"แสดงสินค้าแล้ว"
-:
-"ซ่อนสินค้าแล้ว"
-);
-
-
-await loadProducts();
-
-}
-
-
-/* =====================================================
-   DELETE
-===================================================== */
-
-async function deleteProduct(id){
-
-if(
-!canDelete()
-){
-
-toast(
-"เฉพาะ Owner เท่านั้นที่ลบสินค้าได้",
-true
-);
-
-return;
-
-}
-
-
-const product =
-productsData.find(
-p=>p.id === id
-);
-
-
-if(!product){
-
-return;
-
-}
-
-
-if(
-!confirm(
-"ต้องการลบสินค้า\n\n" +
-product.name +
-"\n\nใช่หรือไม่?"
-)
-){
-
-return;
-
-}
-
-
-const {
-error
-} =
-await db
-.from("products")
-.delete()
-.eq(
-"id",
-id
-);
-
-
-if(error){
-
-toast(
-"ลบสินค้าไม่สำเร็จ: " +
-error.message,
-true
-);
-
-return;
-
-}
-
-
-toast(
-"ลบสินค้าเรียบร้อยแล้ว"
-);
-
-
-await loadProducts();
-
-}
-
-
-/* =====================================================
-   EVENTS
-===================================================== */
-
-$("add")
-.onclick =
-openAdd;
-
-
-$("refresh")
-.onclick =
-loadProducts;
-
-
-$("close")
-.onclick =
-closeModal;
-
-
-$("cancel")
-.onclick =
-closeModal;
-
-
-$("addOption")
-.onclick =
-()=>addOption();
-
-
-$("search")
-.oninput =
-renderProducts;
-
-
-$("category")
-.onchange =
-renderProducts;
-
-
-$("modal")
-.onclick =
-event=>{
-
-if(
-event.target ===
-$("modal")
-){
-
-closeModal();
-
-}
-
-};
-
-
-document.addEventListener(
-"keydown",
-event=>{
-
-if(
-event.key === "Escape"
-){
-
-closeModal();
-
-}
-
-}
-);
-
-
-/* =====================================================
-   AUTH STATE
-===================================================== */
-
-function setupAuth(){
-
-db.auth.onAuthStateChange(
-(event,session)=>{
-
-if(
-event === "SIGNED_OUT"
-){
-
-showLogin();
-
-}
-
-}
-);
-
-}
-
-
-/* =====================================================
-   START
-===================================================== */
-
-(async function(){
-
-try{
 
 init();
-
-setupAuth();
-
-await checkSession();
-
-}catch(error){
-
-console.error(
-"START ERROR:",
-error
-);
-
-$("loading").style.display =
-"none";
-
-showLogin();
-
-$("loginError").textContent =
-error.message ||
-"ระบบไม่สามารถเริ่มทำงานได้";
-
-$("loginError").style.display =
-"block";
-
-}
-
-})();
 
 </script>
 
