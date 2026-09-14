@@ -1466,6 +1466,9 @@ body::before{
 }
 
 .product-card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
   background:
     linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
   border:1px solid var(--line);
@@ -1522,6 +1525,38 @@ body::before{
 
 .product-content{
   padding:22px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+/* จัดข้อมูลใน Card ให้เสมอกันทุกสินค้า */
+.product-name{
+  min-height:52px;
+  display:flex;
+  align-items:flex-start;
+}
+
+.product-short{
+  min-height:51px;
+  max-height:51px;
+  overflow:hidden;
+}
+
+.product-price{
+  margin-top:15px;
+  min-height:36px;
+  display:flex;
+  align-items:center;
+}
+
+.shipping-highlight{
+  min-height:36px;
+}
+
+.product-actions{
+  margin-top:auto;
+  padding-top:18px;
 }
 
 .product-category{
@@ -1722,11 +1757,13 @@ body::before{
 
   .product-name{
     font-size:16px;
+    min-height:40px;
   }
 
   .product-short{
     font-size:12px;
-    min-height:auto;
+    min-height:38px;
+    max-height:38px;
   }
 
   .product-price{
