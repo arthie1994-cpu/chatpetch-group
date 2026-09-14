@@ -2,81 +2,40 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
-<title>CHATPHETCH GROUP | Admin Dashboard</title>
-
-<meta
-  name="description"
-  content="CHATPHETCH GROUP Admin Dashboard"
->
+<title>CHATPHETCH GROUP — Back Office</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700;800&display=swap"
-  rel="stylesheet"
->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root{
-
   --black:#050505;
   --black2:#080808;
   --dark:#0d0d0d;
-  --dark2:#111111;
-  --dark3:#181818;
+  --dark2:#111;
+  --dark3:#171717;
 
   --gold:#c8a45b;
   --gold-light:#f0d991;
   --gold-dark:#806127;
 
-  --white:#ffffff;
-  --soft:#e8e8e8;
-  --gray:#9b9b9b;
-  --gray2:#686868;
+  --white:#fff;
+  --soft:#ddd;
+  --gray:#858585;
 
   --line:rgba(255,255,255,.09);
-  --line2:rgba(255,255,255,.05);
+  --gold-line:rgba(200,164,91,.30);
 
-  --gold-line:rgba(200,164,91,.28);
-
-  --green:#29c76f;
-  --green-bg:rgba(41,199,111,.10);
-
-  --yellow:#e7b84b;
-  --yellow-bg:rgba(231,184,75,.10);
-
-  --red:#ff6868;
-  --red-bg:rgba(255,104,104,.10);
-
-  --blue:#6ea8ff;
-  --blue-bg:rgba(110,168,255,.10);
-
-  --container:1380px;
-
+  --container:1540px;
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0;
 }
 
 html{
@@ -84,1150 +43,286 @@ html{
 }
 
 body{
-
+  margin:0;
   min-height:100vh;
-
   color:var(--white);
-  background:var(--black);
-
   font-family:"Prompt","Kanit",sans-serif;
 
-  overflow-x:hidden;
-
+  background:
+    radial-gradient(circle at 12% 12%,rgba(200,164,91,.075),transparent 28%),
+    radial-gradient(circle at 88% 20%,rgba(200,164,91,.055),transparent 28%),
+    #050505;
 }
 
 body::before{
-
   content:"";
-
   position:fixed;
-
   inset:0;
-
-  z-index:-3;
-
   pointer-events:none;
 
-  background:
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
 
-    linear-gradient(
-      rgba(255,255,255,.025) 1px,
-      transparent 1px
-    ),
+  background-size:40px 40px;
 
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.025) 1px,
-      transparent 1px
-    );
+  mask-image:linear-gradient(
+    to bottom,
+    black,
+    rgba(0,0,0,.6),
+    transparent
+  );
 
-  background-size:44px 44px;
-
+  z-index:0;
 }
 
-body::after{
+/* ================= HEADER ================= */
 
-  content:"";
+.admin-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
 
-  position:fixed;
+  min-height:100px;
 
-  width:700px;
-  height:700px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-  top:-250px;
-  right:-180px;
+  padding:0 clamp(24px,4vw,60px);
 
-  z-index:-2;
+  background:rgba(5,5,5,.94);
 
-  pointer-events:none;
+  border-top:1px solid rgba(200,164,91,.35);
+  border-bottom:1px solid var(--line);
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(200,164,91,.13),
-      rgba(200,164,91,.03) 40%,
-      transparent 70%
-    );
-
-  filter:blur(20px);
-
+  backdrop-filter:blur(18px);
 }
 
-button,
-input,
-select,
-textarea{
-  font:inherit;
+.admin-brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 
-button{
-  cursor:pointer;
+.brand-logo{
+  width:52px;
+  height:52px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid var(--gold);
+
+  background:#080808;
+
+  overflow:hidden;
+  flex-shrink:0;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+.brand-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
 }
 
-img{
-  max-width:100%;
-}
-
-::selection{
-  background:rgba(200,164,91,.3);
+.brand-name{
   color:#fff;
+  font-size:18px;
+  font-weight:700;
+  line-height:1.2;
+  white-space:nowrap;
 }
 
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar{
-  width:8px;
+.brand-sub{
+  margin-top:4px;
+  color:#777;
+  font-size:11px;
+  letter-spacing:2px;
 }
 
-::-webkit-scrollbar-track{
-  background:#070707;
+.admin-nav{
+  display:flex;
+  align-items:center;
+  gap:7px;
 }
 
-::-webkit-scrollbar-thumb{
-  background:#3b321f;
-  border-radius:20px;
+.admin-nav a{
+  min-height:40px;
+  padding:0 15px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#aaa;
+  text-decoration:none;
+
+  border:1px solid rgba(255,255,255,.08);
+  background:#090909;
+
+  font-size:13px;
+
+  transition:.2s ease;
 }
 
-::-webkit-scrollbar-thumb:hover{
-  background:var(--gold-dark);
+.admin-nav a:hover,
+.admin-nav a.active{
+  color:var(--gold-light);
+  border-color:var(--gold-line);
+  background:rgba(200,164,91,.06);
 }
 
+.admin-user{
+  color:#858585;
+  font-size:12px;
+  margin-left:8px;
+  white-space:nowrap;
+}
 
-/* =========================================================
-   COMMON
-========================================================= */
+.logout-btn{
+  min-height:40px;
+  padding:0 16px;
 
-.container{
+  border:1px solid rgba(255,255,255,.12);
+  background:#111;
+
+  color:#ddd;
+  font-family:inherit;
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.logout-btn:hover{
+  color:var(--gold-light);
+  border-color:var(--gold-line);
+}
+
+/* ================= PAGE ================= */
+
+.admin-page{
+  position:relative;
+  z-index:1;
 
   width:min(
     calc(100% - 48px),
     var(--container)
   );
 
-  margin:0 auto;
+  margin:auto;
 
+  padding:55px 0 90px;
 }
 
-.gold{
-  color:var(--gold-light);
-}
-
-
-/* =========================================================
-   LOADING
-========================================================= */
-
-.loading-screen{
-
-  position:fixed;
-
-  inset:0;
-
-  z-index:9999;
-
+.page-top{
   display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
 
-  align-items:center;
-  justify-content:center;
+  gap:30px;
 
-  background:#050505;
-
+  margin-bottom:35px;
 }
 
-.loading-box{
-
-  width:min(
-    calc(100% - 40px),
-    420px
-  );
-
-  padding:45px 30px;
-
-  text-align:center;
-
-  border:1px solid var(--gold-line);
-
-  border-radius:24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.045),
-      rgba(255,255,255,.015)
-    );
-
-  box-shadow:
-    0 30px 100px rgba(0,0,0,.7);
-
-}
-
-.loading-logo{
-
-  width:90px;
-  height:90px;
-
-  object-fit:contain;
-
-  margin-bottom:22px;
-
-}
-
-.loading-spinner{
-
-  width:36px;
-  height:36px;
-
-  margin:0 auto 18px;
-
-  border:3px solid rgba(255,255,255,.08);
-
-  border-top-color:var(--gold);
-
-  border-radius:50%;
-
-  animation:spin 1s linear infinite;
-
-}
-
-.loading-text{
-
-  color:#aaa;
-
-  font-size:14px;
-
-}
-
-@keyframes spin{
-
-  to{
-    transform:rotate(360deg);
-  }
-
-}
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-.login-screen{
-
-  min-height:100vh;
-
-  display:none;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:30px;
-
-  background:
-    radial-gradient(
-      circle at 50% 35%,
-      rgba(200,164,91,.10),
-      transparent 40%
-    );
-
-}
-
-.login-card{
-
-  width:min(
-    100%,
-    470px
-  );
-
-  padding:45px 38px;
-
-  text-align:center;
-
-  border:1px solid var(--gold-line);
-
-  border-radius:28px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.055),
-      rgba(255,255,255,.015)
-    );
-
-  box-shadow:
-    0 35px 100px rgba(0,0,0,.65);
-
-}
-
-.login-logo{
-
-  width:120px;
-  height:120px;
-
-  object-fit:contain;
-
-  margin-bottom:18px;
-
-}
-
-.login-title{
-
-  color:#fff;
-
-  font-family:"Kanit","Prompt",sans-serif;
-
-  font-size:36px;
-
-  line-height:1.25;
-
-  margin-bottom:10px;
-
-}
-
-.login-subtitle{
-
-  color:#929292;
-
-  font-size:14px;
-
-  line-height:1.8;
-
-  margin-bottom:28px;
-
-}
-
-.login-btn{
-
-  width:100%;
-
-  padding:15px 20px;
-
-  border:1px solid var(--gold);
-
-  border-radius:12px;
-
-  color:#080808;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--gold-light),
-      var(--gold)
-    );
-
-  font-weight:700;
-
-  transition:.25s ease;
-
-}
-
-.login-btn:hover{
-
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 15px 35px rgba(200,164,91,.18);
-
-}
-
-.login-btn:disabled{
-
-  opacity:.6;
-
-  cursor:wait;
-
-}
-
-.login-error{
-
-  display:none;
-
-  margin-top:18px;
-
-  padding:13px 15px;
-
-  border:1px solid rgba(255,104,104,.25);
-
-  border-radius:10px;
-
-  color:#ff9b9b;
-
-  background:rgba(255,104,104,.07);
-
+.page-kicker{
+  color:var(--gold);
   font-size:13px;
-
-  line-height:1.6;
-
+  font-weight:600;
+  letter-spacing:4px;
+  margin-bottom:7px;
 }
 
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:1000;
-
-  border-bottom:1px solid var(--line);
-
-  background:
-    rgba(5,5,5,.94);
-
-  backdrop-filter:blur(20px);
-
-  -webkit-backdrop-filter:blur(20px);
-
-}
-
-.header-inner{
-
-  min-height:90px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:28px;
-
-}
-
-.logo{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:14px;
-
-  flex-shrink:0;
-
-}
-
-.logo img{
-
-  width:68px;
-  height:68px;
-
-  object-fit:contain;
-
-}
-
-.logo-text{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:4px;
-
-}
-
-.logo-title{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:9px;
+.page-title{
+  margin:0;
 
   color:#fff;
-
-  font-family:"Kanit","Prompt",sans-serif;
-
-  font-size:20px;
-
-  font-weight:800;
-
-  line-height:1.2;
-
-  white-space:nowrap;
-
-}
-
-.logo-sub{
-
-  color:#777;
-
-  font-size:10px;
-
-  letter-spacing:1.5px;
-
-}
-
-.admin-tag{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  padding:4px 9px;
-
-  border:1px solid var(--gold-line);
-
-  border-radius:999px;
-
-  color:var(--gold-light);
 
   font-family:"Prompt",sans-serif;
 
-  font-size:9px;
+  font-size:clamp(40px,5vw,60px);
+  line-height:1.2;
 
   font-weight:700;
+  letter-spacing:-1.5px;
 
-  letter-spacing:.6px;
-
+  overflow:visible;
 }
 
-.nav-menu{
-
-  flex:1;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:5px;
-
-}
-
-.nav-menu a{
-
-  padding:10px 14px;
-
-  border:1px solid transparent;
-
-  border-radius:9px;
-
-  color:#999;
-
-  font-size:13px;
-
-  transition:.2s ease;
-
-}
-
-.nav-menu a:hover{
-
-  color:#fff;
-
-  background:rgba(255,255,255,.04);
-
-}
-
-.nav-menu a.active{
-
-  color:var(--gold-light);
-
-  border-color:var(--gold-line);
-
-  background:rgba(200,164,91,.055);
-
-}
-
-.user-area{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-}
-
-.user-role{
-
-  min-width:72px;
-
-  padding:7px 11px;
-
-  text-align:center;
-
-  border:1px solid var(--gold-line);
-
-  border-radius:999px;
-
-  color:var(--gold-light);
-
-  font-size:10px;
-
-  font-weight:700;
-
-  letter-spacing:.7px;
-
-}
-
-.logout-btn{
-
-  padding:11px 15px;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-  color:#ddd;
-
-  background:#111;
-
-  font-size:12px;
-
-  transition:.2s ease;
-
-}
-
-.logout-btn:hover{
-
-  border-color:var(--gold-line);
-
-  color:var(--gold-light);
-
-}
-
-.mobile-btn{
-
-  display:none;
-
-  width:42px;
-  height:42px;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-  color:#fff;
-
-  background:#111;
-
-}
-
-
-/* =========================================================
-   MOBILE NAV
-========================================================= */
-
-@media(max-width:1050px){
-
-  .nav-menu{
-
-    position:absolute;
-
-    left:20px;
-    right:20px;
-    top:82px;
-
-    display:none;
-
-    flex-direction:column;
-
-    align-items:stretch;
-
-    padding:12px;
-
-    border:1px solid var(--line);
-
-    border-radius:16px;
-
-    background:#0b0b0b;
-
-    box-shadow:0 20px 60px rgba(0,0,0,.6);
-
-  }
-
-  .nav-menu.show{
-    display:flex;
-  }
-
-  .nav-menu a{
-    padding:13px 15px;
-  }
-
-  .mobile-btn{
-    display:block;
-  }
-
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.admin-hero{
-
-  position:relative;
-
-  padding:72px 0 45px;
-
-  overflow:hidden;
-
-}
-
-.admin-hero::before{
-
-  content:"";
-
-  position:absolute;
-
-  width:500px;
-  height:500px;
-
-  left:-250px;
-  top:-250px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(200,164,91,.08),
-      transparent 70%
-    );
-
-}
-
-.eyebrow{
-
-  margin-bottom:14px;
-
-  color:var(--gold);
-
-  font-size:11px;
-
-  font-weight:600;
-
-  letter-spacing:3px;
-
-}
-
-.hero-title{
-
-  position:relative;
-
-  color:#fff;
-
-  font-family:"Kanit","Prompt",sans-serif;
-
-  font-size:clamp(
-    42px,
-    6vw,
-    78px
-  );
-
-  font-weight:800;
-
-  line-height:1.12;
-
-}
-
-.hero-title span{
-
-  color:var(--gold-light);
-
-}
-
-.hero-description{
-
-  max-width:720px;
-
-  margin-top:15px;
-
-  color:#858585;
-
-  font-size:14px;
-
-  line-height:1.9;
-
-}
-
-.hero-number{
-
-  position:absolute;
-
-  right:5%;
-
-  top:45px;
-
-  color:rgba(200,164,91,.055);
-
-  font-family:"Kanit",sans-serif;
-
-  font-size:180px;
-
-  font-weight:800;
-
-  line-height:1;
-
-  pointer-events:none;
-
-}
-
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
-
-.dashboard{
-
-  padding:10px 0 80px;
-
-}
-
-.dashboard-top{
-
-  display:flex;
-
-  align-items:end;
-
-  justify-content:space-between;
-
-  gap:20px;
-
-  margin-bottom:24px;
-
-}
-
-.section-label{
-
-  margin-bottom:8px;
-
-  color:var(--gold);
-
-  font-size:10px;
-
-  letter-spacing:2.5px;
-
-  font-weight:600;
-
-}
-
-.section-title{
-
-  color:#fff;
-
-  font-family:"Kanit","Prompt",sans-serif;
-
-  font-size:34px;
-
-  line-height:1.3;
-
-}
-
-.dashboard-actions{
-
-  display:flex;
-
-  gap:9px;
-
-}
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
-.btn{
-
-  min-height:42px;
-
-  padding:10px 16px;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-  color:#ddd;
-
-  background:#111;
-
-  font-size:12px;
-
-  transition:.2s ease;
-
-}
-
-.btn:hover{
-
-  border-color:var(--gold-line);
-
-  color:var(--gold-light);
-
-  transform:translateY(-1px);
-
-}
-
-.btn-gold{
-
-  color:#080808;
-
-  border-color:var(--gold);
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--gold-light),
-      var(--gold)
-    );
-
-  font-weight:700;
-
-}
-
-.btn-danger{
-
-  color:#ffaaaa;
-
-  border-color:rgba(255,104,104,.3);
-
-  background:rgba(255,104,104,.07);
-
-}
-
-.btn-danger:hover{
-
-  color:#fff;
-
-  border-color:rgba(255,104,104,.6);
-
-  background:rgba(255,104,104,.13);
-
-}
-
-.btn:disabled{
-
-  opacity:.5;
-
-  cursor:not-allowed;
-
-  transform:none;
-
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:16px;
-
-  margin-bottom:25px;
-
-}
-
-.stat-card{
-
-  position:relative;
-
-  min-height:145px;
-
-  padding:24px;
-
-  overflow:hidden;
-
-  border:1px solid var(--line);
-
-  border-radius:20px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.045),
-      rgba(255,255,255,.015)
-    );
-
-}
-
-.stat-card::after{
-
-  content:"";
-
-  position:absolute;
-
-  width:180px;
-  height:180px;
-
-  right:-80px;
-  bottom:-100px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(200,164,91,.09),
-      transparent 70%
-    );
-
-}
-
-.stat-card.gold{
-
-  border-color:var(--gold-line);
-
-}
-
-.stat-label{
-
-  color:#7e7e7e;
-
-  font-size:10px;
-
-  letter-spacing:2px;
-
-  font-weight:600;
-
-}
-
-.stat-number{
-
-  margin-top:13px;
-
-  color:var(--gold-light);
-
-  font-family:"Kanit",sans-serif;
-
-  font-size:38px;
-
-  font-weight:700;
-
-  line-height:1;
-
-}
-
-.stat-sub{
-
-  margin-top:10px;
-
-  color:#999;
-
-  font-size:12px;
-
-}
-
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-.filter-box{
-
-  display:grid;
-
-  grid-template-columns:1fr 220px;
-
-  gap:10px;
-
-  margin-bottom:16px;
-
-}
-
-.search-wrap{
-
-  position:relative;
-
-}
-
-.search-icon{
-
-  position:absolute;
-
-  left:15px;
-  top:50%;
-
-  transform:translateY(-50%);
+.page-description{
+  margin:10px 0 0;
 
   color:#777;
 
-  font-size:19px;
-
-  pointer-events:none;
-
+  font-size:14px;
+  line-height:1.8;
 }
 
-.search-input,
-.filter-select{
+.page-actions{
+  display:flex;
+  gap:9px;
+}
 
-  width:100%;
+/* ================= BUTTON ================= */
 
-  height:52px;
+.btn{
+  min-height:44px;
+  padding:0 18px;
 
-  padding:0 16px;
-
-  border:1px solid var(--line);
-
-  border-radius:12px;
-
-  outline:none;
-
-  color:#ddd;
+  border:1px solid rgba(255,255,255,.11);
 
   background:#101010;
 
-  font-family:"Prompt","Kanit",sans-serif;
+  color:#ddd;
 
+  font-family:inherit;
   font-size:13px;
 
-  transition:.2s ease;
+  cursor:pointer;
 
+  transition:.2s;
 }
 
-.search-input{
-
-  padding-left:45px;
-
-}
-
-.search-input::placeholder{
-  color:#666;
-}
-
-.search-input:focus,
-.filter-select:focus{
-
+.btn:hover{
+  color:var(--gold-light);
   border-color:var(--gold-line);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(200,164,91,.04);
-
+  background:#151515;
 }
 
-.filter-select option{
+.btn-gold{
+  color:var(--gold-light);
+  border-color:var(--gold-line);
+  background:rgba(200,164,91,.06);
+}
 
-  background:#111;
+.btn-danger{
+  color:#ff8a8a;
+  border-color:rgba(255,80,80,.20);
+}
 
+.btn-danger:hover{
   color:#fff;
-
+  background:rgba(170,30,30,.15);
+  border-color:rgba(255,80,80,.35);
 }
 
+/* ================= STATS ================= */
 
-/* =========================================================
-   ORDERS BOX
-========================================================= */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:25px;
+}
 
-.orders-box{
+.stat-card{
+  min-height:132px;
 
-  overflow:hidden;
+  padding:26px 22px;
 
   border:1px solid var(--line);
-
-  border-radius:22px;
 
   background:
     linear-gradient(
@@ -1236,1428 +331,615 @@ header{
       rgba(255,255,255,.012)
     );
 
+  position:relative;
+  overflow:hidden;
 }
 
-.orders-header{
+.stat-card::after{
+  content:"";
+  position:absolute;
 
-  min-height:65px;
+  width:180px;
+  height:180px;
 
-  padding:0 20px;
+  right:-100px;
+  top:-100px;
 
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  border-bottom:1px solid var(--line);
-
+  background:radial-gradient(
+    circle,
+    rgba(200,164,91,.12),
+    transparent 70%
+  );
 }
 
-.orders-header-title{
-
-  color:#fff;
-
-  font-family:"Kanit","Prompt",sans-serif;
-
-  font-size:18px;
-
-  font-weight:600;
-
-}
-
-.orders-header-count{
-
+.stat-label{
   color:#777;
-
-  font-size:11px;
-
+  font-size:12px;
 }
 
-.table-scroll{
+.stat-number{
+  margin-top:15px;
 
-  width:100%;
+  color:var(--gold-light);
 
-  overflow-x:auto;
-
+  font-size:34px;
+  font-weight:700;
+  line-height:1;
 }
 
-table{
+/* ================= TOOLBAR ================= */
 
+.toolbar{
+  display:flex;
+  gap:12px;
+
+  margin-bottom:23px;
+
+  padding:15px;
+
+  border:1px solid var(--line);
+
+  background:rgba(255,255,255,.018);
+}
+
+.search-input,
+.filter-select{
+  height:46px;
+
+  border:1px solid rgba(255,255,255,.10);
+
+  background:#090909;
+
+  color:#ddd;
+
+  font-family:inherit;
+  font-size:13px;
+
+  outline:none;
+}
+
+.search-input{
+  flex:1;
+  padding:0 15px;
+}
+
+.filter-select{
+  min-width:210px;
+  padding:0 14px;
+}
+
+.search-input:focus,
+.filter-select:focus{
+  border-color:rgba(200,164,91,.45);
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap{
+  overflow:auto;
+
+  border:1px solid var(--line);
+
+  background:#080808;
+}
+
+.admin-table{
   width:100%;
-
-  min-width:1000px;
+  min-width:1100px;
 
   border-collapse:collapse;
-
 }
 
-thead{
+.admin-table th{
+  padding:18px;
 
-  background:rgba(255,255,255,.025);
+  color:var(--gold-light);
 
-}
-
-th{
-
-  padding:17px 18px;
+  background:#111;
 
   text-align:left;
 
-  color:#bca86f;
-
-  font-size:11px;
-
+  font-size:13px;
   font-weight:600;
 
-  white-space:nowrap;
-
   border-bottom:1px solid var(--line);
-
 }
 
-td{
+.admin-table td{
+  padding:17px 18px;
 
-  padding:18px;
+  color:#d0d0d0;
 
-  border-bottom:1px solid var(--line2);
+  font-size:13px;
+
+  border-bottom:1px solid rgba(255,255,255,.07);
 
   vertical-align:middle;
-
 }
 
-tbody tr{
-
-  transition:.18s ease;
-
+.admin-table tr:hover td{
+  background:rgba(200,164,91,.025);
 }
 
-tbody tr:hover{
-
-  background:rgba(255,255,255,.018);
-
-}
-
-tbody tr:last-child td{
-  border-bottom:none;
-}
-
-.order-id{
-
+.order-number{
   color:var(--gold-light);
-
-  font-size:14px;
-
   font-weight:700;
-
-  white-space:nowrap;
-
-}
-
-.order-id-sub{
-
-  margin-top:4px;
-
-  color:#5f5f5f;
-
-  font-size:10px;
-
 }
 
 .customer-name{
-
   color:#eee;
-
-  font-size:13px;
-
   font-weight:600;
-
 }
 
-.customer-phone{
-
+.muted{
   margin-top:3px;
-
   color:#777;
-
-  font-size:10px;
-
-}
-
-.province{
-
-  color:#bbb;
-
   font-size:12px;
-
 }
 
-.item-count{
-
-  color:#aaa;
-
-  font-size:12px;
-
-}
-
-.order-total{
-
-  color:#fff;
-
-  font-size:14px;
-
+.total{
+  color:#eee;
   font-weight:700;
-
-  white-space:nowrap;
-
 }
 
-.payment-text{
-
-  color:#aaa;
-
-  font-size:11px;
-
-  line-height:1.6;
-
-}
-
-.payment-ok{
-
-  color:#62dc91;
-
-}
-
-.payment-wait{
-
-  color:#e5bc5c;
-
-}
+/* ================= STATUS ================= */
 
 .status{
-
   display:inline-flex;
-
   align-items:center;
+  justify-content:center;
 
-  gap:7px;
-
-  padding:7px 11px;
+  min-height:30px;
+  padding:0 12px;
 
   border-radius:999px;
 
-  font-size:10px;
-
-  font-weight:600;
-
-  white-space:nowrap;
-
-}
-
-.status::before{
-
-  content:"";
-
-  width:6px;
-  height:6px;
-
-  border-radius:50%;
-
-  background:currentColor;
-
-}
-
-.status.pending{
-
-  color:#e7b84b;
-
-  background:var(--yellow-bg);
-
-}
-
-.status.confirmed{
-
-  color:#8ab8ff;
-
-  background:var(--blue-bg);
-
-}
-
-.status.preparing{
-
-  color:#caa7ff;
-
-  background:rgba(202,167,255,.09);
-
-}
-
-.status.shipping{
-
-  color:#76cfff;
-
-  background:rgba(118,207,255,.09);
-
-}
-
-.status.completed{
-
-  color:#4fda83;
-
-  background:var(--green-bg);
-
-}
-
-.status.cancelled{
-
-  color:#ff7e7e;
-
-  background:var(--red-bg);
-
-}
-
-.order-date{
-
-  color:#777;
-
-  font-size:10px;
-
-  white-space:nowrap;
-
-}
-
-.row-actions{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:6px;
-
-}
-
-.icon-btn{
-
-  min-width:40px;
-  height:38px;
-
-  padding:0 12px;
-
-  border:1px solid var(--line);
-
-  border-radius:9px;
-
-  color:#ddd;
-
-  background:#111;
-
   font-size:11px;
-
   white-space:nowrap;
-
-  transition:.2s ease;
-
 }
 
-.icon-btn:hover{
-
-  color:var(--gold-light);
-
-  border-color:var(--gold-line);
-
+.status-pending,
+.status-preparing{
+  color:#e8c15f;
+  background:rgba(196,145,30,.15);
 }
 
-.icon-btn.delete{
-
-  color:#ff9090;
-
+.status-shipping{
+  color:#d8bd72;
+  background:rgba(200,164,91,.15);
 }
 
-.icon-btn.delete:hover{
-
-  color:#fff;
-
-  border-color:rgba(255,104,104,.45);
-
-  background:rgba(255,104,104,.08);
-
+.status-completed{
+  color:#5cdb8d;
+  background:rgba(24,140,67,.15);
 }
 
-
-/* =========================================================
-   EMPTY
-========================================================= */
-
-.empty-state{
-
-  padding:80px 20px;
-
-  text-align:center;
-
+.status-cancelled{
+  color:#ff7474;
+  background:rgba(180,30,30,.14);
 }
 
-.empty-icon{
-
-  color:#5e5032;
-
-  font-size:42px;
-
-  margin-bottom:15px;
-
-}
-
-.empty-state h3{
-
-  color:#ddd;
-
-  font-family:"Kanit",sans-serif;
-
-  font-size:21px;
-
-  line-height:1.4;
-
-}
-
-.empty-state p{
-
-  margin-top:6px;
-
-  color:#666;
-
-  font-size:12px;
-
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
+/* ================= MODAL ================= */
 
 .modal{
-
   position:fixed;
-
   inset:0;
-
-  z-index:3000;
-
-  display:none;
-
-  align-items:center;
-
-  justify-content:center;
-
-  padding:25px;
-
-  background:rgba(0,0,0,.78);
-
-  backdrop-filter:blur(10px);
-
-  -webkit-backdrop-filter:blur(10px);
-
-}
-
-.modal.show{
-
-  display:flex;
-
-}
-
-.modal-card{
-
-  width:min(
-    100%,
-    1050px
-  );
-
-  max-height:
-    calc(100vh - 50px);
-
-  display:flex;
-
-  flex-direction:column;
-
-  overflow:hidden;
-
-  border:1px solid var(--gold-line);
-
-  border-radius:24px;
-
-  background:#0c0c0c;
-
-  box-shadow:
-    0 35px 120px rgba(0,0,0,.8);
-
-}
-
-.modal-header{
-
-  min-height:72px;
-
-  padding:0 23px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  flex-shrink:0;
-
-  border-bottom:1px solid var(--line);
-
-  background:#0d0d0d;
-
-}
-
-.modal-title{
-
-  color:#fff;
-
-  font-family:"Kanit","Prompt",sans-serif;
-
-  font-size:21px;
-
-  font-weight:600;
-
-}
-
-.modal-close{
-
-  width:40px;
-  height:40px;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-  color:#aaa;
-
-  background:#111;
-
-  font-size:25px;
-
-  line-height:1;
-
-}
-
-.modal-close:hover{
-
-  color:#fff;
-
-  border-color:var(--gold-line);
-
-}
-
-.modal-body{
-
-  padding:24px;
-
-  overflow-y:auto;
-
-}
-
-.modal-footer{
-
-  min-height:70px;
-
-  padding:0 23px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:flex-end;
-
-  gap:9px;
-
-  flex-shrink:0;
-
-  border-top:1px solid var(--line);
-
-  background:#0d0d0d;
-
-}
-
-
-/* =========================================================
-   DETAIL
-========================================================= */
-
-.detail-top{
-
-  display:flex;
-
-  align-items:flex-start;
-
-  justify-content:space-between;
-
-  gap:20px;
-
-  margin-bottom:22px;
-
-  padding-bottom:20px;
-
-  border-bottom:1px solid var(--line);
-
-}
-
-.detail-order-number{
-
-  color:var(--gold-light);
-
-  font-family:"Kanit",sans-serif;
-
-  font-size:27px;
-
-  font-weight:700;
-
-  line-height:1.3;
-
-}
-
-.detail-created{
-
-  margin-top:6px;
-
-  color:#777;
-
-  font-size:11px;
-
-}
-
-.detail-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  gap:10px;
-
-}
-
-.detail-card{
-
-  padding:16px;
-
-  border:1px solid var(--line2);
-
-  border-radius:13px;
-
-  background:
-    rgba(255,255,255,.02);
-
-}
-
-.detail-card.full{
-
-  grid-column:1/-1;
-
-}
-
-.detail-label{
-
-  margin-bottom:6px;
-
-  color:#696969;
-
-  font-size:9px;
-
-  letter-spacing:1.4px;
-
-  font-weight:600;
-
-}
-
-.detail-value{
-
-  color:#ddd;
-
-  font-size:12px;
-
-  line-height:1.8;
-
-  white-space:pre-wrap;
-
-  overflow-wrap:anywhere;
-
-}
-
-.detail-value.gold{
-
-  color:var(--gold-light);
-
-  font-size:15px;
-
-  font-weight:700;
-
-}
-
-.detail-section-title{
-
-  margin:27px 0 12px;
-
-  padding-left:11px;
-
-  border-left:2px solid var(--gold);
-
-  color:#fff;
-
-  font-family:"Kanit","Prompt",sans-serif;
-
-  font-size:17px;
-
-  line-height:1.5;
-
-}
-
-.detail-items{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:8px;
-
-}
-
-.detail-item{
-
-  display:grid;
-
-  grid-template-columns:65px 1fr auto;
-
-  align-items:center;
-
-  gap:13px;
-
-  padding:12px;
-
-  border:1px solid var(--line2);
-
-  border-radius:13px;
-
-  background:rgba(255,255,255,.018);
-
-}
-
-.detail-item-image{
-
-  width:65px;
-  height:65px;
-
-  overflow:hidden;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-  background:#080808;
-
-}
-
-.detail-item-image img{
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-}
-
-.detail-item-name{
-
-  color:#eee;
-
-  font-size:13px;
-
-  font-weight:600;
-
-  line-height:1.5;
-
-}
-
-.detail-item-meta{
-
-  margin-top:3px;
-
-  color:#6f6f6f;
-
-  font-size:10px;
-
-  line-height:1.6;
-
-}
-
-.detail-item-price{
-
-  color:var(--gold-light);
-
-  font-size:12px;
-
-  font-weight:600;
-
-  text-align:right;
-
-}
-
-.detail-item-quantity{
-
-  margin-top:4px;
-
-  color:#777;
-
-  font-size:10px;
-
-  text-align:right;
-
-}
-
-.total-box{
-
-  margin-top:10px;
-
-  padding:17px;
-
-  display:flex;
-
-  justify-content:flex-end;
-
-  align-items:center;
-
-  gap:20px;
-
-  border:1px solid var(--gold-line);
-
-  border-radius:13px;
-
-  background:
-    rgba(200,164,91,.045);
-
-}
-
-.total-label{
-
-  color:#999;
-
-  font-size:12px;
-
-}
-
-.total-value{
-
-  color:var(--gold-light);
-
-  font-family:"Kanit",sans-serif;
-
-  font-size:25px;
-
-  font-weight:700;
-
-}
-
-.status-edit{
-
-  display:flex;
-
-  gap:9px;
-
-  align-items:center;
-
-}
-
-.status-select{
-
-  flex:1;
-
-  height:46px;
-
-  padding:0 13px;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-  outline:none;
-
-  color:#ddd;
-
-  background:#111;
-
-  font-size:12px;
-
-}
-
-.status-select:focus{
-
-  border-color:var(--gold-line);
-
-}
-
-
-/* =========================================================
-   PAYMENT SLIP
-========================================================= */
-
-.slip-box{
-
-  min-height:100px;
-
-  padding:16px;
-
-  border:1px solid var(--line2);
-
-  border-radius:14px;
-
-  background:#090909;
-
-}
-
-.slip-preview-wrap{
-
-  display:flex;
-
-  align-items:flex-start;
-
-  gap:18px;
-
-  flex-wrap:wrap;
-
-}
-
-.slip-preview{
-
-  width:min(
-    280px,
-    100%
-  );
-
-  max-height:420px;
-
-  object-fit:contain;
-
-  border:1px solid var(--line);
-
-  border-radius:12px;
-
-  background:#000;
-
-}
-
-.slip-info{
-
-  flex:1;
-
-  min-width:220px;
-
-}
-
-.slip-status{
-
-  color:#aaa;
-
-  font-size:12px;
-
-  line-height:1.8;
-
-}
-
-.verify-box{
-
-  margin-top:15px;
-
-  padding:14px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  gap:12px;
-
-  flex-wrap:wrap;
-
-  border:1px solid var(--line);
-
-  border-radius:12px;
-
-  background:rgba(255,255,255,.018);
-
-}
-
-.verify-label{
-
-  color:#888;
-
-  font-size:11px;
-
-  line-height:1.7;
-
-}
-
-.verify-label strong{
-
-  display:block;
-
-  color:#ddd;
-
-  font-size:12px;
-
-}
-
-
-/* =========================================================
-   DELETE CONFIRM
-========================================================= */
-
-.delete-warning{
-
-  padding:22px;
-
-  border:1px solid rgba(255,104,104,.25);
-
-  border-radius:14px;
-
-  background:rgba(255,104,104,.045);
-
-}
-
-.delete-warning-title{
-
-  color:#ffaaaa;
-
-  font-family:"Kanit",sans-serif;
-
-  font-size:19px;
-
-  line-height:1.4;
-
-}
-
-.delete-warning-text{
-
-  margin-top:9px;
-
-  color:#999;
-
-  font-size:12px;
-
-  line-height:1.8;
-
-}
-
-.delete-order-name{
-
-  margin-top:15px;
-
-  padding:13px;
-
-  border:1px solid var(--line);
-
-  border-radius:9px;
-
-  color:var(--gold-light);
-
-  background:#090909;
-
-  font-size:13px;
-
-  font-weight:600;
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-
-  position:fixed;
-
-  right:25px;
-  bottom:25px;
 
   z-index:5000;
 
-  max-width:
-    min(420px,calc(100% - 30px));
+  display:none;
+  align-items:center;
+  justify-content:center;
 
-  padding:13px 17px;
+  padding:22px;
 
-  opacity:0;
+  background:rgba(0,0,0,.82);
 
-  pointer-events:none;
+  backdrop-filter:blur(8px);
+}
 
-  transform:
-    translateY(15px);
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(900px,100%);
+  max-height:90vh;
+
+  overflow:auto;
+
+  background:#0c0c0c;
 
   border:1px solid var(--gold-line);
 
-  border-radius:12px;
+  box-shadow:0 30px 100px rgba(0,0,0,.7);
+}
 
-  color:#eee;
+.modal-header{
+  min-height:70px;
+
+  padding:0 22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border-bottom:1px solid var(--line);
+}
+
+.modal-title{
+  color:var(--gold-light);
+  font-size:19px;
+  font-weight:600;
+}
+
+.modal-close{
+  width:38px;
+  height:38px;
+
+  border:1px solid var(--line);
 
   background:#111;
 
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.6);
+  color:#aaa;
 
+  cursor:pointer;
+}
+
+.modal-body{
+  padding:24px;
+}
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.detail-card{
+  padding:17px;
+
+  border:1px solid var(--line);
+
+  background:#101010;
+}
+
+.detail-card.full{
+  grid-column:1/-1;
+}
+
+.detail-label{
+  color:#777;
+  font-size:11px;
+  margin-bottom:6px;
+}
+
+.detail-value{
+  color:#eee;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.detail-items{
+  margin-top:20px;
+
+  border-top:1px solid var(--line);
+}
+
+.item-row{
+  padding:14px 0;
+
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.item-image{
+  width:60px;
+  height:60px;
+
+  object-fit:cover;
+
+  background:#161616;
+
+  border:1px solid var(--line);
+}
+
+.item-info{
+  flex:1;
+}
+
+.item-name{
+  color:#eee;
+  font-weight:600;
+}
+
+.item-meta{
+  color:#777;
   font-size:12px;
+  margin-top:3px;
+}
 
-  line-height:1.6;
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
 
-  transition:.25s ease;
+  margin-top:24px;
+}
 
+/* ================= LOADING ================= */
+
+.loading{
+  padding:70px 20px;
+  text-align:center;
+  color:#777;
+}
+
+.spinner{
+  width:28px;
+  height:28px;
+
+  margin:0 auto 14px;
+
+  border:2px solid rgba(255,255,255,.10);
+  border-top-color:var(--gold);
+
+  border-radius:50%;
+
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+
+  right:24px;
+  bottom:24px;
+
+  z-index:9000;
+
+  min-width:280px;
+  max-width:420px;
+
+  padding:15px 18px;
+
+  border:1px solid var(--gold-line);
+
+  background:#111;
+
+  color:#eee;
+
+  box-shadow:0 15px 50px rgba(0,0,0,.5);
+
+  display:none;
 }
 
 .toast.show{
-
-  opacity:1;
-
-  transform:translateY(0);
-
+  display:block;
 }
 
 .toast.error{
-
-  border-color:rgba(255,104,104,.35);
-
-  color:#ffaaaa;
-
+  border-color:rgba(255,80,80,.35);
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-
-  padding:35px 0;
-
-  border-top:1px solid var(--line);
-
-  background:#070707;
-
+.toast.success{
+  border-color:rgba(80,210,130,.35);
 }
 
-.footer-inner{
+/* ================= LOGIN ================= */
+
+.login-screen{
+  position:fixed;
+  inset:0;
+
+  z-index:10000;
 
   display:flex;
-
   align-items:center;
+  justify-content:center;
 
-  justify-content:space-between;
+  padding:20px;
 
-  gap:20px;
-
+  background:#050505;
 }
 
-.footer-brand{
+.login-box{
+  width:min(430px,100%);
 
-  color:#888;
+  padding:38px;
 
-  font-size:11px;
+  text-align:center;
 
-  line-height:1.8;
+  border:1px solid var(--gold-line);
 
+  background:#0c0c0c;
+
+  box-shadow:0 30px 100px rgba(0,0,0,.7);
 }
 
-.footer-brand strong{
+.login-logo{
+  width:82px;
+  height:82px;
 
-  color:#ddd;
+  margin:0 auto 20px;
 
+  object-fit:contain;
 }
 
-.footer-links{
+.login-title{
+  margin:0;
 
-  display:flex;
-
-  gap:15px;
-
-  flex-wrap:wrap;
-
+  font-size:27px;
+  line-height:1.25;
 }
 
-.footer-links a{
+.login-title span{
+  color:var(--gold-light);
+}
+
+.login-sub{
+  margin:10px 0 26px;
 
   color:#777;
 
-  font-size:11px;
-
+  font-size:13px;
 }
 
-.footer-links a:hover{
+.login-btn{
+  width:100%;
+  min-height:48px;
+
+  border:1px solid var(--gold-line);
+
+  background:rgba(200,164,91,.07);
 
   color:var(--gold-light);
 
+  font-family:inherit;
+  font-size:14px;
+
+  cursor:pointer;
 }
 
+.login-btn:hover{
+  background:rgba(200,164,91,.13);
+}
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+.login-error{
+  margin-top:15px;
+
+  color:#ff7777;
+
+  font-size:12px;
+
+  line-height:1.7;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1200px){
+
+  .admin-nav a{
+    padding:0 10px;
+  }
+
+  .admin-user{
+    display:none;
+  }
+}
 
 @media(max-width:900px){
 
-  .stats-grid{
+  .admin-header{
+    min-height:auto;
 
-    grid-template-columns:
-      repeat(2,1fr);
-
-  }
-
-  .dashboard-top{
+    padding:14px 20px;
 
     align-items:flex-start;
+    gap:15px;
+  }
 
+  .admin-brand{
+    min-width:0;
+  }
+
+  .brand-name{
+    font-size:15px;
+  }
+
+  .admin-nav{
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .page-top{
+    align-items:flex-start;
     flex-direction:column;
-
   }
-
-  .hero-number{
-    display:none;
-  }
-
 }
 
-@media(max-width:650px){
+@media(max-width:600px){
 
-  .container{
-
-    width:min(
-      calc(100% - 28px),
-      var(--container)
-    );
-
+  .admin-header{
+    flex-direction:column;
+    align-items:stretch;
   }
 
-  .header-inner{
-
-    min-height:76px;
-
+  .admin-nav{
+    width:100%;
+    justify-content:flex-start;
   }
 
-  .logo img{
-
-    width:55px;
-    height:55px;
-
-  }
-
-  .logo-title{
-
-    font-size:16px;
-
-  }
-
-  .logo-sub{
-
-    font-size:8px;
-
-  }
-
-  .admin-tag{
-
-    font-size:8px;
-
-    padding:3px 7px;
-
-  }
-
-  .user-role{
-
-    display:none;
-
+  .admin-nav a{
+    flex:1;
+    min-width:75px;
   }
 
   .logout-btn{
-
-    padding:9px 11px;
-
-    font-size:10px;
-
+    flex:1;
   }
 
-  .admin-hero{
-
-    padding:45px 0 30px;
-
+  .admin-page{
+    width:calc(100% - 28px);
+    padding-top:35px;
   }
 
-  .hero-title{
-
-    font-size:43px;
-
-  }
-
-  .hero-description{
-
-    font-size:12px;
-
-  }
-
-  .section-title{
-
-    font-size:28px;
-
+  .page-title{
+    font-size:40px;
   }
 
   .stats-grid{
-
     grid-template-columns:1fr;
-
   }
 
-  .filter-box{
-
-    grid-template-columns:1fr;
-
+  .toolbar{
+    flex-direction:column;
   }
 
-  .dashboard-actions{
-
+  .filter-select{
     width:100%;
-
-  }
-
-  .dashboard-actions .btn{
-
-    flex:1;
-
   }
 
   .detail-grid{
-
     grid-template-columns:1fr;
-
   }
 
   .detail-card.full{
-
     grid-column:auto;
-
   }
 
-  .detail-top{
-
+  .modal-actions{
     flex-direction:column;
-
   }
 
-  .status-edit{
-
-    flex-direction:column;
-
-    align-items:stretch;
-
+  .modal-actions .btn{
+    width:100%;
   }
-
-  .modal{
-
-    padding:10px;
-
-  }
-
-  .modal-card{
-
-    max-height:
-      calc(100vh - 20px);
-
-    border-radius:18px;
-
-  }
-
-  .modal-body{
-
-    padding:15px;
-
-  }
-
-  .detail-item{
-
-    grid-template-columns:
-      55px 1fr;
-
-  }
-
-  .detail-item-image{
-
-    width:55px;
-    height:55px;
-
-  }
-
-  .detail-item-price{
-
-    grid-column:2;
-
-    text-align:left;
-
-  }
-
-  .footer-inner{
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-  }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- ================= LOGIN ================= -->
 
-<!-- =========================================================
-     LOADING
-========================================================= -->
+<div id="loginScreen" class="login-screen">
 
-<div
-  class="loading-screen"
-  id="loadingScreen"
->
-
-  <div class="loading-box">
-
-    <img
-      src="assets/logo.png"
-      class="loading-logo"
-      alt="CHATPHETCH GROUP"
-    >
-
-    <div class="loading-spinner"></div>
-
-    <div class="loading-text">
-      กำลังตรวจสอบสิทธิ์ผู้ดูแลระบบ...
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================================
-     LOGIN
-========================================================= -->
-
-<section
-  class="login-screen"
-  id="loginScreen"
->
-
-  <div class="login-card">
+  <div class="login-box">
 
     <img
       src="assets/logo.png"
@@ -2666,22 +948,18 @@ footer{
     >
 
     <h1 class="login-title">
-      Admin Dashboard
+      CHATPHETCH <span>GROUP</span>
     </h1>
 
-    <p class="login-subtitle">
-      ระบบจัดการคำสั่งซื้อของ
-      <strong>CHATPHETCH GROUP</strong>
-      <br>
-      กรุณาเข้าสู่ระบบด้วยบัญชีผู้ดูแล
-    </p>
+    <div class="login-sub">
+      BACK OFFICE · ADMINISTRATION
+    </div>
 
     <button
       class="login-btn"
       id="loginBtn"
-      type="button"
     >
-      เข้าสู่ระบบ
+      เข้าสู่ระบบด้วย Google
     </button>
 
     <div
@@ -2691,388 +969,195 @@ footer{
 
   </div>
 
-</section>
+</div>
 
+<!-- ================= APP ================= -->
 
-<!-- =========================================================
-     APP
-========================================================= -->
+<div id="app" style="display:none">
 
-<div
-  id="app"
-  style="display:none;"
->
+<header class="admin-header">
 
+  <div class="admin-brand">
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
-<header>
-
-  <div class="container header-inner">
-
-    <a
-      href="index.html"
-      class="logo"
-    >
-
+    <a href="admin.html" class="brand-logo">
       <img
         src="assets/logo.png"
         alt="CHATPHETCH GROUP"
       >
-
-      <div class="logo-text">
-
-        <div class="logo-title">
-
-          CHATPHETCH GROUP
-
-          <span
-            class="admin-tag"
-            id="adminTag"
-          >
-            ADMIN
-          </span>
-
-        </div>
-
-        <div class="logo-sub">
-          ADMIN DASHBOARD
-        </div>
-
-      </div>
-
     </a>
 
+    <div>
+      <div class="brand-name">
+        CHATPHETCH GROUP
+      </div>
 
-    <nav
-      class="nav-menu"
-      id="navMenu"
-    >
-
-      <a
-        href="admin.html"
-        class="active"
-      >
-        ออเดอร์
-      </a>
-
-      <a href="admin-products.html">
-        สินค้า
-      </a>
-
-      <a href="admin-store.html">
-        Store
-      </a>
-
-      <a href="admin-users.html">
-        ผู้ดูแล
-      </a>
-
-      <a href="products.html">
-        หน้าร้าน
-      </a>
-
-      <a href="index.html">
-        เว็บไซต์
-      </a>
-
-    </nav>
-
-
-    <div class="user-area">
-
-      <span
-        class="user-role"
-        id="userRole"
-      >
-        -
-      </span>
-
-      <button
-        class="logout-btn"
-        id="logoutBtn"
-        type="button"
-      >
-        ออกจากระบบ
-      </button>
-
-      <button
-        class="mobile-btn"
-        id="mobileBtn"
-        type="button"
-        aria-label="เมนู"
-      >
-        ☰
-      </button>
-
+      <div class="brand-sub">
+        BACK OFFICE
+      </div>
     </div>
 
   </div>
+
+  <nav class="admin-nav">
+
+    <a href="admin.html" class="active">
+      หน้าแรก
+    </a>
+
+    <a href="products.html">
+      สินค้า
+    </a>
+
+    <a href="admin-products.html">
+      จัดการสินค้า
+    </a>
+
+    <a href="admin-users.html">
+      ผู้ใช้งาน
+    </a>
+
+    <span
+      class="admin-user"
+      id="adminUser"
+    >
+      เจ้าของบริษัท · OWNER
+    </span>
+
+    <button
+      class="logout-btn"
+      id="logoutBtn"
+    >
+      ออกจากระบบ
+    </button>
+
+  </nav>
 
 </header>
 
+<main class="admin-page">
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+  <div class="page-top">
 
-<section class="admin-hero">
+    <div>
 
-  <div class="container">
+      <div class="page-kicker">
+        ORDER MANAGEMENT
+      </div>
 
-    <div class="eyebrow">
-      CHATPHETCH GROUP / ADMIN
+      <h1 class="page-title">
+        จัดการคำสั่งซื้อ
+      </h1>
+
+      <p class="page-description">
+        ตรวจสอบคำสั่งซื้อ การชำระเงิน และสถานะการจัดส่ง
+      </p>
+
     </div>
 
-    <h1 class="hero-title">
-      Order
-      <span>Dashboard</span>
-    </h1>
+    <div class="page-actions">
 
-    <p class="hero-description">
-      จัดการคำสั่งซื้อ ตรวจสอบการชำระเงิน
-      และติดตามสถานะการจัดส่งจากข้อมูลจริง
-      ในระบบของ CHATPHETCH GROUP
-    </p>
+      <button
+        class="btn"
+        id="refreshBtn"
+      >
+        ↻ รีเฟรช
+      </button>
 
-    <div class="hero-number">
-      01
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     DASHBOARD
-========================================================= -->
-
-<main>
-
-<section class="dashboard">
-
-<div class="container">
-
-
-<!-- =======================================================
-     TOP
-======================================================= -->
-
-<div class="dashboard-top">
-
-  <div>
-
-    <div class="section-label">
-      ORDER MANAGEMENT
-    </div>
-
-    <h2 class="section-title">
-      จัดการคำสั่งซื้อ
-    </h2>
-
-  </div>
-
-
-  <div class="dashboard-actions">
-
-    <button
-      class="btn"
-      id="refreshBtn"
-      type="button"
-    >
-      ↻ รีเฟรช
-    </button>
-
-    <button
-      class="btn"
-      id="exportBtn"
-      type="button"
-    >
-      ↓ Export
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- =======================================================
-     STATS
-======================================================= -->
-
-<div class="stats-grid">
-
-  <div class="stat-card gold">
-
-    <div class="stat-label">
-      ALL ORDERS
-    </div>
-
-    <div
-      class="stat-number"
-      id="statAll"
-    >
-      0
-    </div>
-
-    <div class="stat-sub">
-      คำสั่งซื้อทั้งหมด
     </div>
 
   </div>
 
+  <!-- STATS -->
 
-  <div class="stat-card">
+  <div class="stats-grid">
 
-    <div class="stat-label">
-      PENDING
+    <div class="stat-card">
+      <div class="stat-label">
+        คำสั่งซื้อทั้งหมด
+      </div>
+      <div class="stat-number" id="statTotal">
+        0
+      </div>
     </div>
 
-    <div
-      class="stat-number"
-      id="statPending"
-    >
-      0
+    <div class="stat-card">
+      <div class="stat-label">
+        รอตรวจสอบ
+      </div>
+      <div class="stat-number" id="statPending">
+        0
+      </div>
     </div>
 
-    <div class="stat-sub">
-      รอตรวจสอบ
+    <div class="stat-card">
+      <div class="stat-label">
+        กำลังจัดส่ง
+      </div>
+      <div class="stat-number" id="statShipping">
+        0
+      </div>
     </div>
 
-  </div>
-
-
-  <div class="stat-card">
-
-    <div class="stat-label">
-      SHIPPING
-    </div>
-
-    <div
-      class="stat-number"
-      id="statShipping"
-    >
-      0
-    </div>
-
-    <div class="stat-sub">
-      กำลังจัดส่ง
-    </div>
-
-  </div>
-
-
-  <div class="stat-card">
-
-    <div class="stat-label">
-      COMPLETED
-    </div>
-
-    <div
-      class="stat-number"
-      id="statCompleted"
-    >
-      0
-    </div>
-
-    <div class="stat-sub">
-      จัดส่งสำเร็จ
+    <div class="stat-card">
+      <div class="stat-label">
+        จัดส่งสำเร็จ
+      </div>
+      <div class="stat-number" id="statCompleted">
+        0
+      </div>
     </div>
 
   </div>
 
-</div>
+  <!-- SEARCH -->
 
-
-<!-- =======================================================
-     FILTER
-======================================================= -->
-
-<div class="filter-box">
-
-  <div class="search-wrap">
-
-    <span class="search-icon">
-      ⌕
-    </span>
+  <div class="toolbar">
 
     <input
-      type="search"
-      class="search-input"
       id="searchInput"
-      placeholder="ค้นหาเลขคำสั่งซื้อ / ชื่อลูกค้า / เบอร์โทร / อีเมล"
-      autocomplete="off"
+      class="search-input"
+      type="text"
+      placeholder="ค้นหาเลขคำสั่งซื้อ / ชื่อลูกค้า / เบอร์โทร"
     >
+
+    <select
+      id="statusFilter"
+      class="filter-select"
+    >
+
+      <option value="">
+        ทุกสถานะ
+      </option>
+
+      <option value="pending">
+        รอตรวจสอบ
+      </option>
+
+      <option value="preparing">
+        กำลังเตรียมสินค้า
+      </option>
+
+      <option value="shipping">
+        กำลังจัดส่ง
+      </option>
+
+      <option value="completed">
+        จัดส่งสำเร็จ
+      </option>
+
+      <option value="cancelled">
+        ยกเลิก
+      </option>
+
+    </select>
 
   </div>
 
+  <!-- TABLE -->
 
-  <select
-    class="filter-select"
-    id="statusFilter"
-  >
+  <div class="table-wrap">
 
-    <option value="all">
-      ทุกสถานะ
-    </option>
-
-    <option value="pending">
-      รอตรวจสอบ
-    </option>
-
-    <option value="confirmed">
-      ยืนยันแล้ว
-    </option>
-
-    <option value="preparing">
-      กำลังเตรียมสินค้า
-    </option>
-
-    <option value="shipping">
-      กำลังจัดส่ง
-    </option>
-
-    <option value="completed">
-      จัดส่งสำเร็จ
-    </option>
-
-    <option value="cancelled">
-      ยกเลิก
-    </option>
-
-  </select>
-
-</div>
-
-
-<!-- =======================================================
-     ORDERS
-======================================================= -->
-
-<div class="orders-box">
-
-  <div class="orders-header">
-
-    <div class="orders-header-title">
-      รายการคำสั่งซื้อ
-    </div>
-
-    <div
-      class="orders-header-count"
-      id="visibleCount"
-    >
-      0 รายการ
-    </div>
-
-  </div>
-
-
-  <div class="table-scroll">
-
-    <table>
+    <table class="admin-table">
 
       <thead>
 
@@ -3088,10 +1173,6 @@ footer{
 
           <th>
             จังหวัด
-          </th>
-
-          <th>
-            จำนวน
           </th>
 
           <th>
@@ -3118,234 +1199,80 @@ footer{
 
       </thead>
 
-      <tbody
-        id="ordersTable"
-      ></tbody>
+      <tbody id="ordersBody">
+
+        <tr>
+          <td colspan="8">
+            <div class="loading">
+              <div class="spinner"></div>
+              กำลังโหลดคำสั่งซื้อ...
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
 
     </table>
 
   </div>
 
-</div>
-
-
-</div>
-
-</section>
-
 </main>
 
+</div>
 
-<!-- =========================================================
-     ORDER DETAIL MODAL
-========================================================= -->
+<!-- ================= DETAIL MODAL ================= -->
 
 <div
   class="modal"
-  id="orderModal"
+  id="detailModal"
 >
 
-  <div class="modal-card">
+  <div class="modal-box">
 
     <div class="modal-header">
 
-      <div class="modal-title">
+      <div
+        class="modal-title"
+        id="modalTitle"
+      >
         รายละเอียดคำสั่งซื้อ
       </div>
 
       <button
         class="modal-close"
         id="modalClose"
-        type="button"
       >
         ×
       </button>
 
     </div>
-
 
     <div
       class="modal-body"
       id="modalBody"
     ></div>
 
-
-    <div class="modal-footer">
-
-      <button
-        class="btn"
-        id="modalCancel"
-        type="button"
-      >
-        ปิด
-      </button>
-
-    </div>
-
   </div>
 
 </div>
 
-
-<!-- =========================================================
-     DELETE MODAL
-========================================================= -->
-
-<div
-  class="modal"
-  id="deleteModal"
->
-
-  <div
-    class="modal-card"
-    style="max-width:520px;"
-  >
-
-    <div class="modal-header">
-
-      <div class="modal-title">
-        ลบคำสั่งซื้อ
-      </div>
-
-      <button
-        class="modal-close"
-        id="deleteModalClose"
-        type="button"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-      <div class="delete-warning">
-
-        <div class="delete-warning-title">
-          ⚠ ต้องการลบคำสั่งซื้อนี้หรือไม่?
-        </div>
-
-        <div class="delete-warning-text">
-
-          การลบออเดอร์จะลบรายการคำสั่งซื้อนี้
-          ออกจากระบบ Admin
-          และไม่ควรใช้กับออเดอร์ที่ต้องการเก็บเป็นประวัติ
-
-        </div>
-
-        <div
-          class="delete-order-name"
-          id="deleteOrderName"
-        >
-          -
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="modal-footer">
-
-      <button
-        class="btn"
-        id="deleteCancelBtn"
-        type="button"
-      >
-        ยกเลิก
-      </button>
-
-      <button
-        class="btn btn-danger"
-        id="confirmDeleteBtn"
-        type="button"
-      >
-        ลบคำสั่งซื้อ
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================================
-     TOAST
-========================================================= -->
+<!-- ================= TOAST ================= -->
 
 <div
   class="toast"
   id="toast"
 ></div>
 
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-  <div class="container footer-inner">
-
-    <div class="footer-brand">
-
-      <strong>
-        CHATPHETCH GROUP
-      </strong>
-
-      <br>
-
-      🌹 โรงงานผลิต-จำหน่าย วัสดุงานพื้นทุกประเภท 🌹
-
-      <br>
-
-      Admin Dashboard
-
-    </div>
-
-
-    <div class="footer-links">
-
-      <a href="admin.html">
-        ออเดอร์
-      </a>
-
-      <a href="admin-products.html">
-        สินค้า
-      </a>
-
-      <a href="admin-users.html">
-        ผู้ดูแล
-      </a>
-
-      <a href="products.html">
-        หน้าร้าน
-      </a>
-
-    </div>
-
-  </div>
-
-</footer>
-
-
-</div>
-
-
 <script>
-
-/* =========================================================
+/* =====================================================
    SUPABASE
-========================================================= */
+===================================================== */
 
 const SUPABASE_URL =
   "https://mfhllgklcfnnbyyzzljz.supabase.co";
 
 const SUPABASE_KEY =
   "sb_publishable_rkWSZF3He7_mhCIRY9MaNQ_JGBEa1l5";
-
 
 const supabaseClient =
   window.supabase.createClient(
@@ -3361,177 +1288,101 @@ const supabaseClient =
   );
 
 
-/* =========================================================
+/* =====================================================
    STATE
-========================================================= */
+===================================================== */
 
 let currentUser = null;
-
 let currentRole = null;
-
-let currentAdmin = null;
-
 let orders = [];
-
 let selectedOrder = null;
 
-let orderToDelete = null;
 
-let authBusy = false;
-
-
-/* =========================================================
+/* =====================================================
    ELEMENTS
-========================================================= */
-
-const loadingScreen =
-  document.getElementById(
-    "loadingScreen"
-  );
+===================================================== */
 
 const loginScreen =
-  document.getElementById(
-    "loginScreen"
-  );
-
-const loginBtn =
-  document.getElementById(
-    "loginBtn"
-  );
-
-const loginError =
-  document.getElementById(
-    "loginError"
-  );
+  document.getElementById("loginScreen");
 
 const app =
-  document.getElementById(
-    "app"
-  );
+  document.getElementById("app");
+
+const loginBtn =
+  document.getElementById("loginBtn");
+
+const loginError =
+  document.getElementById("loginError");
 
 const logoutBtn =
-  document.getElementById(
-    "logoutBtn"
-  );
+  document.getElementById("logoutBtn");
 
-const userRole =
-  document.getElementById(
-    "userRole"
-  );
-
-const refreshBtn =
-  document.getElementById(
-    "refreshBtn"
-  );
-
-const exportBtn =
-  document.getElementById(
-    "exportBtn"
-  );
+const ordersBody =
+  document.getElementById("ordersBody");
 
 const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
+  document.getElementById("searchInput");
 
 const statusFilter =
-  document.getElementById(
-    "statusFilter"
-  );
+  document.getElementById("statusFilter");
 
-const ordersTable =
-  document.getElementById(
-    "ordersTable"
-  );
-
-const visibleCount =
-  document.getElementById(
-    "visibleCount"
-  );
-
-const orderModal =
-  document.getElementById(
-    "orderModal"
-  );
+const detailModal =
+  document.getElementById("detailModal");
 
 const modalBody =
-  document.getElementById(
-    "modalBody"
-  );
+  document.getElementById("modalBody");
+
+const modalTitle =
+  document.getElementById("modalTitle");
 
 const modalClose =
-  document.getElementById(
-    "modalClose"
-  );
-
-const modalCancel =
-  document.getElementById(
-    "modalCancel"
-  );
-
-const deleteModal =
-  document.getElementById(
-    "deleteModal"
-  );
-
-const deleteModalClose =
-  document.getElementById(
-    "deleteModalClose"
-  );
-
-const deleteCancelBtn =
-  document.getElementById(
-    "deleteCancelBtn"
-  );
-
-const confirmDeleteBtn =
-  document.getElementById(
-    "confirmDeleteBtn"
-  );
-
-const deleteOrderName =
-  document.getElementById(
-    "deleteOrderName"
-  );
+  document.getElementById("modalClose");
 
 const toast =
-  document.getElementById(
-    "toast"
-  );
-
-const mobileBtn =
-  document.getElementById(
-    "mobileBtn"
-  );
-
-const navMenu =
-  document.getElementById(
-    "navMenu"
-  );
+  document.getElementById("toast");
 
 
-/* =========================================================
+/* =====================================================
    HELPERS
-========================================================= */
+===================================================== */
 
-function escapeHtml(value){
+function escapeHTML(value){
 
   return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function showToast(message,type="success"){
+
+  toast.textContent = message;
+
+  toast.className =
+    "toast show " + type;
+
+  clearTimeout(
+    window.__toastTimer
+  );
+
+  window.__toastTimer =
+    setTimeout(()=>{
+      toast.className="toast";
+    },3500);
 
 }
 
 
 function formatMoney(value){
 
-  const number =
+  const n =
     Number(value || 0);
 
-  return number.toLocaleString(
+  return n.toLocaleString(
     "th-TH",
     {
       minimumFractionDigits:2,
@@ -3544,39 +1395,21 @@ function formatMoney(value){
 
 function formatDate(value){
 
-  if(!value){
-    return "-";
-  }
+  if(!value) return "-";
 
-  const date =
+  const d =
     new Date(value);
 
-  if(
-    Number.isNaN(
-      date.getTime()
-    )
-  ){
-    return "-";
-  }
-
-  return date.toLocaleString(
+  return d.toLocaleString(
     "th-TH",
     {
-      dateStyle:"medium",
-      timeStyle:"short"
+      day:"2-digit",
+      month:"short",
+      year:"numeric",
+      hour:"2-digit",
+      minute:"2-digit"
     }
   );
-
-}
-
-
-function normalizeText(value){
-
-  return String(
-    value ?? ""
-  )
-  .trim()
-  .toLowerCase();
 
 }
 
@@ -3585,197 +1418,151 @@ function statusLabel(status){
 
   const map = {
 
-    pending:
-      "รอตรวจสอบ",
+    pending:"รอตรวจสอบ",
 
-    confirmed:
-      "ยืนยันแล้ว",
+    preparing:"กำลังเตรียมสินค้า",
 
-    preparing:
-      "กำลังเตรียมสินค้า",
+    shipping:"กำลังจัดส่ง",
 
-    shipping:
-      "กำลังจัดส่ง",
+    completed:"จัดส่งสำเร็จ",
 
-    completed:
-      "จัดส่งสำเร็จ",
-
-    cancelled:
-      "ยกเลิก"
+    cancelled:"ยกเลิก"
 
   };
 
-  return (
-    map[status] ||
-    status ||
-    "-"
-  );
+  return map[status] || status || "-";
 
 }
 
 
 function statusClass(status){
 
-  const allowed = [
-
-    "pending",
-    "confirmed",
-    "preparing",
-    "shipping",
-    "completed",
-    "cancelled"
-
-  ];
-
-  return allowed.includes(status)
-    ? status
-    : "pending";
+  return "status-" +
+    String(status || "pending")
+      .toLowerCase();
 
 }
 
 
-function paymentLabel(method){
+/* =====================================================
+   LOGIN
+===================================================== */
 
-  const map = {
-
-    bank:
-      "โอนเงินผ่านธนาคาร",
-
-    transfer:
-      "โอนเงินผ่านธนาคาร",
-
-    promptpay:
-      "PromptPay",
-
-    cod:
-      "เก็บเงินปลายทาง",
-
-    "bank_transfer":
-      "โอนเงินผ่านธนาคาร"
-
-  };
+function getRedirectURL(){
 
   return (
-    map[
-      normalizeText(method)
-    ] ||
-    method ||
-    "-"
+    window.location.origin +
+    window.location.pathname
   );
 
 }
 
 
-function getItemQuantity(order){
+async function login(){
 
-  const items =
-    Array.isArray(order?.items)
-      ? order.items
-      : [];
+  loginError.textContent = "";
 
-  return items.reduce(
-    (
-      total,
-      item
-    ) =>
-      total +
-      Number(
-        item?.quantity || 0
-      ),
-    0
-  );
+  loginBtn.disabled = true;
 
-}
+  loginBtn.textContent =
+    "กำลังเข้าสู่ระบบ...";
 
+  try{
 
-function showToast(
-  message,
-  type="success"
-){
+    const {
+      error
+    } =
+      await supabaseClient.auth.signInWithOAuth({
 
-  toast.textContent =
-    message;
+        provider:"google",
 
-  toast.className =
-    "toast show" +
-    (
-      type === "error"
-        ? " error"
-        : ""
-    );
+        options:{
+          redirectTo:getRedirectURL()
+        }
 
-  clearTimeout(
-    window.chatpetchToastTimer
-  );
+      });
 
-  window.chatpetchToastTimer =
-    setTimeout(
-      ()=>{
-        toast.className =
-          "toast";
-      },
-      3500
-    );
+    if(error){
+      throw error;
+    }
 
-}
+  }catch(error){
 
+    console.error(error);
 
-/* =========================================================
-   UI STATE
-========================================================= */
+    loginBtn.disabled = false;
 
-function showLoading(){
-
-  loadingScreen.style.display =
-    "flex";
-
-  loginScreen.style.display =
-    "none";
-
-  app.style.display =
-    "none";
-
-}
-
-
-function showLogin(
-  message=""
-){
-
-  loadingScreen.style.display =
-    "none";
-
-  app.style.display =
-    "none";
-
-  loginScreen.style.display =
-    "flex";
-
-  if(message){
+    loginBtn.textContent =
+      "เข้าสู่ระบบด้วย Google";
 
     loginError.textContent =
-      message;
-
-    loginError.style.display =
-      "block";
-
-  }else{
-
-    loginError.textContent =
-      "";
-
-    loginError.style.display =
-      "none";
+      error.message ||
+      "ไม่สามารถเข้าสู่ระบบได้";
 
   }
 
 }
 
 
-function showApp(){
+/* =====================================================
+   ROLE
+===================================================== */
 
-  loadingScreen.style.display =
-    "none";
+async function loadRole(){
+
+  if(!currentUser){
+    throw new Error(
+      "ไม่พบผู้ใช้งาน"
+    );
+  }
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("admin_users")
+      .select(
+        "id,user_id,email,name,role,active"
+      )
+      .eq(
+        "user_id",
+        currentUser.id
+      )
+      .maybeSingle();
+
+  if(error){
+    throw error;
+  }
+
+  if(!data){
+    throw new Error(
+      "บัญชีนี้ยังไม่ได้ถูกเพิ่มใน admin_users"
+    );
+  }
+
+  if(data.active !== true){
+    throw new Error(
+      "บัญชีนี้ถูกปิดการใช้งาน"
+    );
+  }
+
+  currentRole =
+    data.role || "viewer";
+
+  document.getElementById(
+    "adminUser"
+  ).textContent =
+    `${data.name || "ผู้ดูแลระบบ"} · ${String(currentRole).toUpperCase()}`;
+
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+function showApp(){
 
   loginScreen.style.display =
     "none";
@@ -3786,289 +1573,895 @@ function showApp(){
 }
 
 
-/* =========================================================
-   AUTH REDIRECT
-========================================================= */
+function showLogin(){
 
-function getAuthRedirectUrl(){
+  loginScreen.style.display =
+    "flex";
 
-  const path =
-    window.location.pathname;
-
-  return (
-    window.location.origin +
-    path
-  );
-
-}
-
-
-function clearOAuthHash(){
-
-  if(
-    window.location.hash &&
-    (
-      window.location.hash.includes(
-        "access_token"
-      ) ||
-      window.location.hash.includes(
-        "refresh_token"
-      )
-    )
-  ){
-
-    window.history.replaceState(
-      {},
-      document.title,
-      window.location.pathname +
-      window.location.search
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-async function login(){
-
-  if(authBusy){
-    return;
-  }
-
-  authBusy = true;
-
-  loginError.style.display =
+  app.style.display =
     "none";
 
-  loginBtn.disabled =
-    true;
-
-  loginBtn.textContent =
-    "กำลังเข้าสู่ระบบ...";
-
-  try{
-
-    const redirectTo =
-      getAuthRedirectUrl();
-
-    const {
-      error
-    } =
-      await supabaseClient
-        .auth
-        .signInWithOAuth({
-
-          provider:"google",
-
-          options:{
-
-            redirectTo
-
-          }
-
-        });
-
-    if(error){
-      throw error;
-    }
-
-  }catch(error){
-
-    console.error(
-      "LOGIN ERROR:",
-      error
-    );
-
-    loginError.textContent =
-      "ไม่สามารถเข้าสู่ระบบได้: " +
-      (
-        error?.message ||
-        "เกิดข้อผิดพลาด"
-      );
-
-    loginError.style.display =
-      "block";
-
-  }finally{
-
-    authBusy = false;
-
-    loginBtn.disabled =
-      false;
-
-    loginBtn.textContent =
-      "เข้าสู่ระบบ";
-
-  }
-
 }
 
 
-/* =========================================================
-   LOGOUT
-========================================================= */
+/* =====================================================
+   LOAD ORDERS
+===================================================== */
 
-async function logout(){
+async function loadOrders(){
 
-  try{
-
-    await supabaseClient
-      .auth
-      .signOut();
-
-  }catch(error){
-
-    console.error(error);
-
-  }
-
-  currentUser = null;
-
-  currentRole = null;
-
-  currentAdmin = null;
-
-  orders = [];
-
-  selectedOrder = null;
-
-  showLogin();
-
-}
-
-
-/* =========================================================
-   ROLE PERMISSIONS
-========================================================= */
-
-function canManageOrders(){
-
-  return [
-
-    "owner",
-    "manager",
-    "staff"
-
-  ].includes(
-    currentRole
-  );
-
-}
-
-
-function canVerifyPayment(){
-
-  return [
-
-    "owner",
-    "manager"
-
-  ].includes(
-    currentRole
-  );
-
-}
-
-
-function canDeleteOrders(){
-
-  return (
-
-    currentRole ===
-    "owner"
-
-  );
-
-}
-
-
-/* =========================================================
-   LOAD ROLE
-========================================================= */
-
-async function loadRole(user){
+  ordersBody.innerHTML = `
+    <tr>
+      <td colspan="8">
+        <div class="loading">
+          <div class="spinner"></div>
+          กำลังโหลดคำสั่งซื้อ...
+        </div>
+      </td>
+    </tr>
+  `;
 
   const {
     data,
     error
   } =
     await supabaseClient
-      .from("admin_users")
-      .select(
-        "user_id,email,name,role,active"
-      )
-      .eq(
-        "user_id",
-        user.id
-      )
-      .maybeSingle();
+      .from("orders")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
 
   if(error){
+    console.error(error);
 
-    console.error(
-      "ROLE ERROR:",
-      error
-    );
+    ordersBody.innerHTML = `
+      <tr>
+        <td colspan="8">
+          <div class="loading">
+            ไม่สามารถโหลดคำสั่งซื้อได้<br>
+            ${escapeHTML(error.message)}
+          </div>
+        </td>
+      </tr>
+    `;
 
-    throw new Error(
-      "ไม่สามารถตรวจสอบสิทธิ์ผู้ดูแลได้: " +
-      error.message
-    );
-
+    return;
   }
 
-  if(!data){
+  orders = data || [];
 
-    throw new Error(
-      "บัญชีนี้ยังไม่ได้ถูกเพิ่มใน admin_users"
-    );
+  updateStats();
 
-  }
-
-  if(
-    data.active !== true
-  ){
-
-    throw new Error(
-      "บัญชีผู้ดูแลนี้ถูกปิดใช้งาน"
-    );
-
-  }
-
-  currentAdmin =
-    data;
-
-  currentRole =
-    data.role;
-
-  userRole.textContent =
-    String(
-      data.role ||
-      "admin"
-    ).toUpperCase();
+  renderOrders();
 
 }
 
 
-/* =========================================================
-   HANDLE SESSION
-========================================================= */
+/* =====================================================
+   STATS
+===================================================== */
+
+function updateStats(){
+
+  const total =
+    orders.length;
+
+  const pending =
+    orders.filter(
+      o =>
+        o.status === "pending"
+    ).length;
+
+  const shipping =
+    orders.filter(
+      o =>
+        o.status === "shipping"
+    ).length;
+
+  const completed =
+    orders.filter(
+      o =>
+        o.status === "completed"
+    ).length;
+
+  document.getElementById(
+    "statTotal"
+  ).textContent = total;
+
+  document.getElementById(
+    "statPending"
+  ).textContent = pending;
+
+  document.getElementById(
+    "statShipping"
+  ).textContent = shipping;
+
+  document.getElementById(
+    "statCompleted"
+  ).textContent = completed;
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function getFilteredOrders(){
+
+  const keyword =
+    searchInput.value
+      .trim()
+      .toLowerCase();
+
+  const status =
+    statusFilter.value;
+
+  return orders.filter(order=>{
+
+    const text = [
+
+      order.order_number,
+
+      order.customer_name,
+
+      order.customer_phone,
+
+      order.customer_email,
+
+      order.customer_province
+
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    const keywordOK =
+      !keyword ||
+      text.includes(keyword);
+
+    const statusOK =
+      !status ||
+      order.status === status;
+
+    return keywordOK &&
+      statusOK;
+
+  });
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderOrders(){
+
+  const list =
+    getFilteredOrders();
+
+  if(!list.length){
+
+    ordersBody.innerHTML = `
+      <tr>
+        <td colspan="8">
+          <div class="loading">
+            ไม่พบคำสั่งซื้อ
+          </div>
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  ordersBody.innerHTML =
+    list.map(order=>{
+
+      const orderNumber =
+        order.order_number ||
+        order.id;
+
+      return `
+
+        <tr>
+
+          <td>
+
+            <div class="order-number">
+              #${escapeHTML(orderNumber)}
+            </div>
+
+            ${
+              order.payment_verified
+                ? `
+                  <div class="muted">
+                    ✓ ชำระเงินยืนยันแล้ว
+                  </div>
+                `
+                : ""
+            }
+
+          </td>
+
+          <td>
+
+            <div class="customer-name">
+              ${escapeHTML(order.customer_name)}
+            </div>
+
+            <div class="muted">
+              ${escapeHTML(order.customer_phone)}
+            </div>
+
+          </td>
+
+          <td>
+            ${escapeHTML(
+              order.customer_province || "-"
+            )}
+          </td>
+
+          <td class="total">
+            ${formatMoney(order.total)}
+          </td>
+
+          <td>
+            ${escapeHTML(
+              paymentLabel(
+                order.payment_method
+              )
+            )}
+          </td>
+
+          <td>
+
+            <span
+              class="status ${statusClass(order.status)}"
+            >
+              ${escapeHTML(
+                statusLabel(order.status)
+              )}
+            </span>
+
+          </td>
+
+          <td>
+            ${formatDate(order.created_at)}
+          </td>
+
+          <td>
+
+            <div style="
+              display:flex;
+              gap:7px;
+              flex-wrap:wrap;
+            ">
+
+              <button
+                class="btn"
+                onclick="openOrder('${order.id}')"
+              >
+                ดูรายละเอียด
+              </button>
+
+              ${
+                canDelete()
+                ? `
+                  <button
+                    class="btn btn-danger"
+                    onclick="deleteOrder('${order.id}')"
+                  >
+                    ลบ
+                  </button>
+                `
+                : ""
+              }
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }).join("");
+
+}
+
+
+function paymentLabel(value){
+
+  const map = {
+
+    bank_transfer:"โอนเงินผ่านธนาคาร",
+
+    promptpay:"PromptPay",
+
+    cod:"เก็บเงินปลายทาง",
+
+    "bank-transfer":
+      "โอนเงินผ่านธนาคาร"
+
+  };
+
+  return map[value] ||
+    value ||
+    "-";
+
+}
+
+
+/* =====================================================
+   PERMISSION
+===================================================== */
+
+function canDelete(){
+
+  return [
+    "owner",
+    "manager"
+  ].includes(
+    currentRole
+  );
+
+}
+
+
+/* =====================================================
+   OPEN ORDER
+===================================================== */
+
+async function openOrder(id){
+
+  const order =
+    orders.find(
+      o => o.id === id
+    );
+
+  if(!order) return;
+
+  selectedOrder =
+    order;
+
+  modalTitle.textContent =
+    `รายละเอียด #${order.order_number || order.id}`;
+
+  modalBody.innerHTML = `
+    <div class="loading">
+      <div class="spinner"></div>
+      กำลังโหลดรายละเอียด...
+    </div>
+  `;
+
+  detailModal.classList.add("show");
+
+  const {
+    data:items,
+    error
+  } =
+    await supabaseClient
+      .from("order_items")
+      .select("*")
+      .eq(
+        "order_id",
+        order.id
+      )
+      .order(
+        "created_at",
+        {
+          ascending:true
+        }
+      );
+
+  if(error){
+    console.error(error);
+  }
+
+  renderOrderDetail(
+    order,
+    items || []
+  );
+
+}
+
+
+/* =====================================================
+   ORDER DETAIL
+===================================================== */
+
+function renderOrderDetail(
+  order,
+  items
+){
+
+  modalBody.innerHTML = `
+
+    <div class="detail-grid">
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          เลขคำสั่งซื้อ
+        </div>
+
+        <div class="detail-value">
+          #${escapeHTML(
+            order.order_number || order.id
+          )}
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          วันที่สั่งซื้อ
+        </div>
+
+        <div class="detail-value">
+          ${formatDate(order.created_at)}
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          ลูกค้า
+        </div>
+
+        <div class="detail-value">
+          ${escapeHTML(order.customer_name)}
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          โทรศัพท์
+        </div>
+
+        <div class="detail-value">
+          ${escapeHTML(order.customer_phone)}
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          อีเมล
+        </div>
+
+        <div class="detail-value">
+          ${escapeHTML(order.customer_email || "-")}
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          จังหวัด
+        </div>
+
+        <div class="detail-value">
+          ${escapeHTML(
+            order.customer_province || "-"
+          )}
+        </div>
+
+      </div>
+
+      <div class="detail-card full">
+
+        <div class="detail-label">
+          ที่อยู่
+        </div>
+
+        <div class="detail-value">
+          ${escapeHTML(
+            order.customer_address || "-"
+          )}
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          การชำระเงิน
+        </div>
+
+        <div class="detail-value">
+          ${escapeHTML(
+            paymentLabel(
+              order.payment_method
+            )
+          )}
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          สถานะ
+        </div>
+
+        <div class="detail-value">
+
+          <span
+            class="status ${statusClass(order.status)}"
+          >
+            ${escapeHTML(
+              statusLabel(order.status)
+            )}
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          ยอดรวม
+        </div>
+
+        <div class="detail-value">
+          <strong>
+            ${formatMoney(order.total)}
+          </strong>
+        </div>
+
+      </div>
+
+      <div class="detail-card">
+
+        <div class="detail-label">
+          การชำระเงิน
+        </div>
+
+        <div class="detail-value">
+          ${
+            order.payment_verified
+              ? "✓ ยืนยันการชำระเงินแล้ว"
+              : "ยังไม่ได้ยืนยัน"
+          }
+        </div>
+
+      </div>
+
+      ${
+        order.customer_note
+        ? `
+          <div class="detail-card full">
+
+            <div class="detail-label">
+              หมายเหตุ
+            </div>
+
+            <div class="detail-value">
+              ${escapeHTML(
+                order.customer_note
+              )}
+            </div>
+
+          </div>
+        `
+        : ""
+      }
+
+    </div>
+
+
+    <div class="detail-items">
+
+      <div style="
+        padding:18px 0 10px;
+        color:var(--gold-light);
+        font-weight:600;
+      ">
+        รายการสินค้า
+      </div>
+
+      ${
+        items.length
+          ? items.map(item=>`
+
+              <div class="item-row">
+
+                ${
+                  item.product_image
+                  ? `
+                    <img
+                      class="item-image"
+                      src="${escapeHTML(item.product_image)}"
+                      alt=""
+                    >
+                  `
+                  : `
+                    <div class="item-image"></div>
+                  `
+                }
+
+                <div class="item-info">
+
+                  <div class="item-name">
+                    ${escapeHTML(
+                      item.product_name
+                    )}
+                  </div>
+
+                  <div class="item-meta">
+                    จำนวน ${escapeHTML(
+                      item.quantity
+                    )}
+                    ${
+                      item.price_label
+                      ? " · " +
+                        escapeHTML(
+                          item.price_label
+                        )
+                      : ""
+                    }
+                  </div>
+
+                </div>
+
+                <div>
+                  ${formatMoney(
+                    item.line_total
+                  )}
+                </div>
+
+              </div>
+
+            `).join("")
+          : `
+            <div class="loading">
+              ไม่พบรายการสินค้า
+            </div>
+          `
+      }
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        class="btn"
+        onclick="closeModal()"
+      >
+        ปิด
+      </button>
+
+      ${
+        canDelete()
+        ? `
+          <button
+            class="btn btn-danger"
+            onclick="deleteOrder('${order.id}',true)"
+          >
+            ลบออเดอร์นี้
+          </button>
+        `
+        : ""
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   DELETE ORDER
+===================================================== */
+
+async function deleteOrder(
+  id,
+  fromModal=false
+){
+
+  if(!canDelete()){
+
+    showToast(
+      "คุณไม่มีสิทธิ์ลบคำสั่งซื้อ",
+      "error"
+    );
+
+    return;
+  }
+
+  const order =
+    orders.find(
+      o => o.id === id
+    );
+
+  if(!order) return;
+
+  const number =
+    order.order_number ||
+    order.id;
+
+  const confirmed =
+    confirm(
+      `ต้องการลบคำสั่งซื้อ #${number} ใช่หรือไม่?\n\nการลบออเดอร์ผิดพลาดควรตรวจสอบให้แน่ใจก่อนดำเนินการ`
+    );
+
+  if(!confirmed) return;
+
+  try{
+
+    /*
+      ลบรายการสินค้าในออเดอร์ก่อน
+    */
+
+    const {
+      error:itemError
+    } =
+      await supabaseClient
+        .from("order_items")
+        .delete()
+        .eq(
+          "order_id",
+          id
+        );
+
+    if(itemError){
+      throw itemError;
+    }
+
+    /*
+      แล้วลบออเดอร์
+    */
+
+    const {
+      error:orderError
+    } =
+      await supabaseClient
+        .from("orders")
+        .delete()
+        .eq(
+          "id",
+          id
+        );
+
+    if(orderError){
+      throw orderError;
+    }
+
+    orders =
+      orders.filter(
+        o => o.id !== id
+      );
+
+    if(fromModal){
+      closeModal();
+    }
+
+    updateStats();
+
+    renderOrders();
+
+    showToast(
+      `ลบออเดอร์ #${number} แล้ว`,
+      "success"
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    showToast(
+      "ลบออเดอร์ไม่สำเร็จ: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function closeModal(){
+
+  detailModal.classList.remove(
+    "show"
+  );
+
+  selectedOrder = null;
+
+}
+
+modalClose.addEventListener(
+  "click",
+  closeModal
+);
+
+detailModal.addEventListener(
+  "click",
+  event=>{
+
+    if(
+      event.target ===
+      detailModal
+    ){
+      closeModal();
+    }
+
+  }
+);
+
+
+/* =====================================================
+   EVENTS
+===================================================== */
+
+loginBtn.addEventListener(
+  "click",
+  login
+);
+
+logoutBtn.addEventListener(
+  "click",
+  async()=>{
+
+    await supabaseClient.auth.signOut();
+
+    currentUser = null;
+    currentRole = null;
+
+    showLogin();
+
+  }
+);
+
+document.getElementById(
+  "refreshBtn"
+).addEventListener(
+  "click",
+  loadOrders
+);
+
+searchInput.addEventListener(
+  "input",
+  renderOrders
+);
+
+statusFilter.addEventListener(
+  "change",
+  renderOrders
+);
+
+
+/* =====================================================
+   AUTH SESSION
+===================================================== */
 
 async function handleSession(
   session
 ){
 
-  if(!session?.user){
+  if(!session){
 
     currentUser = null;
-
-    currentRole = null;
-
-    currentAdmin = null;
 
     showLogin();
 
@@ -4081,9 +2474,7 @@ async function handleSession(
 
   try{
 
-    await loadRole(
-      session.user
-    );
+    await loadRole();
 
     showApp();
 
@@ -4091,2629 +2482,65 @@ async function handleSession(
 
   }catch(error){
 
-    console.error(
-      "SESSION ERROR:",
-      error
-    );
-
-    showLogin(
-      error.message
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   LOAD ORDERS
-========================================================= */
-
-async function loadOrders(){
-
-  try{
-
-    const {
-      data: orderRows,
-      error: orderError
-    } =
-      await supabaseClient
-        .from("orders")
-        .select(`
-          id,
-          order_number,
-          customer_name,
-          customer_phone,
-          customer_email,
-          customer_province,
-          customer_address,
-          customer_note,
-          payment_method,
-          subtotal,
-          shipping_fee,
-          total,
-          status,
-          slip_path,
-          created_at,
-          payment_verified,
-          payment_verified_at,
-          payment_verified_by
-        `)
-        .order(
-          "created_at",
-          {
-            ascending:false
-          }
-        );
-
-    if(orderError){
-
-      throw new Error(
-        "ไม่สามารถโหลดคำสั่งซื้อได้: " +
-        orderError.message
-      );
-
-    }
-
-    if(
-      !orderRows ||
-      !orderRows.length
-    ){
-
-      orders = [];
-
-      updateStats();
-
-      renderOrders();
-
-      return;
-
-    }
-
-
-    const ids =
-      orderRows.map(
-        order => order.id
-      );
-
-
-    const {
-      data:itemRows,
-      error:itemError
-    } =
-      await supabaseClient
-        .from("order_items")
-        .select(`
-          id,
-          order_id,
-          product_id,
-          product_name,
-          product_image,
-          category,
-          quantity,
-          selected_option,
-          price_label,
-          unit_price,
-          line_total,
-          created_at
-        `)
-        .in(
-          "order_id",
-          ids
-        )
-        .order(
-          "created_at",
-          {
-            ascending:true
-          }
-        );
-
-
-    if(itemError){
-
-      throw new Error(
-        "ไม่สามารถโหลดรายการสินค้าได้: " +
-        itemError.message
-      );
-
-    }
-
-
-    const itemsByOrder = {};
-
-
-    (
-      itemRows ||
-      []
-    ).forEach(
-      item => {
-
-        if(
-          !itemsByOrder[
-            item.order_id
-          ]
-        ){
-
-          itemsByOrder[
-            item.order_id
-          ] = [];
-
-        }
-
-        itemsByOrder[
-          item.order_id
-        ].push(item);
-
-      }
-    );
-
-
-    orders =
-      orderRows.map(
-        order => ({
-
-          ...order,
-
-          items:
-            itemsByOrder[
-              order.id
-            ] || []
-
-        })
-      );
-
-
-    updateStats();
-
-    renderOrders();
-
-  }catch(error){
-
-    console.error(
-      "LOAD ORDERS ERROR:",
-      error
-    );
-
-    showToast(
-      error.message,
-      "error"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-function updateStats(){
-
-  const total =
-    orders.length;
-
-  const pending =
-    orders.filter(
-      order =>
-        order.status ===
-        "pending"
-    ).length;
-
-  const shipping =
-    orders.filter(
-      order =>
-        order.status ===
-        "shipping"
-    ).length;
-
-  const completed =
-    orders.filter(
-      order =>
-        order.status ===
-        "completed"
-    ).length;
-
-
-  document.getElementById(
-    "statAll"
-  ).textContent =
-    total;
-
-  document.getElementById(
-    "statPending"
-  ).textContent =
-    pending;
-
-  document.getElementById(
-    "statShipping"
-  ).textContent =
-    shipping;
-
-  document.getElementById(
-    "statCompleted"
-  ).textContent =
-    completed;
-
-}
-
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-function getFilteredOrders(){
-
-  const search =
-    normalizeText(
-      searchInput.value
-    );
-
-  const status =
-    statusFilter.value;
-
-
-  return orders.filter(
-    order => {
-
-      const searchable = [
-
-        order.order_number,
-
-        order.id,
-
-        order.customer_name,
-
-        order.customer_phone,
-
-        order.customer_email,
-
-        order.customer_province
-
-      ]
-      .join(" ")
-      .toLowerCase();
-
-
-      const matchSearch =
-        !search ||
-        searchable.includes(
-          search
-        );
-
-
-      const matchStatus =
-        status === "all" ||
-        order.status === status;
-
-
-      return (
-        matchSearch &&
-        matchStatus
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   RENDER ORDERS
-========================================================= */
-
-function renderOrders(){
-
-  const filtered =
-    getFilteredOrders();
-
-
-  visibleCount.textContent =
-    `${filtered.length} รายการ`;
-
-
-  if(!filtered.length){
-
-    ordersTable.innerHTML = `
-
-      <tr>
-
-        <td
-          colspan="9"
-          style="padding:0;"
-        >
-
-          <div class="empty-state">
-
-            <div class="empty-icon">
-              ◇
-            </div>
-
-            <h3>
-              ไม่พบคำสั่งซื้อ
-            </h3>
-
-            <p>
-              ลองเปลี่ยนคำค้นหาหรือสถานะ
-            </p>
-
-          </div>
-
-        </td>
-
-      </tr>
-
-    `;
-
-    return;
-
-  }
-
-
-  ordersTable.innerHTML =
-    filtered
-      .map(
-        order => {
-
-          const quantity =
-            getItemQuantity(
-              order
-            );
-
-
-          const payment =
-            order.payment_verified
-
-              ? `
-                <div class="payment-text payment-ok">
-                  ✓ ตรวจสอบแล้ว
-                </div>
-              `
-
-              : `
-                <div class="payment-text payment-wait">
-                  ${escapeHtml(
-                    paymentLabel(
-                      order.payment_method
-                    )
-                  )}
-                  <br>
-                  รอตรวจสอบ
-                </div>
-              `;
-
-
-          const deleteButton =
-            canDeleteOrders()
-
-              ? `
-                <button
-                  class="icon-btn delete"
-                  type="button"
-                  title="ลบออเดอร์"
-                  data-action="delete"
-                  data-id="${escapeHtml(
-                    order.id
-                  )}"
-                >
-                  ลบ
-                </button>
-              `
-
-              : "";
-
-
-          return `
-
-            <tr>
-
-              <td>
-
-                <div class="order-id">
-                  ${escapeHtml(
-                    order.order_number ||
-                    order.id
-                  )}
-                </div>
-
-                <div class="order-id-sub">
-                  ${escapeHtml(
-                    String(
-                      order.id || ""
-                    ).slice(0,8)
-                  )}
-                </div>
-
-              </td>
-
-
-              <td>
-
-                <div class="customer-name">
-                  ${escapeHtml(
-                    order.customer_name ||
-                    "-"
-                  )}
-                </div>
-
-                <div class="customer-phone">
-                  ${escapeHtml(
-                    order.customer_phone ||
-                    "-"
-                  )}
-                </div>
-
-              </td>
-
-
-              <td>
-
-                <div class="province">
-                  ${escapeHtml(
-                    order.customer_province ||
-                    "-"
-                  )}
-                </div>
-
-              </td>
-
-
-              <td>
-
-                <div class="item-count">
-                  ${quantity} ชิ้น
-                </div>
-
-              </td>
-
-
-              <td>
-
-                <div class="order-total">
-                  ${formatMoney(
-                    order.total
-                  )}
-                </div>
-
-              </td>
-
-
-              <td>
-                ${payment}
-              </td>
-
-
-              <td>
-
-                <span
-                  class="status ${statusClass(
-                    order.status
-                  )}"
-                >
-                  ${escapeHtml(
-                    statusLabel(
-                      order.status
-                    )
-                  )}
-                </span>
-
-              </td>
-
-
-              <td>
-
-                <div class="order-date">
-                  ${formatDate(
-                    order.created_at
-                  )}
-                </div>
-
-              </td>
-
-
-              <td>
-
-                <div class="row-actions">
-
-                  <button
-                    class="icon-btn"
-                    type="button"
-                    title="ดูรายละเอียด"
-                    data-action="view"
-                    data-id="${escapeHtml(
-                      order.id
-                    )}"
-                  >
-                    ดูรายละเอียด
-                  </button>
-
-                  ${deleteButton}
-
-                </div>
-
-              </td>
-
-            </tr>
-
-          `;
-
-        }
-      )
-      .join("");
-
-}
-
-
-/* =========================================================
-   OPTION TEXT
-========================================================= */
-
-function getOptionText(item){
-
-  if(
-    !item ||
-    !item.selected_option
-  ){
-
-    return (
-      item?.price_label ||
-      ""
-    );
-
-  }
-
-
-  try{
-
-    const option =
-      typeof item.selected_option ===
-      "string"
-
-        ? JSON.parse(
-            item.selected_option
-          )
-
-        : item.selected_option;
-
-
-    return (
-      option?.label ||
-      option?.name ||
-      item.price_label ||
-      ""
-    );
-
-  }catch{
-
-    return (
-      item.price_label ||
-      ""
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   OPEN ORDER
-========================================================= */
-
-async function openOrder(
-  orderId
-){
-
-  const order =
-    orders.find(
-      item =>
-        item.id ===
-        orderId
-    );
-
-  if(!order){
-    return;
-  }
-
-  selectedOrder =
-    order;
-
-
-  const items =
-    Array.isArray(
-      order.items
-    )
-      ? order.items
-      : [];
-
-
-  const itemsHtml =
-    items.length
-
-      ? items.map(
-          item => {
-
-            const image =
-              item.product_image ||
-              "assets/logo.png";
-
-
-            const optionText =
-              getOptionText(
-                item
-              );
-
-
-            const unitPrice =
-              Number(
-                item.unit_price || 0
-              );
-
-
-            const lineTotal =
-              Number(
-                item.line_total ||
-                (
-                  unitPrice *
-                  Number(
-                    item.quantity || 0
-                  )
-                )
-              );
-
-
-            return `
-
-              <div class="detail-item">
-
-                <div class="detail-item-image">
-
-                  <img
-                    src="${escapeHtml(
-                      image
-                    )}"
-                    alt="${escapeHtml(
-                      item.product_name ||
-                      "สินค้า"
-                    )}"
-                    onerror="
-                      this.src='assets/logo.png';
-                    "
-                  >
-
-                </div>
-
-
-                <div>
-
-                  <div class="detail-item-name">
-                    ${escapeHtml(
-                      item.product_name ||
-                      "สินค้า"
-                    )}
-                  </div>
-
-                  <div class="detail-item-meta">
-
-                    รหัสสินค้า:
-                    ${escapeHtml(
-                      item.product_id ||
-                      "-"
-                    )}
-
-                    ${
-                      optionText
-                        ? `
-                          <br>
-                          ตัวเลือก:
-                          ${escapeHtml(
-                            optionText
-                          )}
-                        `
-                        : ""
-                    }
-
-                  </div>
-
-                </div>
-
-
-                <div>
-
-                  <div class="detail-item-price">
-                    ${formatMoney(
-                      lineTotal
-                    )}
-                  </div>
-
-                  <div class="detail-item-quantity">
-                    ${Number(
-                      item.quantity || 0
-                    )} ชิ้น
-                  </div>
-
-                  ${
-                    unitPrice
-                      ? `
-                        <div
-                          class="detail-item-quantity"
-                        >
-                          ${formatMoney(
-                            unitPrice
-                          )}/หน่วย
-                        </div>
-                      `
-                      : ""
-                  }
-
-                </div>
-
-              </div>
-
-            `;
-
-          }
-        ).join("")
-
-      : `
-
-        <div
-          style="
-            padding:20px;
-            color:#777;
-            font-size:12px;
-          "
-        >
-          ไม่พบรายการสินค้า
-        </div>
-
-      `;
-
-
-  modalBody.innerHTML = `
-
-    <div class="detail-top">
-
-      <div>
-
-        <div class="detail-order-number">
-          ${escapeHtml(
-            order.order_number ||
-            order.id
-          )}
-        </div>
-
-        <div class="detail-created">
-          สั่งซื้อเมื่อ
-          ${escapeHtml(
-            formatDate(
-              order.created_at
-            )
-          )}
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <span
-          class="status ${statusClass(
-            order.status
-          )}"
-        >
-          ${escapeHtml(
-            statusLabel(
-              order.status
-            )
-          )}
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <!-- CUSTOMER -->
-
-    <div class="detail-section-title">
-      ข้อมูลลูกค้า
-    </div>
-
-
-    <div class="detail-grid">
-
-      <div class="detail-card">
-
-        <div class="detail-label">
-          CUSTOMER
-        </div>
-
-        <div class="detail-value">
-          ${escapeHtml(
-            order.customer_name ||
-            "-"
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="detail-card">
-
-        <div class="detail-label">
-          PHONE
-        </div>
-
-        <div class="detail-value">
-          ${escapeHtml(
-            order.customer_phone ||
-            "-"
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="detail-card">
-
-        <div class="detail-label">
-          EMAIL
-        </div>
-
-        <div class="detail-value">
-          ${escapeHtml(
-            order.customer_email ||
-            "-"
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="detail-card">
-
-        <div class="detail-label">
-          PROVINCE
-        </div>
-
-        <div class="detail-value">
-          ${escapeHtml(
-            order.customer_province ||
-            "-"
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="detail-card full">
-
-        <div class="detail-label">
-          SHIPPING ADDRESS
-        </div>
-
-        <div class="detail-value">
-          ${escapeHtml(
-            order.customer_address ||
-            "-"
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="detail-card full">
-
-        <div class="detail-label">
-          CUSTOMER NOTE
-        </div>
-
-        <div class="detail-value">
-          ${escapeHtml(
-            order.customer_note ||
-            "ไม่มีรายละเอียดเพิ่มเติม"
-          )}
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- ITEMS -->
-
-    <div class="detail-section-title">
-      รายการสินค้า
-    </div>
-
-
-    <div class="detail-items">
-
-      ${itemsHtml}
-
-    </div>
-
-
-    <!-- TOTAL -->
-
-    <div class="total-box">
-
-      <div class="total-label">
-        ยอดรวมคำสั่งซื้อ
-      </div>
-
-      <div class="total-value">
-        ${formatMoney(
-          order.total
-        )}
-      </div>
-
-    </div>
-
-
-    <!-- PAYMENT -->
-
-    <div class="detail-section-title">
-      การชำระเงิน
-    </div>
-
-
-    <div class="detail-grid">
-
-      <div class="detail-card">
-
-        <div class="detail-label">
-          PAYMENT METHOD
-        </div>
-
-        <div class="detail-value">
-          ${escapeHtml(
-            paymentLabel(
-              order.payment_method
-            )
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="detail-card">
-
-        <div class="detail-label">
-          PAYMENT STATUS
-        </div>
-
-        <div class="detail-value">
-
-          ${
-            order.payment_verified
-
-              ? `
-                <span
-                  class="status completed"
-                >
-                  ✓ ตรวจสอบแล้ว
-                </span>
-              `
-
-              : `
-                <span
-                  class="status pending"
-                >
-                  รอตรวจสอบ
-                </span>
-              `
-          }
-
-        </div>
-
-      </div>
-
-
-      <div class="detail-card">
-
-        <div class="detail-label">
-          SUBTOTAL
-        </div>
-
-        <div class="detail-value">
-          ${formatMoney(
-            order.subtotal
-          )}
-        </div>
-
-      </div>
-
-
-      <div class="detail-card">
-
-        <div class="detail-label">
-          SHIPPING
-        </div>
-
-        <div class="detail-value">
-          ${formatMoney(
-            order.shipping_fee
-          )}
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- SLIP -->
-
-    <div class="detail-section-title">
-      หลักฐานการชำระเงิน
-    </div>
-
-
-    <div
-      class="slip-box"
-      id="slipBox"
-    >
-
-      <div
-        style="
-          color:#777;
-          font-size:12px;
-        "
-      >
-        กำลังโหลดข้อมูลสลิป...
-      </div>
-
-    </div>
-
-
-    <!-- STATUS -->
-
-    <div class="detail-section-title">
-      สถานะคำสั่งซื้อ
-    </div>
-
-
-    <div class="status-edit">
-
-      <select
-        class="status-select"
-        id="modalStatusSelect"
-        ${
-          canManageOrders()
-            ? ""
-            : "disabled"
-        }
-      >
-
-        ${statusOption(
-          "pending",
-          "รอตรวจสอบ",
-          order.status
-        )}
-
-        ${statusOption(
-          "confirmed",
-          "ยืนยันแล้ว",
-          order.status
-        )}
-
-        ${statusOption(
-          "preparing",
-          "กำลังเตรียมสินค้า",
-          order.status
-        )}
-
-        ${statusOption(
-          "shipping",
-          "กำลังจัดส่ง",
-          order.status
-        )}
-
-        ${statusOption(
-          "completed",
-          "จัดส่งสำเร็จ",
-          order.status
-        )}
-
-        ${statusOption(
-          "cancelled",
-          "ยกเลิก",
-          order.status
-        )}
-
-      </select>
-
-
-      ${
-        canManageOrders()
-
-          ? `
-            <button
-              class="btn btn-gold"
-              id="saveStatusBtn"
-              type="button"
-            >
-              บันทึกสถานะ
-            </button>
-          `
-
-          : ""
-      }
-
-    </div>
-
-
-    ${
-      canDeleteOrders()
-
-        ? `
-
-          <div
-            style="
-              margin-top:28px;
-              padding-top:20px;
-              border-top:1px solid var(--line);
-              display:flex;
-              justify-content:flex-end;
-            "
-          >
-
-            <button
-              class="btn btn-danger"
-              id="modalDeleteBtn"
-              type="button"
-            >
-              🗑 ลบคำสั่งซื้อนี้
-            </button>
-
-          </div>
-
-        `
-
-        : ""
-    }
-
-  `;
-
-
-  orderModal.classList.add(
-    "show"
-  );
-
-
-  const saveStatusBtn =
-    document.getElementById(
-      "saveStatusBtn"
-    );
-
-  if(saveStatusBtn){
-
-    saveStatusBtn.addEventListener(
-      "click",
-      updateStatus
-    );
-
-  }
-
-
-  const modalDeleteBtn =
-    document.getElementById(
-      "modalDeleteBtn"
-    );
-
-  if(modalDeleteBtn){
-
-    modalDeleteBtn.addEventListener(
-      "click",
-      ()=>{
-        closeModal();
-        openDeleteModal(
-          order.id
-        );
-      }
-    );
-
-  }
-
-
-  await loadSlip(
-    order
-  );
-
-}
-
-
-/* =========================================================
-   STATUS OPTION
-========================================================= */
-
-function statusOption(
-  value,
-  label,
-  current
-){
-
-  return `
-
-    <option
-      value="${escapeHtml(
-        value
-      )}"
-      ${
-        current === value
-          ? "selected"
-          : ""
-      }
-    >
-      ${escapeHtml(
-        label
-      )}
-    </option>
-
-  `;
-
-}
-
-
-/* =========================================================
-   LOAD SLIP
-========================================================= */
-
-async function loadSlip(
-  order
-){
-
-  const box =
-    document.getElementById(
-      "slipBox"
-    );
-
-  if(!box){
-    return;
-  }
-
-
-  if(!order.slip_path){
-
-    box.innerHTML = `
-
-      <div
-        style="
-          color:#777;
-          font-size:12px;
-          line-height:1.8;
-        "
-      >
-        ยังไม่มีสลิปการชำระเงิน
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .storage
-        .from("payment-slips")
-        .createSignedUrl(
-          order.slip_path,
-          600
-        );
-
-
-    if(error){
-      throw error;
-    }
-
-
-    if(!data?.signedUrl){
-
-      throw new Error(
-        "ไม่สามารถสร้างลิงก์สลิปได้"
-      );
-
-    }
-
-
-    box.innerHTML = `
-
-      <div class="slip-preview-wrap">
-
-        <img
-          src="${escapeHtml(
-            data.signedUrl
-          )}"
-          class="slip-preview"
-          alt="Payment Slip"
-        >
-
-
-        <div class="slip-info">
-
-          <div class="slip-status">
-
-            <strong
-              style="
-                color:#ddd;
-                display:block;
-                margin-bottom:7px;
-              "
-            >
-              หลักฐานการชำระเงิน
-            </strong>
-
-            ${
-              order.payment_verified
-
-                ? `
-                  <span
-                    style="
-                      color:#57d989;
-                    "
-                  >
-                    ✓ ตรวจสอบการชำระเงินแล้ว
-                  </span>
-
-                  ${
-                    order.payment_verified_at
-                      ? `
-                        <br>
-                        ตรวจสอบเมื่อ:
-                        ${escapeHtml(
-                          formatDate(
-                            order.payment_verified_at
-                          )
-                        )}
-                      `
-                      : ""
-                  }
-                `
-
-                : `
-                  <span
-                    style="
-                      color:#e7b84b;
-                    "
-                  >
-                    รอตรวจสอบ
-                  </span>
-                `
-            }
-
-          </div>
-
-
-          <div
-            style="
-              margin-top:15px;
-              display:flex;
-              gap:8px;
-              flex-wrap:wrap;
-            "
-          >
-
-            <a
-              href="${escapeHtml(
-                data.signedUrl
-              )}"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn"
-            >
-              ↗ เปิดสลิป
-            </a>
-
-            ${
-              canVerifyPayment()
-
-                ? (
-
-                    order.payment_verified
-
-                      ? `
-                        <button
-                          class="btn"
-                          id="unverifyBtn"
-                          type="button"
-                        >
-                          ↩ ยกเลิกการยืนยัน
-                        </button>
-                      `
-
-                      : `
-                        <button
-                          class="btn btn-gold"
-                          id="verifyBtn"
-                          type="button"
-                        >
-                          ✓ ยืนยันการชำระเงิน
-                        </button>
-                      `
-
-                  )
-
-                : ""
-            }
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    const verifyBtn =
-      document.getElementById(
-        "verifyBtn"
-      );
-
-    if(verifyBtn){
-
-      verifyBtn.addEventListener(
-        "click",
-        verifyPayment
-      );
-
-    }
-
-
-    const unverifyBtn =
-      document.getElementById(
-        "unverifyBtn"
-      );
-
-    if(unverifyBtn){
-
-      unverifyBtn.addEventListener(
-        "click",
-        unverifyPayment
-      );
-
-    }
-
-  }catch(error){
-
-    console.error(
-      "SLIP ERROR:",
-      error
-    );
-
-    box.innerHTML = `
-
-      <div
-        style="
-          color:#ff9999;
-          font-size:12px;
-          line-height:1.8;
-        "
-      >
-
-        ไม่สามารถเปิดสลิปได้
-
-        <br>
-
-        ${escapeHtml(
-          error.message
-        )}
-
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-/* =========================================================
-   VERIFY PAYMENT
-========================================================= */
-
-async function verifyPayment(){
-
-  if(!selectedOrder){
-    return;
-  }
-
-  if(!canVerifyPayment()){
-
-    showToast(
-      "บัญชีนี้ไม่มีสิทธิ์ตรวจสอบการชำระเงิน",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("orders")
-      .update({
-
-        payment_verified:true,
-
-        payment_verified_at:
-          new Date().toISOString(),
-
-        payment_verified_by:
-          currentUser.id
-
-      })
-      .eq(
-        "id",
-        selectedOrder.id
-      );
-
-
-  if(error){
-
     console.error(error);
 
-    showToast(
-      "ไม่สามารถยืนยันการชำระเงินได้: " +
-      error.message,
-      "error"
-    );
+    loginError.textContent =
+      error.message ||
+      "ไม่สามารถตรวจสอบสิทธิ์ได้";
 
-    return;
-
-  }
-
-
-  showToast(
-    "ยืนยันการชำระเงินแล้ว"
-  );
-
-
-  await loadOrders();
-
-
-  const updated =
-    orders.find(
-      order =>
-        order.id ===
-        selectedOrder.id
-    );
-
-
-  if(updated){
-
-    selectedOrder =
-      updated;
-
-    await loadSlip(
-      updated
-    );
+    showLogin();
 
   }
 
 }
 
 
-/* =========================================================
-   UNVERIFY
-========================================================= */
-
-async function unverifyPayment(){
-
-  if(!selectedOrder){
-    return;
-  }
-
-  if(!canVerifyPayment()){
-
-    showToast(
-      "บัญชีนี้ไม่มีสิทธิ์",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const ok =
-    confirm(
-      "ต้องการยกเลิกการยืนยันการชำระเงินหรือไม่?"
-    );
-
-
-  if(!ok){
-    return;
-  }
-
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("orders")
-      .update({
-
-        payment_verified:false,
-
-        payment_verified_at:null,
-
-        payment_verified_by:null
-
-      })
-      .eq(
-        "id",
-        selectedOrder.id
-      );
-
-
-  if(error){
-
-    console.error(error);
-
-    showToast(
-      "ไม่สามารถยกเลิกการยืนยันได้: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  showToast(
-    "ยกเลิกการยืนยันแล้ว"
-  );
-
-
-  await loadOrders();
-
-
-  const updated =
-    orders.find(
-      order =>
-        order.id ===
-        selectedOrder.id
-    );
-
-
-  if(updated){
-
-    selectedOrder =
-      updated;
-
-    await loadSlip(
-      updated
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   UPDATE STATUS
-========================================================= */
-
-async function updateStatus(){
-
-  if(!selectedOrder){
-    return;
-  }
-
-  if(!canManageOrders()){
-
-    showToast(
-      "บัญชีนี้ไม่มีสิทธิ์เปลี่ยนสถานะ",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const select =
-    document.getElementById(
-      "modalStatusSelect"
-    );
-
-
-  if(!select){
-    return;
-  }
-
-
-  const newStatus =
-    select.value;
-
-
-  if(
-    ![
-      "pending",
-      "confirmed",
-      "preparing",
-      "shipping",
-      "completed",
-      "cancelled"
-    ].includes(
-      newStatus
-    )
-  ){
-
-    showToast(
-      "สถานะไม่ถูกต้อง",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("orders")
-      .update({
-        status:newStatus
-      })
-      .eq(
-        "id",
-        selectedOrder.id
-      );
-
-
-  if(error){
-
-    console.error(error);
-
-    showToast(
-      "ไม่สามารถเปลี่ยนสถานะได้: " +
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  showToast(
-    "อัปเดตสถานะเรียบร้อย"
-  );
-
-
-  await loadOrders();
-
-
-  closeModal();
-
-}
-
-
-/* =========================================================
-   DELETE MODAL
-========================================================= */
-
-function openDeleteModal(
-  orderId
-){
-
-  if(!canDeleteOrders()){
-
-    showToast(
-      "เฉพาะ OWNER เท่านั้นที่สามารถลบออเดอร์ได้",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const order =
-    orders.find(
-      item =>
-        item.id ===
-        orderId
-    );
-
-
-  if(!order){
-    return;
-  }
-
-
-  orderToDelete =
-    order;
-
-
-  deleteOrderName.textContent =
-    (
-      order.order_number ||
-      order.id
-    ) +
-    " · " +
-    (
-      order.customer_name ||
-      "-"
-    );
-
-
-  deleteModal.classList.add(
-    "show"
-  );
-
-}
-
-
-/* =========================================================
-   CLOSE DELETE
-========================================================= */
-
-function closeDeleteModal(){
-
-  deleteModal.classList.remove(
-    "show"
-  );
-
-  orderToDelete =
-    null;
-
-}
-
-
-/* =========================================================
-   DELETE ORDER
-========================================================= */
-
-async function deleteOrder(){
-
-  if(!orderToDelete){
-    return;
-  }
-
-  if(!canDeleteOrders()){
-
-    showToast(
-      "เฉพาะ OWNER เท่านั้นที่สามารถลบออเดอร์ได้",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const order =
-    orderToDelete;
-
-
-  const ok =
-    confirm(
-      "ยืนยันการลบคำสั่งซื้อ " +
-      (
-        order.order_number ||
-        order.id
-      ) +
-      " ?"
-    );
-
-
-  if(!ok){
-    return;
-  }
-
-
-  confirmDeleteBtn.disabled =
-    true;
-
-  confirmDeleteBtn.textContent =
-    "กำลังลบ...";
-
-
-  try{
-
-    /*
-      ลบรายการสินค้าใน order_items ก่อน
-      เพื่อรองรับกรณี FK ไม่ได้ตั้ง ON DELETE CASCADE
-    */
-
-    const {
-      error:itemError
-    } =
-      await supabaseClient
-        .from("order_items")
-        .delete()
-        .eq(
-          "order_id",
-          order.id
-        );
-
-
-    if(itemError){
-
-      throw new Error(
-        "ลบรายการสินค้าไม่สำเร็จ: " +
-        itemError.message
-      );
-
-    }
-
-
-    /*
-      ลบ Order
-    */
-
-    const {
-      error:orderError
-    } =
-      await supabaseClient
-        .from("orders")
-        .delete()
-        .eq(
-          "id",
-          order.id
-        );
-
-
-    if(orderError){
-
-      throw new Error(
-        "ลบคำสั่งซื้อไม่สำเร็จ: " +
-        orderError.message
-      );
-
-    }
-
-
-    /*
-      ถ้ามีสลิป
-      พยายามลบไฟล์ใน Storage ด้วย
-    */
-
-    if(order.slip_path){
-
-      const {
-        error:slipError
-      } =
-        await supabaseClient
-          .storage
-          .from("payment-slips")
-          .remove([
-            order.slip_path
-          ]);
-
-
-      if(slipError){
-
-        console.warn(
-          "ลบไฟล์สลิปไม่สำเร็จ:",
-          slipError
-        );
-
-      }
-
-    }
-
-
-    showToast(
-      "ลบคำสั่งซื้อเรียบร้อยแล้ว"
-    );
-
-
-    closeDeleteModal();
-
-    closeModal();
-
-    await loadOrders();
-
-
-  }catch(error){
-
-    console.error(
-      "DELETE ERROR:",
-      error
-    );
-
-    showToast(
-      error.message,
-      "error"
-    );
-
-  }finally{
-
-    confirmDeleteBtn.disabled =
-      false;
-
-    confirmDeleteBtn.textContent =
-      "ลบคำสั่งซื้อ";
-
-  }
-
-}
-
-
-/* =========================================================
-   EXPORT CSV
-========================================================= */
-
-function exportOrders(){
-
-  const filtered =
-    getFilteredOrders();
-
-
-  if(!filtered.length){
-
-    showToast(
-      "ไม่มีข้อมูลสำหรับ Export",
-      "error"
-    );
-
-    return;
-
-  }
-
-
-  const rows = [
-
-    [
-      "Order",
-      "Customer",
-      "Phone",
-      "Email",
-      "Province",
-      "Address",
-      "Payment",
-      "Subtotal",
-      "Shipping",
-      "Total",
-      "Status",
-      "Payment Verified",
-      "Created"
-    ]
-
-  ];
-
-
-  filtered.forEach(
-    order => {
-
-      rows.push([
-
-        order.order_number ||
-          order.id,
-
-        order.customer_name ||
-          "",
-
-        order.customer_phone ||
-          "",
-
-        order.customer_email ||
-          "",
-
-        order.customer_province ||
-          "",
-
-        order.customer_address ||
-          "",
-
-        paymentLabel(
-          order.payment_method
-        ),
-
-        order.subtotal ||
-          0,
-
-        order.shipping_fee ||
-          0,
-
-        order.total ||
-          0,
-
-        statusLabel(
-          order.status
-        ),
-
-        order.payment_verified
-          ? "YES"
-          : "NO",
-
-        formatDate(
-          order.created_at
-        )
-
-      ]);
-
-    }
-  );
-
-
-  const csv =
-    rows
-      .map(
-        row =>
-          row
-            .map(
-              cell =>
-                `"${String(
-                  cell ?? ""
-                ).replaceAll(
-                  '"',
-                  '""'
-                )}"`
-            )
-            .join(",")
-      )
-      .join("\n");
-
-
-  const blob =
-    new Blob(
-      [
-        "\uFEFF" +
-        csv
-      ],
-      {
-        type:
-          "text/csv;charset=utf-8;"
-      }
-    );
-
-
-  const url =
-    URL.createObjectURL(
-      blob
-    );
-
-
-  const a =
-    document.createElement(
-      "a"
-    );
-
-
-  a.href =
-    url;
-
-
-  a.download =
-    "chatpetch-orders-" +
-    new Date()
-      .toISOString()
-      .slice(0,10) +
-    ".csv";
-
-
-  document.body.appendChild(
-    a
-  );
-
-
-  a.click();
-
-
-  a.remove();
-
-
-  URL.revokeObjectURL(
-    url
-  );
-
-
-  showToast(
-    "Export เรียบร้อย"
-  );
-
-}
-
-
-/* =========================================================
-   CLOSE ORDER MODAL
-========================================================= */
-
-function closeModal(){
-
-  orderModal.classList.remove(
-    "show"
-  );
-
-  selectedOrder =
-    null;
-
-}
-
-
-/* =========================================================
-   EVENT: ORDER TABLE
-========================================================= */
-
-ordersTable.addEventListener(
-  "click",
-  event => {
-
-    const button =
-      event.target.closest(
-        "[data-action]"
-      );
-
-
-    if(!button){
-      return;
-    }
-
-
-    const action =
-      button.dataset.action;
-
-
-    const id =
-      button.dataset.id;
-
-
-    if(action === "view"){
-
-      openOrder(
-        id
-      );
-
-    }
-
-
-    if(action === "delete"){
-
-      openDeleteModal(
-        id
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   EVENTS
-========================================================= */
-
-loginBtn.addEventListener(
-  "click",
-  login
-);
-
-
-logoutBtn.addEventListener(
-  "click",
-  logout
-);
-
-
-refreshBtn.addEventListener(
-  "click",
-  async ()=>{
-
-    refreshBtn.disabled =
-      true;
-
-    refreshBtn.textContent =
-      "กำลังโหลด...";
-
-    await loadOrders();
-
-    refreshBtn.disabled =
-      false;
-
-    refreshBtn.textContent =
-      "↻ รีเฟรช";
-
-    showToast(
-      "รีเฟรชข้อมูลแล้ว"
-    );
-
-  }
-);
-
-
-exportBtn.addEventListener(
-  "click",
-  exportOrders
-);
-
-
-searchInput.addEventListener(
-  "input",
-  renderOrders
-);
-
-
-statusFilter.addEventListener(
-  "change",
-  renderOrders
-);
-
-
-modalClose.addEventListener(
-  "click",
-  closeModal
-);
-
-
-modalCancel.addEventListener(
-  "click",
-  closeModal
-);
-
-
-orderModal.addEventListener(
-  "click",
-  event => {
+supabaseClient.auth.onAuthStateChange(
+  (event,session)=>{
 
     if(
-      event.target ===
-      orderModal
+      event === "SIGNED_OUT"
     ){
-
-      closeModal();
-
-    }
-
-  }
-);
-
-
-deleteModalClose.addEventListener(
-  "click",
-  closeDeleteModal
-);
-
-
-deleteCancelBtn.addEventListener(
-  "click",
-  closeDeleteModal
-);
-
-
-confirmDeleteBtn.addEventListener(
-  "click",
-  deleteOrder
-);
-
-
-deleteModal.addEventListener(
-  "click",
-  event => {
-
-    if(
-      event.target ===
-      deleteModal
-    ){
-
-      closeDeleteModal();
-
-    }
-
-  }
-);
-
-
-mobileBtn.addEventListener(
-  "click",
-  ()=>{
-
-    navMenu.classList.toggle(
-      "show"
-    );
-
-  }
-);
-
-
-navMenu.addEventListener(
-  "click",
-  event => {
-
-    if(
-      event.target.closest("a")
-    ){
-
-      navMenu.classList.remove(
-        "show"
-      );
-
-    }
-
-  }
-);
-
-
-document.addEventListener(
-  "keydown",
-  event => {
-
-    if(
-      event.key ===
-      "Escape"
-    ){
-
-      closeModal();
-
-      closeDeleteModal();
-
-      navMenu.classList.remove(
-        "show"
-      );
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   AUTH STATE
-========================================================= */
-
-supabaseClient
-  .auth
-  .onAuthStateChange(
-    async (
-      event,
-      session
-    )=>{
-
-      console.log(
-        "AUTH EVENT:",
-        event
-      );
-
-
-      if(
-        event ===
-        "SIGNED_OUT"
-      ){
-
-        currentUser = null;
-
-        currentRole = null;
-
-        currentAdmin = null;
-
-        orders = [];
-
-        showLogin();
-
-        return;
-
-      }
-
-
-      if(
-        event ===
-        "INITIAL_SESSION"
-      ){
-
-        setTimeout(
-          ()=>{
-            handleSession(
-              session
-            );
-          },
-          0
-        );
-
-        return;
-
-      }
-
-
-      if(
-        event ===
-        "SIGNED_IN"
-      ){
-
-        setTimeout(
-          ()=>{
-            handleSession(
-              session
-            );
-          },
-          0
-        );
-
-        return;
-
-      }
-
-
-      if(
-        event ===
-        "TOKEN_REFRESHED"
-      ){
-
-        if(session?.user){
-
-          currentUser =
-            session.user;
-
-        }
-
-      }
-
-    }
-  );
-
-
-/* =========================================================
-   INIT
-========================================================= */
-
-(async function init(){
-
-  try{
-
-    showLoading();
-
-    clearOAuthHash();
-
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .auth
-        .getSession();
-
-
-    if(error){
-
-      throw error;
-
-    }
-
-
-    if(
-      data?.session
-    ){
-
-      await handleSession(
-        data.session
-      );
-
-    }else{
 
       showLogin();
 
+      return;
+
     }
 
-  }catch(error){
+    if(
+      event === "SIGNED_IN" ||
+      event === "INITIAL_SESSION" ||
+      event === "TOKEN_REFRESHED"
+    ){
 
-    console.error(
-      "INIT ERROR:",
-      error
-    );
+      setTimeout(
+        ()=>{
+          handleSession(session);
+        },
+        50
+      );
 
-    showLogin(
-      error.message ||
-      "ไม่สามารถเริ่มระบบได้"
-    );
+    }
 
   }
+);
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+(async function(){
+
+  const {
+    data
+  } =
+    await supabaseClient.auth.getSession();
+
+  await handleSession(
+    data.session
+  );
 
 })();
 
