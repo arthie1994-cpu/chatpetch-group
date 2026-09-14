@@ -5269,32 +5269,35 @@ async function loadSlip(path){
    CHANGE ORDER STATUS
 ========================================================= */
 
-async function changeOrderStatus(
-  orderId
-){
+async function changeOrderStatus(orderId) {
+    if (!orderId) return;
 
-  const order =
-    orders.find(
-      item =>
-        item.id === orderId
-    );
+    if (!canManageOrders()) {
+        showToast(
+            "บัญชีนี้ไม่มีสิทธิ์เปลี่ยนสถานะออเดอร์",
+            "error"
+        );
+        return;
+    }
 
+    await openOrder(orderId);
 
-  if(!order){
-    return;
-  }
+    setTimeout(() => {
+        const select =
+            document.getElementById(
+                "modalStatusSelect"
+            );
 
+        if (select) {
+            select.focus();
 
-  const current =
-    order.status ||
-    "pending";
-
-
-  const next =
-    prompt(
-      `เปลี่ยนสถานะคำสั่งซื้อ #${
-        order.order_number ||
-        order.id
+            select.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+    }, 150);
+}
       }
 
 สถานะที่ใช้ได้:
