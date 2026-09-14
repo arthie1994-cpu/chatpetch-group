@@ -5269,127 +5269,253 @@ async function loadSlip(path){
    CHANGE ORDER STATUS
 ========================================================= */
 
-async function changeOrderStatus(orderId) {
-    if (!orderId) return;
+async function changeOrderStatus(
+  orderId
+){
 
-    if (!canManageOrders()) {
-        showToast(
-            "บัญชีนี้ไม่มีสิทธิ์เปลี่ยนสถานะออเดอร์",
-            "error"
-        );
-        return;
-    }
-
-    await openOrder(orderId);
-
-    setTimeout(() => {
-        const select =
-            document.getElementById(
-                "modalStatusSelect"
-            );
-
-        if (select) {
-            select.focus();
-
-            select.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-        }
-    }, 150);
-}
-      }
-
-สถานะที่ใช้ได้:
-pending = รอตรวจสอบ
-confirmed = ยืนยันแล้ว
-preparing = กำลังเตรียมสินค้า
-shipping = กำลังจัดส่ง
-completed = จัดส่งสำเร็จ
-cancelled = ยกเลิก
-
-สถานะปัจจุบัน: ${current}
-
-กรอกสถานะใหม่:`,
-      current
-    );
-
-
-  if(next === null){
+  if(!orderId){
     return;
   }
 
-
-  const allowed = [
-    "pending",
-    "confirmed",
-    "preparing",
-    "shipping",
-    "completed",
-    "cancelled"
-  ];
-
-
-  if(!allowed.includes(next)){
-
+  if(!canManageOrders()){
     toast(
-      "สถานะไม่ถูกต้อง",
+      "บัญชีนี้ไม่มีสิทธิ์เปลี่ยนสถานะออเดอร์",
       "error"
     );
-
     return;
-
   }
 
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from("orders")
-      .update({
-        status:next
-      })
-      .eq(
-        "id",
-        orderId
-      );
-
-
-  if(error){
-
-    console.error(error);
-
-    toast(
-      "เปลี่ยนสถานะไม่สำเร็จ: " +
-      error.message,
-      "error"
+  const order =
+    orders.find(
+      item =>
+        item.id === orderId
     );
 
+  if(!order){
+    toast(
+      "ไม่พบคำสั่งซื้อ",
+      "error"
+    );
     return;
-
   }
 
-
-  toast(
-    "เปลี่ยนสถานะเรียบร้อย"
+  await openOrderDetail(
+    orderId
   );
 
+  const body =
+    $("orderModalBody");
 
-  await loadOrders();
-
-
-  if(
-    $("orderModal")
-      .classList
-      .contains("show")
-  ){
-
-    closeModal(
-      "orderModal"
-    );
-
+  if(!body){
+    return;
   }
+
+  const statusOptions = [
+    ["pending","รอตรวจสอบ"],
+    ["confirmed","ยืนยันแล้ว"],
+    ["preparing","กำลังเตรียมสินค้า"],
+    ["shipping","กำลังจัดส่ง"],
+    ["completed","จัดส่งสำเร็จ"],
+    ["cancelled","ยกเลิก"]
+  ];
+
+  const currentStatus =
+    order.status ||
+    "pending";
+
+  const optionsHtml =
+    statusOptions
+      .map(
+        ([value,label]) => `
+          <option
+            value="${value}"
+            ${
+              currentStatus === value
+                ? "selected"
+                : ""
+            }
+          >
+            ${label}
+          </option>
+        `
+      )
+      .join("");
+
+  const currentLabel =
+    (
+      statusOptions.find(
+        item =>
+          item[0] === currentStatus
+      ) ||
+      [currentStatus,currentStatus]
+    )[1];
+
+  const editor =
+    document.createElement("div");
+
+  editor.id =
+    "orderStatusEditor";
+
+  editor.innerHTML = `
+
+    <div
+      class="detail-card"
+      style="
+        margin-top:20px;
+        border-color:var(--gold-line);
+      "
+    >
+
+      <div
+        class="detail-label"
+        style="
+          font-size:10px;
+          color:var(--gold);
+          letter-spacing:1px;
+        "
+      >
+        เปลี่ยนสถานะคำสั่งซื้อ
+      </div>
+
+      <div
+        style="
+          margin:4px 0 12px;
+          color:#777;
+          font-size:10px;
+        "
+      >
+        สถานะปัจจุบัน: ${escapeHtml(currentLabel)}
+      </div>
+
+      <div
+        style="
+          display:flex;
+          gap:8px;
+          align-items:center;
+          flex-wrap:wrap;
+        "
+      >
+
+        <select
+          class="select"
+          id="modalStatusSelect"
+          style="
+            flex:1;
+            min-width:220px;
+            height:43px;
+            font-size:12px;
+          "
+        >
+          ${optionsHtml}
+        </select>
+
+        <button
+          class="btn gold"
+          type="button"
+          id="saveStatusBtn"
+        >
+          บันทึกสถานะ
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+  body.appendChild(editor);
+
+  const select =
+    $("modalStatusSelect");
+
+  const saveButton =
+    $("saveStatusBtn");
+
+  if(!select || !saveButton){
+    return;
+  }
+
+  select.focus();
+
+  saveButton.addEventListener(
+    "click",
+    async ()=>{
+
+      const next =
+        select.value;
+
+      const allowed =
+        statusOptions.map(
+          item => item[0]
+        );
+
+      if(!allowed.includes(next)){
+        toast(
+          "สถานะไม่ถูกต้อง",
+          "error"
+        );
+        return;
+      }
+
+      if(next === currentStatus){
+        toast(
+          "สถานะนี้เป็นสถานะปัจจุบันอยู่แล้ว"
+        );
+        return;
+      }
+
+      saveButton.disabled = true;
+      saveButton.textContent = "กำลังบันทึก...";
+
+      const { error } =
+        await supabaseClient
+          .from("orders")
+          .update({
+            status:next
+          })
+          .eq(
+            "id",
+            orderId
+          );
+
+      if(error){
+
+        console.error(error);
+
+        saveButton.disabled = false;
+        saveButton.textContent = "บันทึกสถานะ";
+
+        toast(
+          "เปลี่ยนสถานะไม่สำเร็จ: " +
+          error.message,
+          "error"
+        );
+
+        return;
+      }
+
+      const index =
+        orders.findIndex(
+          item =>
+            item.id === orderId
+        );
+
+      if(index !== -1){
+        orders[index].status = next;
+      }
+
+      toast(
+        "เปลี่ยนสถานะเรียบร้อย"
+      );
+
+      await loadOrders();
+
+      closeModal(
+        "orderModal"
+      );
+
+    }
+  );
 
 }
 
