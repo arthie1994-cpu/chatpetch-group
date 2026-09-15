@@ -1422,6 +1422,82 @@ body::before{
 
 
 /* =========================================================
+   PRODUCTS PAGE HERO
+========================================================= */
+.page-hero{
+  position:relative;
+  padding:155px 0 72px;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(circle at 82% 25%, rgba(201,164,92,.10), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.012), transparent);
+}
+.page-hero::before{
+  content:"PRODUCTS";
+  position:absolute;
+  right:-20px;
+  bottom:-42px;
+  font-family:'Kanit',sans-serif;
+  font-size:150px;
+  line-height:1;
+  font-weight:700;
+  letter-spacing:5px;
+  color:rgba(255,255,255,.018);
+  pointer-events:none;
+}
+.page-hero .container{
+  position:relative;
+  z-index:2;
+}
+.page-hero .eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--gold2);
+  font-size:11px;
+  letter-spacing:3px;
+  margin-bottom:18px;
+}
+.page-hero .eyebrow::before{
+  content:"";
+  width:42px;
+  height:1px;
+  background:var(--gold);
+}
+.page-hero h1{
+  font-family:'Kanit',sans-serif;
+  font-size:clamp(52px,6vw,78px);
+  line-height:1.12;
+  font-weight:500;
+  letter-spacing:-1.5px;
+  margin:0 0 18px;
+}
+.page-hero h1 span{
+  color:var(--gold2);
+}
+.page-hero p{
+  max-width:760px;
+  color:#929292;
+  font-size:14px;
+  line-height:1.95;
+}
+
+.filter-wrap{
+  padding-top:45px;
+}
+.filter-label{
+  color:#b9b9b9;
+}
+
+/* product-page variables used by legacy module */
+:root{
+  --gray:#999;
+  --gold-light:#e9cf8b;
+  --container:1280px;
+}
+
+/* =========================================================
    CUSTOMER PAGE PRODUCT MODULE
 ========================================================= */
 
@@ -1736,7 +1812,7 @@ body::before{
   }
 
   .page-hero{
-    padding:70px 0 45px;
+    padding:120px 0 55px;
   }
 
   .page-hero h1{
@@ -1796,6 +1872,130 @@ body::before{
   }
 }
 
+main{position:relative;}
+
+
+/* =========================================================
+   MASTER FOOTER OVERRIDE
+========================================================= */
+.footer{
+  background:#050505;
+  border-top:1px solid rgba(201,164,92,.30);
+}
+.footer-main{
+  padding:70px 0 62px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 430px;
+  gap:8px;
+  align-items:start;
+}
+.footer-brand{min-width:0;}
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  width:max-content;
+}
+.footer-logo img{
+  width:76px;
+  height:76px;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 0 14px rgba(201,164,92,.18));
+}
+.footer-logo-text strong{
+  display:block;
+  color:#fff;
+  font-family:'Kanit',sans-serif;
+  font-size:27px;
+  line-height:1.1;
+  letter-spacing:1.3px;
+  font-weight:600;
+}
+.footer-logo-text small{
+  display:block;
+  margin-top:7px;
+  color:#d8b86b;
+  font-size:11px;
+  letter-spacing:2.2px;
+}
+.footer-description{
+  margin-top:30px !important;
+  color:#858585 !important;
+  font-size:15px !important;
+  line-height:1.9 !important;
+}
+.footer-tagline{
+  margin-top:25px !important;
+  color:#8f8f8f !important;
+  font-size:15px !important;
+  line-height:2 !important;
+}
+.footer-menu{
+  justify-self:start;
+  margin-left:0;
+}
+.footer-menu-title{
+  position:relative;
+  color:#e4c978;
+  font-size:15px;
+  letter-spacing:2px;
+  font-weight:500;
+  margin:2px 0 22px;
+  padding-bottom:13px;
+}
+.footer-menu-title::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:42px;
+  height:2px;
+  background:#d8b86b;
+}
+.footer-links{display:flex;flex-direction:column;gap:13px;}
+.footer-links a{color:#777;font-size:14px;transition:.25s;}
+.footer-links a:hover{color:#e4c978;transform:translateX(4px);}
+.footer-bottom{
+  min-height:88px;
+  padding:18px 0;
+  border-top:1px solid rgba(201,164,92,.28);
+  display:grid;
+  grid-template-columns:auto 1fr auto auto;
+  gap:28px;
+  align-items:center;
+  color:#777;
+  font-size:12px;
+}
+.footer-copy{white-space:nowrap;color:#777;font-size:12px;}
+.footer-copy strong{color:#ddd;font-weight:500;}
+.footer-address{color:#777;font-size:12px;display:flex;align-items:center;gap:8px;min-width:0;}
+.footer-pin{color:#e4c978;font-size:20px;}
+.footer-actions{display:flex;align-items:center;gap:12px;padding-left:24px;border-left:1px solid rgba(201,164,92,.28);}
+.footer-action{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:0 17px;border:1px solid rgba(201,164,92,.30);border-radius:11px;color:#e4c978;font-size:13px;white-space:nowrap;transition:.25s;}
+.footer-action:hover{border-color:#d8b86b;background:rgba(201,164,92,.06);transform:translateY(-2px);}
+.footer-social{display:flex;align-items:center;gap:10px;padding-left:24px;border-left:1px solid rgba(201,164,92,.28);}
+.footer-social a{width:48px;height:48px;border:1px solid rgba(201,164,92,.42);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#e4c978;font-size:18px;transition:.25s;}
+.footer-social a:hover{background:rgba(201,164,92,.08);border-color:#e4c978;transform:translateY(-2px);}
+@media(max-width:1200px){
+  .footer-bottom{grid-template-columns:1fr 1fr;}
+  .footer-actions{padding-left:0;border-left:0;}
+  .footer-social{padding-left:0;border-left:0;justify-content:flex-end;}
+}
+@media(max-width:1050px){
+  .footer-main{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:760px){
+  .footer-main{grid-template-columns:1fr;gap:42px;padding:52px 0 45px;}
+  .footer-logo img{width:64px;height:64px;}
+  .footer-logo-text strong{font-size:21px;}
+  .footer-logo-text small{font-size:9px;}
+  .footer-description,.footer-tagline{font-size:13px !important;}
+  .footer-bottom{grid-template-columns:1fr;gap:18px;padding:25px 0 30px;}
+  .footer-copy{white-space:normal;}
+  .footer-actions,.footer-social{padding-left:0;border-left:0;justify-content:flex-start;flex-wrap:wrap;}
+}
+
 </style>
 
 
@@ -1815,9 +2015,9 @@ body::before{
 </a>
 
 <div class="customer-nav" id="navMenu">
-    <a href="index.html" class="active">หน้าแรก</a>
+    <a href="index.html">หน้าแรก</a>
     <a href="about.html">เกี่ยวกับเรา</a>
-    <a href="products.html">สินค้า</a>
+    <a href="products.html" class="active">สินค้า</a>
 
     <div class="nav-dropdown">
         <button type="button" class="nav-drop-trigger">บริการ <span class="arrow">▼</span></button>
@@ -1983,130 +2183,6 @@ body::before{
   </div>
 </footer>
 
-
-<footer class="footer">
-
-<div class="container">
-
-<div class="footer-main">
-
-
-<div class="footer-brand">
-
-<a href="index.html" class="logo customer-brand">
-<img src="assets/logo.png" alt="CHATPHETCH GROUP" style="width:72px;height:72px;object-fit:contain;">
-<div class="logo-text customer-brand-text">
-<strong>CHATPHETCH GROUP</strong>
-<small>FLOORING &amp; CONSTRUCTION</small>
-</div>
-</a>
-
-
-<p>
-
-บริษัท ฉัตรเพชร กรุ๊ป จำกัด
-โรงงานผลิตและจำหน่ายวัสดุงานพื้นทุกประเภท
-พร้อมบริการให้คำปรึกษาเกี่ยวกับพื้นทุกระบบแบบครบวงจร
-
-</p>
-
-</div>
-
-
-
-<div>
-
-<div class="footer-title">
-NAVIGATION
-</div>
-
-<div class="footer-links">
-
-<a href="index.html">
-หน้าแรก
-</a>
-
-<a href="about.html">
-เกี่ยวกับเรา
-</a>
-
-<a href="products.html">
-สินค้า
-</a>
-
-<a href="services.html">
-บริการ
-</a>
-
-<a href="projects.html">
-ผลงาน
-</a>
-
-<a href="contact.html">
-ติดต่อเรา
-</a>
-
-</div>
-
-</div>
-
-
-
-<div>
-
-<div class="footer-title">
-CONTACT
-</div>
-
-<div class="footer-links">
-
-<a href="tel:0828223678">
-082-8223678 คุณหญิง
-</a>
-
-<a href="tel:0630630046">
-063-0630046 คุณเอ้
-</a>
-
-<a href="tel:0856299778">
-085-6299778 ฝ่ายเทคนิค
-</a>
-
-<a href="tel:0986710888">
-098-6710888 แอดมิน
-</a>
-
-<a
-href="https://www.facebook.com/ChatphetchGroup"
-target="_blank">
-
-Facebook
-
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="footer-bottom">
-
-<span>
-© 2026 CHATPHETCH GROUP CO., LTD.
-</span>
-
-<span>
-10/1 ม.9 ต.นาหม่อม อ.นาหม่อม จ.สงขลา 90310
-</span>
-
-</div>
-
-</div>
-
-</footer>
 
 <div class="floating-contact">
 
@@ -2629,16 +2705,6 @@ document
       renderProducts();
 
     });
-
-  });
-
-document
-  .getElementById("menuToggle")
-  .addEventListener("click",()=>{
-
-    document
-      .getElementById("navMenu")
-      .classList.toggle("open");
 
   });
 
